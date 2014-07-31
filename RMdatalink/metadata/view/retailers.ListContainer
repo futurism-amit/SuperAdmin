@@ -1,0 +1,662 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailerslistcontainer",
+        "designer|userClassName": "retailers.ListContainer",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "968314c4-8722-4842-b85b-528f192b8e26",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "retailerSearchContainer",
+                "height": "42px",
+                "itemId": null,
+                "layout": "fit",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": "margin-top:5px;"
+            },
+            "designerId": "38fa3369-e860-4148-ad6d-2ec82e8bd7eb",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-rdformpanel",
+                            "noBorderFldSet"
+                        ],
+                        "height": "32px",
+                        "itemId": "retailersMainSearchFldSet",
+                        "layout": "hbox",
+                        "style": "border: none;",
+                        "title": null,
+                        "width": "98%"
+                    },
+                    "designerId": "d3f90d34-5322-4f8b-b492-3adaee7e9361",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": "0 0 0 0",
+                                "defaultPhonePickerConfig": null,
+                                "defaultTabletPickerConfig": null,
+                                "itemId": "retailersCustomSearchSeletFld",
+                                "label": null,
+                                "options": [
+                                    "[\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"All\",\r",
+                                    "        value:\"ALL\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"Store Name\",\r",
+                                    "        value:\"store_name\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"Store State\",\r",
+                                    "        value:\"store_state\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"Product Datalink\",\r",
+                                    "        value:\"store_products.datalink_status\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "   \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"Product ECatalog\",\r",
+                                    "        value:\"store_products.ecatalog_status\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"Product ECommerce\",\r",
+                                    "        value:\"store_products.ecommerce_status\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "     \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"Product iRugz\",\r",
+                                    "        value:\"store_products.irugs_status\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"Product RMPRO\",\r",
+                                    "        value:\"store_products.rmpro_status\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"No Of Locations\",\r",
+                                    "        value:\"store_location\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "           \r",
+                                    "        text:\"Store E-mail\",\r",
+                                    "        value:\"store_email\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "           \r",
+                                    "        text:\"Store City\",\r",
+                                    "        value:\"store_city\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "           \r",
+                                    "        text:\"Manager First Name\",\r",
+                                    "        value:\"manager_firstname\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "           \r",
+                                    "        text:\"Manager Last Name\",\r",
+                                    "        value:\"manager_lastname\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "           \r",
+                                    "        text:\"Created By\",\r",
+                                    "        value:\"created_by\"\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "           \r",
+                                    "        text:\"Account created after\",\r",
+                                    "        value:\"user_since\"\r",
+                                    "        \r",
+                                    "    }\r",
+                                    "    \r",
+                                    "\r",
+                                    "]\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "picker": [
+                                    "{\r",
+                                    "    action:\"setScrollBarVisible\"\r",
+                                    "}"
+                                ]
+                            },
+                            "configAlternates": {
+                                "picker": "object"
+                            },
+                            "designerId": "1f887bb7-9ab9-444c-8141-91213a906c8c",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "picker",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Search",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "searchRetailers",
+                                "cls": [
+                                    "x-field-techLogsearch"
+                                ],
+                                "height": null,
+                                "itemId": "rtVdrsSearchFld",
+                                "label": null,
+                                "layout|flex": 1,
+                                "style": "border: none;"
+                            },
+                            "designerId": "0839e94f-cc21-4613-a427-63e95e91c6f2",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Search",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-field-techLogsearch"
+                                ],
+                                "height": null,
+                                "hidden": true,
+                                "itemId": "rtVdrsDateSearchFld",
+                                "label": null,
+                                "layout|flex": 1,
+                                "style": "border: none;"
+                            },
+                            "designerId": "3bb8b745-44b4-4585-8c3c-054097cd8b5a"
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "productStatusChange",
+                                "autoSelect": false,
+                                "border": "0 0 0 0",
+                                "defaultPhonePickerConfig": null,
+                                "defaultTabletPickerConfig": null,
+                                "hidden": true,
+                                "itemId": "retailersProductStatusSearchSlctFld",
+                                "label": null,
+                                "layout|flex": 1,
+                                "options": [
+                                    "[\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"ACTIVE\",\r",
+                                    "        value:\"ACTIVE\"\r",
+                                    "    },\r",
+                                    "        {\r",
+                                    "        \r",
+                                    "        text:\"INACTIVE\",\r",
+                                    "        value:\"INACTIVE\"\r",
+                                    "    },\r",
+                                    "        {\r",
+                                    "        \r",
+                                    "        text:\"PROSPECT\",\r",
+                                    "        value:\"PROSPECT\"\r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"HOT PROSPECT\",\r",
+                                    "        value:\"HOT_PROSPECT\"\r",
+                                    "    },\r",
+                                    "        {\r",
+                                    "        \r",
+                                    "        text:\"PENDING\",\r",
+                                    "        value:\"PENDING\"\r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:\"ANY\",\r",
+                                    "        value:\"ANY\"\r",
+                                    "    }\r",
+                                    "    \r",
+                                    "]\r",
+                                    ""
+                                ]
+                            },
+                            "designerId": "993cd6e4-6aa9-47c0-a950-b5018c88c4c6",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-blueBtn"
+                                ],
+                                "height": "25px",
+                                "hidden": true,
+                                "itemId": "retailersCustomFilterBtn",
+                                "margin": "0 5px 0 5px",
+                                "text": "CUSTOM FILTER",
+                                "width": "140px"
+                            },
+                            "designerId": "d869e186-25d9-4589-a1b2-33c0e1c2bf6b"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "searchRetailersBtn",
+                                "cls": [
+                                    "x-rm-blueBtn"
+                                ],
+                                "height": "25px",
+                                "itemId": "retailersVendorsSerchBtn",
+                                "text": "Search",
+                                "width": "90px"
+                            },
+                            "designerId": "e600b9f3-480e-498e-9dfb-8b61f5335fe6",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|pack": null,
+                        "designer|displayName": "retailersSearchView",
+                        "hidden": true,
+                        "itemId": "retailerSeachViewItemID"
+                    },
+                    "designerId": "d484fa69-56c1-4655-8b4a-44b8f21ea3a5",
+                    "masterInstanceId": "5486b687-172e-4cd3-8a4c-36599048d2ca"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "retailerListNSetupContainer",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "fd22a7b2-1629-416c-a60e-f41d0d8b75f6",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "retailerListContainer",
+                        "layout": "vbox",
+                        "layout|flex": 9,
+                        "scrollable": false
+                    },
+                    "designerId": "06e67c34-ec1b-4dad-a328-40b911091f56",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": "retailerListHeader",
+                                "itemId": "retailerListHeader",
+                                "layout|flex": 1,
+                                "scrollable": false
+                            },
+                            "designerId": "25156170-e181-4142-add6-6c75070914fd",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "416f31d5-aedd-4f98-962e-bc46953c33fe"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "designer|displayName": "retailerList",
+                                "itemCls": null,
+                                "itemId": "retailerList",
+                                "layout|flex": 15,
+                                "mode": "MULTI"
+                            },
+                            "designerId": "426d95a9-6682-4787-a100-66aa6957891e",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "9fcf9adc-d776-4618-842b-3f8756eb40fa"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRetailerListRefresh",
+                                        "implHandler": [
+                                            "//console.error(\"list refreshed\");\r",
+                                            "var totalsList = dataview.parent.parent.parent.down('#retailerTotalsList');\r",
+                                            "totalsList.refresh();\r",
+                                            ""
+                                        ],
+                                        "name": "refresh"
+                                    },
+                                    "designerId": "eeaa260a-405f-46f5-b498-a74f7ae07620"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRetailerListItemTap",
+                                        "implHandler": [
+                                            "/*MOVE THIS HANDLER TO CONTROLLER*/\r",
+                                            "/*\r",
+                                            "GMapController\r",
+                                            "openMapWith\r",
+                                            "*/\r",
+                                            "\r",
+                                            "\r",
+                                            "console.error(record) ;\r",
+                                            "\r",
+                                            "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                            "var targetEl = e.target;\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                            "\r",
+                                            "    var attrVak = targetEl.getAttribute(attrToSearch);\r",
+                                            "    var nameAttr = RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap();\r",
+                                            "    var storeAttr = RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap();\r",
+                                            "//     var place = RMdatalink.util.globalConfig.getUrlForRetailerCard();\r",
+                                            "\r",
+                                            "    var varibleToSet = setVariable();\r",
+                                            "\r",
+                                            "    var retailersMaincontentpanel = Ext.ComponentQuery.query('#retailersMaincontentpanel')[0];\r",
+                                            "\r",
+                                            "    switch (attrVak){\r",
+                                            "\r",
+                                            "        case nameAttr:  RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);\r",
+                                            "\r",
+                                            "                        Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDManagerTab');\r",
+                                            "                        RMdatalink.app.getController('UINav').onPanelAddretailertapped(retailersMaincontentpanel);\r",
+                                            "\r",
+                                            "                        break;\r",
+                                            "\r",
+                                            "        case storeAttr: RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);\r",
+                                            "\r",
+                                            "                        Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDStoresTab');\r",
+                                            "                        RMdatalink.app.getController('UINav').onPanelAddretailertapped(retailersMaincontentpanel);\r",
+                                            "                        break;\r",
+                                            "        case \"goToMapWithCity\":\r",
+                                            "\r",
+                                            "                        RMdatalink.app.getController('GMapController').openMapWith(\"store_city\",record,\"store_city\");\r",
+                                            "\r",
+                                            "            break;\r",
+                                            "        case \"goToMapWithState\":\r",
+                                            "\r",
+                                            "                         RMdatalink.app.getController('GMapController').openMapWith(\"store_state\",record,\"store_state\");\r",
+                                            "            break ;\r",
+                                            "        case \"goToMapWithZip\":\r",
+                                            "\r",
+                                            "                         RMdatalink.app.getController('GMapController').openMapWith(\"store_zip\",record,\"store_zip\");\r",
+                                            "            break ;\r",
+                                            "\r",
+                                            "        default:\r",
+                                            "\r",
+                                            "             //RMdatalink.app.getController('UINav').redirectTo('card16');\r",
+                                            "            console.log('DONT FIRE ANY THING');\r",
+                                            "    }\r",
+                                            "}\r",
+                                            "\r",
+                                            "\r",
+                                            "function setVariable(){\r",
+                                            "\r",
+                                            "    return {\r",
+                                            "\r",
+                                            "        placeClicked:  attrVak,\r",
+                                            "        record:record,\r",
+                                            "        index:index\r",
+                                            "    };\r",
+                                            "}"
+                                        ],
+                                        "name": "itemtap"
+                                    },
+                                    "designerId": "e868bd59-245d-48c9-93fe-5d5f7ee13ac5"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "retailerSetupContainer",
+                        "layout|flex": 0
+                    },
+                    "designerId": "c302a811-4943-43dc-b82b-7c3447ea2574"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "retailerTotalsContainer",
+                "layout": "fit",
+                "layout|flex": 1
+            },
+            "designerId": "64f37a9b-4601-4c25-b24e-6474cc3f5a63",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": "retailerTotalsList",
+                        "itemId": "retailerTotalsList",
+                        "scrollable": false,
+                        "width": "100%"
+                    },
+                    "designerId": "965c8251-35be-4e82-94b9-bb51d43de06c",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "49bbe0b9-4bad-404d-be3e-7c50255e835b"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

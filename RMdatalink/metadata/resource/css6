@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css6",
+        "id": "detailsHeaderCSS",
+        "url": "resources/css/detailsHeader/detailsHeaderCSS.css"
+    },
+    "designerId": "b51ea634-7f7e-441b-aca0-4126bdc47176"
+}

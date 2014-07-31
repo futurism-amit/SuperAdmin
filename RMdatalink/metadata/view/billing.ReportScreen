@@ -1,0 +1,884 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "billingreportscreen1",
+        "designer|userClassName": "billing.ReportScreen",
+        "itemId": "billingReportScreen",
+        "layout": "fit"
+    },
+    "designerId": "8b910473-7801-429f-9c3f-2f383d193bd1",
+    "cn": [
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-tabpanel"
+                ],
+                "designer|uiInterfaceName": "light",
+                "ui": "light"
+            },
+            "designerId": "92f8219e-09b5-4479-992e-16a026d99e0c",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "100%",
+                        "layout": "fit",
+                        "title": "Monthly"
+                    },
+                    "designerId": "4abd876f-5d26-47ac-8028-aa8d7f9160a2",
+                    "cn": [
+                        {
+                            "type": "Ext.form.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    " x-rm-rdformpanel"
+                                ],
+                                "height": "100%",
+                                "itemId": "billingMonthlyReportForm",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "width": "100%"
+                            },
+                            "designerId": "1d73d97c-33ce-4f3c-9fe1-04c47aee883d",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": "80px",
+                                        "margin": "10 0 0 0",
+                                        "padding": "5 5 5 5",
+                                        "title": null,
+                                        "width": "40%"
+                                    },
+                                    "designerId": "44dcc498-0e6b-43de-a4f8-231b674b8d02",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "billingReportSelectProductFld",
+                                                "label": "Select Product",
+                                                "options": [
+                                                    "[\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:\"Datalink\",\r",
+                                                    "        value:\"product_datalink\"\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:\"RM PRO\",\r",
+                                                    "        value:\"product_rmpro\"\r",
+                                                    "        \r",
+                                                    "    }\r",
+                                                    "    \r",
+                                                    "]"
+                                                ]
+                                            },
+                                            "designerId": "57e8c0a0-faf8-43e8-bff2-4b40004f0f68"
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "hidden": true,
+                                                "layout": "hbox",
+                                                "padding": "2 2 2 2",
+                                                "title": "  <div style=\"font-size:12px;\">Duration</div>"
+                                            },
+                                            "designerId": "cb510ffe-5c4c-46e3-ab03-aa4c78c8d75e",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "action": "inputByDatePicker",
+                                                        "itemId": "billingReportFromDateFld",
+                                                        "label": "From",
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "8a95065d-0b12-4b90-b8b0-074b9bebcc5a",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "action",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "action": "inputByDatePicker",
+                                                        "itemId": "billingReportToDateFld",
+                                                        "label": "To",
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "56398a75-f051-4f2c-a5eb-e7e347c03693",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "action",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-blueBtn"
+                                                ],
+                                                "docked": null,
+                                                "itemId": "billingGenerateReportBtn",
+                                                "margin": "0 0 0 70%",
+                                                "text": "Generate Report",
+                                                "width": "160px"
+                                            },
+                                            "designerId": "acd72f61-5806-4589-b524-02db32934cb5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "billingReportListFldSet",
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "title": null,
+                                        "width": "100%"
+                                    },
+                                    "designerId": "8d72c765-4758-45f9-aa02-d3a02b726475",
+                                    "cn": [
+                                        {
+                                            "type": "linkedinstance",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout|flex": 1
+                                            },
+                                            "designerId": "e04402cd-0c97-4e48-9b12-79d23599efd0",
+                                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onBillingReportListFldSetInitialize",
+                                                "implHandler": [
+                                                    "\r",
+                                                    "var headers = component.down(\"#headerList\");\r",
+                                                    "\r",
+                                                    "headers.setStore(Ext.getStore('billing.ListHeaderStore'));\r",
+                                                    "headers.setData([{}]);\r",
+                                                    "headers.setItemTpl(\r",
+                                                    "    Ext.create('Ext.XTemplate',\r",
+                                                    "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                                    "               '    <div style=\"width: 8%;\" data-name=\"store_account\">',\r",
+                                                    "               '        Account #&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 20%;\" data-name=\"store_name\">',\r",
+                                                    "               '        Store&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 10%;\" data-name=\"month0\">',\r",
+                                                    "               '        {month0}&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "\r",
+                                                    "               '</div>'\r",
+                                                    "              )\r",
+                                                    ");\r",
+                                                    "headers.refresh();\r",
+                                                    "var list = component.down('#mainList');\r",
+                                                    "list.setStore(Ext.getStore('billing.MonthlyReportStore'));\r",
+                                                    "list.setItemTpl(\r",
+                                                    "    Ext.create('Ext.XTemplate',\r",
+                                                    "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                                    "               '    <div style=\"width: 8%;\"> {store_account}</div>',\r",
+                                                    "               '    <div style=\"width: 20%;\">{store_name}</div>',\r",
+                                                    "               '    <div style=\"width: 10%;\">{month0}</div>',\r",
+                                                    "               '</div>'\r",
+                                                    "              )\r",
+                                                    ");\r",
+                                                    "\r",
+                                                    "// list.setMode(\"SINGLE\");\r",
+                                                    "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                                    "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                                    "// });\r",
+                                                    "\r",
+                                                    "list.setItemHeight(22);\r",
+                                                    "\r",
+                                                    "list.addCls('x-rm-rdvendorslist');\r",
+                                                    "\r",
+                                                    "//list.onStoreClear();\r",
+                                                    "//list.refresh();\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                                    "// var store = list.getStore();\r",
+                                                    "// totalsList.setData([{}]);\r",
+                                                    "// totalsList.setItemTpl(\r",
+                                                    "//     Ext.create('Ext.XTemplate',\r",
+                                                    "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                                    "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                                    "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                                    "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                                    "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                                    "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_datalink\\')]}</div>',\r",
+                                                    "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_ecatalog\\')]}</div>',\r",
+                                                    "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_smart_cart\\')]}</div>',\r",
+                                                    "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_rm_plc\\')]}</div>',\r",
+                                                    "//                '    <div style=\"width: 9%;\">{[this.getTotalFor(\\'store_monthly_subscription\\')]}</div>',\r",
+                                                    "//                '</div>',\r",
+                                                    "//                {\r",
+                                                    "//                     getTotalFor: function(value){\r",
+                                                    "//                         var x = [];\r",
+                                                    "//                         var y;\r",
+                                                    "//                         var sum = 0;\r",
+                                                    "//                         store.each(function(record,id){\r",
+                                                    "//                             if(value=='Users') {\r",
+                                                    "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                                    "//                             }\r",
+                                                    "//                             else\r",
+                                                    "//                                 y = record.get(value);\r",
+                                                    "//                             if(value=='store_products_datalink' || value=='store_products_ecatalog' ||\r",
+                                                    "//                                value=='store_products_smart_cart' || value=='store_products_rm_plc') {\r",
+                                                    "//                                 if(y === true)\r",
+                                                    "//                                     x.push(y);\r",
+                                                    "//                             }\r",
+                                                    "//                             else if(value == 'store_monthly_subscription') {\r",
+                                                    "//                                 y = parseFloat(y.replace(\"$\",'').replace(\",\",\"\"));\r",
+                                                    "//                                 sum+=y;\r",
+                                                    "//                             }\r",
+                                                    "//                             else\r",
+                                                    "//                                 Ext.Array.include(x,y);\r",
+                                                    "//                         });\r",
+                                                    "//                         if(value == 'store_monthly_subscription')\r",
+                                                    "//                             return '$'+Math.round(sum);\r",
+                                                    "//                         else\r",
+                                                    "//                             return x.length;\r",
+                                                    "//                     }\r",
+                                                    "//                }\r",
+                                                    "//               )\r",
+                                                    "// );\r",
+                                                    ""
+                                                ],
+                                                "name": "initialize"
+                                            },
+                                            "designerId": "40e12830-bc3c-48f9-8602-c327b7635803"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            " x-rm-no_borderflds"
+                                        ],
+                                        "height": 80,
+                                        "title": null,
+                                        "width": "100%"
+                                    },
+                                    "designerId": "86d9ee46-09ad-4ee2-9465-f06e4bf522f9",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                                "itemId": "billingReportTotalAmtFild",
+                                                "label": "<b>Total</b>",
+                                                "labelWidth": "28%"
+                                            },
+                                            "designerId": "414bdb93-2c90-4a8e-bb67-bbb718e4ea0b"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "inputCls": "inputdisabledClsFldAsLbl",
+                                                "itemId": "billingReportAvgAmtFild",
+                                                "label": "Average Account",
+                                                "labelWidth": "28%"
+                                            },
+                                            "designerId": "c4053835-f22d-4723-b31b-a9a88775468a"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": 80,
+                                        "title": null,
+                                        "width": "100%"
+                                    },
+                                    "designerId": "ea8be4ae-afe6-4b08-a925-29e11c316fbd",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": null,
+                                                "inputCls": null,
+                                                "itemId": "billingReportTargetAmtFild",
+                                                "label": "Target amount",
+                                                "labelWidth": "28%"
+                                            },
+                                            "designerId": "e3d35372-9048-40b4-a11c-56b74a28a644"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "inputCls": null,
+                                                "itemId": "billingReportNewAccToBeAddedFild",
+                                                "label": "New accounts to be added",
+                                                "labelWidth": "28%"
+                                            },
+                                            "designerId": "1e49ac77-01f4-45cf-95ba-fb557927b6df"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "100%",
+                        "layout": "fit",
+                        "title": "Yearly"
+                    },
+                    "designerId": "14064b49-c777-4af2-8b5b-308d52b4e5f6",
+                    "cn": [
+                        {
+                            "type": "Ext.form.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    " x-rm-rdformpanel"
+                                ],
+                                "height": "100%",
+                                "itemId": "billingYearlyReportForm",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "width": "100%"
+                            },
+                            "designerId": "e2f20b87-d46b-45ae-838b-1431ee835db0",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": "80px",
+                                        "margin": "10 0 0 0",
+                                        "padding": "5 5 5 5",
+                                        "title": null,
+                                        "width": "40%"
+                                    },
+                                    "designerId": "b70bddc1-ff61-437f-974d-1539790fd03e",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "billingReportSelectProductFld",
+                                                "label": "Select Product",
+                                                "options": [
+                                                    "[\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:\"Datalink\",\r",
+                                                    "        value:\"product_datalink\"\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:\"RM PRO\",\r",
+                                                    "        value:\"product_rmpro\"\r",
+                                                    "        \r",
+                                                    "    }\r",
+                                                    "    \r",
+                                                    "]"
+                                                ]
+                                            },
+                                            "designerId": "eb79cf59-1de4-4347-a2e0-9d736c799229"
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "hidden": true,
+                                                "layout": "hbox",
+                                                "padding": "2 2 2 2",
+                                                "title": "  <div style=\"font-size:12px;\">Duration</div>"
+                                            },
+                                            "designerId": "57093a5e-d239-46b0-b51a-940c42ea404d",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "action": "inputByDatePicker",
+                                                        "itemId": "billingReportFromDateFld",
+                                                        "label": "From",
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "3bac533f-1c0b-4b47-b8e7-0850630604a4",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "action",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "action": "inputByDatePicker",
+                                                        "itemId": "billingReportToDateFld",
+                                                        "label": "To",
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "5a75822f-52c0-4d3f-808d-6f07e2f199d2",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "action",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-blueBtn"
+                                                ],
+                                                "docked": null,
+                                                "itemId": "billingGenerateYearlyReportBtn",
+                                                "margin": "0 0 0 70%",
+                                                "text": "Generate Report",
+                                                "width": "160px"
+                                            },
+                                            "designerId": "d3875798-398f-4eff-b1eb-e3823d69334d"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "billingReportListFldSet",
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "title": null,
+                                        "width": "100%"
+                                    },
+                                    "designerId": "8b9e9ef6-9e0e-434c-968c-cc367de4a1e9",
+                                    "cn": [
+                                        {
+                                            "type": "linkedinstance",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout|flex": 1
+                                            },
+                                            "designerId": "ae26f0f0-b86e-41cb-af76-3af7b36958c3",
+                                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onBillingReportListFldSetInitialize1",
+                                                "implHandler": [
+                                                    "\r",
+                                                    "var headers = component.down(\"#headerList\");\r",
+                                                    "headers.setData([{}]);\r",
+                                                    "headers.setItemTpl(\r",
+                                                    "    Ext.create('Ext.XTemplate',\r",
+                                                    "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                                    "               '    <div style=\"width: 8%;\" data-name=\"store_account\">',\r",
+                                                    "               '        Account #&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 12%;\" data-name=\"store_name\">',\r",
+                                                    "               '        Store&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month0\">',\r",
+                                                    "               '        Jan&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month1\">',\r",
+                                                    "               '        Feb&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month2\">',\r",
+                                                    "               '        Mar&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month3\">',\r",
+                                                    "               '        Apr&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month4\">',\r",
+                                                    "               '        May&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month5\">',\r",
+                                                    "               '        Jun&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month9\">',\r",
+                                                    "               '        Jul&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month7\">',\r",
+                                                    "               '        Aug&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month8\">',\r",
+                                                    "               '       Sep&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month9\">',\r",
+                                                    "               '       Oct&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month10\">',\r",
+                                                    "               '       Nov&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 6%;\" data-name=\"month11\">',\r",
+                                                    "               '       Dec&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "                '    <div style=\"width: 6%;\" >',\r",
+                                                    "               '       <b>Total</b>&nbsp;',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '</div>'\r",
+                                                    "              )\r",
+                                                    "    );\r",
+                                                    "headers.refresh();\r",
+                                                    "var list = component.down('#mainList');\r",
+                                                    "list.setStore(Ext.getStore('billing.YearlyReportStore'));\r",
+                                                    "list.setItemTpl(\r",
+                                                    "    Ext.create('Ext.XTemplate',\r",
+                                                    "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                                    "               '    <div style=\"width: 8%;\"> {store_account}</div>',\r",
+                                                    "               '    <div style=\"width: 12%;\">{store_name}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month0}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month1}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month2}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month3}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month4}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month5}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month6}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month7}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month8}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month9}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month10}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month11}</div>',\r",
+                                                    "                '    <div style=\"width: 6%;\"><b>{[this.getTotal(values)]}</b></div>',\r",
+                                                    "               '</div>',\r",
+                                                    "                   {\r",
+                                                    "                        getTotal: function(values){\r",
+                                                    "\r",
+                                                    "                            var total = 0 ;\r",
+                                                    "\r",
+                                                    "                            for(var i=0; i < 12 ; i++){\r",
+                                                    "\r",
+                                                    "                                total += parseInt(values[\"month\"+i],0);\r",
+                                                    "\r",
+                                                    "                            }\r",
+                                                    "\r",
+                                                    "                            return total ;\r",
+                                                    "\r",
+                                                    "                        }\r",
+                                                    "                   }\r",
+                                                    "              )\r",
+                                                    "    );\r",
+                                                    "\r",
+                                                    "// list.setMode(\"SINGLE\");\r",
+                                                    "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                                    "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                                    "// });\r",
+                                                    "\r",
+                                                    "list.setItemHeight(22);\r",
+                                                    "\r",
+                                                    "list.addCls('x-rm-rdvendorslist');\r",
+                                                    "\r",
+                                                    "//list.onStoreClear();\r",
+                                                    "//list.refresh();\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "var totalsList = component.down('#totalList');\r",
+                                                    "// var store = list.getStore();\r",
+                                                    "// totalsList.setData([{}]);\r",
+                                                    "totalsList.setItemTpl(\r",
+                                                    "   Ext.create('Ext.XTemplate',\r",
+                                                    "               '<div style= \"font-weight: bold;\" class=\"x-rm-listtpl-main\">',\r",
+                                                    "              '    <div style=\"width: 20%;\">{title}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month0}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month1}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month2}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month3}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month4}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month5}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month6}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month7}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month8}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month9}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month10}</div>',\r",
+                                                    "               '    <div style=\"width: 6%;\">{month11}</div>',\r",
+                                                    "                '    <div style=\"width: 6%;\"><b>{[this.getTotal(values)]}</b></div>',\r",
+                                                    "               '</div>',\r",
+                                                    "                   {\r",
+                                                    "                        getTotal: function(values){\r",
+                                                    "\r",
+                                                    "                            var total = 0 ;\r",
+                                                    "\r",
+                                                    "                            for(var i=0; i < 12 ; i++){\r",
+                                                    "\r",
+                                                    "                                total += parseInt(values[\"month\"+i],0);\r",
+                                                    "\r",
+                                                    "                            }\r",
+                                                    "\r",
+                                                    "                            return total ;\r",
+                                                    "\r",
+                                                    "                        }\r",
+                                                    "                   }\r",
+                                                    "              )\r",
+                                                    "    );\r",
+                                                    ""
+                                                ],
+                                                "name": "initialize"
+                                            },
+                                            "designerId": "c3223419-8083-415b-bfe7-b1acff1d4250"
+                                        },
+                                        {
+                                            "type": "Ext.dataview.List",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "allowDeselect": null,
+                                                "cls": [
+                                                    "x-rm-list",
+                                                    "x-rm-rdvendorslist"
+                                                ],
+                                                "disableSelection": true,
+                                                "height": "110px",
+                                                "itemHeight": 22,
+                                                "itemId": "totalList",
+                                                "scrollable": "false"
+                                            },
+                                            "designerId": "96aee6fe-83e2-4b80-8b14-4592f455fd33",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "scrollable",
+                                                    "type": "string"
+                                                }
+                                            ],
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.XTemplate",
+                                                    "reference": {
+                                                        "name": "itemTpl",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|displayName": "itemTpl",
+                                                        "implHandler": [
+                                                            "<div>List Item {string}</div>"
+                                                        ]
+                                                    },
+                                                    "designerId": "63256b44-0905-4815-b6c9-67598d4468a9"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": "Projection"
+                    },
+                    "designerId": "4eada013-37ce-478e-9e6e-00a04028693a"
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": "Tab 3"
+                    },
+                    "designerId": "197a8f6c-6f53-4260-887b-7743da1e2f76"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onBillingReportScreenPainted",
+                "implHandler": [
+                    "RMdatalink.app.getController('BillingReportController').initBillingReport() ;"
+                ],
+                "name": "painted"
+            },
+            "designerId": "d61ad358-310d-4308-8a87-5e2d503f4f78"
+        }
+    ]
+}

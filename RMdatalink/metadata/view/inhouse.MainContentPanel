@@ -1,0 +1,506 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "inhousemaincontentpanel",
+        "designer|userClassName": "inhouse.MainContentPanel",
+        "itemId": "inhouseMainContentPanel",
+        "layout": "vbox",
+        "requires": [
+            "Ext.tab.Panel"
+        ],
+        "scrollable": false
+    },
+    "designerId": "8358ed30-dce4-4875-b6da-50673ad71619",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "inHouseHeader",
+                "itemId": "inHouseCardHeader",
+                "layout|flex": 1
+            },
+            "designerId": "0d552c7a-c474-4664-9ac0-3ffa187ba0c3",
+            "masterInstanceId": "65dc2686-f6eb-4b20-bd40-d013cbc17112"
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "inhouseContentPanel",
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "60f315c8-bff4-49ed-bfb2-e5be3a7bd931",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel"
+                        ],
+                        "designer|displayName": "inhouseTabPanel",
+                        "designer|uiInterfaceName": "light",
+                        "itemId": "inhouseTabPanel",
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "4a722b50-56e6-4f4b-a566-84159ab69a39",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "inHouseNavigationTabBar"
+                            },
+                            "designerId": "d308d82d-6c6c-4f3d-9058-6e1326f0ec43"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "usersTab",
+                                "itemId": "inHouseUsersTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "TEAM"
+                            },
+                            "designerId": "d36be9be-6ff8-4f85-b2bf-98ee5997b525",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onUsersTabInitialize",
+                                        "implHandler": [
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "////////////////////////////////////////////////////\r",
+                                            "\r",
+                                            "var headers = component.down(\"#inhouseListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 8%;\">',\r",
+                                            "               '        <div style=\"width: 25px;\" data-name=\"all\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"firstname\">',\r",
+                                            "               '        Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"position\">',\r",
+                                            "               '    Positon&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "                '    <div style=\"width: 10%;\" data-name=\"phone_ext\">',\r",
+                                            "               '    Office Ext&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"email\">',\r",
+                                            "               '       Company Email&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"personal_email\">',\r",
+                                            "               '        Personal Email&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"cell_phone\">',\r",
+                                            "               '        Cell Phone&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 6%;\" data-name=\"user_role\" class=\"useRoleToHide\">',\r",
+                                            "               '       User Rights&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#inhouseList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                            "               '    <div style=\"width: 8%;overflow:visible;\">',\r",
+                                            "               '        <div style=\"width: 25px; height:25px; background-image:url({image_url})\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\">{firstname}  {lastname}</div>',\r",
+                                            "               '    <div style=\"width: 10%;\">{position}</div>',\r",
+                                            "               '    <div style=\"width: 10%;\">{phone_ext}  {phone}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\"><a href=\"mailto:{email}\">{email}</a></div>',\r",
+                                            "               '    <div style=\"width: 15%;\"><a href=\"mailto:{personal_email}\">{personal_email}</a></div>',\r",
+                                            "               '    <div style=\"width: 10%;\">{cell_phone}</div>',\r",
+                                            "               '    <div style=\"width: 6%;\"  class=\"useRoleToHide\" >{user_role}</div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "    list.on(\"select\",function(replist, record, eOpts){\r",
+                                            "        RMdatalink.app.getController('inhouse.DetailScreenController').onInhouseUsersListSelect(replist, record, eOpts);\r",
+                                            "});\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_datalink\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_ecatalog\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_smart_cart\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_rm_plc\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 9%;\">{[this.getTotalFor(\\'store_monthly_subscription\\')]}</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         var sum = 0;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             if(value=='store_products_datalink' || value=='store_products_ecatalog' ||\r",
+                                            "//                                value=='store_products_smart_cart' || value=='store_products_rm_plc') {\r",
+                                            "//                                 if(y === true)\r",
+                                            "//                                     x.push(y);\r",
+                                            "//                             }\r",
+                                            "//                             else if(value == 'store_monthly_subscription') {\r",
+                                            "//                                 y = parseFloat(y.replace(\"$\",'').replace(\",\",\"\"));\r",
+                                            "//                                 sum+=y;\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         if(value == 'store_monthly_subscription')\r",
+                                            "//                             return '$'+Math.round(sum);\r",
+                                            "//                         else\r",
+                                            "//                             return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "03918241-7c7c-477e-b138-5e7565e31bfe"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onUsersTabPainted",
+                                        "implHandler": [
+                                            "//window.location.hash = 'retailerCard'+0;\r",
+                                            "\r",
+                                            "\r",
+                                            "var inHouseStore = Ext.getStore('inhouseMasterStore');\r",
+                                            "\r",
+                                            "\r",
+                                            "  RMdatalink.app.getController('LoginHandler').hideUserRightInfoForInhouse() ;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "e9d45358-c230-4c01-b4fc-37b53c5b897c"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "usersList"
+                                    },
+                                    "designerId": "4fd71b05-679c-42c3-9b70-c8aaae86924b",
+                                    "masterInstanceId": "c9698782-ea17-43dc-84b2-3b097ae891ca"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "RepsTab",
+                                "itemId": "inHouseRepsTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "REPS"
+                            },
+                            "designerId": "792952b9-23fd-43dc-879d-c87f51999736",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabInitialize",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#inhouseListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 8%;\">',\r",
+                                            "               '        <div style=\"width: 25px;\" data-name=\"all\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 18%;\" data-name=\"firstname\">',\r",
+                                            "               '        Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"position\">',\r",
+                                            "               '    Positon&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "                '    <div style=\"width: 8%;\" data-name=\"city\">',\r",
+                                            "               '    City&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "                '    <div style=\"width: 6%;\" data-name=\"state\">',\r",
+                                            "               '    State&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"email\">',\r",
+                                            "               '       Company Email&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"personal_email\">',\r",
+                                            "               '        Personal Email&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"cell_phone\">',\r",
+                                            "               '        Cell Phone&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 6%;\" data-name=\"user_role\" class=\"useRoleToHide\">',\r",
+                                            "               '       User Rights&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#inhouseList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                            "               '    <div style=\"width: 8%;overflow:visible;\">',\r",
+                                            "               '        <div style=\"width: 25px; height:25px; background-image:url({image_url})\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 18%;\">{firstname}  {lastname}</div>',\r",
+                                            "               '    <div style=\"width: 10%;\">{position}</div>',\r",
+                                            "               '    <div style=\"width: 8%;\">{city}  {phone}</div>',\r",
+                                            "               '    <div style=\"width: 6%;\">{state}  {phone}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\"><a href=\"mailto:{email}\">{email}</a></div>',\r",
+                                            "               '    <div style=\"width: 15%;\"><a href=\"mailto:{personal_email}\">{personal_email}</a></div>',\r",
+                                            "               '    <div style=\"width: 10%;\">{cell_phone}</div>',\r",
+                                            "               '    <div style=\"width: 6%;\" class=\"useRoleToHide\">{user_role}</div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "    list.on(\"select\",function(replist, record, eOpts){\r",
+                                            "          RMdatalink.app.getController('inhouse.DetailScreenController').onInhouseUsersListSelect(replist, record, eOpts);\r",
+                                            "});\r",
+                                            "\r",
+                                            "\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "6dedf009-b8c3-4b5b-9e47-85f504e29792"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabPainted",
+                                        "implHandler": [
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "//window.location.hash = 'retailerCard'+1;\r",
+                                            "\r",
+                                            "var inHouseStore = Ext.getStore('inhouseMasterStore');\r",
+                                            "\r",
+                                            "  RMdatalink.app.getController('LoginHandler').hideUserRightInfoForInhouse() ;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "996f7c47-d2d0-4f18-b4d0-005dd8847d6c"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "repsList"
+                                    },
+                                    "designerId": "05fb3d19-a898-43df-9f07-6b1754d7d675",
+                                    "masterInstanceId": "c9698782-ea17-43dc-84b2-3b097ae891ca"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onInhouseMainContentPanelInitialize",
+                "implHandler": [
+                    "component.down('#cardAddRetailerBtn').element.on(\"tap\",function(){\r",
+                    "\r",
+                    "        component.fireEvent('inhouseAddNewTap',component );\r",
+                    "        Ext.DomQuery.select('input[name=division-checkbox]')[0].checked = true ;\r",
+                    "         RMdatalink.app.getController('inhouse.DetailScreenController').isNewRecordBtnTapped = true ;\r",
+                    "         RMdatalink.app.getController('inhouse.DetailScreenController').resetInhouseDetailedPage();\r",
+                    "\r",
+                    "});\r",
+                    "\r",
+                    "\r",
+                    "component.down('#cardDeleteBtn').element.on(\"tap\",function(){\r",
+                    "    \r",
+                    "    RMdatalink.app.getController('DeleteRecords').deleteInhoue();\r",
+                    "    \r",
+                    "});\r",
+                    "\r",
+                    "\r",
+                    "component.down('#cardActionBtn').setHidden(true) ;\r",
+                    "component.down('#cardImportBtn').setHidden(true) ;\r",
+                    "\r",
+                    "\r",
+                    "component.down('#cardExportBtn').element.on(\"tap\",function(){\r",
+                    "\r",
+                    "            var ihouseTabs = Ext.ComponentQuery.query('#inhouseTabPanel')[0] ;\r",
+                    "\r",
+                    "            var userType =  ihouseTabs.getActiveItem().getItemId() ;\r",
+                    "\r",
+                    "                if(userType === 'inHouseUsersTab' ){\r",
+                    "\r",
+                    "                    var store = Ext.ComponentQuery.query('#inHouseUsersTab')[0].down('#inhouseList').getStore();\r",
+                    "\r",
+                    "                }else{\r",
+                    "\r",
+                    "                    var store = Ext.ComponentQuery.query('#inHouseRepsTab')[0].down('#inhouseList').getStore();\r",
+                    "\r",
+                    "                }\r",
+                    "\r",
+                    "\r",
+                    "             var data = RMdatalink.app.getController('inhouse.DetailScreenController').getArrayDataFromStore(store) ;\r",
+                    "\r",
+                    "\r",
+                    "            RMdatalink.app.getController('inhouse.DetailScreenController').exportToCSV(data);\r",
+                    "\r",
+                    "});\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    ""
+                ],
+                "name": "initialize"
+            },
+            "designerId": "518e9154-5181-4c06-943c-f42820009a62"
+        }
+    ]
+}

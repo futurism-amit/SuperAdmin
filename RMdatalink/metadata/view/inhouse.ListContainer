@@ -1,0 +1,241 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "inhouselistcontainer",
+        "designer|userClassName": "inhouse.ListContainer",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "c9698782-ea17-43dc-84b2-3b097ae891ca",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "inhouseSearchContainer",
+                "height": "32px",
+                "itemId": "mypanel9",
+                "layout": "fit",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": "margin-top:5px;"
+            },
+            "designerId": "a2f98f51-2b0c-451d-b3bc-e32ea92397dc",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|pack": null,
+                        "designer|displayName": "inHouseSearchView",
+                        "itemId": "inHouseSeachViewItemID"
+                    },
+                    "designerId": "0077bed4-0a6a-4699-9392-f93ffb4e73d7",
+                    "masterInstanceId": "5486b687-172e-4cd3-8a4c-36599048d2ca"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "inhouseListNSetupContainer",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "d9cfeb4b-cb2e-4ae4-9950-e61858180faa",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "inhouseListContainer",
+                        "layout": "vbox",
+                        "layout|flex": 9,
+                        "scrollable": false
+                    },
+                    "designerId": "efe79a9d-9daf-4e47-947a-2a0f32b61f13",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": "inhouseListHeader",
+                                "itemId": "inhouseListHeader",
+                                "layout|flex": 1,
+                                "scrollable": false
+                            },
+                            "designerId": "0e8e6fd3-fde9-49ce-a135-368d5626c964",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "990b8619-64ee-4f7a-8f96-71a5e13d4142"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "allowDeselect": true,
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "designer|displayName": "inhouseList",
+                                "itemId": "inhouseList",
+                                "layout|flex": 15,
+                                "mode": "SIMPLE"
+                            },
+                            "designerId": "6c86dd8c-c639-4106-b8a9-58c99507147d",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "340c6132-f129-4465-804d-d8d6319c2e09"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "inhouseSetupContainer",
+                        "layout|flex": 0
+                    },
+                    "designerId": "318fbe50-0516-4b71-9f29-d4ac5ec2d6b2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "retailerTotalsContainer",
+                "layout": "fit",
+                "layout|flex": 1
+            },
+            "designerId": "3180d5cc-871d-4843-9616-f9a1b1409226",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": "retailerTotalsList",
+                        "itemId": "retailerTotalsList",
+                        "scrollable": false,
+                        "width": "90%"
+                    },
+                    "designerId": "4444270e-638d-4f4f-b46e-3e8985f99bb8",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "4559cd34-90c8-43a2-94d2-7642a05e5f67"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

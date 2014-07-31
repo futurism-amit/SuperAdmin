@@ -1,0 +1,27 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "notificationsNew",
+        "designer|userClassName": "notifications.new"
+    },
+    "designerId": "b26c0dc6-da74-4bfc-ab59-a6bc3feb8830",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "notification"
+            },
+            "designerId": "d53ef3b5-9f01-4eea-b665-3d91414e91be"
+        }
+    ]
+}

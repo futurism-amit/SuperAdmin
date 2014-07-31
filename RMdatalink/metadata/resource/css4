@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css4",
+        "id": "actionDropDown",
+        "url": "resources/css/actionDropDown/actionDropDownCSS.css"
+    },
+    "designerId": "7ef9f4b4-0f5d-460d-9f04-5b01843c0e3f"
+}

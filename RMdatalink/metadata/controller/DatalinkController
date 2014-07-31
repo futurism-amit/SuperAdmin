@@ -1,0 +1,745 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "DatalinkController",
+        "isPricingPolicyUpdated": false,
+        "isUpdateRequest": false,
+        "rmProSelectedRecord": [
+            "{}"
+        ]
+    },
+    "configAlternates": {
+        "isUpdateRequest": "boolean",
+        "rmProSelectedRecord": "object",
+        "isPricingPolicyUpdated": "boolean",
+        "rmProDiscountRecord": "object",
+        "datalinkDiscountRecord": "object"
+    },
+    "designerId": "8098a4c6-33db-4b25-a79b-0269bd95d917",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "isUpdateRequest",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "rmProSelectedRecord",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "isPricingPolicyUpdated",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "rmProDiscountRecord",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "datalinkDiscountRecord",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initRMproStore",
+                "implHandler": [
+                    "\r",
+                    "            function loadStore(){\r",
+                    "                      if(! RMdatalink.app.getController('PaginationController').config.storesLoadedFirstTime[RMdatalink.app.getController('PaginationController').getCurrentActiveStoreId()]){\r",
+                    "                             RMdatalink.app.getController('PaginationController').loadStore(1,RMdatalink.util.DataLoader.getPageSize(),false);\r",
+                    "                  }\r",
+                    "            }\r",
+                    "\r",
+                    "           RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('products.DatalinkMain') ;\r",
+                    "           loadStore();\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "43381d2b-2f09-47b7-bb67-ac7fc70e8284"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button[itemId=datalinkAddModuleBtn]",
+                "designer|targetType": "Ext.Button",
+                "fn": "onrmProAddModuleBtnTap",
+                "implHandler": [
+                    "\r",
+                    "        var action = button.action ;\r",
+                    "\r",
+                    "        this.addUpdateRMproModule(action);\r",
+                    "\r",
+                    "\r",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "126e7339-d836-48fd-af3d-852bc5e4e350"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "action"
+                ],
+                "fn": "addUpdateRMproModule",
+                "implHandler": [
+                    "\r",
+                    "\r",
+                    "var that = this ;\r",
+                    "var moduleName = Ext.ComponentQuery.query(\"#datalinkModuleNameTxtFld\")[0].getValue();\r",
+                    "var moduleDescription = Ext.ComponentQuery.query(\"#datalinkModuleDescriptionTxtAreaFld\")[0].getValue();\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var moduleSku =    Ext.ComponentQuery.query(\"#datalinkSKUTxtFld\")[0].getValue();\r",
+                    "\r",
+                    "var moduleDetails =    Ext.ComponentQuery.query(\"#datalinkDetailsTxtAreaFld\")[0].getValue();\r",
+                    "\r",
+                    "\r",
+                    "var module_standard_price  =    Ext.ComponentQuery.query(\"#datalinkStandardPriceTxtFld\")[0].getValue();\r",
+                    "var module_promotional_price =    Ext.ComponentQuery.query(\"#datalinkPromotionalPriceTxtFld\")[0].getValue();\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var rmProStore = Ext.getStore('products.DatalinkMain') ;\r",
+                    "\r",
+                    "if(moduleName == \"\" ){\r",
+                    "\r",
+                    "    Ext.Msg.alert(\"Alert\",\"Module name required.\",Ext.emptyFn);\r",
+                    "    return ;\r",
+                    "}else{\r",
+                    "\r",
+                    "    var rmProRec = {\r",
+                    "\r",
+                    "        module_name : moduleName,\r",
+                    "        module_description : moduleDescription,\r",
+                    "        module_sku : moduleSku,\r",
+                    "        module_details: moduleDetails,\r",
+                    "        module_standard_price:module_standard_price,\r",
+                    "        module_promotional_price:module_promotional_price\r",
+                    "    } ;\r",
+                    "\r",
+                    "      Ext.ComponentQuery.query('#productDatalinkMainPanel')[0].setMasked( {\r",
+                    "                xtype: 'loadmask'\r",
+                    "            });\r",
+                    "\r",
+                    "    if(action == \"addNew\")\r",
+                    "    {\r",
+                    "     RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(rmProRec,rmProStore,success,error) ;\r",
+                    "    }\r",
+                    "    else{\r",
+                    "\r",
+                    "     RMdatalink.iwa.rdl.doUpdateCollection(rmProStore, rmProRec , this.config.rmProSelectedRecord.get('_id'), success, error);\r",
+                    "    }\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "function success(){\r",
+                    "\r",
+                    "    that.resetRMPROFlds() ;\r",
+                    "\r",
+                    "    that.config.isPricingPolicyUpdated = true ;\r",
+                    "\r",
+                    "   // Ext.ComponentQuery.query('#rmProMainListContainer')[0].down('#mainList').deselectAll() ;\r",
+                    "\r",
+                    "    if(action == \"addNew\")\r",
+                    "    {\r",
+                    "\r",
+                    "        RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('products.DatalinkMain') ;\r",
+                    "\r",
+                    "        RMdatalink.app.getController('PaginationController').loadStore(1,RMdatalink.util.DataLoader.getPageSize(),false);\r",
+                    "    }else{\r",
+                    "                updateRMPROREC() ;\r",
+                    "                Ext.ComponentQuery.query('#productDatalinkMainPanel')[0].setMasked(false);\r",
+                    "\r",
+                    "                that.onRmProSelectUnselect();\r",
+                    "\r",
+                    "    }\r",
+                    "\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "function error(){\r",
+                    "    Ext.ComponentQuery.query('#productDatalinkMainPanel')[0].setMasked(false);\r",
+                    "\r",
+                    "     Ext.Msg.alert(\"Failuer\",\"Fail to add/update record.\",Ext.emptyFn);\r",
+                    "}\r",
+                    "\r",
+                    "function updateRMPROREC(){\r",
+                    "     that.config.rmProSelectedRecord.set(\"module_name\",moduleName) ;\r",
+                    "     that.config.rmProSelectedRecord.set(\"module_description\",moduleDescription) ;\r",
+                    "     that.config.rmProSelectedRecord.set(\"module_sku\",moduleSku) ;\r",
+                    "     that.config.rmProSelectedRecord.set(\"module_details\",moduleDetails) ;\r",
+                    "     that.config.rmProSelectedRecord.set(\"module_standard_price\",module_standard_price) ;\r",
+                    "     that.config.rmProSelectedRecord.set(\"module_promotional_price\",module_promotional_price) ;\r",
+                    "\r",
+                    "\r",
+                    "}"
+                ]
+            },
+            "designerId": "6006b78e-e268-401b-b5d8-9ddc2468a0ff"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "list",
+                    "record",
+                    "eOpts"
+                ],
+                "fn": "onProductRMProListSelect",
+                "implHandler": [
+                    "\r",
+                    "\r",
+                    "    this.config.rmProSelectedRecord = record ;\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkModuleNameTxtFld\")[0].setValue( record.get(\"module_name\"));\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkModuleDescriptionTxtAreaFld\")[0].setValue(record.get(\"module_description\"));\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkSKUTxtFld\")[0].setValue(record.get(\"module_sku\"));\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkDetailsTxtAreaFld\")[0].setValue(record.get(\"module_details\"));\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkStandardPriceTxtFld\")[0].setValue(record.get(\"module_standard_price\"));\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkPromotionalPriceTxtFld\")[0].setValue(record.get(\"module_promotional_price\"));\r",
+                    "\r",
+                    "\r",
+                    "      Ext.ComponentQuery.query('#datalinkAddModuleBtn')[0].action = \"update\";\r",
+                    "\r",
+                    "      Ext.ComponentQuery.query('#datalinkAddModuleBtn')[0].setText(\"Update Module\");\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "375d038a-1316-4bf4-ab0b-8f6cc3fbecc2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button[itemId=datalinkNewResetBtn]",
+                "designer|targetType": "Ext.Button",
+                "fn": "onrmProNewResetBtnTap",
+                "implHandler": [
+                    "\r",
+                    "this.resetRMPROFlds() ;\r",
+                    "\r",
+                    "  // Ext.ComponentQuery.query('#rmProMainListContainer')[0].down('#mainList').deselectAll() ;"
+                ],
+                "name": "tap"
+            },
+            "designerId": "eae3893d-90f7-4595-b2ec-bcfff0f02e9e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetRMPROFlds",
+                "implHandler": [
+                    "\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query('#datalinkAddModuleBtn')[0].action = \"addNew\" ;\r",
+                    "    Ext.ComponentQuery.query('#datalinkAddModuleBtn')[0].setText(\"Add New Module\");\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkModuleNameTxtFld\")[0].setValue(\"\");\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkModuleDescriptionTxtAreaFld\")[0].setValue(\"\");\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkSKUTxtFld\")[0].setValue(\"\");\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkDetailsTxtAreaFld\")[0].setValue(\"\");\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkStandardPriceTxtFld\")[0].setValue(\"\");\r",
+                    "    Ext.ComponentQuery.query(\"#datalinkPromotionalPriceTxtFld\")[0].setValue(\"\");\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "aeed50ad-8b10-4374-bb43-9cd2e5a67441"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onRmProSelectUnselect",
+                "implHandler": [
+                    " var timeout = setTimeout(function(){\r",
+                    "\r",
+                    "                                     var selectedRec =  Ext.ComponentQuery.query('#datalinkMainListContainer')[0].down('#mainList').getSelection() ;\r",
+                    "\r",
+                    "                                    var standardPrice = 0 ;\r",
+                    "                                    var promotionalPrice = 0;\r",
+                    "\r",
+                    "                                    Ext.ComponentQuery.query('#datalinkSumOfPromoPriceLbl')[0].setHtml(\"Total Promotional Price : \" + promotionalPrice);\r",
+                    "                                    Ext.ComponentQuery.query('#datalinkSumOfStdPriceLbl')[0].setHtml(\"Total Standard Price : \" + standardPrice);\r",
+                    "\r",
+                    "                                    for( var i=0 ; i < selectedRec.length ; i++ ){\r",
+                    "\r",
+                    "                                        standardPrice += parseInt(selectedRec[i].get('module_standard_price')) ;\r",
+                    "                                        promotionalPrice += parseInt(selectedRec[i].get('module_promotional_price')) ;\r",
+                    "\r",
+                    "                                    }\r",
+                    "\r",
+                    "                                    Ext.ComponentQuery.query('#datalinkSumOfPromoPriceLbl')[0].setHtml(\"\" + promotionalPrice+\"$\");\r",
+                    "                                    Ext.ComponentQuery.query('#datalinkSumOfStdPriceLbl')[0].setHtml(\"\" + standardPrice+\"$\");\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "                                    clearTimeout(timeout);\r",
+                    "                    },100);\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "/*\r",
+                    "\r",
+                    "                                    Ext.ComponentQuery.query('#rmProSumOfPromoPriceLbl')[0].setHtml(\"Total Promotional Price : \" + promotionalPrice);\r",
+                    "                                    Ext.ComponentQuery.query('#rmProSumOfStdPriceLbl')[0].setHtml(\"Total Standard Price : \" + standardPrice);\r",
+                    "\r",
+                    "*/"
+                ]
+            },
+            "designerId": "de9578a8-c143-4e4e-9cc7-4986803c0cd8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "saveBundlePrice",
+                "implHandler": [
+                    "\r",
+                    " RMdatalink.app.getController('BillingDetailsController').updateRMProPricing() ;\r",
+                    "\r",
+                    "  Ext.Msg.alert(\"Success\",\"Bundle price for selected modules saved successfully.\",Ext.emptyFn);"
+                ]
+            },
+            "designerId": "529cddfd-47c0-4935-a123-2d9705b30120"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button[itemId=datalinksaveBundleBtn]",
+                "designer|targetType": "Ext.Button",
+                "fn": "onSaveBundleBtnTap",
+                "implHandler": [
+                    "return ;\r",
+                    "\r",
+                    "this.saveBundlePrice() ;"
+                ],
+                "name": "tap"
+            },
+            "designerId": "a6c4b474-23a1-4e0b-a00b-09744a66f5cf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createPricingTab",
+                "implHandler": [
+                    "Ext.ComponentQuery.query('#productsDatalinkPricingTab')[0].add(Ext.ComponentQuery.query('#pricingMainContentsPanel')[0]);"
+                ]
+            },
+            "designerId": "600eb13b-2857-48a0-9017-1931bd8cf608"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onDatalinkVendorPricingPainted",
+                "implHandler": [
+                    "\r",
+                    "if(Ext.ComponentQuery.query('#productsDatalinkPricingTab')[0].getItems().length == 0 )\r",
+                    "{\r",
+                    "    Ext.ComponentQuery.query('#productsDatalinkPricingTab')[0].add(Ext.ComponentQuery.query('#pricingMainContentsPanel')[0]);\r",
+                    "}\r",
+                    "Ext.ComponentQuery.query('#productsDatalinkBtn')[0].fireEvent(\"tap\",Ext.ComponentQuery.query('#productsDatalinkBtn')[0]);\r",
+                    "\r",
+                    "\r",
+                    "var pricingMainContentPanel = Ext.ComponentQuery.query('#pricingDetailsMainTabPanel')[0] ;\r",
+                    "\r",
+                    "pricingMainContentPanel.getTabBar().getAt(1).setHidden(true);\r",
+                    "pricingMainContentPanel.getTabBar().getAt(2).setHidden(true);\r",
+                    "pricingMainContentPanel.getTabBar().getAt(3).setHidden(true);\r",
+                    "pricingMainContentPanel.getTabBar().getAt(4).setHidden(true);\r",
+                    "\r",
+                    "\r",
+                    "Ext.ComponentQuery.query('#pricingMainContentsPanel')[0].down('#detailsHeaderTitle').setHidden(true);\r",
+                    "Ext.ComponentQuery.query('#pricingMainContentsPanel')[0].down('#detailsCancelBtn').setHidden(true);\r",
+                    "\r",
+                    "Ext.ComponentQuery.query('#pricingMainContentsPanel')[0].down('#dataLinkTab').down('#pricingListHeaderLabel').setHidden(true);\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "730d14c4-0a9a-4dde-bf92-e9c13d05b8c4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button[itemId=datalinkDiscountResetBtn]",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDatalinkDiscResetBtnTap",
+                "implHandler": [
+                    "    this.config.datalinkDiscountRecord  = null ;\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountNameFld')[0].setValue(\"\") ;\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountValueFld')[0].setValue(\"\") ;\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountListPanel')[0].down('#mainList').deselectAll();\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountSaveBtn')[0].setText(\"Add New Discount\");"
+                ],
+                "name": "tap"
+            },
+            "designerId": "09b85015-92b6-42d8-a4a4-3390b52ad005"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button[itemId=datalinkDiscountSaveBtn]",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDatalinkDiscSavBtnTap",
+                "implHandler": [
+                    "this.doAddUpdateDiscount() ;"
+                ],
+                "name": "tap"
+            },
+            "designerId": "a397ad65-a8ba-4b46-a442-21f4762fa697"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "doAddUpdateDiscount",
+                "implHandler": [
+                    "//discount_policy\r",
+                    "\r",
+                    "var that = this ;\r",
+                    "    var discountStore = Ext.getStore('products.DatalinkDiscountStore');\r",
+                    "\r",
+                    "    var name = Ext.ComponentQuery.query('#datalinkDiscountNameFld')[0].getValue() ;\r",
+                    "    var value = Ext.ComponentQuery.query('#datalinkDiscountValueFld')[0].getValue() ;\r",
+                    "\r",
+                    "    var duration =Ext.ComponentQuery.query('#datalinkDiscountDurationFld')[0].getValue() ;\r",
+                    "\r",
+                    "    if(name == \"\" || value == \"\"){\r",
+                    "        Ext.Msg.alert(\"Alert\",\"Discount Name and Value both required.\",Ext.emptyFn);\r",
+                    "        return;\r",
+                    "    }\r",
+                    "\r",
+                    "    var recToAddUpdate = {\r",
+                    "\r",
+                    "        discount_name : name,\r",
+                    "        discount_value:value,\r",
+                    "        discount_duration:duration\r",
+                    "\r",
+                    "    };\r",
+                    "\r",
+                    "    if(that.config.datalinkDiscountRecord){\r",
+                    "\r",
+                    "         that.config.datalinkDiscountRecord.set(recToAddUpdate);\r",
+                    "\r",
+                    "    }else{\r",
+                    "\r",
+                    "        discountStore.add(recToAddUpdate);\r",
+                    "\r",
+                    "    }\r",
+                    "\r",
+                    "\r",
+                    "    discountStore.sync() ;\r",
+                    "\r",
+                    "    doUpdateBillingForDiscount() ;\r",
+                    "\r",
+                    "\r",
+                    "    that.config.datalinkDiscountRecord  = null ;\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountNameFld')[0].setValue(\"\") ;\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountValueFld')[0].setValue(\"\") ;\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountDurationFld')[0].setValue(\"\") ;\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query('#datalinkDiscountListPanel')[0].down('#mainList').deselectAll();\r",
+                    "\r",
+                    "\r",
+                    "    function doUpdateBillingForDiscount(){\r",
+                    "            var billingController =  RMdatalink.app.getController('BillingDetailsController') ;\r",
+                    "            var pricingMainStore = Ext.getStore('pricing.MainStore') ;\r",
+                    "\r",
+                    "\r",
+                    "            billingController.config.pricingData[0].advance_payment_discounts = getArrayDataFromStore(discountStore) ;\r",
+                    "            var rmPRORec = pricingMainStore.getAt(billingController.config.pricingData[0].searchIndex);\r",
+                    "\r",
+                    "            rmPRORec.set( billingController.config.pricingData[0] );\r",
+                    "            rmPRORec.dirty= true;\r",
+                    "            pricingMainStore.sync() ;\r",
+                    "\r",
+                    "\r",
+                    "              Ext.Msg.alert(\"Success\",\"Discount Updated Successfully.\",Ext.emptyFn);\r",
+                    "    }\r",
+                    "\r",
+                    "    function getArrayDataFromStore(store){\r",
+                    "\r",
+                    "        var data = new Array();\r",
+                    "        data = store.getData().items;\r",
+                    "\r",
+                    "        var dataToReturn = new Array();\r",
+                    "\r",
+                    "        for(var i=0; i < data.length ; i++){\r",
+                    "\r",
+                    "            dataToReturn.push(data[i].data);\r",
+                    "        }\r",
+                    "\r",
+                    "        return dataToReturn ;\r",
+                    "\r",
+                    "    }\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "73501e4f-afde-4169-ba2b-1f9540370f7d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "list",
+                    "record"
+                ],
+                "fn": "onDatalinkDiscountSelect",
+                "implHandler": [
+                    "this.config.datalinkDiscountRecord = record ;\r",
+                    "\r",
+                    "Ext.ComponentQuery.query('#datalinkDiscountNameFld')[0].setValue(record.get('discount_name')) ;\r",
+                    "Ext.ComponentQuery.query('#datalinkDiscountValueFld')[0].setValue(record.get('discount_value')) ;\r",
+                    "Ext.ComponentQuery.query('#datalinkDiscountDurationFld')[0].setValue(record.get('discount_duration')) ;\r",
+                    "\r",
+                    "Ext.ComponentQuery.query('#datalinkDiscountSaveBtn')[0].setText(\"Update Discount\");"
+                ]
+            },
+            "designerId": "fec1b8d0-b22e-4549-939c-ea57725d583f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setDatalinkDiscountStore",
+                "implHandler": [
+                    "        var discountStore = Ext.getStore('products.DatalinkDiscountStore');\r",
+                    "\r",
+                    "        var billingController =  RMdatalink.app.getController('BillingDetailsController') ;\r",
+                    "\r",
+                    "\r",
+                    "        discountStore.removeAll();\r",
+                    "        discountStore.sync() ;\r",
+                    "\r",
+                    "        discountStore.setData(billingController.config.pricingData[0].advance_payment_discounts ) ;\r",
+                    "        discountStore.sync() ;\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "87e7c8ff-b215-480d-86ee-8b27a13c8ca0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getVendorsPriceSum",
+                "implHandler": [
+                    "\r",
+                    "var vendorStore =  Ext.getStore('vendorTempRecordStore') ;\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var dataToReturn = {\r",
+                    "    promotional_price :0,\r",
+                    "    standard_price:0\r",
+                    "} ;\r",
+                    "\r",
+                    "for(var i=0; i < vendorStore.getData().all.length ; i++){\r",
+                    "\r",
+                    "\r",
+                    "            var record = vendorStore.getAt(i) ;\r",
+                    "            if(record.data.product_price && record.data.product_price.datalink){\r",
+                    "\r",
+                    "                 dataToReturn.standard_price += parseInt(record.data.product_price.datalink.standard_price) ;\r",
+                    "                 dataToReturn.promotional_price += parseInt(record.data.product_price.datalink.promotional_price) ;\r",
+                    "            }\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "console.log(dataToReturn) ;\r",
+                    "\r",
+                    "return dataToReturn ;"
+                ]
+            },
+            "designerId": "24dd3f05-4f92-4634-b202-fa7b782ffbac"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setDlDataPrice",
+                "implHandler": [
+                    "//getVendorsPriceSum  ( data[i].module_sku == \"DL-DATA\"){\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var datalinkStore = Ext.getStore('products.DatalinkMain') ;\r",
+                    "resetActivePolicy() ;\r",
+                    "var recIndex = datalinkStore.findExact(\"module_sku\",\"DL-DATA\") ;\r",
+                    "\r",
+                    "if(recIndex != -1 ){\r",
+                    "\r",
+                    "    var record = datalinkStore.getAt(recIndex) ;\r",
+                    "\r",
+                    "    var stdPromoPrice = this.getVendorsPriceSum() ;\r",
+                    "\r",
+                    "    record.set(\"module_standard_price\",stdPromoPrice.standard_price);\r",
+                    "    record.set(\"module_promotional_price\",stdPromoPrice.promotional_price);\r",
+                    "    \r",
+                    "    record.set(\"active_policy\",\"1\") ;\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "function resetActivePolicy(){\r",
+                    "    \r",
+                    "    for(var i=0; i < datalinkStore.getData().all.length ; i ++){\r",
+                    "        \r",
+                    "        var rmRec = datalinkStore.getAt(i) ;\r",
+                    "        \r",
+                    "        rmRec.set(\"active_policy\",\"99999\");\r",
+                    "        rmRec.dirty = true ;\r",
+                    "    }\r",
+                    "    \r",
+                    "}"
+                ]
+            },
+            "designerId": "1306d717-644a-4da7-abba-7f1a80d43d16"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "selectAllModules",
+                "implHandler": [
+                    "\r",
+                    "\r",
+                    "var datalinkModuleList = Ext.ComponentQuery.query('#datalinkMainListContainer')[0].down('#mainList');\r",
+                    "\r",
+                    "datalinkModuleList.selectAll(true);\r",
+                    "\r",
+                    "this.onRmProSelectUnselect() ;"
+                ]
+            },
+            "designerId": "a9c5cdcd-2b3c-4464-8363-5733d1442f74"
+        }
+    ]
+}

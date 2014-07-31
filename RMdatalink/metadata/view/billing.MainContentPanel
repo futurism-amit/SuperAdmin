@@ -1,0 +1,738 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "billingmaincontentpanel",
+        "designer|userClassName": "billing.MainContentPanel",
+        "itemId": "billingMainContentPanel",
+        "layout": "vbox",
+        "scrollable": false
+    },
+    "designerId": "a2f60ccf-83c8-42e5-ab28-970b69aa4c48",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "billingCardHeader",
+                "hidden": false,
+                "itemId": "billingCardHeader",
+                "layout|flex": 1
+            },
+            "designerId": "d1de3ffb-6b63-4b2e-bca7-3adb9317f2b6",
+            "masterInstanceId": "65dc2686-f6eb-4b20-bd40-d013cbc17112"
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "billingContentPanel",
+                "hidden": false,
+                "itemId": "billingContentPanel",
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "82cae3bf-a5c6-4072-a8e0-b1ca83b1c9d4",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "activeItem": 10,
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelBilling"
+                        ],
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "hidden": null,
+                        "itemId": "billingTabPanel",
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "4b831dc2-caec-46be-8343-d773c25e8090",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "mytabbar"
+                            },
+                            "designerId": "e8d3ddc2-1e22-452e-a945-64e77f62e411"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "allTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "<div style=\"line-height: 25px;\">ALL</div>"
+                            },
+                            "designerId": "c74e763d-4fd6-47d2-8efd-b4510c8e40b9",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onAllTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'billingCard'+0;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "267cc053-8990-41ce-b922-c7203d49afdd"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "allListContainer",
+                                        "itemId": "allListContainerItemID"
+                                    },
+                                    "designerId": "8199f6ad-321c-4bd6-9248-63ea0570990c",
+                                    "masterInstanceId": "450924ce-3834-44d3-89b3-7b08476edd83"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onAllTabInitialize",
+                                        "implHandler": [
+                                            "//billing.MasterModel\r",
+                                            "\r",
+                                            "var headers = component.down(\"#billingListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 6%;\" data-name=\"account_no\">',\r",
+                                            "               '        Account #&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"store_name\">',\r",
+                                            "               '        Store&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 5%;\" data-name=\"store_products_datalink\">',\r",
+                                            "               '        Data&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\" width: 5%;\" data-name=\"store_products_ecatalog\">',\r",
+                                            "               '        eCat&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\" width: 5%;\" data-name=\"store_products_smart_cart\">',\r",
+                                            "               '        eCom&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\" width: 6%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        RMPro&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\" width: 6%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        iRugs&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\" width: 6%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\" width: 8%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        Last Paid On&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\" width: 10%;\" data-name=\"\">',\r",
+                                            "               '        Last Paid Ammount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\" width: 10%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        Next Due Date&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\" width: 8%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        Due Ammount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\" width: 6%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        Overdue&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div style=\" width: 6%;\" data-name=\"store_products_rm_plc\">',\r",
+                                            "               '        Balance&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#billingList');\r",
+                                            "list.setStore('billingMasterStore');\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 6%;\" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = \"{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}\" >{account_no}</div>',\r",
+                                            "\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = \"{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}\" >{store_name}</div>',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 5%;\" class=\"checkRound\">',\r",
+                                            "               '        <div style=\"width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products.datalink_status)]}\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 5%;\" class=\"checkRound\">',\r",
+                                            "               '        <div style=\"width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products.ecatalog_status)]}\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 5%;\" class=\"checkRound\">',\r",
+                                            "               '        <div style=\" width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products.ecommerce_status)]}\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 6%;\" class=\"checkRound\">',\r",
+                                            "               '        <div style=\"width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products.rmpro_status)]}\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 6%;\" class=\"checkRound\">',\r",
+                                            "               '        <div style=\"width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products.irugs_status)]}\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "                '    <div style=\"width: 6%;\" >{[this.getStatus(values)]}</div>',\r",
+                                            "               '    <div style=\"width: 8%;\" >{[this.getLastPaidOn(values)]}</div>',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 10%;\" >{[this.getLastPaidAmmount(values)]}</div>',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 10%;\" >{[this.getDueDate(values)]}</div>',\r",
+                                            "               '    <div style=\"width: 8%;\" >{[this.getDueAmmount(values)]}</div>',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 6%;\" ></div>',\r",
+                                            "               '    <div style=\"width: 6%;\" ></div>',\r",
+                                            "\r",
+                                            "\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "\r",
+                                            "                    getLastPaidAmmount: function(value){\r",
+                                            "\r",
+                                            "                        if(value.product_billng){\r",
+                                            "\r",
+                                            "                           var d1 = null;\r",
+                                            "                           var d2 = null ;\r",
+                                            "                            var amm1 = 0 ;\r",
+                                            "                            var amm2 = 0 ;\r",
+                                            "                           if(value.product_billng.product_datalink){\r",
+                                            "\r",
+                                            "                               d1 = value.product_billng.product_datalink.invoice_id;\r",
+                                            "\r",
+                                            "                               amm1 = value.product_billng.product_datalink.total_payble;\r",
+                                            "                           }\r",
+                                            "                           if(value.product_billng.product_rmpro){\r",
+                                            "\r",
+                                            "                               d2 = value.product_billng.product_rmpro.invoice_id;\r",
+                                            "\r",
+                                            "                               amm2 = value.product_billng.product_rmpro.total_payble;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                           if( d1 && d2){\r",
+                                            "                               var d3 = new Date(d1);\r",
+                                            "                               var d4 = new Date(d2);\r",
+                                            "                               return (d3 > d4 ? amm1 : amm2 ) ;\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               return (amm1 ? amm1 : amm2 ? amm2 : \"\") ;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                        return \"\";\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "\r",
+                                            "                   getLastPaidOn: function(value){\r",
+                                            "\r",
+                                            "                        if(value.product_billng){\r",
+                                            "\r",
+                                            "                           var d1 = null;\r",
+                                            "                           var d2 = null ;\r",
+                                            "\r",
+                                            "                           if(value.product_billng.product_datalink){\r",
+                                            "\r",
+                                            "                               d1 = value.product_billng.product_datalink.invoice_id;\r",
+                                            "                           }\r",
+                                            "                           if(value.product_billng.product_rmpro){\r",
+                                            "\r",
+                                            "                               d2 = value.product_billng.product_rmpro.invoice_id;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                           if( d1 && d2){\r",
+                                            "                               var d3 = new Date(d1);\r",
+                                            "                               var d4 = new Date(d2);\r",
+                                            "                               return (d3 > d4 ? d1 : d2) ;\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               return (d1 ? d1 : d2 ? d2 : \"\") ;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                        return \"\";\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "\r",
+                                            "\r",
+                                            "                    getStatus: function(value){\r",
+                                            "\r",
+                                            "                     var status = \"\" ;\r",
+                                            "                        var dd = null ;\r",
+                                            "                       if(value.product_billng){\r",
+                                            "\r",
+                                            "                           var d1 = null;\r",
+                                            "                           var d2 = null ;\r",
+                                            "\r",
+                                            "                           if(value.product_billng.product_datalink){\r",
+                                            "\r",
+                                            "                               d1 = value.product_billng.product_datalink.due_date;\r",
+                                            "                           }\r",
+                                            "                           if(value.product_billng.product_rmpro){\r",
+                                            "\r",
+                                            "                               d2 = value.product_billng.product_rmpro.due_date;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                           if( d1 && d2){\r",
+                                            "                               var d3 = new Date(d1);\r",
+                                            "                               var d4 = new Date(d2);\r",
+                                            "                               dd = (d3 < d4 ? d1 : d2) ;\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               dd = (d1 ? d1 : d2 ? d2 : \"\") ;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                        if(dd){\r",
+                                            "                            var today = new Date() ;\r",
+                                            "\r",
+                                            "                            dd = new Date(dd) ;\r",
+                                            "\r",
+                                            "                            return today < dd ? \"PAID\" : \"UNPAID\";\r",
+                                            "                        }\r",
+                                            "\r",
+                                            "                        return \"\" ;\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "\r",
+                                            "                  getCity: function(value){\r",
+                                            "                       if(value.locations){\r",
+                                            "\r",
+                                            "                           if(value.locations[0]){\r",
+                                            "\r",
+                                            "                               if(value.locations[0].city!== \"\"){\r",
+                                            "                                   return value.locations[0].city;\r",
+                                            "                               }\r",
+                                            "\r",
+                                            "\r",
+                                            "                           }\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       return value.store_city ;\r",
+                                            "                   },\r",
+                                            "\r",
+                                            "\r",
+                                            "                    getDueDate: function(value){\r",
+                                            "                       if(value.product_billng){\r",
+                                            "\r",
+                                            "                           var d1 = null;\r",
+                                            "                           var d2 = null ;\r",
+                                            "\r",
+                                            "                           if(value.product_billng.product_datalink){\r",
+                                            "\r",
+                                            "                               d1 = value.product_billng.product_datalink.due_date;\r",
+                                            "                           }\r",
+                                            "                           if(value.product_billng.product_rmpro){\r",
+                                            "\r",
+                                            "                               d2 = value.product_billng.product_rmpro.due_date;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                           if( d1 && d2){\r",
+                                            "                               var d3 = new Date(d1);\r",
+                                            "                               var d4 = new Date(d2);\r",
+                                            "                               return (d3 < d4 ? d1 : d2) ;\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               return (d1 ? d1 : d2 ? d2 : \"\") ;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                        return \"\";\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                 getDueAmmount: function(value){\r",
+                                            "\r",
+                                            "                     var past_due = 0 ;\r",
+                                            "                       if(value.product_billng){\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "                           if(value.product_billng.product_datalink){\r",
+                                            "\r",
+                                            "                               past_due = value.product_billng.product_datalink.past_due ? parseInt(value.product_billng.product_datalink.past_due,0) : 0;\r",
+                                            "                           }\r",
+                                            "                           if(value.product_billng.product_rmpro){\r",
+                                            "\r",
+                                            "                               past_due += value.product_billng.product_rmpro.past_due ? parseInt(value.product_billng.product_rmpro.past_due,0) :0;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                        return past_due ;\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                   getState: function(value){\r",
+                                            "                    if(value.locations){\r",
+                                            "\r",
+                                            "                           if(value.locations[0]){\r",
+                                            "\r",
+                                            "                               if(value.locations[0].state!== \"\"){\r",
+                                            "                                   return value.locations[0].state;\r",
+                                            "                               }\r",
+                                            "                           }\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       return value.store_state ;\r",
+                                            "                   },\r",
+                                            "\r",
+                                            "                   getZip: function(value){\r",
+                                            "                        if(value.locations){\r",
+                                            "\r",
+                                            "                           if(value.locations[0]){\r",
+                                            "\r",
+                                            "                               if(value.locations[0].zip !== \"\"){\r",
+                                            "                                   return value.locations[0].zip;\r",
+                                            "                               }\r",
+                                            "                           }\r",
+                                            "                       }\r",
+                                            "                       return value.store_zip ;\r",
+                                            "                   },\r",
+                                            "\r",
+                                            "                   getCheckBoxRound: function(value){\r",
+                                            "                       if(value)\r",
+                                            "                       {\r",
+                                            "                           switch(value){\r",
+                                            "\r",
+                                            "                               case \"ACTIVE\":\r",
+                                            "                                   return '#39b3d7';\r",
+                                            "                               case \"INACTIVE\":\r",
+                                            "                                   return '#ebebeb';\r",
+                                            "                               case \"PROSPECT\":\r",
+                                            "                                   return '#47a447';\r",
+                                            "                               case \"HOT_PROSPECT\":\r",
+                                            "                                   return '#ed9c28';\r",
+                                            "                               case \"PENDING\":\r",
+                                            "                                   return '#3276b1';\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "\r",
+                                            "                           return '#2EC1DA';\r",
+                                            "                       }\r",
+                                            "                       else\r",
+                                            "                           return '#F3F3F4';\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "\r",
+                                            "               },\r",
+                                            "\r",
+                                            "               {\r",
+                                            "                   setOwedMonthlyField: function(rec){\r",
+                                            "                       var value = 0 ;\r",
+                                            "                       if(rec.store_products.rmpro_status && rec.store_products.rmpro_status == \"ACTIVE\"){\r",
+                                            "\r",
+                                            "                           value += parseInt(rec.product_billng.product_rmpro.monthly_membership,0) ;\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       if(rec.store_products.datalink_status && rec.store_products.datalink_status == \"ACTIVE\"){\r",
+                                            "\r",
+                                            "                           value += parseInt(rec.product_billng.product_datalink.monthly_membership,0) ;\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "                       if(value === 0)\r",
+                                            "                           return \"0.00\";\r",
+                                            "                       else\r",
+                                            "                       {\r",
+                                            "                           var sumStr = \"\"+ value;\r",
+                                            "                           var sumStrSplit0 = sumStr.split('.')[0];\r",
+                                            "\r",
+                                            "                           var len = sumStrSplit0.length;\r",
+                                            "                           if(len > 3)\r",
+                                            "                           {\r",
+                                            "                               sumStr1 = sumStrSplit0.substr(0,(len-3));\r",
+                                            "                               sumStr2 = sumStrSplit0.substr((len-3),(len-1));\r",
+                                            "                               sumStrSplit0 =  sumStr1 + ',' + sumStr2 ;\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                           if(sumStr.split('.')[1])\r",
+                                            "                               return sumStrSplit0 + '.' +sumStr.split('.')[1];\r",
+                                            "                           else\r",
+                                            "                           {\r",
+                                            "                               return  sumStrSplit0;\r",
+                                            "                           }\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "\r",
+                                            "               }\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "list.onStoreClear();\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "46f3e52b-c0ca-4314-b3d5-eeb0adde0cae"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "paidTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "<div style=\"line-height: 25px;\">PAID</div>"
+                            },
+                            "designerId": "5b1e9f5a-17dc-4d34-96fc-bb474331b791",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onPaidTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'billingCard'+1;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "efb2627b-ba33-4c60-b63d-0b5a5887166a"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "paidListContainer",
+                                        "itemId": "paidListContainerItemID"
+                                    },
+                                    "designerId": "a3c8d7ac-1885-4337-bff4-226d7ee0fbd1",
+                                    "masterInstanceId": "450924ce-3834-44d3-89b3-7b08476edd83"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "pastDueTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": " <div style=\"line-height: 25px;\">PAST DUE</div>"
+                            },
+                            "designerId": "68c18b30-6277-4322-92f6-2565c3b9a513",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onPastDeuTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'billingCard'+2;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "8b4313b1-4349-4657-91fe-a2a7686b5ea3"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "pastDueListContainer",
+                                        "itemId": "pastDueListContainerItemID"
+                                    },
+                                    "designerId": "b28b8506-af53-490a-b5f4-3c75c86e6319",
+                                    "masterInstanceId": "450924ce-3834-44d3-89b3-7b08476edd83"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "baseCls": null,
+                                "designer|displayName": null,
+                                "disabledCls": null,
+                                "itemId": "reviewTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "style": null,
+                                "title": " <div style=\"background-color:#2EC1DA;line-height: 25px;color: white;height: 28px;\">REVIEW</div>"
+                            },
+                            "designerId": "2f5e005a-1c81-4177-b492-1494fc9771aa",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onPastDeuTabPainted1",
+                                        "implHandler": [
+                                            "window.location.hash = 'billingCard'+3;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "d798e819-3a79-4301-8ae5-0b05c65bb6a6"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "reviewListContainer",
+                                        "itemId": "reviewListContainerItemID"
+                                    },
+                                    "designerId": "12ecf25c-c840-4f1c-933e-a65ea27957a9",
+                                    "masterInstanceId": "450924ce-3834-44d3-89b3-7b08476edd83"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelInitialize",
+                "implHandler": [
+                    "component.down('#cardExportBtn').element.on(\"tap\",function(){\r",
+                    "\r",
+                    "            var store =list = Ext.ComponentQuery.query(\"#allListContainerItemID\")[0].down('#billingList').getStore();\r",
+                    "\r",
+                    "             var data = RMdatalink.app.getController('inhouse.DetailScreenController').getArrayDataFromStore(store) ;\r",
+                    "\r",
+                    "\r",
+                    "            RMdatalink.app.getController('inhouse.DetailScreenController').exportToCSV(data);\r",
+                    "\r",
+                    "});"
+                ],
+                "name": "initialize"
+            },
+            "designerId": "e2ded290-e7cd-432f-9495-d1382cb95704"
+        }
+    ]
+}

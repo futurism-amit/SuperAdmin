@@ -1,0 +1,450 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-navigation-panel"
+        ],
+        "container|align": "center",
+        "designer|userAlias": "retailernavigationpanel",
+        "designer|userClassName": "retailer.NavigationPanel",
+        "height": "100%",
+        "itemId": "rtNavPanelMain",
+        "layout": "vbox",
+        "requires": [
+            "Ext.Label"
+        ],
+        "scrollable": false
+    },
+    "designerId": "0574f56d-ee20-4987-b8e5-b9ac7e664267",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-productsnavpanel"
+                ],
+                "designer|displayName": null,
+                "height": null,
+                "itemId": null,
+                "layout": "vbox",
+                "layout|flex": null,
+                "minHeight": "15%",
+                "padding": "1%",
+                "scrollable": false,
+                "width": "100%"
+            },
+            "designerId": "05416073-0c69-4aa5-b92b-2177740b1efc",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "html": "Store Name",
+                        "itemId": "retailerUserStoreNameLbl"
+                    },
+                    "designerId": "49caf026-c9e8-4c8e-ab29-1b642eecd2f6"
+                },
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "html": "Store Name",
+                        "itemId": "retailerUserStoreOwnerLbl"
+                    },
+                    "designerId": "84d73bc6-4759-464b-9f68-6bf2c26a545d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "action": "changecardRT",
+                "designer|displayName": null,
+                "designer|uiInterfaceName": "plain",
+                "docked": null,
+                "icon": "resources/images/RMNavigationPanel/ECatalog.png",
+                "index": 0,
+                "itemId": "genSettingButton",
+                "text": "General Setting",
+                "ui": "plain"
+            },
+            "configAlternates": {
+                "index": "number"
+            },
+            "designerId": "a6d3f36e-0fb8-430c-a955-6a1eb3cd3451",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "action",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "index",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-separator"
+                ],
+                "designer|displayName": "separator",
+                "width": "80%"
+            },
+            "designerId": "95109241-6142-4616-8884-1e81bfb54de0"
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-productsnavpanel"
+                ],
+                "designer|displayName": "productsNavPanel",
+                "height": null,
+                "itemId": "RMProductsNavigationPanel1",
+                "layout": "vbox",
+                "layout|flex": null,
+                "minHeight": "30%",
+                "padding": "1%",
+                "scrollable": false,
+                "width": "100%"
+            },
+            "designerId": "ccfacb19-620d-42cc-843b-efa9e41b318e",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "productsHeadLabel",
+                        "html": "Products"
+                    },
+                    "designerId": "7ec00f63-0fe3-4c09-9036-50122bf133a0"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "changecardRT",
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "plain",
+                        "icon": "resources/images/RMNavigationPanel/Datalink.png",
+                        "index": 3,
+                        "itemId": "rtUserProductDatalinkBtn",
+                        "text": "Datalink",
+                        "ui": "plain"
+                    },
+                    "configAlternates": {
+                        "index": "number"
+                    },
+                    "designerId": "004bfbd9-941b-4a58-8a61-0b8cd82d3686",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "index",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "changecardRT",
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "plain",
+                        "hidden": true,
+                        "icon": "resources/images/RMNavigationPanel/ECatalog.png",
+                        "index": 4,
+                        "itemId": "rtUserProductEcatalogBtn",
+                        "text": "ECatalog",
+                        "ui": "plain"
+                    },
+                    "configAlternates": {
+                        "index": "number"
+                    },
+                    "designerId": "61914582-63d9-49c8-8e27-0f95341db83e",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "index",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "changecardRT",
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "plain",
+                        "icon": "resources/images/RMNavigationPanel/RM_PLC.png",
+                        "index": 5,
+                        "itemId": "rtUserProductRMPROBtn",
+                        "text": "RM PRO",
+                        "ui": "plain"
+                    },
+                    "configAlternates": {
+                        "index": "number"
+                    },
+                    "designerId": "c101de39-cfc9-47b0-b91b-62439831bee9",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "index",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "changecardRT",
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "plain",
+                        "hidden": true,
+                        "icon": "resources/images/RMNavigationPanel/SMART_cart.png",
+                        "index": 6,
+                        "itemId": "rtUserProductECommerceBtn",
+                        "text": "E-Commerce",
+                        "ui": "plain"
+                    },
+                    "configAlternates": {
+                        "index": "number"
+                    },
+                    "designerId": "910eb281-67f9-4489-87ae-1833d18ad991",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "index",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "changecardRT",
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "plain",
+                        "hidden": true,
+                        "icon": "resources/images/RMNavigationPanel/iRugz.png",
+                        "index": 7,
+                        "itemId": "rtUserProductiRugzBtn",
+                        "text": "iRugz",
+                        "ui": "plain"
+                    },
+                    "configAlternates": {
+                        "index": "number"
+                    },
+                    "designerId": "72e0c37b-8338-4b77-bd2b-f4b8aa33ac89",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "index",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-separator"
+                ],
+                "designer|displayName": "separator",
+                "width": "80%"
+            },
+            "designerId": "5c85b492-e5bc-4a45-835e-c39a6d8d7f63"
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-productsnavpanel"
+                ],
+                "designer|displayName": null,
+                "height": null,
+                "itemId": "retailerNavigationPanelGeneralSetting",
+                "layout": "vbox",
+                "layout|flex": null,
+                "minHeight": "30%",
+                "padding": "1%",
+                "scrollable": false,
+                "width": "100%"
+            },
+            "designerId": "1a26b4f2-7e35-4344-9168-45fee6425d02",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "changecardRT",
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "plain",
+                        "icon": "resources/images/RMNavigationPanel/Datalink.png",
+                        "index": 1,
+                        "itemId": "genSetPaymentHistoryBtn",
+                        "text": "Payment History",
+                        "ui": "plain"
+                    },
+                    "configAlternates": {
+                        "index": "number"
+                    },
+                    "designerId": "c2877f58-3298-4d30-92d9-886f86e404fe",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "index",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "changecardRT",
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "plain",
+                        "icon": "resources/images/RMNavigationPanel/ECatalog.png",
+                        "index": 2,
+                        "itemId": "genSetManagePaymentBtn",
+                        "text": "Manage Payment",
+                        "ui": "plain"
+                    },
+                    "configAlternates": {
+                        "index": "number"
+                    },
+                    "designerId": "17a2c7de-0848-44d3-9d6a-1526c8ef136c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "index",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

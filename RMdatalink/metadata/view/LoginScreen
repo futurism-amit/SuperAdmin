@@ -1,0 +1,582 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|animation": false,
+        "designer|initialView": true,
+        "designer|userAlias": "LoginScreen",
+        "designer|userClassName": "LoginScreen",
+        "itemId": "loginScreenContainer",
+        "layout": "card",
+        "scrollable": null
+    },
+    "designerId": "d0df7542-63f0-493d-afcb-d41aa9b1a573",
+    "cn": [
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "b8794bd5-d0c9-4b9a-81c2-eb438918089b",
+            "cn": [
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": true,
+                        "cls": [
+                            "x-rm-rdformpanel"
+                        ],
+                        "container|align": "center",
+                        "container|pack": "center",
+                        "height": "300px",
+                        "layout": "vbox",
+                        "scrollable": false,
+                        "width": "400px"
+                    },
+                    "designerId": "a3212b39-784a-4427-bd72-ebc0b1c8f677",
+                    "cn": [
+                        {
+                            "type": "Ext.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "logoBg"
+                                ],
+                                "docked": "top",
+                                "height": "50px",
+                                "margin": null,
+                                "width": "100%"
+                            },
+                            "designerId": "d6e6026e-1ae5-4515-bf62-8119b72c631c",
+                            "cn": [
+                                {
+                                    "type": "Ext.Img",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "centered": true,
+                                        "cls": [
+                                            "backgroundImg"
+                                        ],
+                                        "docked": "left",
+                                        "height": 32,
+                                        "margin": null,
+                                        "padding": null,
+                                        "src": "resources/images/RM-datalink.png",
+                                        "style": " background-size: initial !important;",
+                                        "width": "220px"
+                                    },
+                                    "designerId": "fc60ae03-d60d-425a-885c-8672a72426a7"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "loginUsernameTxtFld",
+                                "label": "User Name"
+                            },
+                            "designerId": "d3004e06-71d2-4e51-943b-0acda83180f9"
+                        },
+                        {
+                            "type": "Ext.field.Password",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "onActionDoLogin",
+                                "itemId": "loginPasswordFld",
+                                "label": "Password",
+                                "labelWidth": null
+                            },
+                            "designerId": "6c8d6755-dfcb-4bd4-842e-267b57e50367",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-radiordformpanel",
+                                    "x-rm-rdformpanel"
+                                ],
+                                "container|align": "center",
+                                "container|pack": "center",
+                                "height": 40,
+                                "hidden": true,
+                                "layout": "hbox",
+                                "margin": 0,
+                                "scrollable": false,
+                                "title": null,
+                                "width": "98%"
+                            },
+                            "designerId": "df89d8cf-e2b2-48f0-81e2-d063937e4f55",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": null,
+                                        "margin": "-10px 10px 0 0"
+                                    },
+                                    "designerId": "8b393418-f42f-40da-b4cb-303fe53bb430"
+                                },
+                                {
+                                    "type": "Ext.field.Radio",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "pointerCursor"
+                                        ],
+                                        "inputCls": "radiofieldInput",
+                                        "itemId": "loginAsRetailerRadioFld",
+                                        "label": "Retailer",
+                                        "labelCls": "transparentBack",
+                                        "labelWidth": "75px",
+                                        "name": "loginAs",
+                                        "width": "90px"
+                                    },
+                                    "designerId": "3de53bb0-db22-41b9-97d5-4f75f61d9f56"
+                                },
+                                {
+                                    "type": "Ext.field.Radio",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "checked": true,
+                                        "cls": [
+                                            "pointerCursor"
+                                        ],
+                                        "inputCls": "radiofieldInput",
+                                        "itemId": "loginAsInhouseUserRadioFld",
+                                        "label": "Inhouse User",
+                                        "labelCls": "transparentBack",
+                                        "labelWidth": "85px",
+                                        "name": "loginAs",
+                                        "width": "90px"
+                                    },
+                                    "designerId": "9975fb52-1a45-465d-8feb-ad100b1cf4d1"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "baseCls": "temp",
+                                "cls": [
+                                    "loginFormLabel"
+                                ],
+                                "height": "22px",
+                                "html": "Forgot Password",
+                                "itemId": "loginForgotPwdLabel",
+                                "margin": "0 0 10 100",
+                                "style": "background:transparent !important;",
+                                "styleHtmlCls": null,
+                                "width": "63%"
+                            },
+                            "designerId": "89e0b444-f8ce-403c-b6d6-96b792fe139f"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-blueBtn"
+                                ],
+                                "itemId": "loginActionButton",
+                                "margin": "0 0 0 100",
+                                "text": "Login",
+                                "width": "63%"
+                            },
+                            "designerId": "31cddf39-e003-4f74-b960-228e358ee026"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "2f109dca-4485-44ae-935d-e93baca8a3de",
+            "cn": [
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": true,
+                        "cls": [
+                            "x-rm-rdformpanel"
+                        ],
+                        "container|align": "center",
+                        "container|pack": "center",
+                        "height": "300px",
+                        "layout": "vbox",
+                        "scrollable": false,
+                        "width": "400px"
+                    },
+                    "designerId": "843466fd-85f5-408f-8a2b-4bbc670407bc",
+                    "cn": [
+                        {
+                            "type": "Ext.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": null,
+                                "cls": [
+                                    "logoBg"
+                                ],
+                                "docked": "top",
+                                "height": "50px",
+                                "margin": null,
+                                "style": null,
+                                "width": "100%"
+                            },
+                            "designerId": "7eccf884-3b06-4f2f-b2c9-2d9cb0c2ff01",
+                            "cn": [
+                                {
+                                    "type": "Ext.Img",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "centered": true,
+                                        "docked": "left",
+                                        "height": 32,
+                                        "margin": null,
+                                        "padding": null,
+                                        "src": "resources/images/RM-datalink.png",
+                                        "style": null,
+                                        "width": "220px"
+                                    },
+                                    "designerId": "3bb2c693-6b28-4d9f-b0b6-1d0bdc13a146"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Email",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "forgotPasswardEmailFld",
+                                "label": "Enter E-mail",
+                                "margin": "-10 0 10 0",
+                                "placeHolder": "email@example.com"
+                            },
+                            "designerId": "40b954d5-9ef8-41c7-ab7c-7a101d819e11"
+                        },
+                        {
+                            "type": "Ext.SegmentedButton",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "allowToggle": false,
+                                "margin": "0 0 0 100",
+                                "width": "63%"
+                            },
+                            "designerId": "5e248c7b-2324-439a-8db5-0e415552d1a4",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "text": "Cancel",
+                                        "width": "50%"
+                                    },
+                                    "designerId": "66f43cd4-25f1-41e6-8d3b-9527eaad6d08",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "Ext.ComponentQuery.query('#loginScreenContainer')[0].setActiveItem(0);"
+                                                ]
+                                            },
+                                            "designerId": "0fd2c29b-3165-4284-be14-0aa33fe096ea"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "doForgotPassword",
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "text": "Reset Password",
+                                        "width": "50%"
+                                    },
+                                    "designerId": "ea49dcf8-ae68-4718-ade5-e9e5ed8157c2",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "a6e56fd6-45e5-495f-921b-47351ad93370",
+            "cn": [
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": true,
+                        "cls": [
+                            "x-rm-rdformpanel"
+                        ],
+                        "container|align": "center",
+                        "container|pack": "center",
+                        "height": "260px",
+                        "layout": "vbox",
+                        "scrollable": false,
+                        "width": "620px"
+                    },
+                    "designerId": "4f0b016e-1f88-406c-b3e8-d0412f8a94a1",
+                    "cn": [
+                        {
+                            "type": "Ext.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "height": "50px",
+                                "margin": null,
+                                "width": "100%"
+                            },
+                            "designerId": "a200f1ad-181e-493f-a075-6d8cc86fb07a",
+                            "cn": [
+                                {
+                                    "type": "Ext.Img",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "centered": true,
+                                        "docked": "left",
+                                        "height": 32,
+                                        "margin": null,
+                                        "padding": null,
+                                        "src": "resources/images/RM-datalink.png",
+                                        "style": null,
+                                        "width": "220px"
+                                    },
+                                    "designerId": "f53aa92a-9611-4cb0-b76a-0ee6049bd03d"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "Reset Password"
+                            },
+                            "designerId": "5b656327-279d-4fe4-b64d-75b08c6d714c"
+                        },
+                        {
+                            "type": "Ext.field.Password",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "label": "Enter Reset Password Key",
+                                "labelWidth": "200px",
+                                "margin": "40 0 0 0",
+                                "width": "80%"
+                            },
+                            "designerId": "cea591cd-3e04-4ae2-8a91-7ba21af67222"
+                        },
+                        {
+                            "type": "Ext.field.Password",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "regenratePwdFld",
+                                "label": "Enter New Password",
+                                "labelWidth": "200px",
+                                "width": "80%"
+                            },
+                            "designerId": "cc9380e7-a4b1-4a72-9435-50bc7bfb9239"
+                        },
+                        {
+                            "type": "Ext.field.Password",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "retypedRegenratePwdFld",
+                                "label": "Retype New Password",
+                                "labelWidth": "200px",
+                                "width": "80%"
+                            },
+                            "designerId": "49686265-b02a-4936-9913-1f68d3f3f9f2"
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|pack": "end",
+                                "layout": "hbox",
+                                "margin": "10 0 10 0",
+                                "title": null,
+                                "width": "80%"
+                            },
+                            "designerId": "03d4c4a2-a390-4726-ae2b-c7624980384a",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "itemId": "confirmResetPwdFrmEmailBtn",
+                                        "text": "Confirm new Password"
+                                    },
+                                    "designerId": "f631f2d6-35fb-4520-975d-8f5325f00599"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

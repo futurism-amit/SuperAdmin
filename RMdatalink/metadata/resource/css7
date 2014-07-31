@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css7",
+        "id": "alertPopUpCSS",
+        "url": "resources/css/alertPopUp/alertPopUpCSS.css"
+    },
+    "designerId": "274d400b-7ea9-4f6f-9084-c768dd8c4c9f"
+}

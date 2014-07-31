@@ -1,0 +1,54 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretchmax",
+        "designer|userAlias": "RetailerLoginUserOptions",
+        "designer|userClassName": "RetailerLoginUserOptions",
+        "height": null,
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "RetailerLoginUserOptions",
+        "layout": "vbox",
+        "scrollable": null,
+        "showAnimation": [
+            "false"
+        ],
+        "width": "160px"
+    },
+    "designerId": "cbd249a5-e30c-43bf-a8c2-7658f6347453",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "rtlUserIptnsSettingBtn",
+                "text": "Settings"
+            },
+            "designerId": "b66c5286-4e99-452c-95d5-7ceacda836d3"
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "rtlUserIptnsLogoutBtn",
+                "text": "Logout"
+            },
+            "designerId": "bdaa9354-f023-4433-8c47-c61605dd853f"
+        }
+    ]
+}

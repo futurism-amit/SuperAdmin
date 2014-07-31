@@ -1,0 +1,237 @@
+
+{
+"tech_support_logs":[
+{
+    "_id" : "534d207aa917a7f09338e03d",
+    "company" : "Test",
+    "company_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "id" : "ext-record-128",
+    "problem" : "test",
+    "product_id" : "1",
+    "product_name" : "Datalink",
+    "solution" : "test",
+    "time_start" : "Tue Apr 15 2014 17:29:38",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "1",
+        "seconds" : "20"
+    },
+    "vendor_id" : ""
+},
+{
+    "__v" : 0,
+    "_id" : "534d20ea2f11d83c0d00001e",
+    "company" : "test",
+    "company_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "id" : "ext-record-129",
+    "problem" : "test",
+    "product_id" : "3",
+    "product_name" : "SMART Cart",
+    "solution" : "test",
+    "time_start" : "Tue Apr 15 2014 17:35:38",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "1",
+        "seconds" : "24"
+    },
+    "vendor_id" : ""
+},
+{
+    "company" : "KAS",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 20:44:57",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "13"
+    },
+    "product_name" : "SMART Cart",
+    "product_id" : "3",
+    "problem" : "test",
+    "solution" : "test",
+    "_id" : "534d4d012f11d83c0d000020",
+    "__v" : 0
+},
+{
+    "company" : "KAS",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 20:46:54",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "6"
+    },
+    "product_name" : "SMART Cart",
+    "product_id" : "3",
+    "problem" : "test",
+    "solution" : "test",
+    "_id" : "534d4d6f2f11d83c0d000021",
+    "__v" : 0
+},
+{
+    "company" : "KAS",
+    "company_id" : "534823a82f11d83c0d00000a",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 21:47:55",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "9"
+    },
+    "product_name" : "Datalink",
+    "product_id" : "1",
+    "problem" : "with id",
+    "solution" : "with id",
+    "_id" : "534d5bbe2f11d83c0d000022",
+    "__v" : 0
+},
+{
+    "company" : "KAS",
+    "company_id" : "534823a82f11d83c0d00000a",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 22:01:48",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "8"
+    },
+    "product_name" : "Datalink",
+    "product_id" : "1",
+    "problem" : "test",
+    "solution" : "tes",
+    "_id" : "534d5efd2f11d83c0d000023",
+    "__v" : 0
+},
+{
+    "__v" : 0,
+    "_id" : "534d61992f11d83c0d000024",
+    "company" : "Loloi",
+    "company_id" : "534823f22f11d83c0d000010",
+    "company_logo" : "resources//images//logos//default_User.jpg",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "id" : "ext-record-134",
+    "problem" : "test",
+    "product_id" : "1",
+    "product_name" : "Datalink",
+    "solution" : "test",
+    "time_start" : "Tue Apr 15 2014 22:12:55",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "7"
+    },
+    "vendor_id" : ""
+},
+{
+    "company" : "KAS",
+    "company_id" : "534823a82f11d83c0d00000a",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 22:22:39",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "8"
+    },
+    "product_name" : "Datalink",
+    "product_id" : "1",
+    "problem" : "test",
+    "solution" : "test",
+    "_id" : "534d63e02f11d83c0d000025",
+    "__v" : 0
+},
+{
+    "company" : "KAS",
+    "company_id" : "534823a82f11d83c0d00000a",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 22:22:51",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "9"
+    },
+    "product_name" : "SMART Cart",
+    "product_id" : "3",
+    "problem" : "test",
+    "solution" : "test",
+    "_id" : "534d63ed2f11d83c0d000026",
+    "__v" : 0
+},
+{
+    "company" : "Momeni",
+    "company_id" : "",
+    "company_logo" : "",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 14:55:32",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "38"
+    },
+    "product_name" : "Datalink",
+    "product_id" : "1",
+    "problem" : "Problem.",
+    "solution" : "Fixed.",
+    "_id" : "534d80d42f11d83c0d000027",
+    "__v" : 0
+},
+{
+    "company" : "",
+    "company_id" : "",
+    "company_logo" : "",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 15:03:12",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "10",
+        "seconds" : "52"
+    },
+    "product_name" : "Datalink",
+    "product_id" : "1",
+    "problem" : "Problem.",
+    "solution" : "Fixed.",
+    "_id" : "534d854a2f11d83c0d000028",
+    "__v" : 0
+},
+{
+    "company" : "Momeni",
+    "company_id" : "",
+    "company_logo" : "",
+    "vendor_id" : "",
+    "crm_user" : "",
+    "crm_user_id" : "",
+    "time_start" : "Tue Apr 15 2014 18:07:34",
+    "total_time" : {
+        "hours" : "0",
+        "minutes" : "0",
+        "seconds" : "41"
+    },
+    "product_name" : "NA",
+    "product_id" : "5",
+    "problem" : "Problem",
+    "solution" : "Fixed.",
+    "_id" : "534dade52f11d83c0d000029",
+    "__v" : 0
+}
+]
+}

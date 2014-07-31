@@ -1,0 +1,725 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pricingmaincontentpanel",
+        "designer|userClassName": "pricing.MainContentPanel",
+        "height": "100%",
+        "hidden": false,
+        "itemId": "pricingMainContentsPanel",
+        "layout": "vbox",
+        "width": "100%"
+    },
+    "designerId": "7bae7a51-6109-4096-98c9-1beb65e01ae9",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pricingDetailsHeader",
+                "height": null,
+                "itemId": "pricingDetailsHeader",
+                "layout|flex": 1,
+                "margin": "0 0 10 0"
+            },
+            "designerId": "8e94738b-7ac4-46dd-af25-8a3d774a6eed",
+            "masterInstanceId": "9da01505-5404-46af-b8c1-7b70b7fda3f7"
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pricingDetailsContent",
+                "hidden": false,
+                "layout": "hbox",
+                "layout|flex": 15,
+                "width": null
+            },
+            "designerId": "61579efc-5a17-4d5c-afa4-637e2722d4d2",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "onActiveItemChanged",
+                        "activeItem": 22,
+                        "cls": [
+                            "x-rm-tabpanel"
+                        ],
+                        "designer|displayName": "pricingDetailsMainTabPanel",
+                        "designer|uiInterfaceName": "light",
+                        "hidden": false,
+                        "itemId": "pricingDetailsMainTabPanel",
+                        "layout|flex": 2,
+                        "margin": "0 10 0 0",
+                        "ui": "light"
+                    },
+                    "designerId": "6eeaf645-3b1c-40ff-9c3b-dd74ebe5516c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "maxHeight": "0px"
+                            },
+                            "designerId": "fb64f46f-8ee7-4b39-95dd-7dfc208e5013"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "dataLinkTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "DATALINK"
+                            },
+                            "designerId": "eae3de55-a435-4a47-9c37-7c222b8fb33e",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "dataLinkListItemID"
+                                    },
+                                    "designerId": "3f020b91-e265-4669-8bb9-e2a702dc5424",
+                                    "masterInstanceId": "659152ec-2846-4103-b689-b90bff37e861"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onDataLinkTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'pricingCard'+0;\r",
+                                            "\r",
+                                            "var vndStr = Ext.getStore('vendors.Master') ;\r",
+                                            "vndStr.clearFilter();\r",
+                                            "\r",
+                                            "RMdatalink.app.getController('BillingDetailsController').loadVendorTotalCountData() ;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "b63c079c-abba-4b5a-b626-4d2e096ea35f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "ecataLogTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "ECATALOG"
+                            },
+                            "designerId": "fd8a79b9-ec47-4747-bdf8-8b5c99e600e3",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "eCatalogListItemID"
+                                    },
+                                    "designerId": "cffb7ed6-cd1b-4c95-839b-25f8f47cd4e9",
+                                    "masterInstanceId": "659152ec-2846-4103-b689-b90bff37e861"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onEcataLogTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'pricingCard'+1;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "258ecf13-e00c-4294-bec4-ec15d6832622"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "smartCartTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "E-COMMERCE"
+                            },
+                            "designerId": "30a0e0df-0aa5-46a4-bb1c-a879fce31291",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "smartCartListItemID"
+                                    },
+                                    "designerId": "f25f0098-857d-4371-83d7-034fbf220be0",
+                                    "masterInstanceId": "659152ec-2846-4103-b689-b90bff37e861"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onSmartCartTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'pricingCard'+2;\r",
+                                            ""
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "0df0d83d-bd6b-4f78-8589-57a8f25ff011"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "hidden": true,
+                                "itemId": "rmPLCTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "RM PRO"
+                            },
+                            "designerId": "aed68fbc-ef17-4d20-b95b-f77984296b8a",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Select",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": "right",
+                                        "height": "30px",
+                                        "itemId": "rm_proPricingPolicySelectFld1",
+                                        "label": null,
+                                        "placeHolder": "Select Pricing Policy",
+                                        "store": null,
+                                        "style": "font-size:80%;",
+                                        "width": "200px"
+                                    },
+                                    "designerId": "ca8e48a4-6efa-4e69-a0c1-1427be4b2524"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "rmPLCListItemID",
+                                        "margin": "0 -180px 0 0"
+                                    },
+                                    "designerId": "0ac513c1-7b09-433d-bdb3-d529932b536e",
+                                    "masterInstanceId": "659152ec-2846-4103-b689-b90bff37e861"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRmPLCTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'pricingCard'+3;\r",
+                                            ""
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "ccb0c4e8-3c98-4c43-a827-866b2bcde25e"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "iRugsTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "IRUGZ"
+                            },
+                            "designerId": "7b74f297-b89c-4345-87a1-79d16933450d",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "iRugzListItemID"
+                                    },
+                                    "designerId": "fe1068b3-bb20-4600-aa92-d4ddc5afa90c",
+                                    "masterInstanceId": "659152ec-2846-4103-b689-b90bff37e861"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onIRugsTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'pricingCard'+4;\r",
+                                            ""
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "33f3b9a2-806b-42ca-9dd8-7a2833a04f36"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "onActiveItemChanged",
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelWidth33"
+                        ],
+                        "designer|displayName": "pricingSideContainer",
+                        "designer|uiInterfaceName": "light",
+                        "itemId": "pricingSideContainerItemID",
+                        "layout|flex": 1,
+                        "margin": "0 19 0 0",
+                        "ui": "light"
+                    },
+                    "designerId": "32910dce-fa53-46e5-a259-8434c356eb9c",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "activeTab": null,
+                                "docked": "top"
+                            },
+                            "designerId": "39c48a66-f491-45a5-be72-f86c1e47a84b"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "pricingPolicyTab",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "title": "PRICING POLICY",
+                                "ui": ""
+                            },
+                            "designerId": "df5cb40c-c527-42be-af9b-916b5eecae65",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.form.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdformpanel"
+                                        ],
+                                        "docked": null,
+                                        "height": "30px",
+                                        "layout": null,
+                                        "layout|flex": null,
+                                        "scrollable": false
+                                    },
+                                    "designerId": "25454c1e-b44c-4121-9aa4-0a5c1a316251",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "autoSelect": false,
+                                                "centered": true,
+                                                "itemId": "pricingPolicySkuIncrementSelectFld",
+                                                "label": "Pricing Policy",
+                                                "options": [
+                                                    "[\r",
+                                                    "    \r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Policy 1',\r",
+                                                    "        \"value\":500\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Policy 2',\r",
+                                                    "        \"value\": 1000\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Policy 3',\r",
+                                                    "        \"value\": 1500\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Policy 4',\r",
+                                                    "        \"value\": 2000\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Policy 5',\r",
+                                                    "        \"value\": 2500\r",
+                                                    "    }\r",
+                                                    "    \r",
+                                                    "    \r",
+                                                    "]"
+                                                ],
+                                                "placeHolder": "Select Pricing Policy"
+                                            },
+                                            "designerId": "30190c76-741c-441b-9411-67277c9f3957"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "pricingPolicy1stList",
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "fb9cf41e-00bb-4e87-aeb4-3c04143d2b5b",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                },
+                                {
+                                    "type": "Ext.form.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdformpanel"
+                                        ],
+                                        "height": "30px",
+                                        "layout": null,
+                                        "layout|flex": null,
+                                        "scrollable": false
+                                    },
+                                    "designerId": "4d36d48b-da83-4b09-9bc8-b756bc29f799",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "autoSelect": false,
+                                                "centered": true,
+                                                "itemId": "DiscountPolicyVendorsIncrementSelectFld",
+                                                "label": "Discount Policy",
+                                                "options": [
+                                                    "[\r",
+                                                    "    \r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Discount Policy 1',\r",
+                                                    "        \"value\":5\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Discount Policy 2',\r",
+                                                    "        \"value\": 10\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \"text\": 'Discount Policy 3',\r",
+                                                    "        \"value\": 15\r",
+                                                    "    }\r",
+                                                    "    \r",
+                                                    "    \r",
+                                                    "]"
+                                                ],
+                                                "placeHolder": "Select Discount Policy"
+                                            },
+                                            "designerId": "181b3973-1a18-49a9-bda8-c43683687cb0"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "pricingPolicy2ndList",
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "8f2d1147-d2c2-4769-bdca-3cdafb639015",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "hidden": null,
+                                "itemId": "functionalityTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "FUNCTIONALITY"
+                            },
+                            "designerId": "2901e783-19fc-461b-b5a4-aa926021b2d8",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "fuctionalityList"
+                                    },
+                                    "designerId": "56555f35-88d2-45d1-8cec-b954afe4fa00",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "hidden": null,
+                                "itemId": "permissionTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "PERMISSION"
+                            },
+                            "designerId": "8f4e59d5-d998-4786-b7b5-7649b59c29be",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "permissionList"
+                                    },
+                                    "designerId": "33744e28-187f-46c9-9b5d-408e954e43be",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onContainerInitialize",
+                "implHandler": [
+                    "\r",
+                    "  component.down('#detailsSaveBtn').element.on(\"tap\",function(){\r",
+                    "\r",
+                    "     RMdatalink.app.getController('BillingDetailsController').pricingSavedButtonFunctionality();\r",
+                    "\r",
+                    "});\r",
+                    "\r",
+                    ""
+                ],
+                "name": "initialize"
+            },
+            "designerId": "e37bca0a-f1f4-4ac1-9d6b-bdf77344833e"
+        }
+    ]
+}

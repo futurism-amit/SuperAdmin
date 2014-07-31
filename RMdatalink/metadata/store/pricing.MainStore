@@ -1,0 +1,61 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userClassName": "pricing.MainStore",
+        "model": "pricing.MainDataModel",
+        "pageNo": 1,
+        "storeId": "pricing.MainStore",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "totalNoOfPages": "number",
+        "cachedData": "object",
+        "pageNo": "number"
+    },
+    "designerId": "dc0de886-aa06-4037-b256-49922ea6ae46",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreUpdaterecord",
+                "implHandler": [
+                    "RMdatalink.util.DataLoader.onRetailerMasterStoreUpdate(store,record,newIndex,oldIndex,modifiedFieldNames,modifiedValues,eOpts);\r",
+                    "\r",
+                    ""
+                ],
+                "name": "updaterecord"
+            },
+            "designerId": "ddf2cef2-0db9-4ff0-af00-195fee9daf80"
+        }
+    ]
+}

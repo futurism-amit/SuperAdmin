@@ -1,0 +1,173 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "bluebooklistcontainer",
+        "designer|userClassName": "BlueBookListContainer",
+        "layout": "vbox"
+    },
+    "designerId": "55e66ef3-33c8-4ab1-88ef-e9968d5b6d8e",
+    "cn": [
+        {
+            "type": "Ext.dataview.DataView",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "actionSorting": "sortingStore",
+                "cls": [
+                    "x-rm-list-header"
+                ],
+                "designer|displayName": "headerList",
+                "height": "30px",
+                "itemId": "headerList",
+                "layout|flex": null,
+                "scrollable": false
+            },
+            "designerId": "07a8ee5b-157e-4e2c-a6bf-a9434c243369",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "actionSorting",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            ""
+                        ]
+                    },
+                    "designerId": "801dea89-0b6c-4fbb-b80b-2f419a527069"
+                }
+            ]
+        },
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "action": "setScrollBarVisible",
+                "allowDeselect": true,
+                "cls": [
+                    "x-rm-list"
+                ],
+                "designer|displayName": "mainList",
+                "itemHeight": 50,
+                "itemId": "mainList",
+                "layout|flex": 1
+            },
+            "designerId": "a9a5bd4b-7824-4483-babd-b75c87f7f962",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "action",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            ""
+                        ]
+                    },
+                    "designerId": "e4876304-72ab-4bdc-afeb-ef6abb2eeb94"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onMainListSelect",
+                        "implHandler": [
+                            "\r",
+                            "var rdTabPanel =  Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0];\r",
+                            "\r",
+                            "if(rdTabPanel.getActiveItem().getItemId() == \"CmpContactTab\"){\r",
+                            "\r",
+                            "\r",
+                            "    var store = dataview.getStore();\r",
+                            "    for(var i=0; i < store.getData().all.length ; i++ ){\r",
+                            "\r",
+                            "        var strRec = store.getAt(i);\r",
+                            "        strRec.set(\"is_account_mgr\",false);\r",
+                            "\r",
+                            "    }\r",
+                            "\r",
+                            "    record.set(\"is_account_mgr\",true);\r",
+                            "\r",
+                            "    //        Ext.ComponentQuery.query('#RDUsersTab')[0].setActiveItem(1);\r",
+                            "\r",
+                            "        //  RMdatalink.app.getController('RetailerDeatilsDataSet').actionVisitCompanyProfile(index,record);\r",
+                            "\r",
+                            "}\r",
+                            "else{\r",
+                            "\r",
+                            "    if(rdTabPanel.getTabBar().getAt(1).getHidden())\r",
+                            "    {\r",
+                            "        Ext.ComponentQuery.query('#RDBlueBookTab')[0].setActiveItem(1);\r",
+                            "    }\r",
+                            "    else\r",
+                            "    {\r",
+                            "        Ext.ComponentQuery.query('#RDUsersTab')[0].setActiveItem(1);\r",
+                            "\r",
+                            "    }\r",
+                            "\r",
+                            "    RMdatalink.app.getController('RetailerDeatilsDataSet').actionVisitProfile(index,record);\r",
+                            "\r",
+                            "}\r",
+                            ""
+                        ],
+                        "name": "select"
+                    },
+                    "designerId": "0be9f9b1-9d30-4ef6-8db8-7d39ea99fb9c"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onMainListDisclose",
+                        "implHandler": [
+                            "   RMdatalink.app.getController('RetailerDeatilsDataSet').actionVisitCompanyProfile(index,record);\r",
+                            ""
+                        ],
+                        "name": "disclose"
+                    },
+                    "designerId": "77ee4f72-70db-42dd-985b-cf0618823f26"
+                }
+            ]
+        }
+    ]
+}

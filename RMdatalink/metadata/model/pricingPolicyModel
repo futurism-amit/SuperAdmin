@@ -1,0 +1,79 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pricingPolicyModel",
+        "designer|userClassName": "pricingPolicyModel"
+    },
+    "designerId": "060c524f-8d99-4427-ba57-4b3e8ba25b8f",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "designerId": "9df4240e-97cf-4a07-86e3-1352547e1391"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "from_sku",
+                "sortType": "asInt"
+            },
+            "designerId": "43ba2fa6-abd5-4eb8-a5bf-8705c358cee3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "to_sku",
+                "sortType": "asInt"
+            },
+            "designerId": "7e0c6eeb-40e7-4d39-828a-a89398698124"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "standard",
+                "sortType": "asFloat"
+            },
+            "designerId": "6dc98212-5d3b-4b36-b137-6367c4fccc5b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "promotional",
+                "sortType": "asFloat"
+            },
+            "designerId": "a589c5f5-9e3f-48d4-ab6a-196714de9c9a"
+        }
+    ]
+}

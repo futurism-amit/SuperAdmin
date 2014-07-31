@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "products.BillingDiscount",
+        "model": "products.BillingDiscount",
+        "storeId": "products.BillingDiscount"
+    },
+    "designerId": "40083085-20ba-4e93-a3b0-ebb6d14fb14b"
+}

@@ -1,0 +1,165 @@
+{
+   "name": "RMdatalink",
+   "indexHtmlPath": "index.html",
+   "url": null,
+   "js": [
+      {
+         "path": "touch/sencha-touch.js",
+         "x-bootstrap": true
+      },
+      {
+         "path": "bootstrap.js",
+         "x-bootstrap": true
+      },
+      {
+         "path": "app.js",
+         "bundle": true,
+         "update": "delta"
+      }
+   ],
+   "classes": [
+      {
+         "update": "full",
+         "definition": "NetworkManager.js",
+         "className": "RMdatalink.util.NetworkManager",
+         "js": [
+            "app/util/NetworkManager.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "DataLoader.js",
+         "update": "full",
+         "className": "RMdatalink.util.DataLoader",
+         "js": [
+            "app/util/DataLoader.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "Calendar.js",
+         "update": "full",
+         "className": "RMdatalink.util.Calendar",
+         "js": [
+            "app/util/Calendar.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "DataManager.js",
+         "update": "full",
+         "className": "RMdatalink.util.DataManager",
+         "js": [
+            "app/util/DataManager.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "globalConfig.js",
+         "update": "full",
+         "className": "RMdatalink.util.globalConfig",
+         "js": [
+            "app/util/globalConfig.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "globalMethods.js",
+         "update": "full",
+         "className": "RMdatalink.util.globalMethods",
+         "js": [
+            "app/util/globalMethods.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "iwa.js",
+         "update": "full",
+         "className": "RMdatalink.util.iwa",
+         "js": [
+            "app/util/iwa.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "messagingVariable.js",
+         "update": "full",
+         "className": "RMdatalink.util.messagingVariable",
+         "js": [
+            "app/util/messagingVariable.js"
+         ],
+         "css": []
+      },
+      {
+         "definition": "SocketIO.js",
+         "update": "full",
+         "className": "RMdatalink.util.SocketIO",
+         "js": [
+            "app/util/SocketIO.js"
+         ],
+         "css": []
+      }
+   ],
+   "css": [
+      {
+         "update": "delta",
+         "platform": [
+            "phone",
+            "tablet",
+            "desktop"
+         ],
+         "theme": "Default",
+         "path": "theme/sencha-touch-26f2e8a6-8295-45e9-9a22-615c35f94da5.css",
+         "_architect_active_theme": true
+      },
+      {
+         "path": "resources/css/calendar/Calendarcustom.css"
+      },
+      {
+         "path": "resources/css/custom.css"
+      },
+      {
+         "path": "resources/css/RMNavigationPanel/navigationPanelCSS.css"
+      },
+      {
+         "path": "resources/css/searchView/searchViewCSS.css"
+      },
+      {
+         "path": "resources/css/CardHeaderPanel/CardHeaderPanelCSS.css"
+      },
+      {
+         "path": "resources/css/actionDropDown/actionDropDownCSS.css"
+      },
+      {
+         "path": "resources/css/filterDropDown/filterDropDownCSS.css"
+      },
+      {
+         "path": "resources/css/detailsHeader/detailsHeaderCSS.css"
+      },
+      {
+         "path": "resources/css/alertPopUp/alertPopUpCSS.css"
+      }
+   ],
+   "appCache": {
+      "cache": [
+         "index.html"
+      ],
+      "network": [
+         "*"
+      ],
+      "fallback": []
+   },
+   "resources": [
+      "resources/images",
+      "resources/icons",
+      "resources/startup",
+      "app/data",
+      "resources/fonts"
+   ],
+   "ignore": [
+      ".svn$"
+   ],
+   "archivePath": "archive",
+   "requires": [],
+   "id": "231cdcef-dea1-4a31-b268-2f7d0f76a87b"
+}

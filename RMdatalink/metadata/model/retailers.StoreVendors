@@ -1,0 +1,159 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailersStoreVendors",
+        "designer|userClassName": "retailers.StoreVendors"
+    },
+    "designerId": "1de6d0c6-961d-4cda-8903-cdf7cdb3e0dd",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "store_name"
+            },
+            "designerId": "e4796782-d5d2-4a60-b5d0-e804492aa5ef"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "design"
+            },
+            "designerId": "09a5d24d-0ff1-492d-b4d6-01abbb104f4d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sku"
+            },
+            "designerId": "bd65f2ee-479a-4339-ba56-af5b7e7db4f4"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "status"
+            },
+            "designerId": "640d99b4-d2ec-4155-ae9a-d5b0381f5b1b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "store_city"
+            },
+            "designerId": "3802e01d-177b-4671-9753-f8f9f3f175bf"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "store_state"
+            },
+            "designerId": "7b5575b1-df61-4895-b274-ac55a92ba1c6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "SKU"
+            },
+            "designerId": "025871c5-ee1d-4bcd-a208-5253035b7f53"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vendor_name"
+            },
+            "designerId": "09168b2e-d49d-4f18-bd7a-8b4867eb1324"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "collections"
+            },
+            "designerId": "2f098259-a24d-452c-a537-56c6c4f2bbb1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "store_phone"
+            },
+            "designerId": "3a630cda-1a2a-49ec-be5b-cae266f2e81f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "_id"
+            },
+            "designerId": "e5784774-07fc-45b5-8983-a9fc414379d8"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vendor_id"
+            },
+            "designerId": "0b8fb438-b242-4c8e-aeed-c63fbad1b672"
+        }
+    ]
+}

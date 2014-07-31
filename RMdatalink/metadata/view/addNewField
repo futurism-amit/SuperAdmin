@@ -1,0 +1,214 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-alertpopup"
+        ],
+        "designer|userAlias": "addNewField",
+        "designer|userClassName": "addNewField",
+        "height": "130px",
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "addNewField",
+        "itemId": null,
+        "scrollable": false,
+        "showAnimation": [
+            "false"
+        ],
+        "width": "250px"
+    },
+    "designerId": "75e24f82-30c1-4baf-801a-7e4bb5ec29c4",
+    "cn": [
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "height": "96%",
+                "layout": null
+            },
+            "designerId": "1a906d80-b0f8-44aa-887b-5ac939eb6046",
+            "cn": [
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "setScrollBarVisible",
+                        "cls": [
+                            "x-rm-rdformpanel",
+                            "x-rm-rdmanagerform"
+                        ],
+                        "designer|displayName": null,
+                        "height": "98%",
+                        "itemId": null,
+                        "layout": null,
+                        "margin": "2%",
+                        "scrollable": true
+                    },
+                    "designerId": "64e949f8-ef02-4ef7-8661-94a1efe7e53a",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "itemId": "newFieldName",
+                                "label": "Field Name",
+                                "labelWidth": "100px",
+                                "maxLength": 20
+                            },
+                            "designerId": "994eec1b-2b8b-4be9-aa48-7e78bf977f06"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "itemId": "newFieldKey",
+                                "label": "Field Key",
+                                "labelWidth": "100px",
+                                "maxLength": 40
+                            },
+                            "designerId": "337e561e-5667-43db-a9a1-5ef9d03cda2a"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|pack": "center",
+                "designer|displayName": null,
+                "docked": "bottom",
+                "height": "30px",
+                "layout": "hbox",
+                "margin": "5 0 5 0",
+                "scrollable": null
+            },
+            "designerId": "fd775d8c-f517-476d-9ea0-325c77470554",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-alertpopupbtns"
+                        ],
+                        "designer|displayName": "addBtn",
+                        "designer|uiInterfaceName": "plain",
+                        "itemId": "createNewLabelAddBtn",
+                        "margin": "0 1%",
+                        "pressedCls": "x-rm-alertpopupbtns-pressing",
+                        "text": "ADD",
+                        "ui": "plain",
+                        "width": "100px"
+                    },
+                    "designerId": "8d937003-2480-493f-89c1-bb0603a93b09",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onAlertPopUpYesBtnTap",
+                                "implHandler": [
+                                    "RMdatalink.app.getController('inhouse.DetailScreenController').addNewRelFldBtnTaped() ;\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "name": "tap"
+                            },
+                            "designerId": "d3a63005-66c4-459f-853e-4341836a9616"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-alertpopupbtns"
+                        ],
+                        "designer|displayName": "cancelBtn",
+                        "designer|uiInterfaceName": "plain",
+                        "itemId": "alertCreateNewLabelNoBtn",
+                        "margin": "0 1%",
+                        "pressedCls": "x-rm-alertpopupbtns-pressing",
+                        "text": "CANCEL",
+                        "ui": "plain",
+                        "width": "100px"
+                    },
+                    "designerId": "edbae11a-a9df-4d15-ad3c-e4f9fdf15481",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onAlertPopUpNoBtnTap",
+                                "implHandler": [
+                                    "//this.fireEvent(\"alertdecline\",this);\r",
+                                    "this.destroy();"
+                                ],
+                                "name": "tap"
+                            },
+                            "designerId": "2ca675c4-e8d4-409a-8409-499ef5c96b17"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

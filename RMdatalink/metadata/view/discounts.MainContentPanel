@@ -1,0 +1,1578 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "discountsmaincontentpanel",
+        "designer|userClassName": "discounts.MainContentPanel",
+        "itemId": "discountsMainContentPanel",
+        "layout": "vbox",
+        "requires": [
+            "Ext.tab.Panel"
+        ],
+        "scrollable": false
+    },
+    "designerId": "22d6eed9-1b8b-4980-9606-f8d78b61a420",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "margin": null
+            },
+            "designerId": "ad66daea-3588-4931-a522-fd37fd565c21",
+            "masterInstanceId": "9da01505-5404-46af-b8c1-7b70b7fda3f7"
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "discountsContentPanel",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "afd6fad5-069d-478e-a507-cb7c4f3da85a",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "onActiveItemChanged",
+                        "cls": [
+                            "x-rm-tabpanel"
+                        ],
+                        "designer|displayName": "discountsTabPanel",
+                        "designer|uiInterfaceName": "light",
+                        "itemId": "discountsTabPanel",
+                        "layout|flex": 3,
+                        "ui": "light"
+                    },
+                    "designerId": "ab2d20fc-8bf7-40a0-bdde-860c2aef021f",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "discountsNavigationTabBar"
+                            },
+                            "designerId": "14ae0382-668c-47f8-b217-74718a110fcc"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsDataLinkTab",
+                                "itemId": "discountsDataLinkTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "DATALINK"
+                            },
+                            "designerId": "92414993-f92a-45a0-afc4-0dfa7671f7c5",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onUsersTabInitialize",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#discountListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"code\">',\r",
+                                            "               '        Code&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"startDate\">',\r",
+                                            "               '        Start&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"endDate\">',\r",
+                                            "               '    End&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"used\">',\r",
+                                            "               '        Used&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"comment\">',\r",
+                                            "               '        Comment&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "//resources/images/retailerDetail/correct_sign_selected.png\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#discountList');\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
+                                            "               '    <input type=\"text\" style=\"width: 30% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{id}\" value=\"{comment}\" maxlength=\"24\"',\r",
+                                            "               '        onchange=\"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').saveCommentForDiscount(this,\\'discountsDataLink\\');\"/>',\r",
+                                            "               '    <div id=\"LibraryDelete\" onclick = \"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').deleteDiscount({id},\\'discountsDataLink\\');\"></div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_datalink\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_ecatalog\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_smart_cart\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 5%;\">{[this.getTotalFor(\\'store_products_rm_plc\\')]}</div>',\r",
+                                            "//                '    <div style=\"width: 9%;\">{[this.getTotalFor(\\'store_monthly_subscription\\')]}</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         var sum = 0;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             if(value=='store_products_datalink' || value=='store_products_ecatalog' ||\r",
+                                            "//                                value=='store_products_smart_cart' || value=='store_products_rm_plc') {\r",
+                                            "//                                 if(y === true)\r",
+                                            "//                                     x.push(y);\r",
+                                            "//                             }\r",
+                                            "//                             else if(value == 'store_monthly_subscription') {\r",
+                                            "//                                 y = parseFloat(y.replace(\"$\",'').replace(\",\",\"\"));\r",
+                                            "//                                 sum+=y;\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         if(value == 'store_monthly_subscription')\r",
+                                            "//                             return '$'+Math.round(sum);\r",
+                                            "//                         else\r",
+                                            "//                             return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "4489dbc4-eda8-4321-81c9-0954c5b0e18b"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onUsersTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'discountCard'+0;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "d2e62b62-2d8d-454e-8fbe-a67f3c8c70ae"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "5db6a7c5-8ba2-4c41-9926-509b8285cf62",
+                                    "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsEcatlogTab",
+                                "itemId": "discountsEcatlogTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "ECATLOG"
+                            },
+                            "designerId": "06951a39-9d84-40f9-a710-7e4d1d2341fb",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabInitialize",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#discountListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"code\">',\r",
+                                            "               '        Code&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"startDate\">',\r",
+                                            "               '        Start&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"endDate\">',\r",
+                                            "               '    End&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"used\">',\r",
+                                            "               '        Used&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"comment\">',\r",
+                                            "               '        Comment&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#discountList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
+                                            "               '    <input type=\"text\" style=\"width: 30% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{id}\" value=\"{comment}\" maxlength=\"24\"',\r",
+                                            "               '        onchange=\"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').saveCommentForDiscount(this,\\'discountsEcatlogTab\\');\"/>',\r",
+                                            "               '    <div id=\"LibraryDelete\" onclick = \"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').deleteDiscount({id},\\'discountsEcatlogTab\\');\"></div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "9e69db20-167d-4ab4-bd56-2be75eb338c3"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'discountCard'+1;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "0e815f1a-1370-4046-add7-f5f8f8fd160e"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "75db825b-35de-4035-bfbb-37359c47947b",
+                                    "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsSmartCartTab",
+                                "itemId": "discountsSmartCartTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "SMART CART"
+                            },
+                            "designerId": "b49a52ad-ef48-4789-9d18-7f0292e15885",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabInitialize1",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#discountListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"code\">',\r",
+                                            "               '        Code&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"startDate\">',\r",
+                                            "               '        Start&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"endDate\">',\r",
+                                            "               '    End&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"used\">',\r",
+                                            "               '        Used&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"comment\">',\r",
+                                            "               '        Comment&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#discountList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
+                                            "               '    <input type=\"text\" style=\"width: 30% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{id}\" value=\"{comment}\" maxlength=\"24\"',\r",
+                                            "               '        onchange=\"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').saveCommentForDiscount(this,\\'discountsSmartCartTab\\');\"/>',\r",
+                                            "               '    <div id=\"LibraryDelete\" onclick = \"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').deleteDiscount({id},\\'discountsSmartCartTab\\');\"></div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "ef9717c8-0b05-4ed4-a5cb-e0fdef865470"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabPainted1",
+                                        "implHandler": [
+                                            "window.location.hash = 'discountCard'+2;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "1ed17853-54fa-4531-afe8-297fbec4e6cc"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "563c2289-1d50-4642-8046-fa37cc966eb7",
+                                    "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsRMPLCTab",
+                                "itemId": "discountsRMPLCTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "RM PLC"
+                            },
+                            "designerId": "5c3ae592-32cf-492e-9cbe-0d11a7954d73",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabInitialize11",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#discountListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"code\">',\r",
+                                            "               '        Code&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"startDate\">',\r",
+                                            "               '        Start&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"endDate\">',\r",
+                                            "               '    End&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"used\">',\r",
+                                            "               '        Used&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"comment\">',\r",
+                                            "               '        Comment&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#discountList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
+                                            "               '    <input type=\"text\" style=\"width: 30% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{id}\" value=\"{comment}\" maxlength=\"24\"',\r",
+                                            "               '        onchange=\"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').saveCommentForDiscount(this,\\'discountsRMPLCTab\\');\"/>',\r",
+                                            "               '    <div id=\"LibraryDelete\" onclick = \"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').deleteDiscount({id},\\'discountsRMPLCTab\\');\"></div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "cfccc54d-45ee-41ff-8ed6-fa922a64b995"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabPainted11",
+                                        "implHandler": [
+                                            "window.location.hash = 'discountCard'+3;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "4153acc5-11da-4907-a800-d0a8fa8978c3"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "ad05d8e6-e310-412f-b8d8-532f6d40b534",
+                                    "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsIrugzTab",
+                                "itemId": "discountsIrugzTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "IRUGZ"
+                            },
+                            "designerId": "ebc86221-7af6-401f-937b-393bde980561",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabInitialize111",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#discountListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"code\">',\r",
+                                            "               '        Code&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"startDate\">',\r",
+                                            "               '        Start&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"endDate\">',\r",
+                                            "               '    End&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"used\">',\r",
+                                            "               '        Used&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"comment\">',\r",
+                                            "               '        Comment&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#discountList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
+                                            "               '    <input type=\"text\" style=\"width: 30% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{id}\" value=\"{comment}\" maxlength=\"24\"',\r",
+                                            "               '        onchange=\"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').saveCommentForDiscount(this,\\'discountsIrugzTab\\');\"/>',\r",
+                                            "               '    <div id=\"LibraryDelete\" onclick = \"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').deleteDiscount({id},\\'discountsIrugzTab\\');\"></div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "54a1742d-41a4-45a7-a7d7-135fa6cacecf"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabPainted111",
+                                        "implHandler": [
+                                            "window.location.hash = 'discountCard'+4;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "02ac7462-8837-4ef8-9749-70e8ed8762df"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "b8f225d3-c0e4-40b7-b127-aec2ae9c5bef",
+                                    "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelWidth50"
+                        ],
+                        "designer|displayName": "discountsSidePanel",
+                        "designer|uiInterfaceName": "light",
+                        "itemId": "discountsSidePanel",
+                        "layout|flex": 2,
+                        "margin": "8 20 0 10",
+                        "ui": "light"
+                    },
+                    "designerId": "f35b4e42-0c9a-44b9-b128-77c515b2250d",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "discountsSideNavigationTabBar"
+                            },
+                            "designerId": "7a94ee5d-03a4-4598-b198-f4ef848e8024"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsSideCreateNewkTab",
+                                "itemId": "discountsSideCreateNewkTab",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "title": "CREATE NEW",
+                                "width": null
+                            },
+                            "designerId": "efa82294-8f4b-4140-ad19-363bcc30df34",
+                            "cn": [
+                                {
+                                    "type": "Ext.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "width": "100%"
+                                    },
+                                    "designerId": "e7dcee27-9237-4d4e-af98-7deb6943a558",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-filterbtn",
+                                                    "x-rm-blueBtn"
+                                                ],
+                                                "docked": "right",
+                                                "height": "25px",
+                                                "itemId": "discountCreateNewClear",
+                                                "minWidth": "70px",
+                                                "pressedCls": "x-rm-blueBtn-pressing",
+                                                "text": "New",
+                                                "width": "70px"
+                                            },
+                                            "designerId": "bf52f69e-ae64-4322-9bf7-a8d6214d24a4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdformpanel",
+                                            "x-rm-rdmanagerform"
+                                        ],
+                                        "itemId": "discountsCreateNewForm",
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "margin": "20px 0 0 0",
+                                        "scrollable": false,
+                                        "style": null,
+                                        "width": "100%"
+                                    },
+                                    "designerId": "e80009bf-8bc4-475f-b27b-d3c4fdfc3d12",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "actionChange": null,
+                                                "itemId": "discountCreateNewDCodeTextField",
+                                                "label": "Discount Code",
+                                                "labelWidth": "120px",
+                                                "maxLength": 8,
+                                                "width": null
+                                            },
+                                            "designerId": "3d8f0b19-0b0b-4c1c-bb92-882e2ea47d31",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "actionChange",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "baseCls": "x-form-fieldset normalTitle",
+                                                "html": null,
+                                                "layout": "vbox",
+                                                "layout|flex": null,
+                                                "margin": "2% 0 0 2%",
+                                                "style": null,
+                                                "title": "How many times can this discount be used ?",
+                                                "width": "100%"
+                                            },
+                                            "designerId": "fba8cc0b-b56a-49d0-9fb6-e422eba1b8ba",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "actionChange": "textChange",
+                                                        "html": null,
+                                                        "inputCls": "fontNormalForDiscount",
+                                                        "itemId": "discountCreateNewDCountTextField",
+                                                        "label": "OO No Limit",
+                                                        "labelAlign": "right",
+                                                        "labelCls": "discountFieldsetLabel",
+                                                        "labelWidth": "100px",
+                                                        "margin": "0% 0% 0% 20% ",
+                                                        "width": "60%"
+                                                    },
+                                                    "designerId": "c186fc1b-bdf8-46be-a2bc-1cb13b7c16d5",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "actionChange",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "baseCls": "x-form-fieldset normalTitle",
+                                                "html": null,
+                                                "layout": "vbox",
+                                                "margin": "2% 0 0 2%",
+                                                "style": null,
+                                                "title": "Select the type of discount and set any extra conditions."
+                                            },
+                                            "designerId": "2f1bedf9-5cd6-4618-b4ad-2ba290714087",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "itemId": "usdFieldSetItemId",
+                                                        "layout": "hbox",
+                                                        "title": null
+                                                    },
+                                                    "designerId": "5dd3d90f-75f9-4e4f-b9c4-86eaf5de26cd",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "<div style= \"font-size: 12px;\" class=\"x-rm-radio-discount\"><input id = \"usd\" style=\"height: 12px;width: 12px;\" class=\"pointerCursor\" type=\"radio\" name=\"discount-radio\" checked=\"true\" onchange =\"RMdatalink.app.getController  ('discount.DiscountTabHandler').onRadioBtnSelectionEnabledisable(this);\"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img   src=\"resources/images/retailerDetail/doller_sign.png\" style=\"margin-right: 10px;height: 17px;width: 10px;\"/>&nbsp;&nbsp;USD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+                                                                "margin": "1% 0% 0% 2% "
+                                                            },
+                                                            "designerId": "7b8be921-1b79-41f8-b48e-a1f552fc5b79"
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "actionChange": "textChange",
+                                                                "disabled": null,
+                                                                "html": null,
+                                                                "inputCls": "fontNormalForDiscount",
+                                                                "itemId": "discountCreateNewDinDollorsTextField",
+                                                                "label": "Taken off per month",
+                                                                "labelAlign": "right",
+                                                                "labelCls": "discountFieldsetLabel",
+                                                                "labelWidth": "130px",
+                                                                "margin": "1% 0% 0% 2% ",
+                                                                "maxLength": 6,
+                                                                "width": "60%"
+                                                            },
+                                                            "designerId": "d698ca40-2b37-4eb2-9086-9d6162ad9786",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "actionChange",
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "itemId": "usdFieldSetItemId1",
+                                                        "layout": "hbox",
+                                                        "title": null
+                                                    },
+                                                    "designerId": "910240d9-6bfc-4be1-8018-1c12857e6e77",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "<div style= \"font-size: 12px;\" class=\"x-rm-radio-discount\"><input id = \"discount\" class=\"pointerCursor\" type=\"radio\" name=\"discount-radio\" onchange =\"RMdatalink.app.getController  ('discount.DiscountTabHandler').onRadioBtnSelectionEnabledisable(this);\"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img   src=\"resources/images/retailerDetail/percentage_sign.png\" style=\"margin-right: 10px;height: 16px;width: 17px;\"/>Discount&nbsp;</div>",
+                                                                "margin": "1% 0% 0% 2% "
+                                                            },
+                                                            "designerId": "0dd63f01-4ced-49cd-956c-eb0337d197d0"
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "actionChange": "textChange",
+                                                                "disabled": true,
+                                                                "html": null,
+                                                                "inputCls": "fontNormalForDiscount",
+                                                                "itemId": "discountCreateNewDinPercentTextField",
+                                                                "label": "Taken off per month",
+                                                                "labelAlign": "right",
+                                                                "labelCls": "discountFieldsetLabel",
+                                                                "labelWidth": "130px",
+                                                                "margin": "1% 0% 0% 2% ",
+                                                                "maxLength": 6,
+                                                                "width": "60%"
+                                                            },
+                                                            "designerId": "c9f41d4c-ba76-4e10-9750-a1e186d9776b",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "actionChange",
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "baseCls": "x-form-fieldset normalTitle",
+                                                "container|align": "start",
+                                                "html": null,
+                                                "layout": "hbox",
+                                                "margin": "2% 0 0 2%",
+                                                "minWidth": null,
+                                                "style": null,
+                                                "title": "How long doee discount apply to a subscription?",
+                                                "width": "95%"
+                                            },
+                                            "designerId": "6a6007cc-7ca0-4928-92a7-24c0e3ff3313",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "actionChange": "textChange",
+                                                        "html": null,
+                                                        "inputCls": "fontNormalForDiscount",
+                                                        "itemId": "discountCreateNewDValidMonthsTextField",
+                                                        "label": "Months",
+                                                        "labelAlign": "right",
+                                                        "labelCls": "discountFieldsetLabel",
+                                                        "labelWidth": "60px",
+                                                        "layout|flex": 1,
+                                                        "margin": "1% 0% 0% 2% ",
+                                                        "maxLength": 2,
+                                                        "width": null
+                                                    },
+                                                    "designerId": "ccc2afa2-d19a-450c-aa51-a22d109cb6ce",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "actionChange",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "actionChange": "textChange",
+                                                        "html": null,
+                                                        "inputCls": "fontNormalForDiscount",
+                                                        "itemId": "discountCreateNewDValidDaysTextField",
+                                                        "label": "Days",
+                                                        "labelAlign": "right",
+                                                        "labelCls": "discountFieldsetLabel",
+                                                        "labelWidth": "60px",
+                                                        "layout|flex": 1,
+                                                        "margin": "1% 0% 0% 2% ",
+                                                        "maxLength": 2,
+                                                        "width": null
+                                                    },
+                                                    "designerId": "85ab5ec2-7eae-4f9e-8d1b-923f68b5fe1f",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "actionChange",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "baseCls": "x-form-fieldset normalTitle",
+                                                "container|align": "start",
+                                                "html": null,
+                                                "layout": "hbox",
+                                                "margin": "2% 0 0 2%",
+                                                "minWidth": null,
+                                                "style": null,
+                                                "title": "How long is this promotion available",
+                                                "width": null
+                                            },
+                                            "designerId": "bf0a3e26-8898-46e0-ac39-04344360daa4",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "inputCls": "fontNormalForDiscount",
+                                                        "itemId": "discountCreateNewDStartDateTextField",
+                                                        "label": "Start Date",
+                                                        "labelCls": "discountFieldsetLabel",
+                                                        "labelWidth": "80px",
+                                                        "margin": "1% 0% 0% 1% ",
+                                                        "width": "160px"
+                                                    },
+                                                    "designerId": "d8dbba44-3e87-4e07-a621-8168c4b58c8a",
+                                                    "cn": [
+                                                        {
+                                                            "type": "basiceventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onDiscountCreateNewDStartDateTextFieldInitialize",
+                                                                "implHandler": [
+                                                                    "component.element.on(\"tap\",function(){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "        function fn(newDate){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "            component.setValue(Ext.Date.format(newDate, \"m/d/Y\"));\r",
+                                                                    "            RMdatalink.util.Calendar.hideCalendar();\r",
+                                                                    "             component.setDisabled(false);\r",
+                                                                    "\r",
+                                                                    "        }\r",
+                                                                    "\r",
+                                                                    "        RMdatalink.util.Calendar.showCalendar(fn,component);\r",
+                                                                    "        component.setDisabled(true);\r",
+                                                                    "\r",
+                                                                    "});"
+                                                                ],
+                                                                "name": "initialize"
+                                                            },
+                                                            "designerId": "d9bbff33-263b-41a9-9229-321a9bf82d1a"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "inputCls": "fontNormalForDiscount",
+                                                        "itemId": "discountCreateNewDEndDateTextField",
+                                                        "label": "End Date",
+                                                        "labelCls": "discountFieldsetLabel",
+                                                        "labelWidth": "80px",
+                                                        "margin": "1% 0% 0% 0% ",
+                                                        "width": "160px"
+                                                    },
+                                                    "designerId": "a2324b7b-62dc-4704-bd45-5a0af41074b9",
+                                                    "cn": [
+                                                        {
+                                                            "type": "basiceventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onDiscountCreateNewDEndDateTextFieldInitialize",
+                                                                "implHandler": [
+                                                                    "component.element.on(\"tap\",function(){\r",
+                                                                    "\r",
+                                                                    "        function fn(newDate){\r",
+                                                                    "            component.setValue(Ext.Date.format(newDate, \"m/d/Y\"));\r",
+                                                                    "            RMdatalink.util.Calendar.hideCalendar();\r",
+                                                                    "            component.setDisabled(false);\r",
+                                                                    "        }\r",
+                                                                    "\r",
+                                                                    "        RMdatalink.util.Calendar.showCalendar(fn,component);\r",
+                                                                    "        component.setDisabled(true);\r",
+                                                                    "});\r",
+                                                                    ""
+                                                                ],
+                                                                "name": "initialize"
+                                                            },
+                                                            "designerId": "1392a77c-26d3-4e98-bc49-7b9156b9d46f"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Spacer",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": " <center class=\"discount\"><input class=\"pointerCursor\" style=\"margin-top:5px;\" type=\"checkbox\" data-name=\"NeverExpires\"/>&nbsp;&nbsp;Never Expires</center>",
+                                                "margin": "2% 0 0 0",
+                                                "maxHeight": "30px",
+                                                "style": "font-size:70%;"
+                                            },
+                                            "designerId": "3a554b5a-b5b8-4d67-ab7b-fb4300650656"
+                                        },
+                                        {
+                                            "type": "Ext.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "baseCls": "x-form-fieldset normalTitle",
+                                                "container|align": "center",
+                                                "container|pack": "center",
+                                                "html": null,
+                                                "layout": "hbox",
+                                                "margin": "2% 0 0 2%",
+                                                "style": null
+                                            },
+                                            "designerId": "2f24804b-242d-46ee-a007-6625113c41ae",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "grayBtn"
+                                                        ],
+                                                        "height": "25px",
+                                                        "itemId": "discountCreateNewDCancelBtn",
+                                                        "minWidth": "70px",
+                                                        "pressedCls": null,
+                                                        "style": null,
+                                                        "text": "Cancel"
+                                                    },
+                                                    "designerId": "247a317c-aa83-4b50-bb10-1643db53aada"
+                                                },
+                                                {
+                                                    "type": "Ext.Spacer",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "width": 20
+                                                    },
+                                                    "designerId": "95b765b6-59c3-48de-89b3-4a9963141a48"
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "x-rm-filterbtn",
+                                                            "x-rm-blueBtn"
+                                                        ],
+                                                        "height": "25px",
+                                                        "itemId": "discountCreateNewUpdateBtn",
+                                                        "minWidth": "70px",
+                                                        "pressedCls": "x-rm-blueBtn-pressing",
+                                                        "style": null,
+                                                        "text": "Add New/Update"
+                                                    },
+                                                    "designerId": "500af57d-caa8-45e0-9c07-d649f5b60865"
+                                                },
+                                                {
+                                                    "type": "Ext.Spacer",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "width": 20
+                                                    },
+                                                    "designerId": "337170af-4c9f-49c7-907d-b85802c53197"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsSidePreviousTab",
+                                "itemId": "discountsSidePreviousTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "PREVIOUS"
+                            },
+                            "designerId": "8cf80690-f493-462d-bec7-b4dd732ec8f4",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabInitialize2",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#discountListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"code\">',\r",
+                                            "               '        Code&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"startDate\">',\r",
+                                            "               '        Start&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"endDate\">',\r",
+                                            "               '    End&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"used\">',\r",
+                                            "               '        Used&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"comment\">',\r",
+                                            "               '        Comment&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#discountList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 20%;\">{code}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\">{status}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\">{startDate}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\">{endDate}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\">{used}</div>',\r",
+                                            "               '    <input type=\"text\" class=\"x-rm-rdinlinecmt\" data-id=\"{id}\" value=\"{comment}\" maxlength=\"24\"',\r",
+                                            "               '        onchange=\"RMdatalink.app.getController(\\'RetailerDeatilsDataSet\\').saveCommentForDiscount(this,\\'discountsSidePreviousTab\\');\"/>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "//list.onStoreClear();\r",
+                                            "//list.refresh();\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// var totalsList = component.down('#inhouseTotalsList');\r",
+                                            "// var store = list.getStore();\r",
+                                            "// totalsList.setData([{}]);\r",
+                                            "// totalsList.setItemTpl(\r",
+                                            "//     Ext.create('Ext.XTemplate',\r",
+                                            "//                '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "//                '    <div style=\"width: 6%;\">TOTALS</div>',\r",
+                                            "//                '    <div style=\"width: 12%;\">{[this.getTotalFor(\\'store_name\\')]}&nbsp; Retailers</div>',\r",
+                                            "//                '    <div style=\"width: 10%;\">{[this.getTotalFor(\\'Users\\')]}&nbsp; Users</div>',\r",
+                                            "//                '    <div style=\"width: 43%;\">{[this.getTotalFor(\\'store_city\\')]}&nbsp; Cities</div>',\r",
+                                            "//                '</div>',\r",
+                                            "//                {\r",
+                                            "//                     getTotalFor: function(value){\r",
+                                            "//                         var x = [];\r",
+                                            "//                         var y;\r",
+                                            "//                         store.each(function(record,id){\r",
+                                            "//                             if(value=='Users') {\r",
+                                            "//                                 y = record.get('manager_firstname')+\" \"+record.get('manager_lastname');\r",
+                                            "//                             }\r",
+                                            "//                             else\r",
+                                            "//                                 y = record.get(value);\r",
+                                            "//                             Ext.Array.include(x,y);\r",
+                                            "//                         });\r",
+                                            "//                         return x.length;\r",
+                                            "//                     }\r",
+                                            "//                }\r",
+                                            "//               )\r",
+                                            "// );\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "7f524385-2f1a-4bd3-b698-2401e69403a0"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabPainted2",
+                                        "implHandler": [
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "//window.location.hash = 'retailerCard'+1;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "ee51d4c8-1760-439e-9e4d-4c6d24348ed7"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "74e196ed-653e-4802-9af1-78a7b9ec1a08",
+                                    "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,410 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "designer|userAlias": "rtCustomSearchPanel",
+        "designer|userClassName": "retailers.CustomFilterView",
+        "height": "300px",
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "itemId": "rtCustomSearchPanel",
+        "layout": "vbox",
+        "scrollable": true,
+        "showAnimation": [
+            "false"
+        ],
+        "width": "400px"
+    },
+    "designerId": "45b788f4-7594-4e08-938f-534de75fec3c",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "layout|flex": 1,
+                "margin": "4% 5% 1% 2%"
+            },
+            "designerId": "2f7f53b5-df85-4ffb-b592-874d9b1b08fd",
+            "cn": [
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "productStatusChange",
+                        "autoSelect": false,
+                        "inputCls": null,
+                        "itemId": "rtFilterDatalinkStatusSelFld",
+                        "label": "Datalink",
+                        "options": [
+                            "[\r",
+                            "    \r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"ACTIVE\",\r",
+                            "        value:\"ACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"INACTIVE\",\r",
+                            "        value:\"INACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PROSPECT\",\r",
+                            "        value:\"PROSPECT\"\r",
+                            "    },\r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"HOT PROSPECT\",\r",
+                            "        value:\"HOT_PROSPECT\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PENDING\",\r",
+                            "        value:\"PENDING\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"Skip This\",\r",
+                            "        value:\"SKIP\"\r",
+                            "    }\r",
+                            "    \r",
+                            "]\r",
+                            "\r",
+                            "/*\r",
+                            "\r",
+                            "\r",
+                            "ACTIVE\r",
+                            "INACTIVE\r",
+                            "PROSPECT\r",
+                            "PENDING\r",
+                            "\r",
+                            "*/"
+                        ],
+                        "style": null,
+                        "value": null
+                    },
+                    "designerId": "0b6fd202-d1cc-4466-b142-e1b5366564bc",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "productStatusChange",
+                        "autoSelect": false,
+                        "inputCls": null,
+                        "itemId": "rtFilterEcatalogStatusSelFld",
+                        "label": "e-Catalog",
+                        "options": [
+                            "[\r",
+                            "    \r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"ACTIVE\",\r",
+                            "        value:\"ACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"INACTIVE\",\r",
+                            "        value:\"INACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PROSPECT\",\r",
+                            "        value:\"PROSPECT\"\r",
+                            "    },\r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"HOT PROSPECT\",\r",
+                            "        value:\"HOT_PROSPECT\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PENDING\",\r",
+                            "        value:\"PENDING\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"Skip This\",\r",
+                            "        value:\"SKIP\"\r",
+                            "    }\r",
+                            "    \r",
+                            "]\r",
+                            "\r",
+                            "/*\r",
+                            "\r",
+                            "\r",
+                            "ACTIVE\r",
+                            "INACTIVE\r",
+                            "PROSPECT\r",
+                            "PENDING\r",
+                            "\r",
+                            "*/"
+                        ]
+                    },
+                    "designerId": "9467b807-ad7f-4c7c-b0d8-90ce1cee3306",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "productStatusChange",
+                        "autoSelect": false,
+                        "inputCls": null,
+                        "itemId": "rtFilterECommerceStatusSelFld",
+                        "label": "e-Commerce",
+                        "options": [
+                            "[\r",
+                            "    \r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"ACTIVE\",\r",
+                            "        value:\"ACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"INACTIVE\",\r",
+                            "        value:\"INACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PROSPECT\",\r",
+                            "        value:\"PROSPECT\"\r",
+                            "    },\r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"HOT PROSPECT\",\r",
+                            "        value:\"HOT_PROSPECT\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PENDING\",\r",
+                            "        value:\"PENDING\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"Skip This\",\r",
+                            "        value:\"SKIP\"\r",
+                            "    }\r",
+                            "    \r",
+                            "]\r",
+                            "\r",
+                            "\r",
+                            "/*\r",
+                            "\r",
+                            "\r",
+                            "ACTIVE\r",
+                            "INACTIVE\r",
+                            "PROSPECT\r",
+                            "PENDING\r",
+                            "\r",
+                            "*/"
+                        ]
+                    },
+                    "designerId": "a4451236-fd72-4c54-bc33-7f3ff6f99456",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "productStatusChange",
+                        "autoSelect": false,
+                        "inputCls": null,
+                        "itemId": "rtFilterRM_proStatusSelFld",
+                        "label": "RM PRO",
+                        "options": [
+                            "[\r",
+                            "    \r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"ACTIVE\",\r",
+                            "        value:\"ACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"INACTIVE\",\r",
+                            "        value:\"INACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PROSPECT\",\r",
+                            "        value:\"PROSPECT\"\r",
+                            "    },\r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"HOT PROSPECT\",\r",
+                            "        value:\"HOT_PROSPECT\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PENDING\",\r",
+                            "        value:\"PENDING\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"Skip This\",\r",
+                            "        value:\"SKIP\"\r",
+                            "    }\r",
+                            "    \r",
+                            "]\r",
+                            "\r",
+                            "\r",
+                            "/*\r",
+                            "\r",
+                            "\r",
+                            "ACTIVE\r",
+                            "INACTIVE\r",
+                            "PROSPECT\r",
+                            "PENDING\r",
+                            "\r",
+                            "*/"
+                        ]
+                    },
+                    "designerId": "196eb68f-b6db-436f-a187-c353469c84bb",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "productStatusChange",
+                        "autoSelect": false,
+                        "inputCls": null,
+                        "itemId": "rtFilterirugzStatusSelFld",
+                        "label": "i-Rugs",
+                        "options": [
+                            "[\r",
+                            "    \r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"ACTIVE\",\r",
+                            "        value:\"ACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"INACTIVE\",\r",
+                            "        value:\"INACTIVE\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PROSPECT\",\r",
+                            "        value:\"PROSPECT\"\r",
+                            "    },\r",
+                            "    {\r",
+                            "        \r",
+                            "        text:\"HOT PROSPECT\",\r",
+                            "        value:\"HOT_PROSPECT\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"PENDING\",\r",
+                            "        value:\"PENDING\"\r",
+                            "    },\r",
+                            "        {\r",
+                            "        \r",
+                            "        text:\"Skip This\",\r",
+                            "        value:\"SKIP\"\r",
+                            "    }\r",
+                            "    \r",
+                            "]\r",
+                            "\r",
+                            "/*\r",
+                            "\r",
+                            "\r",
+                            "ACTIVE\r",
+                            "INACTIVE\r",
+                            "PROSPECT\r",
+                            "PENDING\r",
+                            "\r",
+                            "*/"
+                        ]
+                    },
+                    "designerId": "a51828df-83a8-4c86-ad0c-3667518e1bfa",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "customSearchApplyBtn",
+                        "text": "Apply And Search"
+                    },
+                    "designerId": "5115cfaf-1f0d-4b47-abbe-cf79414e6252"
+                }
+            ]
+        }
+    ]
+}

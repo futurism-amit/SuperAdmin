@@ -1,0 +1,1662 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "action": "setScrollBarVisible",
+        "cls": [
+            " x-rm-rdformpanel"
+        ],
+        "container|align": "start",
+        "designer|userAlias": "productdatalinkinvoice",
+        "designer|userClassName": "productDatalinkInvoice",
+        "id": "productRmproInvoicePanel1",
+        "itemId": "productDatalinkInvoicePanel",
+        "layout": "vbox",
+        "scrollable": "vertical",
+        "width": "100%"
+    },
+    "designerId": "5efb6ef8-67c0-4747-a1f8-30db31ef677d",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "action",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "baseCls": "none",
+                "border": "0 0 0 0",
+                "itemId": "invoiceDatalinkHideShowFldSet",
+                "layout": "hbox",
+                "margin": "10 0 0 20",
+                "style": null,
+                "title": null
+            },
+            "designerId": "6133a39d-b286-4e92-b70e-f011b73b9c66",
+            "cn": [
+                {
+                    "type": "Ext.Img",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "30px;",
+                        "itemId": "invoiceDatalinkHideShowImg",
+                        "src": "resources/images/labelHeader/downArrow.png",
+                        "width": 35
+                    },
+                    "designerId": "7e42d21e-7c83-457e-bd93-41277c437d40",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMyimg8Initialize2",
+                                "implHandler": [
+                                    "component.element.on('tap',function(){\r",
+                                    "\r",
+                                    "\r",
+                                    "    var rmProBillngPanel =  component.getParent().getParent().down('#invoiceDatalinkBillingFldsPanel');\r",
+                                    "\r",
+                                    "    var childs = component.getParent().getParent().getItems().items ;\r",
+                                    "    for(var i=0;i< childs.length; i++){\r",
+                                    "\r",
+                                    "        if(childs[i].config.xtype ==\"panel\"){\r",
+                                    "                var child = childs[i] ;\r",
+                                    "            if(child.getItemId() != 'invoiceDatalinkPackageListPanel'){\r",
+                                    "                 \r",
+                                    "           \r",
+                                    "                child.setHidden(! child.getHidden());\r",
+                                    "                if( child.getHidden()){\r",
+                                    "\r",
+                                    "                   component.setSrc('resources/images/labelHeader/rightArrow.png');\r",
+                                    "                }else{\r",
+                                    "                    component.setSrc('resources/images/labelHeader/downArrow.png') ;\r",
+                                    "                }\r",
+                                    "             }\r",
+                                    "        }\r",
+                                    "    }\r",
+                                    "\r",
+                                    "    rmProBillngPanel.setHidden(! rmProBillngPanel.getHidden());\r",
+                                    "    //   rmProBillngPanel.setScrollable(! rmProBillngPanel.getHidden()) ;\r",
+                                    "    if(rmProBillngPanel.getHidden())\r",
+                                    "    {\r",
+                                    "        Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHeight(30);\r",
+                                    "    }else{\r",
+                                    "        Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHeight(850);\r",
+                                    "       // RMdatalink.app.getController('InvoiceController').setDataLinkPanelHeight() ;\r",
+                                    "       // Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHeight(650);\r",
+                                    "    }\r",
+                                    "\r",
+                                    "//     var child = component.getParent().getParent().down('panel') ;\r",
+                                    "//     child.setHidden(! child.getHidden());\r",
+                                    "//     if( child.getHidden()){\r",
+                                    "\r",
+                                    "//        component.setSrc('resources/images/labelHeader/rightArrow.png');\r",
+                                    "//     }else{\r",
+                                    "//         component.setSrc('resources/images/labelHeader/downArrow.png') ;\r",
+                                    "//     }\r",
+                                    "\r",
+                                    "});"
+                                ],
+                                "name": "initialize"
+                            },
+                            "designerId": "5e6c1394-5842-40a6-a866-f4741d4f0675"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "DATALINK",
+                        "itemId": "mylabel58",
+                        "margin": null,
+                        "style": "font-size:12px;",
+                        "width": null
+                    },
+                    "designerId": "3fbd80f9-fe23-47f1-b43a-56e8b630700c"
+                },
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": null,
+                        "itemId": "billingDatalinkDtlsLbl",
+                        "margin": "0 0 0 20",
+                        "style": "font-size:12px;",
+                        "width": null
+                    },
+                    "designerId": "707e8557-77d3-4985-b1a6-2f2feadacfd0"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "itemId": "invoiceDatalinkPackageListPanel",
+                "layout": "vbox",
+                "layout|flex": null,
+                "margin": "10 0 0 20",
+                "width": "98%"
+            },
+            "designerId": "5d1c7bb2-9816-46b0-af90-a62b3f669d86",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "baseCls": "none",
+                        "border": "0 0 0 0",
+                        "layout": "hbox",
+                        "margin": "10 0 0 20",
+                        "style": null,
+                        "title": null
+                    },
+                    "designerId": "09455814-4c7d-4622-8803-a87b990f931b",
+                    "cn": [
+                        {
+                            "type": "Ext.Img",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "30px;",
+                                "itemId": "myimg8",
+                                "src": "resources/images/labelHeader/downArrow.png",
+                                "width": 35
+                            },
+                            "designerId": "02d02c7b-b979-4335-9859-c276f3f02727",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMyimg8Initialize12",
+                                        "implHandler": [
+                                            "component.element.on('tap',function(){\r",
+                                            "\r",
+                                            "    var child = component.getParent().getParent().down('panel') ;\r",
+                                            "    child.setHidden(! child.getHidden());\r",
+                                            "    if( child.getHidden()){\r",
+                                            "\r",
+                                            "       component.setSrc('resources/images/labelHeader/rightArrow.png');\r",
+                                            "    }else{\r",
+                                            "        component.setSrc('resources/images/labelHeader/downArrow.png') ;\r",
+                                            "    }\r",
+                                            "\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "4ef8bc4c-62c6-46fe-9ee2-6c99792bb388"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "Package Name",
+                                "itemId": "invoiceDatalinkPackNameLbl",
+                                "margin": null,
+                                "width": null
+                            },
+                            "designerId": "9f5e15ee-537a-4c22-b83b-158d03632802"
+                        },
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "html": "Bundel Price",
+                                "itemId": "invoiceDatalinkBundelPriceLbl",
+                                "margin": "0 25% 0 0",
+                                "width": null
+                            },
+                            "designerId": "c3c60452-9691-46cc-97a5-7d36c24185f4"
+                        }
+                    ]
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onMypanel63Initialize2",
+                        "implHandler": [
+                            "\r",
+                            "var headers = component.down(\"#billingDetListHeader\");\r",
+                            "headers.setData([{}]);\r",
+                            "headers.setItemTpl(\r",
+                            "    Ext.create('Ext.XTemplate',\r",
+                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                            "               '    <div style=\"width: 6%;\">',\r",
+                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                            "               '    </div>',\r",
+                            "\r",
+                            "               '    <div style=\"width: 15%;\" data-name=\"module_name\">',\r",
+                            "               '        Product Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 10%;\" data-name=\"quantity\">',\r",
+                            "               '        Qty&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 15%;\" data-name=\"module_standard_price\">',\r",
+                            "               '        Unit Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 15%;\" data-name=\"module_promotional_price\">',\r",
+                            "               '        Promotional Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 15%;\" data-name=\"per_month\">',\r",
+                            "               '        Amount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "               '</div>'\r",
+                            "              )\r",
+                            ");\r",
+                            "headers.refresh();\r",
+                            "var list = component.down('#billingDetList');\r",
+                            "list.setStore(Ext.getStore('products.BillingFromPackages'));\r",
+                            "list.setItemTpl(\r",
+                            "    Ext.create('Ext.XTemplate',\r",
+                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                            "               '    <div style=\"width: 6%;\">',\r",
+                            "               '    </div>',\r",
+                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                            "               '    <div style=\"width: 10%;\">{quantity}</div>',\r",
+                            "               '    <div style=\"width: 15%;padding-right: 1%;\">{module_standard_price}</div>',\r",
+                            "               '    <div style=\"width: 15%;padding-right: 1%;\">{module_promotional_price}</div>',\r",
+                            "               '    <div style=\"width: 15%;padding-right: 1%;\"></div>',\r",
+                            "               '</div>'\r",
+                            "              )\r",
+                            ");\r",
+                            "\r",
+                            "// list.setMode(\"SINGLE\");\r",
+                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                            "// });\r",
+                            "\r",
+                            "list.setItemHeight(22);\r",
+                            "list.setMode('MULTI');\r",
+                            "list.addCls('x-rm-rdvendorslist');\r",
+                            "\r",
+                            "\r",
+                            "//////////////////////////////////////////////////////////////////////////\r",
+                            ""
+                        ],
+                        "name": "initialize"
+                    },
+                    "designerId": "de69e2be-4158-4d44-ad6f-83a144252c30"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "200px",
+                        "hidden": false,
+                        "itemId": "invoiceDatalinkPackageListSubPanel",
+                        "layout|flex": null,
+                        "margin": "10 0 0 50",
+                        "padding": "0 0 0 0"
+                    },
+                    "designerId": "b0f228fd-8bde-4928-b3b0-0918dfa477f1",
+                    "masterInstanceId": "28ed50d3-1910-4a9e-b227-4d56efed8c36"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": false,
+                "itemId": "invoiceDatalinkAddOnsListPanel",
+                "layout": "vbox",
+                "layout|flex": null,
+                "margin": "10 0 0 20",
+                "width": "98%"
+            },
+            "designerId": "baa1b984-1ff0-4154-aa57-465cd9735aaf",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "baseCls": "none",
+                        "border": "0 0 0 0",
+                        "hidden": true,
+                        "layout": "hbox",
+                        "margin": "10 0 0 20",
+                        "style": null,
+                        "title": null
+                    },
+                    "designerId": "2c131db5-100e-482c-b319-f921e3ed5fc9",
+                    "cn": [
+                        {
+                            "type": "Ext.Img",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "30px;",
+                                "itemId": "myimg8",
+                                "src": "resources/images/labelHeader/downArrow.png",
+                                "width": 35
+                            },
+                            "designerId": "1a10460d-3fa3-4a52-a33a-5309ad02e07c",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMyimg8Initialize111",
+                                        "implHandler": [
+                                            "component.element.on('tap',function(){\r",
+                                            "\r",
+                                            "    var child = component.getParent().getParent().down('panel') ;\r",
+                                            "    child.setHidden(! child.getHidden());\r",
+                                            "    if( child.getHidden()){\r",
+                                            "\r",
+                                            "       component.setSrc('resources/images/labelHeader/rightArrow.png');\r",
+                                            "    }else{\r",
+                                            "        component.setSrc('resources/images/labelHeader/downArrow.png') ;\r",
+                                            "    }\r",
+                                            "\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "915aec86-06eb-49f1-8304-e8640afe0e54"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "Add-ons",
+                                "itemId": "mylabel58",
+                                "margin": null,
+                                "width": null
+                            },
+                            "designerId": "194dd201-594b-4583-8910-2d6f634569b5"
+                        }
+                    ]
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onMypanel63Initialize11",
+                        "implHandler": [
+                            "var headers = component.down(\"#billingDetListHeader\");\r",
+                            "headers.setData([{}]);\r",
+                            "headers.setItemTpl(\r",
+                            "    Ext.create('Ext.XTemplate',\r",
+                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                            "               '    <div style=\"width: 6%;\">',\r",
+                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                            "               '    </div>',\r",
+                            "\r",
+                            "               '    <div style=\"width: 15%;\" data-name=\"module_name\">',\r",
+                            "               '        Product Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 10%;\" data-name=\"quantity\">',\r",
+                            "               '        Qty&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 15%;\" data-name=\"module_standard_price\">',\r",
+                            "               '        Unit Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 15%;\" data-name=\"module_promotional_price\">',\r",
+                            "               '        Promotional Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "                '    <div style=\"width: 15%;\" data-name=\"per_month\">',\r",
+                            "               '        Amount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                            "               '    </div>',\r",
+                            "               '</div>'\r",
+                            "              )\r",
+                            ");\r",
+                            "headers.refresh();\r",
+                            "var list = component.down('#billingDetList');\r",
+                            "list.setStore(Ext.getStore('invoice.DatalinkModuleAddons'));\r",
+                            "list.setItemTpl(\r",
+                            "    Ext.create('Ext.XTemplate',\r",
+                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                            "               '    <div style=\"width: 6%;\">',\r",
+                            "\r",
+                            "               '    </div>',\r",
+                            "\r",
+                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                            "               '    <div style=\"width: 10%;\">{quantity}</div>',\r",
+                            "               '    <div style=\"width: 15%;padding-right: 1%;\">{module_standard_price}</div>',\r",
+                            "               '    <div style=\"width: 15%;padding-right: 1%;\">{module_promotional_price}</div>',\r",
+                            "               '    <div style=\"width: 15%;padding-right: 1%;\">{per_month}</div>',\r",
+                            "               '</div>'\r",
+                            "              )\r",
+                            ");\r",
+                            "\r",
+                            "///////////////////\r",
+                            "// list.setMode(\"SINGLE\");\r",
+                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                            "// });\r",
+                            "\r",
+                            "list.setItemHeight(22);\r",
+                            "list.setMode('MULTI');\r",
+                            "list.addCls('x-rm-rdvendorslist');\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "/////////////////////////////////////////////////////////////////////////////"
+                        ],
+                        "name": "initialize"
+                    },
+                    "designerId": "0f8ebf34-c55f-4cbf-a09b-0c6663fa0848"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "200px",
+                        "hidden": false,
+                        "itemId": "invoiceDatalinkAddOnsListSubPanel",
+                        "layout|flex": null,
+                        "margin": "10 0 0 50",
+                        "padding": "0 0 0 0"
+                    },
+                    "designerId": "0c4d11a5-5539-4340-b9aa-3ac9fdedbf35",
+                    "masterInstanceId": "28ed50d3-1910-4a9e-b227-4d56efed8c36"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "invoiceDatalinkBillingFldsPanel",
+                "layout|flex": null,
+                "title": null,
+                "width": "99%"
+            },
+            "designerId": "13dbcbe9-aa9c-491f-9128-3b19b0bc4c07",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "end",
+                        "layout": "vbox",
+                        "margin": "0 10 0 70",
+                        "title": null,
+                        "width": null
+                    },
+                    "designerId": "dc3a8204-7482-4ac8-823f-4e33cd2e8b2d",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "inputCls": "boldInputFld",
+                                "itemId": "invoiceDatalinkSubtotal",
+                                "label": "Sub Total",
+                                "labelWidth": "100px",
+                                "margin": null,
+                                "width": "200px"
+                            },
+                            "designerId": "a136fa79-f759-4490-865f-9a8830b0a574"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "hidden": true,
+                                "itemId": "invoiceDatalinkSaving",
+                                "label": "Saving",
+                                "labelWidth": "100px",
+                                "margin": null,
+                                "width": "200px"
+                            },
+                            "designerId": "01dd57ad-f1b6-42cb-aae7-86c48928d812"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "hbox",
+                        "padding": "0 0 0 0",
+                        "title": null
+                    },
+                    "designerId": "5bd6d5da-72fe-44e4-aed2-0299631ae306",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout": "hbox",
+                                "title": null,
+                                "width": null
+                            },
+                            "designerId": "1030df04-56ad-482e-b30c-5a028b1e6684",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "margin": "0 10px 0 0",
+                                        "padding": "0 0 0 0",
+                                        "style": null,
+                                        "title": "  <div style=\"font-size:12px;\">Commission</div>",
+                                        "width": "250px"
+                                    },
+                                    "designerId": "ffffb6bd-1489-4969-a6c3-b110aee1de16",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "invoiceDatalinkCommission",
+                                                "itemId": "invoiceDatalinkCommissionableAmtFld",
+                                                "label": "Commissionable Amount",
+                                                "labelWidth": "150px",
+                                                "width": "250px"
+                                            },
+                                            "designerId": "ed35ccaf-bb6f-49de-87e8-8c738cd59e1c",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "invoiceDatalinkCommission",
+                                                "html": "<div style= \"margin:-20% 0 0% 100% ;\">%</div>",
+                                                "itemId": "invoiceDatalinkCommissionPercentFld",
+                                                "label": "Commission percent",
+                                                "labelWidth": "150px",
+                                                "width": "250px"
+                                            },
+                                            "designerId": "c2f9e5d2-d099-4789-af4c-397a5643b686",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": null,
+                                        "itemId": "datalinkInvoiceSalesPersonsPanel",
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "style": null,
+                                        "title": "  <div style=\"font-size:12px;\">Sales person(s)</div>"
+                                    },
+                                    "designerId": "8d662e22-1baa-4731-a2a1-c42dc2db7017",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Search",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "fillSearchDropDown",
+                                                "cls": [
+                                                    "x-field-techLogsearch"
+                                                ],
+                                                "itemId": "rtDatalinkSalesPersonSearchFld",
+                                                "label": "Salesperon(s)",
+                                                "labelWidth": "100px"
+                                            },
+                                            "designerId": "c69f2506-edd3-47c0-abd5-2962b85bb2e4",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "linkedinstance",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "height": "150px",
+                                                "layout|flex": null
+                                            },
+                                            "designerId": "7484c48e-5fa0-48aa-a34d-96688d39d16c",
+                                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onMyfieldset18Initialize1",
+                                                "implHandler": [
+                                                    "var headers = component.down(\"#headerList\");\r",
+                                                    "headers.setMargin(0);\r",
+                                                    "headers.setHeight(0);\r",
+                                                    "/*headers.setData([{}]);\r",
+                                                    "headers.setItemTpl(\r",
+                                                    "    Ext.create('Ext.XTemplate',\r",
+                                                    "               '<div class=\"x-rm-listtpl-main\" style=\"background-color: #DCDCDE ;\">',\r",
+                                                    "\r",
+                                                    "               '    <div style=\"width: 40%;\" data-name=\"discount_name\">',\r",
+                                                    "               '        Advance Payment Benifits&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "               '    <div style=\"width: 15%;\" data-name=\"discount_value\">',\r",
+                                                    "               '        Discount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "                  '    <div style=\"width: 15%;\" data-name=\"discount_saving\">',\r",
+                                                    "               '        Saving&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "                  '    <div style=\"width: 15%;\" data-name=\"discount_total\">',\r",
+                                                    "               '        Total&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "                  '    <div style=\"width: 15%;\" data-name=\"discount_per_month\">',\r",
+                                                    "               '        Per Month&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                    "               '    </div>',\r",
+                                                    "\r",
+                                                    "               '</div>'\r",
+                                                    "              )\r",
+                                                    ");\r",
+                                                    "headers.refresh();*/\r",
+                                                    "var list = component.down('#mainList');\r",
+                                                    "list.setMargin(0);\r",
+                                                    "list.setStore(Ext.getStore('invoice.RtDatalinkSalesPersonStore'));\r",
+                                                    "list.setItemTpl(\r",
+                                                    "    Ext.create('Ext.XTemplate',\r",
+                                                    "               '<div class=\"x-rm-listtpl-main pointerCursor\" style=\"margin-top: 12px;\">',\r",
+                                                    "                '    <div style=\"width: 10%;\"></div>',\r",
+                                                    "               '    <div style=\"width: 60%;padding: 0px 0px 0px 10px; padding-left: 7px;\">{salesperson_name}</div>',\r",
+                                                    "               '    <input type=\"text\" style=\"width: 20% !important;text-align:right;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{salesperson_commission}\" maxlength=\"24\"',\r",
+                                                    "               '        onchange=\"RMdatalink.app.getController(\\'InvoiceController\\').updateDatalinkSalesPersonsList(this,\\'salesperson_commission\\');\"/><div style=\"margin-top: 2px;\">%</div>',\r",
+                                                    "               '</div>'\r",
+                                                    "              )\r",
+                                                    ");\r",
+                                                    "list.setItemHeight(22);\r",
+                                                    "list.setMode(\"SINGLE\");\r",
+                                                    "list.addCls('x-rm-rdvendorslist');\r",
+                                                    "list.addCls('delMark-list') ;\r",
+                                                    "\r",
+                                                    "list.setDisableSelection(true);\r",
+                                                    "list.setOnItemDisclosure(true);\r",
+                                                    "list.refresh();\r",
+                                                    "\r",
+                                                    "    list.on(\"disclose\",function(salesPersonList, record, eOpts){\r",
+                                                    "          salesPersonList.getStore().remove(record) ;\r",
+                                                    "    });\r",
+                                                    "\r",
+                                                    "//disclose( this, record, target, index, e, eOpts )"
+                                                ],
+                                                "name": "initialize"
+                                            },
+                                            "designerId": "6f071492-c691-4faf-b470-0095836cd5a0"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "layout": "vbox",
+                                "margin": "0 10 0 0",
+                                "title": null,
+                                "width": "250px"
+                            },
+                            "designerId": "d3496e0d-e7ef-40e0-98c9-92670ba0a43e",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "margin": null,
+                                        "padding": "0 0 0 0",
+                                        "title": null,
+                                        "width": "300px"
+                                    },
+                                    "designerId": "cf3bf534-8e23-474e-9713-e57243a0c87a",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "invoiceDatalinkPaymentPrdSlFld",
+                                                "label": "Payment Period",
+                                                "labelWidth": "150px",
+                                                "options": [
+                                                    "[\r",
+                                                    "    \r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'1 Month',\r",
+                                                    "        value:1\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'3 Month',\r",
+                                                    "        value:3\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'6 Month',\r",
+                                                    "        value:6\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'9 Month',\r",
+                                                    "        value:9\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'1 Year',\r",
+                                                    "        value:12\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'2 Year',\r",
+                                                    "        value:24\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'3 Year',\r",
+                                                    "        value:36\r",
+                                                    "        \r",
+                                                    "    }\r",
+                                                    "    \r",
+                                                    "]"
+                                                ],
+                                                "width": "250px"
+                                            },
+                                            "designerId": "f0d35f75-a589-460f-89ee-5d246692bfa1"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "html": "<div style= \"margin:-20% 0 0% 100% ;\">%</div>",
+                                                "itemId": "invoiceDatalinkDiscountAppliedFld",
+                                                "label": "Discount Applied",
+                                                "labelWidth": "150px",
+                                                "width": "250px"
+                                            },
+                                            "designerId": "b82f875c-92c0-4609-89e3-efcc18d30c29"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "itemId": "invoiceDatalinkTotalSavingFld",
+                                                "label": "Total Saving",
+                                                "labelWidth": "150px",
+                                                "width": "250px"
+                                            },
+                                            "designerId": "825de150-6af7-42b9-b253-c251bd72e7f5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "padding": "0 0 0 0",
+                                        "title": null,
+                                        "width": "300px"
+                                    },
+                                    "designerId": "56bb3b3e-359f-4ec1-bc76-348062df2567",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "eventAction": "DatalinkSubscriptionEdited",
+                                                "inputCls": "boldInputFld",
+                                                "itemId": "invoiceDatalinkTotalPaybleFld",
+                                                "label": "<b>Total Payble</b>",
+                                                "labelWidth": "150px",
+                                                "width": "250px"
+                                            },
+                                            "designerId": "3d8062be-e95e-43de-adf8-043d01004c98",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "eventAction",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "calDatalinkBalDue",
+                                                "itemId": "invoiceDatalinkPastDueFld",
+                                                "label": "Past Due",
+                                                "labelWidth": "150px",
+                                                "width": "250px"
+                                            },
+                                            "designerId": "8c0fa852-9828-46c7-8157-b7b54f3ad359",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "itemId": "invoiceDatalinkBalanceDueFld",
+                                                "label": "Balance Due",
+                                                "labelWidth": "150px",
+                                                "width": "250px"
+                                            },
+                                            "designerId": "732cdc57-d8b3-4a1f-9dc5-a6f9bfda27f1"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "rmProextradtl1",
+                        "layout": "hbox",
+                        "title": null
+                    },
+                    "designerId": "87f96732-6cf2-42f1-b9b0-2dadec761955",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "itemId": "datalinkSubscrPaymentStartDateFld",
+                                "label": "From Date",
+                                "width": "250px"
+                            },
+                            "designerId": "5c98c4da-37d0-43d5-8f76-a35a03b59802",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "itemId": "datalinkSubscrPaymentEndDateFld",
+                                "label": "To Date",
+                                "width": "250px"
+                            },
+                            "designerId": "8f141a1b-eb0d-41d4-a8ad-05e62cbabb89",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "eventAction": "RMPROsubscriptionEdited",
+                                "itemId": "datalinkSubscrPaymentDueDateFld",
+                                "label": "Due Date",
+                                "width": "250px"
+                            },
+                            "designerId": "8acb65a3-0085-4a49-b72b-f565a12fc117",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "eventAction",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "myfieldset50",
+                        "layout": "vbox",
+                        "title": null
+                    },
+                    "designerId": "cb855eda-f508-4389-919d-becb3442a29e",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "Previous Payments",
+                                "style": "font-size:0.8em;"
+                            },
+                            "designerId": "fdcd57cb-07a0-4547-849f-bf0eb02e8e17"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "90px",
+                                "width": "100%"
+                            },
+                            "designerId": "66dd408d-d46f-428b-bff7-c06ca3521bb9",
+                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMyfieldset49Initialize1",
+                                "implHandler": [
+                                    "/*\r",
+                                    "\r",
+                                    "proccessed_by: \"\"\r",
+                                    "pay_date: \"06/17/2014\"\r",
+                                    "payment_method_detail: \"\"\r",
+                                    "paid_by: \"cash\"\r",
+                                    "\r",
+                                    "ammount_paying: \"400\"\r",
+                                    "cc_approval: \"\"\r",
+                                    "date: \"06/17/2014\"\r",
+                                    "\r",
+                                    "*/\r",
+                                    "\r",
+                                    "var headers = component.down(\"#headerList\");\r",
+                                    "headers.setData([{}]);\r",
+                                    "headers.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                    "               '    <div style=\"width: 15%;\" data-name=\"proccessed_by\">',\r",
+                                    "               '        Proccessed by&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 15%;\" data-name=\"pay_date\">',\r",
+                                    "               '        Pay Date&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 15%;\" data-name=\"paid_by\">',\r",
+                                    "               '        Paid by&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 15%;\" data-name=\"cc_approval\">',\r",
+                                    "               '        CC Approval&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 15%;\" data-name=\"payment_method_detail\">',\r",
+                                    "               '        Check # / CC #&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 15%;\" data-name=\"ammount_paying\">',\r",
+                                    "               '        Amount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "\r",
+                                    "               '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "headers.refresh();\r",
+                                    "var list = component.down('#mainList');\r",
+                                    "list.setStore(Ext.getStore('DatalinkInvoicePaymentsStore'));\r",
+                                    "list.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                    "               '<div style=\"width: 15%;\">{proccessed_by}</div>',\r",
+                                    "               '<div style=\"width: 15%;\">{pay_date}</div>',\r",
+                                    "               '<div style=\"width: 15%;\">{paid_by}</div>',\r",
+                                    "               '<div style=\"width: 15%;\">{cc_approval}</div>',\r",
+                                    "               '<div style=\"width: 15%;\">{payment_method_detail}</div>',\r",
+                                    "               '<div style=\"width: 15%;\">{ammount_paying}</div>',\r",
+                                    "               '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "\r",
+                                    "///////////////////\r",
+                                    "// list.setMode(\"SINGLE\");\r",
+                                    "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                    "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                    "// });\r",
+                                    "\r",
+                                    "list.setItemHeight(22);\r",
+                                    "list.setMode('MULTI');\r",
+                                    "list.addCls('x-rm-rdvendorslist');\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "name": "initialize"
+                            },
+                            "designerId": "835fc4e1-c2c1-4da4-8d78-fde427c5d32e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "hbox",
+                        "title": null
+                    },
+                    "designerId": "69a0b20b-2b62-4da3-8a56-d644af6c05c4",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout": "vbox",
+                                "scrollable": null,
+                                "title": "  <div style=\"font-size:12px;\">Payments</div>"
+                            },
+                            "designerId": "160dc185-8b6e-45da-a3a7-fc7f486cf8b3",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "inputByDatePicker",
+                                        "itemId": "invoiceDatalinkPayDateFld",
+                                        "label": "Pay Date",
+                                        "labelWidth": "100px"
+                                    },
+                                    "designerId": "281d2fe2-6e8d-46a3-8788-e718b5aa1472",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.field.Select",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "invoiceDatalinkPaidByFld",
+                                        "label": "Paid By",
+                                        "labelWidth": "100px",
+                                        "options": [
+                                            "[\r",
+                                            "    \r",
+                                            "    {\r",
+                                            "        \r",
+                                            "        text:'by Cash',\r",
+                                            "        value: 'cash'\r",
+                                            "        \r",
+                                            "    },\r",
+                                            "    {\r",
+                                            "        \r",
+                                            "        text:'by Check',\r",
+                                            "        value: 'check'\r",
+                                            "        \r",
+                                            "    },\r",
+                                            "    {\r",
+                                            "        \r",
+                                            "        text:'by Am Express',\r",
+                                            "        value: 'am_express'\r",
+                                            "        \r",
+                                            "    }\r",
+                                            "]"
+                                        ]
+                                    },
+                                    "designerId": "4f2431e1-a425-4fae-9fc1-7d1139dbb91e"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "invoiceDatalinkPaymentDetailFld",
+                                        "label": "Check # / CC #",
+                                        "labelWidth": "100px"
+                                    },
+                                    "designerId": "29f70905-8c57-4d7a-803f-78dfdc715abe"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "invoiceDatalinkCCApprovalFld",
+                                        "label": "CCApproval",
+                                        "labelWidth": "100px"
+                                    },
+                                    "designerId": "a528493a-8665-4b47-9483-8616e3b744ca"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout": "vbox",
+                                "margin": "35px 10px 0 5px",
+                                "title": null
+                            },
+                            "designerId": "bb06d221-d2d3-43ee-a1a1-4ed30db0092d",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "calDatalinkBalDue",
+                                        "itemId": "invoiceDatalinkAmmountFld",
+                                        "label": "Ammount",
+                                        "labelWidth": "100px"
+                                    },
+                                    "designerId": "f257714d-aab1-4ba8-abdb-23b9aa11b3e3",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "invoiceDatalinkCommissionFld",
+                                        "label": "Commission",
+                                        "labelWidth": "100px"
+                                    },
+                                    "designerId": "3afc1f5c-e586-4aca-8c3a-0315ada393f5"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "invoiceDatalinkProcessedByFld",
+                                        "label": "Proccessed By",
+                                        "labelWidth": "100px"
+                                    },
+                                    "designerId": "22cf1d7e-2750-4929-b0c1-10809279f8cd"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "inputByDatePicker",
+                                        "itemId": "invoiceDatalinkDateFld",
+                                        "label": "Date",
+                                        "labelWidth": "100px"
+                                    },
+                                    "designerId": "fbbc7bd9-67d1-456e-b94d-c346fc081e35",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "150px",
+                                "margin": "35px 0px 0 5px",
+                                "title": null
+                            },
+                            "designerId": "27eec702-a863-48ed-bd6c-30b2c14544d3",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": "bottom",
+                                        "height": "25px",
+                                        "itemId": "invoiceDatalinkProductSetupBtn",
+                                        "margin": "10 20 10 0",
+                                        "text": "Product Setup",
+                                        "width": "150px"
+                                    },
+                                    "designerId": "0cbe0a7c-3f46-4afb-8020-73e75ee8356a"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": "bottom",
+                                        "height": "25px",
+                                        "itemId": "invoiceDatalinkPrintBtn",
+                                        "margin": "0 20 0 0",
+                                        "text": "Print Invoice",
+                                        "width": "150px"
+                                    },
+                                    "designerId": "79e5d0ae-44ef-4171-9f1b-f568adea1266",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "if(RMdatalink.app.getController('InvoiceHistoryController').config.displayGeneratedInvoice ){\r",
+                                                    "         if(Ext.ComponentQuery.query('#InvoicePage')[0]){\r",
+                                                    "\r",
+                                                    "                Ext.ComponentQuery.query('#InvoicePage')[0].destroy() ;\r",
+                                                    "            }\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "            var printTimeout = setTimeout(function(){\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "                                           Ext.widget('InvoicePage').show();\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "               RMdatalink.app.getController('InvoiceController').setDatalinkInvoiceToPrint();\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "                                            clearTimeout(printTimeout);\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "            },100);\r",
+                                                    "\r",
+                                                    "return ;\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "  var rmProInvoicePanel = Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0] ;\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "if(! rmProInvoicePanel.down('#invoiceDatalinkAmmountFld').getValue() || rmProInvoicePanel.down('#invoiceDatalinkAmmountFld').getValue() <= 0 ){\r",
+                                                    "\r",
+                                                    "    Ext.Msg.alert(\"Alert\",\"Please Enter Ammount.\");\r",
+                                                    "    return ;\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "    if(! rmProInvoicePanel.down('#invoiceDatalinkBalanceDueFld').getValue() || rmProInvoicePanel.down('#invoiceDatalinkBalanceDueFld').getValue() <= 0){\r",
+                                                    "\r",
+                                                    "          RMdatalink.app.getController('InvoiceController').config.isSalesCommissionForDatalink = true ;\r",
+                                                    "\r",
+                                                    "          RMdatalink.app.getController('InvoiceController').saveRmProInvoice(true,\"product_datalink\");\r",
+                                                    "\r",
+                                                    "    }\r",
+                                                    "\r",
+                                                    "    else{\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "              RMdatalink.app.getController('InvoiceController').addDatalinkProductBilling();\r",
+                                                    "\r",
+                                                    "            if(Ext.ComponentQuery.query('#InvoicePage')[0]){\r",
+                                                    "\r",
+                                                    "                Ext.ComponentQuery.query('#InvoicePage')[0].destroy() ;\r",
+                                                    "            }\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "            var printTimeout = setTimeout(function(){\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "                                           Ext.widget('InvoicePage').show();\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "               RMdatalink.app.getController('InvoiceController').setDatalinkInvoiceToPrint();\r",
+                                                    "\r",
+                                                    "                RMdatalink.app.getController('InvoiceController').hideShowPrintPaymentInfo(true);\r",
+                                                    "\r",
+                                                    "                                            clearTimeout(printTimeout);\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "            },100);\r",
+                                                    "    }"
+                                                ]
+                                            },
+                                            "designerId": "c8a7543e-43b5-4a09-a1e5-dbd46de9779c"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Note:"
+                                    },
+                                    "designerId": "deb412b4-3486-4130-8eab-d9b795eeb264"
+                                },
+                                {
+                                    "type": "Ext.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": "50px",
+                                        "itemId": "datalinkPaymentNoteFld",
+                                        "label": null
+                                    },
+                                    "designerId": "aaf19655-defc-4ff8-924b-0d816f085e29"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "DiscountBasicModel"
+    },
+    "designerId": "6416aabd-7bdc-4074-84ae-7bbf827d4f1c",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_name"
+            },
+            "designerId": "fd9ac13d-2733-4dff-ba24-811ed28ba257"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_value"
+            },
+            "designerId": "5319dcd9-236b-46d6-8c0a-5d3bf9f64ad6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_duration"
+            },
+            "designerId": "2fd8591c-3b82-437c-831f-b3eaa5d47415"
+        }
+    ]
+}

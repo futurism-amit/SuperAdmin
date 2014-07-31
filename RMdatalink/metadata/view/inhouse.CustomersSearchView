@@ -1,0 +1,82 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-searchview"
+        ],
+        "container|align": "center",
+        "designer|userAlias": "inhousecustomerssearchview",
+        "designer|userClassName": "inhouse.CustomersSearchView",
+        "height": null,
+        "layout": "hbox",
+        "minHeight": null,
+        "requires": [
+            "Ext.field.Search"
+        ],
+        "scrollable": null
+    },
+    "designerId": "17290f77-9c6b-453e-8423-17a128829162",
+    "cn": [
+        {
+            "type": "Ext.field.Search",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "action": "fillSearchDropDown",
+                "cls": [
+                    "x-rm-searchfield"
+                ],
+                "designer|displayName": null,
+                "height": "100%",
+                "itemId": "inhouseCustomersSearchField1",
+                "label": "<div></div>",
+                "labelWidth": "60px",
+                "layout|flex": 1,
+                "placeHolder": "SEARCH",
+                "width": null
+            },
+            "designerId": "8bf9e0ad-efcb-412c-a502-a008b2fcd8cc",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "action",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-filterbtn",
+                    "x-rm-blueBtn"
+                ],
+                "designer|displayName": null,
+                "designer|uiInterfaceName": "plain",
+                "height": "100%",
+                "hidden": true,
+                "itemId": "AddCustomerBtn",
+                "layout|flex": null,
+                "margin": "0 1% 0 0",
+                "pressedCls": "x-rm-blueBtn-pressing",
+                "text": "ADD",
+                "ui": "plain",
+                "width": "80px"
+            },
+            "designerId": "2eda0e1e-9f9c-4a2f-81df-e57498834aa1"
+        }
+    ]
+}

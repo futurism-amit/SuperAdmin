@@ -1,0 +1,60 @@
+.x-rm-searchview {
+    background-color:transparent !important;
+}
+
+.x-rm-searchview .x-rm-searchfield {
+    background: #FCFCFC;
+    min-height:0px !important;
+}
+
+.x-rm-searchview .x-rm-searchfield .x-form-label {
+    margin:0 10px;
+    padding: 0.4em;
+    background-color:#F3F3F4 !important;
+}
+
+.x-rm-searchview .x-rm-searchfield .x-form-label div {
+    width:25px !important;
+    height:20px !important;
+    margin-left:25%;
+    font-size:80% !important;
+    font-family: 'OpenSans'; 
+    background-image: url('../../images/searchView/rm_search.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.x-rm-searchview .x-rm-searchfield .x-field-input:before{
+    display:none;
+}
+
+.x-rm-searchview .x-rm-searchfield .x-form-field {
+    margin-left:0px !important;
+    background: #FCFCFC;
+}
+
+.x-rm-searchview .x-rm-searchfield input {
+    font-size:80% !important;
+    font-family: 'OpenSans'; 
+    color:#C5C6C8 !important;
+}
+
+.x-rm-searchview .x-rm-filterbtn {
+    min-height:2em !important;
+}
+
+.x-rm-searchview .x-rm-filterbtn .x-button-label {
+    font-weight:500 !important;
+}
+
+.x-rm-blueBtn {
+    background-color:#2EC1DA !important;
+    border-color:#2EC1DA !important;
+    font-size:80% !important;
+    color:#F3FAFD !important;
+    font-family: 'OpenSans'; 
+}
+
+.x-rm-blueBtn-pressing {
+    background-color:#15B4D0 !important;    
+}

@@ -1,0 +1,328 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "vendorslistcontainer",
+        "designer|userClassName": "vendors.ListContainer",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "b7e64029-582a-4aa2-b911-dfea44bda772",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "vendorSearchContainer",
+                "height": "32px",
+                "itemId": null,
+                "layout": "fit",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": "margin-top:5px;"
+            },
+            "designerId": "c807a257-ee02-450d-add7-bb7299d29fa7",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|pack": null,
+                        "designer|displayName": "vendorSearchView",
+                        "itemId": "vendorSeachViewItemID"
+                    },
+                    "designerId": "8ddaf63c-83c8-4e0f-afe8-e350fa072ec2",
+                    "masterInstanceId": "5486b687-172e-4cd3-8a4c-36599048d2ca"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "vendorListNSetupContainer",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "48ce523c-fa6e-46a5-8f9c-217bf3c23ab4",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "vendorListContainer",
+                        "layout": "vbox",
+                        "layout|flex": null,
+                        "scrollable": false,
+                        "width": "99%"
+                    },
+                    "designerId": "d3f2e6e3-6836-4327-8239-a1518feca439",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": "vendorListHeader",
+                                "itemId": "vendorListHeader",
+                                "layout|flex": 1,
+                                "scrollable": false
+                            },
+                            "designerId": "20abe2b2-7c89-43a2-9139-b94bde9b6d41",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "0041c486-570c-4130-bc77-36dc5454143c"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "designer|displayName": "vendorList",
+                                "itemId": "vendorList",
+                                "layout|flex": 15,
+                                "mode": "MULTI"
+                            },
+                            "designerId": "15ce7288-69ba-43a4-92e8-cb47570c31d5",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "2aabe37a-b0c7-43b3-99c2-0150fc3d5322"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onVendorListRefresh",
+                                        "implHandler": [
+                                            "var totalsList = dataview.parent.parent.parent.down('#vendorTotalsList');\r",
+                                            "totalsList.refresh();\r",
+                                            ""
+                                        ],
+                                        "name": "refresh"
+                                    },
+                                    "designerId": "7c143b8f-f3a6-4696-ba8f-ea1fcaec55f8"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onVendorListItemTap",
+                                        "implHandler": [
+                                            "/*MOVE THIS HANDLER TO CONTROLLER*/\r",
+                                            "\r",
+                                            "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                            "var targetEl = e.target;\r",
+                                            "\r",
+                                            "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                            "\r",
+                                            "    var attrVak = targetEl.getAttribute(attrToSearch);\r",
+                                            "    var nameAttr = RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap();\r",
+                                            "    var storeAttr = RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap();\r",
+                                            "//     var place = RMdatalink.util.globalConfig.getUrlForRetailerCard();\r",
+                                            "\r",
+                                            "    var varibleToSet = setVariable();\r",
+                                            "    var vendorsMainContentPanel = Ext.ComponentQuery.query('#vendorsMainContentPanel')[0];\r",
+                                            "\r",
+                                            "    switch (attrVak){\r",
+                                            "\r",
+                                            "        case nameAttr:  RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);\r",
+                                            "\r",
+                                            "                        Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDManagerTab');\r",
+                                            "                        RMdatalink.app.getController('UINav').onPanelAddretailertapped(vendorsMainContentPanel);\r",
+                                            "                        Ext.ComponentQuery.query('#CmpContactTab')[0].setActiveItem(0);\r",
+                                            "                        break;\r",
+                                            "\r",
+                                            "        case storeAttr: RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);\r",
+                                            "\r",
+                                            "                        Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDStoresTab');\r",
+                                            "                        Ext.ComponentQuery.query('#CmpContactTab')[0].setActiveItem(0);\r",
+                                            "                        RMdatalink.app.getController('UINav').onPanelAddretailertapped(vendorsMainContentPanel);\r",
+                                            "                        break;\r",
+                                            "        case \"last_data_update\":\r",
+                                            "                        RMdatalink.app.getController('VendorStatsController').showCalenderForDataupdated(target,record) ;\r",
+                                            "\r",
+                                            "            break;\r",
+                                            "        case \"last_inventory_update\":\r",
+                                            "                        RMdatalink.app.getController('VendorStatsController').showCalenderForInventoryupdated(target,record) ;\r",
+                                            "\r",
+                                            "\r",
+                                            "            break;\r",
+                                            "\r",
+                                            "        default:console.log('DONT FIRE ANY THING');\r",
+                                            "    }\r",
+                                            "}\r",
+                                            "\r",
+                                            "\r",
+                                            "function setVariable(){\r",
+                                            "\r",
+                                            "    return {\r",
+                                            "\r",
+                                            "        placeClicked:  attrVak,\r",
+                                            "        record:record,\r",
+                                            "        index:index\r",
+                                            "    };\r",
+                                            "}"
+                                        ],
+                                        "name": "itemtap"
+                                    },
+                                    "designerId": "d66ca9da-36f5-4510-b1d1-c00f594962f7"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "vendorSetupContainer",
+                        "layout|flex": 1
+                    },
+                    "designerId": "9e80cfcb-ca6e-4354-8a11-60d2ff6f3097"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "vendorTotalsContainer",
+                "layout": "fit",
+                "layout|flex": 1
+            },
+            "designerId": "b155e682-9fd6-4c20-8c09-1d15bbbf952c",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": "vendorTotalsList",
+                        "itemId": "vendorTotalsList",
+                        "scrollable": false,
+                        "width": "90%"
+                    },
+                    "designerId": "7f2081d5-eab8-4cd6-8191-217559ddc907",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "02cb3224-73fc-434d-913c-f55ce1c29c39"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

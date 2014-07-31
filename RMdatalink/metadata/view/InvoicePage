@@ -1,0 +1,1115 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "action": "setScrollBarVisible",
+        "border": null,
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "designer|userAlias": "InvoicePage",
+        "designer|userClassName": "InvoicePage",
+        "height": "92%",
+        "hideOnMaskTap": null,
+        "id": null,
+        "itemId": "InvoicePage",
+        "layout": "vbox",
+        "margin": null,
+        "padding": null,
+        "scrollable": true,
+        "width": 600
+    },
+    "designerId": "594a5347-7307-4de0-b76c-79b7606f82ad",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "action",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "margin": "0 0 0 0",
+                "title": null,
+                "width": "100%"
+            },
+            "designerId": "91c51522-ccf0-4555-b590-d318d9ee1c91",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-blueBtn"
+                        ],
+                        "docked": "right",
+                        "height": null,
+                        "margin": "0 0 0 10",
+                        "text": "Print",
+                        "width": "100px"
+                    },
+                    "designerId": "f4965690-d6a5-401e-a460-9be859e4a649",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "var _this =this ;\r",
+                                    "\r",
+                                    "var invoice = window.open(\"invoice.html\", \"invoice\", \"width = 595, height= 842 \");\r",
+                                    " invoice.focus();\r",
+                                    "\r",
+                                    "Ext.Function.defer(addInvoiceToHtmlPage, 1000, _this);\r",
+                                    "\r",
+                                    "Ext.ComponentQuery.query('#InvoicePage')[0].hide();\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "        function addInvoiceToHtmlPage(){\r",
+                                    "\r",
+                                    "                        invoice.window.document.body.appendChild( Ext.DomQuery.selectNode('#invoiceToPrint'));\r",
+                                    "                        Ext.Function.defer(printInvoicePdf, 100, _this);\r",
+                                    "\r",
+                                    "        }\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "        function printInvoicePdf(){\r",
+                                    "\r",
+                                    "                        invoice.print();\r",
+                                    "        }\r",
+                                    "\r",
+                                    "//Ext.ComponentQuery.query('#InvoicePage')[0].destroy() ;\r",
+                                    ""
+                                ]
+                            },
+                            "designerId": "dc2ffee6-db8f-4919-ad42-d839e26b8777"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            " x-rm-detailsSaveBtn",
+                            "x-rm-detailsInnerBtns"
+                        ],
+                        "docked": "right",
+                        "height": "20px",
+                        "minHeight": null,
+                        "text": "Cancel",
+                        "width": "100px"
+                    },
+                    "designerId": "ea61efb0-dd08-4b41-a49d-1bfb2fd2a60d",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "Ext.ComponentQuery.query('#InvoicePage')[0].hide();\r",
+                                    "\r",
+                                    "Ext.ComponentQuery.query('#InvoicePage')[0].destroy() ;"
+                                ]
+                            },
+                            "designerId": "ff3863f0-0011-4435-a5d2-de17113357af"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "height": 850,
+                "id": "invoiceToPrint",
+                "itemId": "invoiceToPrint",
+                "layout": "vbox",
+                "layout|flex": null,
+                "margin": "0 0 0 0",
+                "padding": "5 10 5 10",
+                "scrollable": false,
+                "width": 595
+            },
+            "designerId": "62b15ab5-4f81-434f-8fac-a9da8f5e688c",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-no_borderflds"
+                        ],
+                        "container|align": "end",
+                        "layout": "vbox",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "545a6118-6337-4c5a-9d56-41784cb34bfa",
+                    "cn": [
+                        {
+                            "type": "Ext.Img",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "left",
+                                "height": "64px",
+                                "margin": "10 0 0 10",
+                                "src": "resources/images/invoice/logo.png",
+                                "style": "background-size: contain;",
+                                "width": 201
+                            },
+                            "designerId": "bde10005-bbb6-4e0d-bf5e-2e1312ccdc58"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": null,
+                                "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                "itemId": "printinvoiceIdTxtfld",
+                                "label": "<b>Invoice</b>",
+                                "labelWidth": "74px",
+                                "margin": null,
+                                "padding": null,
+                                "width": "200px"
+                            },
+                            "designerId": "7159aaf5-baf3-409e-b1eb-acd708d96888"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": null,
+                                "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                "itemId": "printinvoiceNofld",
+                                "label": "<b>Invoice#</b>",
+                                "labelWidth": "74px",
+                                "width": "200px"
+                            },
+                            "designerId": "5bf3f4ff-be72-4bed-ad0d-c3f75ed273ce"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "hbox",
+                        "layout|flex": null,
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "424b3b31-dd35-46b5-818c-da3ea902f89b",
+                    "cn": [
+                        {
+                            "type": "Ext.Img",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "76px",
+                                "margin": " 5 5 0 5",
+                                "src": "resources/images/invoice/address.png",
+                                "width": 36
+                            },
+                            "designerId": "2dc8ab2c-9fa7-4cdf-9fa1-4c563bbbbb01"
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "baseCls": "x-form-fieldset normalTitle",
+                                "layout|flex": 1,
+                                "margin": "5 0 5 0",
+                                "title": "<div style=\" color: #2EC1DA;\">From</div>",
+                                "width": "100%"
+                            },
+                            "designerId": "85e6ada2-1375-4676-ac93-1e23fc293bf2",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Innovations International"
+                                    },
+                                    "designerId": "26fe5477-8a78-4478-ab89-c98ceaa94c12"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "11300 Decimal Drive, Suite C"
+                                    },
+                                    "designerId": "709c8d29-5163-4a5e-94c6-0718eeaf82d5"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Louisville, KY 40299"
+                                    },
+                                    "designerId": "f9ed5a93-0482-4675-8bc6-ce7d1340a65b"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Phone:\t(502) 267 7255 Fax:\t(502) 267-8767"
+                                    },
+                                    "designerId": "e84b0103-a8b8-40bc-afe7-56ae42f328e6"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "baseCls": "x-form-fieldset normalTitle",
+                                "layout|flex": 1,
+                                "margin": "5 0 5 0",
+                                "title": "<div style=\" color: #2EC1DA;\">To</div>",
+                                "width": "100%"
+                            },
+                            "designerId": "0f625818-ae01-45fc-ad02-be9345070319",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "printInvoiceToNameLbl"
+                                    },
+                                    "designerId": "1f441ae6-af9d-48c6-8dea-34da3c647fc7"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "printInvoiceToAddr1Lbl"
+                                    },
+                                    "designerId": "ac981aaf-c497-4acf-9f30-be0e0655ab7c"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "printInvoiceToCityStZipLbl"
+                                    },
+                                    "designerId": "c2bcec4b-2ade-464b-8c41-a403e8948a52"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "printInvoiceToPhoneLbl"
+                                    },
+                                    "designerId": "d5f7a85b-ba20-4928-b2e7-bca8005f5c73"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-no_borderflds"
+                        ],
+                        "layout": "hbox",
+                        "margin": "5 0 0 0",
+                        "padding": null,
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "3d9d768f-1bdb-4adf-97b0-4c1c3de72a29",
+                    "cn": [
+                        {
+                            "type": "Ext.Img",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "32px",
+                                "src": "resources/images/invoice/calender.png",
+                                "width": 36
+                            },
+                            "designerId": "eafde827-1d4d-4d24-b441-2deb9cbb03f0"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "disabledCls": "disabledClsFldAsLbl",
+                                "docked": null,
+                                "inputCls": "inputdisabledClsFldAsLbl",
+                                "itemId": "printinvoiceTopDateFld",
+                                "label": "<div style=\" color: #2EC1DA;\">Date</div>",
+                                "labelWidth": "70px",
+                                "margin": null,
+                                "padding": null,
+                                "width": "170px"
+                            },
+                            "designerId": "38a4d3e1-20cd-4108-a1fe-480e69b472b6"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": "right",
+                                "inputCls": "inputdisabledClsFldAsLbl",
+                                "itemId": "printinvoiceDueDateFld",
+                                "label": "<div style=\" color: #2EC1DA;\">Due Date</div>",
+                                "labelWidth": "70px",
+                                "margin": null,
+                                "padding": null,
+                                "width": "170px"
+                            },
+                            "designerId": "cfcc7d34-b2da-4f9a-9738-d6eafacf8f58"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "baseCls": "x-form-fieldset normalTitle",
+                        "layout": "hbox",
+                        "margin": "5 0 5 0",
+                        "padding": "0 10 0 5",
+                        "title": "<div style=\" color: #2EC1DA;\">Summary</div>",
+                        "width": "100%"
+                    },
+                    "designerId": "129cc359-99e8-4f81-9cb1-46d31f3850ab",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "<center style=\"margin-top: 18px;color:white;font-size:bold;\">$$</center>",
+                                "margin": "0 8 0 0",
+                                "style": "background-color:rgb(27, 180, 222);",
+                                "width": "30px"
+                            },
+                            "designerId": "f4076ef1-e1a7-46be-a7e4-8d776dd9b222"
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "baseCls": null,
+                                "layout": "vbox",
+                                "layout|flex": 1,
+                                "margin": "5 0 0 0",
+                                "padding": null,
+                                "title": null,
+                                "width": null
+                            },
+                            "designerId": "a073bb3e-96d1-4740-aff1-0a77d5c01110",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "RM-PRO",
+                                        "itemId": "printInvoiceProductLbl"
+                                    },
+                                    "designerId": "cfbf9f79-b89d-47fa-a9ef-be42e9bdfc8b"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Member package + 3 Add ons",
+                                        "itemId": "printInvoiceProductModulesLbl"
+                                    },
+                                    "designerId": "e138f340-6a65-4a23-9fce-0c69d6a1b6a4"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "1 month (6/1/14 - 6/30/14)",
+                                        "itemId": "printInvoiceProductDurationLbl"
+                                    },
+                                    "designerId": "1782e5f4-cfa8-461f-a73e-79d4683808ad"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "baseCls": null,
+                                "html": "<center>509$</center>",
+                                "itemId": "printInvoiceTotalPaybleLbl",
+                                "layout": "vbox",
+                                "layout|flex": null,
+                                "margin": "5 0 0 0",
+                                "padding": null,
+                                "title": null,
+                                "width": "204px"
+                            },
+                            "designerId": "55575b8f-93b0-432c-819c-1bd2ec549c36"
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "baseCls": null,
+                                "height": null,
+                                "layout": "vbox",
+                                "layout|flex": 1,
+                                "margin": null,
+                                "padding": null,
+                                "title": null,
+                                "width": null
+                            },
+                            "designerId": "9ae3c646-ebe5-4cd4-a09f-52b849ea4b60",
+                            "cn": [
+                                {
+                                    "type": "Ext.Img",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": null,
+                                        "itemId": "printInvoicePaidStampImg",
+                                        "layout|flex": 1,
+                                        "src": "resources/images/invoice/paid.png"
+                                    },
+                                    "designerId": "bfb4ef62-3e21-4106-a1bb-c6f2fb068b1b"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "baseCls": "x-form-fieldset normalTitle",
+                        "cls": [
+                            "noBottomBorderDiv"
+                        ],
+                        "itemId": "printInvoicePackageListPanel",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "ff8fd089-9ee2-42d2-b24d-ad457a27da05",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onPrintInvoicePackageListInitialize",
+                                "implHandler": [
+                                    "\r",
+                                    "var headers = component.down(\"#headerList\");\r",
+                                    "headers.setData([{}]);\r",
+                                    "headers.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div style=\"font-size: 10px; color: #2EC1DA; height: 96%;\" class=\"x-rm-listtpl-main onlyBottomBorderDiv\">',\r",
+                                    "               '    <div style=\"width: 6%;\">',\r",
+                                    "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                    "               '    </div>',\r",
+                                    "\r",
+                                    "               '    <div style=\"width: 30%;\" data-name=\"module_name\">',\r",
+                                    "               '        Product Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 10%;\" data-name=\"quantity\">',\r",
+                                    "               '        Qty&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 15%;\" data-name=\"module_standard_price\">',\r",
+                                    "               '        Unit Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 20%;\" data-name=\"module_promotional_price\">',\r",
+                                    "               '        Promotional Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 15%;\" data-name=\"per_month\">',\r",
+                                    "               '        Amount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "headers.refresh();\r",
+                                    "var list = component.down('#mainList');\r",
+                                    "list.setStore(Ext.getStore('printInvoice.packModulesStore'));\r",
+                                    "list.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div style=\"font-size: 10px;\" class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                    "               '    <div style=\"width: 6%;\">',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 30%;\">{module_name}</div>',\r",
+                                    "               '    <div style=\"width: 10%;\">{quantity}</div>',\r",
+                                    "               '    <div style=\"width: 15%;padding-right: 1%;\">{module_standard_price}</div>',\r",
+                                    "               '    <div style=\"width: 20%;padding-right: 1%;\">{module_promotional_price}</div>',\r",
+                                    "               '    <div style=\"width: 15%;padding-right: 1%;\"></div>',\r",
+                                    "               '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "list.setItemHeight(22);\r",
+                                    "\r",
+                                    "\r",
+                                    "list.addCls('x-rm-rdvendorslist');\r",
+                                    "\r",
+                                    "//list.refresh() ;\r",
+                                    "//////////////////////////////////////////////////////////////////////////\r",
+                                    ""
+                                ],
+                                "name": "initialize"
+                            },
+                            "designerId": "aaadc6b6-b762-427a-b708-765ff4b819c1"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "printInvoicePackgsList",
+                                "width": null
+                            },
+                            "designerId": "6e8ec2ec-20c2-42f5-99c2-5856931e2e7c",
+                            "masterInstanceId": "c3b5fdb6-89af-4f17-96e5-5a969c1cfb49"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "baseCls": "x-form-fieldset normalTitle",
+                        "cls": [
+                            "noTopBorderDiv"
+                        ],
+                        "itemId": "printInvoiceAddOnsListPanel",
+                        "style": null,
+                        "title": "Add ons",
+                        "width": "100%"
+                    },
+                    "designerId": "a6e9aa2f-bb9f-4236-825a-fb7610fd7c6b",
+                    "cn": [
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "printInvoiceAddonsList",
+                                "width": null
+                            },
+                            "designerId": "1f82967d-efaf-4823-9125-5b40f032a1b4",
+                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onPrintInvoiceAddOnsListInitialize",
+                                "implHandler": [
+                                    "var headers = component.down(\"#headerList\");\r",
+                                    "\r",
+                                    "headers.setHeight(0);\r",
+                                    "headers.setHidden(true);\r",
+                                    "/*\r",
+                                    "headers.setData([{}]);\r",
+                                    "headers.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div style=\"font-size: 10px;\" class=\"x-rm-listtpl-main\">',\r",
+                                    "               '    <div style=\"width: 6%;\">',\r",
+                                    "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                    "               '    </div>',\r",
+                                    "\r",
+                                    "               '    <div style=\"width: 15%;\" data-name=\"module_name\">',\r",
+                                    "               '        Product Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 10%;\" data-name=\"quantity\">',\r",
+                                    "               '        Qty&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 15%;\" data-name=\"module_standard_price\">',\r",
+                                    "               '        Unit Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 15%;\" data-name=\"module_promotional_price\">',\r",
+                                    "               '        Promotional Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "                '    <div style=\"width: 15%;\" data-name=\"per_month\">',\r",
+                                    "               '        Amount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "headers.refresh();*/\r",
+                                    "var list = component.down('#mainList');\r",
+                                    "list.setStore(Ext.getStore('printInvoice.addOnsModulesStore'));\r",
+                                    "list.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div style=\"font-size: 10px;\" class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                    "               '    <div style=\"width: 6%;\">',\r",
+                                    "\r",
+                                    "               '    </div>',\r",
+                                    "\r",
+                                    "               '    <div style=\"width: 30%;\">{module_name}</div>',\r",
+                                    "               '    <div style=\"width: 10%;\">{quantity}</div>',\r",
+                                    "               '    <div style=\"width: 15%;padding-right: 1%;\">{module_standard_price}</div>',\r",
+                                    "               '    <div style=\"width: 20%;padding-right: 1%;\">{module_promotional_price}</div>',\r",
+                                    "               '    <div style=\"width: 15%;padding-right: 1%;\">{per_month}</div>',\r",
+                                    "               '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "\r",
+                                    "\r",
+                                    "list.setItemHeight(22);\r",
+                                    "\r",
+                                    "\r",
+                                    "list.addCls('x-rm-rdvendorslist');\r",
+                                    "\r",
+                                    "//list.refresh() ;\r",
+                                    "/////////////////////////////////////////////////////////////////////////////"
+                                ],
+                                "name": "initialize"
+                            },
+                            "designerId": "3bc4c43f-d615-424b-aabf-f468d170c586"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            " x-rm-no_borderflds"
+                        ],
+                        "container|align": "end",
+                        "container|pack": "end",
+                        "layout": "vbox",
+                        "margin": "5 0 0 0",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "b4119743-3de5-4553-9707-e475643ff146",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": null,
+                                "hidden": true,
+                                "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                "itemId": "printInvoiceSubTotalAmtFld",
+                                "label": "<div style=\" color: #2EC1DA;\"><b>Sub Total</b></div>",
+                                "labelWidth": "105px",
+                                "margin": "0 10 0 0",
+                                "padding": null,
+                                "width": "200px"
+                            },
+                            "designerId": "3c76fdca-8eab-478e-8b4a-1265a5cf1eb7"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": null,
+                                "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                "itemId": "invoicePrintSavingFld",
+                                "label": "<div style=\" color: #2EC1DA;\"><b>Saving</b></div>",
+                                "labelCls": null,
+                                "labelWidth": "105px",
+                                "margin": "0 10 0 0",
+                                "padding": null,
+                                "width": "200px"
+                            },
+                            "designerId": "1bee605f-8a77-4cb1-a5a1-a0282baf5ecb"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": null,
+                                "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                "itemId": "printInvoiceTotalAmtFld",
+                                "label": "<div style=\" color: #2EC1DA;\"><b>Total Payble</b></div>",
+                                "labelWidth": "105px",
+                                "margin": "0 10 0 0",
+                                "padding": null,
+                                "width": "200px"
+                            },
+                            "designerId": "95fa32ca-45c1-43c6-bcc3-74cc9da5e97d"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-no_borderflds"
+                        ],
+                        "layout": "hbox",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "f68d933e-29ed-43be-9408-c6a67610163f",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "baseCls": "x-form-fieldset normalTitle",
+                                "hidden": null,
+                                "itemId": "printInoicePaymentDtlsPanel",
+                                "layout|flex": 2,
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "9041ce63-8b5e-4eb9-b9fe-12d0ddd60bb0",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Payment Method",
+                                        "itemId": "printInvoicePaymentMethodLbl"
+                                    },
+                                    "designerId": "deb79eb9-b341-474e-aceb-24a4e0eb2d6e"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Am Ex",
+                                        "itemId": "printInvoiceAmExLbl"
+                                    },
+                                    "designerId": "258c3391-be52-4a42-9f06-102bda49dd46"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "CC Approval #: ",
+                                        "itemId": "printInvoiceCCApprovalLbl"
+                                    },
+                                    "designerId": "86f6d52e-aaac-4f26-a56f-701c6d8149a6"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "layout|flex": null,
+                                "margin": "0 10 0 0",
+                                "title": null,
+                                "width": "200px"
+                            },
+                            "designerId": "2ed7ea91-8044-49b2-a14a-26dae61715eb",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "docked": null,
+                                        "hidden": null,
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                        "itemId": "printInvoiceAmtPaidFld",
+                                        "label": "<div style=\" color: #2EC1DA;\"><b>Amount Paid</b></div>",
+                                        "labelWidth": "105px",
+                                        "margin": "0 10 0 0",
+                                        "padding": null,
+                                        "width": "200px"
+                                    },
+                                    "designerId": "db0c41e8-0f56-4e91-8723-7922487cbe35"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "docked": null,
+                                        "hidden": true,
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "boldInputFld inputdisabledClsFldAsLbl",
+                                        "itemId": "printInvoiceBalanceDueFld",
+                                        "label": "<div style=\" color: #2EC1DA;\"><b>Balance Due</b></div>",
+                                        "labelWidth": "105px",
+                                        "margin": "0 10 0 0",
+                                        "padding": null,
+                                        "width": "200px"
+                                    },
+                                    "designerId": "8c6957ff-4347-45a2-aa88-33fa59e89287"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "docked": null,
+                                        "inputCls": "inputdisabledClsFldAsLbl",
+                                        "itemId": "printinvoiceBottomDateFld",
+                                        "label": "<div style=\" color: #2EC1DA;\">Date</div>",
+                                        "labelWidth": "105px",
+                                        "margin": null,
+                                        "padding": null,
+                                        "width": "200px"
+                                    },
+                                    "designerId": "2f61cb6a-34c4-4452-97bd-b992514c0826"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

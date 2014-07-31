@@ -1,0 +1,62 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "products.RtSalesPersonModel"
+    },
+    "designerId": "1835474c-e5aa-4aec-91a7-0e0cb6bc92a6",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "_id"
+            },
+            "designerId": "31614af2-78e1-4364-a945-3de24a9a573a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "salesperson_name"
+            },
+            "designerId": "6a9997af-7488-4f99-869e-15931b52231d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "salesperson_commission"
+            },
+            "designerId": "778bc1e7-f079-4796-b66d-d4b39e9f6c55"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "commission_data"
+            },
+            "designerId": "62477f81-d237-446b-a297-4128be50d504"
+        }
+    ]
+}

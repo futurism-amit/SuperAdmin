@@ -1,0 +1,2103 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailerUserProductRMPRO",
+        "designer|userClassName": "retailer.UserProductRMPRO",
+        "itemId": null,
+        "layout": "vbox",
+        "scrollable": false
+    },
+    "designerId": "854ac935-b2ca-4275-a3e3-a71fd17088cc",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "hidden": false,
+                "itemId": null,
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "d16505e7-25f9-48e0-984a-48567a9e0b87",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelBilling"
+                        ],
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "hidden": null,
+                        "itemId": null,
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "dfe33706-f6ac-497f-9dc6-d958a93510fd",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "mytabbar"
+                            },
+                            "designerId": "dc4f3945-8647-47b1-b757-a4bbb0ddc7ae"
+                        },
+                        {
+                            "type": "Ext.form.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "actionInit": "containerInit",
+                                "cls": [
+                                    "x-rm-rdformpanel"
+                                ],
+                                "designer|displayName": null,
+                                "itemId": "rtuProductRMPROTab",
+                                "layout": "vbox",
+                                "scrollable": true,
+                                "title": "<div style=\"line-height: 25px;\">RM-PRO</div>"
+                            },
+                            "designerId": "98ab95df-3dad-4b77-80fa-bf7e030193e9",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "border": null,
+                                        "cls": [
+                                            "borderedDiv",
+                                            "boldInputFld"
+                                        ],
+                                        "html": "<div style= \"margin-left: -106px;\"> Your current RM-PRO billing invoice.<span style=\"float:right;\">#invoice  :</span> </div>",
+                                        "itemId": "rtuBillHeaderLbl",
+                                        "margin": "10 10 10 10",
+                                        "padding": "0 10 0 0",
+                                        "style": "font-size:0.8em;",
+                                        "width": "90%"
+                                    },
+                                    "designerId": "bc6f08b4-a91c-466a-b71b-7f2f2cbe86e8"
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "layout": "vbox",
+                                        "margin": "40 10 10 10",
+                                        "padding": "10 10 10 10",
+                                        "title": "<div style= \"font-size:12px;\">Summary</div>",
+                                        "width": "90%"
+                                    },
+                                    "designerId": "c468cb83-9d4b-43d8-b674-bff4f3eb5e02",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout": "hbox",
+                                                "margin": null,
+                                                "padding": "2 2 2 2",
+                                                "title": null
+                                            },
+                                            "designerId": "f7eb7a9a-31ee-4f69-912f-b69e90a4de7a",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Product",
+                                                        "itemId": "rtuModuleSummaryLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "c94df7f5-8061-4c97-b987-2e41e77e6c49"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Due Date",
+                                                        "itemId": "rtuDueDateLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "15%"
+                                                    },
+                                                    "designerId": "d5f6ebe2-9420-434f-9e4a-87d213a38c97"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Select",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "itemId": "rtuPaymentPrdTermSlctFld",
+                                                        "label": "Term",
+                                                        "labelWidth": "80px",
+                                                        "margin": "0 10 0 0",
+                                                        "options": [
+                                                            "[\r",
+                                                            "    \r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'1 Month',\r",
+                                                            "        value:1\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'3 Month',\r",
+                                                            "        value:3\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'6 Month',\r",
+                                                            "        value:6\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'9 Month',\r",
+                                                            "        value:9\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'1 Year',\r",
+                                                            "        value:12\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'2 Year',\r",
+                                                            "        value:24\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'3 Year',\r",
+                                                            "        value:36\r",
+                                                            "        \r",
+                                                            "    }\r",
+                                                            "    \r",
+                                                            "]"
+                                                        ],
+                                                        "style": null,
+                                                        "width": "15%"
+                                                    },
+                                                    "designerId": "ce52d686-9181-41ae-a6a4-5fbbc7248cb8",
+                                                    "cn": [
+                                                        {
+                                                            "type": "basiceventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onRtuPaymentPrdTermSlctFldChange",
+                                                                "implHandler": [
+                                                                    "RMdatalink.app.getController('RetailerPaymentController').calculateRMPRODiscountAndTotal() ;"
+                                                                ],
+                                                                "name": "change"
+                                                            },
+                                                            "designerId": "0c27257c-a8ba-476a-9256-5c26a29ba69c"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Unit Price / Month",
+                                                        "itemId": "rtuTotalPricePerMonthLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "c40c32d8-e895-4151-98f5-ff4f3dc71bc6"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Ammount",
+                                                        "itemId": "rtuTotalPaybleNoDiscountLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "20%"
+                                                    },
+                                                    "designerId": "2e4cf2d5-5dd9-410e-a3ef-a96c9c9ea096"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "start",
+                                                "layout": "hbox",
+                                                "margin": null,
+                                                "padding": null,
+                                                "title": null
+                                            },
+                                            "designerId": "b9b56ca8-ab1b-4c2d-9f4b-e76b4d48c692",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Discount",
+                                                        "itemId": "rtuDiscountKeyLbl",
+                                                        "margin": "0 0 0 56%",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "8edba3ca-1d40-409a-89f1-8e4166bf1603"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "0",
+                                                        "itemId": "rtuDiscountValueLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "20%"
+                                                    },
+                                                    "designerId": "11a03d6b-91f2-4501-814b-4631ebfe370b"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "border": null,
+                                                "html": null,
+                                                "margin": "10 0 10 54%",
+                                                "style": "font-size:0.8em;border-top: 1px solid; border-radius: 0;",
+                                                "width": "40%"
+                                            },
+                                            "designerId": "f809de6d-8d9c-48cc-889f-e33ff9e888f6"
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "start",
+                                                "layout": "hbox",
+                                                "margin": null,
+                                                "padding": null,
+                                                "title": null
+                                            },
+                                            "designerId": "0ac4d31b-1cc0-475f-bb2b-01bb1afb5b0b",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "boldInputFld"
+                                                        ],
+                                                        "html": "Total",
+                                                        "margin": "0 0 0 56%",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "6a9e009d-3619-44a2-9088-9c4ac98ec3df"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "boldInputFld"
+                                                        ],
+                                                        "html": "0",
+                                                        "itemId": "rtuTotalPaybleAfterDiscountLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "20%"
+                                                    },
+                                                    "designerId": "6e09a559-45b5-4093-a0ce-6fa47888c10f"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "border": null,
+                                                "cls": [
+                                                    "borderedDiv",
+                                                    "boldInputFld"
+                                                ],
+                                                "height": "30px",
+                                                "html": "<div style=\"margin-left:20px;padding-top:5px !important;\">Contract Term</div>",
+                                                "itemId": "rtUserContractTermLbl",
+                                                "margin": null,
+                                                "padding": null,
+                                                "style": "font-size:0.8em;",
+                                                "width": "100%"
+                                            },
+                                            "designerId": "f2adf2d4-d942-4fc8-99ce-960087925e62"
+                                        },
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "border": null,
+                                                "cls": [
+                                                    "borderedDiv",
+                                                    "boldInputFld"
+                                                ],
+                                                "height": "30px",
+                                                "html": "<div style=\"margin-left:20px;padding-top:5px !important;\">Product Setup</div>",
+                                                "itemId": null,
+                                                "margin": null,
+                                                "padding": null,
+                                                "style": "font-size:0.8em;background-color:#DCDCDE;",
+                                                "width": "100%"
+                                            },
+                                            "designerId": "801d2d12-ec36-4ed0-84d9-ebf2033b1fe1"
+                                        },
+                                        {
+                                            "type": "Ext.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "onlyTopBorderDiv"
+                                                ],
+                                                "height": "760px",
+                                                "itemId": "retailerBillingSheet",
+                                                "layout": "hbox"
+                                            },
+                                            "designerId": "ff2b0b7e-87ce-4e5e-b7aa-85718ac13006",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": null,
+                                                        "layout": "vbox",
+                                                        "layout|flex": 3,
+                                                        "margin": "45 0 0 0"
+                                                    },
+                                                    "designerId": "3c070070-1883-4772-a920-47c03f340849",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Panel",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "rmProModulesForRtListPanel",
+                                                                "layout": "vbox",
+                                                                "layout|flex": 3
+                                                            },
+                                                            "designerId": "a3d4350c-1d60-427c-b282-2e2e528e2d48",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "linkedinstance",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "itemId": "rmProModulesForRtList",
+                                                                        "layout|flex": 1
+                                                                    },
+                                                                    "designerId": "c8ae3fe0-dcad-49f3-ae2c-d9ac38a182e3",
+                                                                    "masterInstanceId": "c3b5fdb6-89af-4f17-96e5-5a969c1cfb49",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "delegateeventbinding",
+                                                                            "reference": {
+                                                                                "name": "listeners",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "delegate": "#mainList",
+                                                                                "designer|targetType": "Ext.dataview.List",
+                                                                                "fn": "onListItemTap",
+                                                                                "implHandler": [
+                                                                                    " if(dataview.isSelected(record))\r",
+                                                                                    "    {\r",
+                                                                                    "\r",
+                                                                                    "        dataview.deselect(record,true) ;\r",
+                                                                                    "    }else{\r",
+                                                                                    "\r",
+                                                                                    "        dataview.select(record,true) ;\r",
+                                                                                    "    }\r",
+                                                                                    "\r",
+                                                                                    "return ;\r",
+                                                                                    "\r",
+                                                                                    "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                                                                    "var targetEl = e.target;\r",
+                                                                                    "\r",
+                                                                                    "\r",
+                                                                                    "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                                                                    "\r",
+                                                                                    "\r",
+                                                                                    "    if(dataview.isSelected(record))\r",
+                                                                                    "    {\r",
+                                                                                    "\r",
+                                                                                    "        dataview.deselect(record,true) ;\r",
+                                                                                    "    }else{\r",
+                                                                                    "\r",
+                                                                                    "        dataview.select(record,true) ;\r",
+                                                                                    "    }\r",
+                                                                                    "\r",
+                                                                                    "//    RMdatalink.app.getController('ProductBillingController').onModuleListSelectUnSelect() ;\r",
+                                                                                    "\r",
+                                                                                    "}else{\r",
+                                                                                    "\r",
+                                                                                    "    if(dataview.isSelected(record))\r",
+                                                                                    "    {\r",
+                                                                                    "\r",
+                                                                                    "        dataview.deselect(record,true) ;\r",
+                                                                                    "    }else{\r",
+                                                                                    "\r",
+                                                                                    "        dataview.select(record,true) ;\r",
+                                                                                    "    }\r",
+                                                                                    "}\r",
+                                                                                    "\r",
+                                                                                    ""
+                                                                                ],
+                                                                                "name": "itemtap"
+                                                                            },
+                                                                            "designerId": "8315a81e-c061-4117-ac83-f43bf2052cf7"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Label",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "docked": null,
+                                                                        "html": "<div style=\"font-size: 14px;margin-left: 10px;\">Add ons</div>",
+                                                                        "itemId": "productPackageNameLabel1",
+                                                                        "margin": null,
+                                                                        "style": "color: #555;"
+                                                                    },
+                                                                    "designerId": "1c191530-2089-4b18-a80e-09051f7e782b"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.dataview.List",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "action": "setScrollBarVisible",
+                                                                        "allowDeselect": true,
+                                                                        "cls": [
+                                                                            "x-rm-list"
+                                                                        ],
+                                                                        "itemHeight": 22,
+                                                                        "itemId": "rtProductAddOnsModuleLst",
+                                                                        "layout|flex": 0.8
+                                                                    },
+                                                                    "designerId": "28b7e0e5-d29d-479f-8a68-bd83be8198da",
+                                                                    "customConfigs": [
+                                                                        {
+                                                                            "group": "(Custom Properties)",
+                                                                            "name": "action",
+                                                                            "type": "string"
+                                                                        }
+                                                                    ],
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.XTemplate",
+                                                                            "reference": {
+                                                                                "name": "itemTpl",
+                                                                                "type": "object"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "designer|displayName": "itemTpl",
+                                                                                "implHandler": [
+                                                                                    ""
+                                                                                ]
+                                                                            },
+                                                                            "designerId": "a4ceb82c-5577-45bd-b2b6-6b880b1e167d"
+                                                                        },
+                                                                        {
+                                                                            "type": "basiceventbinding",
+                                                                            "reference": {
+                                                                                "name": "listeners",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fn": "onRtProductAddOnsModuleLstItemTap",
+                                                                                "implHandler": [
+                                                                                    " if(dataview.isSelected(record))\r",
+                                                                                    "    {\r",
+                                                                                    "\r",
+                                                                                    "        dataview.deselect(record,true) ;\r",
+                                                                                    "    }else{\r",
+                                                                                    "\r",
+                                                                                    "        dataview.select(record,true) ;\r",
+                                                                                    "    }\r",
+                                                                                    "\r",
+                                                                                    "return ;\r",
+                                                                                    "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                                                                    "var targetEl = e.target;\r",
+                                                                                    "\r",
+                                                                                    "\r",
+                                                                                    "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                                                                    "\r",
+                                                                                    "\r",
+                                                                                    "    RMdatalink.app.getController('ProductBillingController').onModuleListSelectUnSelect() ;\r",
+                                                                                    "\r",
+                                                                                    "}else{\r",
+                                                                                    "\r",
+                                                                                    "    if(dataview.isSelected(record))\r",
+                                                                                    "    {\r",
+                                                                                    "\r",
+                                                                                    "        dataview.deselect(record,true) ;\r",
+                                                                                    "    }else{\r",
+                                                                                    "\r",
+                                                                                    "        dataview.select(record,true) ;\r",
+                                                                                    "    }\r",
+                                                                                    "}\r",
+                                                                                    "\r",
+                                                                                    ""
+                                                                                ],
+                                                                                "name": "itemtap"
+                                                                            },
+                                                                            "designerId": "ab5a7ca8-3a95-4281-aebc-d9ab88e58f5c"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onMypanel22Initialize",
+                                                                        "implHandler": [
+                                                                            "//var packageStore = Ext.getStore('products.BillingFromPackages') ;\r",
+                                                                            "//var addOnsStore = Ext.getStore('products.BillingModuleAddons') ;\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "var headers = component.down(\"#headerList\");\r",
+                                                                            "headers.setData([{}]);\r",
+                                                                            "headers.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\" data-name=\"module_name\">',\r",
+                                                                            "               '        Product Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 25%;\" data-name=\"module_description\">',\r",
+                                                                            "               '       Description&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 20%;\" data-name=\"trial\">',\r",
+                                                                            "               '        Trial&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"quantity\">',\r",
+                                                                            "               '        Qty&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"module_standard_price\">',\r",
+                                                                            "               '        Rate&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"per_month\">',\r",
+                                                                            "               '        Per Month&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "headers.refresh();\r",
+                                                                            "var list = component.down('#mainList');\r",
+                                                                            "list.setStore(Ext.getStore('products.BillingFromPackages'));\r",
+                                                                            "list.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 25%;\">{module_description}</div>',\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 20% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" maxlength=\"24\"',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "               '    <div style=\"width: 10%;\">{quantity}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 6%;\">{module_standard_price}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;\">{standard_total}</div>',\r",
+                                                                            "\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "\r",
+                                                                            "// list.setMode(\"SINGLE\");\r",
+                                                                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                                                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                                                            "// });\r",
+                                                                            "\r",
+                                                                            "list.setItemHeight(22);\r",
+                                                                            "list.setMode('MULTI');\r",
+                                                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                                                            "\r",
+                                                                            "var moduleList = component.down('#rtProductAddOnsModuleLst') ;\r",
+                                                                            "\r",
+                                                                            "moduleList.setStore(Ext.getStore('products.BillingModuleAddons'));\r",
+                                                                            "moduleList.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 25%;\">{module_description}</div>',\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 20% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" maxlength=\"24\"',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 10% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{quantity}\" maxlength=\"24\"',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'quantity\\');\"/>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 6%;\">{module_standard_price}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;\">{standard_total}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "\r",
+                                                                            "// list.setMode(\"SINGLE\");\r",
+                                                                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                                                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                                                            "// });\r",
+                                                                            "\r",
+                                                                            "moduleList.setItemHeight(22);\r",
+                                                                            "moduleList.setMode('MULTI');\r",
+                                                                            "moduleList.addCls('x-rm-rdvendorslist');"
+                                                                        ],
+                                                                        "name": "initialize"
+                                                                    },
+                                                                    "designerId": "2a320ce7-5e9a-4b35-8605-e683275841bf"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.form.FieldSet",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": [
+                                                                            "onlyTopBorderDiv"
+                                                                        ],
+                                                                        "layout": "hbox",
+                                                                        "margin": "10 0 10 0",
+                                                                        "style": null,
+                                                                        "title": null
+                                                                    },
+                                                                    "designerId": "0ea002a5-2203-40a1-a2ed-a2da7b365255",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.Label",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "html": "Sub Total:",
+                                                                                "style": "text-align:right;",
+                                                                                "width": "77%"
+                                                                            },
+                                                                            "designerId": "15b8e047-55b9-403e-b7b8-008b9ef9991a"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.Label",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "html": "0$",
+                                                                                "itemId": "rmProStdPriceTotalLbl",
+                                                                                "style": "text-align:right;padding-right:4%;",
+                                                                                "width": "10%"
+                                                                            },
+                                                                            "designerId": "a81c0d30-1bff-42f3-8a0a-84fcc12076f2"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.Label",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "html": "0$",
+                                                                                "itemId": "rmProPrmotionalPriceTotalLbl",
+                                                                                "style": "text-align:right;padding-right:4%;",
+                                                                                "width": "10%"
+                                                                            },
+                                                                            "designerId": "3ce63882-4a3e-42c6-a88b-058cfa3ae0ef"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Panel",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "height": "300px",
+                                                                "itemId": "rmProDiscountsForRtListPanel",
+                                                                "layout": "hbox",
+                                                                "layout|flex": null
+                                                            },
+                                                            "designerId": "c593cad6-49d2-40d9-a9bb-746f6a99405c",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.form.FieldSet",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "height": "100%",
+                                                                        "hidden": true,
+                                                                        "layout": "vbox",
+                                                                        "layout|flex": 3,
+                                                                        "title": null
+                                                                    },
+                                                                    "designerId": "2bfe780c-ad3c-4190-9827-221ada3a33f2",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "linkedinstance",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "hidden": null,
+                                                                                "itemId": "rmProDiscountsForRtList",
+                                                                                "layout|flex": 1,
+                                                                                "margin": "5 0 0 0"
+                                                                            },
+                                                                            "designerId": "7cd9b544-fbcf-454b-a7a1-0edb049ef62d",
+                                                                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.FieldSet",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "cls": [
+                                                                                    "x-rm-radiordformpanel",
+                                                                                    "x-rm-rdformpanel"
+                                                                                ],
+                                                                                "height": "28px",
+                                                                                "hidden": true,
+                                                                                "layout": "hbox",
+                                                                                "margin": "0 0 0 0",
+                                                                                "title": null,
+                                                                                "width": null
+                                                                            },
+                                                                            "designerId": "c48a4733-79a2-48cd-9f84-4b996205073c",
+                                                                            "cn": [
+                                                                                {
+                                                                                    "type": "Ext.field.Radio",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "cls": [
+                                                                                            "pointerCursor"
+                                                                                        ],
+                                                                                        "inputCls": "radiofieldInput",
+                                                                                        "itemId": "monthlyPaymentRTBillrdoFld",
+                                                                                        "label": "Monthly Payment",
+                                                                                        "labelCls": "transparentBack",
+                                                                                        "labelWidth": "auto",
+                                                                                        "name": "productPaymentOptions",
+                                                                                        "width": "40%"
+                                                                                    },
+                                                                                    "designerId": "69d4a048-ab52-411c-b03f-8df489d884f5"
+                                                                                },
+                                                                                {
+                                                                                    "type": "Ext.field.Radio",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "cls": [
+                                                                                            "pointerCursor"
+                                                                                        ],
+                                                                                        "inputCls": "radiofieldInput",
+                                                                                        "itemId": "yearlyPaymentRTBillrdoFld",
+                                                                                        "label": "Yearly Payment",
+                                                                                        "labelCls": "transparentBack",
+                                                                                        "labelWidth": "auto",
+                                                                                        "name": "productPaymentOptions",
+                                                                                        "width": "40%"
+                                                                                    },
+                                                                                    "designerId": "47241e45-1c7f-439e-b26a-759c9a0b9db2"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Ext.form.FieldSet",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": [
+                                                                            " x-rm-no_borderflds"
+                                                                        ],
+                                                                        "height": null,
+                                                                        "title": null,
+                                                                        "width": "440px"
+                                                                    },
+                                                                    "designerId": "1d4877d5-b3be-4104-bd26-83ba21167426",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "inputCls": "inputdisabledClsFldAsLbl",
+                                                                                "itemId": "rtUserPaymentFreqFld",
+                                                                                "label": "Payment Frequency: \t\t",
+                                                                                "labelWidth": "160px"
+                                                                            },
+                                                                            "designerId": "ac9fb659-9bb7-4e53-b597-e26656da785c"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "inputCls": "inputdisabledClsFldAsLbl",
+                                                                                "itemId": "rtUserAdvancePaymentFld",
+                                                                                "label": "Advance Payment: \t\t",
+                                                                                "labelWidth": "160px"
+                                                                            },
+                                                                            "designerId": "901979c3-0cb2-4fe8-a6f0-59db99e894f5"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "inputCls": "inputdisabledClsFldAsLbl",
+                                                                                "itemId": "rtUserDiscountAppliedFld",
+                                                                                "label": "Discount applied:",
+                                                                                "labelWidth": "160px"
+                                                                            },
+                                                                            "designerId": "04d76048-bc0d-4547-8563-39c3a88b8627"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "inputCls": "inputdisabledClsFldAsLbl",
+                                                                                "itemId": "rtUserTotalPaybleFld",
+                                                                                "label": "Total Payable:",
+                                                                                "labelWidth": "160px"
+                                                                            },
+                                                                            "designerId": "67f10737-651a-4404-adba-ceed1095b00e"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "inputCls": "inputdisabledClsFldAsLbl",
+                                                                                "itemId": "rtUserTotalSavingFld",
+                                                                                "label": "Total Savings:",
+                                                                                "labelWidth": "160px"
+                                                                            },
+                                                                            "designerId": "c11aaaa5-e6c9-4fce-a3f2-f692f5676505"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Checkbox",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "label": "I have read this Agreement and agree to the  terms and conditions.",
+                                                                                "labelAlign": "right",
+                                                                                "labelWidth": "90%",
+                                                                                "labelWrap": true
+                                                                            },
+                                                                            "designerId": "d9dca39d-3e4b-460a-b16e-8ace2b1a0666"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.Button",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "cls": [
+                                                                                    "x-rm-blueBtn"
+                                                                                ],
+                                                                                "docked": "bottom",
+                                                                                "margin": "10 0 10 80%",
+                                                                                "text": "PAY & ACTIVATE SERVICE\t\t",
+                                                                                "width": "220px"
+                                                                            },
+                                                                            "designerId": "fb6b4761-9801-444e-a94e-27f2f9322169"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Ext.form.Panel",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": [
+                                                                            "x-rm-rdformpanel  x-rm-no_borderflds"
+                                                                        ],
+                                                                        "docked": "right",
+                                                                        "layout|flex": null,
+                                                                        "scrollable": false,
+                                                                        "width": "360px"
+                                                                    },
+                                                                    "designerId": "8d964856-6fea-47f6-bc27-5a88259a8ef0",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "hidden": true,
+                                                                                "itemId": "rtBillTotalMonthlyMbrShipFld",
+                                                                                "label": "Total Monthly Membership",
+                                                                                "labelWidth": "160px",
+                                                                                "width": "100%"
+                                                                            },
+                                                                            "designerId": "db1a5b19-9383-473f-a71b-55b46c100131"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "html": "<div style= \"margin:-20px 0 0 -12px\">$</div>",
+                                                                                "inputCls": "inputTextRightAlign inputdisabledClsFldAsLbl",
+                                                                                "itemId": "rtBillDiscountTxtFld",
+                                                                                "label": "Discount",
+                                                                                "labelWidth": "180px",
+                                                                                "style": "font-size:0.9em;",
+                                                                                "width": "80%"
+                                                                            },
+                                                                            "designerId": "bb9e717f-adbe-49b7-bf7a-b9aef6b8526b"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "html": "<div style= \"margin:-20px 0 0 -12px\">$</div>",
+                                                                                "inputCls": "inputTextRightAlign inputdisabledClsFldAsLbl",
+                                                                                "itemId": "rtBillMonthlyMemberShipFld",
+                                                                                "label": "Monthly Membership",
+                                                                                "labelWidth": "180px",
+                                                                                "style": "font-size:0.9em;",
+                                                                                "width": "80%"
+                                                                            },
+                                                                            "designerId": "b0254a36-a403-46fc-a8c2-5c669f042e05"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "disabled": true,
+                                                                                "html": "<div style= \"margin:-20px 0 0 -12px\">$</div>",
+                                                                                "inputCls": "inputdisabledClsFldAsLbl inputTextRightAlign",
+                                                                                "itemId": "rtBillYearlyMemberShipFld",
+                                                                                "label": "Yearly Membership",
+                                                                                "labelWidth": "180px",
+                                                                                "style": "font-size:0.9em;",
+                                                                                "width": "80%"
+                                                                            },
+                                                                            "designerId": "b8901916-102c-48d7-91ee-107792b034f6"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onRmProDiscountsForRtListPanelInitialize",
+                                                                        "implHandler": [
+                                                                            "var headers = component.down(\"#headerList\");\r",
+                                                                            "headers.setData([{}]);\r",
+                                                                            "headers.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main\" style=\"background-color: #DCDCDE ;\">',\r",
+                                                                            "               '    <div style=\"width: 5%;\"></div>',\r",
+                                                                            "               '    <div style=\"width: 35%;\" data-name=\"discount_name\">',\r",
+                                                                            "               '        Advance Payment Benifits&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\" data-name=\"discount_value\">',\r",
+                                                                            "               '        Discount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "                  '    <div style=\"width: 15%;\" data-name=\"discount_saving\">',\r",
+                                                                            "               '        Saving&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "                  '    <div style=\"width: 15%;\" data-name=\"discount_total\">',\r",
+                                                                            "               '        Total&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "                  '    <div style=\"width: 15%;\" data-name=\"discount_per_month\">',\r",
+                                                                            "               '        Per Month&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "headers.refresh();\r",
+                                                                            "var list = component.down('#mainList');\r",
+                                                                            "list.setStore(Ext.getStore('products.BillingDiscount'));\r",
+                                                                            "list.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 5%;\">',\r",
+                                                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 35%;\">{discount_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\">{discount_value}%</div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\">$ {discount_saving}</div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\">$ {discount_total}</div>',\r",
+                                                                            "               '    <div style=\"width: 15%; font-weight: bold;\">$ {discount_per_month}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "list.setItemHeight(22);\r",
+                                                                            "list.setMode(\"SINGLE\");\r",
+                                                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                                                            "    list.on(\"select\",function(discountList, record, eOpts){\r",
+                                                                            "    });"
+                                                                        ],
+                                                                        "name": "initialize"
+                                                                    },
+                                                                    "designerId": "a3f33d8a-3e92-4e8f-bedd-0d6f907d5e71"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            " x-rm-rdformpanel"
+                                                        ],
+                                                        "hidden": true,
+                                                        "layout": "vbox",
+                                                        "layout|flex": 0.8,
+                                                        "scrollable": false
+                                                    },
+                                                    "designerId": "995630f4-fed5-491c-916e-912eff52080d",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "<center>SELECT PACKAGE</center>",
+                                                                "itemId": "rtBillingSlctPackLbl",
+                                                                "margin": "15 0 5 0",
+                                                                "width": "100%"
+                                                            },
+                                                            "designerId": "c525ff0d-320b-4f86-bcfc-a79ed75562f0"
+                                                        },
+                                                        {
+                                                            "type": "Ext.dataview.List",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "x-rm-list",
+                                                                    "x-rm-rdvendorslist"
+                                                                ],
+                                                                "data": null,
+                                                                "itemHeight": 22,
+                                                                "itemId": "rmProSelectPackageList",
+                                                                "layout|flex": 2,
+                                                                "margin": "35 0 0 0",
+                                                                "minHeight": "150px",
+                                                                "scrollable": "false"
+                                                            },
+                                                            "designerId": "bc33288a-64ab-4eac-93b9-9a7b6b81f5f0",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "scrollable",
+                                                                    "type": "string"
+                                                                }
+                                                            ],
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.XTemplate",
+                                                                    "reference": {
+                                                                        "name": "itemTpl",
+                                                                        "type": "object"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|displayName": "itemTpl",
+                                                                        "implHandler": [
+                                                                            "<div class=\"x-rm-listtpl-main pointerCursor\">\r",
+                                                                            "       <div style=\"width: 12%;\">\r",
+                                                                            " <div style=\"width: 19px; height:19px;\"></div>\r",
+                                                                            "    </div>\r",
+                                                                            "        \r",
+                                                                            "<div style=\"width: 85%;\">{text}</div>\r",
+                                                                            "              \r",
+                                                                            "</div>"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "9825eedb-5327-4aac-943b-e2e729360a99"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "<center>SELECT RATE</center>",
+                                                                "width": "100%"
+                                                            },
+                                                            "designerId": "063f495e-ec54-4be9-a4e9-4a1e9fe58a51"
+                                                        },
+                                                        {
+                                                            "type": "Ext.dataview.List",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "x-rm-list",
+                                                                    "x-rm-rdvendorslist"
+                                                                ],
+                                                                "data": [
+                                                                    "[\r",
+                                                                    "    \r",
+                                                                    "    {\r",
+                                                                    "        text:\"Standard Price\",\r",
+                                                                    "        value:\"module_standard_price\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"Promotional Price\",\r",
+                                                                    "        value:\"module_promotional_price\"\r",
+                                                                    "    }\r",
+                                                                    "    \r",
+                                                                    "]"
+                                                                ],
+                                                                "height": "60px",
+                                                                "itemHeight": 22,
+                                                                "itemId": "rmProSelectRateList",
+                                                                "layout|flex": null,
+                                                                "margin": "35 0 0 0",
+                                                                "scrollable": "false"
+                                                            },
+                                                            "designerId": "dd45d3a8-d652-4ece-a84f-dfce7bad5299",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "scrollable",
+                                                                    "type": "string"
+                                                                }
+                                                            ],
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.XTemplate",
+                                                                    "reference": {
+                                                                        "name": "itemTpl",
+                                                                        "type": "object"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|displayName": "itemTpl",
+                                                                        "implHandler": [
+                                                                            "<div class=\"x-rm-listtpl-main pointerCursor\">\r",
+                                                                            "       <div style=\"width: 12%;\">\r",
+                                                                            " <div style=\"width: 19px; height:19px;\"></div>\r",
+                                                                            "    </div>\r",
+                                                                            "        \r",
+                                                                            "<div style=\"width: 85%;\">{text}</div>\r",
+                                                                            "              \r",
+                                                                            "</div>"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "ef54d77a-5063-492f-b455-5fa1b54d8c82"
+                                                                },
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onrmProSelectRateSelect",
+                                                                        "implHandler": [
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "var moduleList = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down('#mainList') ;\r",
+                                                                            "var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;\r",
+                                                                            "var headers = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down(\"#headerList\");\r",
+                                                                            "\r",
+                                                                            "if(record.data.value == \"module_standard_price\")\r",
+                                                                            "{\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "    moduleList.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 30%;\">{module_description}</div>',\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 20% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" ',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "               '    <div style=\"width: 6%;\">{quantity}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {module_standard_price}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {standard_total}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "     addOnsList.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 30%;\">{module_description}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 20% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" ',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 6% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{quantity}\"',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'quantity\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {module_standard_price}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {standard_total}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "headers.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main\" style=\"line-height: 1em;\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 15%;\" data-name=\"module_name\">',\r",
+                                                                            "               '        Product Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 30%;\" data-name=\"module_description\">',\r",
+                                                                            "               '       Description&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 20%;\" data-name=\"trial\">',\r",
+                                                                            "               '        Trial&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "                '    <div style=\"width: 6%;\" data-name=\"quantity\">',\r",
+                                                                            "               '        Qty&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "                '    <div style=\"width: 10%;line-height: 1em;\" data-name=\"module_standard_price\">',\r",
+                                                                            "               '        Standard<br>Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "                '    <div style=\"width: 10%;\" data-name=\"per_month\">',\r",
+                                                                            "               '        Standard<br>Total&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "headers.refresh();\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "}else{\r",
+                                                                            "\r",
+                                                                            "/*        moduleList.setItemTpl(\r",
+                                                                            "   Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 25%;\">{module_description}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 20% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" ',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "                '    <div style=\"width: 10%;\">{quantity}</div>',\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 6%;\">{module_promotional_price}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;\">{per_month}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "\r",
+                                                                            "     addOnsList.setItemTpl(\r",
+                                                                            "   Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 25%;\">{module_description}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 20% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" ',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 10% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{quantity}\"',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'quantity\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 6%;\">{module_promotional_price}</div>',\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;\">{per_month}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "*/\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "        moduleList.setItemTpl(\r",
+                                                                            "   Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 20%;\">{module_description}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 10% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" ',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "                '    <div style=\"width: 6%;\">{quantity}</div>',\r",
+                                                                            "\r",
+                                                                            "                 '    <div class=\"textThroughLine\" style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {module_standard_price}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {module_promotional_price}</div>',\r",
+                                                                            "               '    <div  class=\"textThroughLine\" style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {standard_total}</div>',\r",
+                                                                            "                '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {promotional_total}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "\r",
+                                                                            "     addOnsList.setItemTpl(\r",
+                                                                            "   Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 15%;\">{module_name}</div>',\r",
+                                                                            "               '    <div style=\"width: 20%;\">{module_description}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 10% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{trial}\" ',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'trial\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "               '    <input type=\"text\" style=\"width: 6% !important;\" class=\"x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{quantity}\"',\r",
+                                                                            "               '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateModuleList(this,\\'quantity\\');\"/>',\r",
+                                                                            "\r",
+                                                                            "               '    <div class=\"textThroughLine\" style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {module_standard_price}</div>',\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {module_promotional_price}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div  class=\"textThroughLine\" style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {standard_total}</div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 10%;text-align: right;padding-right: 4%;\">$ {promotional_total}</div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ");\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "headers.setItemTpl(\r",
+                                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                                            "               '<div class=\"x-rm-listtpl-main\" style=\"line-height: 1em;\">',\r",
+                                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 15%;\" data-name=\"module_name\">',\r",
+                                                                            "               '        Product Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 20%;\" data-name=\"module_description\">',\r",
+                                                                            "               '       Description&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"trial\">',\r",
+                                                                            "               '        Trial&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 6%;\" data-name=\"quantity\">',\r",
+                                                                            "               '        Qty&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"module_standard_price\">',\r",
+                                                                            "               '        Standard<br>Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"module_promotional_price\">',\r",
+                                                                            "               '        Promotional<br>Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"module_promotional_price\">',\r",
+                                                                            "               '        Standard<br>Total&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '    <div style=\"width: 10%;\" data-name=\"per_month\">',\r",
+                                                                            "               '        Promotional<br>Total&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "               '    </div>',\r",
+                                                                            "               '</div>'\r",
+                                                                            "              )\r",
+                                                                            ") ;\r",
+                                                                            "\r",
+                                                                            "headers.refresh() ;\r",
+                                                                            "\r",
+                                                                            "}\r",
+                                                                            "moduleList.refresh() ;\r",
+                                                                            "\r",
+                                                                            "addOnsList.refresh() ;\r",
+                                                                            "\r",
+                                                                            "                    var timeout = setTimeout(function(){\r",
+                                                                            "\r",
+                                                                            "                        RMdatalink.app.getController('ProductBillingController').calculateBillingPrices() ;\r",
+                                                                            "\r",
+                                                                            "                        clearTimeout(timeout);\r",
+                                                                            "                    },100);\r",
+                                                                            "\r",
+                                                                            ""
+                                                                        ],
+                                                                        "name": "select"
+                                                                    },
+                                                                    "designerId": "11bb0498-5f40-4fb5-8f46-31dd9adb7a95"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "hidden": null,
+                                                                "html": "<center>Select Term</center>",
+                                                                "itemId": "productRmproSlctTermLbl",
+                                                                "width": "100%"
+                                                            },
+                                                            "designerId": "3b74d800-5859-456d-8679-f56ea1329f24"
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "action": "inputByDatePicker",
+                                                                "itemId": "productRmProSlctTermStrtDtFld",
+                                                                "label": "Start Date",
+                                                                "labelWidth": "50%",
+                                                                "margin": "35 0 0 0",
+                                                                "width": "95%"
+                                                            },
+                                                            "designerId": "0a8a84b0-cb31-4ea2-b39c-b8c4cc9e95e0",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "action",
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.dataview.List",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "x-rm-list",
+                                                                    "x-rm-rdvendorslist"
+                                                                ],
+                                                                "data": [
+                                                                    "[\r",
+                                                                    "    \r",
+                                                                    "    {\r",
+                                                                    "        text:\"1 Year\",\r",
+                                                                    "        value:\"12\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"2 Year\",\r",
+                                                                    "        value:\"24\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"3 Year\",\r",
+                                                                    "        value:\"36\"\r",
+                                                                    "    }\r",
+                                                                    "    \r",
+                                                                    "]"
+                                                                ],
+                                                                "height": "90px",
+                                                                "itemHeight": 22,
+                                                                "itemId": "rmProSlctTermList",
+                                                                "layout|flex": null,
+                                                                "margin": null,
+                                                                "scrollable": "false"
+                                                            },
+                                                            "designerId": "f875b966-75ba-4f7a-a27c-6b6bcfdcb3f0",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "scrollable",
+                                                                    "type": "string"
+                                                                }
+                                                            ],
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.XTemplate",
+                                                                    "reference": {
+                                                                        "name": "itemTpl",
+                                                                        "type": "object"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|displayName": "itemTpl",
+                                                                        "implHandler": [
+                                                                            "<div class=\"x-rm-listtpl-main pointerCursor\">\r",
+                                                                            "       <div style=\"width: 12%;\">\r",
+                                                                            " <div style=\"width: 19px; height:19px;\"></div>\r",
+                                                                            "    </div>\r",
+                                                                            "        \r",
+                                                                            "<div style=\"width: 85%;\">{text}</div>\r",
+                                                                            "              \r",
+                                                                            "</div>"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "0ae07a28-f43b-44c1-88e5-3c54eb9ef731"
+                                                                },
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onrmProSelectRateSelect1",
+                                                                        "implHandler": [
+                                                                            ""
+                                                                        ],
+                                                                        "name": "select"
+                                                                    },
+                                                                    "designerId": "f7f9e81a-d031-4d7a-bbcf-6e4b531488bd"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "hidden": null,
+                                                                "html": "<center>Payment Frequency</center>",
+                                                                "itemId": "productRmproPaymentFreqLbl",
+                                                                "width": "100%"
+                                                            },
+                                                            "designerId": "44f50692-4ebf-40ef-a761-1fbb91f9f2d7"
+                                                        },
+                                                        {
+                                                            "type": "Ext.dataview.List",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "action": "setScrollBarVisible",
+                                                                "cls": [
+                                                                    "x-rm-list",
+                                                                    "x-rm-rdvendorslist"
+                                                                ],
+                                                                "data": [
+                                                                    "[\r",
+                                                                    "    \r",
+                                                                    "    {\r",
+                                                                    "        text:\"Monthly\",\r",
+                                                                    "        value:\"1\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"Quarterly\",\r",
+                                                                    "        value:\"3\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"Half-yearly\",\r",
+                                                                    "        value:\"6\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"Half and Quarterly\",\r",
+                                                                    "        value:\"9\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"Yearly\",\r",
+                                                                    "        value:\"12\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"2 Yearly\",\r",
+                                                                    "        value:\"24\"\r",
+                                                                    "    },\r",
+                                                                    "    {\r",
+                                                                    "        text:\"3 Yearly\",\r",
+                                                                    "        value:\"36\"\r",
+                                                                    "    }\r",
+                                                                    "    \r",
+                                                                    "]"
+                                                                ],
+                                                                "height": "120px",
+                                                                "itemHeight": 22,
+                                                                "itemId": "rmProPaymentFreqList",
+                                                                "layout|flex": null,
+                                                                "margin": "35 0 0 0",
+                                                                "scrollable": "true"
+                                                            },
+                                                            "designerId": "95e41d2b-8cac-4fc6-ac02-655f32c1f53e",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "scrollable",
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "action",
+                                                                    "type": "string"
+                                                                }
+                                                            ],
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.XTemplate",
+                                                                    "reference": {
+                                                                        "name": "itemTpl",
+                                                                        "type": "object"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|displayName": "itemTpl",
+                                                                        "implHandler": [
+                                                                            "<div class=\"x-rm-listtpl-main pointerCursor\">\r",
+                                                                            "       <div style=\"width: 12%;\">\r",
+                                                                            " <div style=\"width: 19px; height:19px;\"></div>\r",
+                                                                            "    </div>\r",
+                                                                            "        \r",
+                                                                            "<div style=\"width: 85%;\">{text}</div>\r",
+                                                                            "              \r",
+                                                                            "</div>"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "04bccf1f-9744-49e5-9cc9-7bbb7f654e61"
+                                                                },
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onrmProSelectRateSelect11",
+                                                                        "implHandler": [
+                                                                            ""
+                                                                        ],
+                                                                        "name": "select"
+                                                                    },
+                                                                    "designerId": "3f653503-f40d-4baf-b633-b2ca3b4716f8"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "<center>Vendor Discount</center>",
+                                                                "itemId": "productDatalinkVdrDiscTtlLbl",
+                                                                "width": "100%"
+                                                            },
+                                                            "designerId": "7fe71a79-1d78-4a77-80b0-0a0f2b5b978d"
+                                                        },
+                                                        {
+                                                            "type": "Ext.form.FieldSet",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "border": null,
+                                                                "itemId": "myfieldset169",
+                                                                "layout": "vbox",
+                                                                "layout|flex": 3,
+                                                                "margin": "45 0 0 5",
+                                                                "title": null,
+                                                                "width": "98%"
+                                                            },
+                                                            "designerId": "2663da4d-64d5-4f9e-8ae3-f428dacaed85",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "linkedinstance",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "itemId": "productDatalinkVdrDiscLst",
+                                                                        "layout|flex": 1
+                                                                    },
+                                                                    "designerId": "030b80d2-7bb1-4772-ab75-a3a92957b553",
+                                                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.field.Text",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "hidden": true,
+                                                                        "itemId": "rtBillingCommissionableAmtFld",
+                                                                        "label": "Commissionable Ammount",
+                                                                        "labelWidth": "160px"
+                                                                    },
+                                                                    "designerId": "14e011ca-d643-46ee-b078-87ff6149f2bf"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.field.Text",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "hidden": true,
+                                                                        "itemId": "rtBillingCommissionPercentFld",
+                                                                        "label": "Commission Percent",
+                                                                        "labelWidth": "160px"
+                                                                    },
+                                                                    "designerId": "57a089e2-3847-49b2-8076-1a3f7059a5a5"
+                                                                },
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onMyfieldset169Initialize",
+                                                                        "implHandler": [
+                                                                            "return ;\r",
+                                                                            "\r",
+                                                                            "if(Ext.getStore(\"pricing.datalink_discount\").getData().all.length == 0){\r",
+                                                                            "    RMdatalink.app.getController('BillingDetailsController').setDataForPricingSideContainer(1);\r",
+                                                                            "\r",
+                                                                            "}\r",
+                                                                            "\r",
+                                                                            "\r",
+                                                                            "var headers1 =  component.down(\"#headerList\");\r",
+                                                                            "    headers1.setData([{}]);\r",
+                                                                            "    headers1.setItemTpl(\r",
+                                                                            "        Ext.create('Ext.XTemplate',\r",
+                                                                            "                   '<div class=\"x-rm-listtpl-main\" style=\"width: 98%;\">',\r",
+                                                                            "                   '    <div style=\"width: 45%;margin-left:10px;\" data-name=\"of_vendors\">',\r",
+                                                                            "                   '        #OF VENDORS&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "                   '    </div>',\r",
+                                                                            "                   '    <div style=\"width: 45%;\" data-name=\"discount_level\">',\r",
+                                                                            "                   '       DISCOUNT LEVEL&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                                            "                   '    </div>',\r",
+                                                                            "                   '</div>'\r",
+                                                                            "                  )\r",
+                                                                            "    );\r",
+                                                                            "    headers1.refresh();\r",
+                                                                            "    // ** MAIN LIST ****\r",
+                                                                            "    var list1 =  component.down(\"#mainList\");\r",
+                                                                            "    list1.setStore(Ext.getStore(\"pricing.datalink_discount\"));\r",
+                                                                            "\r",
+                                                                            "    list1.setItemTpl(\r",
+                                                                            "        Ext.create('Ext.XTemplate',\r",
+                                                                            "                   '<div class=\"x-rm-listtpl-main\" style=\"width: 100%;\">',\r",
+                                                                            "                   '    <div style=\"width: 45%;padding-left: 15px;\">{of_vendors}</div>',\r",
+                                                                            "                   '    <div style=\"width: 45%;text-align: right;\">{discount_level}</div>',\r",
+                                                                            "                   '    <div>%</div>',\r",
+                                                                            "                   '</div>'\r",
+                                                                            "\r",
+                                                                            "                  )\r",
+                                                                            "    );\r",
+                                                                            "    list1.setItemHeight(22);\r",
+                                                                            "    list1.addCls('x-rm-rdvendorslist');"
+                                                                        ],
+                                                                        "name": "initialize"
+                                                                    },
+                                                                    "designerId": "f144b121-de0d-4bce-a388-cefad80bfca4"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRtuProductRMPROTabPainted",
+                                        "implHandler": [
+                                            " RMdatalink.app.getController('RetailerPaymentController').calculateRMPRODiscountAndTotal() ;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "00c5e1db-9532-4aa5-a3f2-27d4e1c45aa5"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

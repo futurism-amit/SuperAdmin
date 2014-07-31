@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "products.BillingModuleAddons",
+        "model": "products.BillingRmproModules",
+        "storeId": "products.BillingModuleAddons"
+    },
+    "designerId": "f33f9ed6-9084-45fe-a595-0743980f3889"
+}

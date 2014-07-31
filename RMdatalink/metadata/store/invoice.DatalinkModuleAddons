@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "invoice.DatalinkModuleAddons",
+        "model": "products.BillingRmproModules",
+        "storeId": "invoice.DatalinkModuleAddons"
+    },
+    "designerId": "b775b87f-24db-47ef-9506-5af220adbe82"
+}

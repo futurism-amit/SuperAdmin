@@ -1,0 +1,38 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "PermisstionsModel"
+    },
+    "designerId": "ab6062af-37e0-44f8-adf5-7a1e46b117e8",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "user_role"
+            },
+            "designerId": "28818728-c72c-489d-9025-b6f84256899c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "permissions"
+            },
+            "designerId": "aa970b19-8490-40e7-b26b-c3f326a93c07"
+        }
+    ]
+}

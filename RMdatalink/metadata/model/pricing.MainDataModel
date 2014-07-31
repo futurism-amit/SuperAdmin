@@ -1,0 +1,110 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "pricing.MainDataModel"
+    },
+    "designerId": "f92c1bae-4593-445b-99b8-440c8e8de162",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "designerId": "ca3c27d4-b63e-4cd4-9bd6-fb934918b336"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "product_name"
+            },
+            "designerId": "94dd991d-47f9-497a-b525-aac1d805a671"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "pricing_policy"
+            },
+            "designerId": "c9e3c64a-f8f0-4678-9158-329605bf3f1f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_policy"
+            },
+            "designerId": "10a62a01-5920-49cc-ae7b-0d3dcc2f2bfa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "functionality"
+            },
+            "designerId": "ed56f0a4-4220-4f14-b3c7-e4d9e1a856c1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "active_pricing_policy"
+            },
+            "designerId": "d01f1c41-ed9e-4962-beb2-ffcf09114789"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "active_discount_policy"
+            },
+            "designerId": "ff6be4f6-7c07-484c-8695-d8c0b423effb"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "advance_payment_discounts"
+            },
+            "designerId": "01bd905b-b748-4280-b383-c23893eaaefe"
+        }
+    ]
+}

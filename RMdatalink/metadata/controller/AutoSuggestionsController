@@ -1,0 +1,209 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "activeTextField": [
+            "{}"
+        ],
+        "autoSuggetionView": [
+            "{}"
+        ],
+        "designer|userClassName": "AutoSuggestionsController"
+    },
+    "configAlternates": {
+        "activeTextField": "object",
+        "autoSuggetionView": "object"
+    },
+    "designerId": "84fdd4df-79d0-4836-a4d8-27f7152fc4f2",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "activeTextField",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "autoSuggetionView",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "list[itemId=autoSuggestionsList]",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onAutoSuggestionsListSelect",
+                "implHandler": [
+                    "console.log(record);\r",
+                    "\r",
+                    "this.config.activeTextField.setValue(record.data.text);\r",
+                    "\r",
+                    "this.config.autoSuggetionView.hide();\r",
+                    "\r",
+                    "dataview.deselect(record) ;"
+                ],
+                "name": "select"
+            },
+            "designerId": "e14f9a0f-0a18-4602-9ad2-b32f720f93bc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "textfield[action=autoSuggestionField]",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "onAutoSuggestionTextfieldKeyup",
+                "implHandler": [
+                    "console.log(textfield.getValue());\r",
+                    "\r",
+                    "\r",
+                    "this.createAutoSuggetionView();\r",
+                    "\r",
+                    "this.config.activeTextField = textfield ;\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "this.config.autoSuggetionView.showBy(textfield) ;\r",
+                    "\r",
+                    "this.filterAutoSuggestionList(textfield);"
+                ],
+                "name": "keyup"
+            },
+            "configAlternates": {
+                "activeTextField": "object"
+            },
+            "designerId": "9d0faf82-7be1-4a1d-a066-3ec64b14f3d1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createAutoSuggetionView",
+                "implHandler": [
+                    "if(Ext.getCmp(\"AutoSuggetionsDataView\"))\r",
+                    "{\r",
+                    "\r",
+                    " return ;\r",
+                    "\r",
+                    "}else{\r",
+                    "\r",
+                    "  this.config.autoSuggetionView  = Ext.widget('AutoSuggetionsDataView');\r",
+                    "}\r",
+                    ""
+                ]
+            },
+            "designerId": "54f0c278-c7c8-418f-9947-e4cfd7619b78"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "textfield[action=autoSuggestionField]",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "onAutoSuggestionTextfieldClearicontap",
+                "implHandler": [
+                    "if(this.config.autoSuggetionView)\r",
+                    "{\r",
+                    "    this.config.autoSuggetionView.hide();\r",
+                    "\r",
+                    "\r",
+                    "    Ext.getStore('AutoCompleteStore').clearFilter();\r",
+                    "}"
+                ],
+                "name": "clearicontap"
+            },
+            "designerId": "27ce4056-2318-4720-97df-c26ced2314b1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "textfield"
+                ],
+                "fn": "filterAutoSuggestionList",
+                "implHandler": [
+                    "var listToSearch = Ext.ComponentQuery.query('#autoSuggestionsList')[0];\r",
+                    "var store = null;\r",
+                    "\r",
+                    "if(!listToSearch)\r",
+                    "    return;\r",
+                    "store = listToSearch.getStore();\r",
+                    "if(!store)\r",
+                    "    return;\r",
+                    "store.clearFilter();\r",
+                    "\r",
+                    "var value = textfield.getValue();\r",
+                    "var keysToSearch = store.getModel().getFields().keys;\r",
+                    "\r",
+                    "if (!value) {\r",
+                    "    store.filterBy(function() {\r",
+                    "        return true;\r",
+                    "    });\r",
+                    "}\r",
+                    "else {\r",
+                    "    var searches = value.split(' '),\r",
+                    "        regexps = [],\r",
+                    "        i;\r",
+                    "\r",
+                    "    for (i = 0; i < searches.length; i++) {\r",
+                    "        if (searches[i]) {\r",
+                    "           regexps.push(new RegExp(searches[i], 'i'));\r",
+                    "        }\r",
+                    "    }\r",
+                    "\r",
+                    "    store.filterBy(function(record) {\r",
+                    "        var matched = [];\r",
+                    "        for (i = 0; i < regexps.length; i++) {\r",
+                    "            var search = regexps[i];\r",
+                    "            var recordAllowed = false;\r",
+                    "            for(var j=0 ; j<keysToSearch.length ; j++) {\r",
+                    "                if(record.get(keysToSearch[j]) === null || record.get(keysToSearch[j]) === undefined )\r",
+                    "                    continue;\r",
+                    "                if(record.get(keysToSearch[j]).toString().match(search) &&\r",
+                    "                   keysToSearch[j]!==\"id\" && !recordAllowed)\r",
+                    "                    recordAllowed = true;\r",
+                    "            }\r",
+                    "            matched.push(recordAllowed);\r",
+                    "        }\r",
+                    "\r",
+                    "        if (regexps.length > 1 && matched.indexOf(false) != -1) {\r",
+                    "            return false;\r",
+                    "        } else {\r",
+                    "            return matched[0];\r",
+                    "        }\r",
+                    "    });\r",
+                    "}"
+                ]
+            },
+            "designerId": "d8c8a772-29c5-48d3-ad88-a5f54e6ea57e"
+        }
+    ]
+}

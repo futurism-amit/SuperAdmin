@@ -1,0 +1,86 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "discounts.MasterModel"
+    },
+    "designerId": "91fd623a-4d21-4054-9a2a-f0f9c76c4e4d",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "datalink"
+            },
+            "designerId": "23c165d2-5be5-44c2-8673-2257a57127ef"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ecatalog"
+            },
+            "designerId": "6154de8b-8b00-45bf-91eb-79dbbaedb765"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "smartcart"
+            },
+            "designerId": "95013714-d492-4a0e-a5db-669394cfb2c1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "rmplc"
+            },
+            "designerId": "6d3bdbae-dd70-442b-a95f-85419a1c6d6e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "irugz"
+            },
+            "designerId": "0a7498f8-5bc5-418b-930c-9e9e9b7c0eab"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "previousDiscounts"
+            },
+            "designerId": "4a8b7a73-984a-47e4-8663-d3d70cb8c0ee"
+        }
+    ]
+}

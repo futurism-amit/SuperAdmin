@@ -1,0 +1,111 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "designer|userAlias": "billingDetailSheet",
+        "designer|userClassName": "billing.DetailSheet",
+        "height": "95%",
+        "hideAnimation": [
+            "false"
+        ],
+        "itemId": "billingDetailSheet",
+        "layout": "vbox",
+        "showAnimation": [
+            "false"
+        ],
+        "width": "90%"
+    },
+    "designerId": "60270b7d-e19c-43e9-a4ab-5638e3871ed0",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "end",
+                "container|pack": "end",
+                "height": "35px",
+                "layout": "hbox",
+                "width": null
+            },
+            "designerId": "11ad653b-f2cd-4353-a26c-a5a5de5322fc",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "left",
+                        "itemId": "billingSheetRtDtlsLbl"
+                    },
+                    "designerId": "076af06b-897a-4486-b375-645ceda6ab78"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            " x-rm-detailsSaveBtn",
+                            "x-rm-detailsInnerBtns"
+                        ],
+                        "height": "30px",
+                        "itemId": "rtBillingSheetCancelBtn",
+                        "margin": "0 10 0 10",
+                        "text": "Cancel",
+                        "width": "100px"
+                    },
+                    "designerId": "8001fb41-59f3-43ab-990d-d97a15432770"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-blueBtn"
+                        ],
+                        "height": "30px",
+                        "itemId": "rtBillingSheetSaveBtn",
+                        "text": "Save",
+                        "width": "100px"
+                    },
+                    "designerId": "c6c6d1ed-626c-43cb-8e9c-68fd688c0e65"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": null,
+                "layout|flex": 1
+            },
+            "designerId": "6cefc467-9b7a-430d-bf11-ad898827060f",
+            "masterInstanceId": "172b97ae-91f5-429f-81fc-6c700e31fd85"
+        }
+    ]
+}

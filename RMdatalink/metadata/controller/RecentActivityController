@@ -1,0 +1,208 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "RecentActivityController"
+    },
+    "designerId": "bad4032f-7bed-4e79-bb5a-d7f2c18e75d8",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "timeStart",
+                    "company",
+                    "problem",
+                    "companyType"
+                ],
+                "fn": "onTechSupportLog",
+                "implHandler": [
+                    "var activity = {\r",
+                    "\r",
+                    "    activity_date:timeStart,\r",
+                    "    activity_description:\"TechLog :\"+company + \"::\" +problem,\r",
+                    "    type: \"tech_support_log\",\r",
+                    "    searchvalue:timeStart,\r",
+                    "    company:company ,\r",
+                    "    company_type:companyType\r",
+                    "\r",
+                    "};\r",
+                    "\r",
+                    "this.saveRecentActivity(activity) ;"
+                ]
+            },
+            "designerId": "e3a0bd85-a25f-4ba8-8d46-843adc1374a7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onUploadAttachment",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "bf845018-b3aa-4853-babf-28563ba0f521"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onAddEditVendor",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "3609a6bd-ebdb-46f1-b8bc-da76ca77a952"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onAddEditNote_tips",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "514a9ff4-9986-422c-95a0-01aa5a8dbc97"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "activity"
+                ],
+                "fn": "saveRecentActivity",
+                "implHandler": [
+                    "var loginController = RMdatalink.app.getController('LoginHandler') ;\r",
+                    "\r",
+                    "if(!loginController.config.logedInUserRecord.recent_activity){\r",
+                    "\r",
+                    "    return;\r",
+                    "}\r",
+                    "\r",
+                    "loginController.config.logedInUserRecord.recent_activity.push(activity);\r",
+                    "\r",
+                    "\r",
+                    "  var inhouseController = RMdatalink.app.getController('inhouse.DetailScreenController') ;\r",
+                    "  var inhouseMasterStore = Ext.getStore('inhouseMasterStore');\r",
+                    "\r",
+                    "  var userData = new Object() ;\r",
+                    "  userData = loginController.config.logedInUserRecord ;\r",
+                    "var inhouseUser_id = userData._id ;\r",
+                    "if(userData._id){\r",
+                    "    delete(userData._id) ;\r",
+                    "}\r",
+                    "  //inhouseController.selectedInhouseUser.setData( userData ) ;\r",
+                    "\r",
+                    "\r",
+                    "  var recordToUpdate = inhouseMasterStore.find(\"username\",userData.username ) ;\r",
+                    "\r",
+                    "    console.log(recordToUpdate) ;\r",
+                    "    if(recordToUpdate != -1){\r",
+                    "\r",
+                    "        inhouseController.config.isUpdatingInhouse = true ;\r",
+                    "\r",
+                    "    var inhouseRec =  inhouseMasterStore.getAt(recordToUpdate)  ;\r",
+                    "\r",
+                    "        if(!inhouseRec){\r",
+                    "\r",
+                    "            updateUserProfileOnServer() ;\r",
+                    "            return ;\r",
+                    "        }\r",
+                    "\r",
+                    "        inhouseRec.set(userData);\r",
+                    "        inhouseRec.dirty= true;\r",
+                    "        console.error(inhouseRec);\r",
+                    "\r",
+                    "        inhouseMasterStore.sync();\r",
+                    "\r",
+                    "        RMdatalink.app.getController('RetailerDeatilsDataSet').setInhouseData() ;\r",
+                    "\r",
+                    "        //refreshInhouseUserList() ;\r",
+                    "    }\r",
+                    "    else{\r",
+                    "        updateUserProfileOnServer() ;\r",
+                    "    }\r",
+                    "\r",
+                    "\r",
+                    "function refreshInhouseUserList(){\r",
+                    "    var listToRefresh ;\r",
+                    "\r",
+                    "    Ext.ComponentQuery.query('#inHouseUsersTab')[0].down('#inhouseList').refresh() ;\r",
+                    "    Ext.ComponentQuery.query('#inHouseRepsTab')[0].down('#inhouseList').refresh() ;\r",
+                    "\r",
+                    "  /*  if(userData.type == \"users\" ){\r",
+                    "\r",
+                    "      listToRefresh = Ext.ComponentQuery.query('#inHouseUsersTab')[0].down('#inhouseList') ;\r",
+                    "\r",
+                    "    }else{\r",
+                    "\r",
+                    "       listToRefresh  = Ext.ComponentQuery.query('#inHouseRepsTab')[0].down('#inhouseList') ;\r",
+                    "\r",
+                    "    }\r",
+                    "\r",
+                    "     listToRefresh.refresh() ;\r",
+                    "   */\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "function updateUserProfileOnServer(){\r",
+                    "\r",
+                    "   // inhouseMasterStore\r",
+                    "   // userData\r",
+                    "\r",
+                    "    //alert(\"asd\");\r",
+                    "    var sid = inhouseMasterStore.getStoreId() ;\r",
+                    "    if(! RMdatalink.iwa.rdl.collections[sid]){\r",
+                    "        console.error(sid) ;\r",
+                    "        RMdatalink.iwa.rdl.collections[sid] = dbEnv + \"rdl_inhouserecords\" ;\r",
+                    "    }\r",
+                    "\r",
+                    "    console.log(userData);\r",
+                    "    console.log(inhouseUser_id) ;\r",
+                    "      RMdatalink.iwa.rdl.doUpdateCollection(inhouseMasterStore, userData , inhouseUser_id , suc, err);\r",
+                    "\r",
+                    "    function suc(){\r",
+                    "\r",
+                    "    }\r",
+                    "    function err(){\r",
+                    "\r",
+                    "    }\r",
+                    "\r",
+                    "\r",
+                    "}"
+                ]
+            },
+            "designerId": "d6cb1f7c-8d85-46c0-bab6-100f17db96f7"
+        }
+    ]
+}

@@ -1,0 +1,298 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-maincard"
+        ],
+        "designer|userAlias": "RetailerMain",
+        "designer|userClassName": "retailer.MainPanel",
+        "itemId": "retailerMain",
+        "layout": "vbox",
+        "requires": [
+            "Ext.TitleBar",
+            "Ext.Img"
+        ],
+        "scrollable": false
+    },
+    "designerId": "d280d045-f681-41c4-9af4-fc72807917bc",
+    "cn": [
+        {
+            "type": "Ext.TitleBar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "center",
+                "designer|displayName": "RMMainTitleBar",
+                "designer|uiInterfaceName": "light",
+                "docked": "top",
+                "ui": "light"
+            },
+            "designerId": "769744c9-8844-43df-a5ea-78e0e23fb873",
+            "cn": [
+                {
+                    "type": "Ext.Img",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-mainlogo"
+                        ],
+                        "designer|displayName": "RMlogo",
+                        "docked": "left",
+                        "height": null,
+                        "src": "resources/images/RM-datalink.png",
+                        "width": null
+                    },
+                    "designerId": "b1aa0c4a-d87a-414f-9467-a6148e57b92c"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "right",
+                        "cls": [
+                            "x-rm-accountsettings"
+                        ],
+                        "designer|displayName": null,
+                        "docked": null,
+                        "icon": null,
+                        "iconCls": "user",
+                        "itemId": "retailerMainAccSettingsBtn",
+                        "text": "User Name"
+                    },
+                    "designerId": "4c0751d0-9886-4aa0-8572-b2f92e9a6f17"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "RMMainContent",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "designerId": "e3825f42-715d-40ed-b2f4-f342352a4b13",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "designerId": "44128864-4715-429d-bff9-96877955f2e6",
+                    "masterInstanceId": "0574f56d-ee20-4987-b8e5-b9ac7e664267"
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|animation": false,
+                        "designer|displayName": null,
+                        "itemId": "retailerMainContainer",
+                        "layout": "card",
+                        "layout|flex": 7,
+                        "scrollable": false
+                    },
+                    "designerId": "8d9a250f-16f3-43fc-8a01-54fe4436c8aa",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "html": null,
+                                "itemId": "card-generalSetting",
+                                "layout": "fit"
+                            },
+                            "designerId": "f0ce8774-46b4-440f-9779-0180e0a601fc",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "ea785531-7745-49fb-80d7-f422bdf951be",
+                                    "masterInstanceId": "e1964ed4-b544-4c7e-8319-9a8b9d6c3ab7"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": null,
+                                "designer|displayName": null,
+                                "html": null,
+                                "itemId": "card-paymentHistory",
+                                "layout": "fit"
+                            },
+                            "configAlternates": {
+                                "index": "number"
+                            },
+                            "designerId": "8dd9a027-941b-4a07-b598-f1773b2de236",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "ce825019-a59a-452e-9751-7569bb960114",
+                                    "masterInstanceId": "07227b05-f6fe-46ee-b954-61c8ae59f812"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "html": null,
+                                "itemId": "card-managePayment",
+                                "layout": "fit"
+                            },
+                            "designerId": "4ebbdf61-8617-472a-b7bf-1b5470b66f6f",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "ed9a76b8-e7ca-40da-8bec-d2a8a6782f94",
+                                    "masterInstanceId": "3f0749ad-5ac4-4520-b758-6c051b558992"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "html": null,
+                                "itemId": "RTcard-ProductDatalink",
+                                "layout": "fit"
+                            },
+                            "designerId": "3b89a5b5-2cda-4101-8268-b4a98126ad2b",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "34a25307-037b-468a-ae1b-01b6ab121dbf",
+                                    "masterInstanceId": "9440ff2c-27d6-4f14-b018-071a791377f3"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "html": null,
+                                "itemId": "RTcard-ProductECatalog"
+                            },
+                            "designerId": "371a9e6b-1007-4bcd-8eb6-7a4336703bc4"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "html": null,
+                                "itemId": "RTcard-ProductRMpro",
+                                "layout": "fit"
+                            },
+                            "designerId": "64a02cc8-8d1b-44e1-ab33-8a8586f20264",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "23f44926-ea36-46e8-8113-9a254c0976aa",
+                                    "masterInstanceId": "854ac935-b2ca-4275-a3e3-a71fd17088cc"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": null,
+                                "html": null,
+                                "itemId": "RTcard-ProductiRugz"
+                            },
+                            "designerId": "8344f361-0166-470f-b92d-d7309cc01439"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

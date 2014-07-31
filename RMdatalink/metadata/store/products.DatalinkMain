@@ -1,0 +1,43 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userClassName": "products.DatalinkMain",
+        "groupDir": null,
+        "groupField": "active_policy",
+        "model": "products.RM_Pro",
+        "pageNo": 1,
+        "storeId": "products.DatalinkMain",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "totalNoOfPages": "number",
+        "cachedData": "object",
+        "pageNo": "number"
+    },
+    "designerId": "d87bb6ee-0b27-413b-84f0-463acb4e6b9d",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        }
+    ]
+}

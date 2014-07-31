@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "invoice.RtDatalinkSalesPersonStore",
+        "model": "products.RtSalesPersonModel",
+        "storeId": "invoice.RtDatalinkSalesPersonStore"
+    },
+    "designerId": "3e46cb12-4575-432b-b732-5dde42f903a9"
+}

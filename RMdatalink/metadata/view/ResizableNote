@@ -1,0 +1,101 @@
+{
+    "type": "Ext.form.FieldSet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-resizeTxtArea",
+            "x-rm-rdnotes-sticky "
+        ],
+        "designer|userAlias": "resizablenote",
+        "designer|userClassName": "ResizableNote",
+        "itemId": "ResizableNote",
+        "padding": null,
+        "title": null
+    },
+    "designerId": "96f1820f-8b24-4fb7-b15f-c55517d5b03c",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "val"
+                ],
+                "fn": "setValue",
+                "implHandler": [
+                    "this.down('#resizableNoteTextArea').setValue(val);"
+                ]
+            },
+            "designerId": "6961e971-bd4a-45e9-88a2-01d7203587df"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getValue",
+                "implHandler": [
+                    "return this.down('#resizableNoteTextArea').getValue();"
+                ]
+            },
+            "designerId": "2a87c563-08b4-4259-9c9a-3f3d2ff393d2"
+        },
+        {
+            "type": "Ext.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdnotes-sticky "
+                ],
+                "inputCls": null,
+                "itemId": "resizableNoteTextArea",
+                "label": null,
+                "maxHeight": null,
+                "minHeight": "50px",
+                "padding": "5 5 5 5",
+                "style": "resize:both !important;"
+            },
+            "designerId": "b5ba6ea8-a4f9-4564-816f-76c42abef70a",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onResizableNoteTextAreaChange",
+                        "implHandler": [
+                            "                          var height =  textfield.getEl().dom.scrollHeight + 50 ;\r",
+                            "                          var numOfRows=textfield.getValue().split(\"\\n\").length;\r",
+                            "\r",
+                            "                       \r",
+                            "                          numOfRows= numOfRows++;\r",
+                            "                          textfield.setMaxRows( numOfRows );\r",
+                            "                   \r",
+                            ""
+                        ],
+                        "name": "change"
+                    },
+                    "designerId": "9e574dac-ef7d-4f7c-ba99-e5886a5648d7"
+                }
+            ]
+        }
+    ]
+}

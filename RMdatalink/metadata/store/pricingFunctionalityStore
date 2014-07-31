@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pricingFunctionalityStore",
+        "designer|userClassName": "pricingFunctionalityStore",
+        "model": "pricingFunctionalityModel",
+        "storeId": "pricingFunctionalityStore"
+    },
+    "designerId": "92f93eab-62fc-4461-9764-4bfe1eb90acb"
+}

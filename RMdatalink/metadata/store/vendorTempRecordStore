@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "vendorTempRecordStore",
+        "model": "vendors.Master",
+        "storeId": "vendorTempRecordStore"
+    },
+    "designerId": "9839bb75-ec84-45bf-a964-be4dc7da3c80"
+}

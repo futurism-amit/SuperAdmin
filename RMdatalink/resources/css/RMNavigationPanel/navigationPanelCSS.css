@@ -1,0 +1,69 @@
+.x-rm-navigation-panel .x-scroll-scroller {
+    position:relative !important;
+    height:100% !important;
+}
+
+.x-rm-navigation-panel .x-label {
+    font-family: 'OpenSans'; 
+    font-size:70%;
+    color:#B7B8BB !important;
+    text-align:center;
+    line-height:3em;
+    overflow:hidden;
+}
+
+.x-rm-navigation-panel .x-label .x-innerhtml {
+    overflow:hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: nowrap;
+}
+
+.x-rm-navigation-panel .x-overviewnavpanel .x-button, 
+.x-rm-navigation-panel .x-overviewnavpanel .x-label {
+    height: 16%;
+    min-height:25px;
+    max-height:30px;
+}
+
+.x-rm-navigation-panel .x-productsnavpanel .x-button, 
+.x-rm-navigation-panel .x-productsnavpanel .x-label {
+    height: 16%;
+    min-height:25px;
+    max-height:30px;
+}
+
+.x-rm-navigation-panel .x-extrasnavpanel .x-button, 
+.x-rm-navigation-panel .x-extrasnavpanel .x-label {
+    height: 20%;
+    min-height:25px;
+    max-height:30px;
+}
+
+.x-rm-navigation-panel .x-button, .x-rm-squarebtn {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -ms-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
+    border-radius: 0px !important;
+}
+
+.x-rm-navigation-panel .x-button-label {
+    text-align:left;
+    color:#555555 !important;
+    font-family: 'OpenSans'; 
+    font-size:75%;
+    font-weight:500 !important;
+    line-height:2em;
+    overflow:hidden;
+}
+
+.x-rm-navigation-panel .x-button-pressing,
+.x-rm-navigation-panel .x-button-selected {
+    background-color:#DCDCDE !important;
+    background-image:none !important;
+}
+
+.x-rm-navigation-panel .x-rm-separator {
+    border:1px solid #B3B4B7;
+}

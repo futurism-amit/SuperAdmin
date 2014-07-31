@@ -1,0 +1,344 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-cardheaderpanel"
+        ],
+        "designer|userAlias": "CardHeaderPanel",
+        "designer|userClassName": "CardHeaderPanel",
+        "height": null,
+        "layout": "hbox",
+        "requires": [
+            "Ext.MessageBox"
+        ],
+        "scrollable": false
+    },
+    "designerId": "65dc2686-f6eb-4b20-bd40-d013cbc17112",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "center",
+                "designer|displayName": "cardTitleNNavContainer",
+                "layout": "hbox",
+                "layout|flex": 3,
+                "scrollable": false
+            },
+            "designerId": "109bdfd2-6e76-4378-9682-78aa98e2de21",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-cardtitlelabel",
+                            "pointerCursor"
+                        ],
+                        "designer|displayName": "cardTitleLabel",
+                        "html": null,
+                        "itemId": "cardTitleLabel"
+                    },
+                    "designerId": "97e93eeb-3733-4f2b-9954-43d2e4a6be32"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "center",
+                "container|pack": "end",
+                "designer|displayName": "cardActionBtnContainer",
+                "docked": null,
+                "itemId": "mainCardActionBtnContainer",
+                "layout": "hbox",
+                "layout|flex": null,
+                "scrollable": false,
+                "width": "500px"
+            },
+            "designerId": "588fd630-be35-44cd-afaa-b8a8a2a8ab05",
+            "cn": [
+                {
+                    "type": "Ext.Img",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "30px",
+                        "hidden": true,
+                        "itemId": "mainLoadingImg",
+                        "margin": "0 4px 0 2px",
+                        "src": "resources/images/loading.gif",
+                        "width": "30px"
+                    },
+                    "designerId": "bf8e28e7-001e-4dcd-8040-5ad862e98007"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-card-smallBtn"
+                        ],
+                        "height": 25,
+                        "icon": null,
+                        "itemId": "backPageBtn",
+                        "margin": "0 4px 0 2px",
+                        "padding": "1 1 1 1",
+                        "style": "background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;",
+                        "text": null,
+                        "width": 29
+                    },
+                    "designerId": "7d147bb5-8672-4b3e-bc27-4c2bffe6774b"
+                },
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "1",
+                        "itemId": "mainPageNoLbl",
+                        "margin": "0 4px 0 2px"
+                    },
+                    "designerId": "fe77ad23-253e-49a7-9606-f635b80700d3"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-card-smallBtn"
+                        ],
+                        "height": 25,
+                        "icon": null,
+                        "itemId": "nextPageBtn",
+                        "margin": "0 4px 0 2px",
+                        "padding": "1 1 1 1",
+                        "style": "background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;",
+                        "text": null,
+                        "width": 29
+                    },
+                    "designerId": "ba6e5c08-ce16-474a-88df-7474d33b5f30"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-card-actionbtn"
+                        ],
+                        "designer|displayName": "cardActionBtn",
+                        "designer|uiInterfaceName": "plain",
+                        "docked": null,
+                        "height": 25,
+                        "id": null,
+                        "itemId": "cardActionBtn",
+                        "layout|flex": null,
+                        "margin": "0 10px 0 6px",
+                        "padding": "1 1 1 1",
+                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                        "text": "ACTIONS",
+                        "ui": "plain",
+                        "width": "100px"
+                    },
+                    "designerId": "79764338-9b4d-4104-a1d9-00dc01e1eaf7",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onCardActionBtnTap",
+                                "implHandler": [
+                                    "if(Ext.getCmp(\"actionDropDown\"))\r",
+                                    "    Ext.getCmp(\"actionDropDown\").destroy();\r",
+                                    "var popup = Ext.widget('actionDropDown');\r",
+                                    "popup.showBy(button);\r",
+                                    "this.fireEvent('actiontapped', this);"
+                                ],
+                                "name": "tap"
+                            },
+                            "designerId": "b3c52eb2-d988-4fc3-bd0c-bdc60dcee08e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-card-smallBtn"
+                        ],
+                        "designer|displayName": "cardExportBtn",
+                        "docked": null,
+                        "height": 25,
+                        "icon": null,
+                        "iconAlign": "center",
+                        "itemId": "cardExportBtn",
+                        "layout|flex": null,
+                        "margin": "0 4px 0 0",
+                        "padding": "1 1 1 1",
+                        "style": "background-image: url(resources/images/CardHeaderPanel/export.png);background-repeat: no-repeat;background-position: center;",
+                        "text": null,
+                        "width": "55px"
+                    },
+                    "designerId": "7510e024-42b4-41c1-aa10-69e255f81541"
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-rdformpanel",
+                            "noBorderFldSet"
+                        ],
+                        "itemId": "cardImportBtn",
+                        "margin": "0 4px 0 0",
+                        "title": null
+                    },
+                    "designerId": "f808a69a-c923-4bf7-b0f0-287a5d8c8a8b",
+                    "cn": [
+                        {
+                            "type": "Ext.field.File",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "importRetailers",
+                                "cls": [
+                                    "x-rm-selectFileFldImportXL"
+                                ],
+                                "height": 30,
+                                "itemId": "retailersMainScreenImportFileFld",
+                                "label": null,
+                                "margin": null,
+                                "style": "min-height: 0;",
+                                "width": "55px"
+                            },
+                            "designerId": "0c358ccf-a030-499a-9acc-5b65162abe04",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-card-addRetailerBtn"
+                        ],
+                        "designer|displayName": "cardAddRetailerBtn",
+                        "docked": null,
+                        "height": 25,
+                        "icon": null,
+                        "iconAlign": "center",
+                        "itemId": "cardAddRetailerBtn",
+                        "layout|flex": null,
+                        "margin": "0 4px 0 0",
+                        "pressedCls": "x-rm-blueBtn-pressing",
+                        "style": "margin-left:0px;background-image: url(resources/images/CardHeaderPanel/addUser.png);background-size: cover;background-position: center;",
+                        "text": null,
+                        "width": "55px"
+                    },
+                    "designerId": "758af691-f175-4051-ba98-48c13bc555bb"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-card-addRetailerBtn"
+                        ],
+                        "designer|displayName": "cardDeleteBtn",
+                        "docked": null,
+                        "height": 25,
+                        "icon": null,
+                        "iconAlign": "center",
+                        "itemId": "cardDeleteBtn",
+                        "layout|flex": null,
+                        "margin": "0 4px 0 0",
+                        "pressedCls": "x-rm-blueBtn-pressing",
+                        "style": "margin-left:0px;background-image: url(resources/images/retailerDetail/delete_btn.png);background-repeat: no-repeat;background-size: cover;background-position: center;",
+                        "text": null,
+                        "width": "30px"
+                    },
+                    "designerId": "4a32c507-3a7b-45a2-a873-599ee4229f64"
+                },
+                {
+                    "type": "Ext.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 6
+                    },
+                    "designerId": "eb2f7be2-5185-4bdd-872a-2cc68368739c"
+                }
+            ]
+        }
+    ]
+}

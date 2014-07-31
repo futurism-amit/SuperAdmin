@@ -1,0 +1,42 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userAlias": "billingMasterStore",
+        "designer|userClassName": "billingMasterStore",
+        "model": "retailers.Master",
+        "pageNo": 1,
+        "storeId": "billingMasterStore",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "pageNo": "number",
+        "cachedData": "object",
+        "totalNoOfPages": "number"
+    },
+    "designerId": "c7bab38d-e0cf-4a5b-9fea-c108c56c08db",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        }
+    ]
+}

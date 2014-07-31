@@ -1,0 +1,370 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailergeneralsetting",
+        "designer|userClassName": "retailer.GeneralSetting",
+        "itemId": null,
+        "layout": "vbox",
+        "scrollable": false
+    },
+    "designerId": "e1964ed4-b544-4c7e-8319-9a8b9d6c3ab7",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "hidden": false,
+                "itemId": null,
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "334f3b3e-7ec6-43af-ab57-81a9ae297f6a",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelBilling"
+                        ],
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "hidden": null,
+                        "itemId": null,
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "c6225cc5-afd8-4895-b07e-2d772d3d9d9c",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "mytabbar"
+                            },
+                            "designerId": "132782fa-89ee-4b4a-8b11-f26b4085cd71"
+                        },
+                        {
+                            "type": "Ext.form.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "cls": [
+                                    "x-rm-rdformpanel"
+                                ],
+                                "designer|displayName": null,
+                                "itemId": "rtGeneralSettingTab",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "title": "<div style=\"line-height: 25px;\">General Setting</div>"
+                            },
+                            "designerId": "23963fa0-3fc0-4795-8303-3c5658713a5a",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "margin": "10 10 10 10",
+                                        "padding": "5 5 5 5",
+                                        "title": "<div style= \"font-size:12px;\">General Information</div>"
+                                    },
+                                    "designerId": "b9b333d4-8f45-45f6-9dc1-8266dadc258a",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "rtGenSetStoreNameFld",
+                                                "label": "Store Name",
+                                                "labelWidth": "100px",
+                                                "width": "300px"
+                                            },
+                                            "designerId": "a2f612c6-b6c9-4a65-ae9f-110173f7a4a5"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "rtGenSetPhoneFld",
+                                                "label": "Phone",
+                                                "labelWidth": "100px",
+                                                "width": "300px"
+                                            },
+                                            "designerId": "ffcbdeb6-081f-4641-898c-7e07b09a3165"
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "height": null,
+                                                "layout": "hbox",
+                                                "padding": "2 0 2 0",
+                                                "title": null
+                                            },
+                                            "designerId": "166b26c3-11b0-44f9-bb7b-ed084338034d",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtGenSetAddressFld",
+                                                        "label": "Address",
+                                                        "labelWidth": "100px",
+                                                        "width": "300px"
+                                                    },
+                                                    "designerId": "4f2a3da0-0f82-41cc-bedc-dfdabce91141"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtGenSetSuiteFld",
+                                                        "label": "Suite",
+                                                        "labelWidth": "100px",
+                                                        "width": "300px"
+                                                    },
+                                                    "designerId": "7a38414e-bbec-448d-a719-5b132e823d5c"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "rtGenSetCityFld",
+                                                "label": "City",
+                                                "labelWidth": "100px",
+                                                "width": "300px"
+                                            },
+                                            "designerId": "1eaeb60f-b9b3-47cc-a7c6-d56032e45a1c"
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "height": null,
+                                                "layout": "hbox",
+                                                "padding": "2 0 2 0",
+                                                "title": null
+                                            },
+                                            "designerId": "7edd3384-9ab7-4e33-8f40-485744788acc",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "action": "autoSuggestionField",
+                                                        "itemId": "rtGenSetStateFld",
+                                                        "label": "State",
+                                                        "labelWidth": "100px",
+                                                        "width": "300px"
+                                                    },
+                                                    "designerId": "bb965d73-2e15-4d26-943d-ffb548a6ed6e",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "action",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtGenSetZipFld",
+                                                        "label": "Zip",
+                                                        "labelWidth": "100px",
+                                                        "width": "300px"
+                                                    },
+                                                    "designerId": "f41659cc-d659-4413-9373-309308df7f92"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-blueBtn"
+                                                ],
+                                                "itemId": "rtGenSetSaveAddrBtn",
+                                                "margin": "0 0 0 150px",
+                                                "text": "Save",
+                                                "width": "150px"
+                                            },
+                                            "designerId": "1c6de843-bec5-4079-aad6-5effc1dff15c"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "border": "1 1 1 1",
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "margin": "10 10 10 10",
+                                        "padding": "5 5 5 5",
+                                        "title": "<div style= \"font-size:12px;\">Change Password</div>"
+                                    },
+                                    "designerId": "c2e6c863-605d-4761-94ae-9785c4a637ed",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Password",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": null,
+                                                "itemId": "rtGenSetprevPawdFld",
+                                                "label": "Old Password",
+                                                "labelWidth": "150px",
+                                                "width": "350px"
+                                            },
+                                            "designerId": "61e5c11b-3709-49c8-9276-3398da92e41f"
+                                        },
+                                        {
+                                            "type": "Ext.field.Password",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "rtGenSetNewPawdFld",
+                                                "label": "New Password",
+                                                "labelWidth": "150px",
+                                                "width": "350px"
+                                            },
+                                            "designerId": "62d6245e-6ad1-4b45-8754-3a225a2675d2"
+                                        },
+                                        {
+                                            "type": "Ext.field.Password",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "rtGenSetConfNewPawdFld",
+                                                "label": "Confirm New Password",
+                                                "labelWidth": "150px",
+                                                "width": "350px"
+                                            },
+                                            "designerId": "78549a53-705e-4bdd-89d0-17371669969d"
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-blueBtn"
+                                                ],
+                                                "itemId": "rtGenSetUpdatePwdBtn",
+                                                "margin": "0 0 0 150px",
+                                                "text": "Update Password",
+                                                "width": "150px"
+                                            },
+                                            "designerId": "90075e98-fb37-4832-8feb-2ad47a1259bc"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

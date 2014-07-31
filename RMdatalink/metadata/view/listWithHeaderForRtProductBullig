@@ -1,0 +1,147 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "listwithheaderforrtproductbullig",
+        "designer|userClassName": "listWithHeaderForRtProductBullig",
+        "layout": "vbox"
+    },
+    "designerId": "c3b5fdb6-89af-4f17-96e5-5a969c1cfb49",
+    "cn": [
+        {
+            "type": "Ext.dataview.DataView",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "actionSorting": "sortingStore",
+                "cls": [
+                    "x-rm-list-header"
+                ],
+                "designer|displayName": "headerList",
+                "height": "25px",
+                "itemId": "headerList",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": null
+            },
+            "designerId": "e9eda556-52c6-42b4-bfa1-01ec06274c13",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "actionSorting",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            ""
+                        ]
+                    },
+                    "designerId": "241d42c0-33c1-4b48-ad41-72f80b75b559"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "margin": "5px 0 5px 0"
+            },
+            "designerId": "c07fe7c7-7a23-4565-b355-4559e85961ae",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "left",
+                        "itemId": "productPackageNameLabel",
+                        "style": "color: #555;"
+                    },
+                    "designerId": "7a64c550-79c8-4676-b54b-0da61d463149"
+                },
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "itemId": "productPackageBundlePriceLbl",
+                        "margin": null,
+                        "style": "color: #555;"
+                    },
+                    "designerId": "a53b6556-bfdb-440e-9b16-bcfe3bcdc15f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "action": "setScrollBarVisible",
+                "allowDeselect": true,
+                "cls": [
+                    "x-rm-list"
+                ],
+                "designer|displayName": "mainList",
+                "itemId": "mainList",
+                "layout|flex": 1
+            },
+            "designerId": "e3ce05ba-0d14-4cab-8025-324f14b18537",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "action",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            ""
+                        ]
+                    },
+                    "designerId": "d0496b70-6ed7-4a8b-9632-51a9304b3d5d"
+                }
+            ]
+        }
+    ]
+}

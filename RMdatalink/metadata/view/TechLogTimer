@@ -1,0 +1,904 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-alertpopup"
+        ],
+        "container|align": "center",
+        "container|pack": "center",
+        "designer|userAlias": "techSupportTimerWindow",
+        "designer|userClassName": "TechLogTimer",
+        "height": "450px",
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "techSupportTimerWindow",
+        "layout": "vbox",
+        "showAnimation": [
+            "false"
+        ],
+        "width": "600px"
+    },
+    "designerId": "f6b33aba-81dc-4d9d-9204-8fdcf3bdd2c8",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "height": "240px",
+                "layout": "hbox",
+                "scrollable": false,
+                "width": "100%"
+            },
+            "designerId": "f8d074f8-d961-44b8-9533-26856cd6f5ae",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "center",
+                        "height": "100%",
+                        "hidden": true,
+                        "itemId": "mypanel21",
+                        "layout": "vbox",
+                        "layout|flex": null,
+                        "width": "50%"
+                    },
+                    "designerId": "b6ec5da3-7d33-4d46-b23d-f17f0af69032",
+                    "cn": [
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "designerId": "1f8dfc94-2109-464f-b58d-45706965ac9b",
+                            "masterInstanceId": "5486b687-172e-4cd3-8a4c-36599048d2ca"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "200px",
+                                "width": "100%"
+                            },
+                            "designerId": "b0e469c0-c1e1-4546-8264-5328bb51a3f0",
+                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMypanel21Initialize",
+                                "implHandler": [
+                                    "var headers = component.down(\"#headerList\");\r",
+                                    "headers.setData([{}]);\r",
+                                    "headers.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                    "               '    <div style=\"width: 4%;\">',\r",
+                                    "               '        <div style=\"width: 25px;\" data-name=\"all\"></div>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 12%;\" data-name=\"store_name\">',\r",
+                                    "               '        Store&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 10%;\" data-name=\"manager_lastname\">',\r",
+                                    "               '        LastName&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div style=\"width: 10%;\" data-name=\"manager_firstname\">',\r",
+                                    "               '        FirstName&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    </div>',\r",
+                                    "               '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "headers.refresh();\r",
+                                    "var list = component.down('#mainList');\r",
+                                    "list.setStore('retailerUsers');\r",
+                                    "list.setItemTpl(\r",
+                                    "    Ext.create('Ext.XTemplate',\r",
+                                    "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                    "               '    <div class=\"pointerCursor\" style=\"width: 4%;overflow:visible;\">',\r",
+                                    "               '        <div style=\"width: 25px; height:25px; background-image:url({manager_photo_url})\"></div>',\r",
+                                    "               '    </div>',\r",
+                                    "               '    <div class=\"pointerCursor\" style=\"width: 12%;\" >{store_name}</div>',\r",
+                                    "               '    <div class=\"pointerCursor\" style=\"width: 10%;\"  >{manager_lastname}</div>',\r",
+                                    "               '    <div class=\"pointerCursor\" style=\"width: 10%;\" >{manager_firstname}</div>',\r",
+                                    "                             '</div>'\r",
+                                    "              )\r",
+                                    ");\r",
+                                    "list.onStoreClear();"
+                                ],
+                                "name": "initialize"
+                            },
+                            "designerId": "12de5737-22af-4d79-b38e-98935b697291"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "start",
+                        "height": "100%",
+                        "hidden": false,
+                        "itemId": "mypanel22",
+                        "layout": "vbox",
+                        "layout|flex": null,
+                        "scrollable": false,
+                        "width": "50%"
+                    },
+                    "designerId": "af93039f-3dfb-46d4-b20e-2189490f4db0",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMypanel21Initialize1",
+                                "implHandler": [
+                                    ""
+                                ],
+                                "name": "initialize"
+                            },
+                            "designerId": "e432289d-1bac-49ad-a00a-7ed721af39d4"
+                        },
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "html": "Save Tech Support"
+                            },
+                            "designerId": "c9fa7244-5572-4385-a57e-644f3d9cd5cc"
+                        },
+                        {
+                            "type": "Ext.field.Search",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "fillSearchDropDown",
+                                "cls": [
+                                    "x-field-techLogsearch"
+                                ],
+                                "itemId": "techSupportCompanyNameText",
+                                "label": "Company Name",
+                                "labelWidth": "105px",
+                                "margin": "5 0 0 0",
+                                "width": "90%"
+                            },
+                            "designerId": "0b35182e-2254-465a-a517-e7be212bceee",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-radiordformpanel",
+                                    "x-rm-rdformpanel"
+                                ],
+                                "container|align": "center",
+                                "container|pack": "center",
+                                "height": 40,
+                                "layout": "hbox",
+                                "margin": 0,
+                                "scrollable": false,
+                                "title": null,
+                                "width": "98%"
+                            },
+                            "designerId": "ec1e3f0c-e661-4988-9b31-1dac2e6a38cb",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Search For:",
+                                        "margin": "-10px 10px 0 0"
+                                    },
+                                    "designerId": "72103637-1c86-42f5-aed2-66ffa9781bee"
+                                },
+                                {
+                                    "type": "Ext.field.Radio",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "pointerCursor"
+                                        ],
+                                        "inputCls": "radiofieldInput",
+                                        "itemId": "searchForRetailerRadioFld",
+                                        "label": "Retailer",
+                                        "labelCls": "transparentBack",
+                                        "labelWidth": "75px",
+                                        "name": "searchFor",
+                                        "width": "90px"
+                                    },
+                                    "designerId": "8ef6bd9a-5399-4f48-91a9-937f86e393cf"
+                                },
+                                {
+                                    "type": "Ext.field.Radio",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "checked": true,
+                                        "cls": [
+                                            "pointerCursor"
+                                        ],
+                                        "inputCls": "radiofieldInput",
+                                        "itemId": "searchForVendorRadioFld",
+                                        "label": "Vendor",
+                                        "labelCls": "transparentBack",
+                                        "labelWidth": "75px",
+                                        "name": "searchFor",
+                                        "width": "90px"
+                                    },
+                                    "designerId": "4d8156dc-b30f-4f1c-91c5-d0e234508c9d"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-rdformpanel"
+                        ],
+                        "container|align": "center",
+                        "height": "100%",
+                        "layout": "vbox",
+                        "layout|flex": null,
+                        "scrollable": false,
+                        "width": "50%"
+                    },
+                    "designerId": "420b0380-8295-4ccb-8b77-29ff7eb21b62",
+                    "cn": [
+                        {
+                            "type": "Ext.form.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-rdformpanel"
+                                ],
+                                "height": "220px",
+                                "scrollable": false,
+                                "width": "100%"
+                            },
+                            "designerId": "0499d7e3-d781-477e-b67f-31f163ca0a1b",
+                            "cn": [
+                                {
+                                    "type": "Ext.Toolbar",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": "top",
+                                        "height": null,
+                                        "maxHeight": "25px",
+                                        "style": "font-size:80%;",
+                                        "title": "Log Timer"
+                                    },
+                                    "designerId": "85f8af2d-633b-45f3-acce-beaad3f28342"
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "container|align": "start",
+                                        "layout": "hbox",
+                                        "title": null,
+                                        "width": "98%"
+                                    },
+                                    "designerId": "21ed2d9e-a2e5-4881-aa5b-cccf1cfacb88",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "itemId": "timeStartTechSupportTxtFld",
+                                                "label": "Time Start",
+                                                "labelWidth": "84px",
+                                                "margin": "10px 0 10px 0",
+                                                "width": "100%"
+                                            },
+                                            "designerId": "5b94664f-f3b3-46ba-bd98-26512d582f99"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "container|align": "start",
+                                        "height": null,
+                                        "layout": "hbox",
+                                        "margin": "10px 0 10px 0",
+                                        "width": "98%"
+                                    },
+                                    "designerId": "01db97f5-83ef-4c62-bbaa-8c06493cf12b",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "Time Elapsed",
+                                                "margin": "0 0 0 0"
+                                            },
+                                            "designerId": "f6bb5377-9208-42a3-b438-d49d1b2d19e9"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "midFontSize"
+                                                ],
+                                                "disabled": true,
+                                                "html": "Hour",
+                                                "inputCls": "textFieldFontNormal",
+                                                "itemId": "hrTechSupportfield",
+                                                "label": null,
+                                                "margin": "0 0px 0 10px",
+                                                "style": null,
+                                                "value": null,
+                                                "width": "60px"
+                                            },
+                                            "designerId": "2c2e3a49-ce48-4549-8469-d7e171a39859"
+                                        },
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": ":",
+                                                "margin": "0 0 0 5px"
+                                            },
+                                            "designerId": "a0003eed-8f3e-4442-9eec-c7f74237fab7"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "midFontSize"
+                                                ],
+                                                "disabled": true,
+                                                "html": "Min",
+                                                "inputCls": "textFieldFontNormal",
+                                                "itemId": "minTechSupportfield",
+                                                "label": null,
+                                                "margin": "0 0px 0 5px",
+                                                "width": "60px"
+                                            },
+                                            "designerId": "122cd3a8-284f-4718-9b48-b3b65b7c9941"
+                                        },
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": ":",
+                                                "margin": "0 0 0 5px"
+                                            },
+                                            "designerId": "4ae359ce-59b0-4c9e-bb91-d9c68297a77d"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "midFontSize"
+                                                ],
+                                                "disabled": true,
+                                                "html": "Sec",
+                                                "inputCls": "textFieldFontNormal",
+                                                "itemId": "secTechSupportfield",
+                                                "label": null,
+                                                "margin": "0 0px 0 5px",
+                                                "width": "60px"
+                                            },
+                                            "designerId": "62a1aa75-1ded-429f-a363-5b3101a44a88"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "container|align": "center",
+                                        "container|pack": "center",
+                                        "layout": "hbox",
+                                        "margin": "10px 0 10px 0",
+                                        "title": null,
+                                        "width": "96%"
+                                    },
+                                    "designerId": "4ace5950-9031-4510-aef8-f76a7dade030",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "midFontSize"
+                                                ],
+                                                "height": "30px",
+                                                "itemId": "endBtnTechSupport",
+                                                "margin": "10 10 10 10",
+                                                "text": "End",
+                                                "width": "100px"
+                                            },
+                                            "designerId": "349bdf01-8792-4659-bef0-6391befb18fe"
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "midFontSize"
+                                                ],
+                                                "height": "30px",
+                                                "itemId": "cancelBtnTechSupport",
+                                                "margin": "10 10 10 10",
+                                                "text": "Cancel",
+                                                "width": "100px"
+                                            },
+                                            "designerId": "0e29cbcf-65c8-4116-981f-55d79aaf7a34"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-radiordformpanel",
+                    "x-rm-rdformpanel"
+                ],
+                "container|align": "center",
+                "container|pack": "center",
+                "height": 40,
+                "layout": "hbox",
+                "margin": 0,
+                "scrollable": false,
+                "title": null,
+                "width": "98%"
+            },
+            "designerId": "e028adec-f567-4f9a-9de2-7cd4b87e60bf",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "Products:",
+                        "margin": "-10px 10px 0 0"
+                    },
+                    "designerId": "7467f848-422b-4a13-bdc6-745dc8dd27d7"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "checked": true,
+                        "cls": [
+                            "pointerCursor"
+                        ],
+                        "inputCls": "radiofieldInput",
+                        "itemId": "datalinkProductTechSupportRadioFld",
+                        "label": "Datalink",
+                        "labelCls": "transparentBack",
+                        "labelWidth": "75px",
+                        "name": "products",
+                        "width": "90px"
+                    },
+                    "designerId": "b499b39b-9e08-41df-9554-bc4f1fa05ca2"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "pointerCursor"
+                        ],
+                        "inputCls": "radiofieldInput",
+                        "itemId": "ecatalogProductTechSupportRadioFld",
+                        "label": "ECatlog",
+                        "labelCls": "transparentBack",
+                        "labelWidth": "75px",
+                        "name": "products",
+                        "width": "90px"
+                    },
+                    "designerId": "43bd62aa-b8d9-44c7-b9fb-eb1656dfe706"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "pointerCursor"
+                        ],
+                        "inputCls": "radiofieldInput",
+                        "itemId": "smartCartProductTechSupportRadioFld",
+                        "label": "SMART Cart",
+                        "labelCls": "transparentBack",
+                        "labelWidth": "100px",
+                        "name": "products",
+                        "width": "115px"
+                    },
+                    "designerId": "874195a0-9665-4319-94bd-6e8a385d785a"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "pointerCursor"
+                        ],
+                        "inputCls": "radiofieldInput",
+                        "itemId": "rmplcProductTechSupportRadioFld",
+                        "label": "RM PLC",
+                        "labelCls": "transparentBack",
+                        "labelWidth": "75px",
+                        "name": "products",
+                        "width": "90px"
+                    },
+                    "designerId": "5f6d4505-743c-4c03-b170-990404e0f6a1"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "pointerCursor"
+                        ],
+                        "inputCls": "radiofieldInput",
+                        "itemId": "naProductTechSupportRadioFld",
+                        "label": "NA",
+                        "labelCls": "transparentBack",
+                        "labelWidth": "75px",
+                        "name": "products",
+                        "width": "80px"
+                    },
+                    "designerId": "1d32ac6d-f211-46ff-9337-3044bba95b12"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "height": "90px",
+                "layout": "hbox",
+                "scrollable": false,
+                "width": "98%"
+            },
+            "designerId": "0174450d-1a9e-4765-858f-ebb03ef91c23",
+            "cn": [
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "transparentBack"
+                        ],
+                        "height": "90px",
+                        "padding": null,
+                        "scrollable": false,
+                        "width": "50%"
+                    },
+                    "designerId": "5485df68-b7c4-4bb1-9b63-5e5777e07583",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "midFontSize"
+                                ],
+                                "height": "90px",
+                                "padding": null,
+                                "title": "Problem",
+                                "width": null
+                            },
+                            "designerId": "7cc75f35-c2ba-452b-93c4-cfda9d407ab7",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "centered": false,
+                                        "height": "40px",
+                                        "itemId": "problemTechSupportTxtArea",
+                                        "label": null,
+                                        "margin": null
+                                    },
+                                    "designerId": "201a7a19-c8c3-40e6-a718-09a002040622"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "90px",
+                        "scrollable": false,
+                        "width": "50%"
+                    },
+                    "designerId": "cc120bf4-f7ba-4362-9ae0-adb4fee28513",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "midFontSize"
+                                ],
+                                "height": "90px",
+                                "title": "Solution"
+                            },
+                            "designerId": "b7c543fa-89c2-477a-8aea-a85ea39ba04b",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "centered": null,
+                                        "height": "40px",
+                                        "itemId": "solutionTechSupportTxtArea",
+                                        "label": null
+                                    },
+                                    "designerId": "7b445685-6865-40a4-9f40-276db57141d7"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "container|align": "center",
+                "container|pack": "center",
+                "height": "30px",
+                "layout": "hbox",
+                "width": "100%"
+            },
+            "designerId": "2fc00797-11aa-458f-bde5-158325a3c7d9",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "midFontSize"
+                        ],
+                        "docked": null,
+                        "height": "30px",
+                        "itemId": "discardTechSupportBtn",
+                        "text": "Discard Tech Support",
+                        "width": "40%"
+                    },
+                    "designerId": "bcf6bd2c-f403-41c6-bb66-e93cba41332f"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "midFontSize",
+                            "x-rm-normalBlueBtn"
+                        ],
+                        "docked": null,
+                        "height": "30px",
+                        "itemId": "saveTechSupportBtn",
+                        "style": null,
+                        "text": "Save Tech Support",
+                        "width": "40%"
+                    },
+                    "designerId": "3e3f8ec1-4bf5-499f-bf96-b225b66c1da6"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SearchDropDownStore",
+        "model": "SearchDropDownModel",
+        "storeId": "SearchDropDownStore"
+    },
+    "designerId": "76f3464e-f555-448f-8d7d-6e6cf4e426c1"
+}

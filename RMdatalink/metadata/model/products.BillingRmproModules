@@ -1,0 +1,159 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "products.BillingRmproModules"
+    },
+    "designerId": "7fe9afce-200b-47d4-9890-bcc8fab60877",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "module_name"
+            },
+            "designerId": "219051c9-0065-44c3-8a5b-a2c4ecc83f57"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "module_description"
+            },
+            "designerId": "486bd9f1-fa6a-46e9-92b2-2eebf9827219"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "activation_date"
+            },
+            "designerId": "3e95fceb-918c-4446-9ac2-e2b0000dcec9"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "trial"
+            },
+            "designerId": "9791fdf8-38dd-49bc-8e8f-ec7fb41c3d22"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "quantity"
+            },
+            "designerId": "d079ada5-da8f-4bbe-8b76-03ece9d4d55f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "module_standard_price"
+            },
+            "designerId": "fc7c08f3-95ee-41cf-8043-4391c631fb8f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "per_month"
+            },
+            "designerId": "a30d42bc-f065-4817-9e7d-893617162896"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "_id"
+            },
+            "designerId": "6d2ea4f1-2da9-4df5-8091-3a618afb3d49"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "module_promotional_price"
+            },
+            "designerId": "7c6eda87-23b0-4d90-9e49-e919a348efa8"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "module_listed_order",
+                "sortType": "asInt"
+            },
+            "designerId": "1b56fbb7-b9a1-44fa-95b3-029f1f0eebed"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "standard_total"
+            },
+            "designerId": "c8c35e38-d241-44f2-89c1-7e3bb513586f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "promotional_total"
+            },
+            "designerId": "bee5c075-7d63-406a-867b-7a168d6d9062"
+        }
+    ]
+}

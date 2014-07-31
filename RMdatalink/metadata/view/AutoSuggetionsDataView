@@ -1,0 +1,80 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-alertpopup"
+        ],
+        "designer|userAlias": "AutoSuggetionsDataView",
+        "designer|userClassName": "AutoSuggetionsDataView",
+        "height": "150px",
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "AutoSuggetionsDataView",
+        "layout": "fit",
+        "maxWidth": null,
+        "padding": null,
+        "scrollable": false,
+        "showAnimation": [
+            "false"
+        ],
+        "style": "padding:0px;",
+        "width": "200px"
+    },
+    "designerId": "25444ae7-a5f2-41d9-98ac-1417012d33ae",
+    "cn": [
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "action": "setScrollBarVisible",
+                "cls": [
+                    "midFontSize"
+                ],
+                "height": "100%",
+                "itemHeight": 22,
+                "itemId": "autoSuggestionsList",
+                "margin": 0,
+                "padding": null,
+                "store": "AutoCompleteStore",
+                "style": null,
+                "width": "100%"
+            },
+            "designerId": "8bf8f833-34be-48be-b477-b515f2c2f900",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "action",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div style= \"color: #6E6E70 !important;\">{text}</div>"
+                        ]
+                    },
+                    "designerId": "cc9d4afb-2dab-485b-8fcc-34d5a9b8fc3e"
+                }
+            ]
+        }
+    ]
+}

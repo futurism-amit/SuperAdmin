@@ -1,0 +1,77 @@
+"pricing_policy":[
+                    {
+                        "text":"Pricing Policy1",
+                        "value":"500",
+                        "data":
+                         [
+                                {"id": 1, "from_sku": "0", "to_sku": "2500", "standard": "29", "promotional": "29"},
+                                {"id": 2, "from_sku": "2501", "to_sku": "5000", "standard": "49", "promotional": "49"},
+                                {"id": 3, "from_sku": "5001", "to_sku": "7500", "standard": "79", "promotional": "69"},
+                                {"id": 4, "from_sku": "7501", "to_sku": "10000", "standard": "99", "promotional": "99"},
+                                {"id": 5, "from_sku": "10001", "to_sku": "15000", "standard": "129", "promotional": "129"},
+                                {"id": 6, "from_sku": "15001", "to_sku": "20000", "standard": "149", "promotional": "29"},
+                                {"id": 7, "from_sku": "20001", "to_sku": "25000", "standard": "179", "promotional": "199"},
+                                {"id": 8, "from_sku": "25001", "to_sku": "100000", "standard": "199", "promotional": "29"}
+                        ]
+                    },
+                    {
+                        "text":"Pricing Policy2",
+                        "value":"1000",
+                        "data":
+                         [
+                                {"id": 1, "from_sku": "0", "to_sku": "2500", "standard": "29", "promotional": "29"},
+                                {"id": 2, "from_sku": "2501", "to_sku": "5000", "standard": "49", "promotional": "49"},
+                                {"id": 3, "from_sku": "5001", "to_sku": "7500", "standard": "79", "promotional": "69"},
+                                {"id": 4, "from_sku": "7501", "to_sku": "10000", "standard": "99", "promotional": "99"},
+                                {"id": 5, "from_sku": "10001", "to_sku": "15000", "standard": "129", "promotional": "129"},
+                                {"id": 6, "from_sku": "15001", "to_sku": "20000", "standard": "149", "promotional": "29"},
+                                {"id": 7, "from_sku": "20001", "to_sku": "25000", "standard": "179", "promotional": "199"},
+                                {"id": 8, "from_sku": "25001", "to_sku": "100000", "standard": "199", "promotional": "29"}
+                        ]
+                    },
+                    {
+                        "text":"Pricing Policy3",
+                        "value":"1500",
+                        "data":
+                         [
+                                {"id": 1, "from_sku": "0", "to_sku": "2500", "standard": "29", "promotional": "29"},
+                                {"id": 2, "from_sku": "2501", "to_sku": "5000", "standard": "49", "promotional": "49"},
+                                {"id": 3, "from_sku": "5001", "to_sku": "7500", "standard": "79", "promotional": "69"},
+                                {"id": 4, "from_sku": "7501", "to_sku": "10000", "standard": "99", "promotional": "99"},
+                                {"id": 5, "from_sku": "10001", "to_sku": "15000", "standard": "129", "promotional": "129"},
+                                {"id": 6, "from_sku": "15001", "to_sku": "20000", "standard": "149", "promotional": "29"},
+                                {"id": 7, "from_sku": "20001", "to_sku": "25000", "standard": "179", "promotional": "199"},
+                                {"id": 8, "from_sku": "25001", "to_sku": "100000", "standard": "199", "promotional": "29"}
+                        ]
+                    },
+                    {
+                        "text":"Pricing Policy4",
+                        "value":"2000",
+                        "data":
+                         [
+                                {"id": 1, "from_sku": "0", "to_sku": "2500", "standard": "29", "promotional": "29"},
+                                {"id": 2, "from_sku": "2501", "to_sku": "5000", "standard": "49", "promotional": "49"},
+                                {"id": 3, "from_sku": "5001", "to_sku": "7500", "standard": "79", "promotional": "69"},
+                                {"id": 4, "from_sku": "7501", "to_sku": "10000", "standard": "99", "promotional": "99"},
+                                {"id": 5, "from_sku": "10001", "to_sku": "15000", "standard": "129", "promotional": "129"},
+                                {"id": 6, "from_sku": "15001", "to_sku": "20000", "standard": "149", "promotional": "29"},
+                                {"id": 7, "from_sku": "20001", "to_sku": "25000", "standard": "179", "promotional": "199"},
+                                {"id": 8, "from_sku": "25001", "to_sku": "100000", "standard": "199", "promotional": "29"}
+                        ]
+                    },
+                    {
+                        "text":"Pricing Policy5",
+                        "value":"2500",
+                        "data":
+                         [
+                                {"id": 1, "from_sku": "0", "to_sku": "2500", "standard": "29", "promotional": "29"},
+                                {"id": 2, "from_sku": "2501", "to_sku": "5000", "standard": "49", "promotional": "49"},
+                                {"id": 3, "from_sku": "5001", "to_sku": "7500", "standard": "79", "promotional": "69"},
+                                {"id": 4, "from_sku": "7501", "to_sku": "10000", "standard": "99", "promotional": "99"},
+                                {"id": 5, "from_sku": "10001", "to_sku": "15000", "standard": "129", "promotional": "129"},
+                                {"id": 6, "from_sku": "15001", "to_sku": "20000", "standard": "149", "promotional": "29"},
+                                {"id": 7, "from_sku": "20001", "to_sku": "25000", "standard": "179", "promotional": "199"},
+                                {"id": 8, "from_sku": "25001", "to_sku": "100000", "standard": "199", "promotional": "29"}
+                        ]
+                    }
+            ],

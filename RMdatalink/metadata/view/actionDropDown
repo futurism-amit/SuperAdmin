@@ -1,0 +1,217 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-action-dropdown"
+        ],
+        "container|align": "center",
+        "designer|userAlias": "actionDropDown",
+        "designer|userClassName": "actionDropDown",
+        "height": 170,
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "actionDropDown",
+        "itemId": null,
+        "layout": "vbox",
+        "scrollable": false,
+        "showAnimation": [
+            "false"
+        ],
+        "width": 250
+    },
+    "designerId": "7c2b8e6e-b162-432f-b41b-663fb111caf4",
+    "cn": [
+        {
+            "type": "Ext.Label",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-action-move-lable"
+                ],
+                "designer|displayName": "actionDDMoveLabel",
+                "html": "Move selection to the folder:",
+                "itemId": "actionDDMoveLabel",
+                "width": "100%"
+            },
+            "designerId": "035a5f6e-8602-48e6-8b69-a1cad0e8317f"
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "actionDDCheckContainer",
+                "height": null,
+                "layout": "fit",
+                "layout|flex": 3,
+                "margin": "5% 0 0 0",
+                "width": "80%"
+            },
+            "designerId": "266876c4-1136-4755-bae2-6e8b72f61032",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-action-checklist"
+                        ],
+                        "designer|displayName": "actionDDCheckList",
+                        "itemId": "actionDDCheckList",
+                        "scrollable": false,
+                        "width": null
+                    },
+                    "designerId": "d837aad6-14d4-4600-aa62-f7d89c66fc11",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    "<div class=\"x-rm-action-listtpl\">\r",
+                                    "    <input type=\"radio\" name=\"action-radio\" data-storename=\"{storeName}\"\r",
+                                    "    <tpl if=\"checkStatus\">\r",
+                                    "           checked\r",
+                                    "    </tpl>\r",
+                                    "    />\r",
+                                    "    <label>{folderName}</label>\r",
+                                    "</div>"
+                                ]
+                            },
+                            "designerId": "0db11c2f-6f83-48d6-8cd7-e5b90a2cfeed"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "end",
+                "container|pack": "center",
+                "designer|displayName": "actionDDButtonsContainer",
+                "layout": "hbox",
+                "layout|flex": 2,
+                "scrollable": null,
+                "width": "100%"
+            },
+            "designerId": "a2bcf8fe-c549-4103-9420-6b1d7bbd048e",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-action-innerbtns"
+                        ],
+                        "designer|displayName": "actionDDSaveBtn",
+                        "itemId": "actionDDSaveBtn",
+                        "layout|flex": 1,
+                        "margin": null,
+                        "pressedCls": "x-rm-action-innerbtns-pressing",
+                        "text": "SAVE"
+                    },
+                    "designerId": "79e3af15-6860-4303-ba17-90ff18381f52",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onActionDDSaveBtnTap",
+                                "implHandler": [
+                                    "//console.log(\"save btn tapped\");\r",
+                                    "var dataview = button.up('actionDropDown').down('#actionDDCheckList');\r",
+                                    "var dataViewItems = dataview.getViewItems();\r",
+                                    "var targetStoreName;\r",
+                                    "for(var i=0 ; i<dataViewItems.length ; i++) {\r",
+                                    "    var radioBtn = dataViewItems[i].querySelector('input[type=\"radio\"]');\r",
+                                    "    if(radioBtn.checked)\r",
+                                    "        targetStoreName = radioBtn.getAttribute('data-storename');\r",
+                                    "}\r",
+                                    "this.fireEvent('actionsave', this, targetStoreName);\r",
+                                    "this.destroy();"
+                                ],
+                                "name": "tap"
+                            },
+                            "designerId": "972b29f0-1cac-4147-a39f-400b797056dd"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-action-innerbtns"
+                        ],
+                        "designer|displayName": "actionDDCancelBtn",
+                        "itemId": "actionDDCancelBtn",
+                        "layout|flex": 1,
+                        "margin": null,
+                        "pressedCls": "x-rm-action-innerbtns-pressing",
+                        "text": "CANCEL"
+                    },
+                    "designerId": "0ad4c6b8-0e37-4844-b6f5-fcd9973dc1f7",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onActionDDCancelBtnTap",
+                                "implHandler": [
+                                    "this.destroy();"
+                                ],
+                                "name": "tap"
+                            },
+                            "designerId": "34ed8a00-5dd7-4f5d-823c-d1601c2525d7"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

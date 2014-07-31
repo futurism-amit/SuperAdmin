@@ -1,0 +1,41 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userClassName": "PermisstionsStore",
+        "model": "PermisstionsModel",
+        "pageNo": 1,
+        "storeId": "PermisstionsStore",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "totalNoOfPages": "number",
+        "cachedData": "object",
+        "pageNo": "number"
+    },
+    "designerId": "04aea91b-03d0-423f-898d-5457fdc428ba",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        }
+    ]
+}

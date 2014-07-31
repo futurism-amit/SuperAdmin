@@ -1,0 +1,110 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "inhouse.CommissionModel"
+    },
+    "designerId": "9aa3be4d-e38d-4458-a725-79b252a8f3c6",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "pay_date"
+            },
+            "designerId": "ab198e62-b827-4dcc-aaf9-f1b75d3a23a9"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "invoice_number"
+            },
+            "designerId": "fe16d2b6-d917-4f30-94b3-9891494d001d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "store_name"
+            },
+            "designerId": "b9ce011f-71ac-441b-b899-c52448c5812e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "store_id"
+            },
+            "designerId": "3fa089e3-2adc-403d-b4ad-2062bd8781ac"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "salesperson_commission"
+            },
+            "designerId": "6e043205-a799-41aa-8c26-fe9aed59c2d7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "commisson"
+            },
+            "designerId": "189dd858-d3ba-4c16-aa00-58a7472b5e23"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "product"
+            },
+            "designerId": "f7d78420-0c14-49e2-a8b9-7c63dc0a7416"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "commissionable_ammount"
+            },
+            "designerId": "dfe65404-e45e-4274-849a-bd96f3c5bafb"
+        }
+    ]
+}

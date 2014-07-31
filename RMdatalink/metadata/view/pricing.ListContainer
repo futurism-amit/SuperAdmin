@@ -1,0 +1,245 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pricinglistcontainer",
+        "designer|userClassName": "pricing.ListContainer",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "659152ec-2846-4103-b689-b90bff37e861",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pricingSearchContainer",
+                "height": "0px",
+                "hidden": false,
+                "layout": "fit",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": "margin-top:5px;"
+            },
+            "designerId": "844ab638-094a-46b9-96e4-b9f67fdec99c",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "vendorLabelCSS"
+                        ],
+                        "html": "Vendor Pricing",
+                        "itemId": "pricingListHeaderLabel"
+                    },
+                    "designerId": "0dbd9fd2-51b8-4550-8c99-f8fd2a2568f8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pricingListNSetupContainer",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "6c753ba7-9bca-4d07-8ef0-3e5e52ef58c4",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "pricingListContainer",
+                        "layout": "vbox",
+                        "layout|flex": 9,
+                        "scrollable": false
+                    },
+                    "designerId": "795492f8-23b1-40ab-8235-43dc0b9d256a",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": null,
+                                "itemId": "pricingListHeader",
+                                "layout|flex": 1,
+                                "scrollable": false,
+                                "width": "98.5%"
+                            },
+                            "designerId": "0c1efa6e-4f0e-48d4-9361-62d0c072b960",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "111c3314-bfc4-4510-8b5e-46b1ffd44539"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "allowDeselect": true,
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "data": null,
+                                "designer|displayName": null,
+                                "disableSelection": null,
+                                "itemId": "pricingList",
+                                "layout|flex": 15,
+                                "width": null
+                            },
+                            "designerId": "11e75399-e4f7-4672-b2c4-e5c1632bf76b",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "b775407c-158f-48a7-89fd-d81883ac752c"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "pricingSetupContainer",
+                        "layout|flex": null
+                    },
+                    "designerId": "8a2e5863-e021-4d17-8f3b-070e57c5c71b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "pricingTotalsContainer",
+                "layout": "fit",
+                "layout|flex": 1
+            },
+            "designerId": "88e1fe69-ae16-4e44-bd89-88126cf40d46",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": null,
+                        "itemId": "pricingTotalsList",
+                        "scrollable": false,
+                        "width": "90%"
+                    },
+                    "designerId": "dba6941e-fe9c-4eaf-a3e7-ba502808b1b0",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "8615decc-8a9e-47ea-8cfe-6c41554f4d56"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

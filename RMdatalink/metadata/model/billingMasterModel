@@ -1,0 +1,67 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "billingMasterModel",
+        "designer|userClassName": "billingMasterModel"
+    },
+    "designerId": "c5f5a8d3-70cf-41c9-9dcc-0a66d5c5f0b6",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "designerId": "0d13a4d6-0f08-47b5-8fd4-cf18eb45027c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "status"
+            },
+            "designerId": "51dbfc31-b2cd-43f5-9752-677f83fcf716"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "overDue",
+                "sortType": "asInt",
+                "type": "int"
+            },
+            "designerId": "ca6cbce2-0c88-4269-8682-bb64982075e1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "owed",
+                "sortType": null,
+                "type": "float"
+            },
+            "designerId": "2d7109f7-dadf-4de8-9e1f-31edcac2bfb4"
+        }
+    ]
+}

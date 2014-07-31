@@ -1,0 +1,86 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "products.BillingDiscount"
+    },
+    "designerId": "d55f3a19-4eb2-4e3d-8ed1-51c74ac60eac",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_name"
+            },
+            "designerId": "07afc168-263d-4f87-bad6-031507d9ce81"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_value"
+            },
+            "designerId": "8bacab7f-6f20-4ccd-a4b3-7c690b831700"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_saving"
+            },
+            "designerId": "60bdfb5c-ce1e-4e8a-928a-49ba00af4623"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_total"
+            },
+            "designerId": "bf2eb8e2-d8db-4e84-9743-7b0d5dea64ac"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_per_month"
+            },
+            "designerId": "4258114c-b8dd-4a1f-a9ab-18b57e91c61e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "discount_duration"
+            },
+            "designerId": "90d9f43e-7265-48f0-bf48-af4621720ffc"
+        }
+    ]
+}

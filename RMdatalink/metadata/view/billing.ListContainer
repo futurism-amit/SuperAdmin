@@ -1,0 +1,335 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "billingListContainer",
+        "designer|userClassName": "billing.ListContainer",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "450924ce-3834-44d3-89b3-7b08476edd83",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "billingSearchContainer",
+                "height": "32px",
+                "layout": "fit",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": "margin-top:5px;"
+            },
+            "designerId": "6fb556ad-c81b-4e25-a487-3fe3030d15f3",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|pack": null,
+                        "designer|displayName": "billingSearchView",
+                        "itemId": "billingSeachViewItemID"
+                    },
+                    "designerId": "2150bb31-7574-4d20-ace9-44408dc9927d",
+                    "masterInstanceId": "5486b687-172e-4cd3-8a4c-36599048d2ca"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "billingListNSetupContainer",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "10fe513c-f50f-4416-a2d6-53eb65a7fc12",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "billingListContainer",
+                        "layout": "vbox",
+                        "layout|flex": 9,
+                        "scrollable": false
+                    },
+                    "designerId": "f8c1c236-ca28-478e-ae0b-39992e30b4b8",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": null,
+                                "itemId": "billingListHeader",
+                                "layout|flex": 1,
+                                "scrollable": false,
+                                "width": "98.5%"
+                            },
+                            "designerId": "f9b998a0-04c2-4788-8558-f1a476acbadd",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "7b333ee7-0149-49a4-9a3d-cd42828aeacc"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "data": null,
+                                "designer|displayName": null,
+                                "itemId": "billingList",
+                                "layout|flex": 15,
+                                "mode": "MULTI",
+                                "width": null
+                            },
+                            "designerId": "6244fcbc-b05c-4d5b-8611-f858a9f88e8e",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "1bc3698f-1397-4424-9db5-24844f98b2af"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onBillingListRefresh",
+                                        "implHandler": [
+                                            "//console.error(\"list refreshed\");\r",
+                                            "// var totalsList = dataview.parent.parent.parent.down('#retailerTotalsList');\r",
+                                            "// totalsList.refresh();\r",
+                                            ""
+                                        ],
+                                        "name": "refresh"
+                                    },
+                                    "designerId": "25af9a8c-549f-4a05-9c88-9bd4a9b8d4a6"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onBillingListItemTap",
+                                        "implHandler": [
+                                            "/*MOVE THIS HANDLER TO CONTROLLER*/\r",
+                                            "\r",
+                                            "RMdatalink.app.getController('RetailerDeatilsDataSet').onRetailerTap(dataview, index, target, record, e, eOpts);\r",
+                                            "\r",
+                                            "return ;\r",
+                                            "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                            "var targetEl = e.target;\r",
+                                            "\r",
+                                            "var  retailersMasterStore = Ext.getStore(\"retailersMaster\");\r",
+                                            "// ********  FIND RECORD FROM MASTER STORE USING 'store_name'  ********\r",
+                                            "var indexRetailersMaster = retailersMasterStore.find(\"store_name\",record.data.store_name);\r",
+                                            "\r",
+                                            "if( false ){//RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                            "\r",
+                                            "    var attrVak = targetEl.getAttribute(attrToSearch);\r",
+                                            "    var nameAttr = RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap();\r",
+                                            "    var storeAttr = RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap();\r",
+                                            "\r",
+                                            "    var varibleToSet = setVariable();\r",
+                                            "    var retailersMaincontentpanel = Ext.ComponentQuery.query('#retailersMaincontentpanel')[0];\r",
+                                            "\r",
+                                            "    switch (attrVak){\r",
+                                            "\r",
+                                            "        case nameAttr:  RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);\r",
+                                            "            Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDManagerTab');\r",
+                                            "            RMdatalink.app.getController('UINav').onPanelAddretailertapped(retailersMaincontentpanel);\r",
+                                            "\r",
+                                            "            break;\r",
+                                            "        case storeAttr: RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);\r",
+                                            "            Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDStoresTab');\r",
+                                            "            RMdatalink.app.getController('UINav').onPanelAddretailertapped(retailersMaincontentpanel);\r",
+                                            "\r",
+                                            "            break;\r",
+                                            "        default:\r",
+                                            "            RMdatalink.app.getController('UINav').redirectTo();\r",
+                                            "            console.log('DONT FIRE ANY THING');\r",
+                                            "    }\r",
+                                            "}else{\r",
+                                            "\r",
+                                            "    console.log(record) ;\r",
+                                            "     RMdatalink.app.getController('BillingDetailsController').setBillingRecord(record);\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "     RMdatalink.app.getController('UINav').redirectTo('card16');\r",
+                                            "\r",
+                                            "      RMdatalink.app.getController('InvoiceController').initInvoice(record) ;\r",
+                                            "\r",
+                                            "}\r",
+                                            "\r",
+                                            "function setVariable(){\r",
+                                            "\r",
+                                            "    return {\r",
+                                            "\r",
+                                            "        placeClicked:  attrVak,\r",
+                                            "        record:retailersMasterStore.getAt(indexRetailersMaster),\r",
+                                            "        index:index\r",
+                                            "    };\r",
+                                            "}"
+                                        ],
+                                        "name": "itemtap"
+                                    },
+                                    "designerId": "8e2e7a3a-0cf5-448b-a380-99c61715901f"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "billingSetupContainer",
+                        "layout|flex": 0
+                    },
+                    "designerId": "4b83a6c4-e25a-4f5a-b687-f52d91e9b66e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "billingTotalsContainer",
+                "layout": "fit",
+                "layout|flex": 1
+            },
+            "designerId": "86b69545-413e-4075-96ae-1d82b4387389",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": null,
+                        "itemId": "billingTotalsList",
+                        "scrollable": false,
+                        "width": "90%"
+                    },
+                    "designerId": "021a8cbe-3b92-4f55-ab5c-91b76f57caa6",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "327f99cd-bbf4-49e4-ae9f-9ffa98fc5e62"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

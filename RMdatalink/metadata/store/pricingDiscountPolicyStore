@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pricingDiscountPolicyStore",
+        "designer|userClassName": "pricingDiscountPolicyStore",
+        "model": "pricingDiscountPolicyModel",
+        "storeId": "pricingDiscountPolicyStore"
+    },
+    "designerId": "aaa66a0b-4a50-4c18-af94-a49c12f58685"
+}

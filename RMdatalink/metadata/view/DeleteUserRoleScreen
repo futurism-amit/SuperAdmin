@@ -1,0 +1,165 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "designer|userAlias": "DeleteUserRoleScreen",
+        "designer|userClassName": "DeleteUserRoleScreen",
+        "height": "200px",
+        "itemId": "DeleteUserRoleScreen",
+        "layout": "fit",
+        "width": "600px"
+    },
+    "designerId": "23214180-a80c-4810-b9be-22e1007cac0d",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "container|pack": "center",
+                "layout": "vbox"
+            },
+            "designerId": "f66deab2-b1d3-41b1-81f9-6eb5ed15f201",
+            "cn": [
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "displayField": "user_role",
+                        "itemId": "deleteUserRoleSelectFld",
+                        "label": "Select Role To Delete",
+                        "labelWidth": "200px",
+                        "store": "PermisstionsStore",
+                        "valueField": "user_role"
+                    },
+                    "designerId": "7d856ab9-b202-455c-8fb4-56c1a43d20e5",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onDeleteUserRoleSelectFldChange",
+                                "implHandler": [
+                                    "\r",
+                                    "var permissionsStore = Ext.getStore('PermisstionsStore') ;\r",
+                                    "var placeHolderselFld = Ext.ComponentQuery.query('#deleteUserRolePlcaeHolderSelectFld')[0] ;\r",
+                                    "\r",
+                                    "var options = [] ;\r",
+                                    "\r",
+                                    "var data = permissionsStore.getData().all ;\r",
+                                    "\r",
+                                    "for(var i=0 ; i < data.length ; i ++ ){\r",
+                                    "\r",
+                                    "    if(newValue  ==  data[i].data.user_role ){\r",
+                                    "\r",
+                                    "\r",
+                                    "    }else{\r",
+                                    "\r",
+                                    "        options.push(data[i].data);\r",
+                                    "    }\r",
+                                    "\r",
+                                    "}\r",
+                                    "//user_role\r",
+                                    "\r",
+                                    "placeHolderselFld.setOptions(options) ;"
+                                ],
+                                "name": "change"
+                            },
+                            "designerId": "c5f3c0a5-33f3-43f0-92a7-a7a5250a8082"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "displayField": "user_role",
+                        "itemId": "deleteUserRolePlcaeHolderSelectFld",
+                        "label": "Select Place Holder Role To Aplly",
+                        "labelWidth": "200px",
+                        "valueField": "user_role"
+                    },
+                    "designerId": "9cd6f19c-f2d3-4fbb-970e-72cc7b353e85"
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "hbox",
+                        "margin": "0 0 0 200px",
+                        "title": null
+                    },
+                    "designerId": "3c33abb0-c8e7-4210-8402-84d62f7ffc1f",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-detailsSaveBtn",
+                                    "x-rm-detailsInnerBtns"
+                                ],
+                                "itemId": "deleteUserRoleCacelBtn",
+                                "text": "Cancel",
+                                "width": "150px"
+                            },
+                            "designerId": "91c73a0c-b6b7-477e-8407-42627954b9d5"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-blueBtn"
+                                ],
+                                "itemId": "deleteUserRoleDeleteBtn",
+                                "text": "Delete",
+                                "width": "150px"
+                            },
+                            "designerId": "e434ae88-83fe-4db5-a64c-c2df10764491"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

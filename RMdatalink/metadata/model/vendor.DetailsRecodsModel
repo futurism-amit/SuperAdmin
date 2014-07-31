@@ -1,0 +1,91 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "vendorDetailsRecodsModel",
+        "designer|userClassName": "vendor.DetailsRecodsModel"
+    },
+    "designerId": "88efdb04-65f5-4546-96e7-6dcb2eb5d3bf",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "designerId": "8ab514b6-e0f6-4a8a-a74f-2ec75633ce8a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "sortType": "asText"
+            },
+            "designerId": "409b2085-589b-43a2-bb7d-abb6db167664"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "design"
+            },
+            "designerId": "c3ed138f-2c54-4923-8d19-0c13e8d4db84"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sku",
+                "sortType": "asInt"
+            },
+            "designerId": "de317c29-f00f-44f0-8707-dfa2cad9392d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "collection",
+                "sortType": "asInt",
+                "type": "int"
+            },
+            "designerId": "3eb8512c-2d91-4d39-b439-8aa232ce8c58"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "products"
+            },
+            "designerId": "6ffaa79a-8df1-483c-937d-7c1e9aa38405"
+        }
+    ]
+}

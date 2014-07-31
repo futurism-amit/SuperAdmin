@@ -1,0 +1,161 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-detailsHeader"
+        ],
+        "container|align": "center",
+        "container|pack": "end",
+        "designer|userAlias": "detailsHeader",
+        "designer|userClassName": "detailsHeader",
+        "height": "100%",
+        "layout": "hbox",
+        "scrollable": false,
+        "style": null,
+        "width": "100%"
+    },
+    "designerId": "9da01505-5404-46af-b8c1-7b70b7fda3f7",
+    "cn": [
+        {
+            "type": "Ext.Label",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-detailsHeaderTitle",
+                    "pointerCursor"
+                ],
+                "designer|displayName": "detailsHeaderTitle",
+                "docked": null,
+                "height": null,
+                "html": "BACK/",
+                "itemId": "detailsHeaderTitle",
+                "margin": null,
+                "style": "font-size: large;",
+                "width": "75%"
+            },
+            "designerId": "b18227b7-b972-42fe-aa93-33716ca696a5",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onDetailsHeaderTitleInitialize",
+                        "implHandler": [
+                            "component.element.on(\"tap\",function(){\r",
+                            "\r",
+                            "   RMdatalink.app.getController('UINav').onBackTextTap();\r",
+                            "});"
+                        ],
+                        "name": "initialize"
+                    },
+                    "designerId": "e18a8b71-72a3-4fdf-8dca-6338c7e0365a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-detailsCancelBtn",
+                    "x-rm-detailsInnerBtns"
+                ],
+                "designer|displayName": "detailsCancelBtn",
+                "designer|uiInterfaceName": "plain",
+                "docked": null,
+                "index": 1,
+                "itemId": "detailsCancelBtn",
+                "margin": "0 1% 0 2%",
+                "maxWidth": null,
+                "minWidth": "70px",
+                "pressedCls": "x-rm-detailsInnerBtns-pressing",
+                "text": "CANCEL",
+                "ui": "plain",
+                "width": "8%"
+            },
+            "configAlternates": {
+                "index": "number"
+            },
+            "designerId": "d5fcb6c3-0f17-4af8-8ebf-0faa4a81d67a",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "index",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onDetailsCancelBtnTap",
+                        "implHandler": [
+                            "//TRANSFER THIS CODE TO A CONTROLLER\r",
+                            "//REMOVE LINKING IN OREDER TO DETECT THE INSTANCE\r",
+                            "//OR CREATE FILTER FOR DIFFERENTIATING INSTANCE WITHOUT THE USING ITEMID OR INDEX\r",
+                            "//REASON FOR ITEMID :WILL BE SAME FOR ALL LINKED ELEMENT\r",
+                            "//INDEX WILL BE HARDCODING\r",
+                            "\r",
+                            "//FILTERING IS NOT APPLIED HERE AT THIS MOMENT.\r",
+                            "\r",
+                            "\r",
+                            "   RMdatalink.app.getController('UINav').onBackTextTap() ;"
+                        ],
+                        "name": "tap"
+                    },
+                    "designerId": "1b001443-dcc9-4cdb-87dd-860609ea250a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-detailsSaveBtn",
+                    "x-rm-detailsInnerBtns"
+                ],
+                "designer|displayName": "detailsSaveBtn",
+                "designer|uiInterfaceName": "plain",
+                "docked": null,
+                "itemId": "detailsSaveBtn",
+                "margin": "0 2% 0 1%",
+                "minWidth": "70px",
+                "pressedCls": "x-rm-detailsInnerBtns-pressing",
+                "text": "SAVE",
+                "ui": "plain",
+                "width": "8%"
+            },
+            "configAlternates": {
+                "index": "number"
+            },
+            "designerId": "01fee114-172e-42ea-9b4d-a64133a963cb"
+        }
+    ]
+}

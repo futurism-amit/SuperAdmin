@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "vendor.CompanyContactStore",
+        "model": "vendor.CompanyContacts",
+        "storeId": "vendor.CompanyContactStore"
+    },
+    "designerId": "912f3802-12ce-4afd-aad3-d60cc265dcd7"
+}

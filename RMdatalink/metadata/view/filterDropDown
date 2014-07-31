@@ -1,0 +1,182 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "container|align": "center",
+        "data": null,
+        "designer|userAlias": "filterDropDown",
+        "designer|userClassName": "filterDropDown",
+        "height": null,
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "filterDropDown",
+        "layout": "vbox",
+        "scrollable": false,
+        "showAnimation": [
+            "false"
+        ],
+        "width": 250
+    },
+    "designerId": "54ab67b7-38bc-4258-a3d6-498be54230d7",
+    "cn": [
+        {
+            "type": "Ext.dataview.DataView",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[{\"a\":2}]"
+                ],
+                "designer|displayName": "filterDDList",
+                "docked": "top",
+                "height": null,
+                "itemId": "filterDDList",
+                "layout|flex": 9,
+                "scrollable": false,
+                "width": null
+            },
+            "designerId": "84eb242c-d00a-4192-b2bb-86daaedb1f4e",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            ""
+                        ]
+                    },
+                    "designerId": "32f88bb5-2d34-4bd2-99e9-07b140aecddd"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-blueBtn",
+                            "x-rm-filter-applybtn"
+                        ],
+                        "designer|displayName": "filterApplyBtn",
+                        "designer|uiInterfaceName": "plain",
+                        "docked": "bottom",
+                        "height": null,
+                        "itemId": "filterApplyBtn",
+                        "maxHeight": null,
+                        "maxWidth": null,
+                        "minHeight": null,
+                        "minWidth": null,
+                        "pressedCls": "x-rm-blueBtn-pressing",
+                        "style": "margin-left: 83px;",
+                        "text": "APPLY",
+                        "ui": "plain",
+                        "width": 60
+                    },
+                    "designerId": "befe809e-59ae-4062-bf5c-93528365ffc1",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onFilterApplyBtnTap",
+                                "implHandler": [
+                                    "var filterList = Ext.ComponentQuery.query(\"#filterDDList\")[0];\r",
+                                    "var filterListItems = filterList.getInnerItems();\r",
+                                    "\r",
+                                    "var checkBox = filterListItems[0].element.dom.querySelectorAll('input[type=\"checkbox\"]');\r",
+                                    "var textFields = filterListItems[0].element.dom.querySelectorAll('input[type=\"text\"]');\r",
+                                    "\r",
+                                    "var filterData = {};\r",
+                                    "var checkedItems = [];\r",
+                                    "var monthlyRange = [];\r",
+                                    "var owedRange = [];\r",
+                                    "\r",
+                                    "for(var i=0 ; i < checkBox.length ; i++) {\r",
+                                    "    if(checkBox[i].hasAttribute('data-name'))\r",
+                                    "        checkedItems.push(\r",
+                                    "            {\r",
+                                    "                filterKey:checkBox[i].getAttribute('data-name'),\r",
+                                    "                filterValue:checkBox[i].checked\r",
+                                    "            }\r",
+                                    "        );\r",
+                                    "}\r",
+                                    "\r",
+                                    "filterData.productSubscriptions = checkedItems;\r",
+                                    "\r",
+                                    "for(var i=0 ; i < textFields.length ; i++) {\r",
+                                    "    if(textFields[i].hasAttribute('data-name'))\r",
+                                    "        switch(textFields[i].getAttribute('data-name')){\r",
+                                    "            case 'monthly_range':\r",
+                                    "                if(textFields[i].hasAttribute('data-subname')) {\r",
+                                    "                    monthlyRange.push(\r",
+                                    "                        {\r",
+                                    "                            filterKey:textFields[i].getAttribute('data-subname'),\r",
+                                    "                            filterValue:parseInt(textFields[i].value)?parseInt(textFields[i].value):0\r",
+                                    "                        }\r",
+                                    "                    );\r",
+                                    "                }\r",
+                                    "                break;\r",
+                                    "            case 'owed_range':\r",
+                                    "                if(textFields[i].hasAttribute('data-subname')) {\r",
+                                    "                    owedRange.push(\r",
+                                    "                        {\r",
+                                    "                            filterKey:textFields[i].getAttribute('data-subname'),\r",
+                                    "                            filterValue:parseInt(textFields[i].value)?parseInt(textFields[i].value):0\r",
+                                    "                        }\r",
+                                    "                    );\r",
+                                    "                }\r",
+                                    "                break;\r",
+                                    "            case 'modified_in_past':\r",
+                                    "                filterData.modifiedInPastDays = textFields[i].value;\r",
+                                    "                break;\r",
+                                    "\r",
+                                    "            case 'created_in_past':\r",
+                                    "                filterData.createdInPastDays = textFields[i].value;\r",
+                                    "                break;\r",
+                                    "            case 'past_due_for':\r",
+                                    "                filterData.pastDueFor = textFields[i].value;\r",
+                                    "                break;\r",
+                                    "\r",
+                                    "\r",
+                                    "        }\r",
+                                    "}\r",
+                                    "\r",
+                                    "filterData.monthlyRange = monthlyRange;\r",
+                                    "filterData.owedRange = owedRange;\r",
+                                    "\r",
+                                    "this.fireEvent(\"filterwithdata\",this,filterData);\r",
+                                    "this.destroy();"
+                                ],
+                                "name": "tap"
+                            },
+                            "designerId": "a01b8fe3-0ead-4962-a035-1126a11dd272"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

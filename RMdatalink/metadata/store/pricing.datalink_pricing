@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "pricing.datalink_pricing",
+        "model": "pricingPolicyModel",
+        "storeId": "pricing.datalink_pricing"
+    },
+    "designerId": "5919371e-4d6b-4ca6-ba1c-b6a0db6750d6"
+}

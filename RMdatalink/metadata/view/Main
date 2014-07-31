@@ -1,0 +1,701 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-maincard"
+        ],
+        "designer|userAlias": "Main",
+        "designer|userClassName": "Main",
+        "itemId": "Main",
+        "layout": "vbox",
+        "requires": [
+            "Ext.TitleBar",
+            "Ext.Img"
+        ],
+        "scrollable": false
+    },
+    "designerId": "40834133-1fc2-484f-864a-307f1eaac0f3",
+    "cn": [
+        {
+            "type": "Ext.TitleBar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "center",
+                "designer|displayName": "RMMainTitleBar",
+                "designer|uiInterfaceName": "light",
+                "docked": "top",
+                "ui": "light"
+            },
+            "designerId": "b0c458eb-6708-4e63-b178-d14630032cd5",
+            "cn": [
+                {
+                    "type": "Ext.Img",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-mainlogo"
+                        ],
+                        "designer|displayName": "RMlogo",
+                        "docked": "left",
+                        "height": "27px",
+                        "margin": "0 0 0 10",
+                        "minHeight": "27px",
+                        "src": "resources/images/RM-datalink.png",
+                        "width": "160px"
+                    },
+                    "designerId": "795f06db-f077-4d5d-b296-daa25889350e"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "right",
+                        "cls": [
+                            "x-rm-accountsettings"
+                        ],
+                        "designer|displayName": null,
+                        "docked": null,
+                        "icon": null,
+                        "itemId": "RMTechSupportLog",
+                        "margin": 0,
+                        "text": "Start Tech Support"
+                    },
+                    "designerId": "ffd03813-a024-4728-9d8c-7b5c2a8d949b"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "right",
+                        "cls": [
+                            "x-rm-accountsettings",
+                            "downWindowButtonIcon"
+                        ],
+                        "designer|displayName": null,
+                        "docked": null,
+                        "icon": null,
+                        "iconAlign": "center",
+                        "iconCls": null,
+                        "itemId": null,
+                        "margin": 0,
+                        "text": null,
+                        "width": "20px"
+                    },
+                    "designerId": "c0cc7c0f-5da4-4f15-8661-44ba5d56a10b",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "                if(Ext.getCmp(\"TechLogButtons\"))\r",
+                                    "                {\r",
+                                    "\r",
+                                    "//                    Ext.getCmp(\"TechLogButtons\").destroy();\r",
+                                    "\r",
+                                    "                   var popup =  RMdatalink.app.getController('TechSupportLog').config.browseTechSupportBtnWindow  ;\r",
+                                    "                }\r",
+                                    "                else{\r",
+                                    "\r",
+                                    "                 var popup =   RMdatalink.app.getController('TechSupportLog').config.browseTechSupportBtnWindow =  Ext.widget('TechLogButtons');\r",
+                                    "                }\r",
+                                    "\r",
+                                    "                popup.showBy(button);\r",
+                                    ""
+                                ]
+                            },
+                            "designerId": "9ee1a829-af3c-449b-be6a-86095b6e8f22"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "right",
+                        "cls": [
+                            "x-rm-accountsettings"
+                        ],
+                        "designer|displayName": null,
+                        "docked": null,
+                        "icon": null,
+                        "iconCls": "user",
+                        "itemId": "RMMainAccSettings",
+                        "text": "User Name"
+                    },
+                    "designerId": "30d1c070-7ac7-4ce3-96e4-6b9c7be2f525"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "RMMainContent",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "designerId": "2ed3a77b-433d-4eea-8dec-c437709a8f27",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "RMLeftNavPanel",
+                        "layout|flex": 1
+                    },
+                    "designerId": "d20ad5c2-3e04-4214-9293-2c084a155d40",
+                    "masterInstanceId": "0aed3b8a-7988-447a-a14b-77ca4905f5cc"
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|animation": false,
+                        "designer|displayName": "RMContentPanel",
+                        "itemId": "RMContentPanel",
+                        "layout": "card",
+                        "layout|flex": 7,
+                        "scrollable": false
+                    },
+                    "designerId": "ecbf1a0e-2dfc-44ad-96e4-553cf828133d",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": null,
+                                "designer|displayName": "card-dashboard",
+                                "html": "dashboard",
+                                "itemId": "card-dashboard"
+                            },
+                            "configAlternates": {
+                                "index": "number"
+                            },
+                            "designerId": "c8d249eb-8d9d-472b-854b-db4b09300331"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-retailers",
+                                "html": null,
+                                "id": null,
+                                "itemId": "card-retailers",
+                                "layout": "vbox",
+                                "scrollable": false
+                            },
+                            "designerId": "89d0acc7-d8b2-4999-8be6-cc1df43ac426",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": false,
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "ea3ec167-33ca-4178-aeb8-a02d074b8126",
+                                    "masterInstanceId": "d560aaf0-579e-4f00-ae09-dd88a57e6660"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-billing",
+                                "html": null,
+                                "itemId": "card-billing",
+                                "layout": "vbox",
+                                "scrollable": false
+                            },
+                            "configAlternates": {
+                                "index": "number"
+                            },
+                            "designerId": "0ded4ca4-2a8c-4d45-ae38-9a0c64ef07c6",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "41be98aa-b927-4142-b293-7674bcbe72e4",
+                                    "masterInstanceId": "a2f60ccf-83c8-42e5-ab28-970b69aa4c48"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-vendors",
+                                "html": null,
+                                "itemId": "card-vendors",
+                                "layout": "vbox",
+                                "scrollable": false
+                            },
+                            "configAlternates": {
+                                "index": "number"
+                            },
+                            "designerId": "f1eff68c-2941-4405-ac64-c241bfee7271",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": null,
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "ac563d2b-5a27-418c-964c-6d205d0dfcdc",
+                                    "masterInstanceId": "fd8ee08a-4f90-47bc-a608-367951680934"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-inhouse",
+                                "html": null,
+                                "itemId": "card-inhouse",
+                                "layout": "vbox"
+                            },
+                            "configAlternates": {
+                                "index": "number"
+                            },
+                            "designerId": "f1e3b653-622c-483c-8d88-7f57765425e0",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "3bd34357-2dcc-4ac5-9cfc-77922b488d72",
+                                    "masterInstanceId": "8358ed30-dce4-4875-b6da-50673ad71619"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-datalink",
+                                "html": null,
+                                "itemId": "card-datalink",
+                                "layout": "vbox"
+                            },
+                            "designerId": "00b9a1d9-696e-4d79-a7ae-431c785059a5",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "7b9853d2-646e-4cd1-95af-b94d48396f75",
+                                    "masterInstanceId": "a7bd2e95-288b-4793-b0a5-6cd0628b22db"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-ecatalog",
+                                "html": "ecatalog",
+                                "itemId": "card-ecatalog"
+                            },
+                            "designerId": "4d91def3-56f0-45af-8c4b-139045ea861b"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-smartcart",
+                                "html": "smartcart",
+                                "itemId": "card-smartcart"
+                            },
+                            "designerId": "7996271e-2461-467a-86cc-4a5a0536c956"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-rmplc",
+                                "html": null,
+                                "itemId": "card-rmplc",
+                                "layout": "vbox"
+                            },
+                            "designerId": "c4af20a0-ae17-44eb-bcc4-08effd24cd32",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "49d7d3c8-bf91-450c-afd0-5789652882f6",
+                                    "masterInstanceId": "3be4f585-3109-401c-8e68-dacb8736b423"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-irugz",
+                                "html": "iRugz",
+                                "itemId": "card-irugz"
+                            },
+                            "designerId": "05893916-e3f7-45fb-80ee-d86c9c4006fa"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-pricing",
+                                "html": "pricing",
+                                "itemId": "card-pricing"
+                            },
+                            "designerId": "af9954df-ec46-4fb8-a65c-0830c8c98603",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "e3bdbc5c-c736-4092-939e-f43f4ec468eb",
+                                    "masterInstanceId": "7bae7a51-6109-4096-98c9-1beb65e01ae9"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-discounts",
+                                "html": null,
+                                "itemId": "card-discounts",
+                                "layout": "vbox"
+                            },
+                            "designerId": "7d6af29d-50e2-4db7-9175-6fce8d07647b",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "7f2697af-c8c4-4bbd-b0ae-1ab8b005c3be",
+                                    "masterInstanceId": "22d6eed9-1b8b-4980-9606-f8d78b61a420"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-notifications",
+                                "html": "notifications",
+                                "itemId": "card-notifications"
+                            },
+                            "designerId": "efbf4907-8e43-4b7d-9184-6bd3bff4a1a9"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-notepad",
+                                "html": "notepad",
+                                "itemId": "card-notepad"
+                            },
+                            "designerId": "de797843-e7de-4930-82bd-13422b432618"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "card-retailer-details",
+                                "html": "retailer details",
+                                "itemId": "card-retailer-details"
+                            },
+                            "designerId": "42d5b02e-f7a6-4c4b-bb53-1469597526cf",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "23d90021-5417-4d07-bd59-db05ec5ed6c0",
+                                    "masterInstanceId": "58559e55-1512-4c5c-9ea2-5aef56b794df"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "card-inhouse-details"
+                            },
+                            "designerId": "e0cec9f3-196b-4ddf-a76d-71d285cd3433",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "1fc9e6a6-433d-4ab7-9a85-554ba951773b",
+                                    "masterInstanceId": "d39098df-361b-42e4-a5e0-91763e90bde4"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "card-billing-detail"
+                            },
+                            "designerId": "2ef112e7-ee1b-4fac-9446-4b0aac322f8d"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "card-browse-latest-log"
+                            },
+                            "designerId": "23359350-b575-4bfa-929a-46d9baf61004",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "fafe1f6c-5334-44e2-8aec-5e10636f19af",
+                                    "masterInstanceId": "1bd08560-5f79-4bc4-9d14-3aaeb960105c"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": null,
+                                "itemId": "card-view-reports",
+                                "layout": "fit"
+                            },
+                            "designerId": "28466509-31e7-4609-a1c9-bce82f54e35d",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "c9726d8c-ade7-46dd-8e4a-20ac09b6aecc",
+                                    "masterInstanceId": "8b910473-7801-429f-9c3f-2f383d193bd1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMainInitialize",
+                "implHandler": [
+                    "RMdatalink.app.redirectTo('main');\r",
+                    " RMdatalink.app.getController('Main').initialiseApp() ;"
+                ],
+                "name": "initialize"
+            },
+            "designerId": "0c6ec600-7465-414b-a7d4-b567be76a3aa"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMainPainted",
+                "implHandler": [
+                    "//Ext.Viewport.setMasked(false);\r",
+                    "\r",
+                    "console.log(\"***********USer Restrictions********\") ;\r",
+                    "RMdatalink.app.getController('LoginHandler').onPermissionsLoaded() ;"
+                ],
+                "name": "painted"
+            },
+            "designerId": "74a1b5de-d2ce-47f6-b227-05bc41473dc9"
+        }
+    ]
+}
