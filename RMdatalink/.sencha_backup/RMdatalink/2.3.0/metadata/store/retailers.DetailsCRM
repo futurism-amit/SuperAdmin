@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "RDCRM",
+        "designer|userClassName": "retailers.DetailsCRM",
+        "model": "retailers.DetailsCRM",
+        "storeId": "RDCRM"
+    },
+    "designerId": "4e4cdf8e-a11c-4ddd-9601-7d90820d53ec"
+}

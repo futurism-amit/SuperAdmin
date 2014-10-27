@@ -880,9 +880,55 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "design"
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "design",
+                "sortType": "asInt",
+                "type": "int"
             },
-            "designerId": "e3f81947-32da-406e-9242-4eda3b946a99"
+            "designerId": "e3f81947-32da-406e-9242-4eda3b946a99",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "try{\r",
+                            "    \r",
+                            "//   console.error(v);\r",
+                            "//    console.error(rec);\r",
+                            "    \r",
+                            "   // var value = rec.get('SKU');\r",
+                            "  //  console.error(value);\r",
+                            "    if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)\r",
+                            "    {\r",
+                            "//        console.log(\"RETRUNINIG V\" ,v);\r",
+                            "        return v;\r",
+                            "    }\r",
+                            "//    console.error(\"RETRUNING ZERO\");\r",
+                            "    rec.set({'design':0});\r",
+                            "    return 0;\r",
+                            "}catch(e){\r",
+                            "    \r",
+                            "//    console.error('CATCH THRWON');\r",
+                            "    rec.set({'design':0});\r",
+                            "    return 0;\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "62d0de04-d6e6-48ce-a66f-b916bb130a53"
+                }
+            ]
         },
         {
             "type": "Ext.data.Field",
@@ -892,9 +938,56 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "SKU"
+                "allowNull": false,
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "SKU",
+                "sortType": "asInt",
+                "type": "int"
             },
-            "designerId": "e9f88b52-1262-4b7b-8993-3d5bf635f29b"
+            "designerId": "e9f88b52-1262-4b7b-8993-3d5bf635f29b",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "try{\r",
+                            "    \r",
+                            "//    console.error(v);\r",
+                            "///    console.error(rec);\r",
+                            "    \r",
+                            "   // var value = rec.get('SKU');\r",
+                            "  //  console.error(value);\r",
+                            "    if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)\r",
+                            "    {\r",
+                            "//        console.log(\"RETRUNINIG V\" ,v);\r",
+                            "        return v;\r",
+                            "    }\r",
+                            "//    console.error(\"RETRUNING ZERO\");\r",
+                            "    rec.set({'SKU':0});\r",
+                            "    return 0;\r",
+                            "}catch(e){\r",
+                            "    \r",
+                            "//    console.error('CATCH THRWON');\r",
+                            "    rec.set({'SKU':0});\r",
+                            "    return 0;\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "d20f6f81-7e7e-436f-b0b4-ba1f10ddd5ea"
+                }
+            ]
         },
         {
             "type": "Ext.data.Field",
@@ -904,9 +997,55 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "no_of_rugs_images"
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "no_of_rugs_images",
+                "sortType": "asInt",
+                "type": "int"
             },
-            "designerId": "87d38c1c-92c1-47b8-8889-946f1ea37ae5"
+            "designerId": "87d38c1c-92c1-47b8-8889-946f1ea37ae5",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "try{\r",
+                            "    \r",
+                            "//     console.error(v);\r",
+                            "//     console.error(rec);\r",
+                            "    \r",
+                            "   // var value = rec.get('SKU');\r",
+                            "  //  console.error(value);\r",
+                            "    if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)\r",
+                            "    {\r",
+                            "//        console.log(\"RETRUNINIG V\" ,v);\r",
+                            "        return v;\r",
+                            "    }\r",
+                            "//    console.error(\"RETRUNING ZERO\");\r",
+                            "    rec.set({'no_of_rugs_images':0});\r",
+                            "    return 0;\r",
+                            "}catch(e){\r",
+                            "    \r",
+                            "//    console.error('CATCH THRWON');\r",
+                            "    rec.set({'no_of_rugs_images':0});\r",
+                            "    return 0;\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "7c3bb019-6938-4557-85b1-11527f4d94e5"
+                }
+            ]
         },
         {
             "type": "Ext.data.Field",
@@ -916,9 +1055,55 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "no_of_additional_images"
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "no_of_additional_images",
+                "sortType": "asInt",
+                "type": "int"
             },
-            "designerId": "f709dcac-7e39-4426-a33c-254fa7c3f135"
+            "designerId": "f709dcac-7e39-4426-a33c-254fa7c3f135",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "try{\r",
+                            "    \r",
+                            "//    console.error(v);\r",
+                            "//    console.error(rec);\r",
+                            "    \r",
+                            "   // var value = rec.get('SKU');\r",
+                            "  //  console.error(value);\r",
+                            "    if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)\r",
+                            "    {\r",
+                            "//        console.log(\"RETRUNINIG V\" ,v);\r",
+                            "        return v;\r",
+                            "    }\r",
+                            "//    console.error(\"RETRUNING ZERO\");\r",
+                            "    rec.set({'no_of_additional_images':0});\r",
+                            "    return 0;\r",
+                            "}catch(e){\r",
+                            "    \r",
+                            "//    console.error('CATCH THRWON');\r",
+                            "    rec.set({'no_of_additional_images':0});\r",
+                            "    return 0;\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "f1e70834-d96d-4a2e-9d7d-e6164725b289"
+                }
+            ]
         },
         {
             "type": "Ext.data.Field",
@@ -928,9 +1113,55 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "collections"
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "collections",
+                "sortType": "asInt",
+                "type": "int"
             },
-            "designerId": "61df2b88-5edc-4248-8193-48dbfac14305"
+            "designerId": "61df2b88-5edc-4248-8193-48dbfac14305",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "try{\r",
+                            "\r",
+                            "//    console.error(v);\r",
+                            "//    console.error(rec);\r",
+                            "\r",
+                            "   // var value = rec.get('SKU');\r",
+                            "  //  console.error(value);\r",
+                            "    if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)\r",
+                            "    {\r",
+                            "//        console.log(\"RETRUNINIG V\" ,v);\r",
+                            "        return v;\r",
+                            "    }\r",
+                            "//    console.error(\"RETRUNING ZERO\");\r",
+                            "    rec.set({'collections':0});\r",
+                            "    return 0;\r",
+                            "}catch(e){\r",
+                            "\r",
+                            "//    console.error('CATCH THRWON');\r",
+                            "    rec.set({'collections':0});\r",
+                            "    return 0;\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "583f8d81-9831-49c9-9022-4bd152cf1ae9"
+                }
+            ]
         },
         {
             "type": "Ext.data.Field",
@@ -1197,6 +1428,187 @@
                 "name": "created_by"
             },
             "designerId": "4178653a-f202-4936-95a2-fefeb6ccea11"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "no_of_images",
+                "sortType": "asInt"
+            },
+            "designerId": "331d5a67-2f04-42de-84cf-34d511565f17"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ecom_std"
+            },
+            "designerId": "70d353ac-ad30-4c9e-8516-2269b06eb30f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ecom_promo"
+            },
+            "designerId": "00098f66-20f6-4ba8-a4fd-e55322282f34"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ecom_std_addl"
+            },
+            "designerId": "e3417b86-e798-4fa6-88c1-9abc51195e64"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ecom_promo_addl"
+            },
+            "designerId": "388d62d2-6e3f-44bd-9f68-e7483ad9f7aa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "dl_std"
+            },
+            "designerId": "0ce039d8-87fd-4e40-976a-975f1d6489df"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "dl_promo"
+            },
+            "designerId": "68ef9f81-a406-4cde-9eab-a2ef45a7b1be"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "dl_std_addl"
+            },
+            "designerId": "452770c6-8504-45cb-966d-8131bd2efa17"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "dl_promo_addl"
+            },
+            "designerId": "52f34be5-383b-4897-8279-f8bafaf51cfe"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "retailers_ecommerce"
+            },
+            "designerId": "3175b0c8-c7db-48d7-b70f-1b45c8de4253"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "prevent_be_vip"
+            },
+            "designerId": "763a56e8-276a-4044-81dc-a62e500d505b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vip_program_info"
+            },
+            "designerId": "3885f622-3a45-40e6-b1ba-035decf35c1d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "promo_code_info"
+            },
+            "designerId": "ab0bd11f-8bf3-41d2-a4b3-59fdc3b4b1f2"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "is_promo_code_active"
+            },
+            "designerId": "471cc8ab-4eb8-4441-b550-43aad9fba4c3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "prevent_be_ecommerceVendor"
+            },
+            "designerId": "a3895aa4-3a77-44fa-9791-c36e7f38a933"
         }
     ]
 }

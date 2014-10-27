@@ -1,0 +1,39 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailersDetailsPhotos",
+        "designer|userClassName": "retailers.DetailsPhotos"
+    },
+    "designerId": "3c821c13-52a4-4ba3-9341-ec5f6818c824",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "image"
+            },
+            "designerId": "44feefce-072b-4052-8b7b-c6e411ca722f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "imagename"
+            },
+            "designerId": "7654c957-7124-4dad-b891-56d05f168265"
+        }
+    ]
+}

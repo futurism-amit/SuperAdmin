@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "pricing.ecatalog_pricing",
+        "model": "pricingPolicyModel",
+        "storeId": "pricing.ecatalog_pricing"
+    },
+    "designerId": "786c13cf-70eb-456a-a2ee-8b4c9ac700ae"
+}

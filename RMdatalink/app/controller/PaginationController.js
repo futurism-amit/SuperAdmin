@@ -102,7 +102,7 @@ Ext.define('RMdatalink.controller.PaginationController', {
         var dataLoader = RMdatalink.util.DataLoader ;
         var scope = this.getScopeRequiredToLoadStores();
         var that = this ;
-
+        var wasVendorMasterLoaded =false;
         var storeId = this.getCurrentActiveStoreId() ;
         switch(this.getCurrentActiveStoreId()){
 
@@ -163,8 +163,9 @@ Ext.define('RMdatalink.controller.PaginationController', {
                 break;
 
             case 'vendors.Master':
-                dataLoader.loadVendorMasterStore(scope, pageNo, pageSize,enableCaching ,successCallBack,failuerCallBack);
 
+                dataLoader.loadVendorMasterStore(scope, pageNo, pageSize,enableCaching ,successCallBack,failuerCallBack);
+                wasVendorMasterLoaded = true;
                 break;
             case 'TechSupportLogsStore':
 
@@ -200,6 +201,19 @@ Ext.define('RMdatalink.controller.PaginationController', {
 
                 break;
 
+
+            case 'products.ecomMain':
+                if(Ext.ComponentQuery.query('#productecomMainPanel')[0])
+                {
+                    Ext.ComponentQuery.query('#productecomMainPanel')[0].setMasked( {
+                        xtype: 'loadmask'
+                    });
+                }
+
+                dataLoader.loadProductecomStore(scope, pageNo, pageSize,enableCaching ,successCallBack,failuerCallBack);
+
+                break;
+
         }
 
 
@@ -208,6 +222,24 @@ Ext.define('RMdatalink.controller.PaginationController', {
              that.loadDependentStoresonMaster(storeId);
 
              that.config.storesLoadedFirstTime[storeId] = true ;
+
+
+
+
+            if(wasVendorMasterLoaded){
+
+
+
+            }
+
+
+
+
+
+
+
+
+
         }
 
         function failuerCallBack(){
@@ -266,7 +298,7 @@ Ext.define('RMdatalink.controller.PaginationController', {
                         }
                 }
 
-
+                 RMdatalink.app.getController('RMProController').setRmProListHeight();
 
                 break;
             case 'products.DatalinkMain':
@@ -276,7 +308,25 @@ Ext.define('RMdatalink.controller.PaginationController', {
 
                     RMdatalink.app.getController('DatalinkController').setDlDataPrice() ;
                     RMdatalink.app.getController('DatalinkController').selectAllModules() ;
+
+                    RMdatalink.app.getController('DatalinkController').setDatalinkListHeight() ;
                }
+
+
+                break;
+
+           case 'products.ecomMain':
+               if( Ext.ComponentQuery.query('#productecomMainPanel')[0])
+               {
+                    Ext.ComponentQuery.query('#productecomMainPanel')[0].setMasked(false);
+
+        //             RMdatalink.app.getController('DatalinkController').setDlDataPrice() ;
+        //             RMdatalink.app.getController('DatalinkController').selectAllModules() ;
+
+        //             RMdatalink.app.getController('DatalinkController').setDatalinkListHeight() ;
+               }
+
+
                 break;
 
             case 'inhouseMasterStore':
@@ -351,6 +401,8 @@ Ext.define('RMdatalink.controller.PaginationController', {
                  Ext.Viewport.setMasked(false) ;
 
                 break ;
+
+
 
 
 
@@ -500,7 +552,15 @@ Ext.define('RMdatalink.controller.PaginationController', {
         RMdatalink.app.getController('SearchController').searchRetailerByStatus(searchText,store_status, page_no ) ;
     },
 
-    initialiseRetailers: function() {
+    initialiseRetailers: function(isSkipCustomFilter) {
+
+        if(!isSkipCustomFilter)
+        {
+            RMdatalink.app.getController('SearchController').initFilter()  ;
+
+            return ;
+        }
+
 
         var retailersStore = Ext.getStore('retailersMaster') ;
         retailersStore.setData([{}]);
@@ -636,6 +696,17 @@ Ext.define('RMdatalink.controller.PaginationController', {
 
                setRetailersList(arguments[0].items) ;
 
+
+
+
+            if(index == 0)
+            {
+                var maxP = arguments[0].count / 50 ;
+                maxP = Math.ceil(maxP) ;
+                 RMdatalink.app.getController('PaginationController').setRetailersActiveTabPageNo(maxP) ;
+
+            }
+
                index++;
                searchRetailerByStatus();
 
@@ -707,7 +778,7 @@ Ext.define('RMdatalink.controller.PaginationController', {
             }
 
 
-
+            totalMonthlyPrice = totalMonthlyPrice.toFixed(2) ;
 
             if(totalsList){
 
@@ -821,12 +892,12 @@ Ext.define('RMdatalink.controller.PaginationController', {
 
                                if(rec.store_products && rec.product_billng)
                                {
-                               if(rec.store_products.rmpro_status && rec.store_products.rmpro_status == "ACTIVE"){
+                               if(rec.store_products.rmpro_status && rec.store_products.rmpro_status == "ACTIVE" && rec.product_billng && rec.product_billng.product_rmpro ){
 
                                    value += parseFloat(rec.product_billng.product_rmpro.monthly_membership,0) ;
                                }
 
-                               if(rec.store_products.datalink_status && rec.store_products.datalink_status == "ACTIVE"){
+                               if(rec.store_products.datalink_status && rec.store_products.datalink_status == "ACTIVE" && rec.product_billng && rec.product_billng.product_datalink ){
 
                                    value += parseFloat(rec.product_billng.product_datalink.monthly_membership,0) ;
                                }
@@ -862,7 +933,11 @@ Ext.define('RMdatalink.controller.PaginationController', {
 
     },
 
-    setRetailersActiveTabPageNo: function() {
+    handleLastSavedExpansionState: function(isSkipCustomFilter) {
+
+    },
+
+    setRetailersActiveTabPageNo: function(maxPage) {
         var that =this ;
 
         if(Ext.ComponentQuery.query('#RMContentPanel')[0].getActiveItem().getItemId() == 'card-retailers')
@@ -874,7 +949,18 @@ Ext.define('RMdatalink.controller.PaginationController', {
           var activeStore = activeTab.down('#retailerList').getStore();
 
 
-          rtMainPanel.down('#mainPageNoLbl').setHtml(activeStore.getPageNo() ) ;
+          //rtMainPanel.down('#mainPageNoLbl').setHtml(activeStore.getPageNo() ) ;
+
+
+           // alert("asds"+maxPage);
+            if(maxPage){
+                rtMainPanel.down('#mainPageNoLbl').setHtml(activeStore.getPageNo() +' of '+ maxPage ) ;
+
+                activeStore.config.maxPageNo = maxPage ;
+            }else{
+
+                rtMainPanel.down('#mainPageNoLbl').setHtml(activeStore.getPageNo() +' of 1' ) ;
+            }
 
         }
     }

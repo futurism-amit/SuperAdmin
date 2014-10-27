@@ -1,0 +1,120 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userAlias": "vendorsMaster",
+        "designer|userClassName": "vendors.Master",
+        "model": "vendors.Master",
+        "pageNo": 1,
+        "storeId": "vendors.Master",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "cachedData": "object",
+        "pageNo": "number",
+        "totalNoOfPages": "number"
+    },
+    "designerId": "c6802509-8353-4c39-a46e-f3798deb5186",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreAddrecords",
+                "implHandler": [
+                    "//RMdatalink.util.DataLoader.onRetailerMasterStoreNewRecordAdded(store,records,eOpts);\r",
+                    "\r",
+                    "//RMdatalink.util.DataHandler.onRetailerMasterStoreNewRecordAdded(store,records,eOpts);\r",
+                    ""
+                ],
+                "name": "addrecords"
+            },
+            "designerId": "6ed1beb4-1c4d-4f92-b082-bf857c746a2e"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreUpdaterecord",
+                "implHandler": [
+                    "\r",
+                    "if(RMdatalink.app.getController('RetailerDeatilsDataSet').config.isVendorUpdated){\r",
+                    "    \r",
+                    "\r",
+                    "    RMdatalink.app.getController('RetailerDeatilsDataSet').config.isVendorUpdated = false ;\r",
+                    "   // RMdatalink.util.DataLoader.onRetailerMasterStoreUpdate(store,record,newIndex,oldIndex,modifiedFieldNames,modifiedValues,eOpts);\r",
+                    "\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    ""
+                ],
+                "name": "updaterecord"
+            },
+            "designerId": "21fa3d2d-199d-44c0-b882-464252eb12af"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreRemoverecords",
+                "implHandler": [
+                    "console.log(\"records \",records , \"  indices  \" , indices);\r",
+                    "  RMdatalink.util.DataLoader.onRetailerMasterStoreRecordRemoved(store,records,indices,eOpts);\r",
+                    "\r",
+                    "//RMdatalink.util.DataHandler.onRetailerMasterStoreRecordRemoved(store,records,indices,eOpts);"
+                ],
+                "name": "removerecords"
+            },
+            "designerId": "304c9781-44be-4187-a8af-c02f1fddde13"
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "vendor_name"
+            },
+            "designerId": "22d8c6d3-5eb2-4bc3-ba45-efd5c99b8592"
+        }
+    ]
+}

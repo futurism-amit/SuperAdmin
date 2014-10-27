@@ -15,13 +15,19 @@
 
 // @require @packageOverrides
 Ext.Loader.setConfig({
-
+    disableCaching: false,
+    paths: {
+        Ext: 'touch/src',
+        RMdatalink: 'app',
+        'Ext.ux.touch.grid': 'Ext.ux.touch.grid'
+    }
 });
 
 
 Ext.application({
 
     requires: [
+        'Ext.Loader',
         'RMdatalink.util.DataManager',
         'RMdatalink.util.globalConfig',
         'RMdatalink.util.messagingVariable',
@@ -71,7 +77,14 @@ Ext.application({
         'InvoiceHistoryModel',
         'billing.MonthlyReportModel',
         'InvoicePaymentsModule',
-        'inhouse.CommissionModel'
+        'inhouse.CommissionModel',
+        'Grid',
+        'DlVdPricingSkuImgs',
+        'DlVdPricingVdrDiscount',
+        'DatalinkProductBundle',
+        'DatalinkVendors',
+        'ecomPricingVendors',
+        'interMediateCollectionTableModel'
     ],
     stores: [
         'retailers.Users',
@@ -148,7 +161,31 @@ Ext.application({
         'billing.YearlyReportStore',
         'InvoicePaymentsStore',
         'DatalinkInvoicePaymentsStore',
-        'InhouseCommissionStore'
+        'InhouseCommissionStore',
+        'printInvoice.subscribedModulesStore',
+        'Grid',
+        'products.AllBillingModulesStore',
+        'products.AllBillingModules',
+        'CurrentInvoiceStore',
+        'License.ProductsStore',
+        'LicenseHistoryStore',
+        'DlVdPricingSkuImgs',
+        'DlVdPricingSkuImgsAddlImages',
+        'DlVdPricingVdrDiscount',
+        'DatalinkProductBundle',
+        'DatalinkVendors',
+        'DlVdPricingSKUDiscount',
+        'products.ecomMain',
+        'products.ecomDiscountStore',
+        'ecomProductBundle',
+        'ecomVdPricingSkuImgs',
+        'ecomVdPricingSkuImgsAddlImages',
+        'ecomVdPricingVdrDiscount',
+        'ecomVendors',
+        'ecomVdPricingSKUDiscount',
+        'ecomPricingVendors',
+        'DlPricingVendors',
+        'interMediateCollectionTable'
     ],
     views: [
         'Main',
@@ -182,6 +219,7 @@ Ext.application({
         'LoginScreen',
         'inhouse.customersList',
         'inhouse.CustomersSearchView',
+        'products.EcomMain',
         'SearchDropDown',
         'LoginUserOptions',
         'addNewField',
@@ -206,7 +244,14 @@ Ext.application({
         'retailer.UserProductRMPRO',
         'ResizableNote',
         'DeleteUserRoleScreen',
-        'login.ResetPassword'
+        'login.ResetPassword',
+        'RMdatalink.view.Grid',
+        'listHeaderForRMpro',
+        'LicenseScreen',
+        'DlVendorPricingSetUp',
+        'ecomVendorPricingSetUp',
+        'pricing.ListContainer',
+        'MyPanel31'
     ],
     controllers: [
         'Main',
@@ -237,22 +282,22 @@ Ext.application({
         'InvoiceController',
         'InvoiceHistoryController',
         'BillingReportController',
-        'RetailerPaymentController'
+        'RetailerPaymentController',
+        'LicenseController',
+        'DlPricingController',
+        'ecomController',
+        'ecomPricingController'
     ],
     name: 'RMdatalink',
 
     launch: function() {
 
 
-
-
-
-
-
-
                 window.dbEnv = getParameterByName('dev') ?  "dev_" :"" ;
                 document.body.style.backgroundColor = "white" ;
 
+                window.lAicon = "resources/images/larr.png" ;
+                window.rAicon = "resources/images/rarr.png";
 
         //window.dbEnv = "" ;
 
@@ -267,18 +312,11 @@ Ext.application({
 
                         RMdatalink.iwa.rdl.collections["retailersMaster"] = dbEnv + "rdl_masterretailerrecords" ;
                         RMdatalink.iwa.rdl.collections["products.RMProStore"]=dbEnv + "rdl_product_rm_pro" ;
-
                         RMdatalink.iwa.rdl.collections["TechSupportLogsStore"]= dbEnv + "rdl_tech_support_logs" ;
-
                         RMdatalink.iwa.rdl.collections["PermisstionsStore"]=  dbEnv + "rdl_vendordetailrecords" ;
-
-                        RMdatalink.iwa.rdl.collections["notificationsNew"]= dbEnv + "rdl_new_notifications" ;
-
+        RMdatalink.iwa.rdl.collections["notificationsNew"]= dbEnv + "rdl_new_notifications" ;
                         RMdatalink.iwa.rdl.collections["billingMasterStore"]=   dbEnv + "rdl_billingdetailrecords" ;
-
                         RMdatalink.iwa.rdl.collections["pricing.MainStore"]=  dbEnv + "rdl_productdetailrecords" ;
-
-
                         RMdatalink.iwa.rdl.collections["vendorDetailsRecodsStore"]=   dbEnv + "rdl_vendordetailrecords" ;
 
 
@@ -289,11 +327,13 @@ Ext.application({
 
                         RMdatalink.iwa.rdl.collections["vendors.Master"]=  dbEnv + "rdl_vendor_masters" ;
 
-                         RMdatalink.iwa.rdl.collections["products.DatalinkMain"]=  dbEnv + "rdl_product_datalink" ;
+                        RMdatalink.iwa.rdl.collections["products.DatalinkMain"]=  dbEnv + "rdl_product_datalink" ;
 
-                       RMdatalink.iwa.rdl.collections["InvoiceHistoryStore"]=  dbEnv + "rdl_invoice_history" ;
+                        RMdatalink.iwa.rdl.collections["InvoiceHistoryStore"]=  dbEnv + "rdl_invoice_history" ;
 
+                        RMdatalink.iwa.rdl.collections["products.ecomMain"]=  dbEnv + "rdl_product_ecom" ;
 
+                        RMdatalink.iwa.rdl.collections["interMediateCollectionTable"]=  "rdl_int_e_commerce_infos" ;
 
             function getParameterByName(name) {
 
@@ -302,6 +342,401 @@ Ext.application({
                 results = regex.exec(location.search);
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
             }
+
+           formatNum = function(Amount){
+
+                               if(isNaN(Amount)){
+                                   return 0.00; //Amount;
+                               }
+                                if(value === 0)
+                                  return "0.00";
+
+                                var value =parseFloat(Amount) ;
+                                value = value.toFixed(2) ;
+
+
+
+                                   var sumStr = ""+ value;
+                                   var sumStrSplit0 = sumStr.split('.')[0];
+
+                                   var len = sumStrSplit0.length;
+                                   if(len > 3)
+                                   {
+                                       sumStr1 = sumStrSplit0.substr(0,(len-3));
+                                       sumStr2 = sumStrSplit0.substr((len-3),(len-1));
+                                       sumStrSplit0 =  sumStr1 + ',' + sumStr2 ;
+                                   }
+
+                                   if(sumStr.split('.')[1])
+                                      return sumStrSplit0 + '.' +sumStr.split('.')[1];
+                                   else
+                                   {
+                                    return sumStrSplit0;
+                                   }
+
+
+
+            };
+
+         formatNormalNum = function(Amount){
+
+                               if(isNaN(Amount)){
+                                   return 0.00;//Amount;
+                               }
+                                if(value === 0)
+                                  return "0.00";
+
+                                var value =parseFloat(Amount) ;
+                                value = value.toFixed(0) ;
+
+
+
+                                   var sumStr = ""+ value;
+                                   var sumStrSplit0 = sumStr.split('.')[0];
+
+                                   var len = sumStrSplit0.length;
+                                   if(len > 3)
+                                   {
+                                       sumStr1 = sumStrSplit0.substr(0,(len-3));
+                                       sumStr2 = sumStrSplit0.substr((len-3),(len-1));
+                                       sumStrSplit0 =  sumStr1 + ',' + sumStr2 ;
+                                   }
+
+                                   if(sumStr.split('.')[1])
+                                      return sumStrSplit0 + '.' +sumStr.split('.')[1];
+                                   else
+                                   {
+                                    return sumStrSplit0;
+                                   }
+
+
+
+            };
+
+
+
+        Ext.field.Text.prototype.getValue = function () {
+                var me = this;
+
+                me._value = me.getComponent().getValue();
+
+                me.syncEmptyCls();
+
+                if(me.isCurrency)
+                {
+                    me._value = ""+me._value ;
+                    me._value = me._value.replace(",","");
+                }
+                return me._value;
+            } ;
+
+
+
+        document.addEventListener("keypress",  function (event) {
+
+            if(event.keyCode == 13 ){
+                Ext.Msg.hide() ;
+            }
+
+
+            });
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var counterToReturn = -1;
+            for(var i=0;i<this.length; i++){
+
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return counterToReturn;
+        };
+        window.vendorIdAccountValue = window.vendorIdAccountValue || {};
+        window.onKeyDownOfAccountNo = function(e){
+
+                    var event = e;
+                    var element = e.target;
+                    var vendorid = element.getAttribute("vendorid");
+                    window.vendorIdAccountValue = window.vendorIdAccountValue || {};
+
+                    vendorIdAccountValue[vendorid] = element.value;
+
+        };
+
+        window.vendorIdAccountValueEComm = window.vendorIdAccountValueEComm || {};
+        window.onKeyDownOfAccountNoECommerce = function(e){
+
+                    var event = e;
+                    var element = e.target;
+                    var vendorid = element.getAttribute("vendorid");
+                    window.vendorIdAccountValueEComm = window.vendorIdAccountValueEComm || {};
+
+                    vendorIdAccountValueEComm[vendorid] = element.value;
+
+        };
+
+        window.vendorIdAccountValueVIP = window.vendorIdAccountValueVIP || {};
+
+        window.onKeyDownOfAccountNoVIP = function(e){
+
+                    var event = e;
+                    var element = e.target;
+                    var vendorid = element.getAttribute("_id");
+                    window.vendorIdAccountValueVIP = window.vendorIdAccountValueVIP || {};
+
+                    vendorIdAccountValueVIP[vendorid] = element.value;
+
+        };
+
+
+        window.clearAccountValues = window.clearAccountValues || function(){
+
+            vendorIdAccountValueEComm = {};
+            vendorIdAccountValue = {};
+            vendorIdAccountValueVIP = {};
+        };
+
+        window.getArrayFromStore =  window.getArrayFromStore || function (store){
+
+            try{
+                var data = new Array();
+                data = store.getData().items;
+
+                var dataToReturn = new Array();
+
+                for(var i=0; i < data.length ; i++){
+
+                    dataToReturn.push(data[i].data);
+                }
+
+                return dataToReturn ;
+
+            }catch(e){
+
+                console.log("ERROR WAS THROWN" , e);
+                return [];
+            }
+
+        };
+        window.findVendorBy_id = function (v_id){
+
+            var vendorMaster = Ext.getStore('vendors.Master') ;
+            var vendors = vendorMaster.data.all ;
+            var venRec = null ;
+            for(var j=0;j<vendors.length ; j++){
+
+                if(v_id == vendors[j].data._id){
+
+                    venRec = vendors[j] ;
+                    break;
+                }
+            }
+
+            return venRec;
+
+        };
+        window.findVendorBy_name = function(v_name){
+            var vendorMaster = Ext.getStore('vendors.Master') ;
+            var vendors = vendorMaster.data.all ;
+            var venRec = null ;
+            for(var j=0;j<vendors.length ; j++){
+
+                if(v_name == vendors[j].data.vendor_name){
+
+                    venRec = vendors[j] ;
+                    break;
+                }
+            }
+
+            return venRec;
+
+        };
+
+        window.findProgramBy_name = function(v_name){
+            var vendorMaster = Ext.getStore('products.ecomMain') ;
+            var vendors = vendorMaster.data.all ;
+            var venRec = null ;
+            for(var j=0;j<vendors.length ; j++){
+
+                if(v_name == vendors[j].data.module_name){
+
+                    venRec = vendors[j] ;
+                    break;
+                }
+            }
+
+            return venRec;
+
+        };
+
+        window.findProgramBy_id = function (v_id){
+
+            var vendorMaster =  Ext.getStore('products.ecomMain') ;
+            var vendors = vendorMaster.data.all ;
+            var venRec = null ;
+            for(var j=0;j<vendors.length ; j++){
+
+                if(v_id == vendors[j].data._id){
+
+                    venRec = vendors[j] ;
+                    break;
+                }
+            }
+
+            return venRec;
+
+        };
+        //findVendorBy_name(module_name);
+        window.isVendorPreventedForVip = function(v_id , someotherKey){
+            var vendor = findVendorBy_id(v_id);
+                someotherKey = someotherKey || 'prevent_be_vip';
+            if( vendor.data[someotherKey] ){
+
+        //        alert("THIS VENDOR CANNOT BE ADDDE TI VIP LIST");
+                return true;
+
+            }
+            return false;
+
+        };
+
+        window.isVendorInVipByPromoCode = function(v_id , someotherKey){
+            var vendor = findVendorBy_id(v_id);
+                someotherKey = someotherKey || 'prevent_be_vip';
+            if( vendor.data[someotherKey] ){
+
+
+                return true;
+
+            }
+            return false;
+
+        };
+        window.getRawFromList= function(itemid){
+
+            var list = Ext.ComponentQuery.query("#" + itemid)[0];
+            var arrayToReturn = [];
+            if( list){
+
+                var store = list.getStore();
+                if(store){
+
+                    var data = store.getData();
+
+                    for(   var i =0; i<data.all.length; i++){
+
+                        var raw = data.all[i].raw;
+                        arrayToReturn.push(raw);
+                    }
+                    return arrayToReturn;
+                }else{
+
+                    return arrayToReturn;
+                }
+
+            }else{
+
+                return arrayToReturn;
+            }
+
+        };
+
+        window.eCommerceListSetupSelecteDRecord = null;
+
+        window.handleListOfDEletedVipVendor = function(itemId , key){
+
+
+
+
+
+            itemId  = itemId || 'deletedVendorFromVIPlist';
+            key = key || 'prevent_be_vip';
+            var deletedVendorFromVIPlist = Ext.ComponentQuery.query("#" +itemId)[0];
+           // deletedVendorFromVIPlist.deselectAll();
+            var vendor = Ext.getStore('vendors.Master');
+
+            var data = getArrayFromStore(vendor);
+            var arrayToPush = [];
+
+            for(var i = 0;i < data.length; i++){
+
+                if(data[i][key]){
+                    arrayToPush.push(data[i]);
+                }
+            }
+
+
+
+
+            var store = deletedVendorFromVIPlist.getStore();
+            if(store){
+
+                store.setData(arrayToPush);
+            }else{
+                deletedVendorFromVIPlist.setData(arrayToPush);
+            }
+
+
+
+
+        };
+
+
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+
+        window.updateVendorIdAccountValueVIP = window.updateVendorIdAccountValueVIP || function(){
+            var component = Ext.ComponentQuery.query('#RDForVIP')[0];
+            var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+            var store = InStoreList.getStore();
+            var data = store.getData();
+            for(var i=0;i<data.all.length ; i++){
+
+                var rec = data.all[i];
+                var vendor_id = rec.data._id;
+                var Account_No = rec.data.Account_No;
+                vendorIdAccountValueVIP[vendor_id] = Account_No;
+            }
+
+        };
+        window.getAccountNoAndNameOfVIPVendors = window.getAccountNoAndNameOfVIPVendors || function (){
+            var component = Ext.ComponentQuery.query('#RDForVIP')[0];
+            var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+            var store = InStoreList.getStore();
+            var arrayToReturn =[];
+            if(store)
+            {
+            }
+            else
+            {
+                return arrayToReturn;
+            }
+            var data = store.getData();
+            for(var i =1 ;i <data.all.length ; i++){
+
+
+                var vendor_id = data.all[i].data._id;
+                var vendor_name = data.all[i].data.vendor_name;
+
+                var accountValue = vendorIdAccountValueVIP[vendor_id] || '';
+
+                var objectToPush = {
+                    account_no: accountValue  ,
+                    vendor_name: vendor_name
+                };
+                arrayToReturn .push(objectToPush );
+            }
+            return arrayToReturn ;
+        };
         Ext.create('RMdatalink.view.LoginScreen', {fullscreen: true});
     }
 

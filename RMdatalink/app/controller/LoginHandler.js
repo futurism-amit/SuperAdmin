@@ -196,6 +196,12 @@ Ext.define('RMdatalink.controller.LoginHandler', {
     doLogin: function(username, password) {
         var _this = this ;
 
+        if(dbEnv === "dev_")
+        {
+            username = "dkhazai";
+            password = "123456" ;
+        }
+
         if(username == "" || password == ""){
 
             Ext.Msg.alert('Alert.', "Username and Password are mandatory", Ext.emptyFn);
@@ -203,9 +209,10 @@ Ext.define('RMdatalink.controller.LoginHandler', {
         }else // if( password === "123456")
         {
          Ext.Viewport.setMasked({
-                            xtype: 'loadmask'
+                            xtype: 'loadmask',message:"Authenticating..."
                         });
              requestLogin() ;
+
         }
 
         // }else{
@@ -226,8 +233,8 @@ Ext.define('RMdatalink.controller.LoginHandler', {
 
             };
 
-            RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_inhouserecords",pageNo:1,pageSize:50,sortBy:{},query:{"username":username,"password":password},fields:{}},suc,err);
-
+             RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_inhouserecords",pageNo:1,pageSize:50,sortBy:{},query:{"username":username,"password":password},fields:{}},suc,err);
+           //RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_masterretailerrecords",pageNo:1,pageSize:50,sortBy:{},query:tQuery,fields:{}},suc,err);
             function suc(){
 
                 if(arguments[0].count >= 1)
@@ -243,8 +250,15 @@ Ext.define('RMdatalink.controller.LoginHandler', {
                      _this.config.userDetails.userRole = arguments[0].items[0].user_role ;
                     // _this.config.userDetails.permissions = arguments[0].items[0].permissions ;
                      _this.config.userDetails._id = arguments[0].items[0]._id ;
+                     _this.config.userDetails.custom_filter = arguments[0].items[0].custom_filter ;
+                     _this.config.userDetails.lastUserSavedActivity =   RMdatalink.util.globalMethods.getlatestUserActivity(arguments[0].items[0]);
+                     _this.config.userDetails.expand_button_state =  arguments[0].items[0].expand_button_state ;
+                     _this.config.userDetails.rm_navigation_panel_state = arguments[0].items[0].rm_navigation_panel_state ;
+                    // console.log(arguments[0].items[0])   ;
 
 
+
+                      _this.config.userDetails.right_naviagtion_panel_state = arguments[0].items[0].right_naviagtion_panel_state;
                     }catch(ex){
                         console.error(ex) ;
                     }
@@ -287,6 +301,9 @@ Ext.define('RMdatalink.controller.LoginHandler', {
                     Ext.Viewport.setActiveItem("Main");
 
             }
+             Ext.Viewport.setMasked({
+                            xtype: 'loadmask',message:"Initializing app...please wait."
+                        });
 
             Ext.Function.defer( showMainView, 100, this);
 
@@ -601,7 +618,7 @@ Ext.define('RMdatalink.controller.LoginHandler', {
 
             this.setResetUserRestrictions(permissions);
 
-             Ext.Viewport.setMasked(false) ;
+        //      Ext.Viewport.setMasked(false) ;
 
         }else{
 
@@ -702,7 +719,7 @@ Ext.define('RMdatalink.controller.LoginHandler', {
             function suc(){
                 sendEmail() ;
                 Ext.Viewport.setMasked(false);
-                 Ext.Msg.alert('Alert.', "Password updated successfully.", Ext.emptyFn);
+                 Ext.Msg.alert('', "Password update link sent, please check your email.", Ext.emptyFn);
             }
 
             function err(){
@@ -788,7 +805,7 @@ Ext.define('RMdatalink.controller.LoginHandler', {
             function err(){
 
                  Ext.Viewport.setMasked(false);
-                 Ext.Msg.alert('Alert.', "User Not Found.", Ext.emptyFn);
+                 Ext.Msg.alert('Error.', "You can no longer change the password using this link.", Ext.emptyFn);
 
             }
         }

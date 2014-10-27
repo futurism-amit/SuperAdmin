@@ -44,6 +44,9 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             "selectfield[itemId=DiscountPolicyVendorsIncrementSelectFld]": {
                 change: 'onDiscountPolicyVendorsIncrementSelectFldChange'
             },
+            "selectfield[itemId=DiscountPolicySKUIncrementSelectFld]": {
+                change: 'onDiscountPolicySKUIncrementSelectFldChange'
+            },
             "selectfield[itemId=rm_proPricingPolicySelectFld]": {
                 change: 'onRMPROPolicySelectfieldChange'
             }
@@ -260,6 +263,11 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             );
         }*/
         // *********  FOR  PRICING TAB  ***********************
+
+
+
+
+
         if (component.down("#pricingListHeader"))
         {
             /*
@@ -279,39 +287,69 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
                 case "smartCartTab":
 
             var headers = component.down("#pricingListHeader");
-            headers.setData([{}]);
+                    headers.setData([{is_selected:false}]);
 
             headers.setItemTpl(
                 Ext.create('Ext.XTemplate',
-                           '<div class="x-rm-listtpl-main" style="width: 95%;">',
-
-                           '    <div style="width: 20%;margin-left:10px;" data-name="vendor_name">',
+                           '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;padding:0 0px 0 0px !important;height:64px;">',
+                           '    <div style="width: 4%;padding-top: 44px;">',
+                           '        <div style="width: 19px; height:19px;{[this.getCartImage(values)]}" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap"  ></div>',
+                           '    </div>',
+                           '    <div class="rightBorderDiv" style="width: 8%;text-align: center;padding-top: 44px;" data-name="vendor_name">',
                            '        Vendor&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
-                           '    <div style="width: 12%;" data-name="collections">',
-                           '        Collection&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                           '    </div>',
-                           '    <div style="width: 14%;" data-name="design">',
-                           '        Design&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                           '    </div>',
-                           '    <div style="width: 10%;" data-name="sku">',
+
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;padding-top: 44px;" data-name="sku">',
                            '        SKU&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
-                           '    <div style="width: 15%;" data-name="standard_price">',
-                           '        Standard Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;padding-top: 44px;" data-name="collections">',
+                           '        Collection&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
-                           '    <div style=" width: 18%;" data-name="promotional_price">',
-                           '        Promotional Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;padding-top: 44px;" data-name="design">',
+                           '        Design&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
-                           '    <div style=" width: 18%;" data-name="">',
-                           '        Value Calculator&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+
+
+                           '    <div class="rightBorderDiv" style=" width: 6.4%;text-align: center;padding-top: 44px;" data-name="no_of_images">',
+                           '        Images&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
-                           '</div>'
+
+                           '    <div class="rightBorderDiv" style=" width: 6.4%;text-align: center;padding-top: 24px;" data-name="no_of_additional_images">',
+                           '     <div style="">Addl.</div><div style="width:100%;">Images<img src="resources/images/button_icons/downArrow.png"/></div>   ',
+
+                          /* '        Addl. Images&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',*/
+                           '    </div>',
+
+                           '    <div class="rightBorderDiv" style=" width: 28%;text-align: center;">',
+                           '    <div style="border-bottom: 1px solid #9b9b9b;">SKUs + Images</div>     ',
+                           '    <div style="border-bottom: 1px solid #9b9b9b;"> <div style="width:50%;border-right: 1px solid #9b9b9b; float: left;">Value Calculator</div><div style="width:100%;">Price</div></div>     ',
+                           '    <div> <div style="width:25%;border-right: 1px solid #9b9b9b; float: left;">Hrs</div><div style="width:25%;border-right: 1px solid #9b9b9b; float: left;">Days</div><div style="width:25%;float: left;border-right: 1px solid #9b9b9b;">Std</div> <div style="width:100%;">Promo</div></div>     ',
+                           '    </div>',
+
+
+                           '    <div class="rightBorderDiv" style=" width: 28%;text-align: center;">',
+                           '    <div style="border-bottom: 1px solid #9b9b9b;">SKUs + Images + Addl Images</div>     ',
+                           '    <div style="border-bottom: 1px solid #9b9b9b;"> <div style="width:50%;border-right: 1px solid #9b9b9b; float: left;">Value Calculator</div><div style="width:100%;">Price</div></div>     ',
+                           '    <div> <div style="width:25%;border-right: 1px solid #9b9b9b; float: left;">Hrs</div><div style="width:25%;border-right: 1px solid #9b9b9b; float: left;">Days</div><div style="width:25%;float: left;border-right: 1px solid #9b9b9b;">Std</div> <div style="width:100%;">Promo</div></div>     ',
+                           '    </div>',
+                           '</div>',
+                           {
+                               getCartImage:function(values){
+                                   if(values.is_selected){
+                                       return "background-image: url('resources/images/retailerDetail/cart_selected.png') !important;";
+                                   }
+
+                                   return "background-image: url('resources/images/retailerDetail/cart_unselected.png') !important;" ;
+                               }
+                           }
                           )
             );
 
 
-
+        headers.setHeight(66);
+                     headers.setMode('MULTI');
+                headers.addCls('x-rm-rdvendorslist');
             headers.refresh();
             var list = component.down('#pricingList');
 
@@ -325,23 +363,158 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             {
              list.setItemTpl(
                 Ext.create('Ext.XTemplate',
-                           '<div class="x-rm-listtpl-main" style="width: 100%;">',
-                           '    <div style="width: 20%;margin-left:10px;" >{vendor_name}</div>',
-                           '    <div style="width: 12%;" >{collections}</div>',
-                           '    <div style="width: 11%;" >{design}</div>',
-                         '    <div style="width: 10%;" >{SKU}</div>',
-                           '    <input type="text" style="width: 15%;"  class="x-rm-pricing-input-field" data-id="{id}" field="standard" value="{product_price.datalink.standard_price}"  maxlength="8"',
-                           '        onchange="RMdatalink.app.getController(\'BillingDetailsController\').savePricingEditableFieldsData(this,\'vendorDetailRecords\');" onkeypress="return RMdatalink.app.getController(\'BillingDetailsController\').isNumberKey(event,this);" />',
-                           '    <input type="text" style="width: 18%;"  class="x-rm-pricing-input-field" data-id="{id}" field="promotional" value="{product_price.datalink.promotional_price}"  maxlength="8" ',
-                           '        onchange="RMdatalink.app.getController(\'BillingDetailsController\').savePricingEditableFieldsData(this,\'vendorDetailRecords\');" ',
-                           ' onkeypress=" return RMdatalink.app.getController(\'BillingDetailsController\').isNumberKey(event,this);" />',
-                           '    <div style="width: 15%;" >{[this.getCalculatedValue(values.SKU)]}</div>',
+                           '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
+
+                           '    <div style="width: 4%;">',
+                           '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                           '    </div>',
+
+                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
+
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_images)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_additional_images)]}</div>',
+
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImages(values)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImages(values)]}</div>',
+
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price)]} </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price)]} </div>',
+
+
+
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',
+
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price_addlimg)]} </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price_addlimg)]} </div>',
+
+
+
+
                            '</div>',
                             {
                                getCalculatedValue: function(sku){
                                    if(sku)
                                    {
                                        var  result = (sku * 5)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                 calHrsBySkuImages: function(values){
+
+                                   var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                                    var time_taken_images = 5 ;
+                                    var time_taken_images_addl_images = 10 ;
+
+
+                                    if(pricingData && pricingData[0]){
+
+                                         time_taken_images = pricingData[0].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+
+
+                                    }
+
+
+                                   if(values.SKU && values.no_of_images)
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                                       var  result = (sku * time_taken_images)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+
+                                 calDaysBySkuImages: function(values){
+
+                                   var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                                    var time_taken_images = 5 ;
+                                    var time_taken_images_addl_images = 10 ;
+
+
+                                    if(pricingData && pricingData[0]){
+
+                                         time_taken_images = pricingData[0].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+
+
+                                    }
+
+
+                                   if(values.SKU && values.no_of_images)
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                                       var  result = (sku * time_taken_images)/60 ;
+                                       result = result / 8 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                 calHrsBySkuImagesAddlImages: function(values){
+
+                                    var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                                    var time_taken_images = 5 ;
+                                    var time_taken_images_addl_images = 10 ;
+
+
+                                    if(pricingData && pricingData[0]){
+
+                                         time_taken_images = pricingData[0].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+
+
+                                    }
+
+
+                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                                       var  result = (sku * time_taken_images_addl_images)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                  calDaysBySkuImagesAddlImages: function(values){
+
+
+                                     var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                                    var time_taken_images = 5 ;
+                                    var time_taken_images_addl_images = 10 ;
+
+
+                                    if(pricingData && pricingData[0]){
+
+                                         time_taken_images = pricingData[0].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+
+
+                                    }
+
+                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                                       var  result = (sku * time_taken_images_addl_images)/60 ;
+                                        result = result / 8 ;
                                        result =    Math.round(result * 100) / 100 ;
                                        return result ;
                                    }
@@ -355,6 +528,9 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
                           )
             );
 
+                list.setItemHeight(22);
+                list.setMode('MULTI');
+                list.addCls('x-rm-rdvendorslist');
 
             }else if(component.getItemId() == "ecataLogTab"){
 
@@ -436,14 +612,25 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             totalsList.setItemTpl(
                 Ext.create('Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="width: 100%;">',
-                           '    <div style="width: 8%;">TOTALS</div>',
-                           '    <div style="width: 15%;">{vendor_count}&nbsp; Vendors</div>',
-                           '    <div style="width: 12%;">{collection_count}&nbsp; </div>',
-                           '    <div style="width: 12%;">{design_count}&nbsp; </div>',
-                           '    <div style="width: 12%;">{sku_count}&nbsp;</div>',
-                            '    <div style="width: 16%;">{total_std_price}&nbsp; </div>',
-                            '    <div style="width: 16%;">{total_promo_price}&nbsp; </div>',
-                            '    <div style="width: 12%;">{total_calculated_value}&nbsp; </div>',
+                           '    <div style="width: 0.2%;"></div>',
+                           '    <div class="rightBorderDiv" style="width: 12%;">{vendor_count} Vendors</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.2%;text-align: center;">{[formatNormalNum(values.sku_count)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.2%;text-align: center;">{[formatNormalNum(values.collection_count)]} </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.2%;text-align: center;">{[formatNormalNum(values.design_count)]} </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.2%;text-align: center;">{[formatNormalNum(values.total_images)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.2%;text-align: center;">{[formatNormalNum(values.total_addl_images)]}</div>',
+
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;">{[formatNum(values.total_hrs_images)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;">{[formatNum(values.total_days_images)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;">$ {[formatNum(values.total_std_price)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;">$ {[formatNum(values.total_promo_price)]}</div>',
+
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;">{[formatNum(values.total_hrs_img_addlimges)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;">{[formatNum(values.total_days_img_addlimges)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;"> $ {[formatNum(values.total_std_price_addlimges)]}</div>',
+                           '    <div class="rightBorderDiv" style="width: 6.92%;text-align: center;"> $ {[formatNum(values.total_promo_price_addlimges)]}</div>',
+
+
                            '</div>'
 
                           )
@@ -608,12 +795,12 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             headers.setData([{}]);
             headers.setItemTpl(
                 Ext.create('Ext.XTemplate',
-                           '<div class="x-rm-listtpl-main" style="width: 98%;">',
+                           '<div class="x-rm-listtpl-main" style="width: 100%;border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 0.8em;">',
                            '    <div style="width: 22%;margin-left:10px;" data-name="from_sku">',
-                           '        FROM SKU&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                           '        FROM&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
                            '    <div style="width: 22%;" data-name="to_sku">',
-                           '        TO SKU&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                           '        TO&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
                            '    <div style=" width: 27%;" data-name="standard">',
                            '        STANDARD&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
@@ -627,59 +814,36 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             headers.refresh();
             // ** MAIN LIST ****
             var list =   Ext.ComponentQuery.query('#pricingPolicy1stList')[0].down("#mainList");//component.innerItems[0].innerItems[1];
-            list.setStore(Ext.getStore("pricing.datalink_pricing"));
+
+            // list.setStore(Ext.getStore("pricing.datalink_pricing"));
 
             list.setItemTpl(
                 Ext.create('Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="width: 100%;">',
-                           '    <div style="width: 22%;margin-left:10px;" >{[RMdatalink.util.globalMethods.SetCommaForNumericField(values.from_sku)]}</div>',
-                           '    <div style="width: 22%;" >{[RMdatalink.util.globalMethods.SetCommaForNumericField(values.to_sku)]}</div>',
-                           '    <input type="text" style="width: 27%;"  class="x-rm-pricing-input-field" data-id="{id}" value="{standard}" field="standardPricingPolicy" maxlength="8"',
-                           '     onkeypress="return RMdatalink.app.getController(\'BillingDetailsController\').isNumberKey(event,this);" ',
-                           '      onchange="RMdatalink.app.getController(\'BillingDetailsController\').savePricingEditableFieldsData(this,\'productDetailRecords\');" />',
-                           '    <input type="text" style="width: 27%;"  class="x-rm-pricing-input-field" data-id="{id}" value="{promotional}" field="promotionalPricingPolicy" maxlength="8"',
-                           '      onkeypress="return RMdatalink.app.getController(\'BillingDetailsController\').isNumberKey(event,this);" ',
-                           '      onchange="RMdatalink.app.getController(\'BillingDetailsController\').savePricingEditableFieldsData(this,\'productDetailRecords\');" />',
+                           '    <div style="width: 22%;text-align: center;" >{from}</div>',
+                           '    <div style="width: 22%;text-align: center;" >{to}</div>',
+                           '  <div style="width: 26%;" > <div style="float: left;">$</div>  <input type="text" style="width: 80%;text-align: right;height: 18px;" class="x-rm-pricing-input-field" data-id="{id}" value="{[formatNum(values.std)]}" field="standardPricingPolicy" maxlength="8"',
+
+                           '      onchange="RMdatalink.app.getController(\'DlPricingController\').onUpdateSkuImgsStore(this,\'std\');" /></div>',
+                           '  <div style="width: 26%;" > <div style="float: left;">$</div>  <input type="text" style="width: 80%;text-align: right;height: 18px;" class="x-rm-pricing-input-field" data-id="{id}" value="{[formatNum(values.promo)]}" field="promotionalPricingPolicy" maxlength="8"',
+
+                           '      onchange="RMdatalink.app.getController(\'DlPricingController\').onUpdateSkuImgsStore(this,\'promo\');" /></div>',
                            '</div>'
 
                           )
             );
 
+            RMdatalink.app.getController('DlPricingController').initialsePricingList();
+
+        // RMdatalink.util.globalMethods.fillListDataByListObject(list,[{from:0,to:50,std:0,promo:50}]);
             // **********  FOR 2nd LIST  ***************
-            var headers1 =  Ext.ComponentQuery.query('#pricingPolicy2ndList')[0].down("#headerList"); //component.innerItems[1].innerItems[0];
-            headers1.setData([{}]);
-            headers1.setItemTpl(
-                Ext.create('Ext.XTemplate',
-                           '<div class="x-rm-listtpl-main" style="width: 98%;">',
-                           '    <div style="width: 35%;margin-left:10px;" data-name="of_vendors">',
-                           '        #OF VENDORS&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                           '    </div>',
-                           '    <div style="width: 35%;" data-name="discount_level">',
-                           '       DISCOUNT LEVEL&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                           '    </div>',
-                           '</div>'
-                          )
-            );
-            headers1.refresh();
-            // ** MAIN LIST ****
-            var list1 =  Ext.ComponentQuery.query('#pricingPolicy2ndList')[0].down("#mainList"); //component.innerItems[1].innerItems[1];
-            list1.setStore(Ext.getStore("pricing.datalink_discount"));
 
-            list1.setItemTpl(
-                Ext.create('Ext.XTemplate',
-                           '<div class="x-rm-listtpl-main" style="width: 100%;">',
 
-                           '    <input type="text" style="width: 35%;margin-left:10px;"  class="x-rm-pricing-input-field" data-id="{id}" value="{of_vendors}" field="vendorsPricingPolicy" maxlength="4"',
-                           '         onkeypress="return RMdatalink.app.getController(\'BillingDetailsController\').isNumberKey(event,this);" ',
-                           '      onchange="RMdatalink.app.getController(\'BillingDetailsController\').savePricingEditableFieldsData(this,\'productDetailRecords\');" />',
-                           '    <input type="text" style="width: 10%;padding-left:7px;"  class="x-rm-pricing-input-field" data-id="{id}" value="{discount_level}" field="discountPricingPolicy" maxlength="4"',
-                           '        onkeypress="return RMdatalink.app.getController(\'BillingDetailsController\').isNumberKey(event,this);" ',
-                           '      onchange="RMdatalink.app.getController(\'BillingDetailsController\').savePricingEditableFieldsData(this,\'productDetailRecords\');"  />',
-                           '    <div style="margin-top: 2px;">%</div>',
-                           '</div>'
 
-                          )
-            );
+
+
+
+
         }
         else if(component.title === 'FUNCTIONALITY')
         {
@@ -876,12 +1040,45 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
     },
 
     onpricingPolicySkuIncrementSelectFldChange: function(selectfield, newValue, oldValue, eOpts) {
+        if(!newValue){
+
+            return ;
+        }
+
+
         console.log(newValue) ;
+        var slStr = Ext.getStore('DlVdPricingSkuImgs') ;
+
+        var dIndex = slStr.findExact('value',newValue) ;
+        var data = slStr.getData().all[dIndex].data.policy ;
+
+         var list =   Ext.ComponentQuery.query('#pricingPolicy1stList')[0].down("#mainList");
+         RMdatalink.util.globalMethods.fillListDataByListObject(list,data);
+
+        var rec = slStr.getData().all[dIndex].data ;
+
+        this.updateVdrAsPolicyChange(rec);
+
+        RMdatalink.app.getController('DlPricingController').setDefaultDlTpl() ;
+
+        var timeout = setTimeout(function(){
+
+                              var vndStr = Ext.getStore('vendors.Master') ;
+                                vndStr.clearFilter();
+
+                                RMdatalink.app.getController('BillingDetailsController').loadVendorTotalCountData() ;
+
+                                var dlList = Ext.ComponentQuery.query('#dataLinkListItemID')[0].down('#pricingList') ;
+                                dlList.refresh();
+                                clearTimeout(timeout);
+                            },100);
+
+        return ;
         //alert("change"+ this.config.doNotSaveStoreData );
 
 
         /*
-
+        values.product_price.datalink.standard_price
                 from_sku: "0"
                 id: 1
                 promotional: "29"
@@ -1043,6 +1240,218 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
     },
 
     onDiscountPolicyVendorsIncrementSelectFldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+        console.log(newValue) ;
+        var slStr = Ext.getStore('DlVdPricingVdrDiscount') ;
+
+        var dIndex = slStr.findExact('value',newValue) ;
+        var data = slStr.getData().all[dIndex].data.policy ;
+
+         var list =   Ext.ComponentQuery.query('#pricingPolicy2ndList')[0].down("#mainList");
+         RMdatalink.util.globalMethods.fillListDataByListObject(list,data);
+
+        var rec = slStr.getData().all[dIndex].data ;
+
+        //this.updateVdrAsPolicyChange(rec);
+
+
+        return ;
+
+
+
+
+
+
+
+
+
+        console.log(newValue) ;
+
+        if(this.config.doNotSaveStoreData){
+            return ;
+        }
+
+
+        if(! newValue){
+
+            return ;
+        }
+
+        /*
+        discount_level: "5"
+        id: 1
+        of_vendors: "5"
+        */
+
+        /*
+
+               "id": 1,
+                    "product_name": "Datalink",
+                    "active_pricing_policy":"500",
+                    "active_discount_policy":"5",
+                    "discount_policy": [
+                               {
+                                    "text":"Discount Policy1",
+                                    "value":"5",
+                                    "data":[
+                                           ]
+                               },
+
+        */
+
+        ////////////////////////
+
+        var discountStore =  Ext.ComponentQuery.query('#pricingPolicy2ndList')[0].down("#mainList").getStore() ;
+        var recordIndex = 0 ;
+
+
+        switch(discountStore.getStoreId()){
+
+                  case 'pricing.datalink_discount':
+
+                                recordIndex = 0 ;
+
+                  break;
+                   case 'pricing.ecatlog_discount':
+
+                                recordIndex = 1 ;
+
+                  break;
+                   case 'pricing.smart_cart_discount':
+
+                                recordIndex = 2 ;
+
+                  break;
+
+        }
+
+
+
+
+
+
+        this.config.pricingData[recordIndex].active_discount_policy = newValue ;
+        var isRecordFoundFornewValue = false ;
+        var discountPolicyOldRecords = new Array() ;
+
+        for(var k =0; k< this.config.pricingData[recordIndex].discount_policy.length; k++){
+
+            if(this.config.pricingData[recordIndex].discount_policy[k].value == oldValue && !this.config.doNotSaveStoreData ){
+                console.log("SAVE");
+                this.config.pricingData[recordIndex].discount_policy[k].data =  getArrayDataFromStore(discountStore );
+            }
+         //fillStore
+            if(this.config.pricingData[recordIndex].discount_policy[k].value == newValue && this.config.pricingData[recordIndex].discount_policy[k].data.length >  2 ){
+             discountPolicyOldRecords = this.config.pricingData[recordIndex].discount_policy[k].data ;
+               isRecordFoundFornewValue =true ;
+            }
+
+
+        }
+
+        if(isRecordFoundFornewValue)
+        {
+             fillStore(discountStore,discountPolicyOldRecords);
+             isRecordFoundFornewValue = false ;
+             return ;
+        }
+        ////////////////////////////////////////
+
+
+        var newData = new Array() ;
+        var maxOfVendors = 80 ;
+        var minOfVendors = 0 ;
+        var increment = newValue ;
+
+        var from = minOfVendors ;
+
+        while(from  < maxOfVendors){
+
+            newData.push(
+                {
+                            "of_vendors":  from,
+                            "discount_level": "0"
+                }
+            );
+
+            from = from + increment ;
+
+        }
+
+         from = maxOfVendors ;
+
+              newData.push(
+                    {
+                                "of_vendors":  from,
+                                "discount_level": "0"
+                    }
+                );
+
+
+
+
+        discountStore.removeAll();
+        discountStore.sync();
+
+        discountStore.setData(newData);
+        discountStore.sync() ;
+
+
+
+        function getArrayDataFromStore(store){
+
+            var data = new Array();
+            data = store.getData().all;
+
+            var dataToReturn = new Array();
+
+            for(var i=0; i < data.length ; i++){
+
+                dataToReturn.push(data[i].data);
+            }
+
+            return dataToReturn ;
+         }
+
+
+
+        function fillStore(store,data){
+            store.removeAll();
+            store.sync() ;
+
+
+            store.setData(data) ;
+            store.sync();
+        }
+
+    },
+
+    onDiscountPolicySKUIncrementSelectFldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+        console.log(newValue) ;
+        var slStr = Ext.getStore('DlVdPricingSKUDiscount') ;
+
+        var dIndex = slStr.findExact('value',newValue) ;
+        var data = slStr.getData().all[dIndex].data.policy ;
+
+         var list =   Ext.ComponentQuery.query('#pricingPolicySKUDiscountList')[0].down("#mainList");
+         RMdatalink.util.globalMethods.fillListDataByListObject(list,data);
+
+        var rec = slStr.getData().all[dIndex].data ;
+
+        //this.updateVdrAsPolicyChange(rec);
+
+
+        return ;
+
+
+
+
+
+
+
+
+
         console.log(newValue) ;
 
         if(this.config.doNotSaveStoreData){
@@ -1205,6 +1614,17 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
     },
 
     onRMPROPolicySelectfieldChange: function(selectfield, newValue, oldValue, eOpts) {
+        if(newValue){
+            Ext.ComponentQuery.query('#saveBundleBtn')[0].setText("Update") ;
+            var opts = selectfield.getOptions() ;
+            for(var i=0 ; i < opts.length; i++){
+
+                if(opts[i].value == newValue){
+                    Ext.ComponentQuery.query('#rmProBundelNameTxtFld')[0].setValue(opts[i].text) ;
+                }
+            }
+        }
+
         var that = this ;
 
         if(oldValue && ! that.config.isNoActionToChangePolicy){
@@ -1217,11 +1637,14 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
 
                 if(action == "yes"){
 
+
                      that.config.pricingData[3].active_pricing_policy = newValue;
 
                      that.loadRM_PROData() ;
 
                      that.updateRMProPricing() ;
+
+
 
                 }else{
 
@@ -1243,6 +1666,29 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
         }
 
 
+        function getArrayFromVendorStore(store){
+
+            var data = new Array();
+            data = store.getData().items;
+
+            var dataToReturn = new Array();
+
+            for(var i=0; i < data.length ; i++){
+
+                dataToReturn.push(
+                      {
+                          vendor_id :  data[i].data._id,
+                          vendor_name: data[i].data.vendor_name,
+                          type: "ACTIVE"
+                      }
+
+
+                   );
+            }
+
+            return dataToReturn ;
+
+        }
     },
 
     setDataForPricingList: function(list, productIndexInStore, productID, totalsList) {
@@ -1402,6 +1848,7 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
         }
 
 
+        return ;
 
         var productDetailsRecordsStore =  Ext.getStore("productDetailsRecordsStore");
         var  vendorDetailsRecodsStore = Ext.getStore("vendorDetailsRecodsStore");
@@ -1628,7 +2075,7 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
 
             case 1:
 
-
+        return ;
                 pricingPolicyList.setStore('pricing.datalink_pricing') ;
                 pricingDiscountPolicyList.setStore('pricing.datalink_discount');
                 pricingFunctionalityList.setStore('pricing.datalink_functionality') ;
@@ -2189,6 +2636,16 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             console.log(dataToReturn);
             return dataToReturn ;
          }
+
+
+
+
+        RMdatalink.app.getController('DlPricingController').initialseDlVdrPricing();
+
+        RMdatalink.app.getController('ecomPricingController').initialseDlVdrPricing();
+
+        RMdatalink.app.getController('ecomController').setDatalinkDiscountStore();
+
     },
 
     updaePricingData: function(storeId) {
@@ -2880,7 +3337,9 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
 
                 moduleRec.push(rmProStore.getAt(moduleRecIndex)) ;
 
-                rmProStore.getAt(moduleRecIndex).set("active_policy",atcivePricingPolicy);
+          //Here is the change to get upper selected items for RMpro product setup
+
+          //      rmProStore.getAt(moduleRecIndex).set("active_policy",atcivePricingPolicy);
 
             }
         }
@@ -2987,6 +3446,10 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
         this.config.pricingData[3].pricing_policy[activePolicy].rm_pro_modules = [] ;
         this.config.pricingData[3].pricing_policy[activePolicy].rm_pro_bundle_price = Ext.ComponentQuery.query('#rm_proBundlePriceTxtFld')[0].getValue() ;
 
+        this.config.pricingData[3].pricing_policy[activePolicy].text = Ext.ComponentQuery.query('#rmProBundelNameTxtFld')[0].getValue() ;
+
+
+
         for( var i=0 ; i < selectedRec.length ; i++ ){
 
             this.config.pricingData[3].pricing_policy[activePolicy].rm_pro_modules.push({"module_id":selectedRec[i].get('_id')}) ;
@@ -3044,6 +3507,18 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
 
         }
 
+        var slctFldStr = Ext.ComponentQuery.query('#rm_proPricingPolicySelectFld')[0].getStore() ;
+        var pRec = slctFldStr.getAt(activePolicy) ;
+        if(pRec){
+
+            pRec.set('text',Ext.ComponentQuery.query('#rmProBundelNameTxtFld')[0].getValue());
+        }
+
+        // var opVal = Ext.ComponentQuery.query('#rm_proPricingPolicySelectFld')[0].getValue();
+        // Ext.ComponentQuery.query('#rm_proPricingPolicySelectFld')[0].setOptions(null);
+        // this.setRMPROPricingPolicySelectFld() ;
+        // Ext.ComponentQuery.query('#rm_proPricingPolicySelectFld')[0].setValue(opVal);
+
         //  Ext.Viewport.setMasked(false);
 
         // Ext.Msg.alert("Alert","RM-PRO pricing policies updated successfully.",Ext.emptyFn);
@@ -3071,9 +3546,80 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
     loadVendorTotalCountData: function() {
 
 
+        var valCal = 	{
+                               getCalculatedValue: function(sku){
+                                   if(sku)
+                                   {
+                                       var  result = (sku * 5)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
 
+                                       return 0 ;
+
+                               },
+
+                                 calHrsBySkuImages: function(values){
+                                   if(values.SKU && values.no_of_images)
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+
+                                 calDaysBySkuImages: function(values){
+                                   if(values.SKU && values.no_of_images)
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                       result = result / 8 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                 calHrsBySkuImagesAddlImages: function(values){
+                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                  calDaysBySkuImagesAddlImages: function(values){
+                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                        result = result / 8 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               }
+
+                           } ;
+
+
+            var dlList = Ext.ComponentQuery.query('#dataLinkListItemID')[0].down('#pricingList') ;
             var vendorsMasterStr = Ext.getStore( 'vendors.Master');
-            var vdrs = vendorsMasterStr.getData().all ;
+            var vdrs =  dlList.getSelection() ; // vendorsMasterStr.getData().all ;
 
             var totalSKU = 0 ;
             var totalCllections = 0 ;
@@ -3082,6 +3628,20 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             var totalPromoPrice = 0 ;
             var totalCalculatedVal = 0 ;
 
+            var totalImages = 0 ;
+            var totalAddImages = 0 ;
+
+
+
+
+
+            var total_hrs_images =0 ;
+            var total_days_images =0 ;
+
+            var total_hrs_img_addlimges =0 ;
+            var total_days_img_addlimges =0 ;
+            var total_std_price_addlimges =0 ;
+            var total_promo_price_addlimges =0 ;
 
             for(var i=0; i < vdrs.length ; i++){
                 if( vdrs[i].data.SKU)
@@ -3098,11 +3658,32 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
                      totalDesigns += parseInt(vdrs[i].data.design,0)  ;
                 if(vdrs[i].data.product_price && vdrs[i].data.product_price.datalink )
                 {
-                     totalStdPrice +=  parseInt(vdrs[i].data.product_price.datalink.standard_price,0) ;
-                     totalPromoPrice +=  parseInt(vdrs[i].data.product_price.datalink.promotional_price,0) ;
+                     totalStdPrice +=  parseFloat(vdrs[i].data.product_price.datalink.standard_price,0) ;
+                     totalPromoPrice +=  parseFloat(vdrs[i].data.product_price.datalink.promotional_price,0) ;
                 }
 
 
+                if( vdrs[i].data.no_of_images && vdrs[i].data.no_of_images != ""){
+                     totalImages += parseFloat(vdrs[i].data.no_of_images,0)  ;
+                }
+
+                if( vdrs[i].data.no_of_additional_images && vdrs[i].data.no_of_additional_images != ""){
+                     totalAddImages += parseFloat(vdrs[i].data.no_of_additional_images,0)  ;
+                }
+
+
+                   if(vdrs[i].data.product_price && vdrs[i].data.product_price.datalink )
+                {
+                     total_std_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.standard_price_addlimg,0) ;
+                     total_promo_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.promotional_price_addlimg,0) ;
+                }
+
+
+                total_hrs_images+= valCal.calHrsBySkuImages(vdrs[i].data);
+                 total_days_images+= valCal.calDaysBySkuImages(vdrs[i].data);
+
+                 total_hrs_img_addlimges+= valCal.calHrsBySkuImagesAddlImages(vdrs[i].data);
+                 total_days_img_addlimges+= valCal.calDaysBySkuImagesAddlImages(vdrs[i].data);
 
             }
 
@@ -3112,12 +3693,301 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
             design_count:totalDesigns,
             sku_count:totalSKU,
             total_std_price:totalStdPrice,
-            total_promo_price:totalStdPrice,
-            total_calculated_value:totalCalculatedVal
+            total_promo_price:totalPromoPrice,
+            total_calculated_value:totalCalculatedVal,
+            total_images:totalImages,
+            total_addl_images:totalAddImages,
+
+            total_hrs_images:total_hrs_images,
+            total_days_images:total_days_images,
+
+            total_hrs_img_addlimges:total_hrs_img_addlimges,
+            total_days_img_addlimges:total_days_img_addlimges,
+
+            total_std_price_addlimges:total_std_price_addlimges,
+            total_promo_price_addlimges:total_promo_price_addlimges
         };
 
-            var listIbj = Ext.ComponentQuery.query('#pricingDetailsMainTabPanel')[0].down('#dataLinkTab').down('#pricingTotalsList') ;
+         var listIbj =  Ext.ComponentQuery.query('#pricingDetailsMainTabPanel')[0].down('#dataLinkTab').down('#pricingTotalsList') ;
          RMdatalink.util.globalMethods.fillListDataByListObject(listIbj,[dataToSet]);
+
+
+
+    },
+
+    loadVendorTotalCountDataForEcommerce: function() {
+
+
+
+        var ecompolicySelectVendors  = Ext.ComponentQuery.query("#ecompolicySelectVendors")[0];
+        var ecompricingPolicySkuIncrementSelectFld  = Ext.ComponentQuery.query("#ecompricingPolicySkuIncrementSelectFld")[0];
+        var ecompricingPolicySkuAddlImgsIncrementSelectFld  = Ext.ComponentQuery.query("#ecompricingPolicySkuAddlImgsIncrementSelectFld")[0];
+
+        var flag= false;
+
+        if(ecompolicySelectVendors.getValue() ){
+            flag = true;
+
+        //    setVdrPolicyTpl();
+
+        }
+
+
+
+        var valCal = 	{
+                               getCalculatedValue: function(sku){
+                                   if(sku)
+                                   {
+                                       var  result = (sku * 5)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                 calHrsBySkuImages: function(values){
+                                   if(values.SKU && values.no_of_images)
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+
+                                 calDaysBySkuImages: function(values){
+                                   if(values.SKU && values.no_of_images)
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                       result = result / 8 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                 calHrsBySkuImagesAddlImages: function(values){
+                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               },
+
+                                  calDaysBySkuImagesAddlImages: function(values){
+                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                                   {
+                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                                       var  result = (sku * 5)/60 ;
+                                        result = result / 8 ;
+                                       result =    Math.round(result * 100) / 100 ;
+                                       return result ;
+                                   }
+
+                                       return 0 ;
+
+                               }
+
+                           } ;
+
+        //productsecomPricingTab
+            var dlList = Ext.ComponentQuery.query('#productsecomPricingTab')[0].down('#pricingList') ;
+            var vendorsMasterStr = Ext.getStore( 'vendors.Master');
+            var vdrs =  dlList.getSelection() ; // vendorsMasterStr.getData().all ;
+
+            var totalSKU = 0 ;
+            var totalCllections = 0 ;
+            var totalDesigns = 0 ;
+            var totalStdPrice = 0 ;
+            var totalPromoPrice = 0 ;
+            var totalCalculatedVal = 0 ;
+
+            var totalImages = 0 ;
+            var totalAddImages = 0 ;
+
+
+
+
+
+            var total_hrs_images =0 ;
+            var total_days_images =0 ;
+
+            var total_hrs_img_addlimges =0 ;
+            var total_days_img_addlimges =0 ;
+            var total_std_price_addlimges =0 ;
+            var total_promo_price_addlimges =0 ;
+
+        if(flag){
+
+          for(var i=0; i < vdrs.length ; i++){
+
+
+                if( vdrs[i].data.SKU)
+                {
+                     totalSKU +=  parseInt(vdrs[i].data.SKU,0) ;
+                      var  result = (parseInt(vdrs[i].data.SKU,0 )  * 5)/60 ;
+                     result =    Math.round(result * 100) / 100 ;
+
+                     totalCalculatedVal += result ;
+                }
+                if( vdrs[i].data.collections)
+                     totalCllections += parseInt(vdrs[i].data.collections,0)  ;
+
+                if(vdrs[i].data.design )
+                     totalDesigns += parseInt(vdrs[i].data.design,0)  ;
+
+                console.warn(vdrs[i].data.ecom_std);
+                if(vdrs[i].data.ecom_std   /* && vdrs[i].data.product_price.datalink   */)
+                {
+                     totalStdPrice +=  parseFloat(vdrs[i].data.ecom_std,0) ;
+
+
+                }
+              if(vdrs[i].data.ecom_promo){
+                  console.warn(vdrs[i].data.ecom_promo);
+                  totalPromoPrice +=  parseFloat(vdrs[i].data.ecom_promo,0) ;
+              }
+
+                if( vdrs[i].data.no_of_images && vdrs[i].data.no_of_images != ""){
+                     totalImages += parseFloat(vdrs[i].data.no_of_images,0)  ;
+                }
+        //vdrs[i].data.ecom_std
+                if( vdrs[i].data.no_of_additional_images && vdrs[i].data.no_of_additional_images != ""){
+                     totalAddImages += parseFloat(vdrs[i].data.no_of_additional_images,0)  ;
+                }
+
+
+                if(vdrs[i].data.ecom_std_addl)
+                {
+                    total_std_price_addlimges +=  parseFloat(vdrs[i].data.ecom_std_addl,0) ;
+        //             total_promo_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.promotional_price_addlimg,0) ;
+                }
+                console.log("TEST @ " ,vdrs[i].data.product_price && vdrs[i].data.product_price.datalink && vdrs[i].data.product_price.datalink.promotional_price_addlimg);
+                if(vdrs[i].data.ecom_promo_addl)
+                {
+        //           total_std_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.standard_price_addlimg,0) ;
+                    console.log("IN TRUE",vdrs[i].data.product_price.datalink.promotional_price_addlimg);
+                     total_promo_price_addlimges +=  parseFloat(vdrs[i].data.ecom_promo_addl,0) ;
+                }
+
+
+                total_hrs_images+= valCal.calHrsBySkuImages(vdrs[i].data);
+                 total_days_images+= valCal.calDaysBySkuImages(vdrs[i].data);
+
+                 total_hrs_img_addlimges+= valCal.calHrsBySkuImagesAddlImages(vdrs[i].data);
+                 total_days_img_addlimges+= valCal.calDaysBySkuImagesAddlImages(vdrs[i].data);
+
+            }
+
+
+        }else{
+
+            for(var i=0; i < vdrs.length ; i++){
+                if( vdrs[i].data.SKU)
+                {
+                     totalSKU +=  parseInt(vdrs[i].data.SKU,0) ;
+                      var  result = (parseInt(vdrs[i].data.SKU,0 )  * 5)/60 ;
+                     result =    Math.round(result * 100) / 100 ;
+
+                     totalCalculatedVal += result ;
+                }
+                if( vdrs[i].data.collections)
+                     totalCllections += parseInt(vdrs[i].data.collections,0)  ;
+                if(vdrs[i].data.design )
+                     totalDesigns += parseInt(vdrs[i].data.design,0)  ;
+
+                console.warn(2);
+                console.warn(vdrs[i].data.product_price && vdrs[i].data.product_price.datalink);
+                if(vdrs[i].data.product_price && vdrs[i].data.product_price.datalink )
+                {
+                     totalStdPrice +=  parseFloat(vdrs[i].data.product_price.datalink.standard_price,0) ;
+
+                     console.warn(vdrs[i].data.product_price.datalink.promotional_price);
+
+
+                }
+                if(vdrs[i].data.product_price && vdrs[i].data.product_price.datalink && vdrs[i].data.product_price.datalink.promotional_price)
+                {
+                     totalPromoPrice +=  parseFloat(vdrs[i].data.product_price.datalink.promotional_price,0) ;
+                }
+
+
+                if( vdrs[i].data.no_of_images && vdrs[i].data.no_of_images != ""){
+                     totalImages += parseFloat(vdrs[i].data.no_of_images,0)  ;
+                }
+
+                if( vdrs[i].data.no_of_additional_images && vdrs[i].data.no_of_additional_images != ""){
+                     totalAddImages += parseFloat(vdrs[i].data.no_of_additional_images,0)  ;
+                }
+
+
+                   if(vdrs[i].data.product_price && vdrs[i].data.product_price.datalink && vdrs[i].data.product_price.datalink.standard_price_addlimg)
+                {
+                     total_std_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.standard_price_addlimg,0) ;
+        //             total_promo_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.promotional_price_addlimg,0) ;
+                }
+                console.log("TEST @#" , vdrs[i].data.product_price && vdrs[i].data.product_price.datalink && vdrs[i].data.product_price.datalink.promotional_price_addlimg);
+                   if(vdrs[i].data.product_price && vdrs[i].data.product_price.datalink && vdrs[i].data.product_price.datalink.promotional_price_addlimg)
+                {
+        //             total_std_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.standard_price_addlimg,0) ;
+                    console.log("IN TRUE" , vdrs[i].data.product_price.datalink.promotional_price_addlimg);
+                    total_promo_price_addlimges +=  parseFloat(vdrs[i].data.product_price.datalink.promotional_price_addlimg,0) ;
+                }
+
+                total_hrs_images+= valCal.calHrsBySkuImages(vdrs[i].data);
+                total_days_images+= valCal.calDaysBySkuImages(vdrs[i].data);
+
+                total_hrs_img_addlimges+= valCal.calHrsBySkuImagesAddlImages(vdrs[i].data);
+                total_days_img_addlimges+= valCal.calDaysBySkuImagesAddlImages(vdrs[i].data);
+
+            }
+
+
+
+        }
+
+
+        console.log(total_promo_price_addlimges);
+        var dataToSet = {
+            vendor_count:  vdrs.length,
+            collection_count:totalCllections,
+            design_count:totalDesigns,
+            sku_count:totalSKU,
+            total_std_price:totalStdPrice,
+            total_promo_price:totalPromoPrice,
+            total_calculated_value:totalCalculatedVal,
+            total_images:totalImages,
+            total_addl_images:totalAddImages,
+
+            total_hrs_images:total_hrs_images,
+            total_days_images:total_days_images,
+
+            total_hrs_img_addlimges:total_hrs_img_addlimges,
+            total_days_img_addlimges:total_days_img_addlimges,
+
+            total_std_price_addlimges:total_std_price_addlimges,
+            total_promo_price_addlimges:total_promo_price_addlimges
+        };
+        //.down('#dataLinkTab')
+         var listIbj =  Ext.ComponentQuery.query('#productsecomPricingTab')[0].down('#pricingTotalsList') ;
+         RMdatalink.util.globalMethods.fillListDataByListObject(listIbj,[dataToSet]);
+
+
+
     },
 
     assignAccountNoToRetailers: function() {
@@ -3197,6 +4067,260 @@ Ext.define('RMdatalink.controller.BillingDetailsController', {
                index++ ;
              assignAccountNo() ;
          }
+    },
+
+    updateVdrAsPolicyChange: function(rec) {
+
+        var recordIndex = 0 ;
+
+        var key = "datalink" ;
+
+                    key = "datalink" ;
+                                recordIndex = 0 ;
+
+
+        /*
+
+        from_sku: 0
+        id: "ext-record-176"
+        promotional: "100"
+        standard: "19"
+        to_sku: 500
+
+
+        */
+
+         var pricingPolicyIncrementValue = parseInt(rec.range) ;
+
+         var vendorStore = Ext.getStore('vendors.Master');
+
+         var tempVendorStore = Ext.getStore('vendorTempRecordStore');
+        var vendorCount = vendorStore.getData().all.length ;
+
+
+        //for(var index =0 ; ; index++ )
+
+        var index =0 ;
+        var dataToUpdate = {};
+
+        var vRecord = null ;
+
+         updateVendor() ;
+
+        function updateVendor()
+        {
+            console.log(index);
+
+            if( index < vendorCount)
+            {
+               vRecord = vendorStore.getAt(index) ;
+
+                if(!vRecord){
+                    Ext.Viewport.setMasked(false);
+                    return ;
+                }
+               var vSKU =  0 ;
+
+                //no_of_images
+                if( vRecord.data.SKU && vRecord.data.SKU != "" ){//&& vRecord.data.no_of_images && vRecord.data.no_of_images != "" ){
+
+                    vSKU = parseInt(vRecord.data.SKU) ;// + parseInt(vRecord.data.no_of_images)  ;
+                }
+
+                var pIndex = parseInt(  vSKU/pricingPolicyIncrementValue);
+
+
+                var stPrice = rec.policy[pIndex].std ;
+                var promoPrice =  rec.policy[pIndex].promo ;
+
+
+                if(vRecord.data.product_price){
+                    dataToUpdate = vRecord.data.product_price ;
+                }
+
+                if(!dataToUpdate[key])
+                {
+                    dataToUpdate[key] ={} ;
+                }
+
+
+                dataToUpdate[key].standard_price = stPrice ;
+                dataToUpdate[key].promotional_price = promoPrice ;
+
+                var data = {
+                    product_price : dataToUpdate
+                };
+        //         RMdatalink.iwa.rdl.doUpdateCollection(vendorStore, data , vRecord.get('_id'), success , failuer );
+
+            success() ;
+            }else{
+
+                //that.updatePricingVendorStore() ;
+                console.log("vendors updated");
+
+                Ext.Viewport.setMasked(false);
+            }
+
+
+        }
+
+
+
+        function success(){
+
+             vRecord.set("product_price",dataToUpdate );
+            updateTempVendor() ;
+            index++ ;
+            updateVendor() ;
+        }
+
+        function failuer(){
+            index++ ;
+            updateVendor() ;
+        }
+
+
+        function updateTempVendor(){
+
+            var trIndex = tempVendorStore.findExact('_id',vRecord.get('_id'));
+            var trRec = tempVendorStore.getAt(trIndex) ;
+
+            trRec.set("product_price",dataToUpdate) ;
+
+        }
+
+    },
+
+    updateVdrsAsAddlImgPolicyChange: function(rec) {
+
+        var recordIndex = 0 ;
+
+        var key = "datalink" ;
+
+                    key = "datalink" ;
+                    recordIndex = 0 ;
+
+
+
+
+         var pricingPolicyIncrementValue = parseInt(rec.range) ;
+
+         var vendorStore = Ext.getStore('vendors.Master');
+
+         var tempVendorStore = Ext.getStore('vendorTempRecordStore');
+
+
+        var vendorCount = vendorStore.getData().all.length ;
+
+
+
+        var index =0 ;
+        var dataToUpdate = {};
+
+        var vRecord = null ;
+
+         updateVendor() ;
+
+        function updateVendor()
+        {
+         console.log(index);
+            if( index < vendorCount)
+            {
+               vRecord = vendorStore.getAt(index) ;
+
+                if(!vRecord){
+                    Ext.Viewport.setMasked(false);
+                    return ;
+                }
+               var vSKU =  0 ;
+
+                //
+                if( vRecord.data.SKU && vRecord.data.SKU != ""){
+                 /*  && vRecord.data.no_of_images && vRecord.data.no_of_images != ""
+                      && vRecord.data.no_of_additional_images && vRecord.data.no_of_additional_images != ""
+                  ){*/
+
+                    vSKU = parseInt(vRecord.data.SKU)  ;//+ parseInt(vRecord.data.no_of_images)  + parseInt(vRecord.data.no_of_additional_images)  ;
+                }
+
+                var pIndex = parseInt(  vSKU/pricingPolicyIncrementValue);
+
+
+                var stPrice = rec.policy[pIndex].std ;
+                var promoPrice =  rec.policy[pIndex].promo ;
+
+
+                if(vRecord.data.product_price){
+                    dataToUpdate = vRecord.data.product_price ;
+                }
+
+                if(!dataToUpdate[key])
+                {
+                    dataToUpdate[key] ={} ;
+                }
+
+                dataToUpdate[key].standard_price_addlimg = stPrice ;
+                dataToUpdate[key].promotional_price_addlimg = promoPrice ;
+
+                var data = {
+                    product_price : dataToUpdate
+                };
+        //         RMdatalink.iwa.rdl.doUpdateCollection(vendorStore, data , vRecord.get('_id'), success , failuer );
+
+            success() ;
+            }else{
+
+                //that.updatePricingVendorStore() ;
+                console.log("vendors updated");
+
+                Ext.Viewport.setMasked(false);
+            }
+
+
+        }
+
+
+
+        function success(){
+
+             vRecord.set("product_price",dataToUpdate );
+            updateTempVendor() ;
+
+            index++ ;
+            updateVendor() ;
+        }
+
+        function failuer(){
+            index++ ;
+            updateVendor() ;
+        }
+
+        function updateTempVendor(){
+
+            var trIndex = tempVendorStore.findExact('_id',vRecord.get('_id'));
+            var trRec = getVrec(vRecord.get('vendor_name')) ; // tempVendorStore.getAt(trIndex) ;
+
+            trRec.set("product_price",dataToUpdate) ;
+
+        }
+
+
+
+        function getVrec(vendor_name1){
+
+            var ss = Ext.getStore('vendorTempRecordStore');
+
+                 for(var i=0 ; i < ss.getData().all.length; i++){
+
+        		if(ss.getData().all[i].data.vendor_name == vendor_name1){
+        			return ss.getAt(i) ;
+        		}
+
+        	}
+        	return null ;
+        }
+
+
     }
 
 });

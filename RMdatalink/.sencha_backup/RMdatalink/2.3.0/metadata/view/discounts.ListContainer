@@ -1,0 +1,276 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "discountslistcontainer",
+        "designer|userClassName": "discounts.ListContainer",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "2079999a-b809-4140-8e10-1d9d2f947f0f",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "discounts.SearchContainer",
+                "height": "32px",
+                "itemId": "mypanel2",
+                "layout": "fit",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": "margin-top:5px;"
+            },
+            "designerId": "2e797539-83a8-42b0-ac69-266f029d0796",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|pack": null,
+                        "designer|displayName": "discountsSearchView"
+                    },
+                    "designerId": "c6e579e7-da83-40b3-81a4-c06a7f086f99",
+                    "masterInstanceId": "5486b687-172e-4cd3-8a4c-36599048d2ca"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onMypanel2Initialize",
+                        "implHandler": [
+                            "var filterBtn = component.down('#filterBtn') ;\r",
+                            "filterBtn.destroy();"
+                        ],
+                        "name": "initialize"
+                    },
+                    "designerId": "daeac483-f717-4092-b73b-fb1088dec719"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "discountsListNSetupContainer",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "eb31abe1-d4b0-4b0a-a572-97bcc99d06f7",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "discountsListContainer",
+                        "layout": "vbox",
+                        "layout|flex": null,
+                        "scrollable": false,
+                        "width": "100%"
+                    },
+                    "designerId": "2eb1285b-c3d7-430a-9bba-185d2a6d32c9",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": "discountsListHeader",
+                                "itemId": "discountListHeader",
+                                "layout|flex": 1,
+                                "scrollable": false
+                            },
+                            "designerId": "4ba09354-55d0-4e3c-bc37-7527e8b8bf72",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "b2b742e9-0b3e-4962-a4ed-579e62717b56"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "designer|displayName": "discountsList",
+                                "itemId": "discountList",
+                                "layout|flex": 15,
+                                "mode": "MULTI"
+                            },
+                            "designerId": "25c294cc-539b-4790-bd98-9444a6d7571d",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "a15e1b85-4919-4224-871a-97990e030763"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onDiscountListSelect",
+                                        "implHandler": [
+                                            "\r",
+                                            "var discountsTabPanel = Ext.ComponentQuery.query('#discountsTabPanel')[0];\r",
+                                            "\r",
+                                            "RMdatalink.app.getController('discount.DiscountTabHandler').onDiscountListSelect(record,discountsTabPanel.getActiveItem()) ;"
+                                        ],
+                                        "name": "select"
+                                    },
+                                    "designerId": "49a095c6-e0d5-4801-8840-09785b9c467b"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "inhouseSetupContainer",
+                        "layout|flex": 0
+                    },
+                    "designerId": "e3cac29b-2009-423d-8d49-577142741930"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "retailerTotalsContainer",
+                "layout": "fit",
+                "layout|flex": 1
+            },
+            "designerId": "30167cf6-fa34-40cd-97a7-b4da348f0bcc",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": "retailerTotalsList",
+                        "itemId": "retailerTotalsList",
+                        "scrollable": false,
+                        "width": "90%"
+                    },
+                    "designerId": "f3b003d9-c25a-4973-a58b-d6280f2e0533",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "e013e8f7-57fd-4574-b135-19f16ea28985"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

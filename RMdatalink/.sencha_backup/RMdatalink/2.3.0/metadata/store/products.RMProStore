@@ -1,0 +1,57 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userClassName": "products.RMProStore",
+        "groupField": "active_policy",
+        "model": "products.RM_Pro",
+        "pageNo": 1,
+        "storeId": "products.RMProStore",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "totalNoOfPages": "number",
+        "cachedData": "object",
+        "pageNo": "number"
+    },
+    "designerId": "97bcee87-b9ff-4c69-93cd-e3afaa93d626",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "sortByListedOrder",
+                "property": "module_listed_order"
+            },
+            "designerId": "b9cd4612-9bca-4d06-9f17-d52033ad3c5f"
+        }
+    ]
+}

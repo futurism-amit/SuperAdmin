@@ -1,0 +1,86 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "DlVdPricingVdrDiscount"
+    },
+    "designerId": "96be4bf8-d9a1-40ef-8d7f-d1edf0b5ebb8",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "text"
+            },
+            "designerId": "f5f68985-4b38-453b-bcbd-e1c2b985d070"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "value"
+            },
+            "designerId": "e8c0122d-0240-4b31-8ba3-f5d7b5aa351b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "policy"
+            },
+            "designerId": "1f94a12f-caeb-43da-87c0-1b0e045b2148"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "range"
+            },
+            "designerId": "04947c8a-6110-4a63-b85f-955716fa0d9e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "disc_start"
+            },
+            "designerId": "2972b650-345e-4db0-aab4-985eea6113d7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "disc_increment"
+            },
+            "designerId": "18657ab1-462f-4a60-a9ae-3692a5e3e9e0"
+        }
+    ]
+}

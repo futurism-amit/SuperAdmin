@@ -1,0 +1,82 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userClassName": "CompanySpecificTechSupportStore",
+        "model": "TechSupportLogsModel",
+        "pageNo": 1,
+        "storeId": "CompanySpecificTechSupportStore",
+        "totalNoOfPages": "1"
+    },
+    "configAlternates": {
+        "pageNo": "number",
+        "cachedData": "object"
+    },
+    "designerId": "beb31b72-6c52-40e6-8e90-783eb83a6594",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreUpdaterecord",
+                "implHandler": [
+                    "console.log(\"updating\");\r",
+                    "\r",
+                    "if(RMdatalink.app.getController('TechSupportLog').config.isStoreUpdated) {\r",
+                    "\r",
+                    "    var globalTechLogStore  = Ext.getStore('TechSupportLogsStore') ;\r",
+                    "    var recordToUpdate =  RMdatalink.app.getController('TechSupportLog').config.techLogRecordToUpdate ;\r",
+                    "    RMdatalink.util.DataLoader.onRetailerMasterStoreUpdate(globalTechLogStore,\r",
+                    "                                                           recordToUpdate\r",
+                    "                                                            ,newIndex,oldIndex,modifiedFieldNames\r",
+                    "                                                            ,modifiedValues,eOpts);\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "  RMdatalink.app.getController('TechSupportLog').config.isStoreUpdated = false ;\r",
+                    "    \r",
+                    "    var recIndex = globalTechLogStore.findExact(\"time_start\",recordToUpdate.data.time_start) ;\r",
+                    "    \r",
+                    "    var rec = globalTechLogStore.getAt(recIndex);\r",
+                    "    if(rec){\r",
+                    "     \r",
+                    "        rec.set(recordToUpdate.data) ;\r",
+                    "    }\r",
+                    "    \r",
+                    "    \r",
+                    "}"
+                ],
+                "name": "updaterecord"
+            },
+            "designerId": "dd9359ae-5ea8-4479-b220-50053c42e63b"
+        }
+    ]
+}

@@ -1,0 +1,458 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailerproductdatalink",
+        "designer|userClassName": "retailer.ProductDatalink",
+        "itemId": null,
+        "layout": "vbox",
+        "scrollable": false
+    },
+    "designerId": "9440ff2c-27d6-4f14-b018-071a791377f3",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "hidden": false,
+                "itemId": null,
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "951eee89-c7b4-411a-8eb0-3a3739ae6ce8",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelBilling"
+                        ],
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "hidden": null,
+                        "itemId": null,
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "38b5759c-1120-4c46-930c-b83ae721d17c",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "mytabbar"
+                            },
+                            "designerId": "419601a2-8b3e-4aff-bdae-9ef1b5af3054"
+                        },
+                        {
+                            "type": "Ext.form.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "cls": [
+                                    "x-rm-rdformpanel"
+                                ],
+                                "designer|displayName": null,
+                                "itemId": "rtuProductDatalinkTab",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "title": "<div style=\"line-height: 25px;\">Datalink</div>"
+                            },
+                            "designerId": "407e1ce2-ffa4-401d-bd10-f690c039d481",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "border": null,
+                                        "cls": [
+                                            "borderedDiv",
+                                            "boldInputFld"
+                                        ],
+                                        "html": "<div style= \"margin-left: -106px;\"> Your current Datalink billing invoice.<span style=\"float:right;\">#invoice  :</span> </div>",
+                                        "itemId": "rtuBillHeaderLbl",
+                                        "margin": "10 10 10 10",
+                                        "padding": "0 10 0 0",
+                                        "style": "font-size:0.8em;",
+                                        "width": "90%"
+                                    },
+                                    "designerId": "5828fe34-bd1b-4c86-bb21-cf37cdb9c437"
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "layout": "vbox",
+                                        "margin": "40 10 10 10",
+                                        "padding": "10 10 10 10",
+                                        "title": "<div style= \"font-size:12px;\">Summary</div>",
+                                        "width": "90%"
+                                    },
+                                    "designerId": "d2a03365-c8b1-44e0-ae80-56aa793aaf36",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout": "hbox",
+                                                "margin": null,
+                                                "padding": "2 2 2 2",
+                                                "title": null
+                                            },
+                                            "designerId": "1131ebfc-d234-4222-90a0-bd030daab0b1",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Product",
+                                                        "itemId": "rtuModuleSummaryLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "408b99f2-86cb-48d1-abb9-9102a13853bb"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Due Date",
+                                                        "itemId": "rtuDueDateLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "15%"
+                                                    },
+                                                    "designerId": "dcb185c4-d35c-4c04-96d4-ce08fa6d161f"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Select",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "itemId": "rtuPaymentPrdTermSlctFld",
+                                                        "label": "Term",
+                                                        "labelWidth": "80px",
+                                                        "margin": "0 10 0 0",
+                                                        "options": [
+                                                            "[\r",
+                                                            "    \r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'1 Month',\r",
+                                                            "        value:1\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'3 Month',\r",
+                                                            "        value:3\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'6 Month',\r",
+                                                            "        value:6\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'9 Month',\r",
+                                                            "        value:9\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'1 Year',\r",
+                                                            "        value:12\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'2 Year',\r",
+                                                            "        value:24\r",
+                                                            "        \r",
+                                                            "    },\r",
+                                                            "    {\r",
+                                                            "        \r",
+                                                            "        text:'3 Year',\r",
+                                                            "        value:36\r",
+                                                            "        \r",
+                                                            "    }\r",
+                                                            "    \r",
+                                                            "]"
+                                                        ],
+                                                        "style": null,
+                                                        "width": "15%"
+                                                    },
+                                                    "designerId": "c19aaa0c-d844-40ab-b4b6-cef3df79b4c4",
+                                                    "cn": [
+                                                        {
+                                                            "type": "basiceventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onRtuPaymentPrdTermSlctFldChange",
+                                                                "implHandler": [
+                                                                    "RMdatalink.app.getController('RetailerPaymentController').calculateDatalinkDiscountAndTotal();"
+                                                                ],
+                                                                "name": "change"
+                                                            },
+                                                            "designerId": "b35d4373-8f12-4607-9088-8a2b299e27ab"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Unit Price / Month",
+                                                        "itemId": "rtuTotalPricePerMonthLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "5cddbb48-268d-4623-b076-cb7fca6e72eb"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Ammount",
+                                                        "itemId": "rtuTotalPaybleNoDiscountLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "20%"
+                                                    },
+                                                    "designerId": "1379768c-00dd-496a-a60d-5ec691a9f3db"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "start",
+                                                "layout": "hbox",
+                                                "margin": null,
+                                                "padding": null,
+                                                "title": null
+                                            },
+                                            "designerId": "13856e69-0a6b-49f9-a1e6-ba606207e9b1",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "Discount",
+                                                        "itemId": "rtuDiscountKeyLbl",
+                                                        "margin": "0 0 0 56%",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "b3cf3013-b758-4beb-9834-83dd938085b0"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "0",
+                                                        "itemId": "rtuDiscountValueLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "20%"
+                                                    },
+                                                    "designerId": "dba7a834-29fc-435e-bfd6-36b46cce4949"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "border": null,
+                                                "html": null,
+                                                "margin": "10 0 10 54%",
+                                                "style": "font-size:0.8em;border-top: 1px solid; border-radius: 0;",
+                                                "width": "40%"
+                                            },
+                                            "designerId": "1a69e6fd-11f8-474c-8136-c822e725247f"
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "start",
+                                                "layout": "hbox",
+                                                "margin": null,
+                                                "padding": null,
+                                                "title": null
+                                            },
+                                            "designerId": "ea952fe5-12cb-4c00-995d-965a204821da",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "boldInputFld"
+                                                        ],
+                                                        "html": "Total",
+                                                        "margin": "0 0 0 56%",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "25%"
+                                                    },
+                                                    "designerId": "6991212e-dc5f-4152-9ad3-fd4a14db6bc3"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "boldInputFld"
+                                                        ],
+                                                        "html": "0",
+                                                        "itemId": "rtuTotalPaybleAfterDiscountLbl",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": "20%"
+                                                    },
+                                                    "designerId": "fbf0a992-5990-4cff-aae4-1b246a3901ae"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-blueBtn"
+                                                ],
+                                                "margin": "10 0 10 80%",
+                                                "text": "Pay Now\t",
+                                                "width": "15%"
+                                            },
+                                            "designerId": "d1c57b4a-02ef-4718-953c-c3e80fe0cb4b"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRtuProductDatalinkTabPainted",
+                                        "implHandler": [
+                                            "RMdatalink.app.getController('RetailerPaymentController').calculateDatalinkDiscountAndTotal();"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "4c801111-9c5b-42a8-b6a0-5a73c5584679"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

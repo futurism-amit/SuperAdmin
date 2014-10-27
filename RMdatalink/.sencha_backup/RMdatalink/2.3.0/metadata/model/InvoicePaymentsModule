@@ -1,0 +1,98 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "InvoicePaymentsModule"
+    },
+    "designerId": "ed56f28a-402f-4d89-8173-063aab86505d",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "cc_approval"
+            },
+            "designerId": "1ee5277e-4107-4072-91c5-01ccfdab71dd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "date"
+            },
+            "designerId": "92518588-2f14-42d1-8537-357066e31250"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "paid_by"
+            },
+            "designerId": "8db8d158-a5d4-4852-9770-bfc2562c560f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "pay_date"
+            },
+            "designerId": "9a264306-71bf-4252-b182-678ac9fe6f99"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "payment_method_detail"
+            },
+            "designerId": "fdd393ce-ddbb-4528-aba1-78124867822b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "proccessed_by"
+            },
+            "designerId": "7658f333-378d-4fec-b534-401bd156e7c1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ammount_paying"
+            },
+            "designerId": "c0a953e8-aa76-43d9-806c-ceb90cb5c408"
+        }
+    ]
+}

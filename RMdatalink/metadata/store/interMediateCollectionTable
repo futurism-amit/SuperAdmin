@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "interMediateCollectionTable",
+        "designer|userClassName": "interMediateCollectionTable",
+        "model": "interMediateCollectionTableModel",
+        "storeId": "interMediateCollectionTable"
+    },
+    "designerId": "07a521fe-c9c9-4239-b4d9-0a2d1cf9307d"
+}

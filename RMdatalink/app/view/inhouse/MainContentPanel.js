@@ -109,7 +109,7 @@ Ext.define('RMdatalink.view.inhouse.MainContentPanel', {
                                             '    <div style="width: 8%;overflow:visible;">',
                                             '        <div style="width: 25px; height:25px; background-image:url({image_url})"></div>',
                                             '    </div>',
-                                            '    <div style="width: 20%;">{firstname}  {lastname}</div>',
+                                            '    <div style="width: 20%;" class="boldText">{firstname}  {lastname}</div>',
                                             '    <div style="width: 10%;">{position}</div>',
                                             '    <div style="width: 10%;">{phone_ext}  {phone}</div>',
                                             '    <div style="width: 15%;"><a href="mailto:{email}">{email}</a></div>',
@@ -255,7 +255,7 @@ Ext.define('RMdatalink.view.inhouse.MainContentPanel', {
                                             '    <div style="width: 8%;overflow:visible;">',
                                             '        <div style="width: 25px; height:25px; background-image:url({image_url})"></div>',
                                             '    </div>',
-                                            '    <div style="width: 18%;">{firstname}  {lastname}</div>',
+                                            '    <div style="width: 18%;" class="boldText">{firstname}  {lastname}</div>',
                                             '    <div style="width: 10%;">{position}</div>',
                                             '    <div style="width: 8%;">{city}  {phone}</div>',
                                             '    <div style="width: 6%;">{state}  {phone}</div>',
@@ -348,8 +348,8 @@ Ext.define('RMdatalink.view.inhouse.MainContentPanel', {
 
                 component.fireEvent('inhouseAddNewTap',component );
                 Ext.DomQuery.select('input[name=division-checkbox]')[0].checked = true ;
-                 RMdatalink.app.getController('inhouse.DetailScreenController').isNewRecordBtnTapped = true ;
-                 RMdatalink.app.getController('inhouse.DetailScreenController').resetInhouseDetailedPage();
+                RMdatalink.app.getController('inhouse.DetailScreenController').isNewRecordBtnTapped = true ;
+                RMdatalink.app.getController('inhouse.DetailScreenController').resetInhouseDetailedPage();
 
         });
 

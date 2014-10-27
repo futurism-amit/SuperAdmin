@@ -1,0 +1,106 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userClassName": "inhouse.MasterStore",
+        "model": "ihouse.MasterModel",
+        "pageNo": 1,
+        "storeId": "inhouseMasterStore",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "pageNo": "number",
+        "cachedData": "object",
+        "totalNoOfPages": "number"
+    },
+    "designerId": "950fa90a-dd67-46c9-89f4-cfc5acd9d9f9",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreAddrecords",
+                "implHandler": [
+                    "//RMdatalink.util.DataLoader.onInhouseMasterStoreNewRecordAdded(store,records,eOpts) ;\r",
+                    "\r",
+                    "//RMdatalink.util.DataHandler.onInhouseMasterStoreNewRecordAdded(store,records,eOpts) ;\r",
+                    "\r",
+                    "RMdatalink.app.getController('PaginationController').loadDependentStoresonMaster(store.getStoreId());"
+                ],
+                "name": "addrecords"
+            },
+            "designerId": "560aae29-b6e1-4bbd-8dfd-b031a73fe616"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreUpdaterecord",
+                "implHandler": [
+                    "\r",
+                    "if(RMdatalink.app.getController('inhouse.DetailScreenController').config.isUpdatingInhouse ){\r",
+                    "\r",
+                    "    RMdatalink.app.getController('inhouse.DetailScreenController').config.isUpdatingInhouse =false ;\r",
+                    "    RMdatalink.util.DataLoader.onInHouseStoreUpdate(store,record,newIndex,oldIndex,modifiedFieldNames,modifiedValues,eOpts) ;\r",
+                    "}\r",
+                    "//RMdatalink.util.DataHandler.onInhouseMasterStoreUpdate(store,record,newIndex,oldIndex,modifiedFieldNames,modifiedValues,eOpts) ;\r",
+                    "\r",
+                    ""
+                ],
+                "name": "updaterecord"
+            },
+            "designerId": "725d91e5-4788-436f-a4ad-276ad54ab34b"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreRemoverecords",
+                "implHandler": [
+                    "//RMdatalink.util.DataLoader.onInHouseMasterStoreRecordRemoved(store,records,indices,eOpts);\r",
+                    "\r",
+                    "//RMdatalink.util.DataHandler.onInhouseMasterStoreRecordRemoved(store,records,indices,eOpts);\r",
+                    ""
+                ],
+                "name": "removerecords"
+            },
+            "designerId": "cd060ea4-094e-43db-b9c3-78c164862d06"
+        }
+    ]
+}

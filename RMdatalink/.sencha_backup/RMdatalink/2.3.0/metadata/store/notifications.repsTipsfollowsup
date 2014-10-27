@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "notificationsRepsTipsfollowsup",
+        "designer|userClassName": "notifications.repsTipsfollowsup",
+        "model": "notifications.new",
+        "storeId": "notifications.repsTipsfollowsup"
+    },
+    "designerId": "c2fb90cf-e0c8-4864-a47f-0d837a4edb98"
+}

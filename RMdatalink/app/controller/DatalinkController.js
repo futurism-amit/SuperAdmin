@@ -97,6 +97,7 @@ Ext.define('RMdatalink.controller.DatalinkController', {
     addUpdateRMproModule: function(action) {
 
 
+
         var that = this ;
         var moduleName = Ext.ComponentQuery.query("#datalinkModuleNameTxtFld")[0].getValue();
         var moduleDescription = Ext.ComponentQuery.query("#datalinkModuleDescriptionTxtAreaFld")[0].getValue();
@@ -111,8 +112,23 @@ Ext.define('RMdatalink.controller.DatalinkController', {
         var module_standard_price  =    Ext.ComponentQuery.query("#datalinkStandardPriceTxtFld")[0].getValue();
         var module_promotional_price =    Ext.ComponentQuery.query("#datalinkPromotionalPriceTxtFld")[0].getValue();
 
+        var moduleListedOrder =    Ext.ComponentQuery.query("#prodDlModuleIndexFld")[0].getValue();
+        var module_id =  Ext.ComponentQuery.query("#prodDlModuleProductIdFld")[0].getValue();
 
 
+        var chargeMeOtcFormPanel = Ext.ComponentQuery.query("#chargeMeOtcFormPanel")[0];
+        var charge_mode = chargeMeOtcFormPanel.getValues();
+
+
+
+
+
+        //productTypeFormE_Comm
+        var productTypeFormE_Comm = Ext.ComponentQuery.query("#productTypeFormE_Comm")[0];
+        var product_type = productTypeFormE_Comm.getValues();
+
+        //charge_mode
+        //product_type
         var rmProStore = Ext.getStore('products.DatalinkMain') ;
 
         if(moduleName == "" ){
@@ -128,19 +144,29 @@ Ext.define('RMdatalink.controller.DatalinkController', {
                 module_sku : moduleSku,
                 module_details: moduleDetails,
                 module_standard_price:module_standard_price,
-                module_promotional_price:module_promotional_price
+                module_promotional_price:module_promotional_price,
+                module_id:module_id,
+                module_listed_order: moduleListedOrder
+        //         ,
+        //         charge_mode:charge_mode.charge_mode,
+        //         product_type:product_type.product_type
             } ;
+
+
 
               Ext.ComponentQuery.query('#productDatalinkMainPanel')[0].setMasked( {
                         xtype: 'loadmask'
                     });
 
+            console.log(rmProRec);
+
             if(action == "addNew")
             {
-             RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(rmProRec,rmProStore,success,error) ;
+                console.log("ADDNEW");
+                RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(rmProRec,rmProStore,success,error) ;
             }
             else{
-
+            console.log("UPDATING DATA");
              RMdatalink.iwa.rdl.doUpdateCollection(rmProStore, rmProRec , this.config.rmProSelectedRecord.get('_id'), success, error);
             }
 
@@ -187,6 +213,8 @@ Ext.define('RMdatalink.controller.DatalinkController', {
              that.config.rmProSelectedRecord.set("module_standard_price",module_standard_price) ;
              that.config.rmProSelectedRecord.set("module_promotional_price",module_promotional_price) ;
 
+             that.config.rmProSelectedRecord.set("module_id",module_id) ;
+            that.config.rmProSelectedRecord.set("module_listed_order",moduleListedOrder) ;
 
         }
     },
@@ -206,12 +234,23 @@ Ext.define('RMdatalink.controller.DatalinkController', {
             Ext.ComponentQuery.query("#datalinkStandardPriceTxtFld")[0].setValue(record.get("module_standard_price"));
             Ext.ComponentQuery.query("#datalinkPromotionalPriceTxtFld")[0].setValue(record.get("module_promotional_price"));
 
+             Ext.ComponentQuery.query("#prodDlModuleIndexFld")[0].setValue(record.get("module_listed_order"));
+
+            Ext.ComponentQuery.query("#prodDlModuleProductIdFld")[0].setValue(record.get("module_id"));
+
 
               Ext.ComponentQuery.query('#datalinkAddModuleBtn')[0].action = "update";
 
               Ext.ComponentQuery.query('#datalinkAddModuleBtn')[0].setText("Update Module");
 
 
+        var form = Ext.ComponentQuery.query('#datalinkProductSetupSideP2')[0] ;
+
+        if(record.get("module_sku") == "DL-DATA" ){
+                form.down('#delBtn').setHidden(true);
+        }else{
+            form.down('#delBtn').setHidden(false);
+        }
 
 
 
@@ -237,6 +276,9 @@ Ext.define('RMdatalink.controller.DatalinkController', {
             Ext.ComponentQuery.query("#datalinkStandardPriceTxtFld")[0].setValue("");
             Ext.ComponentQuery.query("#datalinkPromotionalPriceTxtFld")[0].setValue("");
 
+               Ext.ComponentQuery.query("#prodDlModuleIndexFld")[0].setValue("");
+            Ext.ComponentQuery.query("#prodDlModuleProductIdFld")[0].setValue("");
+
 
     },
 
@@ -258,8 +300,8 @@ Ext.define('RMdatalink.controller.DatalinkController', {
 
                                             }
 
-                                            Ext.ComponentQuery.query('#datalinkSumOfPromoPriceLbl')[0].setHtml("" + promotionalPrice+"$");
-                                            Ext.ComponentQuery.query('#datalinkSumOfStdPriceLbl')[0].setHtml("" + standardPrice+"$");
+                                            Ext.ComponentQuery.query('#datalinkSumOfPromoPriceLbl')[0].setHtml("$" + formatNum(promotionalPrice) );
+                                            Ext.ComponentQuery.query('#datalinkSumOfStdPriceLbl')[0].setHtml("$" + formatNum(standardPrice) );
 
 
 
@@ -291,7 +333,7 @@ Ext.define('RMdatalink.controller.DatalinkController', {
 
     onDatalinkVendorPricingPainted: function() {
 
-        if(Ext.ComponentQuery.query('#productsDatalinkPricingTab')[0].getItems().length == 0 )
+        if(Ext.ComponentQuery.query('#productsDatalinkPricingTab')[0].getItems().length == 0  )
         {
             Ext.ComponentQuery.query('#productsDatalinkPricingTab')[0].add(Ext.ComponentQuery.query('#pricingMainContentsPanel')[0]);
         }
@@ -458,7 +500,7 @@ Ext.define('RMdatalink.controller.DatalinkController', {
 
 
         var datalinkStore = Ext.getStore('products.DatalinkMain') ;
-        resetActivePolicy() ;
+        //resetActivePolicy() ;
         var recIndex = datalinkStore.findExact("module_sku","DL-DATA") ;
 
         if(recIndex != -1 ){
@@ -470,7 +512,7 @@ Ext.define('RMdatalink.controller.DatalinkController', {
             record.set("module_standard_price",stdPromoPrice.standard_price);
             record.set("module_promotional_price",stdPromoPrice.promotional_price);
 
-            record.set("active_policy","1") ;
+          //  record.set("active_policy","1") ;
         }
 
 
@@ -496,6 +538,124 @@ Ext.define('RMdatalink.controller.DatalinkController', {
         datalinkModuleList.selectAll(true);
 
         this.onRmProSelectUnselect() ;
+    },
+
+    setDatalinkListHeight: function() {
+
+        var list = Ext.ComponentQuery.query('#productSetupDatalinkListPanel')[0].down('#mainList') ;
+
+
+        var allRecPanelHeight =  list.getStore().getData().all.length * list.getItemHeight() + 74 ;
+         Ext.ComponentQuery.query('#productSetupDatalinkListPanel')[0].setHeight(allRecPanelHeight);
+
+    },
+
+    setDatalinkVendorLsHeight: function() {
+
+        var list = Ext.ComponentQuery.query('#productSetupDatalinkListPanel')[0].down('#mainList') ;
+
+
+        var allRecPanelHeight =  list.getStore().getData().all.length * list.getItemHeight() + 66 ;
+         Ext.ComponentQuery.query('#productSetupDatalinkListPanel')[0].setHeight(allRecPanelHeight);
+
+    },
+
+    refreshDatalinkSideCntHeight: function() {
+         var list = Ext.ComponentQuery.query('#datalinkAdvancePaymentDiscountList')[0].down('#mainList') ;
+
+
+         var allRecPanelHeight =  list.getStore().getData().all.length * list.getItemHeight() + 14 ;
+         Ext.ComponentQuery.query('#datalinkAdvancePaymentDiscountList')[0].setHeight(allRecPanelHeight);
+
+
+
+         var h1 =  Ext.ComponentQuery.query('#datalinkProductSetupSideP1')[0].getEl().getHeight() ;
+         var h2 =  Ext.ComponentQuery.query('#datalinkProductSetupSideP2')[0].getEl().getHeight() ;
+         var h3 =  Ext.ComponentQuery.query('#datalinkDiscountListPanel')[0].getEl().getHeight() ;
+
+         Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0].setHeight(h1+h2+h3 + 26) ;
+         Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0].setMaxHeight(window.innerHeight - 122 );
+
+
+
+    },
+
+    enableDisableDlFlds: function(status) {
+        var form = Ext.ComponentQuery.query('#productDatalinkMainPanel')[0] ;
+
+        var form1 = Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0] ;
+        var form2 = Ext.ComponentQuery.query('#pricingSideContainerItemID')[0] ;
+
+        var btns = form1.query('button').concat(form2.query('button')) ;
+        var txtflds = form1.query('textfield').concat(form.query('textfield')) ;
+        var txtareaflds = form1.query('textareafield').concat( form2.query('textareafield'));
+        var selectflds = form1.query('selectfield').concat(form2.query('selectfield'));
+
+
+
+        for(var i=0; i < btns.length ; i++){
+        //     var itemId = btns[i].getItemId()  ;
+        //     var isSkipBtns = itemId == "datalinkMainListContainer" ||  itemId == "productsDatalinkPricingTab"  ||  itemId == "dlSetUpHideShowArrowBtn" ;
+        //     if(!isSkipBtns )
+                btns[i].setDisabled(status) ;
+        }
+
+        for(var i=0; i < txtflds.length ; i++){
+            txtflds[i].setDisabled(status) ;
+        }
+
+        for(var i=0; i < txtareaflds.length ; i++){
+            txtareaflds[i].setDisabled(status) ;
+        }
+
+        for(var i=0; i < selectflds.length ; i++){
+            selectflds[i].setDisabled(status) ;
+        }
+
+        // form.down('#datalinkSetupEditBtn').setDisabled(false) ;
+        // form.down('#datalinkSetupCancelBtn').setDisabled(false) ;
+        // form.down('#datalinkSetupSaveBtn').setDisabled(false) ;
+
+        form.down('#datalinkSetupEditBtn').setHidden(!status) ;
+        form.down('#datalinkSetupCancelBtn').setHidden(status) ;
+        form.down('#datalinkSetupSaveBtn').setHidden(status) ;
+
+        // form.down('#datalinkMainListContainer').setDisabled(false) ;
+        // form.down('#productsDatalinkPricingTab').setDisabled(false) ;
+        // form.down('#dlSetUpHideShowArrowBtn').setDisabled(false) ;
+
+
+        Ext.ComponentQuery.query('#productDatalinkMainPanel')[0].down('#headerEditTxtLbl').setHidden(status) ;
+
+
+        var selectFlds = document.getElementsByClassName('prodDlSetupFlds');
+
+        for( var i = 0 ; i< selectFlds.length ; i++ ){
+
+
+                selectFlds[i].disabled = status  ;
+
+
+
+        }
+    },
+
+    setDefaultDlDataProduct: function() {
+        var datalinkStore = Ext.getStore('products.DatalinkMain') ;
+
+        var dlDataRIndex = datalinkStore.findExact('module_sku',"DL-DATA") ;
+        if( dlDataRIndex == -1 ){
+         return ;
+        }
+
+        var dlDataRecord = datalinkStore.getAt(dlDataRIndex) ;
+        var dl_id = dlDataRecord.get('_id');
+
+
+        var productList = Ext.ComponentQuery.query('#datalinkMainListContainer')[0].down('#mainList');
+        productList.deselect(dlDataRecord,true);
+
+         RMdatalink.app.getController('DatalinkController').onRmProSelectUnselect();
     }
 
 });

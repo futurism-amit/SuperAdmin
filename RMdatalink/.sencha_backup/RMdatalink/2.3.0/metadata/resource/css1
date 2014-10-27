@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css1",
+        "id": "navigationPanelCSS",
+        "url": "resources/css/RMNavigationPanel/navigationPanelCSS.css"
+    },
+    "designerId": "644f4b16-5637-4038-a029-71c9f44407dc"
+}

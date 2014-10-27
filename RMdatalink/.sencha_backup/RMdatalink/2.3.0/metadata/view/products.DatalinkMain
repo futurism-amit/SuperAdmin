@@ -1,0 +1,1967 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "productsdatalinkmain",
+        "designer|userClassName": "products.DatalinkMain",
+        "itemId": "productDatalinkMainPanel",
+        "layout": "vbox",
+        "requires": [
+            "Ext.tab.Panel"
+        ],
+        "scrollable": false
+    },
+    "designerId": "a7bd2e95-288b-4793-b0a5-6cd0628b22db",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "itemId": null,
+                "layout|flex": 1
+            },
+            "designerId": "51142842-f69c-4342-ad23-9b161749104f",
+            "masterInstanceId": "65dc2686-f6eb-4b20-bd40-d013cbc17112"
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "3b775018-6d4d-4348-ba45-237ced8b6444",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": "0px",
+                        "container|align": "end",
+                        "container|pack": "end",
+                        "docked": null,
+                        "height": "38px",
+                        "layout": "hbox",
+                        "margin": "0 0 0 0",
+                        "style": "background-color:transparent !important;border:none !important;",
+                        "title": null,
+                        "width": null
+                    },
+                    "designerId": "e7b5d30d-4d0c-4086-99ef-fdc42ead8dfc",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "addNew",
+                                "cls": [
+                                    "x-rm-blueBtn"
+                                ],
+                                "docked": null,
+                                "height": "30px",
+                                "hidden": true,
+                                "itemId": "datalinkSetupSaveBtn",
+                                "margin": "0 10 2 1",
+                                "text": "Save",
+                                "width": "90px"
+                            },
+                            "designerId": "c58a558b-46e3-4bb0-aeea-84055bba4d06",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            " RMdatalink.app.getController('DlPricingController').SAVEDatalinkSetup();"
+                                        ]
+                                    },
+                                    "designerId": "d7ae8dfa-a0ae-4982-83d3-97b2bd4ac604"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "addNew",
+                                "cls": [
+                                    "x-rm-blueBtn"
+                                ],
+                                "docked": null,
+                                "height": "30px",
+                                "itemId": "datalinkSetupEditBtn",
+                                "margin": "0 10 2 1",
+                                "text": "Edit",
+                                "width": "90px"
+                            },
+                            "designerId": "e836184e-eced-44ad-b089-46237ae1fc2b",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            " RMdatalink.app.getController('DatalinkController').enableDisableDlFlds(false);"
+                                        ]
+                                    },
+                                    "designerId": "647ae0a8-7394-49f8-be11-fee3d17e154f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-card-actionbtn"
+                                ],
+                                "height": "24px",
+                                "itemId": "datalinkSetupCancelBtn",
+                                "margin": "0 4 2 0",
+                                "minHeight": null,
+                                "pressedCls": "x-rm-card-actionbtn-pressing",
+                                "text": "Cancel",
+                                "width": "90px"
+                            },
+                            "designerId": "5180fa7b-6914-48f9-9f1c-ece417766720",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            " RMdatalink.app.getController('DatalinkController').enableDisableDlFlds(true);"
+                                        ]
+                                    },
+                                    "designerId": "1110fa86-2813-4977-83dd-c74c77dc5afb"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel"
+                        ],
+                        "container|animation": false,
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "itemId": null,
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "f1abd886-20ae-4120-89ab-560c9f18ff1f",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": null,
+                                "style": "margin-top: -44px;",
+                                "width": "60%"
+                            },
+                            "designerId": "9f9f5bc7-b7f4-46fd-b615-3feacca5352f"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "",
+                                "itemId": "datalinkMainListContainer",
+                                "layout": "hbox",
+                                "scrollable": false,
+                                "title": "Setup"
+                            },
+                            "designerId": "74e52d0e-7f40-4c33-ae7a-6958b02959a2",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onUsersTabInitialize",
+                                        "implHandler": [
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "////////////////////////////////////////////////////\r",
+                                            "\r",
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;\">',\r",
+                                            "               '    <div style=\"width: 6%;\">',\r",
+                                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "                '    <div class=\"rightBorderDiv\" style=\"width: 4%;text-align: center;\" data-name=\"module_listed_order\">',\r",
+                                            "               '        index&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;\" data-name=\"module_sku\">',\r",
+                                            "               '        SKU&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;text-align: center;\" data-name=\"module_name\">',\r",
+                                            "               '        Products/ Add-ons&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;text-align: center;\" data-name=\"module_description\">',\r",
+                                            "               '       Description&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 10%;text-align: center;\" data-name=\"module_standard_price\">',\r",
+                                            "               '        Std. Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;text-align: center;\" data-name=\"module_promotional_price\">',\r",
+                                            "               '        Promo. Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "\r",
+                                            "\r",
+                                            "list.setStore(Ext.getStore('products.DatalinkMain'));\r",
+                                            "/*boldText*/\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\" style=\"{[this.getSelectedColor(values)]}\">',\r",
+                                            "               '    <div style=\"width: 6%;\">',\r",
+                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 4%;\"> {module_listed_order}</div>',\r",
+                                            "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_sku}</div>',\r",
+                                            "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_name}</div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;\">{module_description}</div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 10%;text-align: right;padding-right: 1%;\">${[formatNum(values.module_standard_price)]}</div>',\r",
+                                            "               '    <div style=\"width: 12%;text-align: right;padding-right: 1%;\">${[formatNum(values.module_promotional_price)]}</div>',\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "                   getSelectedColor:function(values){\r",
+                                            "                       if(values.is_itemtap){\r",
+                                            "                           return \"background-color: #94DCF0;\";\r",
+                                            "                       }else{\r",
+                                            "                           return \"background-color: transparent;\" ;\r",
+                                            "                       }\r",
+                                            "                   }\r",
+                                            "               }\r",
+                                            "\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "// list.setMode(\"SINGLE\");\r",
+                                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                            "// });\r",
+                                            "\r",
+                                            "list.setItemHeight(22);\r",
+                                            "list.setMode('MULTI');\r",
+                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                            "\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "e625245b-5129-431d-8452-ebb79b20bead"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onUsersTabPainted",
+                                        "implHandler": [
+                                            "\r",
+                                            " RMdatalink.app.getController('DatalinkController').setDlDataPrice() ;\r",
+                                            " RMdatalink.app.getController('DatalinkController').onRmProSelectUnselect() ;\r",
+                                            "\r",
+                                            "/*\r",
+                                            " var list = Ext.ComponentQuery.query('#datalinkAdvancePaymentDiscountList')[0].down('#mainList') ;\r",
+                                            "\r",
+                                            "\r",
+                                            " var allRecPanelHeight =  list.getStore().getData().all.length * list.getItemHeight() + 14 ;\r",
+                                            " Ext.ComponentQuery.query('#datalinkAdvancePaymentDiscountList')[0].setHeight(allRecPanelHeight);\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            " var h1 =  Ext.ComponentQuery.query('#datalinkProductSetupSideP1')[0].getEl().getHeight() ;\r",
+                                            " var h2 =  Ext.ComponentQuery.query('#datalinkProductSetupSideP2')[0].getEl().getHeight() ;\r",
+                                            " var h3 =  Ext.ComponentQuery.query('#datalinkDiscountListPanel')[0].getEl().getHeight() ;\r",
+                                            "\r",
+                                            " Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0].setHeight(h1+h2+h3 + 26) ;\r",
+                                            " Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0].setMaxHeight(window.innerHeight - 122 );\r",
+                                            "\r",
+                                            "*/\r",
+                                            "RMdatalink.app.getController('DatalinkController').refreshDatalinkSideCntHeight() ;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "fdd9b7ad-483e-433a-92aa-6463acbfa414"
+                                },
+                                {
+                                    "type": "Ext.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "itemId": "productSetupDatalinkListPanel",
+                                        "layout": "vbox",
+                                        "layout|flex": 3,
+                                        "margin": "0 0 5 0"
+                                    },
+                                    "designerId": "b440add3-e058-4ee1-acbc-9e678a816f5d",
+                                    "cn": [
+                                        {
+                                            "type": "linkedinstance",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "listwithheader",
+                                                "layout|flex": 1,
+                                                "width": null
+                                            },
+                                            "designerId": "2e1c0ca7-625e-4995-ba3b-62db1161e7e0",
+                                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
+                                            "cn": [
+                                                {
+                                                    "type": "delegateeventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "delegate": "#mainList",
+                                                        "designer|targetType": "Ext.dataview.List",
+                                                        "fn": "onRmProListItemTap",
+                                                        "implHandler": [
+                                                            "\r",
+                                                            "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                                            "var targetEl = e.target;\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "// delegateAttr=\"onCartTap\"\r",
+                                                            "\r",
+                                                            "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                                            "\r",
+                                                            "         var attrVak = targetEl.getAttribute(attrToSearch);\r",
+                                                            "\r",
+                                                            "         if(attrVak == \"onCartTap\")\r",
+                                                            "         {\r",
+                                                            "\r",
+                                                            "                   // var timeout = setTimeout(function(){\r",
+                                                            "\r",
+                                                            "                        RMdatalink.app.getController('DatalinkController').onRmProSelectUnselect();\r",
+                                                            "\r",
+                                                            "                   //      clearTimeout(timeout);\r",
+                                                            "                    //},100);\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "         }\r",
+                                                            "\r",
+                                                            "}else{\r",
+                                                            "\r",
+                                                            "    if(dataview.isSelected(record))\r",
+                                                            "    {\r",
+                                                            "\r",
+                                                            "        dataview.deselect(record,true) ;\r",
+                                                            "    }else{\r",
+                                                            "\r",
+                                                            "        dataview.select(record,true) ;\r",
+                                                            "    }\r",
+                                                            "     var str = dataview.getStore();\r",
+                                                            "        for(var i=0; i < str.getData().all.length ; i++){\r",
+                                                            "            str.getAt(i).set('is_itemtap',false);;\r",
+                                                            "        }\r",
+                                                            "         record.set('is_itemtap',true);\r",
+                                                            "    RMdatalink.app.getController('DatalinkController').onProductRMProListSelect(dataview, record, eOpts);\r",
+                                                            "}\r",
+                                                            "\r",
+                                                            "\r",
+                                                            " var timeout = setTimeout(function(){\r",
+                                                            "\r",
+                                                            "                      RMdatalink.app.getController('DatalinkController').setDefaultDlDataProduct() ;\r",
+                                                            "\r",
+                                                            "                        clearTimeout(timeout);\r",
+                                                            "                    },100);\r",
+                                                            ""
+                                                        ],
+                                                        "name": "itemtap"
+                                                    },
+                                                    "designerId": "da3cdf95-a221-4e0d-96ed-107e573cb578"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "onlyTopBorderDiv"
+                                                ],
+                                                "layout": "hbox",
+                                                "style": " background-color: gainsboro;font-weight: bold;"
+                                            },
+                                            "designerId": "5ffd729d-60c5-4064-8c14-086cfa48b6f6",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout": "hbox",
+                                                        "margin": 0,
+                                                        "title": null,
+                                                        "width": "74%"
+                                                    },
+                                                    "designerId": "b71ef248-aa36-48d3-8b82-5fc3797228e1",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "hidden": true,
+                                                                "inputCls": "highlightedColor",
+                                                                "itemId": "satalinkBundlePriceTxtFld",
+                                                                "label": "Bundle Price",
+                                                                "labelCls": "highlightedColor",
+                                                                "labelWidth": "120px",
+                                                                "layout|flex": null,
+                                                                "width": "280px"
+                                                            },
+                                                            "designerId": "eca20685-8ab0-44ac-bdb3-17cfb4776484"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "x-rm-blueBtn"
+                                                                ],
+                                                                "height": "28px",
+                                                                "hidden": true,
+                                                                "itemId": "saveDatalinkBundleBtn",
+                                                                "margin": "0 5 0 5",
+                                                                "text": "Save Bundle"
+                                                            },
+                                                            "designerId": "2963d0e2-787b-4f9b-a74b-a845c8d8fe0c"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "docked": "right",
+                                                                "html": "Total price for selected items::",
+                                                                "margin": "5 5 5 10",
+                                                                "style": "font-size: 0.75em;"
+                                                            },
+                                                            "designerId": "4af300c2-f944-4050-9571-ee7c636982b5"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "itemId": "datalinkSumOfStdPriceLbl",
+                                                        "margin": "5 5 5 5",
+                                                        "minWidth": "10%",
+                                                        "style": "text-align: right;font-size: 0.75em;"
+                                                    },
+                                                    "designerId": "e7c9dd3d-c5ab-4bad-84a3-a410b4bc3060"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": null,
+                                                        "itemId": "datalinkSumOfPromoPriceLbl",
+                                                        "margin": "5 5 5 5",
+                                                        "minWidth": "10%",
+                                                        "style": "text-align: right;font-size: 0.75em;"
+                                                    },
+                                                    "designerId": "0a133081-b9ff-44bc-8dfe-a05f0aa9deac"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "border": "0 0 0 0",
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "height": 100,
+                                        "icon": null,
+                                        "iconAlign": "center",
+                                        "iconCls": "arrow_right",
+                                        "itemId": "dlSetUpHideShowArrowBtn",
+                                        "margin": "18% 0 0 0",
+                                        "padding": "0px 0px 0px 0px",
+                                        "style": "background:transparent;border-radius: 20px;border-width: 1px !important;",
+                                        "styleHtmlContent": null,
+                                        "text": null,
+                                        "width": 24
+                                    },
+                                    "designerId": "be59f30b-3740-4909-8413-1c0f5c159195",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "var form = Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0];\r",
+                                                    "\r",
+                                                    "form.setHidden(! form.getHidden() ) ;\r",
+                                                    "\r",
+                                                    "if(form.getHidden()){\r",
+                                                    "\r",
+                                                    "    button.setIconCls(\"arrow_left\");\r",
+                                                    "}else{\r",
+                                                    "\r",
+                                                    "    button.setIconCls(\"arrow_right\");\r",
+                                                    "    //arrow_down\r",
+                                                    "}"
+                                                ]
+                                            },
+                                            "designerId": "0f3cd924-8780-45ff-bb2a-976fd5582d09"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "setScrollBarVisible",
+                                        "cls": [
+                                            "x-rm-rdformpanel borderedDiv"
+                                        ],
+                                        "container|align": "center",
+                                        "disabled": null,
+                                        "height": null,
+                                        "itemId": "productDatalinkaddUpdateFrmPanel",
+                                        "layout": "vbox",
+                                        "layout|flex": null,
+                                        "margin": "0 5 5 0",
+                                        "scrollable": true,
+                                        "width": "360px"
+                                    },
+                                    "designerId": "1a9f7c82-aa10-4c3c-b3f4-27115972812e",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "height": null,
+                                                "itemId": "datalinkProductSetupSideP1",
+                                                "title": null,
+                                                "width": "100%"
+                                            },
+                                            "designerId": "381207c9-853f-4bb8-8b6c-42b5907bbbb4",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "fieldLbl",
+                                                            "pointerCursor"
+                                                        ],
+                                                        "height": null,
+                                                        "html": "Bundle Setup (Add-ons)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "itemId": "mylabel5",
+                                                        "labelAction": "dropDown",
+                                                        "margin": "0 0 2 0",
+                                                        "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                                        "width": null
+                                                    },
+                                                    "designerId": "63325760-4eab-408c-8174-9884b8e80f87",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "labelAction",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.Select",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "autoSelect": false,
+                                                        "docked": null,
+                                                        "height": null,
+                                                        "itemId": "datalinkPoductBundeleSelectFld",
+                                                        "label": "Bundle:",
+                                                        "labelWidth": "80px",
+                                                        "margin": "margin: 0px 0px -3px 0px;",
+                                                        "options": null,
+                                                        "placeHolder": "Select Pricing Policy",
+                                                        "store": "DatalinkProductBundle",
+                                                        "style": null,
+                                                        "value": null,
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "5bc11cf4-1d6b-4b41-89c0-9e8c407bc98c"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "datalinkPoductBundeleTextFld",
+                                                        "label": "Name:",
+                                                        "labelWidth": "80px",
+                                                        "margin": "0px 0px 0px 0",
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "1e8ad4a8-56c0-4c65-bf14-c780d45aee41"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "html": "<div style= \"margin:-16px 0 0 -12px;font-size:12px;\">$</div>",
+                                                        "isCurrency": true,
+                                                        "itemId": "datalinkPoductBundelePriceTextFld",
+                                                        "label": "Price:",
+                                                        "labelWidth": "80px",
+                                                        "margin": "0 0 0 0",
+                                                        "width": "60%"
+                                                    },
+                                                    "configAlternates": {
+                                                        "isCurrency": "boolean"
+                                                    },
+                                                    "designerId": "6fadd4c2-02c2-4338-a917-3d64a35644af",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "isCurrency",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "container|align": "start",
+                                                        "height": null,
+                                                        "layout": "hbox",
+                                                        "margin": "10 2px 0 80",
+                                                        "padding": "0 2 0 0",
+                                                        "title": null,
+                                                        "width": null
+                                                    },
+                                                    "designerId": "345334e2-ac0c-4c2f-8308-ec4c103f9553",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "action": "addNew",
+                                                                "cls": [
+                                                                    "x-rm-blueBtn"
+                                                                ],
+                                                                "docked": null,
+                                                                "height": "20px",
+                                                                "itemId": "addUpdate",
+                                                                "margin": null,
+                                                                "text": "Add",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "d6d24c5a-d54e-413c-bf0f-bafd038fed2d",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "action",
+                                                                    "type": "string"
+                                                                }
+                                                            ],
+                                                            "cn": [
+                                                                {
+                                                                    "type": "fixedfunction",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|params": [
+                                                                            "button",
+                                                                            "e"
+                                                                        ],
+                                                                        "fn": "handler",
+                                                                        "implHandler": [
+                                                                            "RMdatalink.app.getController('DlPricingController').updateProductBundle();"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "fa838827-cb13-4027-bc98-ed05826e9ce8"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "newGrayBtn"
+                                                                ],
+                                                                "height": "20px",
+                                                                "itemId": "delete",
+                                                                "margin": "0 5 0 5",
+                                                                "minHeight": "24px",
+                                                                "pressedCls": "x-rm-card-actionbtn-pressing",
+                                                                "style": null,
+                                                                "text": "Delete",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "aef88cb0-1443-4a78-8bed-9a0a7fb01cb1",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "fixedfunction",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|params": [
+                                                                            "button",
+                                                                            "e"
+                                                                        ],
+                                                                        "fn": "handler",
+                                                                        "implHandler": [
+                                                                            "RMdatalink.app.getController('DlPricingController').deleteProductBundle();"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "4e83f7f6-d299-47dc-8c70-9651c64a3aa8"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "badgeText": "",
+                                                                "cls": [
+                                                                    "x-rm-blueBtn",
+                                                                    "x-rm-rdopenbtns",
+                                                                    "x-rm-smalliconbtns"
+                                                                ],
+                                                                "docked": null,
+                                                                "height": "20px",
+                                                                "hidden": null,
+                                                                "icon": null,
+                                                                "iconAlign": "center",
+                                                                "itemId": "clear",
+                                                                "margin": "0 4 0 0",
+                                                                "text": "Clear",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "134ba098-398d-4378-b67d-919fd008226e",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "fixedfunction",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|params": [
+                                                                            "button",
+                                                                            "e"
+                                                                        ],
+                                                                        "fn": "handler",
+                                                                        "implHandler": [
+                                                                            "RMdatalink.app.getController('DlPricingController').clearProductBundle();"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "1245b514-2904-4af4-b661-b797904492c7"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "datalinkProductSetupSideP2",
+                                                "margin": "0 0 0 0",
+                                                "title": null,
+                                                "width": "100%"
+                                            },
+                                            "designerId": "604c8631-066d-448b-85be-9a148658956b",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "fieldLbl",
+                                                            "pointerCursor"
+                                                        ],
+                                                        "height": null,
+                                                        "html": "Features Setup<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "labelAction": "dropDown",
+                                                        "margin": "0 0 2 0",
+                                                        "style": "font-size:0.8em;",
+                                                        "width": null
+                                                    },
+                                                    "designerId": "fa4c9b05-12bb-4ab6-b790-344c809a6150",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "labelAction",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "container|align": "center",
+                                                        "container|pack": "center",
+                                                        "height": null,
+                                                        "layout": "hbox",
+                                                        "margin": "0 0 -1px 0",
+                                                        "title": null,
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "a7da4c8b-09f9-43f1-a526-20f45c899de2",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "hidden": null,
+                                                                "itemId": "prodDlModuleIndexFld",
+                                                                "label": "Index:",
+                                                                "labelWidth": "80px",
+                                                                "layout|flex": 1,
+                                                                "width": "98%"
+                                                            },
+                                                            "designerId": "34d86455-259f-481d-9b69-97665d3d1a0b"
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "datalinkSKUTxtFld",
+                                                                "label": "SKU:",
+                                                                "labelWidth": "80px",
+                                                                "layout|flex": 1,
+                                                                "width": "98%"
+                                                            },
+                                                            "designerId": "70088507-dff2-49a5-8db8-30ad71b90fb8"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "datalinkModuleNameTxtFld",
+                                                        "label": "Name:",
+                                                        "labelWidth": "80px",
+                                                        "margin": "0 0 0 0",
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "c5a643d9-fd4f-43cf-9cb6-ed4b5cea3f86"
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "title": null,
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "9ff94124-3e15-4673-a480-8f6b5fca0518",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.field.TextArea",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "height": "86px",
+                                                                "inputCls": null,
+                                                                "itemId": "datalinkModuleDescriptionTxtAreaFld",
+                                                                "label": "Description:",
+                                                                "labelWidth": "80px",
+                                                                "margin": "0 0 3 0",
+                                                                "width": "100%"
+                                                            },
+                                                            "designerId": "15b6a2cf-eded-43e4-8acf-cd4d7e756f45"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.field.TextArea",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "hidden": true,
+                                                        "itemId": "datalinkDetailsTxtAreaFld",
+                                                        "label": "Details",
+                                                        "labelWidth": "110px",
+                                                        "margin": "10 0 2 0",
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "dc228ce8-694b-4f94-b90b-427f28cf7dde"
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "container|align": "center",
+                                                        "container|pack": "center",
+                                                        "height": null,
+                                                        "layout": "hbox",
+                                                        "title": null,
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "c0940bf1-b75d-42a2-bf0f-3b9d7258396e",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "<div style= \"margin:-16px 0 0 -12px;font-size:12px;\">$</div>",
+                                                                "isCurrency": true,
+                                                                "itemId": "datalinkStandardPriceTxtFld",
+                                                                "label": "Price Std:",
+                                                                "labelWidth": "80px",
+                                                                "layout|flex": 1,
+                                                                "width": "98%"
+                                                            },
+                                                            "configAlternates": {
+                                                                "isCurrency": "boolean"
+                                                            },
+                                                            "designerId": "27521e91-ff54-4d56-ada3-7e9a3d58b0c3",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "isCurrency",
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "<div style= \"margin:-16px 0 0 -12px;font-size:12px;\">$</div>",
+                                                                "isCurrency": true,
+                                                                "itemId": "datalinkPromotionalPriceTxtFld",
+                                                                "label": "Promo:",
+                                                                "labelWidth": "80px",
+                                                                "layout|flex": 1,
+                                                                "width": "98%"
+                                                            },
+                                                            "configAlternates": {
+                                                                "isCurrency": "boolean"
+                                                            },
+                                                            "designerId": "6d13e217-1b9e-4474-a979-6b654621d0a9",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "isCurrency",
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout": "hbox",
+                                                        "title": null,
+                                                        "width": "98%"
+                                                    },
+                                                    "designerId": "cc98f517-9436-480f-b4c4-3d21971a531c",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "hidden": true,
+                                                                "itemId": "rmProModuleQuantityTxtFld",
+                                                                "label": "Quantity:",
+                                                                "labelWidth": "80px",
+                                                                "layout|flex": 1,
+                                                                "width": "30%"
+                                                            },
+                                                            "designerId": "361a96bd-37b3-4af8-b32e-cc45bcc50346"
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "hidden": null,
+                                                                "itemId": "prodDlModuleProductIdFld",
+                                                                "label": "Product Id:",
+                                                                "labelWidth": "80px",
+                                                                "layout|flex": 1,
+                                                                "margin": "0 1 0 1",
+                                                                "width": "35%"
+                                                            },
+                                                            "designerId": "e04ee98f-f0c4-4fd8-b9a3-796b6e9dca3d"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "container|align": "start",
+                                                        "height": null,
+                                                        "layout": "hbox",
+                                                        "margin": "10 2px 0 80",
+                                                        "title": null,
+                                                        "width": null
+                                                    },
+                                                    "designerId": "bf64f775-a46a-4009-9640-993a04fbf026",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "action": "addNew",
+                                                                "cls": [
+                                                                    "x-rm-blueBtn"
+                                                                ],
+                                                                "docked": null,
+                                                                "height": "20px",
+                                                                "itemId": "datalinkAddModuleBtn",
+                                                                "margin": "0 0 0 1",
+                                                                "text": "Add",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "fd6e796b-6fa8-4070-a340-eabc8d321bb3",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "action",
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "newGrayBtn"
+                                                                ],
+                                                                "height": "20px",
+                                                                "itemId": "delBtn",
+                                                                "margin": "0 0 0 5",
+                                                                "minHeight": "24px",
+                                                                "pressedCls": "x-rm-card-actionbtn-pressing",
+                                                                "text": "Delete",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "5dfd08ad-755e-4ca4-a54a-2580c85ffd4d",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "fixedfunction",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|params": [
+                                                                            "button",
+                                                                            "e"
+                                                                        ],
+                                                                        "fn": "handler",
+                                                                        "implHandler": [
+                                                                            "RMdatalink.app.getController('DeleteRecords').deleteDatalink();"
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "066d6d5b-6737-4d0a-9729-b99400e1ff4e"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "badgeText": "",
+                                                                "cls": [
+                                                                    "x-rm-blueBtn",
+                                                                    "x-rm-rdopenbtns",
+                                                                    "x-rm-smalliconbtns"
+                                                                ],
+                                                                "docked": null,
+                                                                "height": "20px",
+                                                                "hidden": null,
+                                                                "icon": null,
+                                                                "iconAlign": "center",
+                                                                "itemId": "datalinkNewResetBtn",
+                                                                "margin": "0 5 0 5",
+                                                                "text": "Clear",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "0f0c34d9-b431-4fe0-8503-91339236e54d"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "border": "1 1 1 1",
+                                                "height": null,
+                                                "itemId": "datalinkDiscountListPanel",
+                                                "layout": "vbox",
+                                                "layout|flex": null,
+                                                "margin": "0 0 0 0",
+                                                "width": "100%"
+                                            },
+                                            "designerId": "8d8c026b-c272-48fc-9885-f2568a819e05",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "fieldLbl",
+                                                            "pointerCursor"
+                                                        ],
+                                                        "height": null,
+                                                        "html": "Advance Payment Benefits<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "itemId": "mylabel6",
+                                                        "labelAction": "dropDown",
+                                                        "margin": "0 0 2 0",
+                                                        "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                                        "width": null
+                                                    },
+                                                    "designerId": "7285f438-7949-4f23-9288-4329a0feee46",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "labelAction",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "linkedinstance",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "height": "50px",
+                                                        "itemId": "datalinkAdvancePaymentDiscountList",
+                                                        "layout|flex": null,
+                                                        "margin": "0 0 0 0"
+                                                    },
+                                                    "designerId": "96ee10f6-05ad-405c-a85b-591bf5f213ef",
+                                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                                },
+                                                {
+                                                    "type": "basiceventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onMypanel15Initialize1",
+                                                        "implHandler": [
+                                                            "var headers = component.down(\"#headerList\");\r",
+                                                            "headers.setData([{}]);\r",
+                                                            "headers.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                                            "\r",
+                                                            "               '    <div style=\"width: 20%;\" data-name=\"discount_name\">',\r",
+                                                            "               '        Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div style=\"width: 15%;\" data-name=\"discount_value\">',\r",
+                                                            "               '        Discount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "\r",
+                                                            "               '</div>'\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "headers.refresh();\r",
+                                                            "headers.setHidden(true);\r",
+                                                            "\r",
+                                                            "var list = component.down('#mainList');\r",
+                                                            "list.setStore(Ext.getStore('products.DatalinkDiscountStore'));\r",
+                                                            "list.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                            "\r",
+                                                            "               '    <div style=\"width: 74%;padding-left: 15%;\">{discount_name}</div>',\r",
+                                                            "               '    <div style=\"width: 5%;\">%</div>',\r",
+                                                            "\r",
+                                                            "               '<div style=\"width: 15%;text-align: center;\">',\r",
+                                                            "               '    <input type=\"text\" style=\"width: 92% !important;margin-left: 2%;height: 16px;padding-left: 2px;\" class=\"x-rm-rdinlinecmt prodDlSetupFlds\" data-id=\"{id}\" value=\"{discount_value}\" maxlength=\"24\"',\r",
+                                                            "               '        onchange=\"RMdatalink.app.getController(\\'RMProController\\').updateRmproDiscount(this,\\'discount_value\\');\"/>',\r",
+                                                            "               '</div>',\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "               '</div>'\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "\r",
+                                                            "list.setMode(\"SINGLE\");\r",
+                                                            "\r",
+                                                            "   list.on(\"select\",function(discountList, record, eOpts){\r",
+                                                            "        RMdatalink.app.getController('DatalinkController').onDatalinkDiscountSelect(discountList, record);\r",
+                                                            "    });"
+                                                        ],
+                                                        "name": "initialize"
+                                                    },
+                                                    "designerId": "ff7a5bc8-e708-4d74-8ef5-26eaeb9368f2"
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "container|align": "start",
+                                                        "height": null,
+                                                        "layout": "hbox",
+                                                        "margin": "10 2px 10 80",
+                                                        "padding": "0 2 0 0",
+                                                        "title": null,
+                                                        "width": null
+                                                    },
+                                                    "designerId": "598b2ac9-e670-4e0c-9c74-5d4a7e320d80",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "action": "addNew",
+                                                                "cls": [
+                                                                    "x-rm-blueBtn"
+                                                                ],
+                                                                "docked": null,
+                                                                "height": "20px",
+                                                                "itemId": "rmProDiscountSaveBtn",
+                                                                "margin": null,
+                                                                "text": "Update",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "e5a63165-b0d7-4127-bcb6-fc604f09d41a",
+                                                            "customConfigs": [
+                                                                {
+                                                                    "group": "(Custom Properties)",
+                                                                    "name": "action",
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "newGrayBtn"
+                                                                ],
+                                                                "height": "20px",
+                                                                "margin": "0 5 0 5",
+                                                                "minHeight": "24px",
+                                                                "pressedCls": "x-rm-card-actionbtn-pressing",
+                                                                "style": null,
+                                                                "text": "Delete",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "c66bd936-8a80-4e40-ae52-1144e89fd710"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "badgeText": "",
+                                                                "cls": [
+                                                                    "x-rm-blueBtn",
+                                                                    "x-rm-rdopenbtns",
+                                                                    "x-rm-smalliconbtns"
+                                                                ],
+                                                                "docked": null,
+                                                                "height": "20px",
+                                                                "hidden": null,
+                                                                "icon": null,
+                                                                "iconAlign": "center",
+                                                                "itemId": null,
+                                                                "margin": "0 4 0 0",
+                                                                "text": "Clear",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "14cb39a9-5908-40fc-944d-1f5ab1f4ec8d",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "fixedfunction",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "designer|params": [
+                                                                            "button",
+                                                                            "e"
+                                                                        ],
+                                                                        "fn": "handler",
+                                                                        "implHandler": [
+                                                                            ""
+                                                                        ]
+                                                                    },
+                                                                    "designerId": "76547ebe-cab0-423a-8921-a2c7ef80381b"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "productsDatalinkPricingTab",
+                                "title": "Vendor Pricing"
+                            },
+                            "designerId": "068a1961-a6ed-4cd1-be26-ad5accae919e",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProductsDatalinkPricingTabPainted",
+                                        "implHandler": [
+                                            "\r",
+                                            "RMdatalink.app.getController('DatalinkController').onDatalinkVendorPricingPainted() ;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "a4324d81-09a5-4302-b216-b44896b35992"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "layout": "vbox",
+                                "title": "Advance Payment Benifits"
+                            },
+                            "designerId": "ca492647-9389-40b0-a003-62a8ae4ea36c",
+                            "cn": [
+                                {
+                                    "type": "Ext.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "f5e5478f-efcb-42b3-8fff-ae17b0428e6e",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "border": "1 1 1 1",
+                                                "itemId": "datalinkDiscountListPanel1",
+                                                "layout": "vbox",
+                                                "layout|flex": 2
+                                            },
+                                            "designerId": "f06f105d-53b3-4d30-a655-f7de8ee93635",
+                                            "cn": [
+                                                {
+                                                    "type": "linkedinstance",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "datalinkAdvancePaymentDiscountList1",
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "ea650f57-194c-49b1-adeb-3c8bf088d21e",
+                                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                                },
+                                                {
+                                                    "type": "basiceventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onMypanel15Initialize1",
+                                                        "implHandler": [
+                                                            "var headers = component.down(\"#headerList\");\r",
+                                                            "headers.setData([{}]);\r",
+                                                            "headers.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                                            "\r",
+                                                            "               '    <div style=\"width: 20%;\" data-name=\"discount_name\">',\r",
+                                                            "               '        Name&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div style=\"width: 15%;\" data-name=\"discount_value\">',\r",
+                                                            "               '        Discount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "\r",
+                                                            "               '</div>'\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "headers.refresh();\r",
+                                                            "var list = component.down('#mainList');\r",
+                                                            "list.setStore(Ext.getStore('products.DatalinkDiscountStore'));\r",
+                                                            "list.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                                            "\r",
+                                                            "               '    <div style=\"width: 20%;\">{discount_name}</div>',\r",
+                                                            "               '    <div style=\"width: 15%;\">{discount_value}%</div>',\r",
+                                                            "\r",
+                                                            "               '</div>'\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "\r",
+                                                            "list.setMode(\"SINGLE\");\r",
+                                                            "\r",
+                                                            "    list.on(\"select\",function(discountList, record, eOpts){\r",
+                                                            "        RMdatalink.app.getController('DatalinkController').onDatalinkDiscountSelect(discountList, record);\r",
+                                                            "    });"
+                                                        ],
+                                                        "name": "initialize"
+                                                    },
+                                                    "designerId": "3a2440df-b543-41e7-86fb-09df91d9da91"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-rdformpanel"
+                                                ],
+                                                "height": "100px",
+                                                "layout|flex": null,
+                                                "width": "100%"
+                                            },
+                                            "designerId": "96787b94-e193-4ddb-935f-fb8dcfb8a699",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "badgeText": "",
+                                                        "cls": [
+                                                            "x-rm-blueBtn",
+                                                            "x-rm-rdopenbtns",
+                                                            "x-rm-smalliconbtns"
+                                                        ],
+                                                        "docked": "top",
+                                                        "height": "25px",
+                                                        "icon": " resources//images//retailerDetail//add_btn.png",
+                                                        "iconAlign": "center",
+                                                        "itemId": "datalinkDiscountResetBtn",
+                                                        "text": null,
+                                                        "width": "50px"
+                                                    },
+                                                    "designerId": "8cb4aa4f-7a48-470a-9071-6b1b59a8810d",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "act",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout": "hbox",
+                                                        "title": null
+                                                    },
+                                                    "designerId": "ebf290bb-a190-41d5-aea4-ce8ebe28db85",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "datalinkDiscountNameFld",
+                                                                "label": "Discount Name",
+                                                                "labelWidth": "100px",
+                                                                "width": "260px"
+                                                            },
+                                                            "designerId": "453d8b3e-16dc-4a58-ba74-6bd4ab34fccd"
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "datalinkDiscountValueFld",
+                                                                "label": "Discount",
+                                                                "labelWidth": "80px"
+                                                            },
+                                                            "designerId": "18ce82f7-f4aa-4639-9bae-71b582ae9fe1"
+                                                        },
+                                                        {
+                                                            "type": "Ext.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "datalinkDiscountDurationFld",
+                                                                "label": "Discount Duration In Year",
+                                                                "labelWidth": "160px"
+                                                            },
+                                                            "designerId": "0b602442-a661-4f2b-bc56-f753738a4635"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "cls": [
+                                                                    "x-rm-blueBtn"
+                                                                ],
+                                                                "height": "25px",
+                                                                "itemId": "datalinkDiscountSaveBtn",
+                                                                "margin": "0 5 0 5",
+                                                                "minWidth": "100px",
+                                                                "text": "Add New Discount"
+                                                            },
+                                                            "designerId": "749913fc-fd21-4222-ba4a-d3c1a151dcbf"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onInhouseMainContentPanelInitialize",
+                "implHandler": [
+                    "component.down('#cardAddRetailerBtn').setHidden(true) ;\r",
+                    "\r",
+                    "component.down('#cardDeleteBtn').setHidden(false) ;\r",
+                    "\r",
+                    "component.down('#cardActionBtn').setHidden(true) ;\r",
+                    "component.down('#cardImportBtn').setHidden(true) ;\r",
+                    "\r",
+                    "component.down('#cardExportBtn').setHidden(true) ;\r",
+                    "\r",
+                    "component.down('#cardTitleLabel').setHtml(\"Datalink\");\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "component.down('#cardDeleteBtn').element.on(\"tap\",function(){\r",
+                    "\r",
+                    "    // RMdatalink.app.getController('DeleteRecords').deleteRMPRO();\r",
+                    "});\r",
+                    "\r",
+                    "\r",
+                    ""
+                ],
+                "name": "initialize"
+            },
+            "designerId": "1c874ce5-36d4-48dc-a219-c3a20ac2cb46"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onProductDatalinkMainPanelPainted",
+                "implHandler": [
+                    " RMdatalink.app.getController('DatalinkController').enableDisableDlFlds(true);\r",
+                    "\r",
+                    "var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;\r",
+                    "selectfield = Ext.ComponentQuery.query('#datalinkPoductBundeleSelectFld')[0] ;\r",
+                    "\r",
+                    "if(pricingData[0].state_values && pricingData[0].state_values.datalink_bundle )\r",
+                    "{\r",
+                    "    selectfield.setValue( pricingData[0].state_values.datalink_bundle ) ;\r",
+                    "}\r",
+                    "\r",
+                    ""
+                ],
+                "name": "painted"
+            },
+            "designerId": "5f1c58d0-f68b-4c63-9f36-fa2a89384399"
+        }
+    ]
+}

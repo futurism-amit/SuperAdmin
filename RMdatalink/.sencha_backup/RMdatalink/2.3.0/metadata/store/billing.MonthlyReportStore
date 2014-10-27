@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "billing.MonthlyReportStore",
+        "model": "billing.MonthlyReportModel",
+        "storeId": "billing.MonthlyReportStore"
+    },
+    "designerId": "2b4e3c7d-805e-49f6-9239-7aff963144c9"
+}

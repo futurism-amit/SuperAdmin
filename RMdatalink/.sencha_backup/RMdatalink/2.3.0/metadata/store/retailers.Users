@@ -1,0 +1,34 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "designer|userAlias": "retailerUsers",
+        "designer|userClassName": "retailers.Users",
+        "model": "retailers.Master",
+        "pageNo": 1,
+        "storeId": "retailerUsers",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "pageNo": "number",
+        "totalNoOfPages": "number"
+    },
+    "designerId": "0042ad65-27a5-4cbf-8ef5-bf5c23cb0d39",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        }
+    ]
+}

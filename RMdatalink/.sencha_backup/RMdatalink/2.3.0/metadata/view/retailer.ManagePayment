@@ -1,0 +1,419 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailermanagepayment",
+        "designer|userClassName": "retailer.ManagePayment",
+        "itemId": null,
+        "layout": "vbox",
+        "scrollable": false
+    },
+    "designerId": "3f0749ad-5ac4-4520-b758-6c051b558992",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "hidden": false,
+                "itemId": null,
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "81be4f5a-3145-46bc-be92-b86ff708f234",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelBilling"
+                        ],
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "hidden": null,
+                        "itemId": null,
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "0a4bd58a-4679-4dcf-8d06-5788afd7f1a1",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "mytabbar"
+                            },
+                            "designerId": "e4bff144-0d0b-428f-bac8-9021900cfccf"
+                        },
+                        {
+                            "type": "Ext.form.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "cls": [
+                                    "x-rm-rdformpanel"
+                                ],
+                                "designer|displayName": null,
+                                "itemId": "managePaymentTab",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "title": "<div style=\"line-height: 25px;\">Manage Payment</div>"
+                            },
+                            "designerId": "6a6f6a4f-1633-43a4-9004-9731aa6664c3",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "height": null,
+                                        "layout": "hbox",
+                                        "margin": "10 10 10 10",
+                                        "padding": "2 0 2 0",
+                                        "title": null
+                                    },
+                                    "designerId": "ad1b9808-c908-40ca-bb5f-76f9f051a9d4",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "margin": null,
+                                                "padding": "5 5 5 5",
+                                                "title": "<div style= \"font-size:12px;\">Billing Address</div>"
+                                            },
+                                            "designerId": "a3918687-bfaf-49b3-8941-2f42f4a0e620",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtUserMngPaymntFullNameFld",
+                                                        "label": "Full Name",
+                                                        "labelWidth": "150px",
+                                                        "width": "350px"
+                                                    },
+                                                    "designerId": "74fa6841-3f5a-4905-926d-62f84b54d950"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtUserMngPaymntAddrLn1Fld",
+                                                        "label": "Address Line 1",
+                                                        "labelWidth": "150px",
+                                                        "width": "350px"
+                                                    },
+                                                    "designerId": "c3dba2f1-213a-4512-aa57-0d9282580b81"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtUserMngPaymntAddrLn2Fld",
+                                                        "label": "Address Line 2",
+                                                        "labelWidth": "150px",
+                                                        "width": "350px"
+                                                    },
+                                                    "designerId": "2be9eb77-c465-49be-afbc-f30b1139bcef"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtUserMngPaymntCityFld",
+                                                        "label": "City",
+                                                        "labelWidth": "150px",
+                                                        "width": "350px"
+                                                    },
+                                                    "designerId": "98ebae2f-e9b3-4926-a9a8-e382a2946827"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtUserMngPaymntStateFld",
+                                                        "label": "State",
+                                                        "labelWidth": "150px",
+                                                        "width": "350px"
+                                                    },
+                                                    "designerId": "2ab7901c-f3a0-4852-80e9-107edde0693a"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtUserMngPaymntZipFld",
+                                                        "label": "Zip",
+                                                        "labelWidth": "150px",
+                                                        "width": "350px"
+                                                    },
+                                                    "designerId": "c3ccdf0a-9923-4f39-9501-45abc22ccd00"
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "x-rm-blueBtn"
+                                                        ],
+                                                        "margin": "0 0 0 150px",
+                                                        "text": "Process Credit Card\t\t",
+                                                        "width": "150px"
+                                                    },
+                                                    "designerId": "050e1456-de0a-4507-8ab9-1d541fb48b5a"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "height": null,
+                                                "layout": "vbox",
+                                                "margin": "10 0 0 20",
+                                                "padding": "2 0 2 0",
+                                                "title": null
+                                            },
+                                            "designerId": "bad670f2-5249-4b2b-bb58-b149ff73df98",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtMngPaymentAddrFullNameLbl",
+                                                        "style": "font-size: 0.8em;"
+                                                    },
+                                                    "designerId": "1ef8b77a-cac5-4fb7-8c34-6f10623df83a"
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "rtMngPaymentAddrLbl",
+                                                        "style": "font-size: 0.8em;"
+                                                    },
+                                                    "designerId": "e62df556-f37a-4016-83a6-fcc53c00ea40"
+                                                },
+                                                {
+                                                    "type": "Ext.form.FieldSet",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout": "hbox",
+                                                        "title": null
+                                                    },
+                                                    "designerId": "a0586fb5-8f24-4493-885c-3459b05ca001",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "rtMngPaymentAddrCityLbl",
+                                                                "style": "font-size: 0.8em;"
+                                                            },
+                                                            "designerId": "ad6513a6-7aa2-40dd-974e-3cf2b10e867b"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": " ,",
+                                                                "style": "font-size: 0.8em;"
+                                                            },
+                                                            "designerId": "ef3e271e-c1f0-4e5c-a8ea-5920214b35e2"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "rtMngPaymentAddrStateLbl",
+                                                                "style": "font-size: 0.8em;"
+                                                            },
+                                                            "designerId": "38c8e287-c561-4314-9e94-dc24bf4ec580"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": " ,",
+                                                                "style": "font-size: 0.8em;"
+                                                            },
+                                                            "designerId": "d8aebbf0-ae06-4e1c-8296-4b5791dae2de"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "itemId": "rtMngPaymentAddrZipLbl",
+                                                                "style": "font-size: 0.8em;"
+                                                            },
+                                                            "designerId": "221d96a1-241b-462f-a37e-5dd678525bf5"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "x-rm-blueBtn"
+                                                        ],
+                                                        "itemId": "rtUserMngPaymntUseThisAddrBtn",
+                                                        "margin": "10 0 0 0",
+                                                        "text": "Use this Address\t\t",
+                                                        "width": "150px"
+                                                    },
+                                                    "designerId": "61f10f4b-873a-4b37-8aba-04ba43195d65",
+                                                    "cn": [
+                                                        {
+                                                            "type": "fixedfunction",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "designer|params": [
+                                                                    "button",
+                                                                    "e"
+                                                                ],
+                                                                "fn": "handler",
+                                                                "implHandler": [
+                                                                    "\r",
+                                                                    "Ext.ComponentQuery.query('#rtUserMngPaymntFullNameFld')[0].setValue( Ext.ComponentQuery.query('#rtMngPaymentAddrFullNameLbl')[0].getHtml() ) ;\r",
+                                                                    "\r",
+                                                                    "Ext.ComponentQuery.query('#rtUserMngPaymntAddrLn1Fld')[0].setValue( Ext.ComponentQuery.query('#rtMngPaymentAddrLbl')[0].getHtml() ) ;\r",
+                                                                    "\r",
+                                                                    "Ext.ComponentQuery.query('#rtUserMngPaymntCityFld')[0].setValue( Ext.ComponentQuery.query('#rtMngPaymentAddrCityLbl')[0].getHtml() ) ;\r",
+                                                                    "\r",
+                                                                    "Ext.ComponentQuery.query('#rtUserMngPaymntStateFld')[0].setValue( Ext.ComponentQuery.query('#rtMngPaymentAddrStateLbl')[0].getHtml() ) ;\r",
+                                                                    "\r",
+                                                                    "Ext.ComponentQuery.query('#rtUserMngPaymntZipFld')[0].setValue( Ext.ComponentQuery.query('#rtMngPaymentAddrZipLbl')[0].getHtml() ) ;\r",
+                                                                    ""
+                                                                ]
+                                                            },
+                                                            "designerId": "65ac3439-868d-4a90-bd78-7d82dcffba50"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

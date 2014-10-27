@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "retailers.prospectRTForVendor",
+        "model": "retailers.Master",
+        "storeId": "retailers.prospectRTForVendor"
+    },
+    "designerId": "2418d982-fd6d-4073-8dd3-af5b7afa2b5f"
+}

@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "pricing.smart_cart_discount",
+        "model": "pricingDiscountPolicyModel",
+        "storeId": "pricing.smart_cart_discount"
+    },
+    "designerId": "0467adc0-d50b-42cd-9ffb-e0c318f394a8"
+}

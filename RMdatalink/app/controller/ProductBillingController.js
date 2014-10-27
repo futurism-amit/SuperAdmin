@@ -19,6 +19,10 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
     config: {
         productKey: 'product_rmpro',
         rmProPackValue: 0,
+        isDatalinkProduct: false,
+        isecomProduct: false,
+        needToEdit: false,
+        isFromVip: true,
 
         control: {
             "list[itemId=RDStoreProductsList]": {
@@ -26,6 +30,9 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             },
             "button[itemId=productBillingSheetCancel]": {
                 tap: 'onproductBillingSheetCancelTap'
+            },
+            "button[itemId=productBillingSheetBackBtn]": {
+                tap: 'productBillingSheetBackBtnTap'
             },
             "list[itemId=rmProSelectPackageList]": {
                 select: 'onrmProSelectPackageListSelect'
@@ -44,40 +51,324 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             },
             "button[itemId=invoiceRMPROProductSetupBtn]": {
                 tap: 'oninvoiceRMPROProductSetupBtnTap'
+            },
+            "selectfield[itemId=productRmproPackgSlctFldBilling]": {
+                change: 'onRMPackageSelectfieldChange'
+            },
+            "selectfield[itemId=productRmproRateSlctFldBilling]": {
+                change: 'onRMRateSelectfieldChange'
+            },
+            "selectfield[itemId=productRmproSlctTermBillFrqSlctFld]": {
+                change: 'onPaymentFreqSelectfieldChange'
+            },
+            "selectfield[itemId=productDlAddOnsSlctFld]": {
+                change: 'onproductDlAddOnsSlctFldChange'
+            },
+            "selectfield[itemId=productDlbdlVendorsSlctFld]": {
+                change: 'onproductDlbdlVendorsSlctFldChange'
+            },
+            "selectfield[itemId=productDlPriceSlctFld]": {
+                change: 'ControllerAction59'
+            },
+            "selectfield[itemId=productDlAddonsPriceSlctFld]": {
+                change: 'productDlAddonsPriceSlctFldChange'
+            },
+            "selectfield[itemId=productDlPriceOptionsimgAdlImgSlctFld]": {
+                change: 'onproductDlPriceOptionsimgAdlImgSlctFldChange'
+            },
+            "selectfield[itemId=productDlVdrPricingPolicySlctFld]": {
+                change: 'onproductDlVdrPricingPolicySlctFldChange'
+            },
+            "selectfield[itemId=productDlDiscountVdrsSlctFld]": {
+                change: 'onproductDlDiscountVdrsSlctFldChange'
+            },
+            "selectfield[itemId=productDlDiscountSKUSlctFld]": {
+                change: 'onproductDlDiscountSKUSlctFldChange'
             }
         }
     },
 
     onRDStoreProductsListSelect: function(dataview, index, target, record, e, eOpts) {
+        console.log(record);
 
-        if(record.data.ProductName == "RM PRO")
+        //RDEcommerce
+
+
+        if(e.target.classList.indexOf('productSetup') >=0){
+
+        }else{
+
+            var RetailerDeatilsDataSet = RMdatalink.app.getController("RetailerDeatilsDataSet");
+                RetailerDeatilsDataSet.onTapOfProductList.apply(RetailerDeatilsDataSet,arguments);
+            return;
+        }
+        if(RMdatalink.app.getController('RetailerDeatilsDataSet').config.isEditMode){
+
+            return ;
+        }
+
+        var that = this ;
+        var me = this;
+        //var RDEcommerce =
+
+        //isFromVip
+
+
+
+
+        if(record.data.ProductName == "VIP"){
+
+            this.setIsFromVip(true);
+            // alert("USER WANTS TO SEE VIP BILLING");
+        }else{
+            // CURRENTLY WE ARE ALLOWING FOCUSING ON VIP LIST .
+            // CHANGE THIS VALUE TO FALSE WHEN NEEDED
+            this.setIsFromVip(false);
+        }
+
+
+
+
+
+
+
+
+
+
+
+        if(record.data.ProductName == "RMPro")
         {
+            this.config.isDatalinkProduct = false ;
+               this.config.isecomProduct = false ;
+
             this.getBillingSheet().show();
             this.intRMPROBilling() ;
             this.displayRMPROBillig(target);
+
+
+              var timeout = setTimeout(function(){
+
+                                that.disableEnableComponents(true);
+                                clearTimeout(timeout);
+
+                                hideShowDlComponents(true) ;
+                                hideShowRMProComponents(false);
+
+                            },500);
+
+
         }
         else if(record.data.ProductName == "Datalink"){
+            this.config.isDatalinkProduct = true ;
+               this.config.isecomProduct = false ;
+
             this.getBillingSheet().show();
             this.initDatalinkBilling() ;
             this.displayDatalinkBilling(target);
+
+
+
+
+              var timeoutDl = setTimeout(function(){
+                                that.disableEnableComponents(true);
+                                clearTimeout(timeoutDl);
+
+                                hideShowDlComponents(false) ;
+                                hideShowRMProComponents(true);
+
+                            },500);
+        }
+        //ProductName: "VIP"
+        else if(record.data.ProductName == "E-Commerce"   || record.data.ProductName == "VIP"){
+
+
+
+            this.config.isDatalinkProduct = false ;
+            this.config.isecomProduct = true ;
+
+            console.log("ECOOMERCE PRODUCT BILLING INITIATED STAEP 1");
+            this.getBillingSheet().show();
+
+
+
+        //    debugger;
+
+
+            var timeoutDl = setTimeout(function(){
+                                that.initDatalinkBilling() ;
+
+
+
+                                that.displayDatalinkBilling(target);
+
+                                that.disableEnableComponents(true);
+
+
+                                clearTimeout(timeoutDl);
+
+                                hideShowDlComponents(false) ;
+
+                                hideShowRMProComponents(true);
+
+                            },1500);
         }
 
+
          RMdatalink.app.getController('RetailerDeatilsDataSet').saveRTProductSetup();
+
+        function hideShowDlComponents(value){
+
+             Ext.ComponentQuery.query('#productDlAddOnsSlctFld')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productDlbdlVendorsSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlPriceSlctFld')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlAddonsPriceSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlVdrPricingPolicySlctFld')[0].setHidden(value);
+
+
+            Ext.ComponentQuery.query('#lbl1')[0].setHidden(value);
+            Ext.ComponentQuery.query('#lbl2')[0].setHidden(value);
+            Ext.ComponentQuery.query('#lbl3')[0].setHidden(value);
+
+
+
+        }
+
+        function hideShowRMProComponents(value){
+
+             Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0].setHidden(value);
+
+        }
     },
 
     onproductBillingSheetCancelTap: function(button, e, eOpts) {
-        this.hideProductBillingSheet();
+
+
+        if(this.config.productKey == "product_rmpro" )
+        {
+
+            var that = this ;
+            if(button.getText() == "Edit"){
+
+
+
+                 Ext.ComponentQuery.query('#rtBillingSaveBtn')[0].setHidden(false);
+                 button.setText("Cancel") ;
+                 this.disableEnableComponents(false) ;
+
+
+            }else{
+
+
+                 Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue("");
+                 Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue("");
+                 Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue("");
+
+
+
+
+                 Ext.ComponentQuery.query('#rtBillingSaveBtn')[0].setHidden(true);
+                 that.intRMPROBilling() ;
+                 that.displayRMPROBillig();
+                 button.setText("Edit") ;
+                 this.disableEnableComponents(true) ;
+            }
+
+
+
+        }
+        else{
+
+               var that = this ;
+            if(button.getText() == "Edit"){
+
+
+
+                 Ext.ComponentQuery.query('#rtBillingSaveBtn')[0].setHidden(false);
+                 button.setText("Cancel") ;
+                 this.disableEnableComponents(false) ;
+
+
+            }else{
+
+
+        //          Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue("");
+        //          Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue("");
+        //          Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue("");
+
+
+
+
+                 Ext.ComponentQuery.query('#rtBillingSaveBtn')[0].setHidden(true);
+        //          that.intRMPROBilling() ;
+        //          that.displayRMPROBillig();
+                 button.setText("Edit") ;
+                 this.disableEnableComponents(true) ;
+            }
+
+
+        }
+
+
+
+
+
+
+
+    },
+
+    productBillingSheetBackBtnTap: function(button, e, eOpts) {
+
+        var that = this ;
+
+        var edtViewBtn = Ext.ComponentQuery.query('#productBillingSheetCancel')[0] ;
+        if(edtViewBtn.getText() != "Edit" )
+        {
+          Ext.Msg.confirm("Confirm","View in edit mode, do you want to continue ?.",onMessageAns ,this);
+
+
+            function onMessageAns(action,opt,confirmBox){
+
+
+                if(action == "yes"){
+
+                 goBack() ;
+
+                }else{
+
+
+                }
+
+
+            }
+
+        }else{
+
+            goBack() ;
+        }
+
+
+
+
+        function goBack(){
+            that.hideProductBillingSheet();
+        }
     },
 
     onrmProSelectPackageListSelect: function(dataview, record, eOpts) {
         console.log(record);
-
+              //     Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setValue( record.data.value );
               // RMdatalink.app.getController('BillingDetailsController').config.pricingData[3].active_pricing_policy = parseInt(record.data.value,0) ;
 
-
-
-
         this.config.rmProPackValue =  record.data.value ;
+
 
         if(record.data.value == "5")
         {
@@ -117,6 +408,14 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         // }
 
 
+
+        var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
+        var allModuleList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList') ;
+
+
+        allModuleList.deselectAll() ;
+
+
         var adOnsStore = addOnsList.getStore() ;
          for(var i =0 ; i< rm_pro_modules.length; i++){
 
@@ -129,6 +428,19 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
             }
+
+
+
+                var mrIndex = allMoulesStore.findExact('_id', rm_pro_modules[i].module_id ) ;
+
+            if(mrIndex != -1)
+            {
+
+                allModuleList.select(allMoulesStore.getAt(mrIndex),true,true) ;
+
+
+            }
+
          }
 
 
@@ -147,20 +459,50 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         // }
 
         this.calculateBillingPrices() ;
+
+        //
+         Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setValue( record.data.value );
+
+        this.setRMPackageModule() ;
+
+
+        //productRmproRateSlctFldBilling
+
+
     },
 
     onrtBillMonthlyMemberShipFldChange: function(textfield, newValue, oldValue, eOpts) {
-
-
-
+        if( this.config.allPackModulePrice && this.config.finalCalPrice)
+        {
+        var addDiscount = this.config.totalMonthlyMemberShip - this.config.packageDiscount - parseFloat(newValue) ;//this.config.allPackModulePrice - parseFloat(newValue) ;
+        Ext.ComponentQuery.query('#rtBillAdditionalDiscountTxtFld')[0].setValue(formatNum(addDiscount) ) ;
+        }
 
         this.calculateBillingDiscount() ;
+
+        var freq =  Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].getValue() ;
+        if( !freq || !newValue ){
+            return ;
+        }
+        var contractPrice =parseFloat(newValue) * parseInt(freq) ;
+
+        var advacePaymentBenList = Ext.ComponentQuery.query('#rmProDiscountsForRtList')[0].down('#mainList');
+
+        var selction = advacePaymentBenList.getSelection() ;
+
+        if(selction && selction.length > 0){
+
+          contractPrice =  selction[0].get('discount_total');
+        }
+
+
+        Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(formatNum(contractPrice));
     },
 
     onrtBillingSaveBtnTap: function(button, e, eOpts) {
         //     var initActData = Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].getValue() ;
 
-
+        //disableEnableComponents
         //     if(!initActData && initActData == "" ){
 
         //         Ext.Msg.alert("Alert","Initial Activation date required to save product setup.",Ext.emptyFn );
@@ -168,6 +510,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         //     }
 
 
+           Ext.ComponentQuery.query('#productBillingSheetCancel')[0].setText("Edit") ;
+            this.disableEnableComponents(true) ;
 
 
         if(this.config.productKey == "product_rmpro" )
@@ -183,11 +527,17 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         }
 
 
-
+        button.setHidden(true);
     },
 
     onProductBillingShowSubscriptionBtnTap: function(button, e, eOpts) {
 
+                            this.hideProductBillingSheet();
+                            RMdatalink.app.getController('InvoiceController').showSubscriptionPage();
+
+
+
+        /*
         if(this.config.productKey == "product_rmpro" )
         {
 
@@ -201,7 +551,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         }
 
 
-
+        */
     },
 
     oninvoiceDatalinkProductSetupBtnTap: function(button, e, eOpts) {
@@ -217,6 +567,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
     oninvoiceRMPROProductSetupBtnTap: function(button, e, eOpts) {
 
+            this.config.isDatalinkProduct = false ;
+            this.config.isecomProduct = false ;
 
            Ext.ComponentQuery.query('#rtBillingSheetCancelBtn')[0].fireEvent("tap");
 
@@ -224,6 +576,797 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             this.getBillingSheet().show();
             this.intRMPROBilling() ;
             this.displayRMPROBillig();
+
+           var that = this ;
+            var timeout = setTimeout(function(){
+
+
+                 Ext.ComponentQuery.query('#rtBillingSaveBtn')[0].setHidden(false);
+                   Ext.ComponentQuery.query('#productBillingSheetCancel')[0].setText("Cancel") ;
+
+
+                that.disableEnableComponents(false) ;
+
+                                clearTimeout(timeout);
+
+                                  hideShowDlComponents(true) ;
+                                hideShowRMProComponents(false);
+
+                            },500);
+
+
+
+
+
+
+
+        function hideShowDlComponents(value){
+
+             Ext.ComponentQuery.query('#productDlAddOnsSlctFld')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productDlbdlVendorsSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlPriceSlctFld')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlAddonsPriceSlctFld')[0].setHidden(value);
+
+             Ext.ComponentQuery.query('#productDlVdrPricingPolicySlctFld')[0].setHidden(value);
+
+        }
+
+        function hideShowRMProComponents(value){
+
+             Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setHidden(value);
+             Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0].setHidden(value);
+
+        }
+    },
+
+    onRMPackageSelectfieldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+        var selectedPackage = parseInt(newValue) ;
+        Ext.ComponentQuery.query('#rmProSelectPackageList')[0].select((selectedPackage-1),false,false) ;
+
+        var rateFld = Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0] ;
+        var nVal = rateFld.getValue() ;
+
+        var selectedPackage = 1 ;
+
+        if(nVal == "module_standard_price" ){
+            selectedPackage = 0 ;
+        }
+
+        Ext.ComponentQuery.query('#rmProSelectRateList')[0].deselectAll() ;
+        Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(selectedPackage,false,false) ;
+
+
+
+    },
+
+    onRMRateSelectfieldChange: function(selectfield, newValue, oldValue, eOpts) {
+        var selectedPackage = 1 ;
+
+        if(newValue == "module_standard_price" ){
+            selectedPackage = 0 ;
+        }
+
+        Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(selectedPackage,false,false) ;
+
+        var component = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0];
+        var headers = component.down("#headerList");
+        var list = component.down('#mainList');
+
+        if(selectedPackage == 0)
+        {
+
+                headers.setData([{}]);
+                headers.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div class="x-rm-listtpl-main" style=" border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 20px;" data-name="all"></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 2%;text-align: center;" data-name="module_listed_order">',
+                               '        ',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;text-align: center;" data-name="module_name">',
+                               '        Product/ Add Ons&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;text-align: center;" data-name="module_description">',
+                               '       Description&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="trial">',
+                               '        Status&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 6%;text-align: center;" data-name="quantity">',
+                               '        Qty&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: center;" data-name="module_standard_price">',
+                               '        Std. Price&nbsp;',
+                               '    </div>',
+                               '    <div style="width: 10%;text-align: center;" data-name="per_month">',
+                               '         Per Month&nbsp;',
+                               '    </div>',
+                               '</div>'
+                              )
+                );
+
+                headers.refresh();
+
+
+
+                list.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div style="height:20px" class="x-rm-listtpl-main pointerCursor">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 18px; height:16px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="margin-right: 0px;width: 2%;">{module_listed_order}</div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;font-weight: bold;">{module_name}</div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;">{module_description}</div>',
+                               '   <div class="rightBorderDiv" style="width: 10%;">',
+
+                               '<select class="rmProStatusFlds" data-id="{_id}" onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'remark_val\');" style="height: 16px;width: 96%; margin-left:2%; color:{[this.getColor(values,"3")]};">',
+                                      '<option value="0" style="color:black" {[this.getSelected(values,"0")]}>None</option>',
+                                      '<option value="1" style="color:red" {[this.getSelected(values,"1")]}>Inclusive</option>',
+                                      '<option value="2" style="color:blue" {[this.getSelected(values,"2")]} >Add Ons</option>',
+                                      '<option value="3" style="color:green" {[this.getSelected(values,"3")]} >1M Free Trial</option>',
+                                      '<option value="4" style="color:green" {[this.getSelected(values,"4")]} >2M Free Trial</option>',
+                                      '<option value="5" style="color:green" {[this.getSelected(values,"5")]} >3M Free Trial</option>',
+                                      '<option value="6" style="color:green" {[this.getSelected(values,"6")]} >6M Free Trial</option>',
+                                      '<option value="7" style="color:green" {[this.getSelected(values,"7")]} >9M Free Trial</option>',
+                                      '<option value="8" style="color:green" {[this.getSelected(values,"8")]} >1Yr Free Trial</option>',
+
+                               '</select>',
+                               '</div>',
+                               '<div class="rightBorderDiv" style="width: 6%;text-align: center;">',
+                               '    <input type="text" style="width: 68% !important;margin-left: 15%;height: 16px;text-align: center;" class="rmProQtyFlds x-rm-rdinlinecmt" data-id="{_id}" value="{quantity}" maxlength="24"',
+                               '        onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'quantity\');"/>',
+                               '</div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: right;padding-right: 1%;">$ {[formatNum(values.module_standard_price)]}</div>',
+                               '    <div style="width: 10%;text-align: right;padding-right: 2%;">$ {[formatNum(values.standard_total)]}</div>',
+                               '</div>',
+                               {
+                                   getStatusFldOptions:function(value){
+
+
+                                       if( value.remark_val && value.remark_val == "1" ){
+
+                                           return  '<option value="1" style="color:red" {[this.getSelected(values,"1")]}>Inclusive</option>' ;
+
+                                       }else{
+
+                                           return  '<option value="0" style="color:black" {[this.getSelected(values,"0")]}>None</option>'+
+                                        '<option value="1" style="color:red" {[this.getSelected(values,"1")]}>Inclusive</option>'+
+                                      '<option value="2" style="color:blue" {[this.getSelected(values,"2")]} >Add Ons</option>'+
+                                      '<option value="3" style="color:green" {[this.getSelected(values,"3")]} >1M Free Trial</option>'+
+                                      '<option value="4" style="color:green" {[this.getSelected(values,"4")]} >2M Free Trial</option>'+
+                                      '<option value="5" style="color:green" {[this.getSelected(values,"5")]} >3M Free Trial</option>'+
+                                      '<option value="6" style="color:green" {[this.getSelected(values,"6")]} >6M Free Trial</option>'+
+                                      '<option value="7" style="color:green" {[this.getSelected(values,"7")]} >9M Free Trial</option>'+
+                                      '<option value="8" style="color:green" {[this.getSelected(values,"8")]} >1Yr Free Trial</option>' ;
+
+                                       }
+
+                                   },
+
+                                   getSelected:function(value,cmp){
+
+                                       if(value.remark_val && value.remark_val == cmp){
+                                               return "selected";
+                                       }
+
+                                       return "";
+
+                                   },
+
+                                   getColor:function(value){
+
+                                       if( !value.remark_val || value.remark_val == "0" ){
+                                               return "black";
+                                       }
+
+
+                                       if( value.remark_val && value.remark_val == "1" ){
+                                               return "red";
+                                       }
+
+                                       if( value.remark_val && value.remark_val == "2" ){
+                                               return "blue";
+                                       }
+
+                                       if( value.remark_val ){
+
+
+                                           return "green";
+                                       }
+
+                                       return "red" ;
+
+
+                                   }
+
+                               }
+                              )
+                );
+        }else{
+
+
+                headers.setData([{}]);
+                headers.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div class="x-rm-listtpl-main" style=" border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 20px;" data-name="all"></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 2%;text-align: center;" data-name="module_listed_order">',
+                               '        ',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;text-align: center;" data-name="module_name">',
+                               '        Product/ Add Ons&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;text-align: center;" data-name="module_description">',
+                               '       Description&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="trial">',
+                               '        Status&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 6%;text-align: center;" data-name="quantity">',
+                               '        Qty&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: center;" data-name="module_standard_price">',
+                               '        Promo. Price&nbsp;',
+                               '    </div>',
+                               '    <div style="width: 10%;text-align: center;" data-name="per_month">',
+                               '       Per Month&nbsp;',
+                               '    </div>',
+                               '</div>'
+                              )
+                );
+
+                headers.refresh();
+
+
+
+                list.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div style="height:20px" class="x-rm-listtpl-main pointerCursor">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 18px; height:16px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="margin-right: 0px;width: 2%;font-weight: bold;">{module_listed_order}</div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;font-weight: bold;">{module_name}</div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;">{module_description}</div>',
+                               '   <div class="rightBorderDiv" style="width: 10%;">',
+
+                               '<select class="rmProStatusFlds" data-id="{_id}" onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'remark_val\');" style="height: 16px;width: 96%; margin-left:2%; color:{[this.getColor(values,"3")]};">',
+                                      '<option value="0" style="color:black" {[this.getSelected(values,"0")]}>None</option>',
+                                      '<option value="1" style="color:red" {[this.getSelected(values,"1")]}>Inclusive</option>',
+                                      '<option value="2" style="color:blue" {[this.getSelected(values,"2")]} >Add Ons</option>',
+                                      '<option value="3" style="color:green" {[this.getSelected(values,"3")]} >1M Free Trial</option>',
+                                      '<option value="4" style="color:green" {[this.getSelected(values,"4")]} >2M Free Trial</option>',
+                                      '<option value="5" style="color:green" {[this.getSelected(values,"5")]} >3M Free Trial</option>',
+                                      '<option value="6" style="color:green" {[this.getSelected(values,"6")]} >6M Free Trial</option>',
+                                      '<option value="7" style="color:green" {[this.getSelected(values,"7")]} >9M Free Trial</option>',
+                                      '<option value="8" style="color:green" {[this.getSelected(values,"8")]} >1Yr Free Trial</option>',
+
+                               '</select>',
+                               '</div>',
+                                '<div class="rightBorderDiv" style="width: 6%;text-align: center;">',
+                               '    <input type="text" style="width: 68% !important;margin-left: 15%;height: 16px;text-align: center;" class="rmProQtyFlds x-rm-rdinlinecmt" data-id="{_id}" value="{quantity}" maxlength="24"',
+                               '        onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'quantity\');"/>',
+                               '</div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: right;padding-right: 1%;">$ {[formatNum(values.module_promotional_price)]}</div>',
+                               '    <div style="width: 10%;text-align: right;padding-right: 2%;">$ {[formatNum(values.promotional_total)]}</div>',
+                               '</div>',
+                               {
+
+                                   getSelected:function(value,cmp){
+
+                                       if(value.remark_val && value.remark_val == cmp){
+                                               return "selected";
+                                       }
+
+                                       return "";
+
+                                   },
+
+                                   getColor:function(value){
+
+                                       if( !value.remark_val || value.remark_val == "0" ){
+                                               return "black";
+                                       }
+
+
+                                       if( value.remark_val && value.remark_val == "1" ){
+                                               return "red";
+                                       }
+
+                                       if( value.remark_val && value.remark_val == "2" ){
+                                               return "blue";
+                                       }
+
+                                       if( value.remark_val ){
+
+
+                                           return "green";
+                                       }
+
+                                       return "red" ;
+
+
+                                   }
+
+                               }
+                              )
+                );
+        }
+    },
+
+    onPaymentFreqSelectfieldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+        var mPrice =  Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].getValue() ;
+        if( !mPrice || !newValue ){
+            return ;
+        }
+        var contractPrice =parseFloat(mPrice) * parseInt(newValue) ;
+
+
+        var advacePaymentBenList = Ext.ComponentQuery.query('#rmProDiscountsForRtList')[0].down('#mainList');
+
+
+        var selction = advacePaymentBenList.getSelection() ;
+
+        if(selction && selction.length > 0){
+
+          contractPrice =  selction[0].get('discount_total');
+        }
+
+        Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(formatNum(contractPrice));
+    },
+
+    onproductDlAddOnsSlctFldChange: function(selectfield, newValue, oldValue, eOpts) {
+        this.config.datalinkAddonsBundle = null ;
+
+        if(!newValue){
+            return ;
+        }
+
+        var form = Ext.ComponentQuery.query('#datalinkProductSetupSideP1')[0] ;
+
+        var store = selectfield.getStore() ;
+
+        var data = null ;
+        var i = 0 ;
+        for(i=0 ; i < store.getData().all.length ; i++){
+
+            if(newValue == store.getData().all[i].data.value ){
+                data = store.getData().all[i].data ;
+                break ;
+            }
+        }
+
+        if(!data){
+            data = store.getData().all[i-1].data ;
+        }
+
+        console.log(data);
+        this.config.datalinkAddonsBundle = data ;
+
+        var selection = data.products ;
+
+        if(!selection){
+            return ;
+        }
+
+
+        var dlList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList') ;
+        var store = dlList.getStore() ;
+
+        dlList.deselectAll() ;
+
+        for(var i=0 ; i < selection.length ; i ++){
+
+            var rIndex = store.findExact('_id',selection[i].product_id) ;
+
+            if(rIndex !== -1){
+                var dlRec = store.getAt(rIndex) ;
+
+                 if( dlRec.data.module_sku == "DL-DATA"){
+
+                 }else{
+
+                     dlRec.set('quantity',1) ;
+
+                 }
+
+                dlRec.set('remark_val',1) ;
+                dlList.select(dlRec,true,true);
+            }
+        }
+
+
+         RMdatalink.app.getController('ProductBillingController').onModuleListSelectUnSelect() ;
+
+        var timeout = setTimeout(function(){
+
+                               RMdatalink.app.getController('ProductBillingController').removeDLDataOptions() ;
+
+                                clearTimeout(timeout);
+                            },100);
+    },
+
+    onproductDlbdlVendorsSlctFldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+    },
+
+    ControllerAction59: function(selectfield, newValue, oldValue, eOpts) {
+
+         var timeout = setTimeout(function(){
+
+                               RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
+
+                                clearTimeout(timeout);
+                            },100);
+
+    },
+
+    productDlAddonsPriceSlctFldChange: function(selectfield, newValue, oldValue, eOpts) {
+        var selectedPackage = 1 ;
+
+        if(newValue == "module_standard_price" ){
+            selectedPackage = 0 ;
+        }
+
+        //Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(selectedPackage,false,false) ;
+
+        var component = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0];
+        var headers = component.down("#headerList");
+        var list = component.down('#mainList');
+
+        if(selectedPackage == 0)
+        {
+
+                headers.setData([{}]);
+                headers.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div class="x-rm-listtpl-main" style=" border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 20px;" data-name="all"></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 2%;text-align: center;" data-name="module_listed_order">',
+                               '        ',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;text-align: center;" data-name="module_name">',
+                               '        Product/ Add Ons&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;text-align: center;" data-name="module_description">',
+                               '       Description (N0. of SKU, Images, Addl Images)&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="trial">',
+                               '        Status&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 6%;text-align: center;" data-name="quantity">',
+                               '        Qty&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: center;" data-name="module_standard_price">',
+                               '        Std. Price&nbsp;',
+                               '    </div>',
+                               '    <div style="width: 10%;text-align: center;" data-name="per_month">',
+                               '         Per Month&nbsp;',
+                               '    </div>',
+                               '</div>'
+                              )
+                );
+
+                headers.refresh();
+
+
+
+                list.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div style="height:20px" class="x-rm-listtpl-main pointerCursor">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 18px; height:16px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="margin-right: 0px;width: 2%;">{module_listed_order}</div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;font-weight: bold;">{module_name}</div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;">{module_description}</div>',
+                               '   <div class="rightBorderDiv" style="width: 10%;">',
+
+                               '<select class="rmProStatusFlds" data-id="{_id}" onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'remark_val\');" style="height: 16px;width: 96%; margin-left:2%; color:{[this.getColor(values,"3")]};">',
+                                      '<option value="0" style="color:black" {[this.getSelected(values,"0")]}>None</option>',
+                                      '<option value="1" style="color:red" {[this.getSelected(values,"1")]}>Inclusive</option>',
+                                      '<option value="2" style="color:blue" {[this.getSelected(values,"2")]} >Add Ons</option>',
+                                      '<option value="3" style="color:green" {[this.getSelected(values,"3")]} >1M Free Trial</option>',
+                                      '<option value="4" style="color:green" {[this.getSelected(values,"4")]} >2M Free Trial</option>',
+                                      '<option value="5" style="color:green" {[this.getSelected(values,"5")]} >3M Free Trial</option>',
+                                      '<option value="6" style="color:green" {[this.getSelected(values,"6")]} >6M Free Trial</option>',
+                                      '<option value="7" style="color:green" {[this.getSelected(values,"7")]} >9M Free Trial</option>',
+                                      '<option value="8" style="color:green" {[this.getSelected(values,"8")]} >1Yr Free Trial</option>',
+
+                               '</select>',
+                               '</div>',
+                               '<div class="rightBorderDiv" style="width: 6%;text-align: center;">',
+                               '    <input type="text" style="width: 68% !important;margin-left: 15%;height: 16px;text-align: center;" class="rmProStatusFlds x-rm-rdinlinecmt" data-id="{_id}" value="{quantity}" maxlength="24"',
+                               '        onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'quantity\');"/>',
+                               '</div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: right;padding-right: 1%;">$ {[formatNum(values.module_standard_price)]}</div>',
+                               '    <div style="width: 10%;text-align: right;padding-right: 2%;">$ {[formatNum(values.standard_total)]}</div>',
+                               '</div>',
+                               {
+
+                                   getSelected:function(value,cmp){
+
+                                       if(value.remark_val && value.remark_val == cmp){
+                                               return "selected";
+                                       }
+
+                                       return "";
+
+                                   },
+
+                                   getColor:function(value){
+
+                                       if( !value.remark_val || value.remark_val == "0" ){
+                                               return "black";
+                                       }
+
+
+                                       if( value.remark_val && value.remark_val == "1" ){
+                                               return "red";
+                                       }
+
+                                       if( value.remark_val && value.remark_val == "2" ){
+                                               return "blue";
+                                       }
+
+                                       if( value.remark_val ){
+
+
+                                           return "green";
+                                       }
+
+                                       return "red" ;
+
+
+                                   }
+
+                               }
+                              )
+                );
+        }else{
+
+
+                headers.setData([{}]);
+                headers.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div class="x-rm-listtpl-main" style=" border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 20px;" data-name="all"></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 2%;text-align: center;" data-name="module_listed_order">',
+                               '        ',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;text-align: center;" data-name="module_name">',
+                               '        Product/ Add Ons&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;text-align: center;" data-name="module_description">',
+                               '       Description (N0. of SKU, Images, Addl Images)&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="trial">',
+                               '        Status&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 6%;text-align: center;" data-name="quantity">',
+                               '        Qty&nbsp;',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: center;" data-name="module_standard_price">',
+                               '        Promo. Price&nbsp;',
+                               '    </div>',
+                               '    <div style="width: 10%;text-align: center;" data-name="per_month">',
+                               '       Per Month&nbsp;',
+                               '    </div>',
+                               '</div>'
+                              )
+                );
+
+                headers.refresh();
+
+
+
+                list.setItemTpl(
+                    Ext.create('Ext.XTemplate',
+                               '<div style="height:20px" class="x-rm-listtpl-main pointerCursor">',
+                               '    <div style="width: 4%;">',
+                               '        <div style="width: 18px; height:16px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                               '    </div>',
+                               '    <div class="rightBorderDiv" style="margin-right: 0px;width: 2%;font-weight: bold;">{module_listed_order}</div>',
+                               '    <div class="rightBorderDiv" style="width: 14%;font-weight: bold;">{module_name}</div>',
+                               '    <div class="rightBorderDiv" style="width: 46%;">{module_description}</div>',
+                               '   <div class="rightBorderDiv" style="width: 10%;">',
+
+                               '<select class="rmProStatusFlds" data-id="{_id}" onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'remark_val\');" style="height: 16px;width: 96%; margin-left:2%; color:{[this.getColor(values,"3")]};">',
+                                      '<option value="0" style="color:black" {[this.getSelected(values,"0")]}>None</option>',
+                                      '<option value="1" style="color:red" {[this.getSelected(values,"1")]}>Inclusive</option>',
+                                      '<option value="2" style="color:blue" {[this.getSelected(values,"2")]} >Add Ons</option>',
+                                      '<option value="3" style="color:green" {[this.getSelected(values,"3")]} >1M Free Trial</option>',
+                                      '<option value="4" style="color:green" {[this.getSelected(values,"4")]} >2M Free Trial</option>',
+                                      '<option value="5" style="color:green" {[this.getSelected(values,"5")]} >3M Free Trial</option>',
+                                      '<option value="6" style="color:green" {[this.getSelected(values,"6")]} >6M Free Trial</option>',
+                                      '<option value="7" style="color:green" {[this.getSelected(values,"7")]} >9M Free Trial</option>',
+                                      '<option value="8" style="color:green" {[this.getSelected(values,"8")]} >1Yr Free Trial</option>',
+
+                               '</select>',
+                               '</div>',
+                                '<div class="rightBorderDiv" style="width: 6%;text-align: center;">',
+                               '    <input type="text" style="width: 68% !important;margin-left: 15%;height: 16px;text-align: center;" class="rmProStatusFlds x-rm-rdinlinecmt" data-id="{_id}" value="{quantity}" maxlength="24"',
+                               '        onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'quantity\');"/>',
+                               '</div>',
+                               '    <div class="rightBorderDiv" style="width: 8%;text-align: right;padding-right: 1%;">$ {[formatNum(values.module_promotional_price)]}</div>',
+                               '    <div style="width: 10%;text-align: right;padding-right: 2%;">$ {[formatNum(values.promotional_total)]}</div>',
+                               '</div>',
+                               {
+
+                                   getSelected:function(value,cmp){
+
+                                       if(value.remark_val && value.remark_val == cmp){
+                                               return "selected";
+                                       }
+
+                                       return "";
+
+                                   },
+
+                                   getColor:function(value){
+
+                                       if( !value.remark_val || value.remark_val == "0" ){
+                                               return "black";
+                                       }
+
+
+                                       if( value.remark_val && value.remark_val == "1" ){
+                                               return "red";
+                                       }
+
+                                       if( value.remark_val && value.remark_val == "2" ){
+                                               return "blue";
+                                       }
+
+                                       if( value.remark_val ){
+
+
+                                           return "green";
+                                       }
+
+                                       return "red" ;
+
+
+                                   }
+
+                               }
+                              )
+                );
+        }
+    },
+
+    onproductDlPriceOptionsimgAdlImgSlctFldChange: function(selectfield, newValue, oldValue, eOpts) {
+        if(!newValue){
+
+            return ;
+
+        }
+
+        var DlVdPricingSkuImgsStr = Ext.getStore('DlVdPricingSkuImgs') ;
+        var DlVdPricingSkuImgsAddlImages = Ext.getStore('DlVdPricingSkuImgsAddlImages') ;
+        var DlPricingVendors = Ext.getStore('DlPricingVendors') ;
+
+
+        var ecomVdPricingSkuImgsStr = Ext.getStore('ecomVdPricingSkuImgs') ;
+        var ecomVdPricingSkuImgsAddlImages = Ext.getStore('ecomVdPricingSkuImgsAddlImages') ;
+        var ecomPricingVendors = Ext.getStore('ecomPricingVendors') ;
+
+
+        var productDlVdrPricingPolicySlctFld = Ext.ComponentQuery.query('#productDlVdrPricingPolicySlctFld')[0] ;
+
+
+        if(this.config.isecomProduct){
+            if(newValue == "sku_images")
+            {
+
+                productDlVdrPricingPolicySlctFld.setValue(null);
+                productDlVdrPricingPolicySlctFld.setStore(ecomVdPricingSkuImgsStr) ;
+            }
+            else
+                if(newValue == "vendors" || newValue == "vendorsAddl")
+                {
+                    productDlVdrPricingPolicySlctFld.setValue(null);
+                    productDlVdrPricingPolicySlctFld.setStore(ecomPricingVendors) ;
+                }
+                else
+                {
+                    productDlVdrPricingPolicySlctFld.setValue(null);
+                    productDlVdrPricingPolicySlctFld.setStore(ecomVdPricingSkuImgsAddlImages) ;
+                }
+        }
+        else{
+
+            if(newValue == "sku_images")
+            {
+
+                productDlVdrPricingPolicySlctFld.setStore(DlVdPricingSkuImgsStr) ;
+            }else if(newValue == "vendors" || newValue == "vendorsAddl"){
+
+                productDlVdrPricingPolicySlctFld.setStore(DlPricingVendors) ;
+            }
+
+            else{
+                productDlVdrPricingPolicySlctFld.setStore(DlVdPricingSkuImgsAddlImages) ;
+            }
+        }
+    },
+
+    onproductDlVdrPricingPolicySlctFldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+        if(!newValue){
+            return ;
+        }
+
+        var store = selectfield.getStore() ;
+        var BillingDetailsController = RMdatalink.app.getController('BillingDetailsController') ;
+
+
+
+        var dIndex = store.findExact('value',newValue) ;
+        var data = store.getData().all[dIndex].data.policy ;
+
+        console.error(dIndex) ;
+        var rec = store.getData().all[dIndex].data ;
+
+
+
+        this.config.tempPricePolicy = rec ;
+
+        /*
+        if(store.getId() == "DlVdPricingSkuImgs"){
+            BillingDetailsController.updateVdrAsPolicyChange(rec);
+        }else{
+            BillingDetailsController.updateVdrsAsAddlImgPolicyChange(rec);
+        }
+        */
+
+         var timeout = setTimeout(function(){
+
+                               RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
+
+                                clearTimeout(timeout);
+                            },500);
+
+
+
+    },
+
+    onproductDlDiscountVdrsSlctFldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+         var timeout = setTimeout(function(){
+
+                               RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
+
+                                clearTimeout(timeout);
+                            },100);
+
+    },
+
+    onproductDlDiscountSKUSlctFldChange: function(selectfield, newValue, oldValue, eOpts) {
+
+         var timeout = setTimeout(function(){
+
+                               RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
+
+                                clearTimeout(timeout);
+                            },100);
 
     },
 
@@ -262,18 +1405,34 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;
 
         var adOnsStore = addOnsList.getStore() ;
+
+        var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
+        var allModuleList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList') ;
+
+
          for(var i =0 ; i< rm_pro_modules.length; i++){
 
             var recIndex = adOnsStore.findExact('_id', rm_pro_modules[i].module_id ) ;
 
             if(recIndex != -1)
             {
-
                 addOnsList.select(adOnsStore.getAt(recIndex),true,true) ;
+            }
 
+
+              var mrIndex = allMoulesStore.findExact('_id', rm_pro_modules[i].module_id ) ;
+
+            if(mrIndex != -1)
+            {
+                allModuleList.select(allMoulesStore.getAt(mrIndex),true,true) ;
 
             }
+
          }
+
+        this.setRMPackageModule() ;
+
+
     },
 
     getBillingSheet: function() {
@@ -287,6 +1446,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
          return Ext.widget('retailerBillingSheet');
         }
 
+
+
     },
 
     setRM_PROPackageList: function() {
@@ -295,6 +1456,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         if(billingController.config.pricingData){
 
+
+             Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setOptions(billingController.config.pricingData[3].pricing_policy);
 
                 RMdatalink.util.globalMethods.fillListData('#rmProSelectPackageList',billingController.config.pricingData[3].pricing_policy);
 
@@ -324,6 +1487,9 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             data[i].trial = "";
             data[i].quantity = qunty ;
             data[i].per_month = 1 ;
+
+
+
 
         }
 
@@ -362,6 +1528,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             }
 
 
+        var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
+        allMoulesStore.removeAll();
+        allMoulesStore.sync() ;
+
+        allMoulesStore.setData(data);
+        allMoulesStore.sync() ;
+
     },
 
     updateBillPrices: function() {
@@ -395,7 +1568,115 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         this.calculateBillingPrices() ;
     },
 
+    updateRmproAllModuleList: function(inputFld, record_key) {
+        console.log(inputFld.attributes['data-id'].value) ;
+
+        var _id = inputFld.attributes['data-id'].value ;
+        var value = inputFld.value ;
+
+        var rmProBillingStore = Ext.getStore('products.AllBillingModulesStore') ;
+        var recIndex = rmProBillingStore.findExact('_id',_id) ;
+
+        if(recIndex == -1){
+            return ;
+        }
+
+
+        var record = rmProBillingStore.getAt(recIndex) ;
+
+        record.set(record_key,value) ;
+
+
+
+
+
+
+        var packageStore = Ext.getStore('products.BillingFromPackages') ;
+
+        var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;
+
+        var adOnsStore = addOnsList.getStore() ;
+
+
+        recIndex = adOnsStore.findExact('_id',_id) ;
+
+
+        if( recIndex != -1 ){
+             record = adOnsStore.getAt(recIndex) ;
+             record.set(record_key,value) ;
+        }
+
+
+
+        if( record_key == "remark_val" )
+        {
+            var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+            if(value >= 2)
+            {
+
+              productList.select(record,true,false) ;
+        //       record.set('quantity',1 );
+
+
+              addOnsList.select(record,true,false) ;
+              record.set('quantity',1 );
+
+            }else{
+
+              productList.deselect(record,false) ;
+        //       record.set('quantity',0 );
+
+              addOnsList.select(record,true,false) ;
+              record.set('quantity',0 );
+
+            }
+
+            if(record.get('module_sku') != "DL-DATA" && value == 1){
+
+                 record.set('remark_val',0 );
+
+            }
+
+        }
+
+
+        if(record_key == "quantity"  )
+        {
+             var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+            if(value >= 1)
+            {
+
+              productList.select(record,true,false) ;
+              addOnsList.select(record,true,false) ;
+
+                record.set('remark_val',2 );
+
+            }else{
+
+              productList.deselect(record,false) ;
+              addOnsList.select(record,true,false) ;
+
+               record.set('remark_val', 0 );
+            }
+        }
+
+
+
+
+        this.calculateBillingPrices() ;
+    },
+
     calculateBillingPrices: function() {
+
+            if(this.config.productKey == "product_datalink" || this.config.isecomProduct )
+            {
+               this.calculateDatalinkBillingPrices() ;
+                return ;
+            }
+
+
+
+
 
         var rmProBillingStore = Ext.getStore('products.BillingRmproModules') ;
         var moduleList = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down('#mainList') ;
@@ -403,13 +1684,14 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
         var rateKey = Ext.ComponentQuery.query('#rmProSelectRateList')[0].getSelection()[0].data.value ;
-
+        var packagePrice =0 ;
         /*
 
         module_standard_price
         module_promotional_price
 
         */
+        var addOnsBundlePrice = 0 ;
 
 
         for(var i=0; i < rmProBillingStore.getData().all.length; i++){
@@ -421,6 +1703,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             var stdRate = tRec.get("module_standard_price") ? parseInt(tRec.get("module_standard_price"),0) : 1 ;
             var promoRate = tRec.get("module_promotional_price") ? parseInt(tRec.get("module_promotional_price"),0) : 1 ;
+
+
+
+            if(this.config.productKey == "product_datalink" &&  tRec.data.module_sku == "DL-DATA")
+            {
+                qty = 1 ;
+            }
 
             var per_month = qty * rate ;
 
@@ -451,10 +1740,10 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         for(var i=0 ; i <selectedModules.length ; i++){
 
-            totalMonthlyMemberShip +=  parseInt(selectedModules[i].get('per_month'),0)  ;
+            totalMonthlyMemberShip +=  parseFloat(selectedModules[i].get('per_month'),0)  ;
 
-            totalStandardMonthlyMbrShip +=  parseInt(selectedModules[i].get('standard_total'),0)  ;
-            totalPromotionalMonthlyMbrShip +=  parseInt(selectedModules[i].get('promotional_total'),0)  ;
+            totalStandardMonthlyMbrShip +=  parseFloat(selectedModules[i].get('standard_total'),0)  ;
+            totalPromotionalMonthlyMbrShip +=  parseFloat(selectedModules[i].get('promotional_total'),0)  ;
 
         }
 
@@ -465,10 +1754,12 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             if(record.data.rm_pro_bundle_price)
             {
-                totalMonthlyMemberShip += parseInt(record.data.rm_pro_bundle_price,0) ;
+                totalMonthlyMemberShip += parseFloat(record.data.rm_pro_bundle_price,0) ;
 
-                totalStandardMonthlyMbrShip += parseInt(record.data.rm_pro_bundle_price,0) ;
-                totalPromotionalMonthlyMbrShip += parseInt(record.data.rm_pro_bundle_price,0) ;
+                totalStandardMonthlyMbrShip += parseFloat(record.data.rm_pro_bundle_price,0) ;
+                totalPromotionalMonthlyMbrShip += parseFloat(record.data.rm_pro_bundle_price,0) ;
+
+                packagePrice = parseFloat(record.data.rm_pro_bundle_price,0) ;
             }
         }
 
@@ -510,9 +1801,239 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
              Ext.ComponentQuery.query('#rmProStdPriceTotalLbl')[0].setCls('textThroughLine');
         }
+
+
+
+        /////////////////////////////New total and discount calculation for rmpro
+
+        var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+        var selectedRec = productList.getSelection() ;
+             totalMonthlyMemberShip  = 0 ;
+
+            totalStandardMonthlyMbrShip = 0 ;
+            totalPromotionalMonthlyMbrShip = 0 ;
+
+        var allPackModulePrice = 0 ;
+        var additionalPackPrice = 0 ;
+
+        for(var i=0; i< selectedRec.length; i++){
+
+            totalMonthlyMemberShip +=  parseFloat(selectedRec[i].get('per_month'),0)  ;
+            totalStandardMonthlyMbrShip +=  parseFloat(selectedRec[i].get('standard_total'),0)  ;
+            totalPromotionalMonthlyMbrShip +=  parseFloat(selectedRec[i].get('promotional_total'),0)  ;
+
+            if(selectedRec[i].get('remark_val') == 1)
+            {
+                allPackModulePrice +=  parseFloat(selectedRec[i].get('per_month'),0)  ;
+            }else{
+                additionalPackPrice +=  parseFloat(selectedRec[i].get('per_month'),0)  ;
+            }
+
+        }
+        //packagePrice
+
+        this.config.allPackModulePrice = allPackModulePrice ;
+
+        this.config.totalMonthlyMemberShip = totalMonthlyMemberShip ;
+
+        Ext.ComponentQuery.query('#rtBillTotalMonthlyMbrShipMainFld')[0].setValue(formatNum(totalMonthlyMemberShip));
+        var packageDiscount = allPackModulePrice - packagePrice ;
+
+        Ext.ComponentQuery.query('#rtBillBundleDiscountTxtFld')[0].setValue(formatNum(packageDiscount)) ;
+        this.config.packageDiscount =packageDiscount ;
+        this.config.finalCalPrice = packagePrice + additionalPackPrice ;
+        //Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(packagePrice + additionalPackPrice ) ;
+        var addDiscount =  totalMonthlyMemberShip - packageDiscount - (Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].getValue()) ;//allPackModulePrice - (packagePrice + additionalPackPrice) ;
+        Ext.ComponentQuery.query('#rtBillAdditionalDiscountTxtFld')[0].setValue(formatNum(addDiscount) ) ;
+
+    },
+
+    calculateDatalinkBillingPrices: function() {
+
+        var rmProBillingStore = Ext.getStore('products.BillingRmproModules') ;
+        var moduleList = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down('#mainList') ;
+        var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;
+
+
+        var rateKey = Ext.ComponentQuery.query('#rmProSelectRateList')[0].getSelection()[0].data.value ;
+        var packagePrice =0 ;
+
+        /*
+
+        module_standard_price
+        module_promotional_price
+
+        */
+
+
+
+        var addOnsBundlePrice = 0 ;
+
+
+        for(var i=0; i < rmProBillingStore.getData().all.length; i++){
+
+            var tRec = rmProBillingStore.getAt(i);
+
+            var qty = tRec.get("quantity") ? parseInt(tRec.get("quantity"),0) : 1 ;
+            var rate = tRec.get(rateKey) ? parseInt(tRec.get(rateKey),0) : 1 ;
+
+            var stdRate = tRec.get("module_standard_price") ? parseInt(tRec.get("module_standard_price"),0) : 1 ;
+            var promoRate = tRec.get("module_promotional_price") ? parseInt(tRec.get("module_promotional_price"),0) : 1 ;
+
+
+
+            if(  ( (this.config.productKey == "product_datalink" ||this.config.isecomProduct ) &&  tRec.data.module_sku == "DL-DATA" ) ||
+                 ( tRec.data.module_name == "Additional Vendors"  && this.getIsFromVip() )
+              )
+            {
+                qty = 1 ;
+            }
+
+            var per_month = qty * rate ;
+
+            var stdPerMonth = qty * stdRate ;
+
+            var promoPerMonth = qty * promoRate ;
+
+            tRec.set("per_month",per_month);
+
+            tRec.set("standard_total",stdPerMonth);
+            tRec.set("promotional_total",promoPerMonth);
+
+
+            tRec.dirty = true ;
+
+        }
+
+        rmProBillingStore.sync() ;
+
+
+
+        var selectedModules = addOnsList.getSelection() ;
+
+        var totalMonthlyMemberShip = 0 ;
+
+        var totalStandardMonthlyMbrShip = 0 ;
+        var totalPromotionalMonthlyMbrShip = 0 ;
+
+        for(var i=0 ; i <selectedModules.length ; i++){
+
+            totalMonthlyMemberShip +=  parseFloat(selectedModules[i].get('per_month'),0)  ;
+
+            totalStandardMonthlyMbrShip +=  parseFloat(selectedModules[i].get('standard_total'),0)  ;
+            totalPromotionalMonthlyMbrShip +=  parseFloat(selectedModules[i].get('promotional_total'),0)  ;
+
+        }
+
+        ////if product RM-PRO
+        if(this.config.productKey == "product_rmpro")
+        {
+            var record = Ext.ComponentQuery.query('#rmProSelectPackageList')[0].getSelection()[0] ;
+
+            if(record.data.rm_pro_bundle_price)
+            {
+                totalMonthlyMemberShip += parseFloat(record.data.rm_pro_bundle_price,0) ;
+
+                totalStandardMonthlyMbrShip += parseFloat(record.data.rm_pro_bundle_price,0) ;
+                totalPromotionalMonthlyMbrShip += parseFloat(record.data.rm_pro_bundle_price,0) ;
+
+                packagePrice = parseFloat(record.data.rm_pro_bundle_price,0) ;
+            }
+        }
+
+        if(this.config.datalinkAddonsBundle )
+        {
+           packagePrice = this.config.datalinkAddonsBundle.price ;
+        }
+
+        Ext.ComponentQuery.query('#rtBillTotalMonthlyMbrShipFld')[0].setValue(totalMonthlyMemberShip) ;
+
+
+        //if(this.config.productKey == "product_rmpro"){
+            this.calculateBillingDiscount();
+        //}
+
+        //textThroughLine
+        /*
+        var discounList = Ext.ComponentQuery.query('#rmProDiscountsForRtListPanel')[0].down('#mainList');
+
+        var yrlyDiscount = discounList.getSelection();
+
+        if(yrlyDiscount.length > 0){
+
+            yrlyDiscount = yrlyDiscount[0] ;
+        }
+        */
+
+         Ext.ComponentQuery.query('#rmProStdPriceTotalLbl')[0].setHtml("$ "+totalStandardMonthlyMbrShip);
+        Ext.ComponentQuery.query('#rmProPrmotionalPriceTotalLbl')[0].setHtml("$ "+totalPromotionalMonthlyMbrShip);
+
+        if(rateKey == "module_standard_price" )
+        {
+         Ext.ComponentQuery.query('#rmProPrmotionalPriceTotalLbl')[0].setHidden(true);
+
+          Ext.ComponentQuery.query('#rmProStdPriceTotalLbl')[0].setWidth("20%");
+
+             Ext.ComponentQuery.query('#rmProStdPriceTotalLbl')[0].removeCls('textThroughLine');
+        }else{
+
+             Ext.ComponentQuery.query('#rmProPrmotionalPriceTotalLbl')[0].setHidden(false);
+
+          Ext.ComponentQuery.query('#rmProStdPriceTotalLbl')[0].setWidth("10%");
+
+             Ext.ComponentQuery.query('#rmProStdPriceTotalLbl')[0].setCls('textThroughLine');
+        }
+
+
+
+        /////////////////////////////New total and discount calculation for rmpro
+
+        var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+        var selectedRec = productList.getSelection() ;
+             totalMonthlyMemberShip  = 0 ;
+
+            totalStandardMonthlyMbrShip = 0 ;
+            totalPromotionalMonthlyMbrShip = 0 ;
+
+        var allPackModulePrice = 0 ;
+        var additionalPackPrice = 0 ;
+
+        for(var i=0; i< selectedRec.length; i++){
+
+            totalMonthlyMemberShip +=  parseFloat(selectedRec[i].get('per_month'),0)  ;
+            totalStandardMonthlyMbrShip +=  parseFloat(selectedRec[i].get('standard_total'),0)  ;
+            totalPromotionalMonthlyMbrShip +=  parseFloat(selectedRec[i].get('promotional_total'),0)  ;
+
+            if(selectedRec[i].get('remark_val') == 1  && selectedRec[i].get('module_sku') != "DL-DATA" )
+            {
+                allPackModulePrice +=  parseFloat(selectedRec[i].get('per_month'),0)  ;
+            }else{
+                additionalPackPrice +=  parseFloat(selectedRec[i].get('per_month'),0)  ;
+            }
+
+        }
+        //packagePrice
+
+        this.config.allPackModulePrice = allPackModulePrice ;
+
+        this.config.totalMonthlyMemberShip = totalMonthlyMemberShip ;
+
+        Ext.ComponentQuery.query('#rtBillTotalMonthlyMbrShipMainFld')[0].setValue(formatNum(totalMonthlyMemberShip));
+        var packageDiscount = allPackModulePrice - packagePrice ;
+
+        Ext.ComponentQuery.query('#rtBillBundleDiscountTxtFld')[0].setValue(formatNum(packageDiscount)) ;
+        this.config.packageDiscount =packageDiscount ;
+        this.config.finalCalPrice = packagePrice + additionalPackPrice ;
+        //Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(packagePrice + additionalPackPrice ) ;
+        var addDiscount =  totalMonthlyMemberShip - packageDiscount - (Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].getValue()) ;//allPackModulePrice - (packagePrice + additionalPackPrice) ;
+        Ext.ComponentQuery.query('#rtBillAdditionalDiscountTxtFld')[0].setValue(formatNum(addDiscount) ) ;
+
     },
 
     onModuleListSelectUnSelect: function() {
+
+
+
 
          var that = this ;
          var timeout = setTimeout(function(){
@@ -532,13 +2053,16 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         Ext.ComponentQuery.query('#rtBillDiscountTxtFld')[0].setValue(discFldValue);
 
-        Ext.ComponentQuery.query('#rtBillYearlyMemberShipFld')[0].setValue( (parseFloat(newValue) * 12).toFixed(2) );
+        var yrlyMbrShip = (parseFloat(newValue) * 12).toFixed(2) ;
+
+        Ext.ComponentQuery.query('#rtBillYearlyMemberShipFld')[0].setValue( formatNum(yrlyMbrShip) );
+
 
 
 
         var rtDiscountStore = Ext.getStore('products.BillingDiscount') ;
 
-        var yrlyMbrShip = Ext.ComponentQuery.query('#rtBillYearlyMemberShipFld')[0].getValue() ;
+        //var yrlyMbrShip = Ext.ComponentQuery.query('#rtBillYearlyMemberShipFld')[0].getValue() ;
 
         if( !yrlyMbrShip || yrlyMbrShip == ""){
             return ;
@@ -558,9 +2082,9 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 duration = i + 1;
             }
 
-                discount_total =  Math.round(discount_total) ;
-                discount_saving =  Math.round(discount_saving) ;
-                discount_per_month =  Math.round(discount_per_month) ;
+                discount_total =   discount_total.toFixed(2) ; //Math.round(discount_total) ;
+                discount_saving = discount_saving.toFixed(2) ; // Math.round(discount_saving) ;
+                discount_per_month = discount_per_month.toFixed(2) ; // Math.round(discount_per_month) ;
 
             rec.set('discount_total',discount_total * duration );
             rec.set('discount_saving',discount_saving * duration  );
@@ -574,6 +2098,11 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
     initProductRtBilling: function() {
         //Retailer RM-PRO Billing
+
+        Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].setHidden(false);
+        Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0].setHidden(true);
+        Ext.ComponentQuery.query('#rtDatalinkTotalFldsLbl')[0].setHidden(true);
+        Ext.ComponentQuery.query('#rmProModulesForRtList')[0].setHidden(true);
 
         var rtRecord =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow().record ;
 
@@ -595,6 +2124,11 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(0,false,true) ;
             Ext.ComponentQuery.query('#rmProSelectPackageList')[0].select(0,false,false) ;
+
+             Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(1) ;
+             Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0].setValue('module_standard_price') ;
+
+
            // Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(0,false,true) ;
 
             return ;
@@ -617,13 +2151,23 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         }
         Ext.ComponentQuery.query('#rmProSelectPackageList')[0].select((selectedPackage-1),false,true) ;
 
+        var rtVal = 'module_promotional_price';
+        if(selectedRate == "0" ){
+            rtVal = 'module_standard_price';
+        }
+
         Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(selectedRate,false,false) ;
+
+          Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setValue( selectedPackage );
+        Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0].setValue( rtVal );
+
+
 
         if(Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0])
         {
             Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].setValue(intActDate) ;
         }
-        Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(monthlyMbrShip) ;
+        Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(formatNum(monthlyMbrShip)) ;
 
         var modules = product_billng.product_rmpro.product_modules ;
 
@@ -680,40 +2224,6 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         }
 
 
-        var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
-
-         var contractPeriod =  parseInt(product_billng.product_rmpro.contract_period, 0);
-
-        if(!contractPeriod){
-
-            contractTermList.select(0);
-        }else{
-                var contractStore = contractTermList.getStore() ;
-
-             var searchValForContract = contractPeriod.toString() ;
-
-            var recIndexForContract = contractStore.findExact('value',searchValForContract);
-
-            if(recIndexForContract != -1){
-
-                contractTermList.select(recIndexForContract) ;
-            }
-
-        //     switch(contractPeriod){
-
-        //             case 12:
-        //              paymentPrdList.select(0);
-        //             break;
-
-        //             case 24:
-        //              paymentPrdList.select(1);
-        //             break;
-
-        //             case 36:
-        //              paymentPrdList.select(2);
-        //             break;
-        //     }
-        }
 
 
         var discountList = Ext.ComponentQuery.query('#rmProDiscountsForRtListPanel')[0].down('#mainList');
@@ -721,10 +2231,10 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
          var discountValue =  parseInt(product_billng.product_rmpro.advance_payment_period, 0);
         var discountStore = discountList.getStore() ;
 
-        if(!contractPeriod){
+        // if(!contractPeriod){
 
 
-        }else{
+        // }else{
 
 
             var searchVal = (discountValue/12).toString() ;
@@ -736,7 +2246,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 discountList.select(recIndex) ;
             }
 
-        }
+        //}
 
          Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(product_billng.product_rmpro.contract_start_date ) ;
 
@@ -745,6 +2255,46 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             commission_percent:Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].getValue(),
             sales_persons:getSalesPersons()
         */
+
+        var temp =product_billng.product_rmpro ;
+          Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;  ;
+
+          Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue(temp.due_date) ;
+          Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(temp.contract_price) ;
+          Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].setValue(temp.contract_sent_date) ;
+          Ext.ComponentQuery.query('#productRmproContractSignedDateFld')[0].setValue(temp.contract_signed_date) ;
+        // Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setValue(temp.contract_renewal_date) ;
+          Ext.ComponentQuery.query('#productRmproContractSendNewFld')[0].setValue(temp.contract_send_date) ;
+
+        Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(temp.payment_frequency) ;
+
+        var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
+
+         var contractPeriod =  parseInt(product_billng.product_rmpro.contract_period, 0);
+
+
+
+        if(!contractPeriod){
+
+            Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(12) ;
+            contractTermList.select(0);
+        }else{
+
+            Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(contractPeriod) ;
+                var contractStore = contractTermList.getStore() ;
+
+             var searchValForContract = contractPeriod.toString() ;
+
+            var recIndexForContract = contractStore.findExact('value',searchValForContract);
+
+            if(recIndexForContract != -1){
+
+                contractTermList.select(recIndexForContract) ;
+            }
+
+
+        }
+
     },
 
     saveRtProductBilling: function(showSubscription) {
@@ -772,11 +2322,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 trial:
                 quantity:
             }
-
             ]
-
             }
-
         }
         */
 
@@ -814,7 +2361,9 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             temp.payment_frequency = getPayemntPeriod() ;
 
-        if(!temp.due_date )
+            temp.payment_status = "unpaid" ;
+
+        if(!temp.due_date && false)
         {
 
             temp.due_date =  Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].getValue() ;
@@ -882,12 +2431,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                         paymentInterval =  temp.payment_period ;
                     }
 
+                   temp.total_payble = Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].getValue() ;
 
-                     paymentInterval = parseInt(paymentInterval,0) ;
+                    paymentInterval = parseInt(paymentInterval,0) ;
 
-                    if(! temp.payment_period_start ||   temp.payment_period_start == "")
+                    if( true ||! temp.payment_period_start ||   temp.payment_period_start == "")
                     {
-                     temp.payment_period_start =  Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].getValue() ;
+                     temp.payment_period_start =  Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].getValue() ;
                     }
 
                     temp.contract_start_date =  Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].getValue() ;
@@ -897,9 +2447,20 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                      tempEndDate.setMonth(tempEndDate.getMonth() + paymentInterval) ;
 
-                     temp.payment_period_end = (tempEndDate.getMonth() + 1 ) + "/"+ (tempEndDate.getDate())+"/" + tempEndDate.getFullYear();
+                     temp.payment_period_end = (tempEndDate.getMonth() + 1 ) + "/"+ (tempEndDate.getDate())+"/" + tempEndDate.getFullYear(); // Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].getValue() ;  //(tempEndDate.getMonth() + 1 ) + "/"+ (tempEndDate.getDate())+"/" + tempEndDate.getFullYear();
 
+                    temp.due_date =  Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].getValue() ;
+                    temp.contract_price =  Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].getValue() ;
+                    temp.contract_sent_date =  Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].getValue() ;
+                    temp.contract_signed_date =  Ext.ComponentQuery.query('#productRmproContractSignedDateFld')[0].getValue() ;
+                    temp.contract_renewal_date =  Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].getValue() ;
+                    temp.contract_send_date =  Ext.ComponentQuery.query('#productRmproContractSendNewFld')[0].getValue() ;
 
+                    temp.payment_frequency = Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].getValue() ;
+
+        if(temp.delete_status){
+            delete invoice.delete_status ;
+        }
 
                      recToUpdate.product_billng.product_rmpro =  temp ;
 
@@ -926,15 +2487,15 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                     function suc(){
 
-                        //rtRecord.set('product_billng',recToUpdate.product_billng);
 
                            RMdatalink.app.getController('Main').updateRetailerRecords("product_billng",recToUpdate.product_billng, rtRecord.get('_id')) ;
 
+                           rtRecord.set("product_billng",recToUpdate.product_billng);
                         Ext.Viewport.setMasked(false);
-                        that.hideProductBillingSheet();
+                       // that.hideProductBillingSheet();
 
                         if(showSubscription){
-
+                            that.hideProductBillingSheet();
                             RMdatalink.app.getController('InvoiceController').showSubscriptionPage();
                         }
 
@@ -1008,6 +2569,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         function getContractPeriod(){
 
+            return Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].getValue() ;
 
             var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
 
@@ -1038,7 +2600,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 {
                     module_id:records[i].get('_id'),
                     trial:records[i].get('trial'),
-                    quantity:records[i].get('quantity')
+                    quantity:records[i].get('quantity'),
+                    remark_val:records[i].get('remark_val')
                 }
             );
         }
@@ -1047,11 +2610,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
     },
 
     selectModulefrmModuleId: function(modules) {
-        //        RMdatalink.app.getController('BillingDetailsController').config.pricingData[3].active_pricing_policy =  0;
-
-        //               RMdatalink.app.getController('BillingDetailsController').loadRM_PROData() ;
-
-
+        try{
 
         var moduleList = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down('#mainList') ;
 
@@ -1070,7 +2629,10 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                 var record = moduleStore.getAt(recIndex) ;
 
-                // record.set('quantity',modules[i].quantity);
+        //         if(modules[i].remark_val)
+        //         {
+        //           record.set('remark_val',modules[i].remark_val);
+        //         }
                   record.set('trial',modules[i].trial);
 
                 moduleList.select(record,true,true ) ;
@@ -1090,7 +2652,10 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                   record.set('quantity',modules[i].quantity);
                   record.set('trial',modules[i].trial);
-
+                if(modules[i].remark_val)
+                {
+                  record.set('remark_val',modules[i].remark_val);
+                }
                 addOnsList.select(record,true,true ) ;
 
 
@@ -1100,7 +2665,6 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         if(RMdatalink.app.getController('LoginHandler').config.isRetailerLogin)
         {
-
             var selectedAddOns = addOnsList.getSelection() ;
 
             var rtAddons = [] ;
@@ -1116,15 +2680,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             adOnsStore.setData(rtAddons);
             adOnsStore.sync() ;
 
-
             addOnsList.selectAll() ;
-
-
-
-
-
-
-
         }
 
 
@@ -1133,7 +2689,9 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
 
-
+        }catch(ex){
+            console.error(ex);
+        }
     },
 
     hideProductBillingSheet: function() {
@@ -1271,6 +2829,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             return null ;
         }
+
+        this.setAllModuleHeight() ;
     },
 
     getBillingSheetDatalink: function() {
@@ -1287,46 +2847,110 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
     },
 
     initDatalinkBilling: function() {
-        /*
-
-        productKey
+        var productKey = "product_datalink" ;
 
 
-        recToUpdate.product_billng.product_rmpro = {
-            initial_activation_date:initActData,
-            selected_package: getSelectedPackage() ,
-            selected_rate:rateKey,
-            monthly_membership:monthlyMbrShip ,
-            product_modules:that.getSelectedModules(),
-            commissionable_ammount:Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].getValue(),
-            commission_percent:Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].getValue(),
-            sales_persons:getSalesPersons()
-        };
+        console.log("STEP TWO DEBUG");
+
+        if(this.config.isecomProduct){
+
+            this.config.productKey = "product_ecom" ;
+            productKey = "product_ecom" ;
+            console.log("STEP TWO ECOMM");
+        }else{
+
+              console.log("STEP  TWO DATALINK DEBUG");
+              this.config.productKey = "product_datalink" ;
+              productKey = "product_datalink" ;
+        }
+
+        ///////////////////////////////////////////
+
+
+        var form = Ext.ComponentQuery.query('#allProductsRtBillingSetupPanel')[0] ;
+
+        var ProductBillingController = RMdatalink.app.getController('ProductBillingController') ;
+
+        if(this.config.isecomProduct){
+
+
+            console.log("STEP THREE DEBUG");
+            form.down('#productDlbdlVendorsSlctFld').setStore('ecomVendors');
+            var ecomOpt = [
+
+                                    {
+                                        text:"SKUs + Images",
+                                        value:"sku_images"
+                                    },
+                                    {
+                                        text:"SKUs + Images + Addl Images",
+                                        value:"sku_images_addlimages"
+                                    },
+                                    {
+                                        text:"Vendors SKUs + Images",
+                                        value:"vendors"
+                                    },
+                                    {
+                                        text:"Vendors SKUs + Images + Addl Images",
+                                        value:"vendorsAddl"
+                                    }
+
+                               ];
+            form.down('#productDlPriceOptionsimgAdlImgSlctFld').setOptions(ecomOpt);
+
+            form.down('#productDlVdrPricingPolicySlctFld').setStore('ecomVdPricingSkuImgs');
+            form.down('#productDlAddOnsSlctFld').setStore('ecomProductBundle');
+            form.down('#productDlDiscountSKUSlctFld').setStore('ecomVdPricingSKUDiscount');
+
+            form.down('#productDlDiscountVdrsSlctFld').setStore('ecomVdPricingVdrDiscount');
 
 
 
-        productRmproSlctTermLbl
-        rmProSlctTermList
 
-        productRmproPaymentFreqLbl
-        rmProPaymentFreqList
+        }else if(this.config.isDatalinkProduct){
 
-        */
+            form.down('#productDlbdlVendorsSlctFld').setStore('DatalinkVendors');
+            var datalinkOpt = [
 
-        this.config.productKey = "product_datalink" ;
+                                    {
+                                        text:"SKUs + Images",
+                                        value:"sku_images"
+                                    },
+                                    {
+                                        text:"SKUs + Images + Addl Images",
+                                        value:"sku_images_addlimages"
+                                    },
+                                    {
+                                        text:"Vendors SKUs + Images",
+                                        value:"vendors"
+                                    },
+                                    {
+                                        text:"Vendors SKUs + Images + Addl Images",
+                                        value:"vendorsAddl"
+                                    }
+
+                               ];
+            form.down('#productDlPriceOptionsimgAdlImgSlctFld').setOptions(datalinkOpt);
+
+            form.down('#productDlVdrPricingPolicySlctFld').setStore('DlVdPricingSkuImgs');
+            form.down('#productDlAddOnsSlctFld').setStore('DatalinkProductBundle');
+            form.down('#productDlDiscountSKUSlctFld').setStore('DlVdPricingSKUDiscount');
+
+            form.down('#productDlDiscountVdrsSlctFld').setStore('DlVdPricingVdrDiscount');
+
+
+
+        }
+
+
+
+
+        /////////////////////////////////////////
 
         var retailerBillingSheet = Ext.ComponentQuery.query('#retailerBillingSheet')[0] ;
 
         retailerBillingSheet.down('#rtBillingSlctPackLbl').setHidden(true);
         retailerBillingSheet.down('#rmProSelectPackageList').setHidden(true);
-        //retailerBillingSheet.down('#rmProDiscountsForRtList').setHidden(true);
-
-
-        // retailerBillingSheet.down('#productRmproSlctTermLbl').setHidden(true);
-        // retailerBillingSheet.down('#rmProSlctTermList').setHidden(true);
-        // retailerBillingSheet.down('#productRmproPaymentFreqLbl').setHidden(true);
-        // retailerBillingSheet.down('#rmProPaymentFreqList').setHidden(true);
-
 
         retailerBillingSheet.down('#rmProModulesForRtList').setHeight(30);
 
@@ -1336,6 +2960,238 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
         this.resetProductBillingView() ;
+
+
+
+
+
+
+        var rtRecord =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow().record ;
+
+        if(Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0])
+        {
+            if(this.config.isecomProduct){
+
+               var statement = "E-Commerce product setup";
+                if( this.getIsFromVip()  )
+                {
+                    statement = "VIP product setup";
+                }
+                else{
+                    statement = "E-Commerce product setup";
+                }
+
+                Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + statement);
+                Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml(' SKU = ' + this.getSKUTotat() );
+            }else{
+                     Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : Datalink product setup");
+            }
+
+        }
+
+
+        this.config.rtProduct = rtRecord.get('products');
+
+
+        var product_billng = rtRecord.get('product_billng') ;
+
+        console.log(product_billng) ;
+         if(this.config.isecomProduct)
+         {
+
+            if(!product_billng || ! product_billng.product_ecom){
+
+                return ;
+            }
+
+         }
+         else
+         {
+
+            if(!product_billng || ! product_billng.product_datalink){
+
+                return ;
+         }
+        }
+
+
+
+
+
+
+        var monthlyMbrShip = product_billng[productKey].monthly_membership ;
+        var intActDate =  product_billng[productKey].initial_activation_date ;
+
+
+
+        if(! intActDate)
+        {
+            intActDate = RMdatalink.util.globalMethods.getAmToday();
+        }
+        //Ext.ComponentQuery.query('#rmProSelectPackageList')[0].select((selectedPackage-1),false,true) ;
+
+        var rtVal = 'module_promotional_price';
+
+        //Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(selectedRate,false,false) ;
+
+         // Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setValue( selectedPackage );
+        //Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0].setValue( rtVal );
+
+
+
+        if(Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0])
+        {
+            Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].setValue(intActDate) ;
+        }
+        Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(formatNum(monthlyMbrShip)) ;
+
+        var modules = product_billng[productKey].product_modules ;
+
+        //this.fillModuleLists() ;
+
+        //this.selectModulefrmModuleId(modules) ;
+
+        Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].setValue( product_billng[productKey].commissionable_ammount);
+        Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].setValue( product_billng[productKey].commission_percent) ;
+
+        var salesPersonsStore = Ext.getStore('products.RtSalesPersonStore') ;
+
+        salesPersonsStore.removeAll();
+        salesPersonsStore.sync();
+
+        salesPersonsStore.setData(product_billng[productKey].sales_persons);
+        salesPersonsStore.sync();
+
+
+
+         var paymentPrdList = Ext.ComponentQuery.query('#rmProPaymentFreqList')[0];
+
+         var paymentPrd = 1;
+
+        if(product_billng[productKey].payment_frequency){
+
+             paymentPrd = parseInt(product_billng[productKey].payment_frequency, 0);
+
+        }else{
+
+            paymentPrd = parseInt(product_billng[productKey].payment_period, 0);
+        }
+
+
+        if(!paymentPrd){
+
+            paymentPrdList.select(0);
+        }else{
+
+            var paymentPrdStore = paymentPrdList.getStore() ;
+             var searchValForPayPrd = paymentPrd.toString() ;
+
+            var recIndexForPayPrd = paymentPrdStore.findExact('value',searchValForPayPrd);
+
+            if(recIndexForPayPrd != -1){
+
+                paymentPrdList.select(recIndexForPayPrd) ;
+            }
+
+
+
+
+
+        }
+
+
+
+
+        var discountList = Ext.ComponentQuery.query('#rmProDiscountsForRtListPanel')[0].down('#mainList');
+
+         var discountValue =  parseInt(product_billng[productKey].advance_payment_period, 0);
+        var discountStore = discountList.getStore() ;
+
+        // if(!contractPeriod){
+
+
+        // }else{
+
+
+            var searchVal = (discountValue/12).toString() ;
+
+            var recIndex = discountStore.findExact('discount_duration',searchVal);
+
+            if(recIndex != -1){
+
+                discountList.select(recIndex) ;
+            }
+
+        //}
+
+         Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(product_billng[productKey].contract_start_date ) ;
+
+        /*
+         commissionable_ammount:Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].getValue(),
+            commission_percent:Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].getValue(),
+            sales_persons:getSalesPersons()
+        */
+
+        var temp =product_billng[productKey] ;
+          Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;  ;
+
+          Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue(temp.due_date) ;
+          Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(temp.contract_price) ;
+          Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].setValue(temp.contract_sent_date) ;
+          Ext.ComponentQuery.query('#productRmproContractSignedDateFld')[0].setValue(temp.contract_signed_date) ;
+        // Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setValue(temp.contract_renewal_date) ;
+          Ext.ComponentQuery.query('#productRmproContractSendNewFld')[0].setValue(temp.contract_send_date) ;
+
+        Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(temp.payment_frequency) ;
+
+        var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
+
+         var contractPeriod =  parseInt(product_billng[productKey].contract_period, 0);
+
+
+
+        if(!contractPeriod){
+
+            Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(12) ;
+            contractTermList.select(0);
+        }else{
+
+            Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(contractPeriod) ;
+                var contractStore = contractTermList.getStore() ;
+
+             var searchValForContract = contractPeriod.toString() ;
+
+            var recIndexForContract = contractStore.findExact('value',searchValForContract);
+
+            if(recIndexForContract != -1){
+
+                contractTermList.select(recIndexForContract) ;
+            }
+
+
+        }
+
+
+            Ext.ComponentQuery.query('#productDlAddOnsSlctFld')[0].setValue(temp.bundle_addons );
+            Ext.ComponentQuery.query('#productDlbdlVendorsSlctFld')[0].setValue(temp.bundle_vendors);
+            Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].setValue(temp.pricing_policy_option );
+            Ext.ComponentQuery.query('#productDlPriceSlctFld')[0].setValue(temp.vendors_rate );
+            Ext.ComponentQuery.query('#productDlVdrPricingPolicySlctFld')[0].setValue(temp.vendor_pricing_policy);
+
+            Ext.ComponentQuery.query('#productDlAddonsPriceSlctFld')[0].setValue(temp.products_rate );
+            Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0].setValue(temp.vendor_sku_discount);
+            Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0].setValue(temp.vendor_count_discount );
+
+
+
+
+         var timeout = setTimeout(function(){
+
+                               RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
+
+                                clearTimeout(timeout);
+                            },1000);
+
     },
 
     displayDatalinkBilling: function(target) {
@@ -1349,7 +3205,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
          var that = this ;
          var timeout = setTimeout(function(){
                     that.calculateBillingPrices() ;
-         },1000);
+         },500);
 
 
 
@@ -1362,12 +3218,34 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
     },
 
     setDatalinkModules: function() {
+        function getArrayDataFromStore(store){
+
+            var data = new Array();
+            data = store.getData().items;
+            var dataToReturn = new Array();
+            for(var i=0; i < data.length ; i++){
+
+                dataToReturn.push(data[i].data);
+            }
+
+            return dataToReturn ;
+
+        }
+        var productKey = this.config.productKey ;
+
 
 
         var rmProBillingStore = Ext.getStore('products.BillingRmproModules') ;
 
+
+
         var datalinkStore = Ext.getStore('products.DatalinkMain') ;
 
+        if(this.config.isecomProduct){
+            datalinkStore = Ext.getStore('products.ecomMain') ;
+        }else{
+            datalinkStore = Ext.getStore('products.DatalinkMain') ;
+        }
 
         rmProBillingStore.removeAll();
         rmProBillingStore.sync() ;
@@ -1378,18 +3256,169 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         var vendorPricing = this.getSumVendorsPromotionalStandardPrice();
 
 
+        console.error("THIS IS VENODR PROCIED" ,  vendorPricing);
+
+
+        var isModuleForVIP = this.getIsFromVip();   // setIsFromVip
+
         for(var i=0 ; i< data.length ; i ++){
 
             data[i].trial = "";
             data[i].quantity = 1;
             data[i].per_month = 1 ;
 
-            if( data[i].module_sku == "DL-DATA"){
-                  data[i].module_standard_price = vendorPricing.standard_price ;
-                  data[i].module_promotional_price = vendorPricing.promotional_price ;
-                  data[i].quantity = vendorPricing.quantity;
+            data[i].module_listed_order = i + 1 ;
+
+            if( data[i].module_sku == "DL-DATA"  && this.getIsFromVip() )
+            {
+                var   datalinkStore = Ext.getStore('products.ecomMain') ;
+                var recordOfConcern =  datalinkStore.findRecord({"module_name":"Vendor Internet Program" ,
+                                                                 product_type: "1" } );
+
+                console.log(recordOfConcern);
+
+                var selectedRow = RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
+                var recordInMasterStore = selectedRow.record ;
+                var vip_vendor = recordInMasterStore.data.e_commerce_info.vip_vendor;
+
+                data[i].module_standard_price = recordOfConcern.get('module_standard_price') ;
+                data[i].module_promotional_price = recordOfConcern.get('module_promotional_price') ;
+                data[i].quantity = 1;
+                data[i].test = 1;
+                data[i].total_sku = 0;
+                data[i].module_description +=   "(" + vip_vendor + ")";
+
+
+
+            }else if( data[i].module_sku == "DL-DATA" )     {
+                data[i].module_standard_price = vendorPricing.standard_price ;
+                data[i].module_promotional_price = vendorPricing.promotional_price ;
+                data[i].quantity = vendorPricing.quantity;
+
+
             }
         }
+
+
+        function handleDataForVip(data){
+            var isModuleForVIP = this.getIsFromVip();   // setIsFromVip
+            var newData = [];
+            if(this.config.isecomProduct)
+            {
+
+                //             prodcutType = 2   THIS IS THE VALUE OF E_COMMERECE
+                //             prodcutType = 1   THIS IS THE VALUE OF VIP
+
+                var prodcutType = 2;
+                if(isModuleForVIP){
+
+                    prodcutType = 1;
+
+                }else{
+                    prodcutType =2;
+                }
+
+
+
+
+                //COLLECTING THE PRODUCT OF VIP OR ECOMM
+                for(var i = 0;i <data.length; i++){
+
+                    if(  data[i]. product_type == prodcutType){
+
+                        newData.push(data[i]);
+                    }
+                }
+                 return newData;
+
+            }else{
+
+                return data;
+            }
+
+
+        }
+
+
+        function getArrayFromDataforSelectedAdons(data){
+            var vipVendorProgramListInEComm = Ext.ComponentQuery.query("#vipVendorProgramListInEComm")[0];
+            if( vipVendorProgramListInEComm && this.getIsFromVip()){
+
+                var store =  vipVendorProgramListInEComm.getStore();
+                if(true || store){
+
+                    for(var i =2; i <data.length ; i++){
+
+                        if(store){
+                            var module_name  = data[i].module_name;
+                            var index = store.find('module_name' , module_name);
+                            console.log(module_name);
+                            if( index == -1){
+                                data[i].quantity = 0;
+                            }
+
+                        }else{
+                            data[i].quantity = 0;
+
+                        }
+                        //if(  )
+                    }
+
+
+                }else{
+
+                            return data;
+                }
+            }else{
+
+                return data;
+            }
+            return data;
+        }
+
+
+        function getAdditionalVendorsObjectForVIP(data){
+
+            var vendorsOfVIPSum  = this.getSumVendorsPromotionalStandardPrice(true);
+
+
+
+
+            for( var i = 0; i < data.length ; i++){
+
+
+                if(  data[i].module_name == "Additional Vendors" &&  data[i].product_type == 1    ){
+
+
+
+                    console.warn( vendorsOfVIPSum );
+                    console.warn( data[i]);
+                    data[i].module_promotional_price = vendorsOfVIPSum.promotional_price;
+                    data[i].quantity = vendorsOfVIPSum.quantity.length ? vendorsOfVIPSum.quantity.length -1 : 0;
+                    data[i].module_standard_price = vendorsOfVIPSum.standard_price;
+                    data[i].test = vendorsOfVIPSum.test;
+                    data[i].total_sku = vendorsOfVIPSum.total_sku ;
+                    break;
+                }
+
+
+            }
+            /*
+            module_standard_price: ""per_month: 1
+
+            */
+
+           return data;
+
+
+        }
+
+        data = handleDataForVip.call(this , data);
+        data = getAdditionalVendorsObjectForVIP.call(this , data);
+        data = getArrayFromDataforSelectedAdons.call(this , data);
+
+
+        console.error(data);
 
         rmProBillingStore.setData(data);
         rmProBillingStore.sync() ;
@@ -1397,7 +3426,16 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
         var rtDiscountStore = Ext.getStore('products.BillingDiscount') ;
+
         var rmProDiscount = Ext.getStore('products.DatalinkDiscountStore');
+
+        if(this.config.isecomProduct){
+            rmProDiscount = Ext.getStore('products.ecomDiscountStore');
+        }else{
+            rmProDiscount = Ext.getStore('products.DatalinkDiscountStore');
+        }
+
+
 
         rtDiscountStore.removeAll();
         rtDiscountStore.sync() ;
@@ -1411,43 +3449,58 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
 
-          function getArrayDataFromStore(store){
-
-                var data = new Array();
-                data = store.getData().items;
-
-                var dataToReturn = new Array();
-
-                for(var i=0; i < data.length ; i++){
-
-                    dataToReturn.push(data[i].data);
-                }
-
-                return dataToReturn ;
-
-            }
 
 
+        ///////////////////////////////////////////
+
+
+
+        var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
+        allMoulesStore.removeAll();
+        allMoulesStore.sync() ;
+
+        allMoulesStore.setData(data);
+        allMoulesStore.sync() ;
+
+
+        RMdatalink.app.getController('ProductBillingController').removeDLDataOptions() ;
     },
 
     initProductDatalinkModuleSelection: function() {
-        //Retailer RM-PRO Billing
+        var productKey = this.config.productKey ;
+
+
+
 
         var rtRecord =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow().record ;
 
-        Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : Datalink product setup");
 
+
+        if(this.config.isecomProduct){
+               var statement = "E-Commerce product setup";
+                if( this.getIsFromVip()  )
+                {
+                    statement = "VIP product setup";
+                }
+                else{
+                    statement = "E-Commerce product setup";
+                }
+             Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : " + statement);
+             Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml('  SKU =' + this.getSKUTotat() );
+        }else{
+            Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : Datalink product setup");
+        }
 
 
         this.config.rtProduct = rtRecord.get('products');
 
-
         var product_billng = rtRecord.get('product_billng') ;
 
         console.log(product_billng) ;
+
         this.fillDatalinkModuleList() ;
 
-        if(!product_billng || ! product_billng.product_datalink){
+        if(!product_billng || ! product_billng[productKey]){
 
 
             Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(0,false,true) ;
@@ -1460,9 +3513,9 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         console.log(product_billng) ;
 
 
-        var selectedRate = product_billng.product_datalink.selected_rate == "module_standard_price" ? 0 : 1 ;
-        var monthlyMbrShip = product_billng.product_datalink.monthly_membership ;
-        var intActDate =  product_billng.product_datalink.initial_activation_date ;
+        var selectedRate = product_billng[productKey].selected_rate == "module_standard_price" ? 0 : 1 ;
+        var monthlyMbrShip = product_billng[productKey].monthly_membership ;
+        var intActDate =  product_billng[productKey].initial_activation_date ;
 
         if(! intActDate)
         {
@@ -1474,7 +3527,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].setValue(intActDate) ;
         Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(monthlyMbrShip) ;
 
-        var modules = product_billng.product_datalink.product_modules ;
+        var modules = product_billng[productKey].product_modules ;
 
         // this.fillDatalinkModuleList() ;
 
@@ -1488,13 +3541,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
          var paymentPrd = 1;
 
-        if(product_billng.product_rmpro.payment_frequency){
+        if(product_billng[productKey].payment_frequency){
 
-             paymentPrd = parseInt(product_billng.product_rmpro.payment_frequency, 0);
+             paymentPrd = parseInt(product_billng[productKey].payment_frequency, 0);
 
         }else{
 
-            paymentPrd = parseInt(product_billng.product_rmpro.payment_period, 0);
+            paymentPrd = parseInt(product_billng[productKey].payment_period, 0);
         }
 
 
@@ -1522,7 +3575,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
 
-         var contractPeriod =  parseInt(product_billng.product_rmpro.contract_period, 0);
+         var contractPeriod =  parseInt(product_billng[productKey].contract_period, 0);
 
         if(!contractPeriod){
 
@@ -1545,7 +3598,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         var discountList = Ext.ComponentQuery.query('#rmProDiscountsForRtListPanel')[0].down('#mainList');
 
-         var discountValue =  parseInt(product_billng.product_rmpro.advance_payment_period, 0);
+         var discountValue =  parseInt(product_billng[productKey].advance_payment_period, 0);
         var discountStore = discountList.getStore() ;
 
         if(!contractPeriod){
@@ -1565,7 +3618,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         }
 
-         Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(product_billng.product_rmpro.contract_start_date ) ;
+         Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(product_billng[productKey].contract_start_date ) ;
 
 
 
@@ -1657,6 +3710,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
     },
 
     saveProductDatalinkBilling: function(showSubscription) {
+        var productKey = this.config.productKey ;
+
 
         var that = this ;
         var rtRecord =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow().record ;
@@ -1669,18 +3724,33 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         var initActData = Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].getValue() ;
 
-
-        var temp = recToUpdate.product_billng ? (recToUpdate.product_billng.product_datalink ? recToUpdate.product_billng.product_datalink : {}) : {} ;
-
+        var temp = recToUpdate.product_billng ? ( recToUpdate.product_billng[productKey] ? recToUpdate.product_billng[productKey] : {} ) : {} ;
 
         console.log("*******************************");
         console.log(temp);
 
-            temp.initial_activation_date = initActData ;
-            temp.selected_rate = rateKey ;
-            temp.monthly_membership  = monthlyMbrShip  ;
-            temp.product_modules = that.getSelectedModules() ;
-          temp.payment_period = getPayemntPeriod() ;
+
+            temp.initial_activation_date = initActData;
+
+            temp.bundle_addons =  Ext.ComponentQuery.query('#productDlAddOnsSlctFld')[0].getValue();
+            temp.bundle_vendors =  Ext.ComponentQuery.query('#productDlbdlVendorsSlctFld')[0].getValue();
+            temp.pricing_policy_option =  Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].getValue();
+            temp.vendors_rate =  Ext.ComponentQuery.query('#productDlPriceSlctFld')[0].getValue();
+            temp.vendor_pricing_policy =  Ext.ComponentQuery.query('#productDlVdrPricingPolicySlctFld')[0].getValue();
+
+            temp.products_rate =  Ext.ComponentQuery.query('#productDlAddonsPriceSlctFld')[0].getValue();
+            temp.vendor_sku_discount =  Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0].getValue();
+            temp.vendor_count_discount =  Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0].getValue();
+
+
+        //     temp.selected_rate = rateKey ;
+            temp.monthly_membership  = monthlyMbrShip ;
+            temp.product_modules = that.getDatalinkSelectedModules() ;
+            temp.commissionable_ammount = Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].getValue() ;
+            temp.commission_percent = Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].getValue() ;
+            temp.sales_persons = getSalesPersons() ;
+
+            temp.payment_period = getPayemntPeriod() ;
 
             temp.advance_payment_period = getAdvancePaymentPeriod() ;
 
@@ -1688,59 +3758,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             temp.payment_frequency = getPayemntPeriod() ;
 
-        if(!temp.due_date )
+            temp.payment_status = "unpaid" ;
+
+        if(!temp.due_date && false)
         {
 
             temp.due_date =  Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].getValue() ;
 
-        /*
-
-            if(!initActData){
-
-                Ext.Msg.alert("Initial Activation date required to save product setup.");
-                return ;
-            }
-
-
-
-            var todaysDate = new Date() ;
-            var tempDate = new Date() ;
-
-            tempDate.setDate("01");
-
-
-            var actDateObj = new Date(initActData) ;
-
-            if(actDateObj < tempDate )
-            {
-
-                    temp.due_date = (todaysDate.getMonth() + 2) + "/"+ (actDateObj.getDate())+"/" + todaysDate.getFullYear();
-
-                    temp.payment_period_start =  (todaysDate.getMonth() + 1 ) + "/"+ (actDateObj.getDate())+"/" + todaysDate.getFullYear(); // temp.due_date ;
-
-                     todaysDate.setMonth(todaysDate.getMonth()+1);
-
-                     temp.payment_period_end = (todaysDate.getMonth() + 1 ) + "/"+ (actDateObj.getDate())+"/" + todaysDate.getFullYear();
-            }
-            else{
-
-
-
-
-                     temp.due_date = (actDateObj.getMonth() + 2) + "/"+ (actDateObj.getDate())+"/" + actDateObj.getFullYear();
-
-                     temp.payment_period_start = temp.due_date ;
-
-                     actDateObj.setMonth(actDateObj.getMonth()+1);
-
-                     temp.payment_period_end = (actDateObj.getMonth() + 1 ) + "/"+ (actDateObj.getDate())+"/" + actDateObj.getFullYear();
-
-
-
-
-            }
-
-        */
         }
 
 
@@ -1756,12 +3780,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                         paymentInterval =  temp.payment_period ;
                     }
 
+                   temp.total_payble = Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].getValue() ;
 
-                     paymentInterval = parseInt(paymentInterval,0) ;
+                    paymentInterval = parseInt(paymentInterval,0) ;
 
-                     if(! temp.payment_period_start ||   temp.payment_period_start == "")
+                    if( true ||! temp.payment_period_start ||   temp.payment_period_start == "")
                     {
-                     temp.payment_period_start =  Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].getValue() ;
+                     temp.payment_period_start =  Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].getValue() ;
                     }
 
                     temp.contract_start_date =  Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].getValue() ;
@@ -1771,19 +3796,25 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                      tempEndDate.setMonth(tempEndDate.getMonth() + paymentInterval) ;
 
-                     temp.payment_period_end = (tempEndDate.getMonth() + 1 ) + "/"+ (tempEndDate.getDate())+"/" + tempEndDate.getFullYear();
+                     temp.payment_period_end = (tempEndDate.getMonth() + 1 ) + "/"+ (tempEndDate.getDate())+"/" + tempEndDate.getFullYear(); // Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].getValue() ;  //(tempEndDate.getMonth() + 1 ) + "/"+ (tempEndDate.getDate())+"/" + tempEndDate.getFullYear();
+
+                    temp.due_date =  Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].getValue() ;
+                    temp.contract_price =  Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].getValue() ;
+                    temp.contract_sent_date =  Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].getValue() ;
+                    temp.contract_signed_date =  Ext.ComponentQuery.query('#productRmproContractSignedDateFld')[0].getValue() ;
+                    temp.contract_renewal_date =  Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].getValue() ;
+                    temp.contract_send_date =  Ext.ComponentQuery.query('#productRmproContractSendNewFld')[0].getValue() ;
+
+                    temp.payment_frequency = Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].getValue() ;
+
+        if(temp.delete_status){
+            delete invoice.delete_status ;
+        }
+
+                     recToUpdate.product_billng[productKey] =  temp ;
 
 
-        recToUpdate.product_billng.product_datalink = temp ; //{} ;
 
-
-        // recToUpdate.product_billng.product_datalink = {
-        //     initial_activation_date:initActData,
-        //     selected_rate:rateKey,
-        //     monthly_membership:monthlyMbrShip ,
-        //     product_modules:that.getSelectedModules()
-
-        // };
 
         console.log(recToUpdate) ;
 
@@ -1796,16 +3827,15 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                     function suc(){
 
-                        //rtRecord.set('product_billng',recToUpdate.product_billng);
 
-                          RMdatalink.app.getController('Main').updateRetailerRecords("product_billng",recToUpdate.product_billng, rtRecord.get('_id')) ;
+                           RMdatalink.app.getController('Main').updateRetailerRecords("product_billng",recToUpdate.product_billng, rtRecord.get('_id')) ;
 
-
+                           rtRecord.set("product_billng",recToUpdate.product_billng);
                         Ext.Viewport.setMasked(false);
-                        that.hideProductBillingSheet();
+                       // that.hideProductBillingSheet();
 
-                         if(showSubscription){
-
+                        if(showSubscription){
+                            that.hideProductBillingSheet();
                             RMdatalink.app.getController('InvoiceController').showSubscriptionPage();
                         }
 
@@ -1814,6 +3844,19 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                     function err(){
                             Ext.Viewport.setMasked(false);
                     }
+
+        function getSelectedPackage(){
+
+            var recs = Ext.ComponentQuery.query('#rmProSelectPackageList')[0].getSelection() ;
+
+            return recs[0].data.value ;
+
+        }
+
+
+        function getSalesPersons(){
+            return getArrayDataFromStore(Ext.getStore('products.RtSalesPersonStore'));
+        }
 
 
 
@@ -1832,6 +3875,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 return dataToReturn ;
 
             }
+
 
 
         function getPayemntPeriod(){
@@ -1865,6 +3909,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         function getContractPeriod(){
 
+            return Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].getValue() ;
 
             var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
 
@@ -1878,50 +3923,470 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         }
     },
 
-    getSumVendorsPromotionalStandardPrice: function() {
+    getSumVendorsPromotionalStandardPrice: function(useVipList) {
+        var isVendorPolicy  = false ;
+        var isAddlVendorPolicy  = false ;
+
+        if( Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].getValue() == "vendors"){
+            isVendorPolicy = true ;
+        }
+
+        if( Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].getValue() == "vendorsAddl"){
+            isAddlVendorPolicy = true ;
+        }
+
+
+
+        var tpolicy = this.config.tempPricePolicy  ;
+
+        var pricingPolicyIncrementValue = 100 ;
+
+        function getVrec(vendor_name1)
+        {
+
+            var ss = Ext.getStore('vendors.Master');
+
+            for(var i=0 ; i < ss.getData().all.length; i++){
+
+                if(ss.getData().all[i].data.vendor_name == vendor_name1)
+                {
+                    return ss.getData().all[i] ;
+                }
+
+            }
+            return null ;
+        }
+
+        function getVendorPrices(vdr_id)
+        {
+            var pc = tpolicy.policy ;
+            for(var i=0; i < pc.length ; i++){
+
+                if(pc[i].vendor_id == vdr_id){
+                    return pc[i] ;
+                }
+
+            }
+            return null;
+        }
+
+
+
+        if(tpolicy)
+        {
+            pricingPolicyIncrementValue = parseInt(tpolicy.range) ;
+        }
+        try{
+
+
+
+            var optionSlFld = Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0];
+            var newValue = optionSlFld.getValue() ;
+            var stdPriceKey = "standard_price" ;
+            var promoPriceKey = "promotional_price" ;
+
+            if(newValue == "sku_images"){
+                stdPriceKey = "standard_price" ;
+                promoPriceKey = "promotional_price" ;
+
+            }else{
+                stdPriceKey = "standard_price_addlimg" ;
+                promoPriceKey = "promotional_price_addlimg" ;
+            }
+
+
+
+            console.log(stdPriceKey);
+            console.log(promoPriceKey);
+
+            //RDStoreSideTabPanel
+
+            var prospectList  = Ext.ComponentQuery.query('#RDInStoreVendorsTab')[0].down("#mainList");
+
+            if(this.config.isecomProduct)
+            {
+
+                prospectList  = Ext.ComponentQuery.query('#RDForECommerce #RDInStoreVendorsTab')[0].down("#mainList");
+            }
+
+            if(this.getIsFromVip())
+            {
+                prospectList =  Ext.ComponentQuery.query("#pospectActiveListContainer #RDForVIP #RDInStoreVendorsTab #mainList")[0];
+
+            }
+
+            var prospectStore = prospectList.getStore() ;
+
+            var vendorStore =  Ext.getStore('vendors.Master') ;//('vendorTempRecordStore') ; //
+
+            var specificrtVdrs =  prospectStore.getData().all ;
+            var array = specificrtVdrs;
+            if( this.getIsFromVip() ){
+                array = [];
+                for( var k =0 ; k< specificrtVdrs.length ; k++ ){
+
+                    var selectedRow = RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
+                    var vendor_name = selectedRow.record.data.e_commerce_info.vip_vendor;
+                    if(vendor_name != specificrtVdrs[k].data.vendor_name  )
+                    {
+
+                        array.push( specificrtVdrs[k]  );
+                    }
+                }
+
+            }
+        //    debugger;
+            console.log(array);
+        //    debugger;
+            var dataToReturn = {
+                promotional_price :0,
+                standard_price:0,
+                quantity:this.getIsFromVip() ? array : specificrtVdrs,
+                test: this.getIsFromVip() ? array.length :specificrtVdrs.length ,
+                total_sku : 0
+            } ;
+
 
         /*
-                Ext.getStore('vendors.Master')
 
-                product_price
-                    datalink: Object
-                        promotional_price: "49"
-                        standard_price: "69"
+            if( this.getIsFromVip() && !useVipList) {
+
+
+
+                var   datalinkStore = Ext.getStore('products.ecomMain') ;
+                var recordOfConcern =  datalinkStore.findRecord({"module_name":"Vendor Internet Program" ,product_type: "1" } );
+
+
+                dataToReturn = {
+                    promotional_price :recordOfConcern.get('module_promotional_price'),
+                    standard_price:recordOfConcern.get('module_promotional_price'),
+                    quantity:1,
+                    test:1,
+                    total_sku : 0
+                    //  DATA AT TOP WILL BE FOR VENDOR INTERNET PROGRAM. THIS VALUE WILL BE INCLUSIVE AND SHOULD BE INDEPENDENT
+                    //  OF RETAILERS  / VENDORS
+
+                };
+                console.log("RETURNING DATA");
+                return dataToReturn;
+
+            }
+
+
         */
 
 
 
-        var prospectList  = Ext.ComponentQuery.query('#RDInStoreVendorsTab')[0].down("#mainList");
+            if(useVipList && false ){
 
-        var prospectStore = prospectList.getStore() ;
 
-        var vendorStore =  Ext.getStore('vendorTempRecordStore') ;
 
-        var specificrtVdrs =  prospectStore.getData().all ;
 
-        var dataToReturn = {
-            promotional_price :0,
-            standard_price:0,
-            quantity:1
-        } ;
+                console.log("USING LISR VIP");
 
-        for(var i=0; i < specificrtVdrs.length ; i++){
+                //VENODR AT TOP WILL BE VENDOR PARTNER.
 
-           var vendor_name = specificrtVdrs[i].data.vendor_name;
 
-           var recIndex = vendorStore.findExact('vendor_name',vendor_name);
+                var counterStart = 1;
+                var vendorPartner = specificrtVdrs[0];
+                var vipProgramInfo = vendorPartner.get('promo_code_info');
+                if(vipProgramInfo && false){
+                    //vip_price: 199
+                    var vip_price = parseFloat( vipProgramInfo .vip_price);
+                        dataToReturn.standard_price += parseFloat( vip_price );
+                        dataToReturn.promotional_price += parseFloat( vip_price );
 
-            if(recIndex != -1)
-            {
-                    var record = vendorStore.getAt(recIndex) ;
+                }else{
+                    counterStart = 0;
+
+                }
+
+                for(var i= 1 ; i < specificrtVdrs.length ; i++){
+
+                    console.log("USING VIP LIST");
+                    var vendor_name = specificrtVdrs[i].data.vendor_name;
+                    var vendor_id =  specificrtVdrs[i].data.vendor_id;
+                    var recIndex = vendorStore.findExact('_id',vendor_id) ;//('vendor_name',vendor_name);
+
+                    //     if(recIndex != -1)
+                    //     {
+                    var record =  getVrec(vendor_name) ;
+        //            if(record.data.product_price && record.data.product_price.datalink){
+
+                        if(tpolicy || true )
+                        {
+                            var vSKU =  0 ;
+
+                            var stPrice = 0;
+                            var promoPrice = 0 ;
+
+                            if(isVendorPolicy || isAddlVendorPolicy || true)
+                            {
+                                var vprices = getVendorPrices(vendor_id) ;
+
+                                if(vprices){
+                                    console.log("vproce found")    ;
+                                    console.log(vprices);
+
+                                    if(this.config.isecomProduct || true)
+                                    {
+                                        console.log(record);
+                                        console.log(record.get('ecom_std'));
+                                        console.log(record.get('ecom_promo'));
+                                        if( record.get('ecom_std') ){
+
+                                            stPrice = parseFloat( record.get('ecom_std'));
+                                            console.log(stPrice);
+                                        }
+
+                                        if(record.get('ecom_promo')){
+                                            promoPrice =  parseFloat( record.get('ecom_promo') ) ;
+                                            console.log(promoPrice);
+                                        }
+
+                                    }
+        //                             else{
+        //                                 if(vprices.dl_std)
+        //                                     stPrice = vprices.dl_std;
+        //                                 if(vprices.dl_promo)
+        //                                     promoPrice = vprices.dl_promo ;
+        //                             }
+
+
+                                    if(isAddlVendorPolicy && false)
+                                    {
+
+
+                                        if(this.config.isecomProduct)
+                                        {
+                                            if(vprices.ecom_std_addl)
+                                                stPrice = vprices.ecom_std_addl;
+                                            if(vprices.ecom_promo_addl)
+                                                promoPrice = vprices.ecom_promo_addl ;
+                                        }
+                                        else{
+                                            if(vprices.dl_std_addl)
+                                                stPrice = vprices.dl_std_addl;
+                                            if(vprices.dl_promo_addl)
+                                                promoPrice = vprices.dl_promo_addl ;
+                                        }
+
+                                    }
+
+                                }
+
+                            }else{
+                                if( record.data.SKU && record.data.SKU != "" ){
+
+                                    vSKU = parseInt(record.data.SKU) ;
+                                }
+
+                                var pIndex = parseInt(  vSKU/pricingPolicyIncrementValue);
+
+
+                                stPrice = tpolicy.policy[pIndex].std ;
+                                promoPrice =  tpolicy.policy[pIndex].promo ;
+                            }
+
+                            dataToReturn.standard_price += parseFloat( stPrice );
+                            dataToReturn.promotional_price += parseFloat( promoPrice );
+
+                        }
+                        else{
+
+
+                            if(record.data.product_price.datalink[stdPriceKey])
+                            {
+                                dataToReturn.standard_price += parseFloat(record.data.product_price.datalink[stdPriceKey]) ;
+                            }
+                            if(record.data.product_price.datalink[promoPriceKey])
+                            {
+                                dataToReturn.promotional_price += parseFloat(record.data.product_price.datalink[promoPriceKey]) ;
+                            }
+
+                        }
+
+                        if(record.data.SKU)
+                        {
+                            dataToReturn.total_sku += parseInt(record.data.SKU) ;
+                        }
+
+         //           }
+                    //  }
+                }
+
+
+
+
+
+            }else{
+
+
+
+
+                if(  this.getIsFromVip()){
+                    counterStart =1;
+                }else{
+                    counterStart = 0;
+                }
+
+                for(var i= counterStart; i < specificrtVdrs.length ; i++){
+
+                    var vendor_name = specificrtVdrs[i].data.vendor_name;
+                    console.warn(vendor_name);
+                    var vendor_id =  specificrtVdrs[i].data.vendor_id || specificrtVdrs[i].data._id ;
+                    console.warn(vendor_id);
+                    var recIndex = vendorStore.findExact('_id',vendor_id) ;//('vendor_name',vendor_name);
+                    console.warn(recIndex);
+
+                    //     if(recIndex != -1)
+                    //     {
+                    var record =  getVrec(vendor_name) ;//vendorStore.getAt(recIndex) ;
+                    console.warn(record);
                     if(record.data.product_price && record.data.product_price.datalink){
 
-                         dataToReturn.standard_price += parseInt(record.data.product_price.datalink.standard_price) ;
-                         dataToReturn.promotional_price += parseInt(record.data.product_price.datalink.promotional_price) ;
-                    }
-            }
-        }
+                        console.log(tpolicy);
+                        if(tpolicy)
+                        {
+                            var vSKU =  0 ;
 
+                            var stPrice = 0;
+                            var promoPrice = 0 ;
+
+                            console.log(isVendorPolicy , isAddlVendorPolicy);
+                            console.log(1);
+                            if(isVendorPolicy || isAddlVendorPolicy)
+                            {
+                                console.log("THIS IS VENDOR POLICY ");
+                                var vprices = getVendorPrices(vendor_id) ;
+                                if(vprices)
+                                {
+                                    console.log("vporice fpund " , vprices);
+
+                                    if(this.config.isecomProduct)
+                                    {
+                                        console.log("IN ISECOM ");
+                                        if(vprices.ecom_std)
+                                        {
+                                            stPrice = vprices.ecom_std;
+                                            console.log(5 , "ECOM _STD");
+                                        }
+
+                                        if(vprices.ecom_promo)
+                                        {
+                                            promoPrice = vprices.ecom_promo ;
+                                            console.log(6 , "ECOM_PROMO");
+                                        }
+
+                                    }
+                                    else{
+                                        console.log(7);
+                                        if(vprices.dl_std){
+
+                                            stPrice = vprices.dl_std;
+                                            console.log(8);
+                                        }
+
+                                        if(vprices.dl_promo){
+                                            promoPrice = vprices.dl_promo ;
+                                            console.log(9);
+                                        }
+
+                                    }
+
+
+                                    if(isAddlVendorPolicy)
+                                    {
+
+                                        console.log(10 , "ADDITIONAL VENDOR POLICY");
+                                        if(this.config.isecomProduct)
+                                        {
+                                            console.log(11 , "ECOM ADDITIONAL VENDOR POLICY");
+                                            if(vprices.ecom_std_addl){
+
+                                                stPrice = vprices.ecom_std_addl;
+                                                console.log(12);
+                                            }
+
+                                            if(vprices.ecom_promo_addl){
+
+                                                console.log(13);
+                                                promoPrice = vprices.ecom_promo_addl ;
+                                            }
+
+                                        }
+                                        else{
+                                            console.log(14);
+                                            if(vprices.dl_std_addl){
+
+                                                stPrice = vprices.dl_std_addl;
+                                                console.log(15);
+                                            }
+
+                                            if(vprices.dl_promo_addl){
+                                                promoPrice = vprices.dl_promo_addl ;
+                                                console.log(16);
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }else{
+                                console.log("17" , "NEITHER VENDOR NOR ADL VENDOR");
+                                if( record.data.SKU && record.data.SKU != "" )
+                                {
+                                    console.log(18 , "SKU ADDED");
+                                    vSKU = parseInt(record.data.SKU) ;
+                                }
+
+                                var pIndex = parseInt(  vSKU/pricingPolicyIncrementValue);
+                                console.log(19);
+
+                                stPrice = tpolicy.policy[pIndex].std ;
+                                promoPrice =  tpolicy.policy[pIndex].promo ;
+                            }
+
+                            dataToReturn.standard_price += parseFloat( stPrice );
+                            dataToReturn.promotional_price += parseFloat( promoPrice );
+
+                        }else{
+
+                            console.log(20 , "NO TPLOICY FOUND");
+                            if(record.data.product_price.datalink[stdPriceKey])
+                            {
+                                dataToReturn.standard_price += parseFloat(record.data.product_price.datalink[stdPriceKey]) ;
+                                console.log(21);
+                            }
+                            if(record.data.product_price.datalink[promoPriceKey])
+                            {
+                                dataToReturn.promotional_price += parseFloat(record.data.product_price.datalink[promoPriceKey]) ;
+                                console.log(22);
+                            }
+
+                        }
+
+                        if(record.data.SKU)
+                        {
+                            dataToReturn.total_sku += parseInt(record.data.SKU) ;
+                            console.log(23);
+                        }
+
+                    }
+                    //  }
+                }
+
+            }
+
+
+
+
+
+
+
+            /*
         if(specificrtVdrs.length > 0)
         {
              dataToReturn.standard_price  = Math.round(dataToReturn.standard_price /specificrtVdrs.length) ;
@@ -1929,10 +4394,311 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             dataToReturn.quantity = specificrtVdrs.length ;
         }
+        */
+            console.log(dataToReturn) ;
 
-        console.log(dataToReturn) ;
+            return dataToReturn ;
 
-        return dataToReturn ;
+        }catch(ex){
+
+            console.error(ex);
+            return {
+                promotional_price :0,
+                standard_price:0,
+                quantity:1,
+                test:1,
+                total_sku : 0
+            } ;
+        }
+    },
+
+    getSKUTotat: function() {
+
+
+
+
+
+        try{
+
+
+
+
+            var prospectList  = Ext.ComponentQuery.query('#RDInStoreVendorsTab')[0].down("#mainList");
+
+            if(this.config.isecomProduct)
+            {
+
+                prospectList  = Ext.ComponentQuery.query('#RDForECommerce #RDInStoreVendorsTab')[0].down("#mainList");
+            }
+
+            if(this.getIsFromVip())
+            {
+                prospectList =  Ext.ComponentQuery.query("#pospectActiveListContainer #RDForVIP #RDInStoreVendorsTab #mainList")[0];
+
+            }
+
+            var prospectStore = prospectList.getStore();
+            var total = 0;
+            if(prospectStore){
+
+                for(var i =0 ;i < prospectStore.data.all.length ; i++){
+
+                    if(prospectStore.data.all[i].data.SKU){
+
+                        total += parseInt(prospectStore.data.all[i].data.SKU);
+                    }
+                }
+
+            }else{
+                return total;
+            }
+
+
+            return total;
+
+        }catch(ex){
+
+            console.error(ex);
+            return 0 ;
+        }
+    },
+
+    getSumOfVendorsByPolicyInVendors: function(useVipList) {
+        var isVendorPolicy  = false ;
+        var isAddlVendorPolicy  = false ;
+        var tpolicy = this.config.tempPricePolicy  ;
+        var pricingPolicyIncrementValue = 100 ;
+
+
+        function getVrec(vendor_name1)
+        {
+
+            var ss = Ext.getStore('vendors.Master');
+
+            for(var i=0 ; i < ss.getData().all.length; i++){
+
+                if(ss.getData().all[i].data.vendor_name == vendor_name1)
+                {
+                    return ss.getData().all[i] ;
+                }
+
+            }
+            return null ;
+        }
+
+        function getVendorPrices(vdr_id){
+            var pc = tpolicy.policy ;
+            for(var i=0; i < pc.length ; i++){
+
+                if(pc[i].vendor_id == vdr_id){
+                    return pc[i] ;
+                }
+
+            }
+            return null;
+        }
+
+
+
+        if(tpolicy)
+        {
+            pricingPolicyIncrementValue = parseInt(tpolicy.range) ;
+        }
+        try{
+
+
+
+            var optionSlFld = Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0];
+            var newValue = optionSlFld.getValue() ;
+            var stdPriceKey = "standard_price" ;
+            var promoPriceKey = "promotional_price" ;
+
+            if(newValue == "sku_images"){
+                stdPriceKey = "standard_price" ;
+                promoPriceKey = "promotional_price" ;
+
+            }else{
+                stdPriceKey = "standard_price_addlimg" ;
+                promoPriceKey = "promotional_price_addlimg" ;
+            }
+
+
+
+            console.log(stdPriceKey);
+            console.log(promoPriceKey);
+
+            //RDStoreSideTabPanel
+
+
+
+
+                prospectList =  Ext.ComponentQuery.query("#pospectActiveListContainer #RDForVIP #RDInStoreVendorsTab #mainList")[0];
+
+
+
+            var prospectStore = prospectList.getStore() ;
+            var vendorStore =  Ext.getStore('vendors.Master') ;//('vendorTempRecordStore') ; //
+
+            var specificrtVdrs =  prospectStore.getData().all ;
+
+            var dataToReturn = {
+                promotional_price :0,
+                standard_price:0,
+                quantity:specificrtVdrs,
+                test:specificrtVdrs.length,
+                total_sku : 0
+            } ;
+
+
+
+
+            if(useVipList )
+            {
+
+
+
+
+
+
+                //VENODR AT TOP WILL BE VENDOR PARTNER.
+
+
+                var counterStart = 1;
+                var vendorPartner = specificrtVdrs[0];
+                var vipProgramInfo = vendorPartner.get('promo_code_info');
+                if(vipProgramInfo && false){
+                    //vip_price: 199
+                    var vip_price = parseFloat( vipProgramInfo .vip_price);
+                        dataToReturn.standard_price += parseFloat( vip_price );
+                        dataToReturn.promotional_price += parseFloat( vip_price );
+
+                }else{
+                    counterStart = 0;
+
+                }
+
+                for(var i= 1 ; i < specificrtVdrs.length ; i++){
+
+                    console.log("USING VIP LIST");
+                    var vendor_name = specificrtVdrs[i].data.vendor_name;
+                    var vendor_id =  specificrtVdrs[i].data.vendor_id;
+                    var recIndex = vendorStore.findExact('_id',vendor_id) ;
+
+                    var record =  getVrec(vendor_name) ;
+
+
+                        if(tpolicy || true )
+                        {
+                            var vSKU =  0 ;
+
+                            var stPrice = 0;
+                            var promoPrice = 0 ;
+
+                            if(isVendorPolicy || isAddlVendorPolicy || true)
+                            {
+                                var vprices = getVendorPrices(vendor_id) ;
+
+                                if(vprices){
+                                    console.log("vproce found")    ;
+                                    console.log(vprices);
+
+                                    if(this.config.isecomProduct || true)
+                                    {
+                                        console.log(record);
+                                        console.log(record.get('ecom_std'));
+                                        console.log(record.get('ecom_promo'));
+                                        if( record.get('ecom_std') ){
+
+                                            stPrice = parseFloat( record.get('ecom_std'));
+                                            console.log(stPrice);
+                                        }
+
+                                        if(record.get('ecom_promo')){
+                                            promoPrice =  parseFloat( record.get('ecom_promo') ) ;
+                                            console.log(promoPrice);
+                                        }
+
+                                    }
+        //                             else{
+        //                                 if(vprices.dl_std)
+        //                                     stPrice = vprices.dl_std;
+        //                                 if(vprices.dl_promo)
+        //                                     promoPrice = vprices.dl_promo ;
+        //                             }
+
+
+                                    if(isAddlVendorPolicy && false)
+                                    {
+
+
+                                        if(this.config.isecomProduct)
+                                        {
+                                            if(vprices.ecom_std_addl)
+                                                stPrice = vprices.ecom_std_addl;
+                                            if(vprices.ecom_promo_addl)
+                                                promoPrice = vprices.ecom_promo_addl ;
+                                        }
+                                        else{
+                                            if(vprices.dl_std_addl)
+                                                stPrice = vprices.dl_std_addl;
+                                            if(vprices.dl_promo_addl)
+                                                promoPrice = vprices.dl_promo_addl ;
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                            else
+                            {
+                                if( record.data.SKU && record.data.SKU != "" ){
+
+                                    vSKU = parseInt(record.data.SKU) ;
+                                }
+
+                                var pIndex = parseInt(  vSKU/pricingPolicyIncrementValue);
+
+
+                                stPrice = tpolicy.policy[pIndex].std ;
+                                promoPrice =  tpolicy.policy[pIndex].promo ;
+                            }
+
+                            dataToReturn.standard_price += parseFloat( stPrice );
+                            dataToReturn.promotional_price += parseFloat( promoPrice );
+
+                        }
+
+
+                        if(record.data.SKU)
+                        {
+                            dataToReturn.total_sku += parseInt(record.data.SKU) ;
+                        }
+
+
+                }
+
+
+
+
+
+            }
+
+            console.log(dataToReturn) ;
+
+            return dataToReturn ;
+
+        }catch(ex){
+
+            console.error(ex);
+            return {
+                promotional_price :0,
+                standard_price:0,
+                quantity:1,
+                test:1,
+                total_sku : 0
+            } ;
+        }
     },
 
     setResetModuleListHeight: function() {
@@ -1940,6 +4706,414 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;
         var headers = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down("#headerList");
 
+    },
+
+    setRMPackageModule: function() {
+
+        var packageStore = Ext.getStore('products.BillingFromPackages') ;
+
+        var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
+
+        var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;
+
+        var adOnsStore = addOnsList.getStore() ;
+
+        for(var i=0; i < allMoulesStore.getData().all.length ; i++)
+        {
+           // allMoulesStore.getAt(i).set('remark_val','0') ;
+        }
+
+
+
+
+        for(var i=0; i < packageStore.getData().all.length ; i++)
+        {
+            var record = packageStore.getAt(i) ;
+
+            var recIndex = allMoulesStore.findExact('_id', record.data._id ) ;
+
+            if(recIndex != -1){
+                allMoulesStore.getAt(recIndex).set('remark_val','1') ;
+            }
+
+        }
+
+        for(var i=0; i < adOnsStore.getData().all.length ; i++)
+        {
+            var record = adOnsStore.getAt(i) ;
+
+            var recIndex = allMoulesStore.findExact('_id', record.data._id ) ;
+
+            if(recIndex != -1 && record.data.remark_val ){
+                allMoulesStore.getAt(recIndex).set('remark_val',record.data.remark_val ) ;
+            }
+
+        }
+
+        var allModuleList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList') ;
+
+        var selected = addOnsList.getSelection() ;
+        for(var i =0 ; i < selected.length ; i++ ){
+
+
+            var recIndex = allMoulesStore.findExact('_id', selected[i].data._id ) ;
+
+             if(recIndex != -1  ){
+
+                 allModuleList.select(recIndex,true , true ) ;
+            }
+
+
+        }
+
+
+        for(var i=0; i < allMoulesStore.getData().all.length ; i++ ){
+
+            var rec = allMoulesStore.getAt(i) ;
+
+            if(!allModuleList.isSelected(rec)){
+
+                rec.set('remark_val',0);
+                rec.set('quantity',0 );
+            }
+        }
+
+
+    },
+
+    disableEnableComponents: function(status) {
+        var selectFlds = document.getElementsByClassName('rmProStatusFlds');
+
+        for( var i = 0 ; i< selectFlds.length ; i++ ){
+
+            if(selectFlds[i].value == "1")
+            {
+                selectFlds[i].disabled = true  ;
+            }
+            else{
+                selectFlds[i].disabled = status  ;
+            }
+
+
+        }
+
+        var rmProQtyFlds =  document.getElementsByClassName('rmProQtyFlds') ;
+
+        for( var i = 0 ; i< rmProQtyFlds.length ; i++ ){
+
+
+                rmProQtyFlds[i].disabled = status  ;
+
+        }
+        Ext.ComponentQuery.query('#productBillingShowSubscriptionBtn')[0].setDisabled(!status);
+
+        Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setDisabled(status);
+        Ext.ComponentQuery.query('#productRmproSideFldsPanel')[0].setDisabled(status);
+
+        var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+        productList.setDisableSelection(status) ;
+
+        var advacePaymentBenList = Ext.ComponentQuery.query('#rmProDiscountsForRtList')[0].down('#mainList');
+        advacePaymentBenList.setDisableSelection(status) ;
+
+
+        Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setDisabled(true) ;
+
+        var editFlds = document.getElementsByClassName('rtRmpProSetup');
+
+        for( var i = 0 ; i< editFlds.length ; i++ ){
+
+            editFlds[i].disabled = status  ;
+
+        }
+
+            Ext.ComponentQuery.query('#rtProductSetupEditLbl')[0].setHidden(status);
+
+
+
+           var timeout = setTimeout(function(){
+
+                               for( var i = 0 ; i< selectFlds.length ; i++ ){
+
+                                    selectFlds[i].disabled = status  ;
+                                       if(selectFlds[i].value == "1")
+                                        {
+                                            selectFlds[i].disabled = true  ;
+                                        }
+                                        else{
+                                            selectFlds[i].disabled = status  ;
+                                        }
+
+
+
+                                }
+
+                                for( var i = 0 ; i< rmProQtyFlds.length ; i++ ){
+
+
+                                        rmProQtyFlds[i].disabled = status  ;
+
+                                }
+
+                                clearTimeout(timeout);
+                            },100);
+
+    },
+
+    setAllModuleHeight: function() {
+        var allRecrdsPanel = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0] ;
+        var allReList = allRecrdsPanel.down('#mainList');
+
+        var allRecPanelHeight =  allReList.getStore().getData().all.length * allReList.getItemHeight() + 54;
+        allRecrdsPanel.setHeight(allRecPanelHeight);
+
+        var rmProModulesForRtListPanel = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0] ;
+
+        rmProModulesForRtListPanel.setMaxHeight(allRecPanelHeight ) ;
+
+        rmProModulesForRtListPanel.setMinHeight(allRecPanelHeight ) ;
+    },
+
+    disableenbleStatusFlds: function() {
+        var status  =     Ext.ComponentQuery.query('#productBillingSheetCancel')[0].getText() == "Edit" ;
+
+        var selectFlds = document.getElementsByClassName('rmProStatusFlds');
+
+        for( var i = 0 ; i< selectFlds.length ; i++ ){
+
+            if(selectFlds[i].value == "1")
+            {
+                selectFlds[i].disabled = true  ;
+            }
+            else{
+                selectFlds[i].disabled = status  ;
+            }
+
+
+        }
+    },
+
+    removeDLDataOptions: function() {
+        if(!this.config.isDatalinkProduct && !this.config.isecomProduct  ){
+
+            return ;
+
+        }
+
+        var productKey = this.config.productKey ;
+
+        var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
+
+        var datalinkStore = allMoulesStore ; // Ext.getStore('products.DatalinkMain') ;
+
+            var keyToSearch  = 'module_sku';
+            var valueofKey  = "DL-DATA";
+            var objectToSearch = {};
+                objectToSearch[keyToSearch] = valueofKey;
+            var quanToSubtract = 0;
+            if( this.getIsFromVip()  && false )
+            {
+
+                 keyToSearch = 'module_name';
+                 valueofKey   = "Additional Vendors";
+                 objectToSearch = {};
+                 objectToSearch[keyToSearch] = valueofKey;
+                 quanToSubtract = 1;
+            }
+
+          var dlDataRIndex = allMoulesStore.findExact(keyToSearch , valueofKey) ;
+
+        if( dlDataRIndex == -1 ){
+         return ;
+        }
+
+        var dlDataRecord = datalinkStore.getAt(dlDataRIndex) ;
+        var dl_id = dlDataRecord.get('_id');
+
+        var vendorPricing =  RMdatalink.app.getController('ProductBillingController').getSumVendorsPromotionalStandardPrice();
+
+        var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+        productList.select(dlDataRecord,true,true);
+
+          dlDataRecord.set('remark_val',1);
+          console.error(vendorPricing.quantity , quanToSubtract);
+          var quantityParameter =  vendorPricing.quantity ;
+          if(  this.getIsFromVip() )
+          {
+                  // AT THE TOP OF ARRAY , THE VENDOR SELECTED IS VENDOR PARTNER OF THE RETAILER.
+              //vendorPricing.quantity.shift();
+              quantityParameter = 1;
+          }
+          dlDataRecord.set('quantity',quantityParameter );
+
+        /*
+
+        var selectFlds = document.getElementsByClassName('rmProStatusFlds');
+
+        for( var i = 0 ; i< selectFlds.length ; i++ ){
+
+                if(selectFlds[i].getAttribute('data-id') == dl_id ){
+
+
+                    if(selectFlds[i].options[0].value == "0" ){
+
+                        selectFlds[i].options.remove(0);
+                        selectFlds[i].options.remove(1);
+
+                    }
+
+                break;
+            }
+        }
+
+        */
+
+         var timeout = setTimeout(function(){
+
+                               RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
+
+                                clearTimeout(timeout);
+                            },100);
+
+    },
+
+    setDlDataPrice: function() {
+
+        console.warn("DEBUG STEP ONE");
+
+        var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
+
+
+            var keyToSearch  = 'module_sku';
+            var valueofKey  = "DL-DATA";
+            var objectToSearch = {};
+                objectToSearch[keyToSearch] = valueofKey;
+            if( this.getIsFromVip() && true){
+
+                 keyToSearch = 'module_name';
+                 valueofKey   = "Additional Vendors";
+                 objectToSearch = {};
+                 objectToSearch[keyToSearch] = valueofKey;
+            }
+
+
+
+        	var vendorPricing = this.getSumVendorsPromotionalStandardPrice();
+
+            var dlDataRIndex = allMoulesStore.findExact(keyToSearch , valueofKey) ;
+            if( dlDataRIndex == -1 ){
+             return ;
+            }
+
+            var dlDataRecord = allMoulesStore.getAt(dlDataRIndex) ;
+
+            var productDlPriceSlctFldVal = Ext.ComponentQuery.query('#productDlPriceSlctFld')[0].getValue() ;
+
+        var modulePrice = 0 ;
+        var skuDisc = 0 ;
+        var vdrDisc = 0 ;
+
+
+        //debugger;
+        if(productDlPriceSlctFldVal == "module_standard_price" )
+        {
+            modulePrice  = vendorPricing.standard_price ;
+        }else
+        {
+             modulePrice  = vendorPricing.promotional_price ;
+        }
+        updateFinalPriceWithDiscount() ;
+
+        dlDataRecord.set('module_standard_price',modulePrice);
+
+        dlDataRecord.set('module_promotional_price',modulePrice);
+
+         dlDataRecord.set('standard_total',modulePrice);
+         dlDataRecord.set('promotional_total',modulePrice);
+
+        dlDataRecord.set('per_month',modulePrice);
+
+        dlDataRecord.set('quantity',vendorPricing.test);
+
+        this.calculateBillingPrices() ;
+
+        function updateFinalPriceWithDiscount()
+        {
+
+            var sku = vendorPricing.total_sku ;
+            var vdrs = vendorPricing.test ;
+            var vdrDisc = 0;
+            var skuDisc = 0;
+            var productDlDiscountVdrsSlctFld = Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0];
+            var productDlDiscountSKUSlctFld = Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0];
+
+
+            var skuVal = productDlDiscountSKUSlctFld.getValue();
+
+
+            if(skuVal)
+            {
+                    var skuStore = productDlDiscountSKUSlctFld.getStore();
+
+                    var skIndex = skuStore.findExact('value',skuVal);
+
+                    var rec = skuStore.getAt(skIndex).data;
+
+                    var skuIncrementValue = rec.range ;
+
+                        var pIndex = parseInt(  sku/skuIncrementValue);
+
+                if(pIndex >=  rec.policy.length){
+                    pIndex =  rec.policy.length -1 ;
+                }
+                        var disc = rec.policy[pIndex].disc ;
+                skuDisc = (modulePrice * disc)/ 100 ;
+
+            }
+
+            var vdrVal = productDlDiscountVdrsSlctFld.getValue() ;
+
+
+            if(vdrVal)
+            {
+                    var vdrStore = productDlDiscountVdrsSlctFld.getStore();
+
+                    var vdIndex = vdrStore.findExact('value',vdrVal);
+
+                    var recV = vdrStore.getAt(vdIndex).data;
+
+                    var vdrIncrementValue = recV.range ;
+
+                        var vpIndex = parseInt(  vdrs/vdrIncrementValue);
+
+                if(vpIndex >=  recV.policy.length){
+                    vpIndex =  recV.policy.length -1 ;
+                }
+
+                        var vdisc = recV.policy[vpIndex].disc ;
+                vdrDisc = (modulePrice * vdisc)/ 100 ;
+
+            }
+
+            modulePrice = modulePrice - (vdrDisc + skuDisc) ;
+        }
+    },
+
+    getDatalinkSelectedModules: function() {
+
+        var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+
+        var selections = productList.getSelection() ;
+
+        var dataToReturn = [] ;
+
+        for( var i =0 ; i < selections.length ; i++ ){
+
+            dataToReturn.push(selections[i].data);
+
+        }
+
+        return dataToReturn ;
     }
 
 });

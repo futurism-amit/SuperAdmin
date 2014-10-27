@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css5",
+        "id": "filterDropDown",
+        "url": "resources/css/filterDropDown/filterDropDownCSS.css"
+    },
+    "designerId": "fcc67c58-d141-4686-9e65-0b5501d8d097"
+}

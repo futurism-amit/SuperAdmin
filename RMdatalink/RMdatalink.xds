@@ -16,7 +16,7 @@
             "viewportOrientation": "landscape"
         },
         "urlPrefix": "http://localhost/RMdatalink/",
-        "exportPath": "D:/Arvind/RMdatalink/svn/publish/RMdatalink",
+        "exportPath": "D:/Anand/RMdatalink",
         "spacesToIndent": 4,
         "sdkPath": "",
         "lineEnding": "CRLF",
@@ -27,7 +27,11 @@
         "lastBuildSelection": {
             "value": "webBuild",
             "display": "Build web app"
-        }
+        },
+        "displayfield-ExtBox1-1292-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1278-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1328-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1334-inputEl": "Not Installed"
     },
     "xdsVersion": "3.0.4",
     "xdsBuild": 1386,
@@ -45,10 +49,10 @@
             "55e66ef3-33c8-4ab1-88ef-e9968d5b6d8e",
             "28ed50d3-1910-4a9e-b227-4d56efed8c36",
             "172b97ae-91f5-429f-81fc-6c700e31fd85",
+            "659152ec-2846-4103-b689-b90bff37e861",
             "fd8ee08a-4f90-47bc-a608-367951680934",
             "b7e64029-582a-4aa2-b911-dfea44bda772",
             "7bae7a51-6109-4096-98c9-1beb65e01ae9",
-            "659152ec-2846-4103-b689-b90bff37e861",
             "8358ed30-dce4-4875-b6da-50673ad71619",
             "c9698782-ea17-43dc-84b2-3b097ae891ca",
             "6068bd44-7f27-4e36-af9a-9eca7ff81758",
@@ -77,6 +81,7 @@
             "58559e55-1512-4c5c-9ea2-5aef56b794df",
             "9da01505-5404-46af-b8c1-7b70b7fda3f7",
             "6597e0da-7fe3-4049-9449-cb37b0c44375",
+            "81253611-d22d-483e-a045-eb9c92bf69ff",
             "c3b5fdb6-89af-4f17-96e5-5a969c1cfb49",
             "a4b6640b-2d2a-4b9b-933a-edbd6d6e6e38",
             "d0df7542-63f0-493d-afcb-d41aa9b1a573",
@@ -84,6 +89,7 @@
             "cbd249a5-e30c-43bf-a8c2-7658f6347453",
             "3be4f585-3109-401c-8e68-dacb8736b423",
             "a7bd2e95-288b-4793-b0a5-6cd0628b22db",
+            "b1d11629-0b6e-4fba-bf7f-23869131f344",
             "45b788f4-7594-4e08-938f-534de75fec3c",
             "5bc97953-db3f-42a8-8130-ee5a60043a4d",
             "41622aa9-a481-458a-8045-6ed85c843e91",
@@ -91,10 +97,14 @@
             "5efb6ef8-67c0-4747-a1f8-30db31ef677d",
             "594a5347-7307-4de0-b76c-79b7606f82ad",
             "60270b7d-e19c-43e9-a4ab-5638e3871ed0",
+            "923288f1-aaa1-48ad-ac8d-7e5fda522b90",
+            "a5fb65b0-6cd2-45cd-b2d0-eecd383a7db1",
+            "ed762504-1d30-42bd-81a5-8302c19dcf68",
             "8b910473-7801-429f-9c3f-2f383d193bd1",
             "96f1820f-8b24-4fb7-b15f-c55517d5b03c",
             "23214180-a80c-4810-b9be-22e1007cac0d",
-            "4b369909-f6ed-41b5-8744-1aa382ed356b"
+            "4b369909-f6ed-41b5-8744-1aa382ed356b",
+            "fe21c7c4-59f0-426e-ac18-66c57a64108f"
         ],
         "store": [
             "3eb9d9a7-5363-4f1d-af0a-d6afdf34f4db",
@@ -153,25 +163,49 @@
             "cb4cf714-a396-471a-aef8-4c3f93a71963",
             "97bcee87-b9ff-4c69-93cd-e3afaa93d626",
             "d87bb6ee-0b27-413b-84f0-463acb4e6b9d",
+            "f2d03fb6-6dc1-4908-b94b-ffc506765c78",
+            "e564096f-a3cf-459b-881a-2479d84e28a4",
             "2418d982-fd6d-4073-8dd3-af5b7afa2b5f",
             "cec5befe-1687-4dd0-a11b-4fe47f514ce6",
             "f32709aa-2ac6-4a09-b824-d7e8d81a895a",
             "d17b5b89-7d24-41d1-b843-d7e8aa56514a",
             "c6c50576-e089-4a81-8b3b-6c8e715b6c88",
+            "582a8bec-3766-4000-a6c3-82dd50b698df",
             "f33f9ed6-9084-45fe-a595-0743980f3889",
+            "eaea9cf2-bed4-4aa4-9e98-8f55b36fde8c",
             "b775b87f-24db-47ef-9506-5af220adbe82",
             "40083085-20ba-4e93-a3b0-ebb6d14fb14b",
             "47cad597-d82a-45ec-8a4a-6cee19ed72f6",
             "3e46cb12-4575-432b-b732-5dde42f903a9",
             "41bbcb68-f7a6-4786-a3ec-1ae1ce6c14ad",
             "10249366-a2e9-4842-b7ce-01892186bd05",
+            "c9e11ded-5447-4b8b-a354-000fb80a31a6",
+            "58cabeb6-adad-44c1-ae18-85eaf25ceb53",
             "8e8b5e42-98ee-47db-b82e-6b7fda971831",
+            "0507ec1d-4893-4a39-819f-a2a70d0332e4",
+            "731d1ae7-09ec-4de3-ade4-ec6e548f3b64",
             "2b4e3c7d-805e-49f6-9239-7aff963144c9",
             "a1e527b0-78ca-42d9-9655-82aa6f1f0e86",
             "7afd2e3a-76e1-4ee4-a260-6651f378aca5",
             "3da9101c-6290-4c36-8b98-a2289e736c1d",
             "d3b0b33c-17a3-48da-a686-0dee8e213dd0",
-            "a0151ff6-1e8e-44eb-b7ae-1c99a11fcaa3"
+            "a0151ff6-1e8e-44eb-b7ae-1c99a11fcaa3",
+            "3429e8c3-858b-4c43-abe3-b46494cbd87f",
+            "b6dc1f6e-7b36-4c7a-be71-13212b5084eb",
+            "ceaa8c51-0d17-4289-bd6a-c79599515802",
+            "0150f776-2380-4122-aa3a-0753abbcd3ab",
+            "811d4679-7449-4d5c-88b5-65924eeffaf5",
+            "5dd1bbd5-7927-4cb5-9372-a2c29c75e850",
+            "adcb7eee-54df-47d0-a3ab-d117e8db1fec",
+            "16b7a6d8-c4f8-4193-9a8e-4cb278798bcc",
+            "ccd6aedb-f9d2-42b2-a57b-c400c59a53b9",
+            "c7024a6f-19a5-4784-a90a-7227e84810f1",
+            "63a945d6-a639-4a17-8006-b79e7e94b95a",
+            "4e7eaa6a-18de-4d99-8e09-a1979990a83a",
+            "0b70035b-1962-4484-b70a-07d3dceefe08",
+            "e5fb2813-1d05-4733-bfd4-b647c533eab2",
+            "79b0956d-26f1-4926-9910-8135dd371da0",
+            "07a521fe-c9c9-4239-b4d9-0a2d1cf9307d"
         ],
         "controller": [
             "597e6d0a-ef89-4613-95b7-211e785666a4",
@@ -202,7 +236,11 @@
             "c4879461-875d-492b-aeab-5a090c4ae78a",
             "2927d79e-2877-4790-b91c-cd414de7a94d",
             "a45ffe8d-24de-4f80-bf1e-b480db67b8b5",
-            "061febe0-a714-439f-8dca-f95510f160b4"
+            "061febe0-a714-439f-8dca-f95510f160b4",
+            "71d177bc-abe9-4fe2-9374-f911086d2e03",
+            "fd70235e-a157-4846-b04a-8e0aea79bd84",
+            "5505a7e7-4c92-4750-958f-27b38d38bcca",
+            "e03e38c4-63f6-4044-8428-47d1756f76a8"
         ],
         "model": [
             "43354544-082b-461c-ad8a-f49162b4bd69",
@@ -241,7 +279,14 @@
             "27360bf9-befd-4b56-a617-2196a6ec75d6",
             "ed56f28a-402f-4d89-8173-063aab86505d",
             "c7535f70-b6e6-4290-b748-d0bd99aa924b",
-            "9aa3be4d-e38d-4458-a725-79b252a8f3c6"
+            "9aa3be4d-e38d-4458-a725-79b252a8f3c6",
+            "feb7d4ea-e3af-44a1-927b-e39a7e9e2f61",
+            "5bddefb2-488f-4822-a6b1-6492dc1afd87",
+            "96be4bf8-d9a1-40ef-8d7f-d1edf0b5ebb8",
+            "55ce18ab-976e-4acc-be2a-9afc89b9292a",
+            "6ccd0e91-a209-426a-ba3a-9ddb5330f6af",
+            "9938cce5-b030-43f7-80b9-56e7275294ff",
+            "6a381396-1cea-4563-a2d9-d5b9e4c7eda9"
         ],
         "resource": [
             "89571745-87b2-4ec4-8e1a-38d688547c7a",
@@ -255,7 +300,8 @@
             "fcc67c58-d141-4686-9e65-0b5501d8d097",
             "b51ea634-7f7e-441b-aca0-4126bdc47176",
             "274d400b-7ea9-4f6f-9084-c768dd8c4c9f",
-            "96353e19-3e11-4b00-8f66-56dbca391533"
+            "96353e19-3e11-4b00-8f66-56dbca391533",
+            "fd674ca7-1565-4b54-8c3c-06c7421cc16d"
         ],
         "app": [
             "application"

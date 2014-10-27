@@ -1,0 +1,60 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyPanel31"
+    },
+    "designerId": "fe21c7c4-59f0-426e-ac18-66c57a64108f",
+    "cn": [
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "2327127b-60fd-4f78-af3a-2cc794b30c17",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div>{[this.tem(values)]}</div>"
+                        ]
+                    },
+                    "designerId": "8c7e473e-c336-4a64-9835-964a70747c19",
+                    "cn": [
+                        {
+                            "type": "templatefunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "va"
+                                ],
+                                "fn": "tem",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "a4619ab4-c076-49ea-8570-3adc9daf936a"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

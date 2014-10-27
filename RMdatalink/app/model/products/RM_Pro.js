@@ -58,6 +58,26 @@ Ext.define('RMdatalink.model.products.RM_Pro', {
             },
             {
                 name: 'active_policy'
+            },
+            {
+                name: 'module_id'
+            },
+            {
+                name: 'remark_val'
+            },
+            {
+                name: 'is_itemtap'
+            },
+            {
+                name: 'module_skus'
+            },
+            {
+                defaultValue: 2,
+                name: 'charge_mode'
+            },
+            {
+                defaultValue: 2,
+                name: 'product_type'
             }
         ]
     }

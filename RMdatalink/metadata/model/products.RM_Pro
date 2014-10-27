@@ -155,6 +155,84 @@
                 "name": "active_policy"
             },
             "designerId": "08dd09a7-4564-49f2-906b-29c12171b6aa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "module_id"
+            },
+            "designerId": "eac1e021-c539-40fe-8c41-db870d36aec1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "remark_val"
+            },
+            "designerId": "5d6bb932-079a-4544-ac76-6ed9e39d7164"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "is_itemtap"
+            },
+            "designerId": "79d3c477-e5da-42c4-86b5-847cdc4d84c1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "module_skus"
+            },
+            "designerId": "0a46798d-c001-4738-94cf-b13f58ba5a72"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "2"
+                ],
+                "name": "charge_mode"
+            },
+            "designerId": "cf11c0af-7e4b-44b5-bb9a-747924d06469"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "2"
+                ],
+                "name": "product_type"
+            },
+            "designerId": "8f3e5e65-d9a1-4ca1-b5f5-0b2626a198f6"
         }
     ]
 }

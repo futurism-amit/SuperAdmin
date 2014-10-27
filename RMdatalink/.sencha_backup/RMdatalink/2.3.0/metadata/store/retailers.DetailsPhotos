@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailersDetailsPhotos",
+        "designer|userClassName": "retailers.DetailsPhotos",
+        "model": "retailers.DetailsPhotos",
+        "storeId": "retailersDetailsPhotos"
+    },
+    "designerId": "e27b98e3-c9b6-4085-a06d-d13df1f79b9f"
+}

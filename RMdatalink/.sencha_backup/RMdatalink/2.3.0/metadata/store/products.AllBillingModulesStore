@@ -1,0 +1,29 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "products.AllBillingModulesStore",
+        "model": "products.BillingRmproModules",
+        "storeId": "products.AllBillingModulesStore"
+    },
+    "designerId": "582a8bec-3766-4000-a6c3-82dd50b698df",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "SortByIndex",
+                "property": "module_listed_order"
+            },
+            "designerId": "cf34db09-b4f9-4b4a-83fd-e209a03d3c49"
+        }
+    ]
+}

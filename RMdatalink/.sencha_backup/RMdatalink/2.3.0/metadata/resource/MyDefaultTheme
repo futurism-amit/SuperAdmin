@@ -1,0 +1,66 @@
+{
+    "type": "defaultthemeresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyDefaultTheme"
+    },
+    "designerId": "26f2e8a6-8295-45e9-9a22-615c35f94da5",
+    "storage": {
+        "needsCompile": false,
+        "simple": {},
+        "nameIndex": 1,
+        "varData": {
+            "Ext.Class": {
+                "globalVars": [
+                    {
+                        "name": "active-color",
+                        "enabled": false,
+                        "value": "#646466"
+                    },
+                    {
+                        "name": "base-color",
+                        "enabled": true,
+                        "value": "#3A383A"
+                    },
+                    {
+                        "name": "include-border-radius",
+                        "enabled": true,
+                        "value": "false"
+                    },
+                    {
+                        "name": "include-highlights",
+                        "enabled": true,
+                        "value": "false"
+                    }
+                ]
+            },
+            "Ext.Sheet": {
+                "globalVars": [
+                    {
+                        "name": "sheet-bg-color",
+                        "enabled": true,
+                        "value": "rgba(3,17,26,0.18110236220472442)"
+                    }
+                ]
+            },
+            "Ext.tab.Panel": {
+                "globalVars": [
+                    {
+                        "name": "tabs-light",
+                        "enabled": true,
+                        "value": "rgba(252,252,252,1)"
+                    },
+                    {
+                        "name": "tabs-light-active",
+                        "enabled": true,
+                        "value": "rgba(255,255,255,1)"
+                    }
+                ]
+            }
+        }
+    }
+}

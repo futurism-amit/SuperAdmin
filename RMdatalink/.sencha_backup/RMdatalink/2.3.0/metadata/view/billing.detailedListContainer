@@ -1,0 +1,210 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "billingdetailedlistcontainer",
+        "designer|userClassName": "billing.detailedListContainer",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "28ed50d3-1910-4a9e-b227-4d56efed8c36",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "e8c21224-4cac-4e49-83a0-2f508a50ce82",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "height": null,
+                        "layout": "vbox",
+                        "layout|flex": 9,
+                        "scrollable": false
+                    },
+                    "designerId": "7fce4364-1e3a-461a-a4cd-9e9ae702cced",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": null,
+                                "height": "30px",
+                                "itemId": "billingDetListHeader",
+                                "layout|flex": null,
+                                "scrollable": false
+                            },
+                            "designerId": "75dcd0fd-7693-4a31-9118-c5d3ac4158a4",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "e1c57531-f731-487e-8e1d-2c572fefff3d"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "allowDeselect": true,
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "designer|displayName": null,
+                                "height": null,
+                                "itemId": "billingDetList",
+                                "layout|flex": 1,
+                                "mode": "SIMPLE"
+                            },
+                            "designerId": "d170089c-3bb9-4116-a73f-005141072a09",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "9683e3d6-dba9-41bd-9433-01038a2e090e"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "layout|flex": null
+                    },
+                    "designerId": "f7b26da8-cd1f-45e3-87d5-3e090d19e8d8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "retailerTotalsContainer",
+                "height": "0px",
+                "layout": "fit",
+                "layout|flex": null
+            },
+            "designerId": "5bfa7ae3-db91-46da-a29d-970e538ae2ec",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": null,
+                        "itemId": "billingDetTotalsList",
+                        "scrollable": false,
+                        "width": "90%"
+                    },
+                    "designerId": "468f0b2b-0f7c-44da-9fec-d3b5da33f5de",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "07ed1461-5d2a-4579-b3ad-14909ac7b656"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

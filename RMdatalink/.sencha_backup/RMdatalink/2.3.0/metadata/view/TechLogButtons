@@ -1,0 +1,63 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "TechLogButtons",
+        "designer|userClassName": "TechLogButtons",
+        "height": "30px",
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "TechLogButtons",
+        "showAnimation": [
+            "false"
+        ],
+        "width": "140px"
+    },
+    "designerId": "d170f575-b805-470d-a141-466676fe7eed",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "midFontSize"
+                ],
+                "docked": "bottom",
+                "itemId": "browseLatestLogButton",
+                "text": "Browse Latest Logs"
+            },
+            "designerId": "95ff5e8e-af46-4b36-b974-91dbc19ab505",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onBrowseLatestLogButtonTap",
+                        "implHandler": [
+                            "console.log(\"BUTTON  TAPPPEDDD\");\r",
+                            "\r",
+                            " RMdatalink.app.getController('UINav').redirectTo('card17');\r",
+                            "  RMdatalink.app.getController('TechSupportLog').config.browseTechSupportBtnWindow.hide()  ;"
+                        ],
+                        "name": "tap"
+                    },
+                    "designerId": "cd7d7b2e-fc79-4fbd-9c7e-7b82f8cbaf9f"
+                }
+            ]
+        }
+    ]
+}

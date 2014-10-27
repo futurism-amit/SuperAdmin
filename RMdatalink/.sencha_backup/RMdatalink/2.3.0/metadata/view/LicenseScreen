@@ -1,0 +1,1084 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "designer|userAlias": "LicenseScreen",
+        "designer|userClassName": "LicenseScreen",
+        "height": "100%",
+        "hideAnimation": [
+            "false"
+        ],
+        "itemId": "LicenseScreen",
+        "layout": "vbox",
+        "maxWidth": "1024px",
+        "minWidth": "1024px",
+        "padding": "4 0 0 0",
+        "showAnimation": [
+            "false"
+        ],
+        "style": "padding-top:0px;",
+        "width": "98%"
+    },
+    "designerId": "923288f1-aaa1-48ad-ac8d-7e5fda522b90",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": "0 0 0 0",
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "container|pack": "end",
+                "hidden": true,
+                "layout": "hbox",
+                "padding": "0 0 0 0",
+                "title": null,
+                "width": "94%"
+            },
+            "designerId": "e5a15b5c-7145-4e76-982e-58fa9378d8a0",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": null
+                    },
+                    "designerId": "2060d175-b9d7-4be1-ae31-b0b662193b10"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-card-actionbtn"
+                        ],
+                        "docked": null,
+                        "margin": "0 0 0 0",
+                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                        "text": "Close",
+                        "width": "110px"
+                    },
+                    "designerId": "aca40a02-7b3d-4641-a7c0-d18dfda80193",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "\r",
+                                    " var LicenseScreen =  Ext.ComponentQuery.query(\"#LicenseScreen\")[0];\r",
+                                    "\r",
+                                    " LicenseScreen.hide() ;"
+                                ]
+                            },
+                            "designerId": "dd57aebb-7745-4b8a-b256-2ad8accf4187"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "designerId": "197ec13f-277c-4cca-a0d5-e5830237fb4c",
+            "cn": [
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-rdformpanel"
+                        ],
+                        "itemId": "liscenseScreenForm1",
+                        "layout": "vbox",
+                        "layout|flex": 1
+                    },
+                    "designerId": "cd409a5e-a986-4bcf-9ec7-eb7e5cf3497c",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout": "hbox",
+                                "padding": "0 16 0 0",
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "08da4caf-b189-46d3-8a25-d99ca41394ed",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "itemId": "licNewSubBtn",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "New Subscr. Period\t\t\t\t",
+                                        "width": "120px"
+                                    },
+                                    "designerId": "1b63e0b2-6713-4157-bad7-17bbd68e0e21"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "itemId": "licEditSubBtn",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "Edit Subscription\t\t\t\t",
+                                        "width": "120px"
+                                    },
+                                    "designerId": "e6cab487-8217-4712-b75e-03129b4638b8"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "hidden": true,
+                                        "itemId": "licSaveBtn",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "Save",
+                                        "width": "120px"
+                                    },
+                                    "designerId": "8d0c9885-9688-482c-999c-46d58a82dba6"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "hidden": true,
+                                        "itemId": "licCancelBtn",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "Cancel",
+                                        "width": "120px"
+                                    },
+                                    "designerId": "de81e3e0-6d39-4fd6-9df9-4396e90a7ccb"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "liscenseScreenStoreTitleFldSet",
+                                "margin": "4 0 0 0",
+                                "padding": "0 16 0 0",
+                                "title": "18th Street Orientals",
+                                "width": "100%"
+                            },
+                            "designerId": "7ec2dc31-62da-49cf-9d79-a80aa527bfed",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "hbox",
+                                        "padding": "0 0 0 0",
+                                        "title": null,
+                                        "width": "100%"
+                                    },
+                                    "designerId": "b438bfbd-c528-4b18-8d37-bef6b5dc7554",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "clearIcon": false,
+                                                "inputCls": "borderedDiv",
+                                                "itemId": "licenseScreenAcctNoFld",
+                                                "label": "Acct #:",
+                                                "labelWidth": "60px",
+                                                "layout|flex": 1,
+                                                "width": null
+                                            },
+                                            "designerId": "d7da9c83-3da5-462c-9947-1b7a02ef7025"
+                                        },
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "inputCls": "borderedDiv",
+                                                "itemId": "licenseScreenPayPrdFld",
+                                                "label": "For:",
+                                                "labelWidth": "60px",
+                                                "layout|flex": 1,
+                                                "margin": null,
+                                                "options": [
+                                                    "[\r",
+                                                    "    \r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'1 Month',\r",
+                                                    "        value:1\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'3 Month',\r",
+                                                    "        value:3\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'6 Month',\r",
+                                                    "        value:6\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'9 Month',\r",
+                                                    "        value:9\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'1 Year',\r",
+                                                    "        value:12\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'2 Year',\r",
+                                                    "        value:24\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'3 Year',\r",
+                                                    "        value:36\r",
+                                                    "        \r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        \r",
+                                                    "        text:'5 Year',\r",
+                                                    "        value:60    \r",
+                                                    "    },\r",
+                                                    "     {\r",
+                                                    "        \r",
+                                                    "        text:'Other',\r",
+                                                    "        value: 0\r",
+                                                    "        \r",
+                                                    "    }\r",
+                                                    "    \r",
+                                                    "]"
+                                                ],
+                                                "width": null
+                                            },
+                                            "designerId": "4fe4b920-812d-4e95-b51a-aa20bd7c3e62"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "hbox",
+                                        "title": null
+                                    },
+                                    "designerId": "63ba6640-2c03-45a2-8d5d-087036faf746",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "inputByDatePicker",
+                                                "clearIcon": false,
+                                                "inputCls": "borderedDiv",
+                                                "itemId": "licenseScreenFromFld",
+                                                "label": "From:",
+                                                "labelWidth": "60px",
+                                                "layout|flex": 1,
+                                                "width": null
+                                            },
+                                            "designerId": "44541f93-fc2f-45a5-9018-a923bb09d7e5",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "inputByDatePicker",
+                                                "clearIcon": false,
+                                                "inputCls": "borderedDiv",
+                                                "itemId": "licenseScreenToFld",
+                                                "label": "To:",
+                                                "labelWidth": "60px",
+                                                "layout|flex": 1,
+                                                "margin": null,
+                                                "width": null
+                                            },
+                                            "designerId": "902b16a7-53b0-447b-b017-6a85717e232a",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "hbox",
+                                        "title": null
+                                    },
+                                    "designerId": "6ea6de64-d613-46a0-b98e-27f959772819",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "clearIcon": false,
+                                                "hidden": true,
+                                                "inputCls": "borderedDiv",
+                                                "itemId": "licenseScreenPrdDaysFld",
+                                                "label": "Days:",
+                                                "labelWidth": "60px",
+                                                "layout|flex": null,
+                                                "width": "50%"
+                                            },
+                                            "designerId": "eca92755-a464-43ad-b090-227dc490d8f6"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "licenseScreenModuleList",
+                                "layout": "vbox",
+                                "layout|flex": 1,
+                                "margin": "2 0 2 0",
+                                "padding": "0 16 0 0",
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "331354c4-0d39-4e9f-8a59-abf152abba33",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "layout|flex": 1,
+                                        "margin": "0 0 2 0",
+                                        "width": "100%"
+                                    },
+                                    "designerId": "65e98894-d27f-46cc-93c3-0e7aa8be177a",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMyfieldset148Initialize",
+                                        "implHandler": [
+                                            "\r",
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div style=\"font-size: 1.0em;font-weight: bold;  background-color: gainsboro;\" class=\"x-rm-listtpl-main onlyBottomBorderDiv\">',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 6%;\"></div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\" width: 50%;text-align: center;\" data-name=\"pay_date\">',\r",
+                                            "               '        Product/ Add ons&nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 16%;text-align: center;\" data-name=\"paid_by\">',\r",
+                                            "               '        Qty&nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 24%;text-align: center;\" data-name=\"payment_method_detail\">',\r",
+                                            "               '        Length&nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "headers.refresh();\r",
+                                            "\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "list.setStore(Ext.getStore('License.ProductsStore'));\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div style = \"height: 20px;padding-top: 0px;\" class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 6%;\">',\r",
+                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 50%;\"> {module_name}</div>',\r",
+                                            "               \r",
+                                            "                  '<div class=\"rightBorderDiv\" style=\"width: 16%;text-align: center;\">',\r",
+                                            "                       '    <input type=\"text\" style=\"width: 68% !important;margin-left: 15%;height: 16px;text-align: center;\" class=\"licEdtFld x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{quantity}\" maxlength=\"24\"',\r",
+                                            "                       '        />',\r",
+                                            "                       '</div>',\r",
+                                            "               \r",
+                                            "               \r",
+                                            "              \r",
+                                            "               '    <div style=\"width: 24%;text-align: center;\">{[this.getLength(values)]}</div>',\r",
+                                            "\r",
+                                            "                  '</div>',\r",
+                                            "               {\r",
+                                            "                   getLength:function(values){\r",
+                                            "                       //remark_val\r",
+                                            "\r",
+                                            "                       if(values.remark_val && values.remark_val !=\"\" ){\r",
+                                            "\r",
+                                            "                          var rVal = parseInt(values.remark_val) ;\r",
+                                            "                          var msg= \"\" ;\r",
+                                            "\r",
+                                            "                           if(rVal > 2){\r",
+                                            "\r",
+                                            "                               switch(rVal){\r",
+                                            "\r",
+                                            "                                   case 3:\r",
+                                            "                                       msg = \"1M Free Trial\" ;\r",
+                                            "                                       break ;\r",
+                                            "                                   case 4:\r",
+                                            "                                       msg = \"2M Free Trial\" ;\r",
+                                            "                                       break ;\r",
+                                            "                                   case 5:\r",
+                                            "                                       msg = \"3M Free Trial\" ;\r",
+                                            "                                       break ;\r",
+                                            "                                   case 6:\r",
+                                            "                                       msg = \"6M Free Trial\" ;\r",
+                                            "                                       break ;\r",
+                                            "                                   case 7:\r",
+                                            "                                       msg = \"9M Free Trial\" ;\r",
+                                            "                                       break ;\r",
+                                            "                                   case 8:\r",
+                                            "                                       msg = \"1Yr Free Trial\" ;\r",
+                                            "                                       break ;\r",
+                                            "                               }\r",
+                                            "\r",
+                                            "                               msg = '<span style=\"color: green;\">' + msg + '</span>'  ;\r",
+                                            "                              return  msg ;\r",
+                                            "                           }\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       return values.subscription_length  ;\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "               }\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "list.setItemHeight(22);\r",
+                                            "list.setMode('MULTI');\r",
+                                            "\r",
+                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                            "\r",
+                                            "// '    <div class=\"rightBorderDiv\" style=\"width: 16%;text-align: center;\">{quantity}</div>',"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "4962eb06-b3e2-4341-8f28-8e2d1cf6b026"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onLicenseScreenModuleListPainted",
+                                        "implHandler": [
+                                            "RMdatalink.app.getController('LicenseController').selectModulesOnLicense() ;"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "bde6c2f7-a6e0-476c-aa10-4f2c546bbe0a"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout": "hbox",
+                                "padding": "0 16 0 0",
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "44c7ffdc-214d-4412-aa2e-bb2520dbf5d6",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "clearIcon": false,
+                                        "inputCls": "borderedDiv",
+                                        "itemId": "licenseScreenInvoiceNoFld",
+                                        "label": "Invoice #:",
+                                        "labelWidth": "80px",
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "b01a08c1-8735-45db-bb18-4f73b69cabb8"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "clearIcon": false,
+                                        "inputCls": "borderedDiv",
+                                        "itemId": "licenseScreenPaidAmtFld",
+                                        "label": "Paid Amt.:",
+                                        "labelWidth": "80px",
+                                        "layout|flex": 1,
+                                        "margin": null,
+                                        "width": "220px"
+                                    },
+                                    "designerId": "363d9eb5-8887-41ee-97f1-290dc173c4a8"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "margin": null,
+                                "padding": "0 16 0 0",
+                                "style": null,
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "72304d85-057c-4349-aad0-0ae4cdec920c",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "clearIcon": false,
+                                        "inputCls": "borderedDiv",
+                                        "itemId": "licenseScreenNoteFld",
+                                        "label": "Note:",
+                                        "labelWidth": "80px",
+                                        "style": null,
+                                        "width": "100%"
+                                    },
+                                    "designerId": "76d008cc-8e70-4359-9438-58bb08f9b3d0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-rdformpanel"
+                        ],
+                        "layout": "vbox",
+                        "layout|flex": 1
+                    },
+                    "designerId": "ff284a18-5f2f-4960-8af2-587862170e32",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|pack": "end",
+                                "layout": "hbox",
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "425771c3-285d-4d4e-abed-caceb14b94ab",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "Save As\t\t\t",
+                                        "width": "110px"
+                                    },
+                                    "designerId": "773d7a0f-a7d2-455b-9aa6-aeedb91def21"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "Email\t\t\t",
+                                        "width": "110px"
+                                    },
+                                    "designerId": "77f9a9ff-b38d-4a43-ab34-f13a9bb9cd6a"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn"
+                                        ],
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "Post\t\t\t",
+                                        "width": "110px"
+                                    },
+                                    "designerId": "64098e79-b2b9-41c8-987c-bc69a0a19230"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "licenseHistoryListPanel",
+                                "layout": "vbox",
+                                "layout|flex": 1,
+                                "margin": "24 0 24 0",
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "751a46ca-be43-47d9-9506-b11169bf4491",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "layout|flex": 1,
+                                        "margin": "0 0 2 0"
+                                    },
+                                    "designerId": "217ceefa-e8d2-463d-a459-411203478d8f",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMyfieldset155Initialize",
+                                        "implHandler": [
+                                            "\r",
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div style=\"font-size: 1.0em;font-weight: bold;  background-color: gainsboro;\" class=\"x-rm-listtpl-main onlyBottomBorderDiv\">',\r",
+                                            "            '    <div class=\"rightBorderDiv\" style=\" width: 20%;text-align: center;\" data-name=\"pay_date\">',\r",
+                                            "               '        &nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\" width: 20%;text-align: center;\" data-name=\"pay_date\">',\r",
+                                            "               '        From&nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 20%;text-align: center;\" data-name=\"paid_by\">',\r",
+                                            "               '        To&nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 20%;text-align: center;\" data-name=\"payment_method_detail\">',\r",
+                                            "               '        Length&nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "         '    <div class=\"rightBorderDiv\" style=\"width: 20%;text-align: center;\" data-name=\"payment_method_detail\">',\r",
+                                            "               '        Price&nbsp;',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "headers.refresh();\r",
+                                            "\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "list.setStore(Ext.getStore('InvoiceHistoryStore'));\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div style = \"height: 20px;padding-top: 0px;\" class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 20%;text-align: center;\"><span style=\"font-weight:bold;font-size:1.2em;\">{[this.getPaymentDtSrc(values)]}<span></div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 20%;text-align: center;margin-right: 2px;\">{due_date}</div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 20%;text-align: center;\">{payment_period_end}</div>',\r",
+                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 20%;text-align: center;\">{payment_period} Month(s)</div>',\r",
+                                            "               '    <div style=\"width: 20%;padding-right:2%;text-align: right;\">$ {[formatNum(values.total_payble)]}</div>',\r",
+                                            "\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "\r",
+                                            "                   getLength:function(record){\r",
+                                            "\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                   getPaymentStatus:function(record){\r",
+                                            "                       if(! record.payment_status){\r",
+                                            "                           return \"Paid\" ;\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       if( record.payment_status == \"paid\"){\r",
+                                            "                           return \"Paid\" ;\r",
+                                            "                       }else{\r",
+                                            "                           return '<span style=\"color: rgb(157, 8, 8);\">Unpaid </span>' ;\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                    getPaymentDtSrc:function(record){\r",
+                                            "                       if(! record.payment_status){\r",
+                                            "                           return \"$\" ;\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       if( record.payment_status == \"paid\"){\r",
+                                            "                           return \"$\" ;\r",
+                                            "                       }else{\r",
+                                            "                           return '' ;\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "\r",
+                                            "\r",
+                                            "               }\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "// '    <div class=\"rightBorderDiv\" style=\"width: 16%;\">{[this.getProductType(values)]}</div>',\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "\r",
+                                            "list.setItemHeight(20);\r",
+                                            "list.setAllowDeselect(false);\r",
+                                            "\r",
+                                            "    list.on(\"select\",function(licList, record, eOpts){\r",
+                                            "        RMdatalink.app.getController('LicenseController').onHistoryLicSelect(licList, record, eOpts);\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "e562d630-5c8a-481e-ada1-310796fff140"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-rdformpanel"
+                                ],
+                                "title": null
+                            },
+                            "designerId": "2c405031-4456-40d6-893d-317eb1ebb719",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "nbluehtml"
+                                        ],
+                                        "html": "Auto Created on 7/15/2014 12:01 AM",
+                                        "itemId": "licenseTimeStampLbl"
+                                    },
+                                    "designerId": "46d7e037-b5b0-405b-8e50-79d63e5157e7"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "nbluehtml"
+                                        ],
+                                        "hidden": true,
+                                        "html": "Auto Posted on 7/15/2014 12:01 AM"
+                                    },
+                                    "designerId": "0a29d71d-c27d-43fa-bbd6-c38958a98ff0"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "nbluehtml"
+                                        ],
+                                        "hidden": true,
+                                        "html": "Manually Created By Fawad on 7/20/2014 01:14 PM"
+                                    },
+                                    "designerId": "1c6de45c-575d-45cb-8320-137dc706dfb8"
+                                },
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "nbluehtml"
+                                        ],
+                                        "hidden": true,
+                                        "html": "Manually Posted By Fawad on 8/1/2014 04:14 PM"
+                                    },
+                                    "designerId": "69ed2882-68bf-4ebf-a7ba-f63a1bd2492c"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|pack": "end",
+                                "layout": "hbox",
+                                "title": null
+                            },
+                            "designerId": "6bf8fcc9-cbd7-4f53-b4ce-613e4b6b0d3d",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-card-actionbtn",
+                                            "borderedDiv"
+                                        ],
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "text": "Close",
+                                        "width": "110px"
+                                    },
+                                    "designerId": "fddffa8a-461f-4274-bde2-2e6e9c8f387f",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "\r",
+                                                    " var LicenseScreen =  Ext.ComponentQuery.query(\"#LicenseScreen\")[0];\r",
+                                                    "\r",
+                                                    " LicenseScreen.hide() ;"
+                                                ]
+                                            },
+                                            "designerId": "2f8bb955-2baa-4f3b-b291-0e1bbad6431f"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

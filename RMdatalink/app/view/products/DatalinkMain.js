@@ -20,12 +20,13 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
     requires: [
         'RMdatalink.view.CardHeaderPanel',
         'RMdatalink.view.listWithHeader',
-        'Ext.tab.Panel',
-        'Ext.tab.Bar',
         'Ext.form.FieldSet',
         'Ext.Button',
+        'Ext.tab.Panel',
+        'Ext.tab.Bar',
         'Ext.Label',
         'Ext.form.Panel',
+        'Ext.field.Select',
         'Ext.field.TextArea'
     ],
 
@@ -45,19 +46,79 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
                 scrollable: false,
                 items: [
                     {
+                        xtype: 'fieldset',
+                        border: '0px',
+                        height: '38px',
+                        margin: '0 0 0 0',
+                        style: 'background-color:transparent !important;border:none !important;',
+                        layout: {
+                            type: 'hbox',
+                            align: 'end',
+                            pack: 'end'
+                        },
+                        items: [
+                            {
+                                xtype: 'button',
+                                handler: function(button, e) {
+                                    RMdatalink.app.getController('DlPricingController').SAVEDatalinkSetup();
+                                },
+                                action: 'addNew',
+                                cls: 'x-rm-blueBtn',
+                                height: '30px',
+                                hidden: true,
+                                itemId: 'datalinkSetupSaveBtn',
+                                margin: '0 10 2 1',
+                                width: '90px',
+                                text: 'Save'
+                            },
+                            {
+                                xtype: 'button',
+                                handler: function(button, e) {
+                                    RMdatalink.app.getController('DatalinkController').enableDisableDlFlds(false);
+                                },
+                                action: 'addNew',
+                                cls: 'x-rm-blueBtn',
+                                height: '30px',
+                                itemId: 'datalinkSetupEditBtn',
+                                margin: '0 10 2 1',
+                                width: '90px',
+                                text: 'Edit'
+                            },
+                            {
+                                xtype: 'button',
+                                handler: function(button, e) {
+                                    RMdatalink.app.getController('DatalinkController').enableDisableDlFlds(true);
+                                },
+                                cls: 'x-rm-card-actionbtn',
+                                height: '24px',
+                                itemId: 'datalinkSetupCancelBtn',
+                                margin: '0 4 2 0',
+                                width: '90px',
+                                pressedCls: 'x-rm-card-actionbtn-pressing',
+                                text: 'Cancel'
+                            }
+                        ]
+                    },
+                    {
                         xtype: 'tabpanel',
                         flex: 1,
                         cls: 'x-rm-tabpanel',
                         ui: 'light',
+                        layout: {
+                            type: 'card',
+                            animation: false
+                        },
                         tabBar: {
-                            docked: 'top'
+                            docked: 'top',
+                            style: 'margin-top: -44px;',
+                            width: '60%'
                         },
                         items: [
                             {
                                 xtype: 'container',
-                                title: 'Module',
+                                title: 'Setup',
                                 itemId: 'datalinkMainListContainer',
-                                layout: 'vbox',
+                                layout: 'hbox',
                                 scrollable: false,
                                 listeners: [
                                     {
@@ -72,24 +133,27 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
                                             headers.setData([{}]);
                                             headers.setItemTpl(
                                             Ext.create('Ext.XTemplate',
-                                            '<div class="x-rm-listtpl-main">',
+                                            '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;">',
                                             '    <div style="width: 6%;">',
                                             '        <div style="width: 20px;" data-name="all"></div>',
                                             '    </div>',
-                                            '    <div style="width: 14%;" data-name="module_sku">',
+                                            '    <div class="rightBorderDiv" style="width: 4%;text-align: center;" data-name="module_listed_order">',
+                                            '        index&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="rightBorderDiv" style="width: 14%;" data-name="module_sku">',
                                             '        SKU&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style="width: 15%;" data-name="module_name">',
-                                            '        Product Name&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    <div class="rightBorderDiv" style="width: 14%;text-align: center;" data-name="module_name">',
+                                            '        Products/ Add-ons&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style="width: 40%;" data-name="module_description">',
+                                            '    <div class="rightBorderDiv" style="width: 38%;text-align: center;" data-name="module_description">',
                                             '       Description&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style="width: 10%;" data-name="module_standard_price">',
-                                            '        Standard Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="module_standard_price">',
+                                            '        Std. Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style="width: 10%;" data-name="module_promotional_price">',
-                                            '        Promotional Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    <div style="width: 12%;text-align: center;" data-name="module_promotional_price">',
+                                            '        Promo. Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
                                             '</div>'
                                             )
@@ -99,20 +163,31 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
 
 
                                             list.setStore(Ext.getStore('products.DatalinkMain'));
-
+                                            /*boldText*/
 
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
-                                            '<div class="x-rm-listtpl-main pointerCursor">',
+                                            '<div class="x-rm-listtpl-main pointerCursor" style="{[this.getSelectedColor(values)]}">',
                                             '    <div style="width: 6%;">',
                                             '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                                             '    </div>',
-                                            '    <div style="width: 14%;">{module_sku}</div>',
-                                            '    <div style="width: 15%;">{module_name}</div>',
-                                            '    <div style="width: 40%;">{module_description}</div>',
-                                            '    <div style="width: 10%;">{module_standard_price}</div>',
-                                            '    <div style="width: 10%;">{module_promotional_price}</div>',
-                                            '</div>'
+                                            '    <div class="rightBorderDiv" style="width: 4%;"> {module_listed_order}</div>',
+                                            '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_sku}</div>',
+                                            '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_name}</div>',
+                                            '    <div class="rightBorderDiv" style="width: 38%;">{module_description}</div>',
+                                            '    <div class="rightBorderDiv" style="width: 10%;text-align: right;padding-right: 1%;">${[formatNum(values.module_standard_price)]}</div>',
+                                            '    <div style="width: 12%;text-align: right;padding-right: 1%;">${[formatNum(values.module_promotional_price)]}</div>',
+                                            '</div>',
+                                            {
+                                                getSelectedColor:function(values){
+                                                    if(values.is_itemtap){
+                                                        return "background-color: #94DCF0;";
+                                                    }else{
+                                                        return "background-color: transparent;" ;
+                                                    }
+                                                }
+                                            }
+
                                             )
                                             );
 
@@ -134,64 +209,98 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
 
                                             RMdatalink.app.getController('DatalinkController').setDlDataPrice() ;
                                             RMdatalink.app.getController('DatalinkController').onRmProSelectUnselect() ;
+
+                                            /*
+                                            var list = Ext.ComponentQuery.query('#datalinkAdvancePaymentDiscountList')[0].down('#mainList') ;
+
+
+                                            var allRecPanelHeight =  list.getStore().getData().all.length * list.getItemHeight() + 14 ;
+                                            Ext.ComponentQuery.query('#datalinkAdvancePaymentDiscountList')[0].setHeight(allRecPanelHeight);
+
+
+
+                                            var h1 =  Ext.ComponentQuery.query('#datalinkProductSetupSideP1')[0].getEl().getHeight() ;
+                                            var h2 =  Ext.ComponentQuery.query('#datalinkProductSetupSideP2')[0].getEl().getHeight() ;
+                                            var h3 =  Ext.ComponentQuery.query('#datalinkDiscountListPanel')[0].getEl().getHeight() ;
+
+                                            Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0].setHeight(h1+h2+h3 + 26) ;
+                                            Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0].setMaxHeight(window.innerHeight - 122 );
+
+                                            */
+                                            RMdatalink.app.getController('DatalinkController').refreshDatalinkSideCntHeight() ;
                                         },
                                         event: 'painted'
                                     }
                                 ],
                                 items: [
                                     {
-                                        xtype: 'listwithheader',
-                                        itemId: 'listwithheader',
-                                        flex: 1
-                                    },
-                                    {
                                         xtype: 'panel',
-                                        layout: 'hbox',
+                                        flex: 3,
+                                        cls: 'borderedDiv',
+                                        itemId: 'productSetupDatalinkListPanel',
+                                        margin: '0 0 5 0',
+                                        layout: 'vbox',
                                         items: [
                                             {
-                                                xtype: 'fieldset',
-                                                margin: 0,
-                                                width: '74%',
+                                                xtype: 'listwithheader',
+                                                itemId: 'listwithheader',
+                                                flex: 1
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                cls: 'onlyTopBorderDiv',
+                                                style: ' background-color: gainsboro;font-weight: bold;',
                                                 layout: 'hbox',
                                                 items: [
                                                     {
-                                                        xtype: 'textfield',
-                                                        hidden: true,
-                                                        itemId: 'satalinkBundlePriceTxtFld',
-                                                        width: '280px',
-                                                        inputCls: 'highlightedColor',
-                                                        label: 'Bundle Price',
-                                                        labelCls: 'highlightedColor',
-                                                        labelWidth: '120px'
-                                                    },
-                                                    {
-                                                        xtype: 'button',
-                                                        cls: 'x-rm-blueBtn',
-                                                        height: '28px',
-                                                        hidden: true,
-                                                        itemId: 'saveDatalinkBundleBtn',
-                                                        margin: '0 5 0 5',
-                                                        text: 'Save Bundle'
+                                                        xtype: 'fieldset',
+                                                        margin: 0,
+                                                        width: '74%',
+                                                        layout: 'hbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'textfield',
+                                                                hidden: true,
+                                                                itemId: 'satalinkBundlePriceTxtFld',
+                                                                width: '280px',
+                                                                inputCls: 'highlightedColor',
+                                                                label: 'Bundle Price',
+                                                                labelCls: 'highlightedColor',
+                                                                labelWidth: '120px'
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                cls: 'x-rm-blueBtn',
+                                                                height: '28px',
+                                                                hidden: true,
+                                                                itemId: 'saveDatalinkBundleBtn',
+                                                                margin: '0 5 0 5',
+                                                                text: 'Save Bundle'
+                                                            },
+                                                            {
+                                                                xtype: 'label',
+                                                                docked: 'right',
+                                                                html: 'Total price for selected items::',
+                                                                margin: '5 5 5 10',
+                                                                style: 'font-size: 0.75em;'
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         xtype: 'label',
-                                                        docked: 'right',
-                                                        html: 'Total price for selected items::',
-                                                        margin: '5 5 5 10'
+                                                        itemId: 'datalinkSumOfStdPriceLbl',
+                                                        margin: '5 5 5 5',
+                                                        minWidth: '10%',
+                                                        style: 'text-align: right;font-size: 0.75em;'
+                                                    },
+                                                    {
+                                                        xtype: 'label',
+                                                        itemId: 'datalinkSumOfPromoPriceLbl',
+                                                        margin: '5 5 5 5',
+                                                        minWidth: '10%',
+                                                        style: 'text-align: right;font-size: 0.75em;'
                                                     }
                                                 ]
-                                            },
-                                            {
-                                                xtype: 'label',
-                                                itemId: 'datalinkSumOfStdPriceLbl',
-                                                margin: '5 5 5 5',
-                                                minWidth: '10%'
-                                            },
-                                            {
-                                                xtype: 'label',
-                                                itemId: 'datalinkSumOfPromoPriceLbl',
-                                                margin: '5 5 5 5',
-                                                minWidth: '10%'
                                             }
                                         ]
                                     },
@@ -199,137 +308,488 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
                                         xtype: 'button',
                                         handler: function(button, e) {
                                             var form = Ext.ComponentQuery.query('#productDatalinkaddUpdateFrmPanel')[0];
-
+                                            var state;
                                             form.setHidden(! form.getHidden() ) ;
 
                                             if(form.getHidden()){
 
-                                                button.setIconCls("arrow_up");
+                                                button.setIconCls("arrow_left");
+                                                state = 0;
                                             }else{
 
-                                                button.setIconCls("arrow_down");
+                                                button.setIconCls("arrow_right");
+                                                state = 1;
                                                 //arrow_down
                                             }
+
+                                            var stateToSave = state;
+                                            var LoginHandler = RMdatalink.app.getController('LoginHandler') ;
+                                            var _id = LoginHandler.config.userDetails._id ;
+
+                                            var inhouseMasterStore = Ext.getStore('inhouseMasterStore');
+
+
+
+
+
+
+
+
+
+
+
+                                            var dataToUpdate = {
+                                                right_naviagtion_panel_state:stateToSave
+                                            };
+
+                                            LoginHandler.config.userDetails.right_naviagtion_panel_state = stateToSave;
+                                            RMdatalink.iwa.rdl.doUpdateCollection(inhouseMasterStore, dataToUpdate , _id, success, error);
+
+                                            function success(){
+
+                                            }
+
+                                            function error(){
+
+
+                                            }
+
+
+
                                         },
                                         border: '0 0 0 0',
-                                        height: 25,
-                                        margin: '0 0 0 45%',
-                                        style: 'background:transparent;',
-                                        width: 105,
+                                        cls: 'borderedDiv',
+                                        height: 100,
+                                        itemId: 'dlSetUpHideShowArrowBtn',
+                                        margin: '18% 0 0 0',
+                                        padding: '0px 0px 0px 0px',
+                                        style: 'background:transparent;border-radius: 20px;border-width: 1px !important;',
+                                        width: 24,
                                         iconAlign: 'center',
-                                        iconCls: 'arrow_down'
+                                        iconCls: 'arrow_right'
                                     },
                                     {
                                         xtype: 'formpanel',
-                                        cls: 'x-rm-rdformpanel',
-                                        height: '150px',
+                                        action: 'setScrollBarVisible',
+                                        cls: 'x-rm-rdformpanel borderedDiv',
                                         itemId: 'productDatalinkaddUpdateFrmPanel',
-                                        scrollable: false,
+                                        margin: '0 5 5 0',
+                                        width: '360px',
+                                        scrollable: true,
                                         layout: {
-                                            type: 'hbox',
-                                            align: 'center',
-                                            pack: 'center'
+                                            type: 'vbox',
+                                            align: 'center'
                                         },
                                         items: [
                                             {
                                                 xtype: 'fieldset',
-                                                flex: 1,
+                                                itemId: 'datalinkProductSetupSideP1',
                                                 width: '100%',
-                                                layout: {
-                                                    type: 'vbox',
-                                                    align: 'center',
-                                                    pack: 'center'
-                                                },
                                                 items: [
                                                     {
-                                                        xtype: 'textfield',
-                                                        itemId: 'datalinkSKUTxtFld',
+                                                        xtype: 'label',
+                                                        labelAction: 'dropDown',
+                                                        cls: [
+                                                            'fieldLbl',
+                                                            'pointerCursor'
+                                                        ],
+                                                        html: 'Bundle Setup (Add-ons)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        itemId: 'mylabel5',
+                                                        margin: '0 0 2 0',
+                                                        style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
+                                                    },
+                                                    {
+                                                        xtype: 'selectfield',
+                                                        itemId: 'datalinkPoductBundeleSelectFld',
+                                                        margin: 'margin: 0px 0px -3px 0px;',
                                                         width: '98%',
-                                                        label: 'SKU',
-                                                        labelWidth: '110px'
+                                                        label: 'Bundle:',
+                                                        labelWidth: '80px',
+                                                        placeHolder: 'Select Pricing Policy',
+                                                        autoSelect: false,
+                                                        store: 'DatalinkProductBundle'
                                                     },
                                                     {
                                                         xtype: 'textfield',
-                                                        itemId: 'datalinkModuleNameTxtFld',
+                                                        itemId: 'datalinkPoductBundeleTextFld',
+                                                        margin: '0px 0px 0px 0',
                                                         width: '98%',
-                                                        label: 'Product Name',
-                                                        labelWidth: '110px'
+                                                        label: 'Name:',
+                                                        labelWidth: '80px'
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        isCurrency: true,
+                                                        html: '<div style= "margin:-16px 0 0 -12px;font-size:12px;">$</div>',
+                                                        itemId: 'datalinkPoductBundelePriceTextFld',
+                                                        margin: '0 0 0 0',
+                                                        width: '60%',
+                                                        label: 'Price:',
+                                                        labelWidth: '80px'
+                                                    },
+                                                    {
+                                                        xtype: 'fieldset',
+                                                        margin: '10 2px 0 80',
+                                                        padding: '0 2 0 0',
+                                                        layout: {
+                                                            type: 'hbox',
+                                                            align: 'start'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    RMdatalink.app.getController('DlPricingController').updateProductBundle();
+                                                                },
+                                                                action: 'addNew',
+                                                                cls: 'x-rm-blueBtn',
+                                                                height: '20px',
+                                                                itemId: 'addUpdate',
+                                                                width: '80px',
+                                                                text: 'Add'
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    RMdatalink.app.getController('DlPricingController').deleteProductBundle();
+                                                                },
+                                                                cls: 'newGrayBtn',
+                                                                height: '20px',
+                                                                itemId: 'delete',
+                                                                margin: '0 5 0 5',
+                                                                minHeight: '24px',
+                                                                width: '80px',
+                                                                pressedCls: 'x-rm-card-actionbtn-pressing',
+                                                                text: 'Delete'
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    RMdatalink.app.getController('DlPricingController').clearProductBundle();
+                                                                },
+                                                                cls: [
+                                                                    'x-rm-blueBtn',
+                                                                    'x-rm-rdopenbtns',
+                                                                    'x-rm-smalliconbtns'
+                                                                ],
+                                                                height: '20px',
+                                                                itemId: 'clear',
+                                                                margin: '0 4 0 0',
+                                                                width: '80px',
+                                                                badgeText: '',
+                                                                iconAlign: 'center',
+                                                                text: 'Clear'
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             },
                                             {
-                                                xtype: 'button',
-                                                cls: [
-                                                    'x-rm-blueBtn',
-                                                    'x-rm-rdopenbtns',
-                                                    'x-rm-smalliconbtns'
-                                                ],
-                                                docked: 'top',
-                                                height: '25px',
-                                                itemId: 'datalinkNewResetBtn',
-                                                width: '50px',
-                                                badgeText: '',
-                                                icon: ' resources//images//retailerDetail//add_btn.png',
-                                                iconAlign: 'center'
-                                            },
-                                            {
                                                 xtype: 'fieldset',
-                                                flex: 1,
+                                                itemId: 'datalinkProductSetupSideP2',
+                                                margin: '0 0 0 0',
                                                 width: '100%',
-                                                layout: {
-                                                    type: 'vbox',
-                                                    align: 'center',
-                                                    pack: 'center'
-                                                },
                                                 items: [
                                                     {
-                                                        xtype: 'textareafield',
-                                                        itemId: 'datalinkModuleDescriptionTxtAreaFld',
+                                                        xtype: 'label',
+                                                        labelAction: 'dropDown',
+                                                        cls: [
+                                                            'fieldLbl',
+                                                            'pointerCursor'
+                                                        ],
+                                                        html: 'Features Setup<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        margin: '0 0 2 0',
+                                                        style: 'font-size:0.8em;'
+                                                    },
+                                                    {
+                                                        xtype: 'fieldset',
+                                                        margin: '0 0 -1px 0',
                                                         width: '98%',
-                                                        label: 'Description',
-                                                        labelWidth: '110px'
+                                                        layout: {
+                                                            type: 'hbox',
+                                                            align: 'center',
+                                                            pack: 'center'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'textfield',
+                                                                flex: 1,
+                                                                itemId: 'prodDlModuleIndexFld',
+                                                                width: '98%',
+                                                                label: 'Index:',
+                                                                labelWidth: '80px'
+                                                            },
+                                                            {
+                                                                xtype: 'textfield',
+                                                                flex: 1,
+                                                                itemId: 'datalinkSKUTxtFld',
+                                                                width: '98%',
+                                                                label: 'SKU:',
+                                                                labelWidth: '80px'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        itemId: 'datalinkModuleNameTxtFld',
+                                                        margin: '0 0 0 0',
+                                                        width: '98%',
+                                                        label: 'Name:',
+                                                        labelWidth: '80px'
+                                                    },
+                                                    {
+                                                        xtype: 'fieldset',
+                                                        width: '98%',
+                                                        items: [
+                                                            {
+                                                                xtype: 'textareafield',
+                                                                height: '86px',
+                                                                itemId: 'datalinkModuleDescriptionTxtAreaFld',
+                                                                margin: '0 0 3 0',
+                                                                width: '100%',
+                                                                label: 'Description:',
+                                                                labelWidth: '80px'
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         xtype: 'textareafield',
+                                                        hidden: true,
                                                         itemId: 'datalinkDetailsTxtAreaFld',
                                                         margin: '10 0 2 0',
                                                         width: '98%',
                                                         label: 'Details',
                                                         labelWidth: '110px'
+                                                    },
+                                                    {
+                                                        xtype: 'fieldset',
+                                                        width: '98%',
+                                                        layout: {
+                                                            type: 'hbox',
+                                                            align: 'center',
+                                                            pack: 'center'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'textfield',
+                                                                isCurrency: true,
+                                                                flex: 1,
+                                                                html: '<div style= "margin:-16px 0 0 -12px;font-size:12px;">$</div>',
+                                                                itemId: 'datalinkStandardPriceTxtFld',
+                                                                width: '98%',
+                                                                label: 'Price Std:',
+                                                                labelWidth: '80px'
+                                                            },
+                                                            {
+                                                                xtype: 'textfield',
+                                                                isCurrency: true,
+                                                                flex: 1,
+                                                                html: '<div style= "margin:-16px 0 0 -12px;font-size:12px;">$</div>',
+                                                                itemId: 'datalinkPromotionalPriceTxtFld',
+                                                                width: '98%',
+                                                                label: 'Promo:',
+                                                                labelWidth: '80px'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'fieldset',
+                                                        width: '98%',
+                                                        layout: 'hbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'textfield',
+                                                                flex: 1,
+                                                                hidden: true,
+                                                                itemId: 'rmProModuleQuantityTxtFld',
+                                                                width: '30%',
+                                                                label: 'Quantity:',
+                                                                labelWidth: '80px'
+                                                            },
+                                                            {
+                                                                xtype: 'textfield',
+                                                                flex: 1,
+                                                                itemId: 'prodDlModuleProductIdFld',
+                                                                margin: '0 1 0 1',
+                                                                width: '35%',
+                                                                label: 'Product Id:',
+                                                                labelWidth: '80px'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'fieldset',
+                                                        margin: '10 2px 0 80',
+                                                        layout: {
+                                                            type: 'hbox',
+                                                            align: 'start'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'button',
+                                                                action: 'addNew',
+                                                                cls: 'x-rm-blueBtn',
+                                                                height: '20px',
+                                                                itemId: 'datalinkAddModuleBtn',
+                                                                margin: '0 0 0 1',
+                                                                width: '80px',
+                                                                text: 'Add'
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    RMdatalink.app.getController('DeleteRecords').deleteDatalink();
+                                                                },
+                                                                cls: 'newGrayBtn',
+                                                                height: '20px',
+                                                                itemId: 'delBtn',
+                                                                margin: '0 0 0 5',
+                                                                minHeight: '24px',
+                                                                width: '80px',
+                                                                pressedCls: 'x-rm-card-actionbtn-pressing',
+                                                                text: 'Delete'
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                cls: [
+                                                                    'x-rm-blueBtn',
+                                                                    'x-rm-rdopenbtns',
+                                                                    'x-rm-smalliconbtns'
+                                                                ],
+                                                                height: '20px',
+                                                                itemId: 'datalinkNewResetBtn',
+                                                                margin: '0 5 0 5',
+                                                                width: '80px',
+                                                                badgeText: '',
+                                                                iconAlign: 'center',
+                                                                text: 'Clear'
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             },
                                             {
                                                 xtype: 'fieldset',
-                                                flex: 1,
+                                                border: '1 1 1 1',
+                                                itemId: 'datalinkDiscountListPanel',
+                                                margin: '0 0 0 0',
                                                 width: '100%',
-                                                layout: {
-                                                    type: 'vbox',
-                                                    align: 'center',
-                                                    pack: 'center'
-                                                },
+                                                layout: 'vbox',
                                                 items: [
                                                     {
-                                                        xtype: 'textfield',
-                                                        itemId: 'datalinkStandardPriceTxtFld',
-                                                        width: '98%',
-                                                        label: 'Standard Price',
-                                                        labelWidth: '120px'
+                                                        xtype: 'label',
+                                                        labelAction: 'dropDown',
+                                                        cls: [
+                                                            'fieldLbl',
+                                                            'pointerCursor'
+                                                        ],
+                                                        html: 'Advance Payment Benefits<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        itemId: 'mylabel6',
+                                                        margin: '0 0 2 0',
+                                                        style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
                                                     },
                                                     {
-                                                        xtype: 'textfield',
-                                                        itemId: 'datalinkPromotionalPriceTxtFld',
-                                                        width: '98%',
-                                                        label: 'Promotional Price',
-                                                        labelWidth: '120px'
+                                                        xtype: 'listwithheader',
+                                                        height: '50px',
+                                                        itemId: 'datalinkAdvancePaymentDiscountList',
+                                                        margin: '0 0 0 0'
                                                     },
                                                     {
-                                                        xtype: 'button',
-                                                        action: 'addNew',
-                                                        cls: 'x-rm-blueBtn',
-                                                        itemId: 'datalinkAddModuleBtn',
-                                                        margin: '0 0 0 20px',
-                                                        text: 'Add New Module'
+                                                        xtype: 'fieldset',
+                                                        margin: '10 2px 10 80',
+                                                        padding: '0 2 0 0',
+                                                        layout: {
+                                                            type: 'hbox',
+                                                            align: 'start'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'button',
+                                                                action: 'addNew',
+                                                                cls: 'x-rm-blueBtn',
+                                                                height: '20px',
+                                                                itemId: 'rmProDiscountSaveBtn',
+                                                                width: '80px',
+                                                                text: 'Update'
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                cls: 'newGrayBtn',
+                                                                height: '20px',
+                                                                margin: '0 5 0 5',
+                                                                minHeight: '24px',
+                                                                width: '80px',
+                                                                pressedCls: 'x-rm-card-actionbtn-pressing',
+                                                                text: 'Delete'
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+
+                                                                },
+                                                                cls: [
+                                                                    'x-rm-blueBtn',
+                                                                    'x-rm-rdopenbtns',
+                                                                    'x-rm-smalliconbtns'
+                                                                ],
+                                                                height: '20px',
+                                                                margin: '0 4 0 0',
+                                                                width: '80px',
+                                                                badgeText: '',
+                                                                iconAlign: 'center',
+                                                                text: 'Clear'
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                listeners: [
+                                                    {
+                                                        fn: function(component, eOpts) {
+                                                            var headers = component.down("#headerList");
+                                                            headers.setData([{}]);
+                                                            headers.setItemTpl(
+                                                            Ext.create('Ext.XTemplate',
+                                                            '<div class="x-rm-listtpl-main">',
+
+                                                            '    <div style="width: 20%;" data-name="discount_name">',
+                                                            '        Name&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div style="width: 15%;" data-name="discount_value">',
+                                                            '        Discount&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+
+                                                            '</div>'
+                                                            )
+                                                            );
+                                                            headers.refresh();
+                                                            headers.setHidden(true);
+
+                                                            var list = component.down('#mainList');
+                                                            list.setStore(Ext.getStore('products.DatalinkDiscountStore'));
+                                                            list.setItemTpl(
+                                                            Ext.create('Ext.XTemplate',
+                                                            '<div class="x-rm-listtpl-main pointerCursor">',
+
+                                                            '    <div style="width: 74%;padding-left: 15%;">{discount_name}</div>',
+                                                            '    <div style="width: 5%;">%</div>',
+
+                                                            '<div style="width: 15%;text-align: center;">',
+                                                            '    <input type="text" style="width: 92% !important;margin-left: 2%;height: 16px;padding-left: 2px;" class="x-rm-rdinlinecmt prodDlSetupFlds" data-id="{id}" value="{discount_value}" maxlength="24"',
+                                                            '        onchange="RMdatalink.app.getController(\'RMProController\').updateRmproDiscount(this,\'discount_value\');"/>',
+                                                            '</div>',
+
+
+                                                            '</div>'
+                                                            )
+                                                            );
+
+                                                            list.setMode("SINGLE");
+
+                                                            list.on("select",function(discountList, record, eOpts){
+                                                                RMdatalink.app.getController('DatalinkController').onDatalinkDiscountSelect(discountList, record);
+                                                            });
+                                                        },
+                                                        event: 'initialize'
                                                     }
                                                 ]
                                             }
@@ -344,6 +804,7 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
                                 listeners: [
                                     {
                                         fn: function(element, eOpts) {
+
                                             RMdatalink.app.getController('DatalinkController').onDatalinkVendorPricingPainted() ;
                                         },
                                         event: 'painted'
@@ -353,6 +814,7 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
                             {
                                 xtype: 'container',
                                 title: 'Advance Payment Benifits',
+                                hidden: true,
                                 layout: 'vbox',
                                 items: [
                                     {
@@ -364,12 +826,12 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
                                                 xtype: 'panel',
                                                 flex: 2,
                                                 border: '1 1 1 1',
-                                                itemId: 'datalinkDiscountListPanel',
+                                                itemId: 'datalinkDiscountListPanel1',
                                                 layout: 'vbox',
                                                 items: [
                                                     {
                                                         xtype: 'listwithheader',
-                                                        itemId: 'datalinkAdvancePaymentDiscountList',
+                                                        itemId: 'datalinkAdvancePaymentDiscountList1',
                                                         flex: 1
                                                     }
                                                 ],
@@ -491,6 +953,10 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
             {
                 fn: 'onInhouseMainContentPanelInitialize',
                 event: 'initialize'
+            },
+            {
+                fn: 'onProductDatalinkMainPanelPainted',
+                event: 'painted'
             }
         ]
     },
@@ -530,9 +996,22 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
 
                 dataview.select(record,true) ;
             }
-
+             var str = dataview.getStore();
+                for(var i=0; i < str.getData().all.length ; i++){
+                    str.getAt(i).set('is_itemtap',false);;
+                }
+                 record.set('is_itemtap',true);
             RMdatalink.app.getController('DatalinkController').onProductRMProListSelect(dataview, record, eOpts);
         }
+
+
+         var timeout = setTimeout(function(){
+
+                              RMdatalink.app.getController('DatalinkController').setDefaultDlDataProduct() ;
+
+                                clearTimeout(timeout);
+                            },100);
+
     },
 
     onInhouseMainContentPanelInitialize: function(component, eOpts) {
@@ -555,6 +1034,86 @@ Ext.define('RMdatalink.view.products.DatalinkMain', {
             // RMdatalink.app.getController('DeleteRecords').deleteRMPRO();
         });
 
+
+        component.addListener(
+
+            'painted' , function(){
+
+
+                var LoginHandler = RMdatalink.app.getController('LoginHandler');
+
+                if(LoginHandler.config.userDetails.right_naviagtion_panel_state  == 0){
+
+                    var RMnavigationPanelExpandButton= component.query("#ecomSetUpHideShowArrowBtn");
+
+                    for(var i= 0 ; i < RMnavigationPanelExpandButton.length ; i++ ){
+
+                        var handler = RMnavigationPanelExpandButton[i].getHandler();
+                        handler.call(RMnavigationPanelExpandButton[i] , RMnavigationPanelExpandButton[i]);
+
+
+                    }
+
+                }else{
+
+                }
+
+
+            },
+            this,{
+
+                single:true
+            }
+        );
+
+        function fnToEx(fn , scope , arg){
+
+        }component.addListener(
+
+            'painted' , function(){
+
+
+                var LoginHandler = RMdatalink.app.getController('LoginHandler');
+
+                if(LoginHandler.config.userDetails.right_naviagtion_panel_state  == 0){
+
+                    var RMnavigationPanelExpandButton= component.query("#dlSetUpHideShowArrowBtn");
+
+                    for(var i= 0 ; i < RMnavigationPanelExpandButton.length ; i++ ){
+
+                        var handler = RMnavigationPanelExpandButton[i].getHandler();
+                        handler.call(RMnavigationPanelExpandButton[i] , RMnavigationPanelExpandButton[i]);
+
+
+                    }
+
+                }else{
+
+                }
+
+
+            },
+            this,{
+
+                single:true
+            }
+        );
+
+        function fnToEx(fn , scope , arg){
+
+        }
+    },
+
+    onProductDatalinkMainPanelPainted: function(element, eOpts) {
+         RMdatalink.app.getController('DatalinkController').enableDisableDlFlds(true);
+
+        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+        selectfield = Ext.ComponentQuery.query('#datalinkPoductBundeleSelectFld')[0] ;
+
+        if(pricingData[0].state_values && pricingData[0].state_values.datalink_bundle )
+        {
+            selectfield.setValue( pricingData[0].state_values.datalink_bundle ) ;
+        }
 
 
     }

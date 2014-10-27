@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "CurrentInvoiceStore",
+        "model": "InvoiceHistoryModel",
+        "storeId": "CurrentInvoiceStore"
+    },
+    "designerId": "731d1ae7-09ec-4de3-ade4-ec6e548f3b64"
+}

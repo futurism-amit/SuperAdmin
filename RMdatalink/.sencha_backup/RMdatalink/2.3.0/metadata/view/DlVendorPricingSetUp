@@ -1,0 +1,1797 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "designer|userAlias": "DlVendorPricingSetUp",
+        "designer|userClassName": "DlVendorPricingSetUp",
+        "height": 520,
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "itemId": "DlVendorPricingSetUp",
+        "layout": "vbox",
+        "maxWidth": null,
+        "minWidth": null,
+        "padding": "4 0 0 0",
+        "showAnimation": [
+            "false"
+        ],
+        "style": "padding-top:0px;",
+        "width": 520
+    },
+    "designerId": "a5fb65b0-6cd2-45cd-b2d0-eecd383a7db1",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "action": "setScrollBarVisible",
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "layout": "vbox",
+                "layout|flex": 1,
+                "margin": null,
+                "scrollable": true
+            },
+            "designerId": "72a81861-dc25-4133-877f-c696d8999340",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "action",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "dlVdrPricingSku_imgsSetUpPanel",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "c4b7e527-74b7-43a7-8a44-6e58087bac8b",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Pricing Setup (SKU + Images)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel6",
+                                "labelAction": "dropDown",
+                                "margin": "1 0 10 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "f716b745-7b34-4032-8477-9e396e6b4395",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "layout": "hbox",
+                                "title": null
+                            },
+                            "designerId": "d5d335d9-8312-4a40-bf03-73178510a39a",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1.28,
+                                        "title": null
+                                    },
+                                    "designerId": "9c597be8-7fa1-45bf-b865-9f1d4cb8bfe7",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout": "hbox",
+                                                "title": null
+                                            },
+                                            "designerId": "497f95fb-a546-46b9-a8a2-b42720cfd1c7",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Select",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "autoSelect": false,
+                                                        "itemId": "policySelectSI",
+                                                        "label": null,
+                                                        "layout|flex": null,
+                                                        "store": "DlVdPricingSkuImgs",
+                                                        "width": "60%"
+                                                    },
+                                                    "designerId": "0e3fd9fe-26b6-4de4-8162-f6919af177bd"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "policyText",
+                                                        "label": null,
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "ace0a1cf-25fc-4338-b79c-f941bb6e4b6c"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "stdStart",
+                                                "label": "Std. Price Start:",
+                                                "labelWidth": "60%",
+                                                "value": null
+                                            },
+                                            "designerId": "b89dce81-d722-4071-b4ce-edbbd01f3399"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "promoStart",
+                                                "label": "Promo. Price Start :",
+                                                "labelWidth": "60%"
+                                            },
+                                            "designerId": "d1022083-9264-4212-b80c-da02412d677d"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 20",
+                                        "padding": "0 4 0 0",
+                                        "title": null
+                                    },
+                                    "designerId": "1849116b-75d9-4acf-9a69-55b78d8fe5df",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "valueGtZero",
+                                                "itemId": "range",
+                                                "label": "SKU Range:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "3c9742c4-53cf-4607-abe6-cb56a672b855",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "stdIncrement",
+                                                "label": "Increment:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "814aca0a-fb2c-453f-bc4c-4355178c5024"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "promoIncrement",
+                                                "label": "Increment:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "c116b84e-117a-47f1-8474-ff3c71f0cdfc"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "container|pack": "center",
+                                "height": null,
+                                "layout": "hbox",
+                                "margin": "4 0 4 0",
+                                "padding": "0 2 0 0",
+                                "title": null,
+                                "width": "86%"
+                            },
+                            "designerId": "aa7d972c-57be-4973-be9d-85552db5efad",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "addNew",
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "itemId": "addUpdate",
+                                        "margin": "0 0 0 20",
+                                        "text": "Add",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "f297dcae-1ca5-4190-ba8f-fd2ce169fc80",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').getSkuImgsPolicy();"
+                                                ]
+                                            },
+                                            "designerId": "9c78f8b1-5adf-4e6a-b532-8bf9f8573014"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "newGrayBtn"
+                                        ],
+                                        "height": "20px",
+                                        "itemId": "delete",
+                                        "margin": "0 0 0 20",
+                                        "minHeight": "24px",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "style": null,
+                                        "text": "Delete",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "a61d64c7-67d8-485e-89d7-c134cbf8ad33",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').deleteSkuImgs();"
+                                                ]
+                                            },
+                                            "designerId": "80c1074e-fa3c-4268-a7b1-2345a6858d4e"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "badgeText": "",
+                                        "cls": [
+                                            "x-rm-blueBtn",
+                                            "x-rm-rdopenbtns",
+                                            "x-rm-smalliconbtns"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "hidden": null,
+                                        "icon": null,
+                                        "iconAlign": "center",
+                                        "itemId": "clear",
+                                        "margin": "0 0 0 20",
+                                        "text": "Clear",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "3c210ec2-c64b-4c03-985e-341b4d1a5c64",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').clearSkuImgsFlds();"
+                                                ]
+                                            },
+                                            "designerId": "13309c30-eb84-4152-ac4f-b0ceb5a6d057"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "dlVdrPricingSku_imgs_addlImgsSetUpPanel",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "43077805-8cc3-4fe4-87ed-a2d3b0aed235",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Pricing Setup (SKU + Images + Addl Images)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel6",
+                                "labelAction": "dropDown",
+                                "margin": "1 0 10 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "7311456f-5d80-4a48-952f-ab92bd26ba33",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "layout": "hbox",
+                                "title": null
+                            },
+                            "designerId": "afc9d42d-3a20-4ab9-a300-9e406d7500ae",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1.28,
+                                        "title": null
+                                    },
+                                    "designerId": "77a90a74-ba58-45c4-8688-eeb8da7b63d0",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout": "hbox",
+                                                "title": null
+                                            },
+                                            "designerId": "844fd998-14f2-461d-9048-61a1869d9e18",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Select",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "autoSelect": false,
+                                                        "itemId": "policySelectAI",
+                                                        "label": null,
+                                                        "layout|flex": null,
+                                                        "store": "DlVdPricingSkuImgsAddlImages",
+                                                        "width": "60%"
+                                                    },
+                                                    "designerId": "b89daf8a-d41c-4bf8-8759-4bdee5b79566"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "policyText",
+                                                        "label": null,
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "84460137-0e6d-4e84-83ac-75e4a8f4e33e"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "stdStart",
+                                                "label": "Std. Price Start:",
+                                                "labelWidth": "60%",
+                                                "value": null
+                                            },
+                                            "designerId": "812bdeee-e221-4bc4-8697-d7a3a44ec01b"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "promoStart",
+                                                "label": "Promo. Price Start :",
+                                                "labelWidth": "60%"
+                                            },
+                                            "designerId": "fd2057fd-cc8e-4b05-b482-1eab3dc8fb6a"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 20",
+                                        "padding": "0 4 0 0",
+                                        "title": null
+                                    },
+                                    "designerId": "90e82b19-668e-4ce2-8f7d-a3b16646999f",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "valueGtZero",
+                                                "itemId": "range",
+                                                "label": "SKU Range:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "fcba331c-b50a-4f58-ae2a-a99a47d73996",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "stdIncrement",
+                                                "label": "Increment:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "2284a3d9-01d9-4969-93b8-be238fb44b02"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">$</div>",
+                                                "itemId": "promoIncrement",
+                                                "label": "Increment:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "844183cf-c42d-42d8-80b5-d96751dfd3d0"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "container|pack": "center",
+                                "height": null,
+                                "layout": "hbox",
+                                "margin": "4 0 4 0",
+                                "padding": "0 2 0 0",
+                                "title": null,
+                                "width": "86%"
+                            },
+                            "designerId": "dacbbe55-b96a-42d2-b649-aacbe2e5b221",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "addNew",
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "itemId": "addUpdate",
+                                        "margin": "0 0 0 20",
+                                        "text": "Add",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "60ec6d43-5102-48bd-9679-8d3a8f8388e5",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').updateSkuImgsAddlImgs();"
+                                                ]
+                                            },
+                                            "designerId": "bd36365c-8449-40a3-bef8-9e0f4cdfdc28"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "newGrayBtn"
+                                        ],
+                                        "height": "20px",
+                                        "itemId": "delete",
+                                        "margin": "0 0 0 20",
+                                        "minHeight": "24px",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "style": null,
+                                        "text": "Delete",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "e061bada-e4ff-40a5-96ad-17284a30133c",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').deleteImgsAddlImgs();"
+                                                ]
+                                            },
+                                            "designerId": "6fb65ed5-8cb4-4a0e-baf3-e18bae2dff51"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "badgeText": "",
+                                        "cls": [
+                                            "x-rm-blueBtn",
+                                            "x-rm-rdopenbtns",
+                                            "x-rm-smalliconbtns"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "hidden": null,
+                                        "icon": null,
+                                        "iconAlign": "center",
+                                        "itemId": "clear",
+                                        "margin": "0 0 0 20",
+                                        "text": "Clear",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "6242493a-d5aa-40bc-8e4e-f16a6cf3d656",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').clearImgsAddlImgs();"
+                                                ]
+                                            },
+                                            "designerId": "2547e5f2-e51d-4a51-ba5d-e29287178fc9"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "dlVdrPricingVdrDiscountSetUpPanel",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "9103606b-56ac-44c7-aded-187d216fa48e",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Discount Policy Setup (Vendors)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel6",
+                                "labelAction": "dropDown",
+                                "margin": "1 0 10 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "3db29f25-c7f5-4f21-8d3e-1f04e8a193fc",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "layout": "hbox",
+                                "title": null
+                            },
+                            "designerId": "9d735a12-ca38-4467-bb7c-b0eb0d1e37eb",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1.28,
+                                        "title": null
+                                    },
+                                    "designerId": "ccf14d07-cf3a-481e-a8d5-daa55c675608",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout": "hbox",
+                                                "title": null
+                                            },
+                                            "designerId": "5cb138f6-06c8-4b39-a850-971abd02044d",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Select",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "autoSelect": false,
+                                                        "itemId": "discountPolicySlct",
+                                                        "label": null,
+                                                        "layout|flex": null,
+                                                        "store": "DlVdPricingVdrDiscount",
+                                                        "width": "60%"
+                                                    },
+                                                    "designerId": "2edc453f-57f9-41d3-a773-6420820b22a1"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "discountPolicySlctTxt",
+                                                        "label": null,
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "7914872d-7914-4f3e-9c65-cb6e43813a56"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">%</div>",
+                                                "itemId": "start",
+                                                "label": "Percentage Start:",
+                                                "labelWidth": "60%"
+                                            },
+                                            "designerId": "dc9bd4bc-d909-4002-a7fa-8098311f48e7"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 20",
+                                        "padding": "0 4 0 0",
+                                        "title": null
+                                    },
+                                    "designerId": "a9ec45f7-e450-4669-950d-9c967efcd66c",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "valueGtZero",
+                                                "itemId": "range",
+                                                "label": "Vendor Range:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "4103450e-6d07-4ded-99ca-a1c0bf35f182",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">%</div>",
+                                                "itemId": "increment",
+                                                "label": "Increment:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "af804b63-7bce-48a8-bee0-e1bf5182683a"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "container|pack": "center",
+                                "height": null,
+                                "layout": "hbox",
+                                "margin": "4 0 4 0",
+                                "padding": "0 2 0 0",
+                                "title": null,
+                                "width": "86%"
+                            },
+                            "designerId": "2e355a09-33b7-4891-b5d8-ae1e5df4d5ef",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "addNew",
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "itemId": "addUpdate",
+                                        "margin": "0 0 0 20",
+                                        "text": "Add",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "cb3bdcf7-4813-445a-a202-9c9e015fb060",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').updateVdrDiscount();"
+                                                ]
+                                            },
+                                            "designerId": "731118f9-9812-438d-a4e9-7b7980efd51c"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "newGrayBtn"
+                                        ],
+                                        "height": "20px",
+                                        "itemId": "delete",
+                                        "margin": "0 0 0 20",
+                                        "minHeight": "24px",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "style": null,
+                                        "text": "Delete",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "07cd3ede-5faf-4aee-ad8e-213f50554610",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').deleteVdrDisc();"
+                                                ]
+                                            },
+                                            "designerId": "f4883261-20de-456a-b424-7b4373fe8019"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "badgeText": "",
+                                        "cls": [
+                                            "x-rm-blueBtn",
+                                            "x-rm-rdopenbtns",
+                                            "x-rm-smalliconbtns"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "hidden": null,
+                                        "icon": null,
+                                        "iconAlign": "center",
+                                        "itemId": "clear",
+                                        "margin": "0 0 0 20",
+                                        "text": "Clear",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "f496c774-5635-43c1-bbff-cb12dd19408e",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').clearVdrDisc();"
+                                                ]
+                                            },
+                                            "designerId": "43a2ea7c-6ce1-41c6-b408-5ef31e1fcdb5"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "dlVdrPricingSKUDiscountSetUpPanel",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "142234ce-65d2-4962-b708-7f48108ff9aa",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Discount Policy Setup (SKU)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel6",
+                                "labelAction": "dropDown",
+                                "margin": "1 0 10 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "dd9072d5-9023-4d0e-a266-24456d12fd13",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "layout": "hbox",
+                                "title": null
+                            },
+                            "designerId": "f3a6efa5-52b2-4efd-a426-2452f74e8919",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1.28,
+                                        "title": null
+                                    },
+                                    "designerId": "bb407d1b-cc95-44b2-ad4e-ffeaab7aa1fc",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout": "hbox",
+                                                "title": null
+                                            },
+                                            "designerId": "b5f2035e-42d7-46dd-815d-a8ae436dcf3f",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.Select",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "autoSelect": false,
+                                                        "itemId": "SKUdiscountPolicySlct",
+                                                        "label": null,
+                                                        "layout|flex": null,
+                                                        "store": "DlVdPricingSKUDiscount",
+                                                        "width": "60%"
+                                                    },
+                                                    "designerId": "8c89d101-7a21-421c-ae21-25416c939182"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "discountPolicySlctTxt",
+                                                        "label": null,
+                                                        "layout|flex": 1
+                                                    },
+                                                    "designerId": "64aa6ef9-b5c5-4ef4-acde-cd4824892315"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">%</div>",
+                                                "itemId": "start",
+                                                "label": "Percentage Start:",
+                                                "labelWidth": "60%"
+                                            },
+                                            "designerId": "4af9fdd1-53d6-4250-8633-8ee483efd9e5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 20",
+                                        "padding": "0 4 0 0",
+                                        "title": null
+                                    },
+                                    "designerId": "f175fb37-bc0a-415f-91f5-6e23556aec2f",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "valueGtZero",
+                                                "itemId": "range",
+                                                "label": "SKU Range:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "cf91d642-f033-4706-9783-c92b4f57832e",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.75em;\">%</div>",
+                                                "itemId": "increment",
+                                                "label": "Increment:",
+                                                "labelWidth": "52%"
+                                            },
+                                            "designerId": "9dcc66fb-b94a-4c8e-bca2-5f7be0bfd40c"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "container|pack": "center",
+                                "height": null,
+                                "layout": "hbox",
+                                "margin": "4 0 4 0",
+                                "padding": "0 2 0 0",
+                                "title": null,
+                                "width": "86%"
+                            },
+                            "designerId": "ac26ac18-f513-4857-a9db-e09f379efebb",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "addNew",
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "itemId": "addUpdate",
+                                        "margin": "0 0 0 20",
+                                        "text": "Add",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "85189e99-b523-4954-aefe-c51dc580f5c7",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').updateSKUDisc();"
+                                                ]
+                                            },
+                                            "designerId": "429a8aa9-39e0-48f2-ac23-c6be163ced71"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "newGrayBtn"
+                                        ],
+                                        "height": "20px",
+                                        "itemId": "delete",
+                                        "margin": "0 0 0 20",
+                                        "minHeight": "24px",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "style": null,
+                                        "text": "Delete",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "00e03c57-6ce5-412c-8f20-e63adb02e751",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').deleteSkuDisc();"
+                                                ]
+                                            },
+                                            "designerId": "a383be06-007a-4928-bf64-62f9e3ee7648"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "badgeText": "",
+                                        "cls": [
+                                            "x-rm-blueBtn",
+                                            "x-rm-rdopenbtns",
+                                            "x-rm-smalliconbtns"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "hidden": null,
+                                        "icon": null,
+                                        "iconAlign": "center",
+                                        "itemId": "clear",
+                                        "margin": "0 0 0 20",
+                                        "text": "Clear",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "14af9d13-2a01-459a-8eeb-0a6521ccf839",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').clearSKUDisc();"
+                                                ]
+                                            },
+                                            "designerId": "60f8df6e-73c7-4499-9bfc-115688368384"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "dlVdrPricingTimeTknToUploadPanel",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "cc728489-1da4-433e-bbb0-2d4d54b013cd",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Value Calculator Setup<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel6",
+                                "labelAction": "dropDown",
+                                "margin": "1 0 10 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "327e88eb-30e5-48dd-a0cc-182afbb36711",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "vdrTimeTknSkuImagsFld",
+                                "label": "Time Taken per SKU + Image:",
+                                "labelWidth": "52%"
+                            },
+                            "designerId": "c1c31716-c74e-4b90-901a-0dbd710d97ee"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "vdrTimeTknSkuImagsAddlImgsFld",
+                                "label": "Time Taken per SKU + Image + Addl Image:",
+                                "labelWidth": "52%"
+                            },
+                            "designerId": "f50e15fd-42bf-446d-9b8f-aaca79342024"
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "container|pack": "center",
+                                "height": null,
+                                "layout": "hbox",
+                                "margin": "4 0 4 0",
+                                "padding": "0 2 0 0",
+                                "title": null,
+                                "width": "86%"
+                            },
+                            "designerId": "789204ce-dd16-45aa-aab0-06d74b3043b8",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "addNew",
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "itemId": null,
+                                        "margin": "0 0 0 20",
+                                        "text": "Update",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "bd669d14-984c-43d2-806f-9d84daa96e32",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('DlPricingController').updateTimeTakenFlds();"
+                                                ]
+                                            },
+                                            "designerId": "0353cca6-7a7b-4c4b-b309-ef44f380e200"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "newGrayBtn"
+                                        ],
+                                        "height": "20px",
+                                        "hidden": true,
+                                        "itemId": null,
+                                        "margin": "0 0 0 20",
+                                        "minHeight": "24px",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "style": null,
+                                        "text": "Delete",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "74cc0130-ae19-4054-9af9-9e7d8e421352"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "badgeText": "",
+                                        "cls": [
+                                            "x-rm-blueBtn",
+                                            "x-rm-rdopenbtns",
+                                            "x-rm-smalliconbtns"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "hidden": null,
+                                        "icon": null,
+                                        "iconAlign": "center",
+                                        "itemId": null,
+                                        "margin": "0 0 0 20",
+                                        "text": "Clear",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "5dc75040-fcbd-4f61-81ec-5f9d9dcf6457"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onDlVendorPricingSetUpPainted",
+                "implHandler": [
+                    "    var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;\r",
+                    "\r",
+                    "    if(!pricingData[0]){\r",
+                    "\r",
+                    "        return ;\r",
+                    "    }\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "    var form = Ext.ComponentQuery.query('#dlVdrPricingTimeTknToUploadPanel')[0] ;\r",
+                    "\r",
+                    "\r",
+                    "    form.down('#vdrTimeTknSkuImagsFld').setValue(pricingData[0].time_taken_images) ;\r",
+                    "    form.down('#vdrTimeTknSkuImagsAddlImgsFld').setValue(pricingData[0].time_taken_images_addl_images) ;\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "form = Ext.ComponentQuery.query('#DlVendorPricingSetUp')[0] ;\r",
+                    "var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;\r",
+                    "\r",
+                    "\r",
+                    "if(!pricingData[0].state_values){\r",
+                    "    return ;\r",
+                    "}\r",
+                    "var selectfield ;\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "if(pricingData[0].state_values.vendor_pricing_sku_images )\r",
+                    "{\r",
+                    "    selectfield = form.down('#policySelectSI') ;\r",
+                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_images ) ;\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "if(pricingData[0].state_values.vendor_pricing_sku_images_addl_images )\r",
+                    "{\r",
+                    "   selectfield = form.down('#policySelectAI') ;\r",
+                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_images_addl_images ) ;\r",
+                    "}\r",
+                    "\r",
+                    "if(pricingData[0].state_values.vendor_pricing_vdr_discount )\r",
+                    "{\r",
+                    "     selectfield = form.down('#discountPolicySlct') ;\r",
+                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_vdr_discount ) ;\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "if(pricingData[0].state_values.vendor_pricing_sku_discount )\r",
+                    "{\r",
+                    "     selectfield = form.down('#SKUdiscountPolicySlct') ;\r",
+                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_discount ) ;\r",
+                    "}"
+                ],
+                "name": "painted"
+            },
+            "designerId": "0a4083cf-dbec-4eee-a94f-33cd61d314cc"
+        }
+    ]
+}

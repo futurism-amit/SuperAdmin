@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ecomVdPricingVdrDiscount",
+        "model": "DlVdPricingVdrDiscount",
+        "storeId": "ecomVdPricingVdrDiscount"
+    },
+    "designerId": "16b7a6d8-c4f8-4193-9a8e-4cb278798bcc"
+}

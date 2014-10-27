@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css3",
+        "id": "CardHeaderPanelCSS",
+        "url": "resources/css/CardHeaderPanel/CardHeaderPanelCSS.css"
+    },
+    "designerId": "c7da0b99-df7c-4699-8682-7de4db58ea18"
+}

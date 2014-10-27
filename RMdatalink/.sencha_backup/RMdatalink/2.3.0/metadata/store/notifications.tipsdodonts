@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "notificationsTipsDoDonts",
+        "designer|userClassName": "notifications.tipsdodonts",
+        "model": "notifications.new",
+        "storeId": "notificationsTipsDoDonts"
+    },
+    "designerId": "985d7663-1bdf-4746-a42a-561f5327fe51"
+}

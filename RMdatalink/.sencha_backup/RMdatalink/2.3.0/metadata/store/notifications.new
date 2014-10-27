@@ -1,0 +1,109 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userAlias": "notificationsNew",
+        "designer|userClassName": "notifications.new",
+        "model": "notifications.new",
+        "pageNo": 1,
+        "storeId": "notificationsNew",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "totalNoOfPages": "number",
+        "cachedData": "object",
+        "pageNo": "number"
+    },
+    "designerId": "70452d86-e3f1-41af-ae50-642e76ae2c66",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreAddrecords",
+                "implHandler": [
+                    "\r",
+                    "    // RMdatalink.util.DataLoader.onNotificationStoreNewRecordAdded(store,records,eOpts);\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "   //  RMdatalink.util.DataHandler .onNotificationStoreNewRecordAdded(store,records,eOpts);\r",
+                    "\r",
+                    "\r",
+                    "RMdatalink.app.getController('PaginationController').loadDependentStoresonMaster(store.getStoreId());"
+                ],
+                "name": "addrecords"
+            },
+            "designerId": "6ee42a07-f42f-4a0d-9d46-cc7a26874aba"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreUpdaterecord",
+                "implHandler": [
+                    "     RMdatalink.util.DataLoader.onNotificationsStoreUpdate(store,record,newIndex,oldIndex,modifiedFieldNames,modifiedValues,eOpts);\r",
+                    "\r",
+                    "    // RMdatalink.util.DataHandler.onNotificationMasterStoreUpdate(store,record,newIndex,oldIndex,modifiedFieldNames,modifiedValues,eOpts);\r",
+                    ""
+                ],
+                "name": "updaterecord"
+            },
+            "designerId": "d9e1ebcc-fe27-4799-b28d-5e0a1a1d015e"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreRemoverecords",
+                "implHandler": [
+                    "\r",
+                    "     RMdatalink.util.DataLoader.onNotificationsMasterStoreRecordRemoved(store,records,indices,eOpts);\r",
+                    "\r",
+                    "\r",
+                    "   //  RMdatalink.util.DataHandler.onNotificationMasterStoreRecordRemoved(store,records,indices,eOpts);\r",
+                    ""
+                ],
+                "name": "removerecords"
+            },
+            "designerId": "0c05145b-9aa7-42fe-b596-f3080d031a68"
+        }
+    ]
+}

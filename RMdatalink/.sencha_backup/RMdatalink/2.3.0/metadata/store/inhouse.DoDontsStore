@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "inhouse.DoDontsStore",
+        "model": "notifications.new",
+        "storeId": "inhouseDoDontsStore"
+    },
+    "designerId": "3e680918-a457-4386-b211-06f91689c2e6"
+}

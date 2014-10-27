@@ -1,0 +1,865 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "browseLatestLogMainContainer",
+        "designer|userClassName": "browseLatestLogMainContainer",
+        "height": "100%",
+        "hidden": false,
+        "itemId": "browseLatestLogMainContainer",
+        "layout": "vbox",
+        "width": "100%"
+    },
+    "designerId": "1bd08560-5f79-4bc4-9d14-3aaeb960105c",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "latestLogCardHeader",
+                "layout|flex": 1,
+                "margin": null
+            },
+            "designerId": "5d577688-c928-4f6c-a138-62e575d9d729",
+            "masterInstanceId": "65dc2686-f6eb-4b20-bd40-d013cbc17112"
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "hidden": false,
+                "layout": "hbox",
+                "layout|flex": 15,
+                "width": null
+            },
+            "designerId": "bd717225-6183-4fb8-b926-05a703149a21",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel"
+                        ],
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "hidden": false,
+                        "itemId": "browseLatestLogMainTabPanel",
+                        "layout|flex": 2,
+                        "margin": "0 10 0 0",
+                        "ui": "light"
+                    },
+                    "designerId": "6d7cce72-b190-412f-8967-2dcb7e1008e3",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top"
+                            },
+                            "designerId": "802fac35-220b-4175-aa76-9adfee7b1b31"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "container|pack": "center",
+                                "designer|displayName": null,
+                                "itemId": "browseLatestLogTab",
+                                "layout": "vbox",
+                                "scrollable": true,
+                                "title": "TECH SUPPORT LOG"
+                            },
+                            "designerId": "9c712ca6-7e43-44f3-903d-538b5b3049f4",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onDataLinkTabPainted",
+                                        "implHandler": [
+                                            "window.location.hash = 'browseLatestLogCard'+0;\r",
+                                            "\r",
+                                            "\r",
+                                            "var TechSupportLogsStore = Ext.getStore('TechSupportLogsStore');\r",
+                                            "\r",
+                                            "TechSupportLogsStore.clearFilter();"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "02acf7ea-31c8-455b-9ac6-11acb5f355a2"
+                                },
+                                {
+                                    "type": "Ext.form.FieldSet",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdformpanel",
+                                            "noBorderFldSet"
+                                        ],
+                                        "height": "32px",
+                                        "itemId": "techSupportLogSearchFldSet",
+                                        "layout": "hbox",
+                                        "margin": "5 0 5 0",
+                                        "style": "border: none;",
+                                        "title": null,
+                                        "width": "98%"
+                                    },
+                                    "designerId": "b2909b30-af16-4ef1-8c19-48a241c69a6f",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Search",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "searchTechSupportLog",
+                                                "cls": [
+                                                    "x-field-techLogsearch"
+                                                ],
+                                                "height": null,
+                                                "itemId": "brwsTechSupportLogSearchFld",
+                                                "label": null,
+                                                "layout|flex": 1,
+                                                "style": "border: none;"
+                                            },
+                                            "designerId": "b6372bc7-2d87-48a2-81f2-3bee5918ee1d",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": null,
+                                                "cls": [
+                                                    "x-rm-blueBtn"
+                                                ],
+                                                "height": "25px",
+                                                "itemId": "brwsTechSupportSerchBtn",
+                                                "text": "Search",
+                                                "width": "90px"
+                                            },
+                                            "designerId": "d850568d-5af3-42f9-aba8-5673b05ba24b",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": true,
+                                        "margin": "5 0 5 0"
+                                    },
+                                    "designerId": "471c04e0-eac0-4c94-a0c3-56adcf14fc5d",
+                                    "masterInstanceId": "5486b687-172e-4cd3-8a4c-36599048d2ca"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "browseLatestLogList",
+                                        "layout|flex": 1,
+                                        "margin": null,
+                                        "minHeight": "150px"
+                                    },
+                                    "designerId": "55c60bc5-0cde-4cab-a6cb-d44322ec423d",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onBrowseLatestLogTabInitialize",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 4%;\">',\r",
+                                            "               '        <div style=\"width: 25px;\" data-name=\"all\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"crm_user\">',\r",
+                                            "               '        CRM User&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 18%;\" data-name=\"time_start\">',\r",
+                                            "               '        Date/Time&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"total_time\">',\r",
+                                            "               '        Length&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"company\">',\r",
+                                            "               '        company&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"product_name\">',\r",
+                                            "               '        Product&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"problem\">',\r",
+                                            "               '        Description&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "list.setStore('TechSupportLogsStore');\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 4%;overflow:visible;\">',\r",
+                                            "               '        <div style=\"width: 25px; height:25px; background-image:url({company_logo})\"></div>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\" >{crm_user}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 18%;\"  >{time_start}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\" >{total_time.hours}:{total_time.minutes}:{total_time.seconds}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\" >{company}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\" >{product_name}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\" >{problem}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\" >{status}</div>',\r",
+                                            "                             '</div>'\r",
+                                            "              )\r",
+                                            ");//\r",
+                                            "list.onStoreClear();\r",
+                                            "\r",
+                                            "list.on(\"select\",function(){\r",
+                                            "\r",
+                                            "     RMdatalink.app.getController('TechSupportLog').latestLogListSelect(arguments);\r",
+                                            "\r",
+                                            "\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "b9f0fba2-b0d3-4619-81a5-7bede91852ee"
+                                },
+                                {
+                                    "type": "Ext.form.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdformpanel"
+                                        ],
+                                        "container|pack": "end",
+                                        "height": "35px",
+                                        "layout": "hbox",
+                                        "margin": "0 30% 0 0",
+                                        "scrollable": false
+                                    },
+                                    "designerId": "bea9d43d-54a6-4178-9848-2f77c2d52622",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": null,
+                                                "designer|uiInterfaceName": "plain",
+                                                "docked": "right",
+                                                "height": "25px",
+                                                "icon": null,
+                                                "iconAlign": "center",
+                                                "itemId": "techSupportLatestLogsSaveBtn",
+                                                "margin": "0 0 0 10",
+                                                "style": "background-image: url(resources/images/retailerDetail/save_button.png);background-repeat: no-repeat;background-position: center;",
+                                                "text": null,
+                                                "ui": "plain",
+                                                "width": "29px"
+                                            },
+                                            "designerId": "cf8c6ef5-db7b-4c62-b638-60143aa88bdf"
+                                        },
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "autoSelect": false,
+                                                "disabled": true,
+                                                "height": "25px",
+                                                "itemId": "borwseLatestLogStatusSelectFld",
+                                                "label": "Status",
+                                                "margin": null,
+                                                "options": [
+                                                    "[\r",
+                                                    "    \r",
+                                                    "    {\r",
+                                                    "        text:'Pending',\r",
+                                                    "        value:\"1\"\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        text:'In Progress',\r",
+                                                    "        value:\"2\"\r",
+                                                    "    },\r",
+                                                    "    {\r",
+                                                    "        text:'Completed',\r",
+                                                    "        value:\"3\"\r",
+                                                    "    }\r",
+                                                    "]"
+                                                ],
+                                                "placeHolder": "Select Status",
+                                                "width": "320px"
+                                            },
+                                            "designerId": "6f455c0c-caca-401b-949a-fb2e0d722ec0"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdnotes-sticky"
+                                        ],
+                                        "container|align": "center",
+                                        "designer|displayName": "RDNotepad",
+                                        "height": "120px",
+                                        "hidden": true,
+                                        "itemId": "latestLogsProblemPanel",
+                                        "layout": "vbox",
+                                        "layout|flex": null,
+                                        "margin": "20 0 0 0",
+                                        "width": "70%"
+                                    },
+                                    "designerId": "79d9717e-0798-4525-882a-d2692e69acf7",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "RDNotepadHeader",
+                                                "height": "25px",
+                                                "html": "<div style=\"margin:4px 0 0 5px;color: whitesmoke;\">Problem</div>",
+                                                "style": "background-color:#3D3E3D;font-size:90%;",
+                                                "width": "100%"
+                                            },
+                                            "designerId": "819dc981-f258-496b-aab1-c9640427e070"
+                                        },
+                                        {
+                                            "type": "Ext.form.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-rdformpanel"
+                                                ],
+                                                "container|align": "center",
+                                                "designer|displayName": "RDNotepadFormPanel",
+                                                "height": "60px",
+                                                "layout": "vbox",
+                                                "margin": "15 0 0 0",
+                                                "scrollable": false,
+                                                "width": "100%"
+                                            },
+                                            "designerId": "3910ed81-8244-42d0-86e9-5c05c16a5b73",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.TextArea",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "clearIcon": false,
+                                                        "designer|displayName": "RDNotepadNote",
+                                                        "disabled": true,
+                                                        "height": 60,
+                                                        "itemId": "latestLogsProblem",
+                                                        "label": null,
+                                                        "layout|flex": 1,
+                                                        "maxLength": null
+                                                    },
+                                                    "designerId": "904d6104-c8d6-4836-a4e7-b8d4b3e46692"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "RDNotepadActions",
+                                                "layout": "hbox",
+                                                "width": "95%"
+                                            },
+                                            "designerId": "282e11fa-2078-47a8-a44a-0ca5ff298c52",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "x-rm-rdnotesadminbtn-unselected"
+                                                        ],
+                                                        "designer|displayName": "RDNotepadAdminBtn",
+                                                        "designer|uiInterfaceName": "plain",
+                                                        "hidden": true,
+                                                        "itemId": "RDNotepadAdminBtn",
+                                                        "pressedCls": "x-rm-rdnotesadminbtn-pressing",
+                                                        "selected": false,
+                                                        "text": "<div  style=\" line-height: 8px; background-size: 8px 8px;background-image: url('resources/images/retailerDetail/dot2.png');background-repeat: no-repeat;\">&nbsp &nbsp <span>Admin Only</span> </div>",
+                                                        "ui": "plain"
+                                                    },
+                                                    "configAlternates": {
+                                                        "selected": "boolean"
+                                                    },
+                                                    "designerId": "6d2f57a2-7046-4f85-b3ed-370088a324b6",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "selected",
+                                                            "type": "string"
+                                                        }
+                                                    ],
+                                                    "cn": [
+                                                        {
+                                                            "type": "basiceventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onRDNotepadAdminBtnTap1111",
+                                                                "implHandler": [
+                                                                    "if(button.selected) {\r",
+                                                                    "    button.selected = false;\r",
+                                                                    "    button.setCls('');\r",
+                                                                    "    button.addCls('x-rm-rdnotesadminbtn-unselected'); // \\'store_name\\'\r",
+                                                                    "    button.setText('<div  style=\" line-height: 8px;background-size: 8px 8px; background-image: url(\\'resources/images/retailerDetail/dot2.png\\');background-repeat: no-repeat;/\">&nbsp &nbsp <span> Admin Only </span></div>');\r",
+                                                                    "}\r",
+                                                                    "else {\r",
+                                                                    "    button.selected = true;\r",
+                                                                    "    button.setCls('');\r",
+                                                                    "    button.addCls('x-rm-rdnotesadminbtn-selected');\r",
+                                                                    "    button.setText('<div  style=\" line-height: 8px; background-size: 8px 8px;background-image: url(\\'resources/images/retailerDetail/dot1.png\\');background-repeat: no-repeat;\">&nbsp &nbsp <span>Admin Only</span> </div>');\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "var notePadMain = button.up('#RDNotesTab');\r",
+                                                                    "var notesList = notePadMain.down(\"#mainList\");\r",
+                                                                    "var selectedNote = notesList.getSelection();\r",
+                                                                    "\r",
+                                                                    "if(!Ext.isEmpty(selectedNote)) {\r",
+                                                                    "    selectedNote[0].set('adminonly',button.selected);\r",
+                                                                    "}"
+                                                                ],
+                                                                "name": "tap"
+                                                            },
+                                                            "designerId": "3dc508a3-d7d1-4aa6-bc16-4b3e9d31857e"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "x-rm-rdnotesnamelabel"
+                                                        ],
+                                                        "designer|displayName": "RDNotesNameLabel",
+                                                        "docked": "right",
+                                                        "html": null,
+                                                        "itemId": "RDNotesNameLabel"
+                                                    },
+                                                    "designerId": "2e9a0a90-0d71-4283-b91e-0bd769971092"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdnotes-sticky"
+                                        ],
+                                        "container|align": "center",
+                                        "designer|displayName": "RDNotepad",
+                                        "height": "120px",
+                                        "hidden": true,
+                                        "itemId": "latestLogsSolutionPanel",
+                                        "layout": "vbox",
+                                        "layout|flex": null,
+                                        "margin": "20 0 0 0",
+                                        "width": "70%"
+                                    },
+                                    "designerId": "bae84afa-0a39-4e0b-b0a6-a2b17d4c6867",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "RDNotepadHeader",
+                                                "height": "25px",
+                                                "html": "<div style=\"margin:4px 0 0 5px;color: whitesmoke;\">Solution</div>",
+                                                "style": "background-color:#3D3E3D;font-size:90%;",
+                                                "width": "100%"
+                                            },
+                                            "designerId": "8e91f276-1682-4a0e-b7af-e38bc6462f0a"
+                                        },
+                                        {
+                                            "type": "Ext.form.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "x-rm-rdformpanel"
+                                                ],
+                                                "container|align": "center",
+                                                "designer|displayName": "RDNotepadFormPanel",
+                                                "height": "60px",
+                                                "layout": "vbox",
+                                                "margin": "15 0 0 0",
+                                                "scrollable": false,
+                                                "width": "100%"
+                                            },
+                                            "designerId": "29e03d6b-3037-4e36-ba88-f8363bd0bfa2",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.field.TextArea",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "clearIcon": false,
+                                                        "designer|displayName": "RDNotepadNote",
+                                                        "disabled": true,
+                                                        "height": 60,
+                                                        "itemId": "latestLogsSolution",
+                                                        "label": null,
+                                                        "layout|flex": 1,
+                                                        "maxLength": null
+                                                    },
+                                                    "designerId": "7526795a-e074-4d83-abe7-b720c542f0e6"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "RDNotepadActions",
+                                                "layout": "hbox",
+                                                "width": "95%"
+                                            },
+                                            "designerId": "53982ae4-14da-458e-aad6-1c35be165501",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "x-rm-rdnotesadminbtn-unselected"
+                                                        ],
+                                                        "designer|displayName": "RDNotepadAdminBtn",
+                                                        "designer|uiInterfaceName": "plain",
+                                                        "hidden": true,
+                                                        "itemId": "RDNotepadAdminBtn",
+                                                        "pressedCls": "x-rm-rdnotesadminbtn-pressing",
+                                                        "selected": false,
+                                                        "text": "<div  style=\" line-height: 8px; background-size: 8px 8px;background-image: url('resources/images/retailerDetail/dot2.png');background-repeat: no-repeat;\">&nbsp &nbsp <span>Admin Only</span> </div>",
+                                                        "ui": "plain"
+                                                    },
+                                                    "configAlternates": {
+                                                        "selected": "boolean"
+                                                    },
+                                                    "designerId": "0f322bd5-bafe-4e47-97b2-63526be13809",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "selected",
+                                                            "type": "string"
+                                                        }
+                                                    ],
+                                                    "cn": [
+                                                        {
+                                                            "type": "basiceventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onRDNotepadAdminBtnTap111",
+                                                                "implHandler": [
+                                                                    "if(button.selected) {\r",
+                                                                    "    button.selected = false;\r",
+                                                                    "    button.setCls('');\r",
+                                                                    "    button.addCls('x-rm-rdnotesadminbtn-unselected'); // \\'store_name\\'\r",
+                                                                    "    button.setText('<div  style=\" line-height: 8px;background-size: 8px 8px; background-image: url(\\'resources/images/retailerDetail/dot2.png\\');background-repeat: no-repeat;/\">&nbsp &nbsp <span> Admin Only </span></div>');\r",
+                                                                    "}\r",
+                                                                    "else {\r",
+                                                                    "    button.selected = true;\r",
+                                                                    "    button.setCls('');\r",
+                                                                    "    button.addCls('x-rm-rdnotesadminbtn-selected');\r",
+                                                                    "    button.setText('<div  style=\" line-height: 8px; background-size: 8px 8px;background-image: url(\\'resources/images/retailerDetail/dot1.png\\');background-repeat: no-repeat;\">&nbsp &nbsp <span>Admin Only</span> </div>');\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "var notePadMain = button.up('#RDNotesTab');\r",
+                                                                    "var notesList = notePadMain.down(\"#mainList\");\r",
+                                                                    "var selectedNote = notesList.getSelection();\r",
+                                                                    "\r",
+                                                                    "if(!Ext.isEmpty(selectedNote)) {\r",
+                                                                    "    selectedNote[0].set('adminonly',button.selected);\r",
+                                                                    "}"
+                                                                ],
+                                                                "name": "tap"
+                                                            },
+                                                            "designerId": "30af4b44-d801-4d51-b1a6-a5c353928610"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "x-rm-rdnotesnamelabel"
+                                                        ],
+                                                        "designer|displayName": "RDNotesNameLabel",
+                                                        "docked": "right",
+                                                        "html": null,
+                                                        "itemId": "RDNotesNameLabel"
+                                                    },
+                                                    "designerId": "a247c9af-1b6a-4ac3-b9a0-a887bcd76c40"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "RDNotepadHeader",
+                                        "height": "25px",
+                                        "html": "<div style=\"margin:4px 0 0 5px;color: whitesmoke;\">Problem</div>",
+                                        "margin": "0 5 0 5",
+                                        "style": "background-color:#3D3E3D;font-size:90%;",
+                                        "width": "95%"
+                                    },
+                                    "designerId": "004899cc-afdd-437f-af0b-c112de899a64"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "browseLatLogResizableProbFld",
+                                        "margin": "5 5 5 5",
+                                        "width": "95%"
+                                    },
+                                    "designerId": "cd917a60-1748-4f0e-b1d1-b67512c1d925",
+                                    "masterInstanceId": "96f1820f-8b24-4fb7-b15f-c55517d5b03c"
+                                },
+                                {
+                                    "type": "Ext.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "RDNotepadHeader",
+                                        "height": "25px",
+                                        "html": "<div style=\"margin:4px 0 0 5px;color: whitesmoke;\">Solution</div>",
+                                        "margin": "0 5 0 5",
+                                        "style": "background-color:#3D3E3D;font-size:90%;",
+                                        "width": "95%"
+                                    },
+                                    "designerId": "45d6e241-89bf-445c-a4ef-a0122bc77667"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "browseLatLogResizableSolFld",
+                                        "margin": "5 5 5 5",
+                                        "width": "95%"
+                                    },
+                                    "designerId": "bff9a469-19eb-4301-bf54-8df00cf8d193",
+                                    "masterInstanceId": "96f1820f-8b24-4fb7-b15f-c55517d5b03c"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onContainerInitialize",
+                "implHandler": [
+                    "// component.down('#detailsCancelBtn').setHidden(true);\r",
+                    "// component.down('#detailsSaveBtn').setHidden(true);\r",
+                    "\r",
+                    "\r",
+                    "component.down('#cardTitleLabel').element.on(\"tap\",function(){\r",
+                    "\r",
+                    "  RMdatalink.app.getController('UINav').onBackTextTap();\r",
+                    "});\r",
+                    "\r",
+                    "\r",
+                    "component.down('#cardDeleteBtn').element.on(\"tap\",function(){\r",
+                    "\r",
+                    "  // RMdatalink.app.getController('Main').onDeleteButtonTap(component);\r",
+                    "    \r",
+                    "     RMdatalink.app.getController('DeleteRecords').deleteTechSupportLogs();\r",
+                    "});\r",
+                    ""
+                ],
+                "name": "initialize"
+            },
+            "designerId": "bfe89299-fd3b-417b-90a2-107e3b742353"
+        }
+    ]
+}

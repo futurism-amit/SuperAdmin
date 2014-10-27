@@ -8,6 +8,7 @@
     "userConfig": {
         "designer|userAlias": "productsrm_pro_forretailer",
         "designer|userClassName": "products.RM_PRO_ForRetailer",
+        "itemId": "allProductsRtBillingSetupPanel",
         "layout": "hbox"
     },
     "designerId": "5bc97953-db3f-42a8-8130-ee5a60043a4d",
@@ -22,7 +23,8 @@
             "userConfig": {
                 "itemId": null,
                 "layout": "vbox",
-                "layout|flex": 3
+                "layout|flex": 3,
+                "style": "margin-right: 2px;"
             },
             "designerId": "6331ddcf-6300-4e67-9fee-786e99de802e",
             "cn": [
@@ -34,9 +36,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "height": null,
                         "itemId": "rmProModulesForRtListPanel",
                         "layout": "vbox",
-                        "layout|flex": 3
+                        "layout|flex": 3,
+                        "maxHeight": null,
+                        "padding": "0 0 0 0"
                     },
                     "designerId": "1dd02f92-f049-4233-991b-26fa1d196e92",
                     "cn": [
@@ -48,6 +53,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "hidden": true,
                                 "itemId": "rmProModulesForRtList",
                                 "layout|flex": 1
                             },
@@ -106,6 +112,276 @@
                             ]
                         },
                         {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "productRmPRoAllModulesPanel",
+                                "layout": "vbox",
+                                "layout|flex": 1,
+                                "margin": "0 0 0 0",
+                                "title": null
+                            },
+                            "designerId": "c23aa6df-720d-4fbe-b9a5-9c9ff3e18ca6",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "itemId": "listwithheader33",
+                                        "layout|flex": 1
+                                    },
+                                    "designerId": "2fb09b02-9255-43b8-9e16-5f3f31560cc8",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
+                                    "cn": [
+                                        {
+                                            "type": "delegateeventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "delegate": "#mainList",
+                                                "designer|targetType": "Ext.dataview.List",
+                                                "fn": "onListItemTap",
+                                                "implHandler": [
+                                                    "console.log(\"ITEMTAP\");\r",
+                                                    "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                                    "var targetEl = e.target;\r",
+                                                    "\r",
+                                                    "var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;\r",
+                                                    "\r",
+                                                    "var adOnsStore = addOnsList.getStore() ;\r",
+                                                    "\r",
+                                                    "var packageStore = Ext.getStore('products.BillingFromPackages') ; //\r",
+                                                    "var packageList = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down('#mainList') ;\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "   var recIndex = packageStore.findExact('_id', record.data._id ) ;\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl ) && recIndex == -1){\r",
+                                                    "\r",
+                                                    "var addOnRecIndex = adOnsStore.findExact('_id', record.data._id ) ;\r",
+                                                    "\r",
+                                                    "    if(! dataview.isSelected(record))\r",
+                                                    "    {\r",
+                                                    "\r",
+                                                    "            addOnsList.select(adOnsStore.getAt(addOnRecIndex),true,false) ;\r",
+                                                    "         if(!dataview.getDisableSelection())\r",
+                                                    "         {\r",
+                                                    "            record.set('remark_val',2);\r",
+                                                    "\r",
+                                                    "            if( record.data.module_sku != \"DL-DATA\"){\r",
+                                                    "                record.set('quantity',1 );\r",
+                                                    "            }\r",
+                                                    "\r",
+                                                    "         }\r",
+                                                    "\r",
+                                                    "    }else{\r",
+                                                    "           addOnsList.deselect(adOnsStore.getAt(addOnRecIndex),true,false) ;\r",
+                                                    "         if(!dataview.getDisableSelection())\r",
+                                                    "         {\r",
+                                                    "           record.set('remark_val',0);\r",
+                                                    "\r",
+                                                    "            if( record.data.module_sku != \"DL-DATA\"){\r",
+                                                    "                record.set('quantity', 0 );\r",
+                                                    "            }\r",
+                                                    "         }\r",
+                                                    "\r",
+                                                    "    }\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "    RMdatalink.app.getController('ProductBillingController').onModuleListSelectUnSelect() ;\r",
+                                                    "\r",
+                                                    "}else{\r",
+                                                    "\r",
+                                                    "    if(dataview.isSelected(record))\r",
+                                                    "    {\r",
+                                                    "\r",
+                                                    "        dataview.deselect(record,true) ;\r",
+                                                    "    }else{\r",
+                                                    "\r",
+                                                    "        dataview.select(record,true) ;\r",
+                                                    "    }\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "RMdatalink.app.getController('ProductBillingController').disableenbleStatusFlds() ;\r",
+                                                    "\r",
+                                                    "  if( record.data.module_sku == \"DL-DATA\"){\r",
+                                                    "\r",
+                                                    "     var timeout = setTimeout(function(){\r",
+                                                    "\r",
+                                                    "                       RMdatalink.app.getController('ProductBillingController').removeDLDataOptions() ;\r",
+                                                    "\r",
+                                                    "                        clearTimeout(timeout);\r",
+                                                    "                    },100);\r",
+                                                    "  }"
+                                                ],
+                                                "name": "itemtap"
+                                            },
+                                            "designerId": "c2fd46b6-4606-439a-8ee8-4db7b6a24e97"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMyfieldset202Initialize",
+                                        "implHandler": [
+                                            "//var packageStore = Ext.getStore('products.BillingFromPackages') ;\r",
+                                            "//var addOnsStore = Ext.getStore('products.BillingModuleAddons') ;\r",
+                                            "\r",
+                                            "\r",
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "\r",
+                                            "        headers.setItemTpl(\r",
+                                            "            Ext.create('Ext.XTemplate',\r",
+                                            "                       '<div class=\"x-rm-listtpl-main\" style=\" border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;\">',\r",
+                                            "                       '    <div style=\"width: 4%;\">',\r",
+                                            "                       '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 2%;text-align: center;\" data-name=\"module_listed_order\">',\r",
+                                            "                       '        ',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 14%;text-align: center;\" data-name=\"module_name\">',\r",
+                                            "                       '        Product/ Add Ons&nbsp;',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 46%;text-align: center;\" data-name=\"module_description\">',\r",
+                                            "                       '       Description&nbsp;',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 10%;text-align: center;\" data-name=\"trial\">',\r",
+                                            "                       '        Status&nbsp;',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 6%;text-align: center;\" data-name=\"quantity\">',\r",
+                                            "                       '        Qty&nbsp;',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 8%;text-align: center;\" data-name=\"module_standard_price\">',\r",
+                                            "                       '        Std. Price&nbsp;',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div style=\"width: 10%;text-align: center;\" data-name=\"per_month\">',\r",
+                                            "                       '         Per Month&nbsp;',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '</div>'\r",
+                                            "                      )\r",
+                                            "        );\r",
+                                            "\r",
+                                            "        headers.refresh();\r",
+                                            "\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "list.setStore(Ext.getStore('products.AllBillingModulesStore'));\r",
+                                            "   list.setItemTpl(\r",
+                                            "            Ext.create('Ext.XTemplate',\r",
+                                            "                       '<div style=\"height:20px\" class=\"x-rm-listtpl-main pointerCursor\">',\r",
+                                            "                       '    <div style=\"width: 4%;\">',\r",
+                                            "                       '        <div style=\"width: 18px; height:16px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                            "                       '    </div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"margin-right: 0px;width: 2%;\">{module_listed_order}</div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 14%;font-weight: bold;\">{module_name}</div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 46%;\">{module_description}</div>',\r",
+                                            "                       '   <div class=\"rightBorderDiv\" style=\"width: 10%;\">',\r",
+                                            "\r",
+                                            "                       '<select class=\"rmProStatusFlds\" data-id=\"{_id}\" onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateRmproAllModuleList(this,\\'remark_val\\');\" style=\"height: 16px;width: 96%; margin-left:2%; color:{[this.getColor(values,\"3\")]};\">',\r",
+                                            "                              '<option value=\"0\" style=\"color:black\" {[this.getSelected(values,\"0\")]}>None</option>',\r",
+                                            "                              '<option value=\"1\" style=\"color:red\" {[this.getSelected(values,\"1\")]}>Inclusive</option>',\r",
+                                            "                              '<option value=\"2\" style=\"color:blue\" {[this.getSelected(values,\"2\")]} >Add Ons</option>',\r",
+                                            "                              '<option value=\"3\" style=\"color:green\" {[this.getSelected(values,\"3\")]} >1M Free Trial</option>',\r",
+                                            "                              '<option value=\"4\" style=\"color:green\" {[this.getSelected(values,\"4\")]} >2M Free Trial</option>',\r",
+                                            "                              '<option value=\"5\" style=\"color:green\" {[this.getSelected(values,\"5\")]} >3M Free Trial</option>',\r",
+                                            "                              '<option value=\"6\" style=\"color:green\" {[this.getSelected(values,\"6\")]} >6M Free Trial</option>',\r",
+                                            "                              '<option value=\"7\" style=\"color:green\" {[this.getSelected(values,\"7\")]} >9M Free Trial</option>',\r",
+                                            "                              '<option value=\"8\" style=\"color:green\" {[this.getSelected(values,\"8\")]} >1Yr Free Trial</option>',\r",
+                                            "\r",
+                                            "                       '</select>',\r",
+                                            "                       '</div>',\r",
+                                            "                       '<div class=\"rightBorderDiv\" style=\"width: 6%;text-align: center;\">',\r",
+                                            "                       '    <input type=\"text\" style=\"width: 68% !important;margin-left: 15%;height: 16px;text-align: center;\" class=\"rmProQtyFlds x-rm-rdinlinecmt\" data-id=\"{_id}\" value=\"{quantity}\" maxlength=\"24\"',\r",
+                                            "                       '        onchange=\"RMdatalink.app.getController(\\'ProductBillingController\\').updateRmproAllModuleList(this,\\'quantity\\');\"/>',\r",
+                                            "                       '</div>',\r",
+                                            "                       '    <div class=\"rightBorderDiv\" style=\"width: 8%;text-align: right;padding-right: 1%;\">$ {[formatNum(values.module_standard_price)]}</div>',\r",
+                                            "                       '    <div style=\"width: 10%;text-align: right;padding-right: 2%;\">$ {[formatNum(values.standard_total)]}</div>',\r",
+                                            "                       '</div>',\r",
+                                            "                       {\r",
+                                            "\r",
+                                            "                           getSelected:function(value,cmp){\r",
+                                            "\r",
+                                            "                               if(value.remark_val && value.remark_val == cmp){\r",
+                                            "                                       return \"selected\";\r",
+                                            "                               }\r",
+                                            "\r",
+                                            "                               return \"\";\r",
+                                            "\r",
+                                            "                           },\r",
+                                            "\r",
+                                            "                           getColor:function(value){\r",
+                                            "\r",
+                                            "                               if( !value.remark_val || value.remark_val == \"0\" ){\r",
+                                            "                                       return \"black\";\r",
+                                            "                               }\r",
+                                            "\r",
+                                            "\r",
+                                            "                               if( value.remark_val && value.remark_val == \"1\" ){\r",
+                                            "                                       return \"red\";\r",
+                                            "                               }\r",
+                                            "\r",
+                                            "                               if( value.remark_val && value.remark_val == \"2\" ){\r",
+                                            "                                       return \"blue\";\r",
+                                            "                               }\r",
+                                            "\r",
+                                            "                               if( value.remark_val ){\r",
+                                            "\r",
+                                            "\r",
+                                            "                                   return \"green\";\r",
+                                            "                               }\r",
+                                            "\r",
+                                            "                               return \"red\" ;\r",
+                                            "\r",
+                                            "\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }\r",
+                                            "                      )\r",
+                                            "        );\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "// list.setMode(\"SINGLE\");\r",
+                                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                            "// });\r",
+                                            "\r",
+                                            "list.setItemHeight(22);\r",
+                                            "list.setMode('MULTI');\r",
+                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                            "\r",
+                                            "\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "160b9902-2441-456f-84d1-9fa249d05a2b"
+                                }
+                            ]
+                        },
+                        {
                             "type": "Ext.Label",
                             "reference": {
                                 "name": "items",
@@ -114,6 +390,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "docked": null,
+                                "hidden": true,
                                 "html": "<div style=\"font-size: 14px;margin-left: 10px;\">Add ons</div>",
                                 "itemId": "productPackageNameLabel1",
                                 "margin": null,
@@ -134,6 +411,7 @@
                                 "cls": [
                                     "x-rm-list"
                                 ],
+                                "hidden": true,
                                 "itemHeight": 22,
                                 "itemId": "rtProductAddOnsModuleLst",
                                 "layout|flex": 0.8
@@ -260,7 +538,7 @@
                                     "               '    <div style=\"width: 10%;\">{quantity}</div>',\r",
                                     "               '    <div style=\"width: 10%;text-align: right;padding-right: 6%;\">{module_standard_price}</div>',\r",
                                     "               '    <div style=\"width: 10%;text-align: right;\">{standard_total}</div>',\r",
-                                    "               \r",
+                                    "\r",
                                     "               '</div>'\r",
                                     "              )\r",
                                     ");\r",
@@ -319,7 +597,12 @@
                                 "cls": [
                                     "noBorderFldSet"
                                 ],
+                                "docked": "bottom",
+                                "height": "25px",
+                                "hidden": true,
+                                "itemId": "rtDatalinkTotalFldsLbl",
                                 "layout": "hbox",
+                                "margin": "0 0 0 0",
                                 "style": null,
                                 "title": null
                             },
@@ -334,6 +617,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "html": "Sub Total:",
+                                        "margin": "0 0 0 0",
                                         "style": "text-align:right;",
                                         "width": "77%"
                                     },
@@ -381,29 +665,50 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "height": "160px",
+                        "height": null,
                         "itemId": "rmProDiscountsForRtListPanel",
                         "layout": "hbox",
-                        "layout|flex": null
+                        "layout|flex": 2
                     },
                     "designerId": "27998119-7f26-4e35-9485-1f9d06adff7d",
                     "cn": [
                         {
-                            "type": "Ext.form.FieldSet",
+                            "type": "Ext.form.Panel",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    " x-rm-rdformpanel"
+                                ],
                                 "height": "100%",
                                 "hidden": false,
                                 "layout": "vbox",
                                 "layout|flex": 3,
-                                "title": null
+                                "margin": "0 1 0 0"
                             },
                             "designerId": "f9f99034-e923-4539-bdf1-b24234889933",
                             "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "height": "24px",
+                                        "html": "Advance Payment Benefits",
+                                        "style": "font-weight: bold;",
+                                        "width": "250px"
+                                    },
+                                    "designerId": "4fec4695-868d-47fc-9820-7688b046b926"
+                                },
                                 {
                                     "type": "linkedinstance",
                                     "reference": {
@@ -412,10 +717,16 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "cls": [
+                                            "borderedDiv"
+                                        ],
+                                        "height": null,
                                         "hidden": null,
                                         "itemId": "rmProDiscountsForRtList",
                                         "layout|flex": 1,
-                                        "margin": "5 0 0 0"
+                                        "margin": "34 0 0 0",
+                                        "maxHeight": "132px",
+                                        "padding": null
                                     },
                                     "designerId": "2c022a18-b0e4-424a-945a-c206a61925a6",
                                     "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
@@ -496,11 +807,15 @@
                             "codeClass": null,
                             "userConfig": {
                                 "cls": [
-                                    "x-rm-rdformpanel"
+                                    "x-rm-rdformpanel borderedDiv"
                                 ],
+                                "height": 142,
+                                "layout": "vbox",
                                 "layout|flex": null,
+                                "margin": "0 1 0 20",
+                                "padding": "0 0 0 0",
                                 "scrollable": false,
-                                "width": "360px"
+                                "width": 300
                             },
                             "designerId": "c93cbda0-3d5b-4d59-a234-1ba25df87e5d",
                             "cn": [
@@ -514,10 +829,13 @@
                                     "userConfig": {
                                         "disabled": true,
                                         "hidden": true,
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "inputTextRightAlign borderedDiv",
                                         "itemId": "rtBillTotalMonthlyMbrShipFld",
-                                        "label": "Total Monthly Membership",
-                                        "labelWidth": "160px",
-                                        "width": "100%"
+                                        "label": "Total Monthly Membership:",
+                                        "labelWidth": "180px",
+                                        "margin": "0 0 0 4%",
+                                        "width": null
                                     },
                                     "designerId": "b5b298df-34be-4ad6-9e49-9e61104b2bb9"
                                 },
@@ -530,11 +848,45 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "disabled": true,
-                                        "inputCls": "inputTextRightAlign",
+                                        "hidden": null,
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "inputTextRightAlign borderedDiv",
+                                        "isCurrency": true,
+                                        "itemId": "rtBillTotalMonthlyMbrShipMainFld",
+                                        "label": "Total:",
+                                        "labelWidth": "180px",
+                                        "margin": "0 0 0 4%",
+                                        "width": null
+                                    },
+                                    "configAlternates": {
+                                        "isCurrency": "boolean"
+                                    },
+                                    "designerId": "b35a6ad2-e3b8-47f3-884e-1b4919b27cde",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "isCurrency",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "hidden": true,
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "inputTextRightAlign borderedDiv",
                                         "itemId": "rtBillDiscountTxtFld",
-                                        "label": "Discount",
-                                        "labelWidth": "160px",
-                                        "width": "80%"
+                                        "label": "Bundle Discount:",
+                                        "labelWidth": "180px",
+                                        "margin": "0 0 0 4%",
+                                        "width": null
                                     },
                                     "designerId": "585d7ef9-084a-4970-9f27-96b0400f0fa5"
                                 },
@@ -546,13 +898,16 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "inputCls": "inputTextRightAlign",
-                                        "itemId": "rtBillMonthlyMemberShipFld",
-                                        "label": "Monthly Membership",
-                                        "labelWidth": "160px",
-                                        "width": "80%"
+                                        "disabled": true,
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "inputTextRightAlign borderedDiv",
+                                        "itemId": "rtBillBundleDiscountTxtFld",
+                                        "label": "Bundle Discount:",
+                                        "labelWidth": "180px",
+                                        "margin": "0 0 1 4%",
+                                        "width": null
                                     },
-                                    "designerId": "002b4b5d-c48e-4d2d-95b9-92f986edc4ed"
+                                    "designerId": "1ff4c5ae-d558-447d-a8c4-9a8b86f81cc3"
                                 },
                                 {
                                     "type": "Ext.field.Text",
@@ -563,11 +918,66 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "disabled": true,
-                                        "inputCls": "inputTextRightAlign",
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "inputTextRightAlign borderedDiv",
+                                        "itemId": "rtBillAdditionalDiscountTxtFld",
+                                        "label": "Additional Discount:",
+                                        "labelWidth": "180px",
+                                        "margin": "0 0 0 4%",
+                                        "width": null
+                                    },
+                                    "designerId": "2b5d2f27-b081-4af9-9e34-96b97dbcbc68"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "clearIcon": false,
+                                        "cls": [
+                                            "txtColorRed"
+                                        ],
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "inputTextRightAlign borderedDiv txtColorRed",
+                                        "isCurrency": true,
+                                        "itemId": "rtBillMonthlyMemberShipFld",
+                                        "label": "<div class=\"txtColorRed\" style=\"margin-top: 4px;\">Monthly Membership:</div>",
+                                        "labelCls": null,
+                                        "labelWidth": "180px",
+                                        "margin": "0 0 2 4%",
+                                        "width": null
+                                    },
+                                    "configAlternates": {
+                                        "isCurrency": "boolean"
+                                    },
+                                    "designerId": "002b4b5d-c48e-4d2d-95b9-92f986edc4ed",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "isCurrency",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                        "inputCls": "inputTextRightAlign borderedDiv",
                                         "itemId": "rtBillYearlyMemberShipFld",
-                                        "label": "Yearly Membership",
-                                        "labelWidth": "160px",
-                                        "width": "80%"
+                                        "label": "Yearly Membership:",
+                                        "labelWidth": "180px",
+                                        "margin": "-2px 0 0 4%",
+                                        "width": null
                                     },
                                     "designerId": "e7c83137-8d96-4d87-9fd9-032334d9e144"
                                 }
@@ -587,21 +997,21 @@
                                     "headers.setData([{}]);\r",
                                     "headers.setItemTpl(\r",
                                     "    Ext.create('Ext.XTemplate',\r",
-                                    "               '<div class=\"x-rm-listtpl-main\" style=\"background-color: #DCDCDE ;\">',\r",
+                                    "               '<div class=\"x-rm-listtpl-main\" style=\" border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;\">',\r",
                                     "               '    <div style=\"width: 5%;\"></div>',\r",
-                                    "               '    <div style=\"width: 35%;\" data-name=\"discount_name\">',\r",
-                                    "               '        Advance Payment Benifits&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "               '    <div class=\"rightBorderDiv\" style=\"width: 35%;text-align: center;\" data-name=\"discount_name\">',\r",
+                                    "               '        Term&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                     "               '    </div>',\r",
-                                    "               '    <div style=\"width: 15%;\" data-name=\"discount_value\">',\r",
+                                    "               '    <div class=\"rightBorderDiv\" style=\"width: 15%;text-align: center;\" data-name=\"discount_value\">',\r",
                                     "               '        Discount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                     "               '    </div>',\r",
-                                    "                  '    <div style=\"width: 15%;\" data-name=\"discount_saving\">',\r",
+                                    "                  '    <div class=\"rightBorderDiv\" style=\"width: 15%;text-align: center;\" data-name=\"discount_saving\">',\r",
                                     "               '        Saving&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                     "               '    </div>',\r",
-                                    "                  '    <div style=\"width: 15%;\" data-name=\"discount_total\">',\r",
-                                    "               '        Total&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                    "                  '    <div class=\"rightBorderDiv\" style=\"width: 15%;text-align: center;\" data-name=\"discount_total\">',\r",
+                                    "               '        You Pay&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                     "               '    </div>',\r",
-                                    "                  '    <div style=\"width: 15%;\" data-name=\"discount_per_month\">',\r",
+                                    "                  '    <div style=\"width: 15%;text-align: center;\" data-name=\"discount_per_month\">',\r",
                                     "               '        Per Month&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                     "               '    </div>',\r",
                                     "\r",
@@ -613,22 +1023,33 @@
                                     "list.setStore(Ext.getStore('products.BillingDiscount'));\r",
                                     "list.setItemTpl(\r",
                                     "    Ext.create('Ext.XTemplate',\r",
-                                    "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
-                                    "               '    <div style=\"width: 5%;\">',\r",
+                                    "               '<div class=\"x-rm-listtpl-main x-rm-listtpl-payment pointerCursor\">',\r",
+                                    "               '    <div style=\"width: 5%;margin-right: 1px;\">',\r",
                                     "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
                                     "               '    </div>',\r",
-                                    "               '    <div style=\"width: 35%;\">{discount_name}</div>',\r",
-                                    "               '    <div style=\"width: 15%;\">{discount_value}%</div>',\r",
-                                    "               '    <div style=\"width: 15%;\">$ {discount_saving}</div>',\r",
-                                    "               '    <div style=\"width: 15%;\">$ {discount_total}</div>',\r",
-                                    "               '    <div style=\"width: 15%; font-weight: bold;\">$ {discount_per_month}</div>',\r",
+                                    "               '    <div class=\"rightBorderDiv\" style=\"width: 35%;margin-right: 1px;font-weight: bold;\">{discount_name}</div>',\r",
+                                    "               '    <div class=\"rightBorderDiv\" style=\"width: 15%;text-align: center;\">{discount_value} %</div>',\r",
+                                    "               '    <div class=\"rightBorderDiv\" style=\"width: 15%;text-align: right;padding-right: 1%;\">$ {[formatNum(values.discount_saving)]}</div>',\r",
+                                    "\r",
+                                    "               '   <div class=\"rightBorderDiv\" style=\"width: 15%; font-weight: bold; text-align: right;padding-right: 1%;\">$ {[formatNum(values.discount_total)]}</div>',\r",
+                                    "               '    <div style=\"width: 15%; font-weight: bold;text-align: right;padding-right: 1%;\">$ {[formatNum(values.discount_per_month)]}</div>',\r",
                                     "               '</div>'\r",
                                     "              )\r",
                                     ");\r",
                                     "list.setItemHeight(22);\r",
                                     "list.setMode(\"SINGLE\");\r",
                                     "list.addCls('x-rm-rdvendorslist');\r",
-                                    "    list.on(\"select\",function(discountList, record, eOpts){  \r",
+                                    "\r",
+                                    "    list.on(\"select\",function(discountList, record, eOpts){\r",
+                                    "        \r",
+                                    "        console.log(record);\r",
+                                    "        var val = record.get('discount_duration') ;\r",
+                                    "        val = parseInt(val) * 12 ;\r",
+                                    "        \r",
+                                    "        if(val){\r",
+                                    "           Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(val) ;   \r",
+                                    "        }\r",
+                                    "       //\r",
                                     "    });"
                                 ],
                                 "name": "initialize"
@@ -640,6 +1061,63 @@
             ]
         },
         {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": "0 0 0 0",
+                "cls": [
+                    "borderedDiv"
+                ],
+                "height": 100,
+                "icon": null,
+                "iconAlign": "center",
+                "iconCls": "arrow_right",
+                "margin": "18% 0 0 0",
+                "padding": "0px 0px 0px 0px",
+                "style": "background:transparent;border-radius: 20px;border-width: 1px !important;",
+                "styleHtmlContent": null,
+                "text": null,
+                "width": 24
+            },
+            "designerId": "89aaceac-11ad-4a78-b693-d14c9b737d0a",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "button",
+                            "e"
+                        ],
+                        "fn": "handler",
+                        "implHandler": [
+                            "var form = Ext.ComponentQuery.query('#productRmproSideFldsPanel')[0];\r",
+                            "\r",
+                            "form.setHidden(! form.getHidden() ) ;\r",
+                            "\r",
+                            "if(form.getHidden()){\r",
+                            "\r",
+                            "    button.setIconCls(\"arrow_left\");\r",
+                            "}else{\r",
+                            "\r",
+                            "    button.setIconCls(\"arrow_right\");\r",
+                            "    //arrow_down\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "87329ece-f236-4b6b-8a1d-389e25adf661"
+                }
+            ]
+        },
+        {
             "type": "Ext.form.Panel",
             "reference": {
                 "name": "items",
@@ -647,14 +1125,26 @@
             },
             "codeClass": null,
             "userConfig": {
+                "action": "setScrollBarVisible",
                 "cls": [
-                    " x-rm-rdformpanel"
+                    " x-rm-rdformpanel borderedDiv"
                 ],
+                "height": "592px",
+                "itemId": "productRmproSideFldsPanel",
                 "layout": "vbox",
                 "layout|flex": 0.8,
-                "scrollable": false
+                "scrollable": true,
+                "style": "margin-left: 2px;",
+                "trackResetOnLoad": null
             },
             "designerId": "5fcd7d78-defc-417a-be5a-789387889bdf",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "action",
+                    "type": "string"
+                }
+            ],
             "cn": [
                 {
                     "type": "Ext.Label",
@@ -664,12 +1154,29 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "html": "<center>SELECT PACKAGE</center>",
+                        "hidden": true,
+                        "html": "Package",
                         "itemId": "rtBillingSlctPackLbl",
                         "margin": "15 0 5 0",
                         "width": "100%"
                     },
                     "designerId": "6a8cd396-db3b-4b72-bba0-d1d48f89f799"
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "itemId": "productRmproPackgSlctFldBilling",
+                        "label": "Bundle:",
+                        "margin": null,
+                        "width": "96%"
+                    },
+                    "designerId": "3dc3b4e3-28a1-4cf4-ad14-80197bd5d9f6"
                 },
                 {
                     "type": "Ext.dataview.List",
@@ -684,6 +1191,7 @@
                             "x-rm-rdvendorslist"
                         ],
                         "data": null,
+                        "hidden": true,
                         "itemHeight": 22,
                         "itemId": "rmProSelectPackageList",
                         "layout|flex": 2,
@@ -732,10 +1240,41 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "html": "<center>SELECT RATE</center>",
+                        "hidden": true,
+                        "html": "Rate",
                         "width": "100%"
                     },
                     "designerId": "ea3164bc-073d-40bf-9e40-655bb821af27"
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "itemId": "productRmproRateSlctFldBilling",
+                        "label": "Price:",
+                        "margin": null,
+                        "options": [
+                            "[\r",
+                            "    \r",
+                            "    {\r",
+                            "        text:\"Standard Price\",\r",
+                            "        value:\"module_standard_price\"\r",
+                            "    },\r",
+                            "    {\r",
+                            "        text:\"Promotional Price\",\r",
+                            "        value:\"module_promotional_price\"\r",
+                            "    }\r",
+                            "    \r",
+                            "]"
+                        ],
+                        "width": "96%"
+                    },
+                    "designerId": "984776e6-9df9-49b6-9260-2960e0a3cbd1"
                 },
                 {
                     "type": "Ext.dataview.List",
@@ -764,6 +1303,7 @@
                             "]"
                         ],
                         "height": "60px",
+                        "hidden": true,
                         "itemHeight": 22,
                         "itemId": "rmProSelectRateList",
                         "layout|flex": null,
@@ -811,7 +1351,8 @@
                             "userConfig": {
                                 "fn": "onrmProSelectRateSelect",
                                 "implHandler": [
-                                    "\r",
+                                    "/*\r",
+                                    "Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0].setValue( record.data.value );\r",
                                     "\r",
                                     "var moduleList = Ext.ComponentQuery.query('#rmProModulesForRtListPanel')[0].down('#mainList') ;\r",
                                     "var addOnsList = Ext.ComponentQuery.query('#rtProductAddOnsModuleLst')[0] ;\r",
@@ -947,7 +1488,7 @@
                                     "*/\r",
                                     "\r",
                                     "\r",
-                                    "\r",
+                                    "/*\r",
                                     "        moduleList.setItemTpl(\r",
                                     "   Ext.create('Ext.XTemplate',\r",
                                     "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
@@ -1044,6 +1585,8 @@
                                     "\r",
                                     "addOnsList.refresh() ;\r",
                                     "\r",
+                                    "*/\r",
+                                    "\r",
                                     "                    var timeout = setTimeout(function(){\r",
                                     "\r",
                                     "                        RMdatalink.app.getController('ProductBillingController').calculateBillingPrices() ;\r",
@@ -1060,41 +1603,1058 @@
                     ]
                 },
                 {
-                    "type": "Ext.Label",
+                    "type": "Ext.form.FieldSet",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "hidden": null,
-                        "html": "<center>Select Term</center>",
-                        "itemId": "productRmproSlctTermLbl",
+                        "title": null,
                         "width": "100%"
                     },
-                    "designerId": "dc3ae90c-430e-40ac-b0f3-c8b811293ea6"
+                    "designerId": "9b368dc3-1f7f-44e4-b126-a919b9deb42b",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Vendor Data<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "lbl1",
+                                "labelAction": "dropDown",
+                                "margin": "0 0 1 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "d6c401e9-c4e4-4302-bcf2-aced00e957fb",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "itemId": "productDlbdlVendorsSlctFld",
+                                "label": "Bundle:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": null,
+                                "store": "DatalinkVendors",
+                                "width": "96%"
+                            },
+                            "designerId": "65bb277e-380a-451c-9980-49045f6aaaa3"
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "productDlPriceOptionsimgAdlImgSlctFld",
+                                "label": "Option:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": [
+                                    "[\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        text:\"SKUs + Images\",\r",
+                                    "        value:\"sku_images\"\r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        text:\"SKUs + Images + Addl Images\",\r",
+                                    "        value:\"sku_images_addlimages\"\r",
+                                    "    }\r",
+                                    "    \r",
+                                    "]\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "store": null,
+                                "width": "96%"
+                            },
+                            "designerId": "74b8d844-ac9a-4b66-bed8-8d70dc4ca47f"
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "productDlPriceSlctFld",
+                                "label": "Price:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": [
+                                    "[\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        text:\"Standard Price\",\r",
+                                    "        value:\"module_standard_price\"\r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        text:\"Promotional Price\",\r",
+                                    "        value:\"module_promotional_price\"\r",
+                                    "    }\r",
+                                    "    \r",
+                                    "]"
+                                ],
+                                "width": "96%"
+                            },
+                            "designerId": "49513575-7aea-4822-a1e8-ec4e5bebbba6"
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "itemId": "productDlVdrPricingPolicySlctFld",
+                                "label": "Pricing Policy:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": null,
+                                "store": "DlVdPricingSkuImgs",
+                                "width": "96%"
+                            },
+                            "designerId": "f6377c2a-260a-4bf4-b6a7-6e1173971380"
+                        }
+                    ]
                 },
                 {
-                    "type": "Ext.field.Text",
+                    "type": "Ext.form.FieldSet",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "action": "inputByDatePicker",
-                        "itemId": "productRmProSlctTermStrtDtFld",
-                        "label": "Start Date",
-                        "labelWidth": "50%",
-                        "margin": "35 0 0 0",
-                        "width": "95%"
+                        "title": null,
+                        "width": "100%"
                     },
-                    "designerId": "1882f38b-a562-4657-a136-4c54af79f2b5",
-                    "customConfigs": [
+                    "designerId": "915c9fef-b71f-4ff3-92da-e77c5877fee1",
+                    "cn": [
                         {
-                            "group": "(Custom Properties)",
-                            "name": "action",
-                            "type": "string"
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Add Ons<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "lbl2",
+                                "labelAction": "dropDown",
+                                "margin": "0 0 1 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "e56c9a6e-083b-4c52-bc54-dba4b3d47176",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "itemId": "productDlAddOnsSlctFld",
+                                "label": "Bundle:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": null,
+                                "store": "DatalinkProductBundle",
+                                "width": "96%"
+                            },
+                            "designerId": "04efa3ca-f8f3-455b-b177-8e84782013ec"
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "productDlAddonsPriceSlctFld",
+                                "label": "Price: ",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": [
+                                    "[\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        text:\"Standard Price\",\r",
+                                    "        value:\"module_standard_price\"\r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        text:\"Promotional Price\",\r",
+                                    "        value:\"module_promotional_price\"\r",
+                                    "    }\r",
+                                    "    \r",
+                                    "]"
+                                ],
+                                "width": "96%"
+                            },
+                            "designerId": "7b909f75-81f1-4320-96e7-33e94d5860f2"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "e122b391-55b2-4a3b-9cd0-6cbd7273a6dd",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Discounts<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "lbl3",
+                                "labelAction": "dropDown",
+                                "margin": "0 0 1 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "0423bb4d-0f83-4fdd-a258-ed9c917c42dc",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "itemId": "productDlDiscountSKUSlctFld",
+                                "label": "By No. of SKUs:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": null,
+                                "store": "DlVdPricingSKUDiscount",
+                                "width": "96%"
+                            },
+                            "designerId": "5175f86b-1d44-46fb-9788-d2fb1b0b03e5"
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "itemId": "productDlDiscountVdrsSlctFld",
+                                "label": "By No. of Vendors:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": null,
+                                "store": "DlVdPricingVdrDiscount",
+                                "width": "96%"
+                            },
+                            "designerId": "b82f42da-3e55-466e-b4ef-32ba1ba0e90e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "a1936f14-e548-4333-aa88-fe26a05ae07e",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl"
+                                ],
+                                "height": "24px",
+                                "hidden": null,
+                                "html": "Subscription<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "productRmproSlctTermLbl",
+                                "margin": "0 0 1 0",
+                                "style": "font-weight: bold;",
+                                "width": "100%"
+                            },
+                            "designerId": "dc3ae90c-430e-40ac-b0f3-c8b811293ea6",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProductRmproSlctTermLblInitialize",
+                                        "implHandler": [
+                                            "component.element.on('tap',function(){\r",
+                                            "\r",
+                                            "    var parent = component.getParent() ;\r",
+                                            "\r",
+                                            "    if(parent.down('#productRmproSlctTermBillFrqSlctFld').getHidden()){\r",
+                                            "\r",
+                                            "         parent.down('#productRmproSlctTermBillFrqSlctFld').setHidden(false) ;\r",
+                                            "         parent.down('#productRmProSlctTermPrice').setHidden(false) ;\r",
+                                            "         parent.down('#productRmProSlctTermNxtDueDateFld').setHidden(false) ;\r",
+                                            "         component.getEl().query('img')[0].src = \"resources/images/labelHeader/downArrow.png\";\r",
+                                            "\r",
+                                            "    }\r",
+                                            "    else{\r",
+                                            "\r",
+                                            "        parent.down('#productRmproSlctTermBillFrqSlctFld').setHidden(true) ;\r",
+                                            "         parent.down('#productRmProSlctTermPrice').setHidden(true) ;\r",
+                                            "         parent.down('#productRmProSlctTermNxtDueDateFld').setHidden(true) ;\r",
+                                            "         component.getEl().query('img')[0].src = \"resources/images/labelHeader/rightArrow.png\";\r",
+                                            "    }\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "}) ;"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "34dfbecf-a921-4343-8ffc-77ef6e663eeb"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "hidden": true,
+                                "itemId": "productRmProSlctTermEndDate",
+                                "label": "End Date:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "width": "96%"
+                            },
+                            "designerId": "353de380-f090-43cd-a712-ed6588bfaaea",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "hidden": null,
+                                "itemId": "productRmproSlctTermBillFrqSlctFld",
+                                "label": "Billing Frequency:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "options": [
+                                    "[\r",
+                                    "    \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'1 Month',\r",
+                                    "        value:1\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'3 Month',\r",
+                                    "        value:3\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'6 Month',\r",
+                                    "        value:6\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'9 Month',\r",
+                                    "        value:9\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'1 Year',\r",
+                                    "        value:12\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'2 Year',\r",
+                                    "        value:24\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'3 Year',\r",
+                                    "        value:36\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'5 Year',\r",
+                                    "        value:60\r",
+                                    "        \r",
+                                    "    }\r",
+                                    "    \r",
+                                    "]"
+                                ],
+                                "width": "96%"
+                            },
+                            "designerId": "5e3ab860-6453-4027-a0c4-0204a3466873"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "itemId": "productRmProSlctTermNxtDueDateFld",
+                                "label": "Next Due Date: ",
+                                "labelWidth": "50%",
+                                "margin": "-1 0 0 0",
+                                "width": "96%"
+                            },
+                            "designerId": "093e289b-f212-4cce-b433-54d7c8782356",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "<div style= \"margin:-20px 0 0 -12px;font-size:0.9em;\">$</div>",
+                                "isCurrency": true,
+                                "itemId": "productRmProSlctTermPrice",
+                                "label": "Price:",
+                                "labelWidth": "50%",
+                                "width": "96%"
+                            },
+                            "configAlternates": {
+                                "isCurrency": "boolean"
+                            },
+                            "designerId": "0ba6f885-3a01-43b7-9977-fd313f227a56",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "isCurrency",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "a3373b96-1478-4876-8380-226a90708e2d",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl"
+                                ],
+                                "height": "24px",
+                                "hidden": null,
+                                "html": "Contract<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "productRmproPaymentFreqLbl",
+                                "labelAction": "dropDown",
+                                "margin": "0 0 1 0",
+                                "style": "font-weight: bold;",
+                                "width": "100%"
+                            },
+                            "designerId": "3ff25113-2901-4dd0-b41d-52b57d148b90",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "itemId": "productRmproContractSentDateFld",
+                                "label": "Sent Date:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "width": "96%"
+                            },
+                            "designerId": "2d14342d-d048-4eac-9a82-e8196606ae78",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "itemId": "productRmproContractSignedDateFld",
+                                "label": "Signed Date:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "width": "96%"
+                            },
+                            "designerId": "9fdf95d2-3d62-497b-a27c-4556d25df07b",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "hidden": null,
+                                "itemId": "productRmProSlctTermStrtDtFld",
+                                "label": "Start Date:",
+                                "labelWidth": "50%",
+                                "margin": "1 0 0 0",
+                                "width": "96%"
+                            },
+                            "designerId": "1882f38b-a562-4657-a136-4c54af79f2b5",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProductRmProSlctTermStrtDtFldChange",
+                                        "implHandler": [
+                                            "\r",
+                                            "var prd = Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].getValue() ;\r",
+                                            "\r",
+                                            "if(!prd){\r",
+                                            "    return ;\r",
+                                            "}\r",
+                                            "var startDate = newValue ;\r",
+                                            "\r",
+                                            "if(startDate && startDate != \"\"){\r",
+                                            "\r",
+                                            "    startDate = new Date(startDate) ;\r",
+                                            "    var endDate = startDate.setMonth(startDate.getMonth() + prd );\r",
+                                            "    endDate = RMdatalink.util.globalMethods.getAMDate(endDate);\r",
+                                            "    Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setValue(endDate) ;\r",
+                                            "}"
+                                        ],
+                                        "name": "change"
+                                    },
+                                    "designerId": "31059e34-694a-44ba-8e74-39693805285b"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "productRmproSlctContractTerms",
+                                "label": "Contract Terms:",
+                                "labelWidth": "50%",
+                                "margin": "1 0 0 0",
+                                "options": [
+                                    "[\r",
+                                    "    \r",
+                                    "  \r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'1 Year',\r",
+                                    "        value:12\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'2 Year',\r",
+                                    "        value:24\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'3 Year',\r",
+                                    "        value:36\r",
+                                    "        \r",
+                                    "    },\r",
+                                    "    {\r",
+                                    "        \r",
+                                    "        text:'5 Year',\r",
+                                    "        value:60\r",
+                                    "        \r",
+                                    "    }\r",
+                                    "    \r",
+                                    "]"
+                                ],
+                                "width": "96%"
+                            },
+                            "designerId": "0f7ed981-4a85-47ac-a66e-63185aea360b",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProductRmproSlctContractTermsChange",
+                                        "implHandler": [
+                                            "if(!newValue){\r",
+                                            "    return ;\r",
+                                            "}\r",
+                                            "var startDate = Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].getValue() ;\r",
+                                            "\r",
+                                            "if(startDate && startDate != \"\"){\r",
+                                            "\r",
+                                            "    startDate = new Date(startDate) ;\r",
+                                            "    var endDate = startDate.setMonth(startDate.getMonth() + newValue );\r",
+                                            "    endDate = RMdatalink.util.globalMethods.getAMDate(endDate);\r",
+                                            "    Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setValue(endDate) ;\r",
+                                            "}"
+                                        ],
+                                        "name": "change"
+                                    },
+                                    "designerId": "3d3f4ea6-4858-499e-8151-2dac7f3c3d7f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": null,
+                                "disabled": true,
+                                "itemId": "productRmproContractRenewalDateFld",
+                                "label": "End Date:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "width": "96%"
+                            },
+                            "designerId": "0428f413-6091-4b65-b220-9886ad62530d",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "inputByDatePicker",
+                                "itemId": "productRmproContractSendNewFld",
+                                "label": "Send New:",
+                                "labelWidth": "50%",
+                                "margin": null,
+                                "width": "96%"
+                            },
+                            "designerId": "f3844179-41b0-4c57-9575-5db5f0bafb82",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "6d98b36f-a53e-4181-b253-fd0337fc6997",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl"
+                                ],
+                                "height": "24px",
+                                "html": "Commission<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "productDatalinkVdrDiscTtlLbl1",
+                                "labelAction": "dropDown",
+                                "margin": "0 0 1 0",
+                                "style": "font-weight: bold;",
+                                "width": "100%"
+                            },
+                            "designerId": "f7728984-c2ac-4e1d-a227-4bfa72ab8a05",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl"
+                                ],
+                                "height": "24px",
+                                "html": "Commmission<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "productDatalinkVdrDiscTtlLbl",
+                                "labelAction": "dropDown",
+                                "margin": "0 0 1 0",
+                                "style": "font-weight: bold;",
+                                "width": "100%"
+                            },
+                            "designerId": "49a4f809-5101-496b-a60d-b277afffe403",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": null,
+                                "html": "<div style= \"margin:-18px 0 0 -10px;font-size:0.9em;\">$</div>",
+                                "itemId": "rtBillingCommissionableAmtFld",
+                                "label": "Commissionable Amount:",
+                                "labelWidth": "60%",
+                                "margin": null,
+                                "width": "96%"
+                            },
+                            "designerId": "d3d73f7c-6c99-4a8a-b53f-91d444e1e633"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": null,
+                                "html": "<div style= \"margin:-18px 0 0 -12px;font-size:0.9em;\">%</div>",
+                                "itemId": "rtBillingCommissionPercentFld",
+                                "label": "Commissionable Percent:",
+                                "labelWidth": "60%",
+                                "margin": "1 0 1 0",
+                                "width": "96%"
+                            },
+                            "designerId": "4d46fa6b-7dcc-4ff2-ac63-32c908d4a5c2"
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": null,
+                                "itemId": "rmproProductSetupSellPersonsView",
+                                "layout": "vbox",
+                                "style": null,
+                                "title": null,
+                                "width": "100%"
+                            },
+                            "designerId": "09871181-8333-49a2-9ab0-23c2dc2d7f00",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Search",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "fillSearchDropDown",
+                                        "cls": [
+                                            "x-field-techLogsearch"
+                                        ],
+                                        "itemId": "rtSalesPersonSearchFld",
+                                        "label": "Salesperson(s)",
+                                        "labelWidth": "100px",
+                                        "width": "96%"
+                                    },
+                                    "designerId": "9131c36e-7b11-4369-8d87-d2b5d927cce5",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": "108px",
+                                        "layout|flex": null,
+                                        "margin": "2 0 2 2",
+                                        "width": "114%"
+                                    },
+                                    "designerId": "abd4db54-1a61-4575-b7ae-464bcb10e9dd",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMyfieldset18Initialize11",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setMargin(0);\r",
+                                            "headers.setHeight(0);\r",
+                                            "/*headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\" style=\"background-color: #DCDCDE ;\">',\r",
+                                            "\r",
+                                            "               '    <div style=\"width: 40%;\" data-name=\"discount_name\">',\r",
+                                            "               '        Advance Payment Benifits&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"discount_value\">',\r",
+                                            "               '        Discount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "                  '    <div style=\"width: 15%;\" data-name=\"discount_saving\">',\r",
+                                            "               '        Saving&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "                  '    <div style=\"width: 15%;\" data-name=\"discount_total\">',\r",
+                                            "               '        Total&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "                  '    <div style=\"width: 15%;\" data-name=\"discount_per_month\">',\r",
+                                            "               '        Per Month&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();*/\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "list.setMargin(0);\r",
+                                            "list.setStore(Ext.getStore('products.RtSalesPersonStore'));\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\" style=\"margin-top: 0px;\">',\r",
+                                            "                '    <div style=\"width: 10%;\"></div>',\r",
+                                            "               '    <div style=\"width: 40%;padding: 0px 0px 0px 10px; padding-left: 7px;\">{salesperson_name}</div>',\r",
+                                            "               '    <div style=\"\">%</div><input type=\"text\" style=\"width: 40% !important;\" class=\"x-rm-rdinlinecmt rtRmpProSetup\" data-id=\"{_id}\" value=\"{salesperson_commission}\" maxlength=\"24\"',\r",
+                                            "               '        onchange=\"RMdatalink.app.getController(\\'InvoiceController\\').updateSalesPersonsList(this,\\'salesperson_commission\\');\"/>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "list.setItemHeight(22);\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                            "list.addCls('delMark-list') ;\r",
+                                            "\r",
+                                            "list.setDisableSelection(true);\r",
+                                            "list.setOnItemDisclosure(true);\r",
+                                            "list.refresh();\r",
+                                            "\r",
+                                            "    list.on(\"disclose\",function(salesPersonList, record, eOpts){\r",
+                                            "          salesPersonList.getStore().remove(record) ;\r",
+                                            "    });\r",
+                                            "\r",
+                                            "//disclose( this, record, target, index, e, eOpts )"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "a259ee5e-bbf1-42c8-b55e-3c62a021736d"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -1129,6 +2689,7 @@
                             "]"
                         ],
                         "height": "90px",
+                        "hidden": true,
                         "itemHeight": 22,
                         "itemId": "rmProSlctTermList",
                         "layout|flex": null,
@@ -1185,21 +2746,6 @@
                     ]
                 },
                 {
-                    "type": "Ext.Label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "hidden": null,
-                        "html": "<center>Payment Frequency</center>",
-                        "itemId": "productRmproPaymentFreqLbl",
-                        "width": "100%"
-                    },
-                    "designerId": "3ff25113-2901-4dd0-b41d-52b57d148b90"
-                },
-                {
                     "type": "Ext.dataview.List",
                     "reference": {
                         "name": "items",
@@ -1247,6 +2793,7 @@
                             "]"
                         ],
                         "height": "120px",
+                        "hidden": true,
                         "itemHeight": 22,
                         "itemId": "rmProPaymentFreqList",
                         "layout|flex": null,
@@ -1308,20 +2855,6 @@
                     ]
                 },
                 {
-                    "type": "Ext.Label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "html": "<center>Vendor Discount</center>",
-                        "itemId": "productDatalinkVdrDiscTtlLbl",
-                        "width": "100%"
-                    },
-                    "designerId": "08048899-877a-4260-ac97-c80169ea9e13"
-                },
-                {
                     "type": "Ext.form.FieldSet",
                     "reference": {
                         "name": "items",
@@ -1330,6 +2863,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "border": null,
+                        "hidden": true,
                         "itemId": "myfieldset169",
                         "layout": "vbox",
                         "layout|flex": 3,
@@ -1347,41 +2881,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "hidden": true,
                                 "itemId": "productDatalinkVdrDiscLst",
                                 "layout|flex": 1
                             },
                             "designerId": "f1ea8b5a-90c3-484c-8537-052e946d13d1",
                             "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
-                        },
-                        {
-                            "type": "Ext.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "hidden": true,
-                                "itemId": "rtBillingCommissionableAmtFld",
-                                "label": "Commissionable Ammount",
-                                "labelWidth": "160px"
-                            },
-                            "designerId": "d3d73f7c-6c99-4a8a-b53f-91d444e1e633"
-                        },
-                        {
-                            "type": "Ext.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "hidden": true,
-                                "itemId": "rtBillingCommissionPercentFld",
-                                "label": "Commission Percent",
-                                "labelWidth": "160px"
-                            },
-                            "designerId": "4d46fa6b-7dcc-4ff2-ac63-32c908d4a5c2"
                         },
                         {
                             "type": "basiceventbinding",
@@ -1438,6 +2943,28 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelInitialize",
+                "implHandler": [
+                    "var rtBillMonthlyMemberShipFld = component.down('#rtBillMonthlyMemberShipFld');\r",
+                    "var input = rtBillMonthlyMemberShipFld.getEl().query('input')[0] ;\r",
+                    "input.style.setProperty(\"color\", \"rgb(157, 8, 8)\", \"important\");\r",
+                    "input.style.setProperty(\"border-color\", \"#555\", \"important\");\r",
+                    "input.style.setProperty(\"font-weight\", \"bold\", \"important\");\r",
+                    "\r",
+                    ""
+                ],
+                "name": "initialize"
+            },
+            "designerId": "89855ddd-795f-4f0d-8564-275bf94aa25a"
         }
     ]
 }

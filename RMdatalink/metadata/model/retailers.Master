@@ -1180,6 +1180,30 @@
                 "name": "account_no"
             },
             "designerId": "7e56dfc1-549d-46d1-b69a-54037b5e2b0e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "e_commerce_info"
+            },
+            "designerId": "6b98001f-d3a0-415f-8655-4094ef0d10cb"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "store_products_vip"
+            },
+            "designerId": "f4f5e98a-83e0-4ecd-9414-e6e12aa979dc"
         }
     ]
 }

@@ -1,0 +1,26 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "AutoCompleteModel"
+    },
+    "designerId": "53b0ca31-5b59-42fc-9bd0-fe028f8ae30b",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "text"
+            },
+            "designerId": "b7df4e0b-c8da-402e-9b2a-0e6c964d837d"
+        }
+    ]
+}

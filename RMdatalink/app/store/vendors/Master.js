@@ -71,6 +71,7 @@ Ext.define('RMdatalink.store.vendors.Master', {
     },
 
     onStoreRemoverecords: function(store, records, indices, eOpts) {
+
         console.log("records ",records , "  indices  " , indices);
           RMdatalink.util.DataLoader.onRetailerMasterStoreRecordRemoved(store,records,indices,eOpts);
 

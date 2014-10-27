@@ -32,12 +32,13 @@ Ext.define('RMdatalink.view.products.retailerBillingSheet', {
         height: '100%',
         itemId: 'retailerBillingSheet',
         padding: '0 0 0 0',
-        width: '96%',
+        width: '98%',
         layout: 'vbox',
         items: [
             {
                 xtype: 'panel',
                 height: '30px',
+                margin: '0 0 0 0',
                 layout: 'hbox',
                 items: [
                     {
@@ -46,18 +47,28 @@ Ext.define('RMdatalink.view.products.retailerBillingSheet', {
                         itemId: 'rtBillingHeaderLabel'
                     },
                     {
+                        xtype: 'label',
+                        itemId: 'skusTotalInHeader',
+                        style: 'margin-left:10px;'
+                    },
+                    {
+                        xtype: 'label',
+                        centered: true,
+                        html: '|  EDITING  |',
+                        itemId: 'rtProductSetupEditLbl',
+                        style: 'font-size:1.0em;color:rgb(157, 8, 8);font-weight:bold;'
+                    },
+                    {
                         xtype: 'button',
-                        cls: [
-                            'x-rm-detailsSaveBtn',
-                            'x-rm-detailsInnerBtns'
-                        ],
+                        cls: 'x-rm-blueBtn',
                         docked: 'right',
+                        hidden: true,
                         itemId: 'rtBillingSaveBtn',
                         margin: '0 5 0 0',
                         minWidth: '100px',
                         padding: '8 0 0 0',
                         pressedCls: 'x-rm-detailsInnerBtns-pressing',
-                        text: 'SAVE'
+                        text: 'Save'
                     },
                     {
                         xtype: 'button',
@@ -71,7 +82,21 @@ Ext.define('RMdatalink.view.products.retailerBillingSheet', {
                         minWidth: '100px',
                         padding: '8 0 0 0',
                         pressedCls: ' x-rm-detailsInnerBtns-pressing',
-                        text: 'CANCEL'
+                        text: 'Edit'
+                    },
+                    {
+                        xtype: 'button',
+                        cls: [
+                            ' x-rm-detailsSaveBtn',
+                            'x-rm-detailsInnerBtns'
+                        ],
+                        docked: 'right',
+                        itemId: 'productBillingSheetBackBtn',
+                        margin: '0 5 0 0',
+                        minWidth: '100px',
+                        padding: '8 0 0 0',
+                        pressedCls: ' x-rm-detailsInnerBtns-pressing',
+                        text: 'Back'
                     },
                     {
                         xtype: 'button',
@@ -89,6 +114,7 @@ Ext.define('RMdatalink.view.products.retailerBillingSheet', {
                         cls: ' x-rm-rdformpanel',
                         docked: 'right',
                         height: '26px',
+                        hidden: true,
                         margin: '0 10 0 0',
                         width: '260px',
                         items: [
@@ -135,6 +161,7 @@ Ext.define('RMdatalink.view.products.retailerBillingSheet', {
                 xtype: 'tabpanel',
                 flex: 1,
                 cls: 'x-rm-tabpanel',
+                margin: '0 0 0 0',
                 ui: 'light',
                 items: [
                     {
@@ -143,8 +170,7 @@ Ext.define('RMdatalink.view.products.retailerBillingSheet', {
                         layout: 'fit',
                         items: [
                             {
-                                xtype: 'productsrm_pro_forretailer',
-                                margin: '0 0 0 0'
+                                xtype: 'productsrm_pro_forretailer'
                             }
                         ]
                     },

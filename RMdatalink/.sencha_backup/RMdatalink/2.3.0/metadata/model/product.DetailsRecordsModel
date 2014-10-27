@@ -1,0 +1,75 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "productDetailsRecordsModel",
+        "designer|userClassName": "product.DetailsRecordsModel"
+    },
+    "designerId": "5b8bed71-0769-483e-aa7d-5d1700508216",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "designerId": "abb2edc4-6ef7-464d-b503-684b243da74f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "product_name"
+            },
+            "designerId": "a14248f9-dca9-47ca-ad2e-8165e175a091"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "pricing_policy_sku_range"
+            },
+            "designerId": "00d10af3-0026-4d80-81a3-2b90b21f63bd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "pricing_policy_discounts_levels"
+            },
+            "designerId": "88e548cc-dc57-4d89-a328-e6176b90c242"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "functionality"
+            },
+            "designerId": "1d777388-b31c-43da-94d7-16fa029ce68c"
+        }
+    ]
+}

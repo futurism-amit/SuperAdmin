@@ -1,5 +1,6 @@
 {
    "name": "RMdatalink",
+   "id": "231cdcef-dea1-4a31-b268-2f7d0f76a87b",
    "indexHtmlPath": "index.html",
    "url": null,
    "js": [
@@ -138,6 +139,9 @@
       },
       {
          "path": "resources/css/alertPopUp/alertPopUpCSS.css"
+      },
+      {
+         "path": "resources/css/Grid.css"
       }
    ],
    "appCache": {
@@ -160,6 +164,5 @@
       ".svn$"
    ],
    "archivePath": "archive",
-   "requires": [],
-   "id": "231cdcef-dea1-4a31-b268-2f7d0f76a87b"
+   "requires": []
 }

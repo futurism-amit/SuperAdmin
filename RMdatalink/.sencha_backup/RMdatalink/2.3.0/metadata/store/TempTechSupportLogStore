@@ -1,0 +1,40 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cachedData": [
+            "{}"
+        ],
+        "designer|userClassName": "TempTechSupportLogStore",
+        "model": "TechSupportLogsModel",
+        "pageNo": 1,
+        "storeId": "TempTechSupportLogStore",
+        "totalNoOfPages": "1"
+    },
+    "configAlternates": {
+        "pageNo": "number",
+        "cachedData": "object"
+    },
+    "designerId": "3eb9d9a7-5363-4f1d-af0a-d6afdf34f4db",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "cachedData",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        }
+    ]
+}

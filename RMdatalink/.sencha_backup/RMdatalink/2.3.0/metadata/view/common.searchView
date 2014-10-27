@@ -1,0 +1,73 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-searchview"
+        ],
+        "container|align": "center",
+        "designer|userAlias": "searchView",
+        "designer|userClassName": "common.searchView",
+        "height": null,
+        "layout": "hbox",
+        "minHeight": null,
+        "requires": [
+            "Ext.field.Search"
+        ],
+        "scrollable": null
+    },
+    "designerId": "5486b687-172e-4cd3-8a4c-36599048d2ca",
+    "cn": [
+        {
+            "type": "Ext.field.Search",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-searchfield"
+                ],
+                "designer|displayName": "RMSearchField",
+                "height": "100%",
+                "itemId": "RMSearchField",
+                "label": "<div></div>",
+                "labelWidth": "60px",
+                "layout|flex": 1,
+                "placeHolder": "SEARCH",
+                "width": null
+            },
+            "designerId": "c924308d-2d04-423b-9e74-e4bb31b97337"
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-filterbtn",
+                    "x-rm-blueBtn"
+                ],
+                "designer|displayName": "filterBtn",
+                "designer|uiInterfaceName": "plain",
+                "height": "100%",
+                "itemId": "filterBtn",
+                "layout|flex": null,
+                "margin": "0 1% 0 0",
+                "pressedCls": "x-rm-blueBtn-pressing",
+                "text": "FILTER",
+                "ui": "plain",
+                "width": "80px"
+            },
+            "designerId": "5f390222-003f-4dd0-8b02-7be9c74bd50c"
+        }
+    ]
+}

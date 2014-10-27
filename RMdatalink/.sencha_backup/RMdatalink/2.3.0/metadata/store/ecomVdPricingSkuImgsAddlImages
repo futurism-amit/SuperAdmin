@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ecomVdPricingSkuImgsAddlImages",
+        "model": "DlVdPricingSkuImgs",
+        "storeId": "ecomVdPricingSkuImgsAddlImages"
+    },
+    "designerId": "811d4679-7449-4d5c-88b5-65924eeffaf5"
+}

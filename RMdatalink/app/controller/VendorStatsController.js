@@ -24,6 +24,7 @@ Ext.define('RMdatalink.controller.VendorStatsController', {
             var _this =this ;
             var vendorMasterStr = Ext.getStore('vendors.Master')  ;
 
+
             for(var i=0; i < vendorMasterStr.getData().all.length ; i++){
 
                  var record =   vendorMasterStr.getAt(i);
@@ -43,7 +44,7 @@ Ext.define('RMdatalink.controller.VendorStatsController', {
 
             RMdatalink.iwa.rdl.getVendorStats('', function(res)
                         {
-        //                      Ext.Viewport.setMasked(false);
+                             Ext.Viewport.setMasked(false);
                             console.log('result:');
                             console.log(res);
 
@@ -187,6 +188,79 @@ Ext.define('RMdatalink.controller.VendorStatsController', {
                      RMdatalink.iwa.rdl.doUpdateCollection(vendorStore, dataToupdate , record.get('_id'), suc, err);
 
                     record.set("last_inventory_update",date) ;
+
+                    function suc(){
+
+                    }
+                    function err(){
+
+                        Ext.Msg.alert("Alert","Vendor last inventory updated date updation failed, for vendor "+record.get("vendor_name"),Ext.emptyFn);
+
+                    }
+
+                }
+    },
+
+    updateVendorFlds: function(inputFld, record_key) {
+
+        console.log(inputFld.attributes['data-id'].value) ;
+
+        var _id = inputFld.attributes['data-id'].value ;
+        var value = inputFld.value ;
+
+        value = value.replace(",","");
+        var rmProBillingStore = Ext.getStore('vendors.Master') ;
+        var recIndex = rmProBillingStore.findExact('_id',_id) ;
+
+        if(recIndex == -1){
+            return ;
+        }
+
+
+        var record = rmProBillingStore.getAt(recIndex) ;
+
+        record.set(record_key,value) ;
+
+
+
+        updateVendor();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                function updateVendor(){
+
+                    var dataToupdate = {
+
+
+
+                    } ;
+
+                    dataToupdate[record_key] = value ;
+
+
+                     var vendorStore = Ext.getStore('vendors.Master') ;
+                     RMdatalink.iwa.rdl.doUpdateCollection(vendorStore, dataToupdate , record.get('_id'), suc, err);
+
 
                     function suc(){
 

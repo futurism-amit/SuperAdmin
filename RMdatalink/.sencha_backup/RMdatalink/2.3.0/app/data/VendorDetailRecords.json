@@ -1,0 +1,148 @@
+{
+    "vendorDetailRecords": [
+        {
+            "id": 1,
+            "name": "Vendor One",
+            "design":"37",
+            "sku":"10000",
+            "collection":"37",
+            "products":[
+                {"id":1,"standard_price":"75.00","promotional_price":"65.00"},
+                {"id":5,"standard_price":"55.00","promotional_price":"35.00"}
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Vendor Two",
+            "design":"51",
+            "sku":"10000",
+            "collection":"843",
+            "products":[
+                {"id":1,"standard_price":"65.00","promotional_price":"65.00"},
+                {"id":3,"standard_price":"25.00","promotional_price":"15.00"}
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Vendor Three",
+            "design":"79",
+            "sku":"10000",
+            "collection":"111",
+            "products":[
+                {"id":1,"standard_price":"79.00","promotional_price":"65.00"},
+                {"id":4,"standard_price":"25.88","promotional_price":"35.00"}
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Vendor Four",
+            "design":"56",
+            "sku":"10000",
+            "collection":"652",
+            "products":[
+                {"id":1,"standard_price":"75.00","promotional_price":"65.00"},
+                {"id":5,"standard_price":"55.00","promotional_price":"35.00"},
+                {"id":2,"standard_price":"65.00","promotional_price":"55.00"}
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Vendor Five",
+            "design":"18",
+            "sku":"10000",
+            "collection":"473",
+            "products":[
+                {"id":2,"standard_price":"88.00","promotional_price":"65.00"}        
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Vendor Six",
+            "design":"99",
+            "sku":"10000",
+            "collection":"555",
+            "products":[
+                {"id":3,"standard_price":"45.00","promotional_price":"29.00"} 
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Vendor Seven",
+            "design":"44",
+            "sku":"10000",
+            "collection":"352",
+            "products":[
+                {"id":1,"standard_price":"75.00","promotional_price":"65.00"},
+                {"id":3,"standard_price":"82.00","promotional_price":"55.00"}
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Vendor Eight",
+            "design":"87",
+            "sku":"10000",
+            "collection":"249",
+            "products":[
+                {"id":1,"standard_price":"75.00","promotional_price":"65.00"},
+                {"id":2,"standard_price":"45.00","promotional_price":"35.00"},
+                {"id":5,"standard_price":"55.00","promotional_price":"35.00"}
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Vendor Nine",
+            "design":"60",
+            "sku":"10000",
+            "collection":"881",
+            "products":[
+                {"id":1,"standard_price":"65.00","promotional_price":"65.00"},
+                {"id":4,"standard_price":"48.00","promotional_price":"35.00"}
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Vendor Ten",
+            "design":"55",
+            "sku":"10000",
+            "collection":"456",
+            "products":[
+                {"id":4,"standard_price":"75.00","promotional_price":"65.00"},
+                {"id":5,"standard_price":"55.00","promotional_price":"35.00"}
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Vendor Eleven",
+            "design":"37",
+            "sku":"10000",
+            "collection":"145",
+            "products":[
+                {"id":1,"standard_price":"44.00","promotional_price":"21.00"}
+                
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Vendor Twelve",
+            "design":"28",
+            "sku":"10000",
+            "collection":"156",
+            "products":[
+               
+                {"id":4,"standard_price":"25.00","promotional_price":"35.00"},
+                {"id":1,"standard_price":"29.00","promotional_price":"15.00"}
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Vendor Thriteen",
+            "design":"67",
+            "sku":"10000",
+            "collection":"288",
+            "products":[
+                {"id":3,"standard_price":"97.00","promotional_price":"75.00"}
+               
+            ]
+        }
+    ]
+}

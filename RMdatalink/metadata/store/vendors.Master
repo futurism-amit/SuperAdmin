@@ -71,7 +71,7 @@
                 "implHandler": [
                     "\r",
                     "if(RMdatalink.app.getController('RetailerDeatilsDataSet').config.isVendorUpdated){\r",
-                    "    \r",
+                    "\r",
                     "\r",
                     "    RMdatalink.app.getController('RetailerDeatilsDataSet').config.isVendorUpdated = false ;\r",
                     "   // RMdatalink.util.DataLoader.onRetailerMasterStoreUpdate(store,record,newIndex,oldIndex,modifiedFieldNames,modifiedValues,eOpts);\r",
@@ -95,6 +95,7 @@
             "userConfig": {
                 "fn": "onStoreRemoverecords",
                 "implHandler": [
+                    "\r",
                     "console.log(\"records \",records , \"  indices  \" , indices);\r",
                     "  RMdatalink.util.DataLoader.onRetailerMasterStoreRecordRemoved(store,records,indices,eOpts);\r",
                     "\r",
@@ -114,7 +115,7 @@
             "userConfig": {
                 "property": "vendor_name"
             },
-            "designerId": "782c0eb5-b0bb-4295-bf8d-5819276caae7"
+            "designerId": "22d8c6d3-5eb2-4bc3-ba45-efd5c99b8592"
         }
     ]
 }

@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ecomProductBundle",
+        "model": "DatalinkProductBundle",
+        "storeId": "ecomProductBundle"
+    },
+    "designerId": "63a945d6-a639-4a17-8006-b79e7e94b95a"
+}

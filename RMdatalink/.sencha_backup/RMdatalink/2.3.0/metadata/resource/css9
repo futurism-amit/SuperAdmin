@@ -1,0 +1,13 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css9",
+        "url": "resources/css/Grid.css"
+    },
+    "designerId": "fd674ca7-1565-4b54-8c3c-06c7421cc16d"
+}

@@ -1,8 +1,377 @@
+.left_arrowI{
+    position: relative;
+    background-image: url("../images/rarr.png") ;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.labelClassForLogo{
+    color: #aaa;
+    font-family: 'OpenSans';
+    font-size: 70% !important;
+    color: #555555 !important;
+    font-weight: bold;    
+    padding-left: 10px;
+}
+.disableVednorListItemCls .x-innerhtml{
+    
+    padding:5px 25px !important;
+}
+.onePixTopBottomMargin{
+    
+    margin-top:1px;
+    width:100% !important;
+   
+    
+}
+.onePixTopBottomMargin > .x-inner.x-panel-inner > .x-container.x-unsized {
+    padding-right:5%;
+    padding-left:5%;
+}
+.vipVendorListEcomm  .x-innerhtml{
+
+    
+    padding: 0px 0px !important;
+    font-family: 'OpenSans';
+    font-size: 70% !important;
+    color: #555555 !important;
+}
+.disableVednorListItemCls .x-innerhtml div{
+    
+
+    font-size: 12px;
+}
+.disableVednorListItemCls{
+    border:none !important
+    
+}
+.boldText{
+    font-weight:bold;
+}
+.segButton .x-button-label{
+    
+    font-size:12px;
+}
+.checkBoxVipRemoval .x-field-input{
+    
+   border:none !important;
+}
+.removeBorderCheckBox .x-field-input{
+   border:none !important;    
+}
+.clsFOrVipTab .x-form-label{
+    
+    background-color:white !important;
+}
+
+
+.clsFOrVipTab{
+    
+    
+    margin-top:10px;
+    margin-bottom:10px;
+    
+}
+.productSetup{
+    
+    position: absolute;
+    right: 0px;
+    width: 82px;
+
+    color: white;
+    background-color: #2EC1DA ;
+    border-color: #2EC1DA ;    
+    border:1px solid;    
+}
+.textFieldInputECommereRetailer {
+    
+    margin-top:3px;
+    margin-bottom:3px;
+}
+
+
+.noBorderClass  .x-field-input{
+    
+    border:none !important;
+}
+
+.EcommerceRegFieldSet{
+    
+	padding-top: 5px;
+	padding-bottom: 5px;        
+    
+}
+.toggleElement{
+    
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.EcommerceRegFieldSet .x-form-fieldset-title .x-innerhtml{
+    
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.logoClass {
+
+
+    
+}
+.aboutYouClass textarea{
+
+}
+.heightofEcommerceTextArea textArea{
+    height:130px;    
+}
+/* div[click_delegate_attr=Store_nameDelegateClassForTap]{
+    font-weight:bold;
+}
+ */
+.x-tab .x-button-icon.arrow_right:before, .x-button .x-button-icon.arrow_right:before {
+position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-family: "Pictos";
+    content: "";
+    background-image: url("../images/rarr.png") ;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.x-tab .x-button-icon.arrow_left:before, .x-button .x-button-icon.arrow_left:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-family: "Pictos";
+    content: "";
+    background-image: url("../images/larr.png") ;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.vertical-text {
+	transform: rotate(45deg);
+	transform-origin: left top 0;
+
+}
+.x-checkmark-base, .x-field-checkbox .x-field-mask::after, .x-field-radio .x-field-mask::after, .x-select-overlay .x-item-selected.x-list-item::after {
+position: absolute;
+top: 6px;
+/* right: 10px; */
+bottom: -6px;
+content: '3';
+font-family: 'Pictos';
+font-size: 1.4em;
+text-align: right;
+line-height: 12px;
+border: 1px solid #000 !important;
+height: 16px;
+
+
+
+
+}
+
+.x-select-overlay{
+    
+    font-size: 0.8em !important;
+}
+
+.x-input-el:checked + .x-field-mask::after {
+color: #2EC1DA;
+}
+
+.x-rm-checkbox.x-field-labeled .x-form-label {
+    display: block !important;
+    padding: 0.1em 0.0em !important;
+}
+
+.x-rm-checkbox .x-field-input{
+    border: 0px solid #E7E7E8 !important;
+    margin-top: -4px !important;
+    font-size: 0.8em;
+}
+
+
+.x-form-menu .x-form-fieldset-inner {
+    border: 0px solid #ddd;
+    background: initial;
+    padding: 0;
+}
+
+
+.x-list .x-list-disclosure {
+    width: 26px;
+    height: 26px;
+    margin: 5px 7px 0 0;
+}
+
+.x-list .x-list-disclosure:before {
+font-size: 20px;
+line-height: 28px;
+}
+
+
+.x-input-el {
+    padding: 0.2em;
+    min-height: 2.5em;
+    border-width: 0;
+    -webkit-appearance: none;
+}
+
+.licEdtFld[disabled]{
+    background-color: rgb(235, 235, 228) !important;
+}
+
+.licEdtFld{
+    background-color: white !important;
+}
+
+.prodDlSetupFlds[disabled]{
+    background-color: rgb(235, 235, 228) !important;
+}
+
+.prodDlSetupFlds{
+    background-color: white !important;
+}
+
+
+
+
+
+.rtRmpProSetup[disabled]{
+    background-color: rgb(235, 235, 228) !important;
+}
+
+.rtRmpProSetup{
+    background-color: white !important;
+}
+
+
+
+.billingDisable[disabled]{
+    background-color: rgb(235, 235, 228) !important;
+}
+
+.billingDisable{
+    background-color: white !important;
+}
+
+.rmProStatusFlds[disabled]{
+    background-color: rgb(235, 235, 228) !important;
+}
+
+.rmProStatusFlds{
+    background-color: white !important;
+}
+
+
+.prodRmprolstflds[disabled]{
+    background-color: rgb(235, 235, 228) !important;
+}
+
+.prodRmprolstflds{
+    background-color: white !important;
+}
+
+
+.grayFldLbl{
+    background-color: gainsboro !important;
+}
+.newGrayBtn{
+    background-color: #646466 !important;
+}
+
+.newGrayBtn .x-button-label {
+    font-family: 'OpenSans';
+    font-size: 70% !important;
+    font-weight: 500 !important;
+    color: #EDE7E3 !important;
+    
+}
+.fieldLbl{
+    background-color: gainsboro !important ;
+    font-weight:bold;
+    font-size:0.8em;
+    height:24px;
+    padding:4px 0 0 8px;
+}
+
+.nbluehtml{
+    color: rgb(31, 78, 120);
+/*     font-weight:bold; */
+    font-size:0.75em;
+}
+.x-rm-rdvendorslist .x-list-item.x-item-selected.x-list-item-tpl .x-rm-listtpl-payment > div:nth-child(5){
+    color: rgb(157, 8, 8);
+}
+
+
+
+.rightBorderDiv{
+    border-right: 1px solid #9b9b9b;
+}
+
+
+.x-invoice-listtpl-main {
+width: 100%;
+display: inline-flex;
+display: -webkit-inline-box;
+height: 20px;
+ padding-top: 4px;   
+}
+
+.x-touchtreegrid-list-dow2012Dynamic .dynamic-detail-closedate {
+text-align: center;
+font-weight: bold;
+color: #008abc;
+border-right: 1px solid #9b9b9b;
+}
+.x-touchtreegrid-list-dow2012Horiz .touchtreegrid-simplelist-cell {
+height: 47px !important;
+min-height: 47px !important;
+max-height: 47px !important;
+padding: 0 0 0 0;
+line-height: 47px !important;
+font-size: 15px !important;
+}
+.x-touchtreegrid-list .touchtreegrid-simplelist-cell {
+display: inline-block;
+overflow: hidden;
+text-overflow: clip;
+white-space: nowrap;
+color: black;
+background-color: white;
+padding: 1em 0 0 0;
+margin: 0;
+font-size: .8em !important;
+}
+
 .logoBg .x-center{
     
     background-color: rgb(94, 94, 94) !important;
 }
+.listItemBorder{
+    border:1px solid #9a9a9a;
+}
 
+.txtColorBlue{
+    
+    color:rgb(48, 84, 150);
+}
+
+
+.txtColorRed{
+    
+    color:rgb(157, 8, 8);
+}
 
 .x-form-fieldset-title {
     text-shadow: #fff 0 1px 1px;
@@ -12,7 +381,7 @@
 }
 
 .x-field {
-    min-height: 1.8em;
+    min-height: 1.0em;
     background: #fff;
 }
 .x-rm-list .x-innerhtml {
@@ -36,7 +405,7 @@
 
 
 .x-rm-list .x-list-item:nth-child(2n) {
-	background-color: #fafafa; /* #eee; */
+	background-color:#F0F0F0; /* #eee; */
 }
 
 .x-rm-list .x-list-item:nth-child(2n+1) {
@@ -196,6 +565,27 @@ background-image: -webkit-linear-gradient(top, #741774,#4a0f4a 3%,#1f061f);
     border-radius: 0;
     border-style: solid;
 }
+.onlyRightBorderDiv{
+    border-color:#555 ;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 1px;
+    border-radius: 0;
+    border-style: solid;
+}
+
+.onlyLeftBorderDiv{
+    border-color:#555 ;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+    border-right-width: 0px;
+    border-radius: 0;
+    border-style: solid;
+}
+
+
 
 .blueLableFld {
     
@@ -316,8 +706,8 @@ background-image: -webkit-linear-gradient(top, #741774,#4a0f4a 3%,#1f061f);
 
 .x-field-techLogsearch .x-field-input:before {
 color: #ccc;
-top: 0.3em;
-left: 0.1em;
+top: 0.1em;
+left: 0.0em;
 font-size: 1.1em;
 right: auto;
 }
@@ -409,7 +799,7 @@ background-image: -o-linear-gradient(top, #741774,#4a0f4a 3%,#1f061f);
 background-image: linear-gradient(top, #741774,#4a0f4a 3%,#1f061f);
 width: 20px;
 height: 20px;
-margin: 13px 7px 0 0;
+margin: 2px 7px 0 0;
 }
 
 
@@ -533,8 +923,8 @@ margin-top: 3px;
 
 
 /*  Native Scrollbar Design */
+
 ::-webkit-scrollbar { width: 3px; height: 3px;}
-::-webkit-scrollbar-button {  background-color: transparent; }
 ::-webkit-scrollbar-track {  background-color: #999;}
 ::-webkit-scrollbar-track-piece { background-color: #ffffff;}
 ::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
@@ -911,7 +1301,7 @@ body.x-desktop {
 }
 
 .x-rm-list .x-innerhtml {
-    padding:12px 5px !important;
+    padding:0px 5px !important;
 }
 
 .x-rm-list .x-list-item.x-list-item-tpl {
@@ -940,18 +1330,24 @@ body.x-desktop {
 }
 
 .x-rm-list-totals  .x-dataview-item {
-    line-height: 2.4em; 
+    line-height: 2.0em; 
+    background-color: gainsboro;
+    font-weight: bold;
 }
 
 .x-rm-list-header  .x-dataview-item {
-    /*font-weight:bolder;*/
-    line-height:3em;
+    font-weight:bolder;
+    line-height:1.8em;
     padding: 0 5px;
+    color: #555;
 }
 
 .x-rm-list-header  .x-rm-listtpl-main {
     height: 100%;
     cursor:pointer;
+    border-bottom: 1px solid #9b9b9b;
+    background-color: gainsboro;
+    font-weight: bold;
 }
 
 .x-rm-listtpl-main {
@@ -959,6 +1355,7 @@ body.x-desktop {
     display: inline-flex; 
     display: -webkit-inline-box;
     height: 22px;
+    padding-top: 2px;
 }
 
 .x-rm-listtpl-main > div:first-child > div {
@@ -1017,6 +1414,7 @@ body.x-desktop {
 .x-rm-rdformpanel .x-field-input {
     border:1px solid #E7E7E8 ;
     min-width:1.7em !important;
+    margin: 1px 0 0 0 !important;
 }
 
 .x-rm-bluebook-formpanel .x-field-input {
@@ -1052,7 +1450,7 @@ body.x-desktop {
 .x-rm-rdformpanel .x-form-inner > .x-label .x-innerhtml,
 .x-rm-rdLabel .x-innerhtml {
     width: 90%;
-    margin-left: 10%;
+    margin-left: 10px;
 }
 
 .x-rm-rdformpanel .x-form-fieldset {
@@ -1065,15 +1463,15 @@ body.x-desktop {
 }
 
 .x-rm-rdformpanel .x-form-label {
-    background-color:#FFFFFF !important;
-    padding:0.2em 0.6em !important; 
+    background-color:#FFFFFF ;
+    padding:0.1em 0.6em !important; 
 }
 
 .x-rm-rdformpanel .x-form-label span {
     font-family: 'OpenSans'; 
     font-size:70% !important;
     color:#555555 !important;
-    font-weight:500;
+    font-weight:bold;
 }
 
 .x-rm-rdformpanel textarea {
@@ -1195,7 +1593,7 @@ body.x-desktop {
 .x-rm-tipslist .x-innerhtml,
 .x-rm-rdstorelists .x-innerhtml,
 .x-rm-rdnoteslist .x-innerhtml {
-    padding:3px 5px !important;
+    padding:0px 5px !important;
 }
 
 .x-rm-rdvendorslist .x-list-item.x-item-selected.x-list-item-tpl, 
@@ -1204,7 +1602,8 @@ body.x-desktop {
 .x-rm-tipslist .x-list-item.x-item-pressed.x-list-item-tpl,
 .x-rm-rdstorelists .x-list-item.x-item-selected.x-list-item-tpl, 
 .x-rm-rdstorelists .x-list-item.x-item-pressed.x-list-item-tpl {
-    background-color: transparent !important;
+/*     background-color: transparent !important; */
+    background-color: #EDF9FC !important;
     border:none !important;
 }
 
@@ -1407,19 +1806,24 @@ body.x-desktop {
 }
 
 .x-rm-rdinlinecmt {
-    width:100% !important;
+     /*   width:100% !important;
+        color: #222222 !important;
+        border: 1px solid gray;
+        background: transparent !important;
+        display: block;
+        */
+        
+    width: 94% !important;
     color: #222222 !important;
-  /*  border:none !important; */
     border: 1px solid gray;
-    background: transparent !important;
-    display: block;
+    
 }
 
 .x-rm-pricing-input-field {
     color: #222222 !important;
-   border:none !important; 
+/*    border:none !important; 
     
-    background: transparent !important;
+    background: transparent !important; */
     display: block;
 }
 

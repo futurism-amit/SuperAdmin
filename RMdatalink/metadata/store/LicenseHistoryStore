@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LicenseHistoryStore",
+        "model": "InvoiceHistoryModel",
+        "storeId": "LicenseHistoryStore"
+    },
+    "designerId": "0507ec1d-4893-4a39-819f-a2a70d0332e4"
+}

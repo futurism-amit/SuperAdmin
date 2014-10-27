@@ -1,0 +1,195 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "retailerpaymenthistorypanel",
+        "designer|userClassName": "retailer.PaymentHistoryPanel",
+        "itemId": null,
+        "layout": "vbox",
+        "scrollable": false
+    },
+    "designerId": "07227b05-f6fe-46ee-b954-61c8ae59f812",
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": null,
+                "hidden": false,
+                "itemId": null,
+                "layout": "vbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "83fc06c0-b5a4-4e8e-9745-e76c24ac2ef7",
+            "cn": [
+                {
+                    "type": "Ext.tab.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-tabpanel",
+                            "x-rm-tabpanelBilling"
+                        ],
+                        "designer|displayName": null,
+                        "designer|uiInterfaceName": "light",
+                        "hidden": null,
+                        "itemId": null,
+                        "layout|flex": 1,
+                        "ui": "light"
+                    },
+                    "designerId": "324f9f67-2bc8-4521-9be2-6913da00f51d",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Bar",
+                            "reference": {
+                                "name": "tabBar",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "itemId": "mytabbar"
+                            },
+                            "designerId": "37e50327-3630-46f1-af32-d84554a68709"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionInit": "containerInit",
+                                "designer|displayName": null,
+                                "itemId": "paymentHistoryTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "<div style=\"line-height: 25px;\">Payment History</div>"
+                            },
+                            "designerId": "1d36ab6b-3ad3-4099-9891-c450b396fed9",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionInit",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "e3ecf351-5376-481b-88e7-040d89b99c50",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onPaymentHistoryTabInitialize",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "\r",
+                                            "headers.setStore(Ext.getStore('billing.ListHeaderStore'));\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"store_account\">',\r",
+                                            "               '        Date&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"store_name\">',\r",
+                                            "               '        Product&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"month0\">',\r",
+                                            "               '        Invoice #&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"month0\">',\r",
+                                            "               '        Payment method&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"store_name\">',\r",
+                                            "               '        Receipt&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"store_name\">',\r",
+                                            "               '        Amount&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "headers.refresh();\r",
+                                            "\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "list.setStore(Ext.getStore('InvoiceHistoryStore'));\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\">{pay_date}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\">{[this.getProductType(values)]}</div>',\r",
+                                            "               '    <div style=\"width: 20%;\">{invoice_number}</div>',\r",
+                                            "               '    <div style=\"width: 20%;\">{payment_method_detail}</div>',\r",
+                                            "               '    <div style=\"width: 15%;\"></div>',\r",
+                                            "               '    <div style=\"width: 15%;\">{total_payble} $</div>',\r",
+                                            "               '</div>',\r",
+                                            "                {\r",
+                                            "                   getProductType:function(record){\r",
+                                            "\r",
+                                            "                       if(record.invoice_product == \"product_datalink\"){\r",
+                                            "\r",
+                                            "                           return \"Datalink\" ;\r",
+                                            "                       }else if(record.invoice_product == \"product_rmpro\"){\r",
+                                            "                           return \"RM-PRO\" ;\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       return \"\";\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "\r",
+                                            "               }\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "\r",
+                                            "list.setAllowDeselect(false);\r",
+                                            "\r",
+                                            "    list.on(\"select\",function(invoiceList, record, eOpts){\r",
+                                            "\r",
+                                            "    });\r",
+                                            "\r",
+                                            "list.setItemHeight(22);\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "874d5520-23f5-4c16-99d8-b5aa4c328d64"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

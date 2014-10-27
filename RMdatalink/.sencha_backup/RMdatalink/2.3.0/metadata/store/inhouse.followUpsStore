@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "inhouse.followUpsStore",
+        "model": "notifications.new",
+        "storeId": "inhousefollowUpsStore"
+    },
+    "designerId": "65f0b1c6-4d00-43f5-9ec0-447145aea3ea"
+}

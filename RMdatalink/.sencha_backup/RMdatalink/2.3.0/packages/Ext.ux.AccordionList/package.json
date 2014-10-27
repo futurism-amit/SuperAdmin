@@ -1,0 +1,32 @@
+{
+    "name": "Ext.ux.AccordionList",
+    "type": "code",
+    "creator": "Shinobu Kawano",
+    "summary": "Short summary",
+    "detailedDescription": "Long description of package",
+    "version": "1.1.0",
+    "compatVersion": "1",
+    "architect": {
+        "compatFrameworks": [
+            "touch20",
+            "touch21",
+            "touch22",
+            "touch23"
+        ],
+        "requires": [
+            "ux/AccordionListItem.js"
+        ],
+        "classes": [{
+            "definition": "AccordionList.js",
+            "className": "Ext.ux.AccordionList",
+            "js": ["ux/AccordionList.js"],
+            "css": []
+        }, {
+            "definition": "AccordionListItem.js",
+            "className": "Ext.ux.AccordionListItem",
+            "js": ["ux/AccordionListItem.js"],
+            "css": []
+        }]
+    },
+    "local": true
+}

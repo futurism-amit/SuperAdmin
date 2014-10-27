@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "DlPricingVendors",
+        "model": "ecomPricingVendors",
+        "storeId": "DlPricingVendors"
+    },
+    "designerId": "79b0956d-26f1-4926-9910-8135dd371da0"
+}

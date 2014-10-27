@@ -24,11 +24,72 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
         'Ext.tab.Bar',
         'Ext.Button',
         'Ext.form.Panel',
-        'Ext.field.Text',
         'Ext.form.FieldSet',
         'Ext.Label',
-        'Ext.Spacer'
+        'Ext.Spacer',
+        'Ext.field.Select',
+        'Ext.field.Number',
+        'Ext.field.TextArea',
+        'Ext.SegmentedButton'
     ],
+
+    statics: {
+        vipListDataHandler: function() {
+            var component  = Ext.ComponentQuery.query("#discountVipTab")[0];
+            var list = component.down('#discountList');
+
+            var data = getArrayFromStore(Ext.getStore('vendors.Master'));
+
+            var dataToPush = [];
+
+            var keyOfRetailer = 'promo_code_info';
+            var flagofRetailer = 'is_promo_code_active';
+
+            for(var i=0;i<data.length;i++){
+
+                if(  data[i][keyOfRetailer]  &&  data[i][flagofRetailer] ){
+
+                    dataToPush.push(data[i]);
+
+                }
+
+            }
+
+            list.setData(dataToPush);
+        },
+
+        addValuesInVipForm: function(promoCode, vendor_id, price, startDate, endDate, limit, comment) {
+            console.log("CLICKED");
+            var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
+
+            if(CreateVippVendorFrom){
+
+
+            }
+
+
+
+
+
+            var VipFormPromoCode = Ext.ComponentQuery.query("#VipFormPromoCode")[0];
+            var VipFormVendorId = Ext.ComponentQuery.query("#VipFormVendorId")[0];
+            var vipFormPrice = Ext.ComponentQuery.query("#vipFormPrice")[0];
+            var vipFormStartDate = Ext.ComponentQuery.query("#vipFormStartDate")[0];
+            var vipFormEndDate = Ext.ComponentQuery.query("#vipFormEndDate")[0];
+            var vipFormLimit = Ext.ComponentQuery.query("#vipFormLimit")[0];
+            var vipFormComment = Ext.ComponentQuery.query("#vipFormComment")[0];
+            var vendorMaster  = Ext.getStore("vendors.Master");
+
+
+            VipFormPromoCode.setValue(promoCode);
+            VipFormVendorId.setValue(vendor_id);
+            vipFormPrice.setValue(price);
+            vipFormStartDate.setValue(startDate);
+            vipFormEndDate.setValue(endDate);
+            vipFormComment.setValue(comment);
+            vipFormLimit.setValue(limit);
+        }
+    },
 
     config: {
         itemId: 'discountsMainContentPanel',
@@ -99,8 +160,8 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main">',
-                                            '    <div class="pointerCursor" style="width: 15%;">{code}</div>',
-                                            '    <div class="pointerCursor" style="width: 10%;">{status}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 15%;">{code}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">{status}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{startDate}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{endDate}</div>',
                                             '    <div class="pointerCursor" style="width: 10%;">{used}</div>',
@@ -222,8 +283,8 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main">',
-                                            '    <div class="pointerCursor" style="width: 15%;">{code}</div>',
-                                            '    <div class="pointerCursor" style="width: 10%;">{status}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 15%;">{code}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">{status}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{startDate}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{endDate}</div>',
                                             '    <div class="pointerCursor" style="width: 10%;">{used}</div>',
@@ -327,8 +388,8 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main">',
-                                            '    <div class="pointerCursor" style="width: 15%;">{code}</div>',
-                                            '    <div class="pointerCursor" style="width: 10%;">{status}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 15%;">{code}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">{status}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{startDate}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{endDate}</div>',
                                             '    <div class="pointerCursor" style="width: 10%;">{used}</div>',
@@ -432,8 +493,8 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main">',
-                                            '    <div class="pointerCursor" style="width: 15%;">{code}</div>',
-                                            '    <div class="pointerCursor" style="width: 10%;">{status}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 15%;">{code}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">{status}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{startDate}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{endDate}</div>',
                                             '    <div class="pointerCursor" style="width: 10%;">{used}</div>',
@@ -537,8 +598,8 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main">',
-                                            '    <div class="pointerCursor" style="width: 15%;">{code}</div>',
-                                            '    <div class="pointerCursor" style="width: 10%;">{status}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 15%;">{code}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">{status}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{startDate}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{endDate}</div>',
                                             '    <div class="pointerCursor" style="width: 10%;">{used}</div>',
@@ -598,6 +659,122 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                 items: [
                                     {
                                         xtype: 'discountslistcontainer'
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'container',
+                                title: 'VIP',
+                                itemId: 'discountVipTab',
+                                layout: 'fit',
+                                scrollable: false,
+                                listeners: [
+                                    {
+                                        fn: function(component, eOpts) {
+                                            var headers = component.down("#discountListHeader");
+                                            headers.setData([{}]);
+                                            headers.setItemTpl(
+                                            Ext.create('Ext.XTemplate',
+                                            '<div class="x-rm-listtpl-main">',
+                                            '    <div style="width: 15%;" data-name="vendor_name">',
+                                            '        Vendors&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 10%;" data-name="code">',
+                                            '        Code&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 10%;" data-name="status">',
+                                            '        Status&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 6%;" data-name="price">',
+                                            '        Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 12%;" data-name="startDate">',
+                                            '    Start&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 12%;" data-name="endDate">',
+                                            '    End&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 10%;" data-name="used">',
+                                            '        Used&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 20%;" data-name="comment">',
+                                            '     Comment&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '</div>'
+                                            )
+                                            );
+                                            headers.refresh();
+                                            var list = component.down('#discountList');
+
+                                            list.setItemTpl(
+                                            Ext.create('Ext.XTemplate',
+                                            '<div class="x-rm-listtpl-main">',
+                                            '    <div class="pointerCursor boldText" style="width: 15%;">{vendor_name}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">{promo_code_info.promo_code}</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">ACTIVE</div>',
+                                            '    <div class="pointerCursor" style="width: 6%;">{promo_code_info.vip_price}</div>',
+                                            '    <div class="pointerCursor" style="width: 12%;">{promo_code_info.start_date}</div>',
+                                            '    <div class="pointerCursor" style="width: 12%;">{promo_code_info.end_date}</div>',
+                                            '    <div class="pointerCursor" style="width: 10%;">{promo_code_info.limit_value}</div>',
+                                            '    <div class="pointerCursor" style="width: 25%;">{promo_code_info.comment}</div>',
+                                            '</div>'
+                                            )
+                                            );
+
+                                            list.setMode("SINGLE");
+
+
+                                            /*
+
+
+                                            var updatingData = {
+
+                                            promo_code:promoCode,
+                                            vip_price:vipFormPrice,
+                                            start_date:startValue,
+                                            end_date:EndValue,
+                                            limit_value:LimitValue,
+                                            comment:commentValue
+                                            };
+                                            */
+
+                                            //list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));
+
+                                            //component.down('mypanel2').setHidden(true);
+
+                                            //getArrayFromStore
+
+                                            //list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));
+
+                                            //var store = list.getStore();
+
+                                        },
+                                        event: 'initialize'
+                                    },
+                                    {
+                                        fn: function(element, eOpts) {
+                                            window.location.hash = 'discountCard'+5;
+
+                                            //list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));
+
+
+                                            // discountVipTab discountList
+                                            var me = Ext.ComponentQuery.query("#discountsMainContentPanel")[0];
+                                            me.vipListDataHandler();
+                                            // var component  = Ext.ComponentQuery.query("#discountVipTab")[0];
+                                            // var list = component.down('#discountList');
+
+
+                                            // list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));
+                                            //Ext.getStore("vendors.Master");
+                                        },
+                                        event: 'painted'
+                                    }
+                                ],
+                                items: [
+                                    {
+                                        xtype: 'discountslistcontainer',
+                                        itemId: 'discounts.listcontainer5'
                                     }
                                 ]
                             }
@@ -1015,12 +1192,699 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                         xtype: 'discountslistcontainer'
                                     }
                                 ]
+                            },
+                            {
+                                xtype: 'container',
+                                title: 'PREVIOUS',
+                                hidden: true,
+                                itemId: 'vipCreateNewSIdeTab',
+                                style: 'background-color:white',
+                                layout: 'vbox',
+                                scrollable: false,
+                                items: [
+                                    {
+                                        xtype: 'formpanel',
+                                        flex: 1,
+                                        cls: 'x-rm-rdformpanel ',
+                                        disabled: false,
+                                        itemId: 'CreateVippVendorFrom',
+                                        style: 'background-color:white',
+                                        items: [
+                                            {
+                                                xtype: 'textfield',
+                                                cls: 'clsFOrVipTab',
+                                                itemId: 'VipFormPromoCode',
+                                                label: 'Promo Code',
+                                                labelWidth: '120px'
+                                            },
+                                            {
+                                                xtype: 'selectfield',
+                                                cls: 'clsFOrVipTab',
+                                                itemId: 'VipFormVendorId',
+                                                label: 'Vendor',
+                                                labelWidth: '120px',
+                                                autoSelect: false,
+                                                displayField: 'vendor_name',
+                                                store: 'vendors.Master',
+                                                usePicker: 'auto',
+                                                valueField: '_id'
+                                            },
+                                            {
+                                                xtype: 'numberfield',
+                                                cls: 'clsFOrVipTab',
+                                                itemId: 'vipFormPrice',
+                                                label: 'Price',
+                                                labelWidth: '120px'
+                                            },
+                                            {
+                                                xtype: 'textfield',
+                                                action: 'inputByDatePicker',
+                                                cls: 'clsFOrVipTab',
+                                                itemId: 'vipFormStartDate',
+                                                label: 'Start Date',
+                                                labelWidth: '120px'
+                                            },
+                                            {
+                                                xtype: 'textfield',
+                                                action: 'inputByDatePicker',
+                                                cls: 'clsFOrVipTab',
+                                                itemId: 'vipFormEndDate',
+                                                label: 'End Date',
+                                                labelWidth: '120px'
+                                            },
+                                            {
+                                                xtype: 'numberfield',
+                                                cls: 'clsFOrVipTab',
+                                                itemId: 'vipFormLimit',
+                                                label: 'Limit',
+                                                labelWidth: '120px'
+                                            },
+                                            {
+                                                xtype: 'textareafield',
+                                                cls: 'clsFOrVipTab',
+                                                itemId: 'vipFormComment',
+                                                label: 'Comment',
+                                                labelWidth: '120px'
+                                            },
+                                            {
+                                                xtype: 'container',
+                                                hidden: false,
+                                                margin: '10 2px 0 80',
+                                                padding: '0 2 0 0',
+                                                layout: {
+                                                    type: 'hbox',
+                                                    align: 'center',
+                                                    pack: 'center'
+                                                },
+                                                items: [
+                                                    {
+                                                        xtype: 'button',
+                                                        handler: function(button, e) {
+                                                            console.log("CLICKED");
+                                                            var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
+
+                                                            if(CreateVippVendorFrom){
+
+
+                                                            }
+
+
+
+
+
+                                                            var VipFormPromoCode = Ext.ComponentQuery.query("#VipFormPromoCode")[0];
+                                                            var VipFormVendorId = Ext.ComponentQuery.query("#VipFormVendorId")[0];
+                                                            var vipFormPrice = Ext.ComponentQuery.query("#vipFormPrice")[0];
+                                                            var vipFormStartDate = Ext.ComponentQuery.query("#vipFormStartDate")[0];
+                                                            var vipFormEndDate = Ext.ComponentQuery.query("#vipFormEndDate")[0];
+                                                            var vipFormLimit = Ext.ComponentQuery.query("#vipFormLimit")[0];
+                                                            var vipFormComment = Ext.ComponentQuery.query("#vipFormComment")[0];
+                                                            var vendorMaster  = Ext.getStore("vendors.Master");
+
+
+
+
+
+                                                            var promoCode  = VipFormPromoCode.getValue();
+                                                            var vipFormPrice  = vipFormPrice.getValue();
+                                                            var startValue = vipFormStartDate.getValue();
+                                                            var EndValue = vipFormStartDate.getValue();
+                                                            var LimitValue = vipFormLimit.getValue();
+                                                            var commentValue = vipFormComment.getValue();
+
+
+                                                            var vendorId = VipFormVendorId.getValue();
+                                                            var vendor = findVendorBy_id(vendorId);
+
+                                                            console.log(vendor);
+                                                            if(vendor.data.prevent_be_vip){
+
+                                                                alert("THIS VENDOR CANNOT BE ADDDE TI VIP LIST");
+                                                                return;
+
+                                                            }
+
+
+
+
+
+                                                            //promo_code_info
+                                                            //is_promo_code_active
+
+                                                            var vendor_id = vendorId;
+                                                            var keyOfRetailer = 'promo_code_info';
+                                                            var flagofRetailer = 'is_promo_code_active';
+                                                            var vendorMaster = Ext.getStore('vendors.Master') ;
+
+                                                            console.log(vendor_id);
+
+
+                                                            var record;
+                                                            if(vendor_id)
+                                                            {
+                                                                record = findVendorBy_id(vendor_id) ;
+                                                            }
+
+
+
+                                                            console.log(record);
+                                                            if(!record){
+
+                                                                return ;
+                                                            }
+
+
+                                                            var updatingData = {
+
+                                                                promo_code:promoCode,
+                                                                vip_price:vipFormPrice,
+                                                                start_date:startValue,
+                                                                end_date:EndValue,
+                                                                limit_value:LimitValue,
+                                                                comment:commentValue
+                                                            };
+                                                            var rtlrs = updatingData;
+                                                            var me = Ext.ComponentQuery.query("#discountsMainContentPanel")[0];
+                                                            updateVendor() ;
+
+
+
+
+
+
+                                                            function updateVendor(){
+
+
+                                                                var dataToupdate = {
+
+
+                                                                };
+                                                                record.set(keyOfRetailer, updatingData);
+                                                                record.set(flagofRetailer, true);
+                                                                dataToupdate[keyOfRetailer] = rtlrs;
+                                                                dataToupdate[flagofRetailer] = true;
+                                                                console.error(dataToupdate);
+                                                                me.vipListDataHandler();
+                                                                //return;
+                                                                RMdatalink.iwa.rdl.doUpdateCollection(vendorMaster, dataToupdate , record.get('_id'), updateSuccess, updateError );
+
+
+                                                            }
+
+
+
+                                                            function updateSuccess(){
+
+                                                                record.set(keyOfRetailer, rtlrs);
+                                                                Ext.Viewport.setMasked(false);
+                                                                console.log("vendor updated successfully");
+                                                            }
+
+
+
+                                                            function updateError(){
+
+                                                                Ext.Viewport.setMasked(false);
+                                                                console.log("error in updating vendor");
+
+                                                            }
+
+
+                                                        },
+                                                        action: 'addNew',
+                                                        cls: 'x-rm-blueBtn',
+                                                        height: '20px',
+                                                        itemId: 'addVipPromoCodeAddButtton',
+                                                        width: '80px',
+                                                        text: 'Add'
+                                                    },
+                                                    {
+                                                        xtype: 'button',
+                                                        handler: function(button, e) {
+                                                            console.log("CLICKED");
+                                                            var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
+
+                                                            if(CreateVippVendorFrom){
+
+
+                                                            }
+
+
+
+
+
+
+                                                            var VipFormVendorId = Ext.ComponentQuery.query("#VipFormVendorId")[0];
+
+
+
+
+
+
+
+                                                            var vendorId = VipFormVendorId.getValue();
+                                                            var vendor = findVendorBy_id(vendorId);
+
+
+
+
+
+
+
+
+                                                            var vendor_id = vendorId;
+                                                            var keyOfRetailer = 'promo_code_info';
+                                                            var flagofRetailer = 'is_promo_code_active';
+                                                            var vendorMaster = Ext.getStore('vendors.Master') ;
+
+                                                            console.log(vendor_id);
+
+
+                                                            var record;
+                                                            if(vendor_id)
+                                                            {
+                                                                record = findVendorBy_id(vendor_id) ;
+                                                            }
+
+
+
+                                                            console.log(record);
+                                                            if(!record){
+
+                                                                return ;
+                                                            }
+
+
+                                                            var updatingData = false;
+                                                            var rtlrs = updatingData;
+
+
+                                                            var discountVipTabList = Ext.ComponentQuery.query("#discountVipTab #discountList")[0];
+                                                            var store = discountVipTabList.getStore();
+                                                            var recordTodeleteFromListIndex = store.find("_id" ,vendor_id );
+                                                            var recordTodeleteFrom = store.getAt(recordTodeleteFromListIndex);
+                                                            if(recordTodeleteFrom){
+
+                                                            }else{
+                                                                return;
+                                                            }
+
+                                                            store.remove(recordTodeleteFrom);
+                                                            var addVipPromoCodeClearButtton  = Ext.ComponentQuery.query("#addVipPromoCodeClearButtton")[0];
+
+                                                            var handler = addVipPromoCodeClearButtton.getHandler();
+
+                                                            handler.call(addVipPromoCodeClearButtton,addVipPromoCodeClearButtton);
+
+                                                            updateVendor() ;
+
+
+
+
+
+                                                            function updateVendor(){
+
+
+                                                                var dataToupdate = {
+
+
+                                                                };
+                                                                record.set(keyOfRetailer, updatingData);
+                                                                record.set(flagofRetailer, true);
+                                                                dataToupdate[keyOfRetailer] = rtlrs;
+                                                                dataToupdate[flagofRetailer] = true;
+                                                                console.error(dataToupdate);
+
+                                                                //return;
+                                                                RMdatalink.iwa.rdl.doUpdateCollection(vendorMaster, dataToupdate , record.get('_id'), updateSuccess, updateError );
+
+
+                                                            }
+
+
+
+                                                            function updateSuccess(){
+
+                                                                record.set(keyOfRetailer, rtlrs);
+                                                                Ext.Viewport.setMasked(false);
+                                                                console.log("vendor updated successfully");
+                                                            }
+
+
+
+                                                            function updateError(){
+
+                                                                Ext.Viewport.setMasked(false);
+                                                                console.log("error in updating vendor");
+
+                                                            }
+
+
+                                                        },
+                                                        cls: 'newGrayBtn',
+                                                        height: '20px',
+                                                        itemId: 'addVipPromoCodeDeleteButtton',
+                                                        margin: '0 5 0 5',
+                                                        minHeight: '24px',
+                                                        width: '80px',
+                                                        pressedCls: 'x-rm-card-actionbtn-pressing',
+                                                        text: 'Delete'
+                                                    },
+                                                    {
+                                                        xtype: 'button',
+                                                        handler: function(button, e) {
+
+                                                            var VipFormPromoCode = Ext.ComponentQuery.query("#VipFormPromoCode")[0];
+                                                            var VipFormVendorId = Ext.ComponentQuery.query("#VipFormVendorId")[0];
+                                                            var vipFormPrice = Ext.ComponentQuery.query("#vipFormPrice")[0];
+                                                            var vipFormStartDate = Ext.ComponentQuery.query("#vipFormStartDate")[0];
+                                                            var vipFormEndDate = Ext.ComponentQuery.query("#vipFormEndDate")[0];
+                                                            var vipFormLimit = Ext.ComponentQuery.query("#vipFormLimit")[0];
+                                                            var vipFormComment = Ext.ComponentQuery.query("#vipFormComment")[0];
+                                                            var vendorMaster  = Ext.getStore("vendors.Master");
+
+
+                                                            VipFormPromoCode.setValue(null);
+                                                            VipFormVendorId.setValue(null);
+                                                            vipFormPrice.setValue(null);
+                                                            vipFormStartDate.setValue(null);
+                                                            vipFormEndDate.setValue(null);
+                                                            vipFormComment.setValue(null);
+                                                            vipFormLimit.setValue(null);
+
+                                                            var discountVipTabList = Ext.ComponentQuery.query("#discountVipTab #discountList")[0];
+                                                            discountVipTabList.deselectAll();
+
+                                                            var addVipPromoCodeAddButtton = Ext.ComponentQuery.query("#addVipPromoCodeAddButtton")[0];
+                                                            addVipPromoCodeAddButtton.setText("Add");
+                                                        },
+                                                        cls: [
+                                                            'x-rm-blueBtn',
+                                                            'x-rm-rdopenbtns',
+                                                            'x-rm-smalliconbtns'
+                                                        ],
+                                                        height: '20px',
+                                                        itemId: 'addVipPromoCodeClearButtton',
+                                                        margin: '0 4 0 0',
+                                                        style: '',
+                                                        width: '80px',
+                                                        badgeText: '',
+                                                        iconAlign: 'center',
+                                                        text: 'Clear'
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'segmentedbutton',
+                                                cls: 'segButton',
+                                                hidden: true,
+                                                layout: {
+                                                    type: 'hbox',
+                                                    align: 'center',
+                                                    pack: 'center'
+                                                },
+                                                items: [
+                                                    {
+                                                        xtype: 'button',
+                                                        handler: function(button, e) {
+                                                            console.log("CLICKED");
+                                                            var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
+
+                                                            if(CreateVippVendorFrom){
+
+
+                                                            }
+
+
+
+
+
+                                                            var VipFormPromoCode = Ext.ComponentQuery.query("#VipFormPromoCode")[0];
+                                                            var VipFormVendorId = Ext.ComponentQuery.query("#VipFormVendorId")[0];
+                                                            var vipFormPrice = Ext.ComponentQuery.query("#vipFormPrice")[0];
+                                                            var vipFormStartDate = Ext.ComponentQuery.query("#vipFormStartDate")[0];
+                                                            var vipFormEndDate = Ext.ComponentQuery.query("#vipFormEndDate")[0];
+                                                            var vipFormLimit = Ext.ComponentQuery.query("#vipFormLimit")[0];
+                                                            var vipFormComment = Ext.ComponentQuery.query("#vipFormComment")[0];
+                                                            var vendorMaster  = Ext.getStore("vendors.Master");
+
+
+
+
+
+                                                            var promoCode  = VipFormPromoCode.getValue();
+                                                            var vipFormPrice  = vipFormPrice.getValue();
+                                                            var startValue = vipFormStartDate.getValue();
+                                                            var EndValue = vipFormStartDate.getValue();
+                                                            var LimitValue = vipFormLimit.getValue();
+                                                            var commentValue = vipFormComment.getValue();
+
+
+                                                            var vendorId = VipFormVendorId.getValue();
+                                                            var vendor = findVendorBy_id(vendorId);
+
+                                                            console.log(vendor);
+                                                            if(vendor.data.prevent_be_vip){
+
+                                                                alert("THIS VENDOR CANNOT BE ADDDE TI VIP LIST");
+                                                                return;
+
+                                                            }
+
+
+
+
+
+
+                                                            var vendor_id = vendorId;
+                                                            var keyOfRetailer = 'vip_program_info';
+                                                            var vendorMaster = Ext.getStore('vendors.Master') ;
+
+                                                            console.log(vendor_id);
+
+
+                                                            var record;
+                                                            if(vendor_id)
+                                                            {
+                                                                record = findVendorBy_id(vendor_id) ;
+                                                            }
+
+
+
+                                                            console.log(record);
+                                                            if(!record){
+
+                                                                return ;
+                                                            }
+
+
+                                                            var updatingData = {
+
+                                                                promo_code:promoCode,
+                                                                vip_price:vipFormPrice,
+                                                                start_date:startValue,
+                                                                end_date:EndValue,
+                                                                limit_value:LimitValue,
+                                                                comment:commentValue
+                                                            };
+                                                            var rtlrs = updatingData;
+                                                            var me = Ext.ComponentQuery.query("#discountsMainContentPanel")[0];
+                                                            updateVendor() ;
+
+
+
+
+
+
+                                                            function updateVendor(){
+
+
+                                                                var dataToupdate = {
+
+
+                                                                };
+                                                                record.set(keyOfRetailer, updatingData);
+                                                                dataToupdate[keyOfRetailer] = rtlrs;
+                                                                console.error(dataToupdate);
+                                                                me.vipListDataHandler();
+                                                                //return;
+                                                                RMdatalink.iwa.rdl.doUpdateCollection(vendorMaster, dataToupdate , record.get('_id'), updateSuccess, updateError );
+
+
+                                                            }
+
+
+
+                                                            function updateSuccess(){
+
+                                                                record.set(keyOfRetailer, rtlrs);
+                                                                Ext.Viewport.setMasked(false);
+                                                                console.log("vendor updated successfully");
+                                                            }
+
+
+
+                                                            function updateError(){
+
+                                                                Ext.Viewport.setMasked(false);
+                                                                console.log("error in updating vendor");
+
+                                                            }
+
+                                                            function findVendorBy_id(v_id){
+
+                                                                var vendors = vendorMaster.data.all ;
+                                                                var venRec = null ;
+                                                                for(var j=0;j<vendors.length ; j++){
+
+                                                                    if(v_id == vendors[j].data._id){
+
+                                                                        venRec = vendors[j] ;
+                                                                        break;
+                                                                    }
+                                                                }
+
+                                                                return venRec;
+
+                                                            }
+
+
+                                                        },
+                                                        cls: 'grayBtn',
+                                                        margin: '10px',
+                                                        width: '130px',
+                                                        text: 'Create'
+                                                    },
+                                                    {
+                                                        xtype: 'button',
+                                                        cls: 'grayBtn',
+                                                        hidden: false,
+                                                        margin: '10px',
+                                                        width: '130px',
+                                                        text: 'Delete'
+                                                    },
+                                                    {
+                                                        xtype: 'button',
+                                                        cls: 'grayBtn',
+                                                        hidden: false,
+                                                        margin: '10px',
+                                                        width: '130px',
+                                                        text: 'Update'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onDiscountsTabPanelActiveItemChange',
+                event: 'activeitemchange',
+                delegate: '#discountsTabPanel'
+            }
         ]
+    },
+
+    onDiscountsTabPanelActiveItemChange: function(container, value, oldValue, eOpts) {
+        console.log("ACTIVE ITEM CHANGE");
+        if(container){
+
+            if(value.getItemId() == 'discountVipTab'){
+
+
+                console.log("ACTIVE ITEM CHAGNES.CLOAS UNHHIDEED TAB");
+                var discountsSidePanel = Ext.ComponentQuery.query("#discountsSidePanel");
+                var discountsSideCreateNewkTab = discountsSidePanel[0].down("#discountsSideCreateNewkTab");
+                var discountsSidePreviousTab = discountsSidePanel[0].down("#discountsSidePreviousTab");
+                var vipCreateNewSIdeTab = discountsSidePanel[0].down("#vipCreateNewSIdeTab");
+                    discountsSideCreateNewkTab.setHidden(true);
+                    discountsSidePreviousTab.setHidden(true);
+                    vipCreateNewSIdeTab.setHidden(false);
+                var discountsSideNavigationTabBar = Ext.ComponentQuery.query("#discountsSideNavigationTabBar")[0];
+                    discountsSideNavigationTabBar.setHidden(true);
+                    //discountsSidePanel.setActiveItem(vipCreateNewSIdeTab);
+
+            }else{
+                var discountsSidePanel = Ext.ComponentQuery.query("#discountsSidePanel");
+                var discountsSideCreateNewkTab = discountsSidePanel[0].down("#discountsSideCreateNewkTab");
+                var discountsSidePreviousTab = discountsSidePanel[0].down("#discountsSidePreviousTab");
+                var vipCreateNewSIdeTab = discountsSidePanel[0].down("#vipCreateNewSIdeTab");
+                    discountsSideCreateNewkTab.setHidden(false);
+                    discountsSidePreviousTab.setHidden(false);
+                    vipCreateNewSIdeTab.setHidden(true);
+                    discountsSidePanel[0].setActiveItem(discountsSideCreateNewkTab);
+                var discountsSideNavigationTabBar = Ext.ComponentQuery.query("#discountsSideNavigationTabBar")[0];
+                    //discountsSideNavigationTabBar.setHidden(false);
+
+            }
+        }
+
+
+
+    },
+
+    vipListDataHandler: function() {
+        var component  = Ext.ComponentQuery.query("#discountVipTab")[0];
+        var list = component.down('#discountList');
+
+        var data = getArrayFromStore(Ext.getStore('vendors.Master'));
+
+        var dataToPush = [];
+
+
+        var keyOfRetailer = 'promo_code_info';
+        var flagofRetailer = 'is_promo_code_active';
+
+        for(var i=0;i<data.length;i++){
+
+            if(  data[i][keyOfRetailer]  &&  data[i][flagofRetailer] ){
+
+                    dataToPush.push(data[i]);
+
+            }
+
+        }
+
+        list.setData(dataToPush);
+
+    },
+
+    addValuesInVipForm: function(promoCode, vendor_id, price, startDate, endDate, limit, comment) {
+        console.log("CLICKED");
+        var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
+
+        if(CreateVippVendorFrom){
+
+
+        }
+
+
+
+
+
+        var VipFormPromoCode = Ext.ComponentQuery.query("#VipFormPromoCode")[0];
+        var VipFormVendorId = Ext.ComponentQuery.query("#VipFormVendorId")[0];
+        var vipFormPrice = Ext.ComponentQuery.query("#vipFormPrice")[0];
+        var vipFormStartDate = Ext.ComponentQuery.query("#vipFormStartDate")[0];
+        var vipFormEndDate = Ext.ComponentQuery.query("#vipFormEndDate")[0];
+        var vipFormLimit = Ext.ComponentQuery.query("#vipFormLimit")[0];
+        var vipFormComment = Ext.ComponentQuery.query("#vipFormComment")[0];
+        var vendorMaster  = Ext.getStore("vendors.Master");
+
+
+        VipFormPromoCode.setValue(promoCode);
+        VipFormVendorId.setValue(vendor_id);
+        vipFormPrice.setValue(price);
+        vipFormStartDate.setValue(startDate);
+        vipFormEndDate.setValue(endDate);
+        vipFormComment.setValue(comment);
+        vipFormLimit.setValue(limit);
     }
 
 });

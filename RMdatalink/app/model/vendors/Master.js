@@ -235,19 +235,150 @@ Ext.define('RMdatalink.model.vendors.Master', {
                 name: 'blue_note'
             },
             {
-                name: 'design'
+                convert: function(v, rec) {
+                    try{
+
+                        //   console.error(v);
+                        //    console.error(rec);
+
+                        // var value = rec.get('SKU');
+                        //  console.error(value);
+                        if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)
+                        {
+                            //        console.log("RETRUNINIG V" ,v);
+                            return v;
+                        }
+                        //    console.error("RETRUNING ZERO");
+                        rec.set({'design':0});
+                        return 0;
+                    }catch(e){
+
+                        //    console.error('CATCH THRWON');
+                        rec.set({'design':0});
+                        return 0;
+                    }
+                },
+                defaultValue: 0,
+                name: 'design',
+                sortType: 'asInt',
+                type: 'int'
             },
             {
-                name: 'SKU'
+                convert: function(v, rec) {
+                    try{
+
+                        //    console.error(v);
+                        ///    console.error(rec);
+
+                        // var value = rec.get('SKU');
+                        //  console.error(value);
+                        if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)
+                        {
+                            //        console.log("RETRUNINIG V" ,v);
+                            return v;
+                        }
+                        //    console.error("RETRUNING ZERO");
+                        rec.set({'SKU':0});
+                        return 0;
+                    }catch(e){
+
+                        //    console.error('CATCH THRWON');
+                        rec.set({'SKU':0});
+                        return 0;
+                    }
+                },
+                allowNull: false,
+                defaultValue: 0,
+                name: 'SKU',
+                sortType: 'asInt',
+                type: 'int'
             },
             {
-                name: 'no_of_rugs_images'
+                convert: function(v, rec) {
+                    try{
+
+                        //     console.error(v);
+                        //     console.error(rec);
+
+                        // var value = rec.get('SKU');
+                        //  console.error(value);
+                        if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)
+                        {
+                            //        console.log("RETRUNINIG V" ,v);
+                            return v;
+                        }
+                        //    console.error("RETRUNING ZERO");
+                        rec.set({'no_of_rugs_images':0});
+                        return 0;
+                    }catch(e){
+
+                        //    console.error('CATCH THRWON');
+                        rec.set({'no_of_rugs_images':0});
+                        return 0;
+                    }
+                },
+                defaultValue: 0,
+                name: 'no_of_rugs_images',
+                sortType: 'asInt',
+                type: 'int'
             },
             {
-                name: 'no_of_additional_images'
+                convert: function(v, rec) {
+                    try{
+
+                        //    console.error(v);
+                        //    console.error(rec);
+
+                        // var value = rec.get('SKU');
+                        //  console.error(value);
+                        if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)
+                        {
+                            //        console.log("RETRUNINIG V" ,v);
+                            return v;
+                        }
+                        //    console.error("RETRUNING ZERO");
+                        rec.set({'no_of_additional_images':0});
+                        return 0;
+                    }catch(e){
+
+                        //    console.error('CATCH THRWON');
+                        rec.set({'no_of_additional_images':0});
+                        return 0;
+                    }
+                },
+                defaultValue: 0,
+                name: 'no_of_additional_images',
+                sortType: 'asInt',
+                type: 'int'
             },
             {
-                name: 'collections'
+                convert: function(v, rec) {
+                    try{
+
+                        //    console.error(v);
+                        //    console.error(rec);
+
+                        // var value = rec.get('SKU');
+                        //  console.error(value);
+                        if( parseInt(v) > 0 ||  parseInt(v) == 0 || parseInt(v) < 0)
+                        {
+                            //        console.log("RETRUNINIG V" ,v);
+                            return v;
+                        }
+                        //    console.error("RETRUNING ZERO");
+                        rec.set({'collections':0});
+                        return 0;
+                    }catch(e){
+
+                        //    console.error('CATCH THRWON');
+                        rec.set({'collections':0});
+                        return 0;
+                    }
+                },
+                defaultValue: 0,
+                name: 'collections',
+                sortType: 'asInt',
+                type: 'int'
             },
             {
                 name: 'manager_position'
@@ -316,6 +447,52 @@ Ext.define('RMdatalink.model.vendors.Master', {
             },
             {
                 name: 'created_by'
+            },
+            {
+                name: 'no_of_images',
+                sortType: 'asInt'
+            },
+            {
+                name: 'ecom_std'
+            },
+            {
+                name: 'ecom_promo'
+            },
+            {
+                name: 'ecom_std_addl'
+            },
+            {
+                name: 'ecom_promo_addl'
+            },
+            {
+                name: 'dl_std'
+            },
+            {
+                name: 'dl_promo'
+            },
+            {
+                name: 'dl_std_addl'
+            },
+            {
+                name: 'dl_promo_addl'
+            },
+            {
+                name: 'retailers_ecommerce'
+            },
+            {
+                name: 'prevent_be_vip'
+            },
+            {
+                name: 'vip_program_info'
+            },
+            {
+                name: 'promo_code_info'
+            },
+            {
+                name: 'is_promo_code_active'
+            },
+            {
+                name: 'prevent_be_ecommerceVendor'
             }
         ],
         validations: [

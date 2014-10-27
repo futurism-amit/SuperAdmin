@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "InvoicePaymentsStore",
+        "model": "InvoicePaymentsModule",
+        "storeId": "InvoicePaymentsStore"
+    },
+    "designerId": "3da9101c-6290-4c36-8b98-a2289e736c1d"
+}

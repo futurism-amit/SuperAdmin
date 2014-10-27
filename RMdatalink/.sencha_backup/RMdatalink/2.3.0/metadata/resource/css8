@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css8",
+        "id": "Calendarcustom",
+        "url": "resources/css/calendar/Calendarcustom.css"
+    },
+    "designerId": "89571745-87b2-4ec4-8e1a-38d688547c7a"
+}

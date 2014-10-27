@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "DatalinkVendors",
+        "model": "DatalinkVendors",
+        "storeId": "DatalinkVendors"
+    },
+    "designerId": "4e7eaa6a-18de-4d99-8e09-a1979990a83a"
+}

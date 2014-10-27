@@ -1,0 +1,67 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretchmax",
+        "designer|userAlias": "LoginUserOptions",
+        "designer|userClassName": "LoginUserOptions",
+        "height": null,
+        "hideAnimation": [
+            "false"
+        ],
+        "hideOnMaskTap": true,
+        "id": "LoginUserOptions",
+        "layout": "vbox",
+        "scrollable": null,
+        "showAnimation": [
+            "false"
+        ],
+        "width": "160px"
+    },
+    "designerId": "bc922381-2973-4c96-9413-8889a21896f4",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "lUserIptnsSettingBtn",
+                "text": "Settings"
+            },
+            "designerId": "e7b46c6f-7dfb-4a3a-8881-8c51aaa30e67"
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "lUserIptnsPermissionsBtn",
+                "text": "Permissions"
+            },
+            "designerId": "bbdf8a0b-a2cd-459d-857c-a7d43e7b8b54"
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "lUserIptnsLogoutBtn",
+                "text": "Logout"
+            },
+            "designerId": "95a8f3c3-ea4c-477e-8a0e-71923633f24b"
+        }
+    ]
+}

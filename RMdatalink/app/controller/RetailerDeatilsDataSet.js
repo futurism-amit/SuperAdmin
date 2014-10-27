@@ -45,6 +45,14 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    }
         
                                    if( d1 && d2){
+                                       
+                                       if(amm1 && amm2){
+                                           var t1 = parseFloat(amm1) ;
+                                           var t2 = parseFloat(amm2) ;
+                                           
+                                           return t1 + t2 ;
+                                       }
+                                       
                                        var d3 = new Date(d1);
                                        var d4 = new Date(d2);
                                        return (d3 > d4 ? amm1 : amm2 ) ;
@@ -179,8 +187,40 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         
                                 return "" ;
         
+                           },
+            getProductAlertText: function(value,product){
+        
+                             var status = "" ;
+                                var dd = null ;
+                               if(value.product_billng){
+        
+                                   var d1 = null;
+        
+                                   if(value.product_billng[product]){
+        
+                                       d1 = value.product_billng[product].due_date;
+                                   }
+                                  
+        
+                                       dd = d1 ;
+                                   
+        
+                               }
+        
+                                if(dd){
+                                    var today = new Date() ;
+        
+                                    dd = new Date(dd) ;
+        
+                                    return today < dd ? "" : "!";
+                                }
+        
+                                return "" ;
+        
                            }
         },
+        accNoChk: 0,
+        isEditMode: false,
 
         control: {
             "textfield[action=clearIconTap]": {
@@ -302,7 +342,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
         // if(this.config.changedManually){
-
+        // Console.error("****************************************************************CHANGE") ;
         //     this.saveRTProductSetup();
         // }
     },
@@ -737,7 +777,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
     },
 
     setResetRetailersDetailedView: function() {
-        //this.config.changedManually = false ;
+        this.config.changedManually = false ;
 
         var isRetailerDetailsView = RMdatalink.app.getController('UINav').isRetailerDetailsView;
 
@@ -958,31 +998,40 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         resetVlauesForRetailersDetailCard();
         setVlauesForRetailersDetailCard() ;
 
+        console.error("ALL  CODE HAS BEEN COMPLETED.");
 
         function resetVlauesForRetailersDetailCard(){
 
+            console.error(1);
             resetLocations() ;
+                console.error(2);
             resetExtraFlds();
+                console.error(3);
             resetManagerData();
+                console.error(4);
             unfillStoreInformationForRDetailCard();
+                console.error(5);
             unfillMAnagerRelationData();
+                console.error(6);
             unfillCRMSData() ;
+                console.error(7);
             unfillNotesStore() ;
-            unfillVendorsStore() ;
-            unfillRCMDSidebarPhotos();
-            unfillRCMDSidebarAttachments();
-            unselectStoreStaus();
-            unfillStoreProductStatus();
-            unfillTipsData();
-            unfillREPsBlueBookUsers();
-            unfillCompanyContactInfo();
+                console.error(8);
+            unfillVendorsStore() ;    console.error(9);
+            unfillRCMDSidebarPhotos();    console.error(10);
+            unfillRCMDSidebarAttachments();    console.error(11);
+            unselectStoreStaus();    console.error(12);
+            unfillStoreProductStatus();    console.error(13);
+            unfillTipsData();    console.error(14);
+            unfillREPsBlueBookUsers();    console.error(15);
+            unfillCompanyContactInfo();    console.error(16);
         }
 
 
         function resetLocations(){
 
             that.destroyLocations() ;
-             that.createLocation() ;
+            that.createLocation() ;
             Ext.ComponentQuery.query('#deleteLocationLbl')[0].setHidden(true) ;
 
         }
@@ -1117,6 +1166,12 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                 rdTabPanel.setActiveItem(0);
 
+                if(isRetailerDetailsView)
+                {
+                    that.setAccNoForNewRt() ;
+                }
+
+
                 return;
             }
             else{
@@ -1134,31 +1189,33 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 RMdatalink.util.globalConfig.setDataInRetailerScreenForSaveOrCancel(selectedUserRecord);
             }
 
-            setManagerData(selectedUserRecord);
-            fillStoreInformationForRDetailCard( selectedUserRecord.record );
-            fillMAnagerRelationData( selectedUserRecord );
-            fillCRMSData(selectedUserRecord) ;
-            fillNotesStore(selectedUserRecord) ;
-            fillVendorsStore(selectedUserRecord) ;
-            fillRCMDSidebarPhotos(selectedUserRecord);
-            fillRCMDSidebarAttachments(selectedUserRecord);
-            fillREPsBlueBookUsers(selectedUserRecord) ;
+            console.error(21);
+            setManagerData(selectedUserRecord);    console.error(22);
+            fillStoreInformationForRDetailCard( selectedUserRecord.record );    console.error(23);
+            fillMAnagerRelationData( selectedUserRecord );    console.error(25);
+            fillCRMSData(selectedUserRecord) ;    console.error(26);
+            fillValueinEcoomerceTab(selectedUserRecord);
+            fillNotesStore(selectedUserRecord) ;    console.error(27);
+            fillVendorsStore(selectedUserRecord) ;    console.error(28);
+            fillRCMDSidebarPhotos(selectedUserRecord);    console.error(29);
+            fillRCMDSidebarAttachments(selectedUserRecord);    console.error(30);
+            fillREPsBlueBookUsers(selectedUserRecord) ;    console.error(31);
 
             //  ****  CALL ONLY  FOR RETAILER DETAILS  *****
             if(isRetailerDetailsView)
             {
-                setLocations(selectedUserRecord) ;
-                selectStoreStaus(selectedUserRecord);
-                fillStoreProductStatus(selectedUserRecord);
-                //  FOR RETAILER  BLUEBOOK LIST
-                //fillBlueBookUsers(selectedUserRecord) ;
+                setLocations(selectedUserRecord) ;    console.error(32);
+                selectStoreStaus(selectedUserRecord);    console.error(33);
+                fillStoreProductStatus(selectedUserRecord);    console.error(34);
+                //  FOR RETAILER  BLUEBOOK LIST    console.error(21);
+                //fillBlueBookUsers(selectedUserRecord) ;    console.error(21);
             }
 
-            fillCompanyContactInfo(selectedUserRecord);
-            fillTipsData(selectedUserRecord);
-            fillTechSupports(selectedUserRecord) ;
+            fillCompanyContactInfo(selectedUserRecord);    console.error(35);
+            fillTipsData(selectedUserRecord);    console.error(36);
+            fillTechSupports(selectedUserRecord) ;    console.error(37);
 
-            setOtherExtraFlds(selectedUserRecord) ;
+            setOtherExtraFlds(selectedUserRecord) ;    console.error(38);
         }
 
 
@@ -1167,11 +1224,12 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 if(selectedUserRecord.record.data.store_products)
                 {
 
-                    Ext.ComponentQuery.query('#rtDatalinkStatusSelFld')[0].setValue( selectedUserRecord.record.data.store_products.datalink_status) ;
+                   Ext.ComponentQuery.query('#rtDatalinkStatusSelFld')[0].setValue( selectedUserRecord.record.data.store_products.datalink_status) ;
                    Ext.ComponentQuery.query('#rtEcatalogStatusSelFld')[0].setValue( selectedUserRecord.record.data.store_products.ecatalog_status);
                    Ext.ComponentQuery.query('#rtECommerceStatusSelFld')[0].setValue(selectedUserRecord.record.data.store_products.ecommerce_status);
                    Ext.ComponentQuery.query('#rtRM_proStatusSelFld')[0].setValue( selectedUserRecord.record.data.store_products.rmpro_status);
                    Ext.ComponentQuery.query('#rtirugzStatusSelFld')[0].setValue(selectedUserRecord.record.data.store_products.irugs_status );
+                   Ext.ComponentQuery.query('#rtVipStatusSelFld')[0].setValue(selectedUserRecord.record.data.store_products.vip_status );
                 }
 
 
@@ -1197,12 +1255,13 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 if(isRetailerDetailsView)
                 {
                     var resetValue = null ; //"INACTIVE" ;
-
+        //rtVipStatusSelFld
                     Ext.ComponentQuery.query('#rtDatalinkStatusSelFld')[0].setValue(resetValue) ;
                    Ext.ComponentQuery.query('#rtEcatalogStatusSelFld')[0].setValue( resetValue);
                    Ext.ComponentQuery.query('#rtECommerceStatusSelFld')[0].setValue(resetValue);
                    Ext.ComponentQuery.query('#rtRM_proStatusSelFld')[0].setValue(resetValue);
                    Ext.ComponentQuery.query('#rtirugzStatusSelFld')[0].setValue(resetValue);
+                   Ext.ComponentQuery.query('#rtVipStatusSelFld')[0].setValue(resetValue);
 
                       Ext.ComponentQuery.query('#inStoreVendorsRetailersCLbl')[0].setHtml("Total Vendors : 0") ;
                 }else{
@@ -1220,9 +1279,10 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 }
 
             var prospectList  = Ext.ComponentQuery.query('#RDInStoreVendorsTab')[0].down("#mainList");
-
+            console.error("PROSEPCT LUIST");
 
             var prospectStore = prospectList.getStore() ;
+            console.error("PROSEPCT LUIST REM)VE ALL CALLED");
             prospectStore.removeAll();
             prospectStore.sync();
 
@@ -1258,7 +1318,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                   Ext.ComponentQuery.query('#RDAccountDetails')[0].setValue(userData.account_no);
 
                 storeOrVendorName = userData.store_name;
-
+                console.error(92);
                 that.loadActiveVendorsForRetailers() ;
             }
             else
@@ -1283,7 +1343,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                        importFrmCsvController.config.retailerForVendor = [];
                    }
-
+        console.error(93);
                 that.loadActiveRetailersForVendors() ;
 
                 storeOrVendorName = userData.vendor_name;
@@ -1314,6 +1374,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             Ext.ComponentQuery.query('#RDManagerDirectPhone')[0].setValue(userData.manager_direct_number);
             Ext.ComponentQuery.query('#RDManagerDirectPhoneExt')[0].setValue(userData.manager_direct_number_ext);
 
+
+            console.error("GLOBAL FILL ONE");
+            console.error(96);
             RMdatalink.util.globalMethods.fillListData('#RDManagerActivityList',userData.manager_recent_activity);
 
         }
@@ -1386,7 +1449,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         function setRtlBillingDtl(record){
 
             var billingHtml = "<div>" ;
-            billingHtml += '<span>Billing Amount : '+ that.config.billingQuery.getLastPaidAmmount(record.data) +'</span>' ;
+            billingHtml += '<span>Billing Amount $: '+ formatNum( that.config.billingQuery.getLastPaidAmmount(record.data)) +'</span>' ;
 
             billingHtml += '<div>Expiration : '+ that.config.billingQuery.getDueDate(record.data) ;
 
@@ -1396,7 +1459,79 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             Ext.ComponentQuery.query('#billingDtlLbl')[0].setHtml(billingHtml);
 
 
+
+
         }
+
+        function showProductMarker(value){
+
+        var str = Ext.ComponentQuery.query('#RDStoreProductsList')[0].getStore() ;
+
+
+
+                             var status = "" ;
+                                var dd = null ;
+                                var today = new Date() ;
+                               if(value.product_billng){
+
+                                   var d1 = null;
+                                   var d2 = null ;
+
+                                   if(value.product_billng.product_datalink){
+
+                                       d1 = value.product_billng.product_datalink.due_date;
+                                   }
+                                   if(value.product_billng.product_rmpro){
+
+                                       d2 = value.product_billng.product_rmpro.due_date;
+                                   }
+
+                                   if( d1 && d2){
+                                       var d3 = new Date(d1);
+                                       var d4 = new Date(d2);
+
+
+                                       if(d3 < today){
+
+                                           str.getAt(0).set("product_expiry","!");
+                                       }
+
+                                       if(d4 < today ){
+
+                                            str.getAt(3).set("product_expiry","!");
+                                       }
+
+                                       //dd = (d3 < d4 ? d1 : d2) ;
+
+
+                                   }else{
+                                        var temp ;
+                                       if(d1){
+                                           temp = new Date(d1) ;
+                                           if(temp < today ){
+
+                                            str.getAt(0).set("product_expiry","!");
+                                           }
+                                       }
+
+                                       if(d2){
+
+                                             temp = new Date(d2) ;
+
+                                           temp = new Date(d1) ;
+                                           if(temp < today ){
+
+                                            str.getAt(3).set("product_expiry","!");
+                                           }
+
+                                       }
+
+                               }
+                       }
+
+
+        }
+
 
         function fillStoreInformationForRDetailCard (record){
             var logo , name , state , ownerFName , ownerLName , performance , cityName;
@@ -1521,6 +1656,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             Ext.ComponentQuery.query('#RDStoreLabel')[0].setHidden(true);
             //  Ext.ComponentQuery.query('#RDStoreLogoPanel')[0].setHidden(true);
             Ext.ComponentQuery.query('#RDStoreTabFormPanel')[0].setDisabled(true);
+            Ext.ComponentQuery.query('#retailerEcommerceForm')[0].setDisabled(true);
             Ext.ComponentQuery.query('#RDStoreOwner')[0].setValue(
                 ownerFName+' '+ownerLName
             );
@@ -1657,6 +1793,134 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         }
 
 
+        function fillValueinEcoomerceTab(selectedUserRecord){
+
+          console.warn("FILLING RETAILER E-COMMERCE INFORMATION");
+          var userData = selectedUserRecord.record.data ;
+          var retailerEcommerceForm = Ext.ComponentQuery.query("#retailerEcommerceForm")[0];
+             retailerEcommerceForm.setValues(userData.e_commerce_info);
+
+            fillLogoInfoForEcommeceTab(selectedUserRecord , retailerEcommerceForm);
+            fillAdditionalVEndors(selectedUserRecord , retailerEcommerceForm);
+            fillFeatureInformation(selectedUserRecord , retailerEcommerceForm);
+
+            //fillFeatureInformation
+        }
+
+        function fillLogoInfoForEcommeceTab(record , form){
+
+            var rec =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+            var logo;
+            try{
+                 logo = rec.record.data.e_commerce_info.logo;
+            }catch(e){
+
+                console.log("EROR WA THROWN"  ,e);
+            }
+
+            if(logo){
+
+                console.log(" LOGO INFORMATION");
+            }else{
+                console.log("NO LOGO INFORMATION");
+            }
+            var backGround_Logo_Image = Ext.ComponentQuery.query("#backGround_Logo_Image")[0];
+            var dom = backGround_Logo_Image.element.dom;
+            var img = dom.childNodes[0];
+            img.setAttribute("src" , logo);
+
+        }
+
+        function fillAdditionalVEndors(){
+
+
+            var vipVendorListInEComm = Ext.ComponentQuery.query("#vipVendorListInEComm")[0];
+            var rec =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+            var additional_vendors;
+            var list = vipVendorListInEComm ;
+            var store = vipVendorListInEComm.getStore();
+            try{
+                 additional_vendors = rec.record.data.e_commerce_info.additional_vendors;
+            }catch(e){
+
+                console.log("EROR WA THROWN"  ,e);
+            }
+
+            if(additional_vendors && additional_vendors.length){
+
+                console.log(" additional_vendors INFORMATION");
+                console.log(additional_vendors);
+                if(store){
+                    store.setData(additional_vendors);
+                }else{
+                    list.setData(additional_vendors);
+                }
+
+
+
+
+            }else{
+                console.log("NO additional_vendors INFORMATION");
+                if(store){
+                    store.removeAll();
+                }
+                return;
+            }
+
+
+
+
+
+
+
+
+        }
+
+        function fillFeatureInformation(){
+
+
+            var vipVendorProgramListInEComm = Ext.ComponentQuery.query("#vipVendorProgramListInEComm")[0];
+            var rec =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+            var additional_vendors;
+            var list = vipVendorProgramListInEComm ;
+            var store = vipVendorProgramListInEComm.getStore();
+            try{
+                 additional_vendors = rec.record.data.e_commerce_info.programs;
+            }catch(e){
+
+                console.log("EROR WA THROWN"  ,e);
+            }
+
+            if(additional_vendors && additional_vendors.length){
+
+                console.log(" additional_vendors INFORMATION");
+                console.log(additional_vendors);
+                if(store){
+                    store.setData(additional_vendors);
+                }else{
+                    list.setData(additional_vendors);
+                }
+
+
+
+
+            }else{
+                console.log("NO additional_vendors INFORMATION");
+                if(store){
+                    store.removeAll();
+                }
+                return;
+            }
+
+
+
+
+
+
+
+        }
+
+
         function fillNotesStore(selectedUserRecord){
 
             var userData = selectedUserRecord.record.data ;
@@ -1692,7 +1956,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 var userData = selectedUserRecord.record.data ;
                 managerUSers =userData.reps_bluebook_teamusers ;
             }
-
+        console.error("GLOBAL FILL 2");
             RMdatalink.util.globalMethods.fillListDataByListObject(blueBookMainList,managerUSers);
             blueBookMainList.refresh();
 
@@ -1721,13 +1985,16 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         function fillRCMDSidebarPhotos(selectedUserRecord){
             var userData = selectedUserRecord.record.data ;
+           console.error("GLOBAL FILL 3");
             RMdatalink.util.globalMethods.fillListData('#RDCRMNotesPhotosView',userData.photos);
 
         }
 
         function fillRCMDSidebarAttachments(selectedUserRecord){
             var userData = selectedUserRecord.record.data ;
+            console.error("GLOBAL FILL 4");
             RMdatalink.util.globalMethods.fillListData('#RDCRMNotesAttRetailerList',userData.attachments);
+            console.error("GLOBAL FILL 5");
             RMdatalink.util.globalMethods.fillListData('#RDCRMNotesAttList',userData.attachments);
             //
         }
@@ -1826,13 +2093,16 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             var userData = selectedUserRecord.record.data ;
 
             var data = [
-                {"ProductImage":"resources//images//RMNavigationPanel//Datalink.png","ProductName":"Datalink","ProductStatus":userData.store_products_datalink },
-                {"ProductImage":"resources//images//RMNavigationPanel//ECatalog.png","ProductName":"ECatalog","ProductStatus":userData.store_products_ecatalog},
-                {"ProductImage":"resources//images//RMNavigationPanel//SMART_cart.png","ProductName":"E-Commerce","ProductStatus":userData.store_products_smart_cart},
-                {"ProductImage":"resources//images//RMNavigationPanel//RM_PLC.png","ProductName":"RM PRO","ProductStatus":userData.store_products_rm_plc},
-                {"ProductImage":"resources//images//RMNavigationPanel//iRugz.png","ProductName":"iRugz","ProductStatus":userData.store_products_irugs}];
+                {"ProductImage":"resources//images//RMNavigationPanel//Datalink.png","ProductName":"Datalink","ProductStatus":userData.store_products_datalink ,"product_expiry" :"" },
+                {"ProductImage":"resources//images//RMNavigationPanel//ECatalog.png","ProductName":"ECatalog","ProductStatus":userData.store_products_ecatalog ,"product_expiry" :"" },
+                {"ProductImage":"resources//images//RMNavigationPanel//SMART_cart.png","ProductName":"E-Commerce","ProductStatus":userData.store_products_smart_cart ,"product_expiry" :"" },
+                {"ProductImage":"resources//images//RMNavigationPanel//RM_PLC.png","ProductName":"RMPro","ProductStatus":userData.store_products_rm_plc ,"product_expiry" :"" },
+                {"ProductImage":"resources//images//RMNavigationPanel//iRugz.png","ProductName":"iRugz","ProductStatus":userData.store_products_irugs ,"product_expiry" :"" },
+                {"ProductImage":"resources//images//RMNavigationPanel//vip.png","ProductName":"VIP","ProductStatus":userData.store_products_vip ,"product_expiry" :"" }
+            ];
+           console.error("GLOBAL FILL 6");
             RMdatalink.util.globalMethods.fillListData('#RDStoreProductsList',data);
-
+         showProductMarker(userData);
         }
 
 
@@ -1877,12 +2147,13 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         */
 
             if(userData.manager_dos_and_donts && userData.manager_dos_and_donts.length > 1)
-            {
+            {console.error("GLOBAL FILL 7");
                 RMdatalink.util.globalMethods.fillListData('#ActRDManagerDosDontList',userData.manager_dos_and_donts);
             }
 
             if(userData.manager_follow_ups && userData.manager_follow_ups.length > 1)
             {
+                console.error("GLOBAL FILL 8");
                 RMdatalink.util.globalMethods.fillListData('#ActRDManagerFollowUpsLists',userData.manager_follow_ups);
             }
 
@@ -1896,6 +2167,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         function resetManagerData(){
 
+            Ext.ComponentQuery.query('#RDAccountDetails')[0].setValue("");
               var importFrmCsvController = RMdatalink.app.getController('ImportCSV') ;
 
                importFrmCsvController.config.retailerForVendor =  null ;
@@ -1927,6 +2199,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             Ext.ComponentQuery.query('#RDManagerDirectPhone')[0].setValue('');
             Ext.ComponentQuery.query('#RDManagerDirectPhoneExt')[0].setValue('');
 
+            console.error("GLOBAL FILL 9");
             RMdatalink.util.globalMethods.fillListData('#RDManagerActivityList',[]);
         }
 
@@ -2001,6 +2274,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
             Ext.ComponentQuery.query('#RDUsersStoreLogoImage')[0].setSrc("resources//images//logos//default_User.jpg");
             Ext.ComponentQuery.query('#RDStoreTabFormPanel')[0].setDisabled(false);
+                Ext.ComponentQuery.query('#retailerEcommerceForm')[0].setDisabled(false);
             var store_perfList =  Ext.ComponentQuery.query('#RDStoreTabPerformance')[0] ;
             store_perfList.setDisableSelection(false) ;
             store_perfList.select(1,false,true);
@@ -2077,14 +2351,16 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         }
 
         function unfillRCMDSidebarPhotos(){
-
+        console.error("GLOBAL FILL 10");
             RMdatalink.util.globalMethods.fillListData('#RDCRMNotesPhotosView',[]);
 
         }
 
         function unfillRCMDSidebarAttachments(){
+            console.error("GLOBAL FILL 11");
 
             RMdatalink.util.globalMethods.fillListData('#RDCRMNotesAttRetailerList',[]);
+            console.error("GLOBAL FILL 12");
             RMdatalink.util.globalMethods.fillListData('#RDCRMNotesAttList',[]);
 
         }
@@ -2211,7 +2487,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 {"ProductImage":"resources//images//RMNavigationPanel//ECatalog.png","ProductName":"ECatalog","ProductStatus":false},
                 {"ProductImage":"resources//images//RMNavigationPanel//SMART_cart.png","ProductName":"E-Commerce","ProductStatus":false},
                 {"ProductImage":"resources//images//RMNavigationPanel//RM_PLC.png","ProductName":"RM PRO","ProductStatus":false},
-                {"ProductImage":"resources//images//RMNavigationPanel//iRugz.png","ProductName":"iRugz","ProductStatus":false}];
+                {"ProductImage":"resources//images//RMNavigationPanel//iRugz.png","ProductName":"iRugz","ProductStatus":false},
+                {"ProductImage":"resources//images//RMNavigationPanel//vip.png","ProductName":"VIP","ProductStatus":false  }
+
+            ];
+           console.error("GLOBAL FILL 13");
             RMdatalink.util.globalMethods.fillListData('#RDStoreProductsList',data);
         }
 
@@ -2301,8 +2581,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 {"notification":""},
                 {"notification":""}
             ];
-
+             console.error("GLOBAL FILL 14");
             RMdatalink.util.globalMethods.fillListData('#ActRDManagerDosDontList',mgrRdata);
+            console.error("GLOBAL FILL 15");
             RMdatalink.util.globalMethods.fillListData('#ActRDManagerFollowUpsLists',mgrRdata);
 
 
@@ -2381,6 +2662,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
         }
+
+        this.config.changedManually = true ;
+        that.disableEnableComponents(true) ;
 
     },
 
@@ -2859,6 +3143,14 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         // AFTER CHAECKED ALL VALIDATION
             else
             {
+                if(that.config.accNoChk < 1 || that.config.accNoChk > 1 )
+                {
+                    that.config.accNoChk = 1 ;
+                    that.checkForDuplicateAccountNo() ;
+                    return ;
+                }
+
+                 that.config.accNoChk = 0 ;
                 //*******************
                 var isRetailerDetailsView = RMdatalink.app.getController('UINav').isRetailerDetailsView;
                 var masterStore =  isRetailerDetailsView ? Ext.getStore('retailersMaster'):Ext.getStore('vendors.Master');
@@ -3046,6 +3338,39 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                         xtype: 'loadmask'
                     });
 
+
+
+
+                    var retailerEcommerceForm = Ext.ComponentQuery.query("#retailerEcommerceForm")[0];
+                    if(retailerEcommerceForm){
+
+                       var  value = retailerEcommerceForm.getValues();
+                       var vipVendorListInEComm = Ext.ComponentQuery.query("#vipVendorListInEComm")[0];
+                       if(vipVendorListInEComm && vipVendorListInEComm.getStore())   {
+
+
+
+                           value.additional_vendors =  getAccountNoAndNameOfVIPVendors() ; //getRawFromList('vipVendorListInEComm') ;//vipVendorListInEComm.getStore().getData();
+
+                       }
+
+                        var vipVendorProgramListInEComm = Ext.ComponentQuery.query("#vipVendorProgramListInEComm")[0];
+                        if(vipVendorProgramListInEComm   &&   vipVendorProgramListInEComm.getStore()){
+
+        //                    value.programs =     vipVendorProgramListInEComm.getData();
+                            value.programs =  getRawFromList('vipVendorProgramListInEComm') ;// vipVendorProgramListInEComm.getStore().getData();
+
+                        }
+
+
+                        var backGround_Logo_Image = Ext.ComponentQuery.query("#backGround_Logo_Image")[0];
+                        var dom = backGround_Logo_Image.element.dom;
+                        var img = dom.childNodes[0];
+                        value.logo = img.src;
+                        TEST.e_commerce_info = value;
+
+                    }
+                    console.log(TEST);
                     RMdatalink.iwa.rdl.doUpdateCollection(masterStore, TEST , recordInMasterStore.get('_id'), suc, err);
 
 
@@ -3098,7 +3423,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         var tempDesign;
         var tempSKU;
         function onUpdateSuccess(){
-
+                that.disableEnableComponents(true) ;
                     if(isRetailerDetailsView)
                     {
 
@@ -3106,7 +3431,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                             that.config.isVendorUpdated = true ;
 
                           RMdatalink.app.getController('Main').updateRetailerRecords("ALL",TEST,recordInMasterStore.get('_id')) ;
-                           that.setRtlAccDtl() ;
+                          that.setRtlAccDtl() ;
 
                         //updateRespectiveRetailer(recordInMasterStore.get('_id')) ;
 
@@ -3126,7 +3451,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
                     that.config.isVendorUpdated = true ;
-                      // recordInMasterStore.set(TEST);
+                      recordInMasterStore.set(TEST);
                     recordInMasterStore.dirty= true;
 
                     that.config.recordToUpdate = recordInMasterStore ;
@@ -3226,7 +3551,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         }
 
         function onAddnewSuccess(){
-
+              that.disableEnableComponents(true) ;
 
             if(isRetailerDetailsView){
 
@@ -3274,43 +3599,95 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             }
 
         }
+
+
     },
 
     setTplOnlineInSideContainerList: function(isRetailerDetailsView) {
+        ///  CLEAR THE VALUES STORE IN VARIABLE FOR ACCOUNT NO
+
+
+        clearAccountValues();
+
+
+        this.setTplOnlineInECommerceSedeContainerList(isRetailerDetailsView);
+
+
         var component = Ext.ComponentQuery.query('#RDStoreSideTabPanel')[0];
         var InStoreHeaders = component.down("#RDInStoreVendorsTab").down("#headerList");
         var OnlineHeaders = component.down("#RDOnlineVendorsTab").down("#headerList");
         InStoreHeaders.setData([{}]);
         OnlineHeaders.setData([{}]);
         var headerTpl , listTpl ;
+        var tplOfInStoreHeader;
+        var tplOfInlist;
 
         if(isRetailerDetailsView)
-        {
+        {  /* <input type="text" name="fname"> */
             headerTpl = Ext.create('Ext.XTemplate',
                                    '<div class="x-rm-listtpl-main">',
-                                   '    <div style="width: 12%;">',
+                                   '    <div style="width: 8%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 30%;" data-name="vendor_name">NAME</div>',
-                                   '    <div style="width: 20%;" data-name="collections">Collections</div>',
-                                   '    <div style="width: 20%;" data-name="design">Designs</div>',
-                                   '    <div style="width: 20%;" data-name="SKU">SKUs</div>',
+                                   '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+
                                    '</div>'
                                   );
 
 
+
             listTpl = Ext.create('Ext.XTemplate',
                                  '<div class="x-rm-listtpl-main pointerCursor">',
-                                 '    <div style="width: 12%;">',
+                                 '    <div style="width: 8%;">',
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
-                                 '    <div style="width: 30%;">{vendor_name}</div>',
-                                 '    <div style="width: 20%;">{collections}</div>',
-                                 '    <div style="width: 20%;">{design}</div>',
-                                 '    <div style="width: 20%;">{SKU}</div>',
+                                 '    <div style="width: 24%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{collections}</div>',
+                                 '    <div style="width: 15%;">{design}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
+
+                                 '    <div style="width: 15%;">{no_of_images}</div>',
+                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                  '</div>'
                                 );
 
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div type ="text" style="width:15%;"  >{Account_No}</div>',
+                                 '    <div style="width: 15%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{collections}</div>',
+                                 '    <div style="width: 15%;">{design}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
+
+                                 '    <div style="width: 15%;">{no_of_images}</div>',
+                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                 '</div>'
+                                );
 
 
         // /
@@ -3322,15 +3699,36 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    '    <div style="width: 12%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 35%;" data-name="store_name">NAME</div>',
-                                   '    <div style="width: 30%;" data-name="store_city">CITY</div>',
-                                   '    <div style="width: 15%;" data-name="store_state">STATE</div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
 
                                    '</div>'
                                   );
 
 
             listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+            tplOfInlist = Ext.create('Ext.XTemplate',
                                  '<div class="x-rm-listtpl-main pointerCursor">',
                                  '    <div style="width: 12%;">',
                                  '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
@@ -3347,7 +3745,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         }
 
 
-        InStoreHeaders.setItemTpl(headerTpl);
+        InStoreHeaders.setItemTpl(tplOfInStoreHeader);
         OnlineHeaders.setItemTpl(headerTpl);
         InStoreHeaders.refresh();
         OnlineHeaders.refresh();
@@ -3364,7 +3762,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         InStoreList.setStore('retailersStoreVendors');//
 
-
+        console.error("STORE CONNECTED TO LIST SET TPL CONTAINER LIST");
 
         if(isRetailerDetailsView)
         {
@@ -3377,11 +3775,777 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
         //OnlineList.setStore('retailersOnlineStoreVendors');
-
-        InStoreList.setItemTpl(listTpl);
+        InStoreList.config.isUserEditionPermitted = false;
+        InStoreList.setItemTpl(tplOfInlist);
         OnlineList.setItemTpl(listTpl);
 
 
+
+
+
+    },
+
+    setTplOnlineInECommerceSedeContainerList: function(isRetailerDetailsView) {
+        var component = Ext.ComponentQuery.query('#RDForECommerce')[0];
+        var InStoreHeaders = component.down("#RDInStoreVendorsTab").down("#headerList");
+        var OnlineHeaders = component.down("#RDOnlineVendorsTab").down("#headerList");
+        InStoreHeaders.setData([{}]);
+        OnlineHeaders.setData([{}]);
+        var headerTpl , listTpl ;
+        var tplOfInStoreHeader;
+        var tplOfInlist;
+
+
+        //RDForECommerce
+        if(isRetailerDetailsView)
+        {  /* <input type="text" name="fname"> */
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '</div>'
+                                  );
+
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 24%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{collections}</div>',
+                                 '    <div style="width: 15%;">{design}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
+
+                                 '    <div style="width: 15%;">{no_of_images}</div>',
+                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                 '</div>'
+                                );
+
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div type ="text" style="width:15%;"  >{Account_No}</div>',
+                                 '    <div style="width: 15%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{collections}</div>',
+                                 '    <div style="width: 15%;">{design}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
+
+                                 '    <div style="width: 15%;">{no_of_images}</div>',
+                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                 '</div>'
+                                );
+
+
+        // /
+        }
+        else
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+
+
+        // /vendors.Master
+
+        }
+
+
+        InStoreHeaders.setItemTpl(tplOfInStoreHeader);
+        OnlineHeaders.setItemTpl(headerTpl);
+        InStoreHeaders.refresh();
+        OnlineHeaders.refresh();
+
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var OnlineList = component.down("#RDOnlineVendorsTab").down('#mainList');
+
+        InStoreList.setItemHeight(22);
+        OnlineList.setItemHeight(22);
+        InStoreList.setMode('MULTI');
+        OnlineList.setMode('MULTI');
+        InStoreList.addCls('x-rm-rdvendorslist');
+        OnlineList.addCls('x-rm-rdvendorslist');
+
+        //InStoreList.setStore('retailersStoreVendors');//
+
+        console.error("STORE CONNECTED TO LIST E COMMERCE LIST");
+
+        if(isRetailerDetailsView)
+        {
+        //    OnlineList.setStore('vendors.Master');
+             OnlineList.setData(    getArrayFromStore(Ext.getStore('vendors.Master')));
+        }else{
+             //OnlineList.setStore('retailersMaster');
+        //    OnlineList.setStore('retailers.prospectRTForVendor');
+        //    OnlineList.setData(    getArrayFromStore(Ex.getStore('vendors.Master')));
+
+        }
+
+
+
+        //OnlineList.setStore('retailersOnlineStoreVendors');
+        InStoreList.config.isUserEditionPermitted = false;
+        InStoreList.setItemTpl(tplOfInlist);
+
+        var inStoreListStore = InStoreList.getStore();
+        OnlineList.setItemTpl(listTpl);
+        InStoreList.refresh();
+        OnlineList.refresh();
+        if(inStoreListStore){
+            inStoreListStore.removeAll();
+        }
+
+        this.setTplOnlineEcommVipList(isRetailerDetailsView);
+    },
+
+    setTplOnlineEcommVipList: function(isRetailerDetailsView) {
+        var component = Ext.ComponentQuery.query('#RDForVIP')[0];
+        var InStoreHeaders = component.down("#RDInStoreVendorsTab").down("#headerList");
+        var OnlineHeaders = component.down("#RDOnlineVendorsTab").down("#headerList");
+        InStoreHeaders.setData([{}]);
+        OnlineHeaders.setData([{}]);
+        var headerTpl , listTpl ;
+        var tplOfInStoreHeader;
+        var tplOfInlist;
+
+
+        //RDForECommerce
+        if(isRetailerDetailsView)
+        {  /* <input type="text" name="fname"> */
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+
+                                   '</div>'
+                                  );
+
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 24%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{collections}</div>',
+                                 '    <div style="width: 15%;">{design}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
+
+                                 '    <div style="width: 15%;">{no_of_images}</div>',
+                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                 '</div>'
+                                );
+
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div type ="text" style="width:15%;"  >{Account_No}</div>',
+                                 '    <div style="width: 15%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{collections}</div>',
+                                 '    <div style="width: 15%;">{design}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
+
+                                 '    <div style="width: 15%;">{no_of_images}</div>',
+                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                 '</div>'
+                                );
+
+
+        // /
+        }
+        else
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+
+
+        // /vendors.Master
+
+        }
+
+
+        InStoreHeaders.setItemTpl(tplOfInStoreHeader);
+        OnlineHeaders.setItemTpl(headerTpl);
+        InStoreHeaders.refresh();
+        OnlineHeaders.refresh();
+
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var OnlineList = component.down("#RDOnlineVendorsTab").down('#mainList');
+
+        InStoreList.setItemHeight(22);
+        OnlineList.setItemHeight(22);
+        InStoreList.setMode('MULTI');
+        OnlineList.setMode('MULTI');
+        InStoreList.addCls('x-rm-rdvendorslist');
+        OnlineList.addCls('x-rm-rdvendorslist');
+
+        //InStoreList.setStore('retailersStoreVendors');//
+
+        console.error("STORE CONNECTED TO LIST E COMMERCE LIST");
+
+        if(isRetailerDetailsView)
+        {
+        //    OnlineList.setStore('vendors.Master');
+             OnlineList.setData(    getArrayFromStore(Ext.getStore('vendors.Master')));
+        }else{
+             //OnlineList.setStore('retailersMaster');
+        //    OnlineList.setStore('retailers.prospectRTForVendor');
+        //    OnlineList.setData(    getArrayFromStore(Ex.getStore('vendors.Master')));
+
+        }
+
+
+
+        //OnlineList.setStore('retailersOnlineStoreVendors');
+        InStoreList.config.isUserEditionPermitted = false;
+        InStoreList.setItemTpl(tplOfInlist);
+
+        var inStoreListStore = InStoreList.getStore();
+        OnlineList.setItemTpl(listTpl);
+        InStoreList.refresh();
+        OnlineList.refresh();
+        if(inStoreListStore){
+            inStoreListStore.removeAll();
+        }
+
+
+    },
+
+    setTemplateOfListByEditingMode: function(isEditing) {
+            this.setTemplateOfEcommerceTabListByEditingMode(isEditing);
+
+
+
+
+        var component = Ext.ComponentQuery.query('#RDStoreSideTabPanel')[0];
+        var tplOfInlist;
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var isRetailerDetailsView = RMdatalink.app.getController('UINav').isRetailerDetailsView;
+        if(isEditing){
+            if(isRetailerDetailsView)
+            {
+
+
+
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 8%;">',
+                                     '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                     '    </div>',
+                                         '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNo(event)"  vendorId =  {vendor_id}  value={Account_No} />',
+                                     '    <div style="width: 15%;">{vendor_name}</div>',
+                                     '    <div style="width: 15%;">{collections}</div>',
+                                     '    <div style="width: 15%;">{design}</div>',
+                                     '    <div style="width: 15%;">{SKU}</div>',
+
+                                     '    <div style="width: 15%;">{no_of_images}</div>',
+                                     '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                     '</div>'
+                                    );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 12%;">',
+                                     '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                     '    </div>',
+                                     '    <div style="width: 35%;">{store_name}</div>',
+                                     '    <div style="width: 30%;">{store_city}</div>',
+                                      '    <div style="width: 15%;">{store_state}</div>',
+                                     '</div>'
+                                    );
+
+
+
+
+            }
+
+        }else{
+
+
+            if(isRetailerDetailsView)
+            {
+
+
+
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                         '<div class="x-rm-listtpl-main pointerCursor">',
+                                         '    <div style="width: 8%;">',
+                                         '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                         '    </div>',
+                                         '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
+                                         '    <div style="width: 15%;">{vendor_name}</div>',
+                                         '    <div style="width: 15%;">{collections}</div>',
+                                         '    <div style="width: 15%;">{design}</div>',
+                                         '    <div style="width: 15%;">{SKU}</div>',
+
+                                         '    <div style="width: 15%;">{no_of_images}</div>',
+                                         '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                         '</div>'
+                                        );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                         '<div class="x-rm-listtpl-main pointerCursor">',
+                                         '    <div style="width: 12%;">',
+                                         '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                         '    </div>',
+                                         '    <div style="width: 35%;">{store_name}</div>',
+                                         '    <div style="width: 30%;">{store_city}</div>',
+                                         '    <div style="width: 15%;">{store_state}</div>',
+                                         '</div>'
+                                        );
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+            InStoreList.config.isUserEditionPermitted = isEditing;
+            InStoreList.setItemTpl(tplOfInlist);
+
+
+
+        /*
+        vendorId =  {vendor_id}  value={Account_No} />',
+        */
+        var store =  InStoreList.getStore();
+        if(isEditing && store){
+
+            var data = store.getData();
+            for(var i=0;i<data.all.length ; i++){
+
+                var rec = data.all[i];
+                var vendor_id = rec.data.vendor_id;
+                var Account_No = rec.data.Account_No;
+                    vendorIdAccountValue[vendor_id] = Account_No;
+            }
+        }
+
+    },
+
+    setTemplateOfEcommerceTabListByEditingMode: function(isEditing) {
+        clearAccountValues();
+        var component = Ext.ComponentQuery.query('#RDForECommerce')[0];
+        var tplOfInlist;
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var isRetailerDetailsView = RMdatalink.app.getController('UINav').isRetailerDetailsView;
+        if(isEditing){
+            if(isRetailerDetailsView)
+            {
+
+
+
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 8%;">',
+                                     '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                     '    </div>',
+                                         '<input type ="text" class = "inputAccountNo"    style="max-width: 60px;margin-right:2px;"  onkeyup="onKeyDownOfAccountNoECommerce(event)"  vendorId =  {vendor_id}  value={Account_No} />',
+                                     '    <div style="width: 15%;">{vendor_name}</div>',
+                                     '    <div style="width: 15%;">{collections}</div>',
+                                     '    <div style="width: 15%;">{design}</div>',
+                                     '    <div style="width: 15%;">{SKU}</div>',
+
+                                     '    <div style="width: 15%;">{no_of_images}</div>',
+                                     '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                     '</div>'
+                                    );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 12%;">',
+                                     '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                     '    </div>',
+                                     '    <div style="width: 35%;">{store_name}</div>',
+                                     '    <div style="width: 30%;">{store_city}</div>',
+                                      '    <div style="width: 15%;">{store_state}</div>',
+                                     '</div>'
+                                    );
+
+
+
+
+            }
+
+        }else{
+
+
+            if(isRetailerDetailsView)
+            {
+
+
+
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                         '<div class="x-rm-listtpl-main pointerCursor">',
+                                         '    <div style="width: 8%;">',
+                                         '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                         '    </div>',
+                                         '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
+                                         '    <div style="width: 15%;">{vendor_name}</div>',
+                                         '    <div style="width: 15%;">{collections}</div>',
+                                         '    <div style="width: 15%;">{design}</div>',
+                                         '    <div style="width: 15%;">{SKU}</div>',
+
+                                         '    <div style="width: 15%;">{no_of_images}</div>',
+                                         '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                         '</div>'
+                                        );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                         '<div class="x-rm-listtpl-main pointerCursor">',
+                                         '    <div style="width: 12%;">',
+                                         '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                         '    </div>',
+                                         '    <div style="width: 35%;">{store_name}</div>',
+                                         '    <div style="width: 30%;">{store_city}</div>',
+                                         '    <div style="width: 15%;">{store_state}</div>',
+                                         '</div>'
+                                        );
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+            InStoreList.config.isUserEditionPermitted = isEditing;
+            InStoreList.setItemTpl(tplOfInlist);
+            InStoreList.refresh();
+
+
+
+        var store =  InStoreList.getStore();
+        if(isEditing && store){
+
+            var data = store.getData();
+            for(var i=0;i<data.all.length ; i++){
+
+                var rec = data.all[i];
+                var vendor_id = rec.data.vendor_id;
+                var Account_No = rec.data.Account_No;
+                    vendorIdAccountValueEComm[vendor_id] = Account_No;
+            }
+        }
+        this.setTemplateOfEcommVipListEditingMode(isEditing);
+    },
+
+    setTemplateOfEcommVipListEditingMode: function(isEditing) {
+        //clearAccountValues();
+        var component = Ext.ComponentQuery.query('#RDForVIP')[0];
+        var tplOfInlist;
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var isRetailerDetailsView = RMdatalink.app.getController('UINav').isRetailerDetailsView;
+        if(isEditing){
+            if(isRetailerDetailsView)
+            {
+
+
+
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 8%;">',
+                                     '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                     '    </div>',
+                                         '<input type ="text" class = "inputAccountNo"    style="max-width: 60px;margin-right:2px;"  onkeyup="onKeyDownOfAccountNoVIP(event)"  vendorId =  {_id}  value={Account_No} />',
+                                     '    <div style="width: 15%;">{vendor_name}</div>',
+                                     '    <div style="width: 15%;">{collections}</div>',
+                                     '    <div style="width: 15%;">{design}</div>',
+                                     '    <div style="width: 15%;">{SKU}</div>',
+
+                                     '    <div style="width: 15%;">{no_of_images}</div>',
+                                     '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                     '</div>'
+                                    );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 12%;">',
+                                     '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                     '    </div>',
+                                     '    <div style="width: 35%;">{store_name}</div>',
+                                     '    <div style="width: 30%;">{store_city}</div>',
+                                      '    <div style="width: 15%;">{store_state}</div>',
+                                     '</div>'
+                                    );
+
+
+
+
+            }
+
+        }else{
+
+
+            if(isRetailerDetailsView)
+            {
+
+
+
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                         '<div class="x-rm-listtpl-main pointerCursor">',
+                                         '    <div style="width: 8%;">',
+                                         '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                         '    </div>',
+                                         '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
+                                         '    <div style="width: 15%;">{vendor_name}</div>',
+                                         '    <div style="width: 15%;">{collections}</div>',
+                                         '    <div style="width: 15%;">{design}</div>',
+                                         '    <div style="width: 15%;">{SKU}</div>',
+
+                                         '    <div style="width: 15%;">{no_of_images}</div>',
+                                         '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                         '</div>'
+                                        );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                         '<div class="x-rm-listtpl-main pointerCursor">',
+                                         '    <div style="width: 12%;">',
+                                         '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                         '    </div>',
+                                         '    <div style="width: 35%;">{store_name}</div>',
+                                         '    <div style="width: 30%;">{store_city}</div>',
+                                         '    <div style="width: 15%;">{store_state}</div>',
+                                         '</div>'
+                                        );
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+            InStoreList.config.isUserEditionPermitted = isEditing;
+            InStoreList.setItemTpl(tplOfInlist);
+            InStoreList.refresh();
+
+
+
+        var store =  InStoreList.getStore();
+        if(isEditing && store)
+        {
+
+            var data = store.getData();
+            for(var i=0;i<data.all.length ; i++){
+
+                var rec = data.all[i];
+                var vendor_id = rec.data._id;
+                var Account_No = rec.data.Account_No;
+                    vendorIdAccountValueVIP[vendor_id] = Account_No;
+            }
+        }
 
     },
 
@@ -3506,7 +4670,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
 
-        Ext.ComponentQuery.query('#CmpContactProfileForm')[0].setDisabled(false) ;
+        //Ext.ComponentQuery.query('#CmpContactProfileForm')[0].setDisabled(false) ;
         //Ext.ComponentQuery.query('#CmpContactProfileRelationDetailsForm')[0].setDisabled(true);
 
         var managerUSers ;
@@ -3770,8 +4934,18 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                 Ext.ComponentQuery.query('#CmpContactProfileFileFieldForImage1')[0].setDisabled(false);
                 var mangerForm = Ext.ComponentQuery.query('#CmpContactProfileForm')[0];
-                mangerForm.setDisabled(false) ;
-                Ext.ComponentQuery.query('#RDManagerRelationDetailsForm')[0].setDisabled(false);
+               // mangerForm.setDisabled(false) ;
+               // Ext.ComponentQuery.query('#RDManagerRelationDetailsForm')[0].setDisabled(false);
+
+        if(RMdatalink.app.getController('RetailerDeatilsDataSet').config.isEditMode){
+
+            RMdatalink.app.getController('RetailerDeatilsDataSet').disableEnableComponents(false);
+            mangerForm.setDisabled(false) ;
+        }else{
+
+            RMdatalink.app.getController('RetailerDeatilsDataSet').disableEnableComponents(true);
+            mangerForm.setDisabled(true) ;
+        }
     },
 
     setTempRecordForRetailerOrVendor: function() {
@@ -3982,7 +5156,8 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 ecatalog_status :Ext.ComponentQuery.query('#rtEcatalogStatusSelFld')[0].getValue(),
                 ecommerce_status :Ext.ComponentQuery.query('#rtECommerceStatusSelFld')[0].getValue(),
                 rmpro_status :Ext.ComponentQuery.query('#rtRM_proStatusSelFld')[0].getValue(),
-                irugs_status : Ext.ComponentQuery.query('#rtirugzStatusSelFld')[0].getValue()
+                irugs_status : Ext.ComponentQuery.query('#rtirugzStatusSelFld')[0].getValue(),
+                vip_status: Ext.ComponentQuery.query('#rtVipStatusSelFld')[0].getValue()
 
             };
 
@@ -4752,125 +5927,246 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
     loadActiveVendorsForRetailers: function() {
 
-        /*
+        console.error('VUZ1');
 
-                                 '    </div>',
-                                 '    <div style="width: 30%;">{vendor_name}</div>',
-                                 '    <div style="width: 20%;">{collections}</div>',
-                                 '    <div style="width: 20%;">{design}</div>',
-                                 '    <div style="width: 20%;">{SKU}</div>',
+        var vendorsMasterStr = Ext.getStore( 'vendors.Master');
 
-        */
+        var records = new Array() ;
 
 
 
-          var vendorsMasterStr = Ext.getStore( 'vendors.Master');
+        var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+        console.error('VUZ2');
 
-          var records = new Array() ;
+        var vndrs = selectedUserRecord.record.data.vendors ;
+        var rt_id = selectedUserRecord.record.data._id;
+        var rt_phn = selectedUserRecord.record.data.store_phone ;
 
 
+
+
+
+        setRetailersList(getVendorsForRetailer()) ;
+
+        var dataToAdd =  getVendoersForRetailersByProduct('retailers_ecommerce');
+        if(dataToAdd.length)
+        {
+            setRetailersListByProduct( dataToAdd, 'RDForECommerce') ;
+        }
+
+
+        var dataOfVip = getVipVendors();
+
+        if(dataOfVip.length )
+        {
+            setRetailersListByProduct (dataOfVip , "RDForVIP");
+        }
+
+
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors() ;
+
+
+
+
+        //setRetailersListByProduct
+        //RDForECommerce
+        console.warn(getVendoersForRetailersByProduct('retailers_ecommerce'));
+
+        this.loadVdrInfoTotals() ;
+
+
+
+        function getVipVendors(){
 
             var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+            var ecommerceInfo = selectedUserRecord.record.data.e_commerce_info;
 
+            var arrayOfVendors = [];
+            if( ecommerceInfo ){
 
-            var vndrs = selectedUserRecord.record.data.vendors ;
-
-
-
-          var rt_id = selectedUserRecord.record.data._id;
-          var rt_phn = selectedUserRecord.record.data.store_phone ;
-
-
-
-        /*
-        if(vndrs)
-        {
-            for(var i =0 ; i< vndrs.length ;i++){
-
-             if(vndrs[i].vendor_id)
-             {
-              var record =   vendorsMasterStr.findRecord( "_id", vndrs[i].vendor_id, 0, false , true ,true ) ;
-             }else{
-
-               var record =   vendorsMasterStr.findRecord( "vendor_name", vndrs[i].vendor_name, 0, false , true ,true ) ;
-
-             }
-                if(record){
-                records.push(
-                    {
-                        vendor_name:record.data.vendor_name ,
-                        collections:record.data.collections ,
-                        design:record.data.design ,
-                        SKU:record.data.SKU
-                    }
-                );
-                }
-
+            }else{
+                return arrayOfVendors;
             }
 
+            var ecomVendor = ecommerceInfo.additional_vendors;
+            var vendorPartner = ecommerceInfo.vip_vendor;
 
-            setRetailersList(records) ;
+            //Account_No
+            if(vendorPartner){
+                var vRecord = findVendorBy_name(vendorPartner);
+                var dataToPush =   vRecord.raw;
+                dataToPush.Account_No = ecommerceInfo.account_no;
+                arrayOfVendors.push(   dataToPush );
+            }
+            for(var i=0; ecomVendor && i <ecomVendor.length ; i++){
 
-        }
-        */
-           setRetailersList(getVendorsForRetailer()) ;
-           RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors() ;
-
-           this.loadVdrInfoTotals() ;
-
-
-        /*
-
-            var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
-
-
-           var vndrs = selectedUserRecord.record.data.vendors ;
+                var vendor_name = ecomVendor[i].vendor_name;
 
 
-            var ids = [] ;
+                var vendorRecord = findVendorBy_name(vendor_name);
+                if(vendorRecord){
+                }else{
+                    continue;
+                }
+                var dataToPush =   vendorRecord.raw;
+                dataToPush.Account_No = ecomVendor[i].account_no;
+                arrayOfVendors.push( dataToPush);
+            }
 
-        for(var i =0 ; i< vndrs.length ;i++){
-
-            ids.push(vndrs[i].vendor_id) ;
-
-
-        }
-
-
-
-
-
-
-
-            RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_vendor_masters",pageNo:1,pageSize: 50 ,sortBy:{},
-           query:
-
-           {
-               _id:{
-               $in:
-               ids
-           }},
-
-         fields:{vendor_name:1,collections:1,design:1,SKU:1}},success,error);
-
-
-
-
-
-
-        function success(){
-
-           setRetailersList(arguments[0].items) ;
+            return arrayOfVendors;
 
         }
 
-        function error(){
 
-        //    errorCallBack() ;
+        function getVendorsForRetailer(){
+
+            var vendorForRetailer = [] ;
+            var product_type = "datalink";
+
+            var vendors = vendorsMasterStr.data.all ;
+
+
+            for(var i=0; i < vendors.length ; i++){
+                var vRecord = vendors[i];
+
+                var assocRtlrs = vendors[i].data.retailers ;
+
+                if(assocRtlrs)
+                {
+
+                    for(var k=0; k < assocRtlrs.length ; k++ )
+                    {
+
+                        if(assocRtlrs[k].retailer_id)
+                        {
+
+                            if(assocRtlrs[k].retailer_id == rt_id  && ( !assocRtlrs[k].product_type || product_type == assocRtlrs[k].product_type ) )
+                            {
+
+                                vendorForRetailer.push(
+                                    {
+                                        vendor_name:vRecord.data.vendor_name ,
+                                        collections:vRecord.data.collections ,
+                                        design:vRecord.data.design ,
+                                        SKU:vRecord.data.SKU,
+                                        no_of_images:vRecord.data.no_of_images,
+                                        no_of_additional_images:vRecord.data.no_of_additional_images,
+                                        vendor_id: vRecord.data._id,
+                                        Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) ||' '
+                                    }
+
+                                );
+                            }
+
+                        }
+                        else
+                        {
+
+                            if(assocRtlrs[k].retailer_phone == rt_phn )
+                            {
+                                vendorForRetailer.push(
+                                    {
+                                        vendor_name:vRecord.data.vendor_name ,
+                                        collections:vRecord.data.collections ,
+                                        design:vRecord.data.design ,
+                                        SKU:vRecord.data.SKU,
+                                        no_of_images:vRecord.data.no_of_images,
+                                        no_of_additional_images:vRecord.data.no_of_additional_images,
+                                        vendor_id: vRecord.data._id,
+                                        Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) || ' '
+                                    }
+
+                                );
+
+                            }
+                        }
+                    }
+
+                }
+            }
+            return vendorForRetailer ;
+        }
+
+
+
+
+        function getVendoersForRetailersByProduct(product_type_key){
+
+            var vendorForRetailer = [] ;
+            if(product_type_key){
+
+            }else{
+                return vendorForRetailer;
+            }
+            var vendors = vendorsMasterStr.data.all ;
+
+
+            for(var i=0; i < vendors.length ; i++){
+                var vRecord = vendors[i];
+
+                var assocRtlrs = vendors[i].data[product_type_key] ;
+
+                if(assocRtlrs)
+                {
+
+                    for(var k=0; k < assocRtlrs.length ; k++ )
+                    {
+
+                        if(assocRtlrs[k].retailer_id)
+                        {
+
+                            if(assocRtlrs[k].retailer_id == rt_id )
+                            {
+                                vendorForRetailer.push(
+                                    {
+                                        vendor_name:vRecord.data.vendor_name ,
+                                        collections:vRecord.data.collections ,
+                                        design:vRecord.data.design ,
+                                        SKU:vRecord.data.SKU,
+                                        no_of_images:vRecord.data.no_of_images,
+                                        no_of_additional_images:vRecord.data.no_of_additional_images,
+                                        vendor_id: vRecord.data._id,
+                                        Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) ||' '
+                                    }
+
+                                );
+                            }
+
+                        }
+                        else
+                        {
+
+                            if(assocRtlrs[k].retailer_phone == rt_phn )
+                            {
+                                vendorForRetailer.push(
+                                    {
+                                        vendor_name:vRecord.data.vendor_name ,
+                                        collections:vRecord.data.collections ,
+                                        design:vRecord.data.design ,
+                                        SKU:vRecord.data.SKU,
+                                        no_of_images:vRecord.data.no_of_images,
+                                        no_of_additional_images:vRecord.data.no_of_additional_images,
+                                        vendor_id: vRecord.data._id,
+                                        Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) || ' '
+                                    }
+
+                                );
+
+                            }
+                        }
+                    }
+
+                }
+            }
+            return vendorForRetailer ;
+
+
 
         }
 
-        */
+
+
+
 
         function setRetailersList(data){
 
@@ -4878,17 +6174,18 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             var prospectList  = Ext.ComponentQuery.query('#RDInStoreVendorsTab')[0].down("#mainList");
 
 
-              var prospectStore = prospectList.getStore() ;
+            var prospectStore = prospectList.getStore() ;
+            console.error("REMOVINF DATA");
             prospectStore.removeAll();
             prospectStore.sync();
-
+            console.error(data);
             prospectStore.setData(data) ;
 
             prospectStore.sync();
 
             prospectList.selectAll() ;
 
-             Ext.ComponentQuery.query('#inStoreVendorsRetailersCLbl')[0].setHtml("Total Vendors : "+ data.length ) ;
+            Ext.ComponentQuery.query('#RDStoreSideTabPanel #inStoreVendorsRetailersCLbl')[0].setHtml("Total Vendors : "+ data.length ) ;
 
             if(data.length == 0){
 
@@ -4896,67 +6193,50 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
             }else{
 
-                 Ext.ComponentQuery.query('#RDStoreSideTabPanel')[0].setActiveItem(0);
+                Ext.ComponentQuery.query('#RDStoreSideTabPanel')[0].setActiveItem(0);
             }
 
 
         }
 
+        //RDForECommerce
+        function setRetailersListByProduct(data ,productTabId){
+
+            var prospectList  = Ext.ComponentQuery.query('#' +productTabId)[0].down("#mainList");
+            var prospectStore = prospectList.getStore() ;
+            if(prospectStore){
+                prospectStore.removeAll();
+                prospectStore.sync();
+                prospectStore.setData(data) ;
+                prospectStore.sync();
 
 
-        function getVendorsForRetailer(){
 
-            var vendorForRetailer = [] ;
-
-            var vendors = vendorsMasterStr.data.all ;
-
-
-            for(var i=0; i < vendors.length ; i++){
-                var vRecord = vendors[i];
-                var assocRtlrs = vendors[i].data.retailers ;
-                if(assocRtlrs){
-
-                    for(var k=0; k < assocRtlrs.length ; k++ ){
-
-                        if(assocRtlrs[k].retailer_id){
-
-                            if(assocRtlrs[k].retailer_id == rt_id)
-                                {
-                                    vendorForRetailer.push(
-                                    {
-                                        vendor_name:vRecord.data.vendor_name ,
-                                        collections:vRecord.data.collections ,
-                                        design:vRecord.data.design ,
-                                        SKU:vRecord.data.SKU,
-                                        vendor_id: vRecord.data._id
-                                    }
-
-                                    );
-                                }
-
-                        }else{
-
-                             if(assocRtlrs[k].retailer_phone == rt_phn )
-                                {
-                                    vendorForRetailer.push(
-                                    {
-                                        vendor_name:vRecord.data.vendor_name ,
-                                        collections:vRecord.data.collections ,
-                                        design:vRecord.data.design ,
-                                        SKU:vRecord.data.SKU,
-                                        vendor_id: vRecord.data._id
-                                    }
-
-                                    );
-
-                        }
-                    }
-                }
-
-                }
+            }else{
+                prospectList.setData(data) ;
             }
-            return vendorForRetailer ;
+            prospectList.selectAll() ;
+            Ext.ComponentQuery.query('#' + productTabId + ' ' + '#inStoreVendorsRetailersCLbl')[0].setHtml("Total Vendors : "+ data.length ) ;
+
+            //     if(data.length == 0){
+
+            //         Ext.ComponentQuery.query('#RDStoreSideTabPanel')[0].setActiveItem(1);
+
+            //     }else{
+
+            //          Ext.ComponentQuery.query('#RDStoreSideTabPanel')[0].setActiveItem(0);
+            //     }
+
+
+
+
         }
+
+        function getAccountNoForRetailerAndVendor(){
+            return '';
+        }
+
+
     },
 
     destroyLocations: function() {
@@ -5321,13 +6601,13 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
     },
 
-    loadVdrInfoTotals: function() {
+    loadVdrInfoTotals: function(parentTab) {
+            parentTab = parentTab || 'RDStoreSideTabPanel';
 
-
-        var prospectList  = Ext.ComponentQuery.query('#RDInStoreVendorsTab')[0].down("#mainList");
+        var prospectList  = Ext.ComponentQuery.query('#' + parentTab +' ' + '#RDInStoreVendorsTab')[0].down("#mainList");
         var vdrStore = prospectList.getStore() ;
-        var parentPanel = Ext.ComponentQuery.query('#rtlrVdrAssociationTotalFldSet')[0] ;
-
+        var parentPanel = Ext.ComponentQuery.query('#' + parentTab +' ' + ' #rtlrVdrAssociationTotalFldSet')[0] ;
+        //RDStoreSideTabPanel
 
 
         var totalSKU = 0 ;
@@ -5335,8 +6615,16 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         var totalDesigns = 0 ;
 
 
-        var vendors = vdrStore.getData().all ;
+        var vendors ;
+        try{
 
+           vendors = vdrStore.getData().all ;
+
+        }catch(e){
+
+             console.log("ERROR WAS THROWN" , e);
+             vendors = [];
+        }
 
         for(var i=0 ; i < vendors.length ; i++){
 
@@ -5374,12 +6662,16 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             switch (attrVak){
 
 
-                case storeAttr: RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);
+                case storeAttr:
+                    setMask() ;
+                    showRtDtl() ;
 
-                                Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDStoresTab');
-                                RMdatalink.app.getController('UINav').onPanelAddretailertapped(retailersMaincontentpanel);
+        //                         RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);
 
-                   Ext.ComponentQuery.query('#rtDetlViewSubscriptionsBtn')[0].fireEvent("tap");
+        //                         Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDStoresTab');
+        //                         RMdatalink.app.getController('UINav').onPanelAddretailertapped(retailersMaincontentpanel);
+
+        //                        Ext.ComponentQuery.query('#rtDetlViewSubscriptionsBtn')[0].fireEvent("tap");
                     break;
 
                 default:
@@ -5398,6 +6690,30 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 record:record,
                 index:index
             };
+        }
+
+
+        function setMask(){
+            Ext.Viewport.setMasked({
+                            xtype: 'loadmask'
+                        });
+        }
+
+        function showRtDtl(){
+
+            Ext.Function.defer( gotoRtDtl, 100, this);
+        }
+
+        function gotoRtDtl(){
+
+                                  RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);
+
+                                Ext.ComponentQuery.query('#retailerDetailsMainTabPanel')[0].setActiveItem('#RDStoresTab');
+                                RMdatalink.app.getController('UINav').onPanelAddretailertapped(retailersMaincontentpanel);
+                                RMdatalink.app.getController('UINav').isRetailerDetailsView = true;
+                               Ext.ComponentQuery.query('#rtDetlViewSubscriptionsBtn')[0].fireEvent("tap");
+
+
         }
     },
 
@@ -5424,7 +6740,8 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 ecatalog_status :Ext.ComponentQuery.query('#rtEcatalogStatusSelFld')[0].getValue(),
                 ecommerce_status :Ext.ComponentQuery.query('#rtECommerceStatusSelFld')[0].getValue(),
                 rmpro_status :Ext.ComponentQuery.query('#rtRM_proStatusSelFld')[0].getValue(),
-                irugs_status : Ext.ComponentQuery.query('#rtirugzStatusSelFld')[0].getValue()
+                irugs_status : Ext.ComponentQuery.query('#rtirugzStatusSelFld')[0].getValue(),
+                vip_status : Ext.ComponentQuery.query('#rtVipStatusSelFld')[0].getValue()
 
             };
 
@@ -5442,7 +6759,10 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
            (dataToUpdate.store_products.rmpro_status && dataToUpdate.store_products.rmpro_status != prevRec.rmpro_status ) ||
 
-           (dataToUpdate.store_products.irugs_status && dataToUpdate.store_products.datalink_status != prevRec.irugs_status )
+           (dataToUpdate.store_products.irugs_status && dataToUpdate.store_products.irugs_status != prevRec.irugs_status )  ||
+
+           (dataToUpdate.store_products.vip_status && dataToUpdate.store_products.vip_status != prevRec.vip_status )
+
 
         ){
 
@@ -5491,6 +6811,249 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 '<div class="x-rm-rdstoreother-details"><div>'+name+'</div>'+
                 '<a href="#card2"">ACCOUNT NO #'+record.data.account_no+'</a></div>'
             );
+    },
+
+    setAccNoForNewRt: function() {
+        //db.dev_rdl_masterretailerrecords.find({account_no: { $exists: true}},{account_no:1}).sort({account_no:1/-1}).limit(-1)
+            Ext.ComponentQuery.query('#RDAccountDetails')[0].setValue("");
+             RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_masterretailerrecords",pageNo:1 ,pageSize: -1 ,sortBy:{account_no:1/-1},
+                 query:{account_no: { $exists: true}},
+                fields:{account_no:1}},success,error);
+
+            var accountNo = 9999 ;
+            function success(){
+
+                accountNo = arguments[0].items[0].account_no ;// parseInt(arguments[0].items[0].account_no,1) ;
+
+                var temp = parseInt(accountNo) ;
+                temp = temp + 1 ;
+
+                Ext.ComponentQuery.query('#RDAccountDetails')[0].setValue(temp);
+            }
+
+            function error(){
+
+            }
+    },
+
+    checkForDuplicateAccountNo: function() {
+
+
+        var that = this ;
+          var tempACCNo = Ext.ComponentQuery.query('#RDAccountDetails')[0].getValue();
+        if(tempACCNo == ""){
+
+            that.saveRetailersDetailedView() ;
+            return ;
+        }
+
+        var selectedRow = RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
+
+                //RMdatalink.util.globalConfig.setDataInRetailerScreenForSaveOrCancel( {}  );
+
+                console.log("selectedRow" ,selectedRow);
+
+                if(!Object.keys(selectedRow).length){
+                    that.saveRetailersDetailedView() ;
+                    return ;
+
+                }
+
+        var recData = selectedRow.record.data ;
+
+        var rtId = recData._id ;
+
+
+
+         Ext.Viewport.setMasked({
+                            xtype: 'loadmask',message:"Validating Account Number..."
+                        });
+
+
+
+
+          RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_masterretailerrecords",pageNo:1 ,pageSize: 10 ,sortBy:{},
+                                      query:{
+                                                  _id: { $ne: rtId } ,
+                                                  account_no:tempACCNo
+                                            },
+                                 fields:{account_no:1}},success,error);
+
+
+            function success(){
+
+                if(arguments[0].items.length > 0){
+                     that.config.accNoChk = 0 ;
+                     Ext.Viewport.setMasked(false);
+                     Ext.Msg.alert('Alert.', "This account is already given to another retailer.", Ext.emptyFn);
+                }else{
+
+                    that.saveRetailersDetailedView() ;
+                }
+
+            }
+
+            function error(){
+                that.saveRetailersDetailedView() ;
+            }
+    },
+
+    onCancelEditBtnTap: function(button, component) {
+        console.log("WOHOO");
+            if(button.getText() == "Edit"){
+
+                 component.down('#detailsSaveBtn').setHidden(false);
+                 button.setText("Cancel") ;
+                 this.disableEnableComponents(false) ;
+                 this.setTemplateOfListByEditingMode(true , true);
+
+
+            }else{
+
+                component.down('#detailsSaveBtn').setHidden(true);
+                 button.setText("Edit") ;
+                 this.disableEnableComponents(true) ;
+                 this.setTemplateOfListByEditingMode(false , true);
+
+            }
+
+    },
+
+    disableEnableComponents: function(status) {
+
+
+
+
+            this.config.isEditMode = ! status ;
+
+            var rtvPanel = Ext.ComponentQuery.query('#RDretailers_vendorsDetailViewContainer')[0] ;
+
+
+
+            var edtCanclbBtn = rtvPanel.down('#detailsEditCancelBtn') ;
+
+            if(status){
+                     rtvPanel.down('#detailsSaveBtn').setHidden(true);
+                     edtCanclbBtn.setText("Edit") ;
+
+
+            }else{
+
+                rtvPanel.down('#detailsSaveBtn').setHidden(false);
+                edtCanclbBtn.setText("Cancel") ;
+            }
+
+
+
+
+        rtvPanel.down('#headerEditingLbl').setHidden(status);
+
+        Ext.ComponentQuery.query('#RDStoreTabFormPanel')[0].setDisabled(status);
+        Ext.ComponentQuery.query('#retailerEcommerceForm')[0].setDisabled(status);
+
+
+                var component = Ext.ComponentQuery.query('#RDStoresTab')[0];
+        Ext.ComponentQuery.query('#rm_selectFileForStore')[0].setDisabled(status);
+
+
+
+
+        var selectFlds = document.getElementsByClassName('rtDtllsinputFlds');
+
+        for( var i = 0 ; i< selectFlds.length ; i++ ){
+
+            selectFlds[i].disabled = status  ;
+        }
+
+        rtvPanel.down('#rtDetlViewSubscriptionsBtn').setDisabled(!status);
+
+
+        rtvPanel.down('#RDStoreTabResetPwdBtn').setDisabled(status);
+
+        rtvPanel.down('#rtDtlProductStatusForm').setDisabled(status);
+        rtvPanel.down('#rtAdditionalInfoForm').setDisabled(status);
+        rtvPanel.down('#retailerLocationAddBtn').setDisabled(status);
+        rtvPanel.down('#CmpContactDelBtn').setDisabled(status);
+        rtvPanel.down('#CmpContactAddBtn').setDisabled(status);
+
+        rtvPanel.down('#REPSDelBtn').setDisabled(status);
+        rtvPanel.down('#REPSAddBtn').setDisabled(status);
+        rtvPanel.down('#RDTechSupportAddBtn').setDisabled(status);
+        rtvPanel.down('#RDTechSupportDelBtn').setDisabled(status);
+        rtvPanel.down('#RDTechSupportLogsStatusSelectFld').setDisabled(status);
+
+        rtvPanel.down('#RDNotesAddBtn').setDisabled(status);
+        rtvPanel.down('#RDNotesDelBtn').setDisabled(status);
+        rtvPanel.down('#RDNotepadNote').setDisabled(status);
+        rtvPanel.down('#RDManagerBlueStickyTextArea').setDisabled(status);
+        rtvPanel.down('#RDManagerRelationDetailsForm').setDisabled(status);
+        rtvPanel.down('#RDCRMNotesBlueStickyTextArea').setDisabled(status);
+
+        rtvPanel.down('#RDUserProfileBlueStickyTextArea').setDisabled(status);
+        rtvPanel.down('#RDUserProfileRelationDetailsForm').setDisabled(status);
+        rtvPanel.down('#ActRDManagerBlueStickyTextArea').setDisabled(status);
+        rtvPanel.down('#ActRDManagerRelationDetailsForm').setDisabled(status);
+
+        /*
+        rtvPanel.down('#').setDisabled(status);
+        */
+
+
+        // Ext.ComponentQuery.query('#RDInStoreVendorList')[0].down('#mainList').setDisableSelection(status);
+        Ext.ComponentQuery.query('#CmpContactMainListWithHeader')[0].down('#mainList').setDisableSelection(status);
+
+        Ext.ComponentQuery.query('#rtDtlNotesLsPanel')[0].down('#mainList').setDisableSelection(status);
+        Ext.ComponentQuery.query('#RDCRMList')[0].down('#mainList').setDisableSelection(status);
+
+        // Ext.ComponentQuery.query('#RDInStoreVendorsList')[0].down('#mainList').setDisableSelection(status);
+        // Ext.ComponentQuery.query('#RDOnlineVendorsList')[0].down('#mainList').setDisableSelection(status);
+
+
+
+    },
+
+    onTapOfProductList: function(dataview, index, target, record, e, eOpts) {
+        ///THIS FUNCTION IS CALLED WHEN ITEM TAP PRESENT IN onRDStoreProductsListSelect FUNCTION DETERMINES THAT USER HAS TAPPED TO VIEW DIFFERENT LIST
+
+            var pospectActiveListContainer = Ext.ComponentQuery.query("#pospectActiveListContainer")[0];
+
+
+
+        // index set is
+        /*
+        *
+        * 1 - E-commerce
+        * 0 - Datalink
+        *  Other can be added if neccessary.But Do Not Disturb this index
+        *
+        *
+        *
+        *
+        *
+        *
+        *
+        */
+
+        if(record.data.ProductName == "E-Commerce"){
+
+
+            console.log("USER WANT TO SEE E-COMMERCE LIST");
+
+
+                pospectActiveListContainer.setActiveItem(1);
+        }else if(record.data.ProductName ==  "VIP"){
+
+
+            console.log("USER WANTS TO SEE VIP LIST");
+             pospectActiveListContainer.setActiveItem(2);
+        }else{
+
+        //        var pospectActiveListContainer = Ext.ComponentQuery.query("#pospectActiveListContainer")[0];
+                pospectActiveListContainer.setActiveItem(0);
+
+            console.log("SHOW THEM LIST ");
+
+        }
     }
 
 });

@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "printInvoice.packModulesStore",
+        "model": "products.BillingRmproModules",
+        "storeId": "printInvoice.packModulesStore"
+    },
+    "designerId": "41bbcb68-f7a6-4786-a3ec-1ae1ce6c14ad"
+}

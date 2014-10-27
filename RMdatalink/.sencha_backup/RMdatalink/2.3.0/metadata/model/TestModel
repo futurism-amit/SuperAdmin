@@ -1,0 +1,26 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TestModel"
+    },
+    "designerId": "468505e3-82d2-403a-9bc7-9e7b703fcdbd",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "test"
+            },
+            "designerId": "a9c36f20-01e1-4ab9-b24f-4bf85dffad7b"
+        }
+    ]
+}

@@ -315,6 +315,12 @@ Ext.define('RMdatalink.model.retailers.Master', {
             },
             {
                 name: 'account_no'
+            },
+            {
+                name: 'e_commerce_info'
+            },
+            {
+                name: 'store_products_vip'
             }
         ],
         validations: [

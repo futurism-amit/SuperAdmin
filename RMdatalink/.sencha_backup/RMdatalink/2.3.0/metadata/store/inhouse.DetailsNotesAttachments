@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "inhouse.DetailsNotesAttachments",
+        "model": "retailers.DetailsAttachments",
+        "storeId": "inhouseDetailsNotesAttachments"
+    },
+    "designerId": "cbd1192b-a406-4293-8f3e-f0c09e0cbf92"
+}

@@ -1,0 +1,29 @@
+.x-rm-detailsHeader {
+    background-color:#FFFFFF !important;            
+}
+
+.x-rm-detailsHeaderTitle {
+    color: #D7D8DA !important;
+    font-size: 150%;
+    font-family: 'OpenSans';
+    letter-spacing: 2px;
+}
+
+.x-rm-detailsInnerBtns {
+    background-color:#646466 !important;
+}
+
+.x-rm-detailsInnerBtns-pressing {
+    background-color:#2EC1DA !important;
+}
+
+.x-rm-detailsInnerBtns .x-button-label {
+    font-family: 'OpenSans'; 
+    font-size:70% !important;
+    font-weight:500 !important;
+    color:#EDE7E3 !important;
+}
+
+.x-rm-detailsSaveBtns {
+    background-color:#2EC1DA !important;
+}

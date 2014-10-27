@@ -1,0 +1,331 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "inhousecustomerslist",
+        "designer|userClassName": "inhouse.customersList",
+        "layout": "vbox",
+        "requires": [
+            "Ext.dataview.DataView",
+            "Ext.dataview.List"
+        ],
+        "scrollable": false
+    },
+    "designerId": "6068bd44-7f27-4e36-af9a-9eca7ff81758",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "x-rm-rdformpanel"
+                ],
+                "designer|displayName": "inhouseSearchContainer",
+                "height": "32px",
+                "itemId": "customersContainer",
+                "layout": "hbox",
+                "layout|flex": null,
+                "scrollable": false,
+                "style": "margin-top:5px;"
+            },
+            "designerId": "2d91677e-aa01-40c2-91e7-b11bfc5dab4a",
+            "cn": [
+                {
+                    "type": "Ext.field.Search",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "action": "fillSearchDropDown",
+                        "cls": [
+                            "x-field-techLogsearch"
+                        ],
+                        "designer|displayName": null,
+                        "height": "100%",
+                        "itemId": "inhouseCustomersSearchField",
+                        "label": null,
+                        "labelWidth": "60px",
+                        "layout|flex": 1,
+                        "placeHolder": null,
+                        "width": null
+                    },
+                    "designerId": "f22e9e06-611a-4a79-9607-03f0f69c1263",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "action",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-radiordformpanel",
+                            "x-rm-rdformpanel"
+                        ],
+                        "container|align": "center",
+                        "container|pack": "center",
+                        "height": 40,
+                        "layout": "hbox",
+                        "layout|flex": null,
+                        "margin": 0,
+                        "scrollable": false,
+                        "title": null,
+                        "width": "180px"
+                    },
+                    "designerId": "cc5e18c0-4b6a-4998-96eb-2ea7b72fd5ad",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Radio",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "pointerCursor"
+                                ],
+                                "inputCls": "radiofieldInput",
+                                "itemId": "searchForRetailerRadioFld",
+                                "label": "Retailer",
+                                "labelCls": "transparentBack",
+                                "labelWidth": "75px",
+                                "name": "searchFor",
+                                "width": "90px"
+                            },
+                            "designerId": "c0b7a5a0-fbf9-4fb6-be9e-833906f72e84"
+                        },
+                        {
+                            "type": "Ext.field.Radio",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "checked": true,
+                                "cls": [
+                                    "pointerCursor"
+                                ],
+                                "inputCls": "radiofieldInput",
+                                "itemId": "searchForVendorRadioFld",
+                                "label": "Vendor",
+                                "labelCls": "transparentBack",
+                                "labelWidth": "75px",
+                                "name": "searchFor",
+                                "width": "90px"
+                            },
+                            "designerId": "c3acf798-2d65-4352-985d-91ffd2af9eac"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "inhouseListNSetupContainer",
+                "layout": "hbox",
+                "layout|flex": 15,
+                "scrollable": false
+            },
+            "designerId": "589cc355-bd92-46ff-99e5-05f91f968815",
+            "cn": [
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "inhouseListContainer",
+                        "layout": "vbox",
+                        "layout|flex": 9,
+                        "scrollable": false
+                    },
+                    "designerId": "e8d9eb36-78e9-430c-b2a4-3bb8be004e72",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.DataView",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "actionSorting": "sortingStore",
+                                "cls": [
+                                    "x-rm-list-header"
+                                ],
+                                "designer|displayName": "inhouseListHeader",
+                                "height": "40px",
+                                "itemId": "inHouseCustomersListHeader",
+                                "layout|flex": null,
+                                "minHeight": null,
+                                "scrollable": false
+                            },
+                            "designerId": "2eade2d8-b470-4055-89f7-8a7ddd1253ee",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "actionSorting",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>Data View Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "9beba3de-abb7-4b58-9cb9-83f2686d7ec4"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "action": "setScrollBarVisible",
+                                "allowDeselect": true,
+                                "cls": [
+                                    "x-rm-list"
+                                ],
+                                "designer|displayName": "inhouseList",
+                                "itemId": "inHouseCustomersList",
+                                "layout|flex": 15,
+                                "mode": "SIMPLE",
+                                "onItemDisclosure": true
+                            },
+                            "designerId": "a8f42e38-6bb4-4191-b8a1-9ed643198fae",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "action",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>List Item {string}</div>"
+                                        ]
+                                    },
+                                    "designerId": "cdc7f899-313b-4878-a933-d9555669d494"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "inhouseSetupContainer",
+                        "layout|flex": 0
+                    },
+                    "designerId": "a233748f-a727-427b-ade7-f3c0e2a8fb08"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "retailerTotalsContainer",
+                "layout": "fit",
+                "layout|flex": 1
+            },
+            "designerId": "b07e8e5a-32d4-4aac-8d49-d21c34840d64",
+            "cn": [
+                {
+                    "type": "Ext.dataview.DataView",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-list-totals"
+                        ],
+                        "designer|displayName": "retailerTotalsList",
+                        "itemId": "inHouseCustomersTotalsList",
+                        "scrollable": false,
+                        "width": "90%"
+                    },
+                    "designerId": "19cf3f65-2b1b-457d-8118-e7d9f90e53d1",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    ""
+                                ]
+                            },
+                            "designerId": "087d4d83-5477-4429-ba51-d3479bc4cf87"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

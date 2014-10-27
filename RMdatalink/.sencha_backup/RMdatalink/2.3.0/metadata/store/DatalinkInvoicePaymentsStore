@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "DatalinkInvoicePaymentsStore",
+        "model": "InvoicePaymentsModule",
+        "storeId": "DatalinkInvoicePaymentsStore"
+    },
+    "designerId": "d3b0b33c-17a3-48da-a686-0dee8e213dd0"
+}

@@ -1,0 +1,14 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css2",
+        "id": "searchViewCSS",
+        "url": "resources/css/searchView/searchViewCSS.css"
+    },
+    "designerId": "1c06d02e-f4e2-46ed-8484-4c5c9f78b917"
+}

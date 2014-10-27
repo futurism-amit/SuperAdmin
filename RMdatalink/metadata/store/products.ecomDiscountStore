@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "products.ecomDiscountStore",
+        "model": "DiscountBasicModel",
+        "storeId": "products.ecomDiscountStore"
+    },
+    "designerId": "e564096f-a3cf-459b-881a-2479d84e28a4"
+}

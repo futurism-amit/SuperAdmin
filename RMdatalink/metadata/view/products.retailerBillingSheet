@@ -17,7 +17,7 @@
         "layout": "vbox",
         "margin": null,
         "padding": "0 0 0 0",
-        "width": "96%"
+        "width": "98%"
     },
     "designerId": "41622aa9-a481-458a-8045-6ed85c843e91",
     "cn": [
@@ -30,7 +30,8 @@
             "codeClass": null,
             "userConfig": {
                 "height": "30px",
-                "layout": "hbox"
+                "layout": "hbox",
+                "margin": "0 0 0 0"
             },
             "designerId": "4ab387e7-eb9a-49cf-84a1-93a535dbc69c",
             "cn": [
@@ -48,6 +49,34 @@
                     "designerId": "e9f04c04-fabd-4318-a0f8-45998adba608"
                 },
                 {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "skusTotalInHeader",
+                        "style": "margin-left:10px;"
+                    },
+                    "designerId": "b273e2bc-8ade-4e99-8d47-a7d1c7de3dd2"
+                },
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": true,
+                        "html": "|  EDITING  |",
+                        "itemId": "rtProductSetupEditLbl",
+                        "style": "font-size:1.0em;color:rgb(157, 8, 8);font-weight:bold;"
+                    },
+                    "designerId": "16aeb0dd-ebaa-4d1a-b385-5701c1604328"
+                },
+                {
                     "type": "Ext.Button",
                     "reference": {
                         "name": "items",
@@ -57,17 +86,17 @@
                     "userConfig": {
                         "badgeText": null,
                         "cls": [
-                            "x-rm-detailsSaveBtn",
-                            "x-rm-detailsInnerBtns"
+                            "x-rm-blueBtn"
                         ],
                         "docked": "right",
                         "height": null,
+                        "hidden": true,
                         "itemId": "rtBillingSaveBtn",
                         "margin": "0 5 0 0",
                         "minWidth": "100px",
                         "padding": "8 0 0 0",
                         "pressedCls": "x-rm-detailsInnerBtns-pressing",
-                        "text": "SAVE"
+                        "text": "Save"
                     },
                     "designerId": "a9628172-d2b4-4c46-8adc-fcaba147d8a7"
                 },
@@ -84,14 +113,38 @@
                             "x-rm-detailsInnerBtns"
                         ],
                         "docked": "right",
+                        "height": null,
                         "itemId": "productBillingSheetCancel",
                         "margin": "0 5 0 0",
                         "minWidth": "100px",
                         "padding": "8 0 0 0",
                         "pressedCls": " x-rm-detailsInnerBtns-pressing",
-                        "text": "CANCEL"
+                        "text": "Edit"
                     },
                     "designerId": "8f8092c7-9e73-4f70-b82c-fda4f28a8d45"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            " x-rm-detailsSaveBtn",
+                            "x-rm-detailsInnerBtns"
+                        ],
+                        "docked": "right",
+                        "height": null,
+                        "itemId": "productBillingSheetBackBtn",
+                        "margin": "0 5 0 0",
+                        "minWidth": "100px",
+                        "padding": "8 0 0 0",
+                        "pressedCls": " x-rm-detailsInnerBtns-pressing",
+                        "text": "Back"
+                    },
+                    "designerId": "f7fbdde3-03a7-4040-ad9f-ef8acd5afc09"
                 },
                 {
                     "type": "Ext.Button",
@@ -105,6 +158,7 @@
                             "x-rm-blueBtn"
                         ],
                         "docked": "right",
+                        "height": null,
                         "itemId": "productBillingShowSubscriptionBtn",
                         "margin": "0 5 0 0",
                         "minWidth": "100px",
@@ -127,6 +181,7 @@
                         ],
                         "docked": "right",
                         "height": "26px",
+                        "hidden": true,
                         "margin": "0 10 0 0",
                         "title": null,
                         "width": "260px"
@@ -172,7 +227,7 @@
                                             "\r",
                                             "        RMdatalink.util.Calendar.showCalendar(fn,component);\r",
                                             "        component.setDisabled(true);\r",
-                                            "    \r",
+                                            "\r",
                                             "        if(calendarPanelPicker)\r",
                                             "        {\r",
                                             "            calendarPanelPicker.setZIndex(52);\r",
@@ -203,9 +258,17 @@
                 ],
                 "designer|uiInterfaceName": "light",
                 "layout|flex": 1,
+                "margin": "0 0 0 0",
                 "ui": "light"
             },
             "designerId": "05945271-eca3-4532-bead-5d120a7fa098",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "he",
+                    "type": "string"
+                }
+            ],
             "cn": [
                 {
                     "type": "Ext.Container",
@@ -228,7 +291,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "margin": "0 0 0 0",
+                                "margin": null,
                                 "padding": null
                             },
                             "designerId": "76a99b64-22c8-4f6b-b27e-0f55d1e9394f",

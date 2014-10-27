@@ -1,0 +1,84 @@
+.x-rm-filterdd {
+    background-image: none;
+    border: 2px solid #2EC1DA;
+}
+
+.x-rm-filterdd,
+.x-rm-filterdd .x-anchor.x-anchor-top {
+    background-color: #FFFFFF;
+}
+
+.x-rm-filterdd .x-anchor.x-anchor-top {
+    background-image: url('../../../resources/images/filterDropDown/filterUpArrow.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-mask: none;
+}
+
+.x-rm-filterdd .x-scroll-scroller, .x-rm-filterdd .x-dataview-container,
+.x-rm-filterdd .x-dataview-item, .x-rm-filterdd .x-rm-filter-tplmain {
+    height:100% !important;
+}
+
+.x-rm-filter-tplmain {
+    color:#77787A !important;
+    font-family: 'OpenSans'; 
+    font-size:70% !important;
+}
+
+.x-rm-filter-tplmain > div {
+    width:100% !important;
+    height:33% !important;
+    border-bottom:2px solid #DCDCDE;
+    margin-top:2%;
+}
+
+.x-rm-filter-tplmain .x-rm-filter-container {
+    width: 100%;
+    height: 75%;
+    margin-top:2%;
+}
+
+.x-rm-filter-tplmain .x-rm-filter-check {
+    width: 46%;
+    margin:1% 2%;
+    float: left;
+}
+
+.x-rm-filter-tplmain .x-rm-filter-days {
+    width:100%;
+    margin: 2% 0;
+}
+
+.x-rm-filter-tplmain .x-rm-filter-days > span {
+    width:40%;        
+}
+
+.x-rm-filter-tplmain .x-rm-filter-check > input[type=text],
+.x-rm-filter-tplmain .x-rm-filter-days > input[type=text] {
+    width:50px;
+}
+
+.x-rm-filter-tplmain .x-rm-filter-check > input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color:#FFFFFF !important;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    width:10px;
+    height:10px;
+    border:1px solid #E0E0E2;
+}
+
+.x-rm-filter-tplmain .x-rm-filter-check > input[type=checkbox]:checked {
+    background-color:#2EC1DA !important;
+    border:1px solid #289DB7;
+}
+
+.x-rm-filter-applybtn .x-button-label {
+    color:#F3FAFD !important;
+    font-family: 'OpenSans'; 
+    font-size:85% !important;
+    font-weight:500 !important;
+}

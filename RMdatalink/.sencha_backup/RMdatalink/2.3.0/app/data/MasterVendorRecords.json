@@ -1,0 +1,358 @@
+{
+"masterVendorRecords": [
+        {
+        "SKU": "",
+                "attachments": [],
+                "blue_note": "",
+                "collections": "",
+                "company_contacts": [],
+                "crms": [],
+                "design": "",
+                "dos_and_donts": [
+                {
+                "notification": "",
+                        "id": "ext-record-2070"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2071"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2072"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2073"
+                        }
+        ],
+                "follow_ups": [
+                {
+                "notification": "",
+                        "id": "ext-record-2074"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2075"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2076"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2077"
+                        }
+        ],
+                "id": "ext-record-2736",
+                "last_export": "",
+                "last_login": "",
+                "manager_blue_note": "",
+                "manager_dos_and_donts": [
+                {
+                "notification": "",
+                        "id": "ext-record-2078"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2079"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2080"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2081"
+                        }
+        ],
+                "manager_email": "",
+                "manager_facebook": "",
+                "manager_firstname": "",
+                "manager_follow_ups": [
+                {
+                "notification": "",
+                        "id": "ext-record-2082"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2083"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2084"
+                        },
+                {
+                "notification": "",
+                        "id": "ext-record-2085"
+                        }
+        ],
+                "manager_lastname": "",
+                "manager_linkedin": "",
+                "manager_phone": "",
+                "manager_photo_url": "resources//images//logos//default_User.jpg",
+                "manager_position": "",
+                "manager_rd_alt_email": "",
+                "manager_rd_alt_phone": "",
+                "manager_rd_aniversary": "",
+                "manager_rd_car_of_choice": "",
+                "manager_rd_childs": [
+                {
+                "child_name": "",
+                        "child_age": ""
+                        },
+                {
+                "child_name": "",
+                        "child_age": ""
+                        },
+                {
+                "child_name": "",
+                        "child_age": ""
+                        }
+        ],
+                "manager_rd_dob": "",
+                "manager_rd_hobbies": "",
+                "manager_rd_partner": [
+                {
+                "partner_name": ""
+                        },
+                {
+                "partner_name": ""
+                        }
+        ],
+                "manager_rd_relatives": "",
+                "manager_rd_sig_other": "",
+                "manager_rd_website": "",
+                "manager_rd_years_at_co": "",
+                "manager_recent_activity": null,
+                "manager_twitter": "",
+                "no_of_additional_images": "",
+                "no_of_rugs_images": "",
+                "notes": [],
+                "order_no": "1002",
+                "photos": [],
+                "price": "",
+                "reps_bluebook_teamusers": [],
+                "reseller": "",
+                "user_since": "2014-04-11T17:18:39.047Z",
+                "vendor_accounting_tool": "",
+                "vendor_address_line1": "3432 South Dug Gap Road",
+                "vendor_advertising": "",
+                "vendor_alt_bussiness": "",
+                "vendor_challenges": "",
+                "vendor_city": "Dalton",
+                "vendor_created_in_past": "2014-04-11T17:18:39.077Z",
+                "vendor_email": "OrderDesk@LRResources.com",
+                "vendor_employees": "",
+                "vendor_in_store_retailers": [
+
+                ],
+                "vendor_inactive_reason": "",
+                "vendor_inventory_tool": "",
+                "vendor_location": "",
+                "vendor_logo": "resources//images//logos//default_User.jpg",
+                "vendor_modified_in_past": "",
+                "vendor_monthly_budget": "",
+                "vendor_monthly_subscription": "",
+                "vendor_name": "LR Resources",
+                "vendor_note": "",
+                "vendor_online_retailers": [
+
+                ],
+                "vendor_owner_firstname": "",
+                "vendor_owner_lastname": "",
+                "vendor_pending_approval": "",
+                "vendor_percent_oneof_kind": "",
+                "vendor_percent_program": "",
+                "vendor_performance": "GOOD",
+                "vendor_phone": "7062590155",
+                "vendor_size_sq_ft": "",
+                "vendor_state": "GA",
+                "vendor_status": "ACTIVE",
+                "vendor_type": "",
+                "vendor_website": "http://lrresources.com/",
+                "vendor_yr_business": "",
+                "vendor_zip": "30720"
+                }
+]
+}
+
+
+                
+            /*    
+                var vendorRecord =    {
+                    
+                    vendor_logo:vendor.vendor_logo,
+                    vendor_name:vendor.
+                    vendor_owner_firstname:vendor.
+                    vendor_owner_lastname:vendor.
+                    vendor_address_line1:vendor.
+                    vendor_address_suite:vendor.
+                    vendor_city:vendor.
+                    vendor_state:vendor.
+                    vendor_zip:vendor.
+                    vendor_email:vendor.
+                    vendor_phone:vendor.
+                    vendor_phone_ext:vendor.
+                    vendor_fax:vendor.
+                    vendor_website:vendor.
+                    vendor_type:vendor.
+                    vendor_location:vendor.
+                    vendor_employees:vendor.
+                    vendor_yr_business:vendor.
+                    vendor_percent_program:vendor.
+                    vendor_percent_oneof_kind:vendor.
+                    vendor_challenges:vendor.
+                    vendor_advertising:vendor.
+                    vendor_monthly_budget:vendor.
+                    vendor_status:vendor.
+                    manager_photo_url:vendor.
+                    manager_firstname:vendor.
+                    manager_lastname:vendor.
+                    manager_email:vendor.
+                    manager_phone:vendor.
+                    manager_linkedin:vendor.
+                    manager_facebook:vendor.
+                    manager_twitter:vendor.
+                    manager_rd_years_at_co:vendor.
+                    manager_rd_sig_other:vendor.
+                    manager_rd_aniversary:vendor.
+                    manager_rd_relatives:vendor.
+                    manager_rd_dob:vendor.
+                    manager_rd_hobbies
+                    manager_rd_car_of_choice
+                    manager_rd_alt_phone
+                    manager_rd_alt_email
+                    manager_rd_website
+                    manager_recent_activity
+                    manager_rd_childs
+                    manager_rd_partner
+                    manager_follow_ups
+                    manager_dos_and_donts
+                    manager_blue_note
+                    reps_bluebook_teamusers
+                    vendor_monthly_subscription
+                    vendor_note
+                    vendor_inactive_reason
+                    vendor_created_in_past
+                    vendor_modified_in_past
+                    crms
+                    photos
+                    notes
+                    id
+                    vendor_in_store_retailers
+                    vendor_online_retailers
+                    attachments
+                    vendor_performance
+                    user_since
+                    last_login
+                    last_export
+                    order_no
+                    reseller
+                    dos_and_donts
+                    follow_ups
+                    blue_note
+                    design
+                    SKU
+                    no_of_rugs_images
+                    no_of_additional_images
+                    collections
+                    manager_position
+                    company_contacts
+                    manager_address
+                    manager_city
+                    manager_zip
+                    manager_direct_number
+                    manager_state
+                    manager_phone_ext
+                    manager_direct_number_ext
+                    manager_address_suite
+                    
+                    
+                }
+
+                    vendor_logo:vendor.vendor_logo
+                    :vendor.vendor_name
+                    :vendor.vendor_owner_firstname
+                    :vendor.vendor_owner_lastname
+                    :vendor.vendor_address_line1
+                    :vendor.vendor_address_suite
+                    :vendor.vendor_city
+                    :vendor.vendor_state
+                    :vendor.vendor_zip
+                    :vendor.vendor_email
+                    :vendor.vendor_phone
+                    :vendor.vendor_phone_ext
+                    :vendor.vendor_fax
+                    :vendor.vendor_website
+                    :vendor.vendor_type
+                   :vendor.vendor_location
+                    :vendor.vendor_employees
+                    :vendor.vendor_yr_business
+                    :vendor.vendor_percent_program
+                    :vendor.vendor_percent_oneof_kind
+                    :vendor.vendor_challenges
+                    :vendor.vendor_advertising
+                    :vendor.vendor_monthly_budget
+                    :vendor.vendor_status
+                    :vendor.manager_photo_url
+                    :vendor.manager_firstname
+                    :vendor.manager_lastname
+                    :vendor.manager_email
+                    :vendor.manager_phone
+                    :vendor.manager_linkedin
+                    :vendor.manager_facebook
+                    :vendor.manager_twitter
+                    :vendor.manager_rd_years_at_co
+                    :vendor.manager_rd_sig_other
+                    :vendor.manager_rd_aniversary
+                    :vendor.manager_rd_relatives
+                    :vendor.manager_rd_dob
+                    :vendor.manager_rd_hobbies
+                    :vendor.manager_rd_car_of_choice
+                    :vendor.manager_rd_alt_phone
+                    :vendor.manager_rd_alt_email
+                    :vendor.manager_rd_website
+                    :vendor.manager_recent_activity
+                    :vendor.manager_rd_childs
+                    :vendor.manager_rd_partner
+                    :vendor.manager_follow_ups
+                    :vendor.manager_dos_and_donts
+                    :vendor.manager_blue_note
+                    :vendor.reps_bluebook_teamusers
+                    :vendor.vendor_monthly_subscription
+                    :vendor.vendor_note
+                    :vendor.vendor_inactive_reason
+                    :vendor.vendor_created_in_past
+                    :vendor.vendor_modified_in_past
+                    :vendor.crms
+                    :vendor.photos
+                    :vendor.notes
+                    :vendor.vendor_in_store_retailers
+                    :vendor.vendor_online_retailers
+                    :vendor.attachments
+                    :vendor.vendor_performance
+                    :vendor.user_since
+                    :vendor.last_login
+                    :vendor.last_export
+                    :vendor.order_no
+                    :vendor.reseller
+                    :vendor.dos_and_donts
+                    :vendor.follow_ups
+                    :vendor.blue_note
+                    :vendor.design
+                    :vendor.SKU
+                    :vendor.no_of_rugs_images
+                    :vendor.no_of_additional_images
+                    :vendor.collections
+                    :vendor.manager_position
+                    :vendor.company_contacts
+                    :vendor.manager_address
+                    :vendor.manager_city
+                    :vendor.manager_zip
+                    :vendor.manager_direct_number
+                    :vendor.manager_state
+                    :vendor.manager_phone_ext
+                    :vendor.manager_direct_number_ext
+                    :vendor.manager_address_suite
+                    */

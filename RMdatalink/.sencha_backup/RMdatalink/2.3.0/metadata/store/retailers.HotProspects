@@ -1,0 +1,32 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "retailers.HotProspects",
+        "model": "retailers.Master",
+        "pageNo": 1,
+        "storeId": "retailerHotProspects",
+        "totalNoOfPages": 1
+    },
+    "configAlternates": {
+        "pageNo": "number",
+        "totalNoOfPages": "number"
+    },
+    "designerId": "9741a95f-2e06-4822-94bb-0b429ec141b8",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "pageNo",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "totalNoOfPages",
+            "type": "string"
+        }
+    ]
+}

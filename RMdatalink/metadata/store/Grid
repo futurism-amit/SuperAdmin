@@ -1,0 +1,28 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "[\r",
+            "            { text : 'One',   amount : 1  },\r",
+            "            { text : 'Two',   amount : 2  },\r",
+            "            { text : 'Three', amount : 3  },\r",
+            "            { text : 'Four',  amount : 4  },\r",
+            "            { text : 'Five',  amount : 5  },\r",
+            "            { text : 'Six',   amount : 6  },\r",
+            "            { text : 'Seven', amount : 7  },\r",
+            "            { text : 'Eight', amount : 8  },\r",
+            "            { text : 'Nine',  amount : 9  },\r",
+            "            { text : 'Ten',   amount : 10 }\r",
+            "        ]"
+        ],
+        "designer|userClassName": "Grid",
+        "model": "Grid",
+        "storeId": "Grid"
+    },
+    "designerId": "3429e8c3-858b-4c43-abe3-b46494cbd87f"
+}

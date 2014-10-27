@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "InhouseCommissionStore",
+        "model": "inhouse.CommissionModel",
+        "storeId": "InhouseCommissionStore"
+    },
+    "designerId": "a0151ff6-1e8e-44eb-b7ae-1c99a11fcaa3"
+}

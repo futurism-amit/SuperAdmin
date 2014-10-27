@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ecomPricingVendors",
+        "model": "ecomPricingVendors",
+        "storeId": "ecomPricingVendors"
+    },
+    "designerId": "e5fb2813-1d05-4733-bfd4-b647c533eab2"
+}

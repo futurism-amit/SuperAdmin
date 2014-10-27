@@ -145,8 +145,8 @@
                                             "list.setItemTpl(\r",
                                             "    Ext.create('Ext.XTemplate',\r",
                                             "               '<div class=\"x-rm-listtpl-main\">',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{status}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
@@ -302,8 +302,8 @@
                                             "list.setItemTpl(\r",
                                             "    Ext.create('Ext.XTemplate',\r",
                                             "               '<div class=\"x-rm-listtpl-main\">',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{status}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
@@ -441,8 +441,8 @@
                                             "list.setItemTpl(\r",
                                             "    Ext.create('Ext.XTemplate',\r",
                                             "               '<div class=\"x-rm-listtpl-main\">',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{status}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
@@ -580,8 +580,8 @@
                                             "list.setItemTpl(\r",
                                             "    Ext.create('Ext.XTemplate',\r",
                                             "               '<div class=\"x-rm-listtpl-main\">',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{status}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
@@ -719,8 +719,8 @@
                                             "list.setItemTpl(\r",
                                             "    Ext.create('Ext.XTemplate',\r",
                                             "               '<div class=\"x-rm-listtpl-main\">',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 15%;\">{code}</div>',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{status}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 15%;\">{code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{status}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{startDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{endDate}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{used}</div>',\r",
@@ -799,6 +799,208 @@
                                     "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
                                 }
                             ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discoutVipTab",
+                                "itemId": "discountVipTab",
+                                "layout": "fit",
+                                "scrollable": false,
+                                "title": "VIP"
+                            },
+                            "designerId": "3cf99eff-d2a2-4e64-a64f-d8cc9b436f61",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabInitialize1111",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#discountListHeader\");\r",
+                                            "headers.setData([{}]);\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div style=\"width: 15%;\" data-name=\"vendor_name\">',\r",
+                                            "               '        Vendors&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"code\">',\r",
+                                            "               '        Code&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"status\">',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 6%;\" data-name=\"price\">',\r",
+                                            "               '        Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"startDate\">',\r",
+                                            "               '    Start&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 12%;\" data-name=\"endDate\">',\r",
+                                            "               '    End&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 10%;\" data-name=\"used\">',\r",
+                                            "               '        Used&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div style=\"width: 20%;\" data-name=\"comment\">',\r",
+                                            "               '     Comment&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "headers.refresh();\r",
+                                            "var list = component.down('#discountList');\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main\">',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 15%;\">{vendor_name}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{promo_code_info.promo_code}</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">ACTIVE</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 6%;\">{promo_code_info.vip_price}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{promo_code_info.start_date}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{promo_code_info.end_date}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{promo_code_info.limit_value}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 25%;\">{promo_code_info.comment}</div>',\r",
+                                            "               '</div>'\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setMode(\"SINGLE\");\r",
+                                            "\r",
+                                            "\r",
+                                            "/*\r",
+                                            "\r",
+                                            "\r",
+                                            "var updatingData = {\r",
+                                            "\r",
+                                            "    promo_code:promoCode,\r",
+                                            "    vip_price:vipFormPrice,\r",
+                                            "    start_date:startValue,\r",
+                                            "    end_date:EndValue,\r",
+                                            "    limit_value:LimitValue,\r",
+                                            "    comment:commentValue\r",
+                                            "};\r",
+                                            "*/\r",
+                                            "\r",
+                                            "//list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));\r",
+                                            "\r",
+                                            "//component.down('mypanel2').setHidden(true);\r",
+                                            "\r",
+                                            "//getArrayFromStore\r",
+                                            "\r",
+                                            "//list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));\r",
+                                            "\r",
+                                            "//var store = list.getStore();\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "55e03c6e-8a1a-41f5-a2b9-32feaad164a5"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onProspectsTabPainted1111",
+                                        "implHandler": [
+                                            "window.location.hash = 'discountCard'+5;\r",
+                                            "\r",
+                                            "//list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));\r",
+                                            "\r",
+                                            "\r",
+                                            "// discountVipTab discountList\r",
+                                            "var me = Ext.ComponentQuery.query(\"#discountsMainContentPanel\")[0];\r",
+                                            "me.vipListDataHandler();\r",
+                                            "// var component  = Ext.ComponentQuery.query(\"#discountVipTab\")[0];\r",
+                                            "// var list = component.down('#discountList');\r",
+                                            "\r",
+                                            "\r",
+                                            "// list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));\r",
+                                            "//Ext.getStore(\"vendors.Master\");"
+                                        ],
+                                        "name": "painted"
+                                    },
+                                    "designerId": "6b66932f-0dcd-4b11-b837-a5d9aefc5bc6"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "discounts.listcontainer5"
+                                    },
+                                    "designerId": "37d683de-9bae-44e5-971d-c88f721aa473",
+                                    "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onDiscountsTabPanelActiveItemChange",
+                                "implHandler": [
+                                    "console.log(\"ACTIVE ITEM CHANGE\");\r",
+                                    "if(container){\r",
+                                    "\r",
+                                    "    if(value.getItemId() == 'discountVipTab'){\r",
+                                    "\r",
+                                    "\r",
+                                    "        console.log(\"ACTIVE ITEM CHAGNES.CLOAS UNHHIDEED TAB\");\r",
+                                    "        var discountsSidePanel = Ext.ComponentQuery.query(\"#discountsSidePanel\");\r",
+                                    "        var discountsSideCreateNewkTab = discountsSidePanel[0].down(\"#discountsSideCreateNewkTab\");\r",
+                                    "        var discountsSidePreviousTab = discountsSidePanel[0].down(\"#discountsSidePreviousTab\");\r",
+                                    "        var vipCreateNewSIdeTab = discountsSidePanel[0].down(\"#vipCreateNewSIdeTab\");\r",
+                                    "            discountsSideCreateNewkTab.setHidden(true);\r",
+                                    "            discountsSidePreviousTab.setHidden(true);\r",
+                                    "            vipCreateNewSIdeTab.setHidden(false);\r",
+                                    "        var discountsSideNavigationTabBar = Ext.ComponentQuery.query(\"#discountsSideNavigationTabBar\")[0];\r",
+                                    "            discountsSideNavigationTabBar.setHidden(true);\r",
+                                    "            //discountsSidePanel.setActiveItem(vipCreateNewSIdeTab);\r",
+                                    "\r",
+                                    "    }else{\r",
+                                    "        var discountsSidePanel = Ext.ComponentQuery.query(\"#discountsSidePanel\");\r",
+                                    "        var discountsSideCreateNewkTab = discountsSidePanel[0].down(\"#discountsSideCreateNewkTab\");\r",
+                                    "        var discountsSidePreviousTab = discountsSidePanel[0].down(\"#discountsSidePreviousTab\");\r",
+                                    "        var vipCreateNewSIdeTab = discountsSidePanel[0].down(\"#vipCreateNewSIdeTab\");\r",
+                                    "            discountsSideCreateNewkTab.setHidden(false);\r",
+                                    "            discountsSidePreviousTab.setHidden(false);\r",
+                                    "            vipCreateNewSIdeTab.setHidden(true);\r",
+                                    "            discountsSidePanel[0].setActiveItem(discountsSideCreateNewkTab);\r",
+                                    "        var discountsSideNavigationTabBar = Ext.ComponentQuery.query(\"#discountsSideNavigationTabBar\")[0];\r",
+                                    "            //discountsSideNavigationTabBar.setHidden(false);\r",
+                                    "\r",
+                                    "    }\r",
+                                    "}\r",
+                                    "\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "name": "activeitemchange"
+                            },
+                            "designerId": "31fdf73a-3132-4f3f-ba10-90d4ab0bbda0"
                         }
                     ]
                 },
@@ -1569,10 +1771,1038 @@
                                     "masterInstanceId": "2079999a-b809-4140-8e10-1d9d2f947f0f"
                                 }
                             ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "discountsSidePreviousTab",
+                                "hidden": true,
+                                "itemId": "vipCreateNewSIdeTab",
+                                "layout": "vbox",
+                                "scrollable": false,
+                                "style": "background-color:white",
+                                "title": "PREVIOUS"
+                            },
+                            "designerId": "d9851051-ba86-4110-9d0b-765acf68a190",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-rdformpanel "
+                                        ],
+                                        "disabled": false,
+                                        "itemId": "CreateVippVendorFrom",
+                                        "layout|flex": 1,
+                                        "style": "background-color:white"
+                                    },
+                                    "designerId": "543f3dea-5296-40b1-ac8f-cfbc6682ec04",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "clsFOrVipTab"
+                                                ],
+                                                "itemId": "VipFormPromoCode",
+                                                "label": "Promo Code",
+                                                "labelWidth": "120px"
+                                            },
+                                            "designerId": "a5f9c928-842c-4313-8f95-1bf009c934e0"
+                                        },
+                                        {
+                                            "type": "Ext.field.Select",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "autoSelect": false,
+                                                "cls": [
+                                                    "clsFOrVipTab"
+                                                ],
+                                                "displayField": "vendor_name",
+                                                "itemId": "VipFormVendorId",
+                                                "label": "Vendor",
+                                                "labelWidth": "120px",
+                                                "store": "vendors.Master",
+                                                "usePicker": [
+                                                    "auto"
+                                                ],
+                                                "valueField": "_id"
+                                            },
+                                            "designerId": "aea36fae-b665-480a-88de-dd5a0350ad6d"
+                                        },
+                                        {
+                                            "type": "Ext.field.Number",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "clsFOrVipTab"
+                                                ],
+                                                "itemId": "vipFormPrice",
+                                                "label": "Price",
+                                                "labelWidth": "120px"
+                                            },
+                                            "designerId": "f982e4f6-2597-4893-93b9-2667938044c2"
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "inputByDatePicker",
+                                                "cls": [
+                                                    "clsFOrVipTab"
+                                                ],
+                                                "itemId": "vipFormStartDate",
+                                                "label": "Start Date",
+                                                "labelWidth": "120px"
+                                            },
+                                            "designerId": "c3df1a18-eddf-408e-bf2c-f3449195a671",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "action": "inputByDatePicker",
+                                                "cls": [
+                                                    "clsFOrVipTab"
+                                                ],
+                                                "itemId": "vipFormEndDate",
+                                                "label": "End Date",
+                                                "labelWidth": "120px"
+                                            },
+                                            "designerId": "02bf2a5b-efb6-4f91-b1d8-cdd1044e3bb9",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "action",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.field.Number",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "clsFOrVipTab"
+                                                ],
+                                                "itemId": "vipFormLimit",
+                                                "label": "Limit",
+                                                "labelWidth": "120px"
+                                            },
+                                            "designerId": "7a853224-433a-42d6-bde9-88f73b84a98a"
+                                        },
+                                        {
+                                            "type": "Ext.field.TextArea",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "clsFOrVipTab"
+                                                ],
+                                                "itemId": "vipFormComment",
+                                                "label": "Comment",
+                                                "labelWidth": "120px"
+                                            },
+                                            "designerId": "b34f5057-2ad6-4688-ac62-d2560954b8df"
+                                        },
+                                        {
+                                            "type": "Ext.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "center",
+                                                "container|pack": "center",
+                                                "docked": null,
+                                                "height": null,
+                                                "hidden": false,
+                                                "layout": "hbox",
+                                                "margin": "10 2px 0 80",
+                                                "padding": "0 2 0 0",
+                                                "width": null
+                                            },
+                                            "designerId": "06cfb24f-cc2e-4fd0-bbac-9f5c21229b79",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "action": "addNew",
+                                                        "cls": [
+                                                            "x-rm-blueBtn"
+                                                        ],
+                                                        "docked": null,
+                                                        "height": "20px",
+                                                        "itemId": "addVipPromoCodeAddButtton",
+                                                        "margin": null,
+                                                        "text": "Add",
+                                                        "width": "80px"
+                                                    },
+                                                    "designerId": "b50fc590-818f-485c-8b89-f812159a3869",
+                                                    "customConfigs": [
+                                                        {
+                                                            "group": "(Custom Properties)",
+                                                            "name": "action",
+                                                            "type": "string"
+                                                        }
+                                                    ],
+                                                    "cn": [
+                                                        {
+                                                            "type": "fixedfunction",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "designer|params": [
+                                                                    "button",
+                                                                    "e"
+                                                                ],
+                                                                "fn": "handler",
+                                                                "implHandler": [
+                                                                    "console.log(\"CLICKED\");\r",
+                                                                    "var CreateVippVendorFrom = Ext.ComponentQuery.query(\"#CreateVippVendorFrom\")[0];\r",
+                                                                    "\r",
+                                                                    "if(CreateVippVendorFrom){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var VipFormPromoCode = Ext.ComponentQuery.query(\"#VipFormPromoCode\")[0];\r",
+                                                                    "var VipFormVendorId = Ext.ComponentQuery.query(\"#VipFormVendorId\")[0];\r",
+                                                                    "var vipFormPrice = Ext.ComponentQuery.query(\"#vipFormPrice\")[0];\r",
+                                                                    "var vipFormStartDate = Ext.ComponentQuery.query(\"#vipFormStartDate\")[0];\r",
+                                                                    "var vipFormEndDate = Ext.ComponentQuery.query(\"#vipFormEndDate\")[0];\r",
+                                                                    "var vipFormLimit = Ext.ComponentQuery.query(\"#vipFormLimit\")[0];\r",
+                                                                    "var vipFormComment = Ext.ComponentQuery.query(\"#vipFormComment\")[0];\r",
+                                                                    "var vendorMaster  = Ext.getStore(\"vendors.Master\");\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var promoCode  = VipFormPromoCode.getValue();\r",
+                                                                    "var vipFormPrice  = vipFormPrice.getValue();\r",
+                                                                    "var startValue = vipFormStartDate.getValue();\r",
+                                                                    "var EndValue = vipFormStartDate.getValue();\r",
+                                                                    "var LimitValue = vipFormLimit.getValue();\r",
+                                                                    "var commentValue = vipFormComment.getValue();\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var vendorId = VipFormVendorId.getValue();\r",
+                                                                    "var vendor = findVendorBy_id(vendorId);\r",
+                                                                    "\r",
+                                                                    "console.log(vendor);\r",
+                                                                    "if(vendor.data.prevent_be_vip){\r",
+                                                                    "\r",
+                                                                    "    alert(\"THIS VENDOR CANNOT BE ADDDE TI VIP LIST\");\r",
+                                                                    "    return;\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "//promo_code_info\r",
+                                                                    "//is_promo_code_active\r",
+                                                                    "\r",
+                                                                    "var vendor_id = vendorId;\r",
+                                                                    "var keyOfRetailer = 'promo_code_info';\r",
+                                                                    "var flagofRetailer = 'is_promo_code_active';\r",
+                                                                    "var vendorMaster = Ext.getStore('vendors.Master') ;\r",
+                                                                    "\r",
+                                                                    "console.log(vendor_id);\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var record;\r",
+                                                                    "if(vendor_id)\r",
+                                                                    "{\r",
+                                                                    "  record = findVendorBy_id(vendor_id) ;\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "console.log(record);\r",
+                                                                    "if(!record){\r",
+                                                                    "\r",
+                                                                    "    return ;\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var updatingData = {\r",
+                                                                    "\r",
+                                                                    "    promo_code:promoCode,\r",
+                                                                    "    vip_price:vipFormPrice,\r",
+                                                                    "    start_date:startValue,\r",
+                                                                    "    end_date:EndValue,\r",
+                                                                    "    limit_value:LimitValue,\r",
+                                                                    "    comment:commentValue\r",
+                                                                    "};\r",
+                                                                    "var rtlrs = updatingData;\r",
+                                                                    "var me = Ext.ComponentQuery.query(\"#discountsMainContentPanel\")[0];\r",
+                                                                    "updateVendor() ;\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateVendor(){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    var dataToupdate = {\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    };\r",
+                                                                    "    record.set(keyOfRetailer, updatingData);\r",
+                                                                    "    record.set(flagofRetailer, true);\r",
+                                                                    "    dataToupdate[keyOfRetailer] = rtlrs;\r",
+                                                                    "    dataToupdate[flagofRetailer] = true;\r",
+                                                                    "    console.error(dataToupdate);\r",
+                                                                    "    me.vipListDataHandler();\r",
+                                                                    "    //return;\r",
+                                                                    "    RMdatalink.iwa.rdl.doUpdateCollection(vendorMaster, dataToupdate , record.get('_id'), updateSuccess, updateError );\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateSuccess(){\r",
+                                                                    "\r",
+                                                                    "    record.set(keyOfRetailer, rtlrs);\r",
+                                                                    "     Ext.Viewport.setMasked(false);\r",
+                                                                    "    console.log(\"vendor updated successfully\");\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateError(){\r",
+                                                                    "\r",
+                                                                    "     Ext.Viewport.setMasked(false);\r",
+                                                                    "    console.log(\"error in updating vendor\");\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    ""
+                                                                ]
+                                                            },
+                                                            "designerId": "55916d8b-8d64-432b-8999-43ff3b0c73a2"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "newGrayBtn"
+                                                        ],
+                                                        "height": "20px",
+                                                        "itemId": "addVipPromoCodeDeleteButtton",
+                                                        "margin": "0 5 0 5",
+                                                        "minHeight": "24px",
+                                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                                        "style": null,
+                                                        "text": "Delete",
+                                                        "width": "80px"
+                                                    },
+                                                    "designerId": "4b07d043-a8e1-44f6-8dc7-4870f7ac62a2",
+                                                    "cn": [
+                                                        {
+                                                            "type": "fixedfunction",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "designer|params": [
+                                                                    "button",
+                                                                    "e"
+                                                                ],
+                                                                "fn": "handler",
+                                                                "implHandler": [
+                                                                    "console.log(\"CLICKED\");\r",
+                                                                    "var CreateVippVendorFrom = Ext.ComponentQuery.query(\"#CreateVippVendorFrom\")[0];\r",
+                                                                    "\r",
+                                                                    "if(CreateVippVendorFrom){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var VipFormVendorId = Ext.ComponentQuery.query(\"#VipFormVendorId\")[0];\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var vendorId = VipFormVendorId.getValue();\r",
+                                                                    "var vendor = findVendorBy_id(vendorId);\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var vendor_id = vendorId;\r",
+                                                                    "var keyOfRetailer = 'promo_code_info';\r",
+                                                                    "var flagofRetailer = 'is_promo_code_active';\r",
+                                                                    "var vendorMaster = Ext.getStore('vendors.Master') ;\r",
+                                                                    "\r",
+                                                                    "console.log(vendor_id);\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var record;\r",
+                                                                    "if(vendor_id)\r",
+                                                                    "{\r",
+                                                                    "  record = findVendorBy_id(vendor_id) ;\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "console.log(record);\r",
+                                                                    "if(!record){\r",
+                                                                    "\r",
+                                                                    "    return ;\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var updatingData = false;\r",
+                                                                    "var rtlrs = updatingData;\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var discountVipTabList = Ext.ComponentQuery.query(\"#discountVipTab #discountList\")[0];\r",
+                                                                    "var store = discountVipTabList.getStore();\r",
+                                                                    "var recordTodeleteFromListIndex = store.find(\"_id\" ,vendor_id );\r",
+                                                                    "var recordTodeleteFrom = store.getAt(recordTodeleteFromListIndex);\r",
+                                                                    "if(recordTodeleteFrom){\r",
+                                                                    "\r",
+                                                                    "}else{\r",
+                                                                    "   return;\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "store.remove(recordTodeleteFrom);\r",
+                                                                    "var addVipPromoCodeClearButtton  = Ext.ComponentQuery.query(\"#addVipPromoCodeClearButtton\")[0];\r",
+                                                                    "\r",
+                                                                    "var handler = addVipPromoCodeClearButtton.getHandler();\r",
+                                                                    "\r",
+                                                                    "handler.call(addVipPromoCodeClearButtton,addVipPromoCodeClearButtton);\r",
+                                                                    "\r",
+                                                                    "updateVendor() ;\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateVendor(){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    var dataToupdate = {\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    };\r",
+                                                                    "    record.set(keyOfRetailer, updatingData);\r",
+                                                                    "    record.set(flagofRetailer, true);\r",
+                                                                    "    dataToupdate[keyOfRetailer] = rtlrs;\r",
+                                                                    "    dataToupdate[flagofRetailer] = true;\r",
+                                                                    "    console.error(dataToupdate);\r",
+                                                                    "\r",
+                                                                    "    //return;\r",
+                                                                    "    RMdatalink.iwa.rdl.doUpdateCollection(vendorMaster, dataToupdate , record.get('_id'), updateSuccess, updateError );\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateSuccess(){\r",
+                                                                    "\r",
+                                                                    "    record.set(keyOfRetailer, rtlrs);\r",
+                                                                    "     Ext.Viewport.setMasked(false);\r",
+                                                                    "    console.log(\"vendor updated successfully\");\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateError(){\r",
+                                                                    "\r",
+                                                                    "     Ext.Viewport.setMasked(false);\r",
+                                                                    "    console.log(\"error in updating vendor\");\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    ""
+                                                                ]
+                                                            },
+                                                            "designerId": "4857dd40-fe1b-4344-accc-3d185a8e0743"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "badgeText": "",
+                                                        "cls": [
+                                                            "x-rm-blueBtn",
+                                                            "x-rm-rdopenbtns",
+                                                            "x-rm-smalliconbtns"
+                                                        ],
+                                                        "docked": null,
+                                                        "height": "20px",
+                                                        "hidden": null,
+                                                        "icon": null,
+                                                        "iconAlign": "center",
+                                                        "itemId": "addVipPromoCodeClearButtton",
+                                                        "margin": "0 4 0 0",
+                                                        "style": "",
+                                                        "text": "Clear",
+                                                        "width": "80px"
+                                                    },
+                                                    "designerId": "d47dfcfb-2c63-404b-a6c1-72ebfc999a8d",
+                                                    "cn": [
+                                                        {
+                                                            "type": "fixedfunction",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "designer|params": [
+                                                                    "button",
+                                                                    "e"
+                                                                ],
+                                                                "fn": "handler",
+                                                                "implHandler": [
+                                                                    "\r",
+                                                                    "    var VipFormPromoCode = Ext.ComponentQuery.query(\"#VipFormPromoCode\")[0];\r",
+                                                                    "    var VipFormVendorId = Ext.ComponentQuery.query(\"#VipFormVendorId\")[0];\r",
+                                                                    "    var vipFormPrice = Ext.ComponentQuery.query(\"#vipFormPrice\")[0];\r",
+                                                                    "    var vipFormStartDate = Ext.ComponentQuery.query(\"#vipFormStartDate\")[0];\r",
+                                                                    "    var vipFormEndDate = Ext.ComponentQuery.query(\"#vipFormEndDate\")[0];\r",
+                                                                    "    var vipFormLimit = Ext.ComponentQuery.query(\"#vipFormLimit\")[0];\r",
+                                                                    "    var vipFormComment = Ext.ComponentQuery.query(\"#vipFormComment\")[0];\r",
+                                                                    "    var vendorMaster  = Ext.getStore(\"vendors.Master\");\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    VipFormPromoCode.setValue(null);\r",
+                                                                    "    VipFormVendorId.setValue(null);\r",
+                                                                    "    vipFormPrice.setValue(null);\r",
+                                                                    "    vipFormStartDate.setValue(null);\r",
+                                                                    "    vipFormEndDate.setValue(null);\r",
+                                                                    "    vipFormComment.setValue(null);\r",
+                                                                    "    vipFormLimit.setValue(null);\r",
+                                                                    "\r",
+                                                                    "    var discountVipTabList = Ext.ComponentQuery.query(\"#discountVipTab #discountList\")[0];\r",
+                                                                    "        discountVipTabList.deselectAll();\r",
+                                                                    "\r",
+                                                                    "    var addVipPromoCodeAddButtton = Ext.ComponentQuery.query(\"#addVipPromoCodeAddButtton\")[0];\r",
+                                                                    "        addVipPromoCodeAddButtton.setText(\"Add\");"
+                                                                ]
+                                                            },
+                                                            "designerId": "c50b84cd-d33d-4d2e-9d05-fbfa24a99a2d"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.SegmentedButton",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "segButton"
+                                                ],
+                                                "container|align": "center",
+                                                "container|pack": "center",
+                                                "hidden": true
+                                            },
+                                            "designerId": "aaf2734d-7c41-43f1-9492-1bfcf61bb44e",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "grayBtn"
+                                                        ],
+                                                        "labelCls": null,
+                                                        "layout|flex": null,
+                                                        "margin": "10px",
+                                                        "text": "Create",
+                                                        "width": "130px"
+                                                    },
+                                                    "designerId": "db638118-4e49-4677-937a-fa297b86ca40",
+                                                    "cn": [
+                                                        {
+                                                            "type": "fixedfunction",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "designer|params": [
+                                                                    "button",
+                                                                    "e"
+                                                                ],
+                                                                "fn": "handler",
+                                                                "implHandler": [
+                                                                    "console.log(\"CLICKED\");\r",
+                                                                    "var CreateVippVendorFrom = Ext.ComponentQuery.query(\"#CreateVippVendorFrom\")[0];\r",
+                                                                    "\r",
+                                                                    "if(CreateVippVendorFrom){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var VipFormPromoCode = Ext.ComponentQuery.query(\"#VipFormPromoCode\")[0];\r",
+                                                                    "var VipFormVendorId = Ext.ComponentQuery.query(\"#VipFormVendorId\")[0];\r",
+                                                                    "var vipFormPrice = Ext.ComponentQuery.query(\"#vipFormPrice\")[0];\r",
+                                                                    "var vipFormStartDate = Ext.ComponentQuery.query(\"#vipFormStartDate\")[0];\r",
+                                                                    "var vipFormEndDate = Ext.ComponentQuery.query(\"#vipFormEndDate\")[0];\r",
+                                                                    "var vipFormLimit = Ext.ComponentQuery.query(\"#vipFormLimit\")[0];\r",
+                                                                    "var vipFormComment = Ext.ComponentQuery.query(\"#vipFormComment\")[0];\r",
+                                                                    "var vendorMaster  = Ext.getStore(\"vendors.Master\");\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var promoCode  = VipFormPromoCode.getValue();\r",
+                                                                    "var vipFormPrice  = vipFormPrice.getValue();\r",
+                                                                    "var startValue = vipFormStartDate.getValue();\r",
+                                                                    "var EndValue = vipFormStartDate.getValue();\r",
+                                                                    "var LimitValue = vipFormLimit.getValue();\r",
+                                                                    "var commentValue = vipFormComment.getValue();\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var vendorId = VipFormVendorId.getValue();\r",
+                                                                    "var vendor = findVendorBy_id(vendorId);\r",
+                                                                    "\r",
+                                                                    "console.log(vendor);\r",
+                                                                    "if(vendor.data.prevent_be_vip){\r",
+                                                                    "\r",
+                                                                    "    alert(\"THIS VENDOR CANNOT BE ADDDE TI VIP LIST\");\r",
+                                                                    "    return;\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var vendor_id = vendorId;\r",
+                                                                    "var keyOfRetailer = 'vip_program_info';\r",
+                                                                    "var vendorMaster = Ext.getStore('vendors.Master') ;\r",
+                                                                    "\r",
+                                                                    "console.log(vendor_id);\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var record;\r",
+                                                                    "if(vendor_id)\r",
+                                                                    "{\r",
+                                                                    "  record = findVendorBy_id(vendor_id) ;\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "console.log(record);\r",
+                                                                    "if(!record){\r",
+                                                                    "\r",
+                                                                    "    return ;\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var updatingData = {\r",
+                                                                    "\r",
+                                                                    "    promo_code:promoCode,\r",
+                                                                    "    vip_price:vipFormPrice,\r",
+                                                                    "    start_date:startValue,\r",
+                                                                    "    end_date:EndValue,\r",
+                                                                    "    limit_value:LimitValue,\r",
+                                                                    "    comment:commentValue\r",
+                                                                    "};\r",
+                                                                    "var rtlrs = updatingData;\r",
+                                                                    "var me = Ext.ComponentQuery.query(\"#discountsMainContentPanel\")[0];\r",
+                                                                    "updateVendor() ;\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateVendor(){\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    var dataToupdate = {\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    };\r",
+                                                                    "     record.set(keyOfRetailer, updatingData);\r",
+                                                                    "    dataToupdate[keyOfRetailer] = rtlrs;\r",
+                                                                    "    console.error(dataToupdate);\r",
+                                                                    "    me.vipListDataHandler();\r",
+                                                                    "    //return;\r",
+                                                                    "    RMdatalink.iwa.rdl.doUpdateCollection(vendorMaster, dataToupdate , record.get('_id'), updateSuccess, updateError );\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateSuccess(){\r",
+                                                                    "\r",
+                                                                    "    record.set(keyOfRetailer, rtlrs);\r",
+                                                                    "     Ext.Viewport.setMasked(false);\r",
+                                                                    "    console.log(\"vendor updated successfully\");\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "function updateError(){\r",
+                                                                    "\r",
+                                                                    "     Ext.Viewport.setMasked(false);\r",
+                                                                    "    console.log(\"error in updating vendor\");\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "function findVendorBy_id(v_id){\r",
+                                                                    "\r",
+                                                                    "     var vendors = vendorMaster.data.all ;\r",
+                                                                    "    var venRec = null ;\r",
+                                                                    "    for(var j=0;j<vendors.length ; j++){\r",
+                                                                    "\r",
+                                                                    "        if(v_id == vendors[j].data._id){\r",
+                                                                    "\r",
+                                                                    "            venRec = vendors[j] ;\r",
+                                                                    "            break;\r",
+                                                                    "        }\r",
+                                                                    "    }\r",
+                                                                    "\r",
+                                                                    "    return venRec;\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    ""
+                                                                ]
+                                                            },
+                                                            "designerId": "6fc849a7-a95e-4a07-9dd9-7f4a03ad58cf"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "grayBtn"
+                                                        ],
+                                                        "hidden": false,
+                                                        "layout|flex": null,
+                                                        "margin": "10px",
+                                                        "text": "Delete",
+                                                        "width": "130px"
+                                                    },
+                                                    "designerId": "3d7afd93-eed3-43f2-bc0b-447582588ae8"
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "grayBtn"
+                                                        ],
+                                                        "hidden": false,
+                                                        "layout|flex": null,
+                                                        "margin": "10px",
+                                                        "text": "Update",
+                                                        "width": "130px"
+                                                    },
+                                                    "designerId": "56e93843-f4a5-411c-b548-09dabd92eb1d"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
             ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "vipListDataHandler",
+                "implHandler": [
+                    "var component  = Ext.ComponentQuery.query(\"#discountVipTab\")[0];\r",
+                    "var list = component.down('#discountList');\r",
+                    "\r",
+                    "var data = getArrayFromStore(Ext.getStore('vendors.Master'));\r",
+                    "\r",
+                    "var dataToPush = [];\r",
+                    "\r",
+                    "\r",
+                    "var keyOfRetailer = 'promo_code_info';\r",
+                    "var flagofRetailer = 'is_promo_code_active';\r",
+                    "\r",
+                    "for(var i=0;i<data.length;i++){\r",
+                    "\r",
+                    "    if(  data[i][keyOfRetailer]  &&  data[i][flagofRetailer] ){\r",
+                    "\r",
+                    "            dataToPush.push(data[i]);\r",
+                    "\r",
+                    "    }\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "list.setData(dataToPush);\r",
+                    ""
+                ]
+            },
+            "designerId": "e5f5973a-c0af-400e-8bc3-87611e74283a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "promoCode",
+                    "vendor_id",
+                    "price",
+                    "startDate",
+                    "endDate",
+                    "limit",
+                    "comment"
+                ],
+                "fn": "addValuesInVipForm",
+                "implHandler": [
+                    "console.log(\"CLICKED\");\r",
+                    "var CreateVippVendorFrom = Ext.ComponentQuery.query(\"#CreateVippVendorFrom\")[0];\r",
+                    "\r",
+                    "if(CreateVippVendorFrom){\r",
+                    "\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var VipFormPromoCode = Ext.ComponentQuery.query(\"#VipFormPromoCode\")[0];\r",
+                    "var VipFormVendorId = Ext.ComponentQuery.query(\"#VipFormVendorId\")[0];\r",
+                    "var vipFormPrice = Ext.ComponentQuery.query(\"#vipFormPrice\")[0];\r",
+                    "var vipFormStartDate = Ext.ComponentQuery.query(\"#vipFormStartDate\")[0];\r",
+                    "var vipFormEndDate = Ext.ComponentQuery.query(\"#vipFormEndDate\")[0];\r",
+                    "var vipFormLimit = Ext.ComponentQuery.query(\"#vipFormLimit\")[0];\r",
+                    "var vipFormComment = Ext.ComponentQuery.query(\"#vipFormComment\")[0];\r",
+                    "var vendorMaster  = Ext.getStore(\"vendors.Master\");\r",
+                    "\r",
+                    "\r",
+                    "VipFormPromoCode.setValue(promoCode);\r",
+                    "VipFormVendorId.setValue(vendor_id);\r",
+                    "vipFormPrice.setValue(price);\r",
+                    "vipFormStartDate.setValue(startDate);\r",
+                    "vipFormEndDate.setValue(endDate);\r",
+                    "vipFormComment.setValue(comment);\r",
+                    "vipFormLimit.setValue(limit);"
+                ]
+            },
+            "designerId": "6e528b77-06b6-4707-a47f-f0a90d0a15de"
+        },
+        {
+            "type": "staticfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "vipListDataHandler",
+                "implHandler": [
+                    "var component  = Ext.ComponentQuery.query(\"#discountVipTab\")[0];\r",
+                    "var list = component.down('#discountList');\r",
+                    "\r",
+                    "var data = getArrayFromStore(Ext.getStore('vendors.Master'));\r",
+                    "\r",
+                    "var dataToPush = [];\r",
+                    "\r",
+                    "var keyOfRetailer = 'promo_code_info';\r",
+                    "var flagofRetailer = 'is_promo_code_active';\r",
+                    "\r",
+                    "for(var i=0;i<data.length;i++){\r",
+                    "\r",
+                    "    if(  data[i][keyOfRetailer]  &&  data[i][flagofRetailer] ){\r",
+                    "\r",
+                    "            dataToPush.push(data[i]);\r",
+                    "\r",
+                    "    }\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "list.setData(dataToPush);"
+                ]
+            },
+            "designerId": "8fa9b0b2-2b1b-43c3-abfa-4bd3eef69731"
+        },
+        {
+            "type": "staticfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "promoCode",
+                    "vendor_id",
+                    "price",
+                    "startDate",
+                    "endDate",
+                    "limit",
+                    "comment"
+                ],
+                "fn": "addValuesInVipForm",
+                "implHandler": [
+                    "console.log(\"CLICKED\");\r",
+                    "var CreateVippVendorFrom = Ext.ComponentQuery.query(\"#CreateVippVendorFrom\")[0];\r",
+                    "\r",
+                    "if(CreateVippVendorFrom){\r",
+                    "\r",
+                    "\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var VipFormPromoCode = Ext.ComponentQuery.query(\"#VipFormPromoCode\")[0];\r",
+                    "var VipFormVendorId = Ext.ComponentQuery.query(\"#VipFormVendorId\")[0];\r",
+                    "var vipFormPrice = Ext.ComponentQuery.query(\"#vipFormPrice\")[0];\r",
+                    "var vipFormStartDate = Ext.ComponentQuery.query(\"#vipFormStartDate\")[0];\r",
+                    "var vipFormEndDate = Ext.ComponentQuery.query(\"#vipFormEndDate\")[0];\r",
+                    "var vipFormLimit = Ext.ComponentQuery.query(\"#vipFormLimit\")[0];\r",
+                    "var vipFormComment = Ext.ComponentQuery.query(\"#vipFormComment\")[0];\r",
+                    "var vendorMaster  = Ext.getStore(\"vendors.Master\");\r",
+                    "\r",
+                    "\r",
+                    "VipFormPromoCode.setValue(promoCode);\r",
+                    "VipFormVendorId.setValue(vendor_id);\r",
+                    "vipFormPrice.setValue(price);\r",
+                    "vipFormStartDate.setValue(startDate);\r",
+                    "vipFormEndDate.setValue(endDate);\r",
+                    "vipFormComment.setValue(comment);\r",
+                    "vipFormLimit.setValue(limit);"
+                ]
+            },
+            "designerId": "fd7813bb-0a29-441c-8247-4da6eb643812"
         }
     ]
 }

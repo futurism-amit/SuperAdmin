@@ -1,0 +1,174 @@
+{
+    "type": "Ext.Sheet",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "x-rm-filterdd"
+        ],
+        "designer|userAlias": "retailerBillingSheetDatalink",
+        "designer|userClassName": "products.BillingSheetDatalink",
+        "height": "85%",
+        "hideOnMaskTap": null,
+        "itemId": "retailerBillingSheet",
+        "layout": "vbox",
+        "margin": null,
+        "padding": "0 0 0 0",
+        "width": "90%"
+    },
+    "designerId": "81bc0cea-d9a5-49c8-a70d-8e12580578f0",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "title",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": "30px",
+                "layout": "hbox"
+            },
+            "designerId": "3a9a7eb3-f05c-458a-91c6-4dfdad82c3b1",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "Retailer RM-PRO Billing",
+                        "itemId": "rtBillingHeaderLabel"
+                    },
+                    "designerId": "f088d55f-5e1d-4efa-96e7-45414bacbc5e"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "badgeText": null,
+                        "cls": [
+                            "x-rm-detailsSaveBtn",
+                            "x-rm-detailsInnerBtns"
+                        ],
+                        "docked": "right",
+                        "height": null,
+                        "itemId": "rtBillingSaveBtn",
+                        "margin": "0 5 0 0",
+                        "minWidth": "100px",
+                        "padding": "8 0 0 0",
+                        "pressedCls": "x-rm-detailsInnerBtns-pressing",
+                        "text": "SAVE"
+                    },
+                    "designerId": "54c7f63b-6673-4ebf-aea1-6c30d2b7b22a"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            " x-rm-detailsSaveBtn",
+                            "x-rm-detailsInnerBtns"
+                        ],
+                        "docked": "right",
+                        "itemId": "productBillingSheetCancel",
+                        "margin": "0 5 0 0",
+                        "minWidth": "100px",
+                        "padding": "8 0 0 0",
+                        "pressedCls": " x-rm-detailsInnerBtns-pressing",
+                        "text": "CANCEL"
+                    },
+                    "designerId": "9b644974-3213-4a71-9572-19cf5c2ab91e"
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            " x-rm-rdformpanel"
+                        ],
+                        "docked": "right",
+                        "height": "26px",
+                        "margin": "0 10 0 0",
+                        "title": null,
+                        "width": "260px"
+                    },
+                    "designerId": "c3993e5f-d193-4cef-b3f2-31f2a754c029",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "rtProductBillIntActDateFld",
+                                "label": "Initial Activation Date",
+                                "labelWidth": "160px"
+                            },
+                            "designerId": "14e53e40-18fe-45fe-9d53-94925f083d4f",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRtProductBillIntActDateFldInitialize",
+                                        "implHandler": [
+                                            "component.element.on(\"tap\",function(){\r",
+                                            "\r",
+                                            "\r",
+                                            "        function fn(newDate){\r",
+                                            "\r",
+                                            "\r",
+                                            "            component.setValue(Ext.Date.format(newDate, \"m/d/Y\"));\r",
+                                            "            RMdatalink.util.Calendar.hideCalendar();\r",
+                                            "             component.setDisabled(false);\r",
+                                            "\r",
+                                            "        }\r",
+                                            "\r",
+                                            "        RMdatalink.util.Calendar.showCalendar(fn,component);\r",
+                                            "        component.setDisabled(true);\r",
+                                            "\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "d5d4f55a-94b4-4ad5-aa0b-09a1e7e38062"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

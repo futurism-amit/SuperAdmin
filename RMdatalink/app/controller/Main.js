@@ -60,6 +60,12 @@ Ext.define('RMdatalink.controller.Main', {
             },
             "textfield[action=inputByDatePicker]": {
                 initialize: 'onTextfieldinputByDatePickerInitialize'
+            },
+            "label[labelAction=dropDown]": {
+                initialize: 'onDropDownLabelInitialize'
+            },
+            "textfield[action=valueGtZero]": {
+                keyup: 'onTextfieldvalueGtZeroKeyup'
             }
         }
     },
@@ -240,7 +246,7 @@ Ext.define('RMdatalink.controller.Main', {
 
             case 'billingSeachViewItemID':
 
-                filterDDList.setHeight(270);
+                filterDDList.setHeight(330);
                 setTPLForBilling();
 
                 break;
@@ -397,6 +403,11 @@ Ext.define('RMdatalink.controller.Main', {
                            '                <input style = "margin-left: 27px;" maxlength="3" type="text" pattern="[0-9]*" data-name="past_due_for" onkeyup="if(!(/^[0-9]+$/.test(this.value))) this.value=\'\';" />',
                            '                <span>Days</span>',
                            '            </div>',
+                           '            <div class="x-rm-filter-days">',
+                           '                <span>Due in</span>',
+                           '                <input style = "margin-left: 56px;" maxlength="3" type="text" pattern="[0-9]*" data-name="due_in" onkeyup="if(!(/^[0-9]+$/.test(this.value))) this.value=\'\';" />',
+                           '                <span>Days</span>',
+                           '            </div>',
                            '        </div>',
                            '    </div>',
                            '</div>'
@@ -495,17 +506,21 @@ Ext.define('RMdatalink.controller.Main', {
             {
                 return;
             }
+            console.log("STORE TO SORT FOUND");
 
 
             if(targetEl.hasAttribute('data-name')) {
                 var childImage = targetEl.querySelectorAll('img')[0];
                 if(childImage) {
                     if(childImage.getAttribute('src').indexOf('downArrow') !== -1) {
+
                         childImage.setAttribute('src','resources/images/button_icons/upArrow.png');
+                        console.log(targetEl.getAttribute('data-name'));
                         storeToSort.sort(targetEl.getAttribute('data-name'),'ASC');
                     }
                     else {
                         childImage.setAttribute('src','resources/images/button_icons/downArrow.png');
+                        console.log(targetEl.getAttribute('data-name'));
                         storeToSort.sort(targetEl.getAttribute('data-name'),'DESC');
                     }
                 }
@@ -513,15 +528,18 @@ Ext.define('RMdatalink.controller.Main', {
             else {
                 if(targetEl.getAttribute('src').indexOf('downArrow') !== -1) {
                     targetEl.setAttribute('src','resources/images/button_icons/upArrow.png');
+                    console.log(  targetEl.parentNode.getAttribute('data-name') );
                     storeToSort.sort(targetEl.parentNode.getAttribute('data-name'),'ASC');
                 }
                 else {
                     targetEl.setAttribute('src','resources/images/button_icons/downArrow.png');
+                    console.log( targetEl.parentNode.getAttribute('data-name')  );
                     storeToSort.sort(targetEl.parentNode.getAttribute('data-name'),'DESC');
                 }
             }
             listToRefresh.refresh();
         }
+
     },
 
     onImageSelectorImageTap: function(image, e, eOpts) {
@@ -595,24 +613,29 @@ Ext.define('RMdatalink.controller.Main', {
                             };
 
                 setupPCScrollbar(component) ;
+
+        component.setItemHeight(24);
     },
 
     onTextfieldinputByDatePickerInitialize: function(component, eOpts) {
         component.element.on("tap",function(){
 
+            if(component.getDisabled()){
+                return ;
+            }
 
                 function fn(newDate){
 
 
                     component.setValue(Ext.Date.format(newDate, "m/d/Y"));
                     RMdatalink.util.Calendar.hideCalendar();
-                     component.setDisabled(false);
+                   //  component.setDisabled(false);
 
                 }
 
                 RMdatalink.util.Calendar.showCalendar(fn,component);
 
-                component.setDisabled(true);
+               // component.setDisabled(true);
 
                 if(calendarPanelPicker)
                 {
@@ -620,6 +643,47 @@ Ext.define('RMdatalink.controller.Main', {
                 }
 
         });
+    },
+
+    onDropDownLabelInitialize: function(component, eOpts) {
+        component.element.on('tap',function(){
+
+            if(component.getParent().getHeight() == 26){
+                 component.getParent().setHeight("auto");
+                 component.getParent().getEl().query('img')[0].src = "resources/images/labelHeader/downArrow.png";
+            }else{
+                  component.getParent().setHeight(26);
+                 component.getParent().getEl().query('img')[0].src = "resources/images/labelHeader/rightArrow.png";
+            }
+
+
+            if(component.getParent().getParent().getItemId() == 'productDatalinkaddUpdateFrmPanel'){
+                RMdatalink.app.getController('DatalinkController').refreshDatalinkSideCntHeight() ;
+
+            }
+
+            if(component.getParent().getParent().getItemId() == 'productRMPROaddUpdateFrmPanel'){
+
+                RMdatalink.app.getController('RMProController').refreshRmproSideBarHeight() ;
+            }
+
+
+        }) ;
+    },
+
+    onTextfieldvalueGtZeroKeyup: function(textfield, e, eOpts) {
+        var newVal = textfield.getValue() ;
+
+        if(newVal){
+
+            if(isNaN(newVal) || parseFloat(newVal) <= 0){
+
+                textfield.setValue("");
+
+                return;
+             }
+
+        }
     },
 
     saveComment: function(field) {
@@ -757,13 +821,16 @@ Ext.define('RMdatalink.controller.Main', {
 
     initialiseApp: function() {
 
-                    function loadStore(){
-                              if(! RMdatalink.app.getController('PaginationController').config.storesLoadedFirstTime[RMdatalink.app.getController('PaginationController').getCurrentActiveStoreId()]){
-                                     RMdatalink.app.getController('PaginationController').loadStore(1,RMdatalink.util.DataLoader.getPageSize(),false);
-                          }
-                    }
 
-                   RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('PermisstionsStore') ;
+        function loadStore(){
+            var index = RMdatalink.app.getController('PaginationController').getCurrentActiveStoreId();
+            var flag = RMdatalink.app.getController('PaginationController').config.storesLoadedFirstTime[index];
+            if(! flag ){
+                RMdatalink.app.getController('PaginationController').loadStore(1,RMdatalink.util.DataLoader.getPageSize(),false);
+            }
+        }
+
+                  RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('PermisstionsStore') ;
                   loadStore();
 
 
@@ -771,8 +838,9 @@ Ext.define('RMdatalink.controller.Main', {
                   loadStore();
 
 
-                   RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('vendors.Master') ;
+                  RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('vendors.Master') ;
                   loadStore();
+
                   RMdatalink.app.getController('PaginationController').config.storesLoadedFirstTime['vendors.Master'] = true ;
 
 
@@ -780,7 +848,7 @@ Ext.define('RMdatalink.controller.Main', {
              //     loadStore();
 
                   RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('products.DatalinkMain') ;
-                   loadStore();
+                  loadStore();
 
 
 
@@ -791,6 +859,9 @@ Ext.define('RMdatalink.controller.Main', {
 
                    RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('TechSupportLogsStore') ;
                   loadStore();
+
+                     RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('products.ecomMain') ;
+                   loadStore();
 
 
                 RMdatalink.app.getController('RMProController').initRMproStore() ;
@@ -820,6 +891,44 @@ Ext.define('RMdatalink.controller.Main', {
 
 
                   RMdatalink.app.getController('PaginationController').initialiseRetailers() ;
+                  this.handleLastSavedExpansionState();
+    },
+
+    handleLastSavedExpansionState: function(isSkipCustomFilter) {
+        return;
+        function Toexecute(){
+
+            if(!isSkipCustomFilter)
+            {
+
+                var LoginHandler = RMdatalink.app.getController('LoginHandler') ;
+                var _id = LoginHandler.config.userDetails._id ;
+                var inhouseMasterStore = Ext.getStore('inhouseMasterStore');
+
+                var orignialSate = LoginHandler.config.userDetails.expand_button_state;
+
+                if(orignialSate == 0){
+
+                    var hideExpandButton = Ext.ComponentQuery.query("#hideExpandButton");
+
+                    for(var i=0;i<hideExpandButton.length; i++ ){
+                        alert("orignialSate = " + orignialSate);
+                        var btn = hideExpandButton[i];
+                        var handler = bt.getHandler();
+                        handler.call(btn , btn );
+                    }
+
+                }else{
+
+                    return;
+                }
+
+
+            }
+
+
+        }
+
     },
 
     updateRetailerRecords: function(dataKey, dataToUpdate, _id) {
@@ -905,6 +1014,20 @@ Ext.define('RMdatalink.controller.Main', {
             }
              rtRecord.dirty= true;
         }
+
+
+         var varibleToSet = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+        if(dataKey == "ALL" ){
+
+                varibleToSet.record.set(dataToUpdate);
+
+            }else{
+
+                varibleToSet.record.set(dataKey,dataToUpdate);
+            }
+           varibleToSet.record.dirty= true;
+        varibleToSet.record.data[dataKey] = dataToUpdate ;
+         RMdatalink.util.globalConfig.setDataToShowInSettingWindow(varibleToSet);
     }
 
 });
