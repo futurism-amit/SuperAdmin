@@ -737,6 +737,58 @@ Ext.application({
             }
             return arrayToReturn ;
         };
+
+
+        window.getItemsOfOnlyECommerceFromEcomStore = window.getItemsOfOnlyECommerceFromEcomStore || function(component){
+
+            var dataToPush = [];
+            var ecomMainStore = Ext.getStore('products.ecomMain') ;
+            var data = ecomMainStore.getData();
+            for( var i =0 ; i < data.all.length ; i++ ){
+
+                var record = data.all[i];
+                console.log(record.data.product_type);
+                if(record.data.product_type != 1){
+
+                    dataToPush.push( record.raw );
+                }
+            }
+            var list = component.down('#mainList');
+            var store = list.getStore( );
+            if( store){
+                store.setData(dataToPush);
+            }else if (dataToPush.length){
+                list.setData(dataToPush);
+            }
+
+
+
+        };
+        window.getItemsOfVIPFromEcomStore = window.getItemsOfVIPFromEcomStore || function(component){
+
+            var dataToPush = [];
+            var ecomMainStore = Ext.getStore('products.ecomMain') ;
+            var data = ecomMainStore.getData();
+            for( var i =0 ; i < data.all.length ; i++ ){
+
+                var record = data.all[i];
+                console.log(record.data.product_type);
+                if(record.data.product_type == 1){
+
+                    dataToPush.push( record.raw );
+                }
+            }
+            var list = component.down('#mainList');
+            var store = list.getStore( );
+            if( store){
+                store.setData(dataToPush);
+            }else if (dataToPush.length){
+                list.setData(dataToPush);
+            }
+
+
+
+        };
         Ext.create('RMdatalink.view.LoginScreen', {fullscreen: true});
     }
 

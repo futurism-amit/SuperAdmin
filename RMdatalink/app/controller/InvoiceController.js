@@ -28,6 +28,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         isSalesCommissionForDatalink: false,
         isFromBilling: false,
         product_type: 'product_rmpro',
+        isVip: false,
 
         control: {
             "selectfield[itemId=invoiceRmProPaymentPrdSlFld]": {
@@ -524,7 +525,9 @@ Ext.define('RMdatalink.controller.InvoiceController', {
                     }
         getSubscriptionSheet().show() ;
 
-        this.initInvoice( selectedUserRecord.record) ;
+
+
+        this.initInvoice( selectedUserRecord.record ) ;
 
 
         var rtDtlsLbl = Ext.ComponentQuery.query('#billingSheetRtDtlsLbl')[0];
@@ -553,77 +556,14 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
     initInvoice: function(record) {
         var that = this ;
+        this.setIsVip(false);
+        function msgHandler(){
 
-         function msgHandler(){
-
-             RMdatalink.app.getController('ProductBillingController').config.needToEdit = true ;
-                var productSetpBtn = Ext.ComponentQuery.query('#invoiceRMPROProductSetupBtn')[0];
-                productSetpBtn.fireEvent('tap',productSetpBtn);
-
-            }
-
-        RMdatalink.app.getController('InvoiceHistoryController').config.displayGeneratedInvoice = false ;
-
-        this.config.product_billing_rec  = null;
-
-        this.config.selectedRetailer = record ;
-
-        this.config.product_billing_rec =  record.data.product_billng ;
-
-        var store_products = record.get('store_products') ;
-        var msg = null ;
-
-              that.config.isManualChange = false ;
-        var currentInvoices = [] ;
-        var rmProndex = 0 ;
-
-        if(store_products.datalink_status && store_products.datalink_status == "ACTIVE"){
-
-          //  this.loadVendorBillingData() ;
-
-        //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(false);
-
-          //  initDataLink() ;
-
-
-        }else{
-
-         //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
-        }
-
-
-        if(store_products.rmpro_status && store_products.rmpro_status == "ACTIVE"){
-
-
-          //  Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
-
-            initRMpro() ;
-
-
-
-
-        }else{
-              that.resetRmproInvoice() ;
-             function allProductSetup(){
-
-                var rtBillingSheetCancelBtn = Ext.ComponentQuery.query('#rtBillingSheetCancelBtn')[0];
-                rtBillingSheetCancelBtn.fireEvent('tap',rtBillingSheetCancelBtn);
-
-            }
-
-             Ext.Msg.alert("Alert", " Please do product setup first. ",allProductSetup);
-        }
-
-
-        if(msg){
-
-
-            Ext.Msg.alert("Alert", " Please do product setup for "+ msg,msgHandler);
+            RMdatalink.app.getController('ProductBillingController').config.needToEdit = true ;
+            var productSetpBtn = Ext.ComponentQuery.query('#invoiceRMPROProductSetupBtn')[0];
+            productSetpBtn.fireEvent('tap',productSetpBtn);
 
         }
-
-          that.config.isManualChange = true ;
-
         function initRMpro()
         {
 
@@ -634,7 +574,12 @@ Ext.define('RMdatalink.controller.InvoiceController', {
                 product_billng : record.data.product_billng
             };
              that.resetRmproInvoice() ;
-            if(dataToUpdate.product_billng  && dataToUpdate.product_billng.product_rmpro && dataToUpdate.product_billng.product_rmpro.total_payble && dataToUpdate.product_billng.product_rmpro.payment_period && dataToUpdate.product_billng.product_rmpro.due_date ){
+
+            if(dataToUpdate.product_billng  && dataToUpdate.product_billng.product_rmpro &&
+               dataToUpdate.product_billng.product_rmpro.total_payble &&
+               dataToUpdate.product_billng.product_rmpro.payment_period &&
+               dataToUpdate.product_billng.product_rmpro.due_date )
+            {
 
                 dataToUpdate.product_billng.product_rmpro.payment_status = "unpaid" ;
                 dataToUpdate.product_billng.product_rmpro.invoice_status = "active" ;
@@ -662,6 +607,51 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
 
         }
+
+
+        function initVIP()
+        {
+
+
+
+            var dataToUpdate = {
+
+                product_billng : record.data.product_billng
+            };
+
+            var key = 'product_vip';
+             that.resetRmproInvoice() ;
+
+            if(dataToUpdate.product_billng  && dataToUpdate.product_billng[key] &&
+               dataToUpdate.product_billng[key].total_payble &&
+               dataToUpdate.product_billng[key].payment_period &&
+               dataToUpdate.product_billng[key].due_date )
+            {
+
+                dataToUpdate.product_billng[key].payment_status = "unpaid" ;
+                dataToUpdate.product_billng[key].invoice_status = "active" ;
+                currentInvoices.push(dataToUpdate.product_billng[key]);
+
+                rmProndex = currentInvoices.length -1 ;
+                  that.setDatalinkBillingModules() ;
+
+
+            } else{
+
+                if(msg){
+                    msg += ",VIP " ;
+                }else{
+                    msg = "VIP " ;
+                }
+
+
+            }
+            that.config.product_type = 'product_vip';
+
+        }
+
+
+
 
         ///////////////////////init datalink
 
@@ -699,12 +689,92 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         }
 
+
+
+        RMdatalink.app.getController('InvoiceHistoryController').config.displayGeneratedInvoice = false ;
+
+        this.config.product_billing_rec  = null;
+
+        this.config.selectedRetailer = record ;
+
+        this.config.product_billing_rec =  record.data.product_billng ;
+
+        var store_products = record.get('store_products') ;
+        var msg = null ;
+
+        that.config.isManualChange = false ;
+        var currentInvoices = [] ;
+        var rmProndex = 0 ;
+
+        if(store_products.datalink_status && store_products.datalink_status == "ACTIVE"){
+
+          //  this.loadVendorBillingData() ;
+
+        //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(false);
+
+          //  initDataLink() ;
+
+
+        }else{
+
+         //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
+        }
+
+
+        if( ( store_products.rmpro_status && store_products.rmpro_status == "ACTIVE"  ) ||
+            ( store_products.vip_status && store_products.vip_status == "ACTIVE"  )
+          )
+        {
+
+
+          //  Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
+
+
+            if(  true &&    ( store_products.vip_status && store_products.vip_status == "ACTIVE"  ) )
+            {
+                    this.setIsVip(true);
+                    initVIP();
+            }else{
+                    initRMpro() ;
+            }
+
+
+
+
+        }
+        else
+        {
+             that.resetRmproInvoice() ;
+             function allProductSetup(){
+
+                var rtBillingSheetCancelBtn = Ext.ComponentQuery.query('#rtBillingSheetCancelBtn')[0];
+                rtBillingSheetCancelBtn.fireEvent('tap',rtBillingSheetCancelBtn);
+
+            }
+
+             Ext.Msg.alert("Alert", " Please do product setup first. ",allProductSetup);
+        }
+
+
+        if(msg){
+
+
+            Ext.Msg.alert("Alert", " Please do product setup for "+ msg,msgHandler);
+
+        }
+
+          that.config.isManualChange = true ;
+
+
+
+
+
         RMdatalink.app.getController('InvoiceHistoryController').initInvoiceHistory() ;
 
 
 
         var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
-        rmProInvoicePanel.down('#InvoiceToNameLbl').setHtml(record.data.store_name );
+            rmProInvoicePanel.down('#InvoiceToNameLbl').setHtml(record.data.store_name );
 
         var currentInvoiceStr = Ext.getStore('CurrentInvoiceStore') ;
          currentInvoiceStr.removeAll() ;
@@ -724,6 +794,8 @@ Ext.define('RMdatalink.controller.InvoiceController', {
     setRMProBillingModules: function() {
 
         console.log(this.config.selectedRetailer) ;
+
+        debugger;
 
         //var rmProBilling = this.config.selectedRetailer.data.product_billng.product_rmpro ;
 
@@ -885,11 +957,30 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
     setDatalinkBillingModules: function() {
         var product_type = this.config.product_type ;
+
+
+        if(false && this.getIsVip(true))
+        {
+
+            var rec =  RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
+                product_type = rec.record.data.product_billng.product_vip;
+
+        }
         console.log(this.config.selectedRetailer) ;
 
-        //var rmProBilling = this.config.selectedRetailer.data.product_billng.product_datalink ;
 
-        var rmProBilling = this.config.product_billing_rec[product_type] ;
+        //var rmProBilling = this.config.selectedRetailer.data.product_billng.product_datalink ;
+        var rmProBilling;
+                if( this.getIsVip(true))
+                {
+
+                    var rec =  RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
+                        //rmProBilling = rec.record.data.product_billng.product_vip;
+                        product_type = 'product_vip';
+
+                }
+         rmProBilling = this.config.product_billing_rec[product_type] ;
+
 
         var billingController =  RMdatalink.app.getController('BillingDetailsController') ;
 
@@ -2132,6 +2223,8 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         that.setDatalinkProductBilling();
 
+
+
         var masterStore = Ext.getStore('retailersMaster');
         var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
 
@@ -2143,36 +2236,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         };
 
         var product_rmpro = dataToUpdate.product_billng[product_type] ;
-
-
-         rmProInvoicePanel.down('#invoiceCommissionPercentFld').setValue(product_rmpro.commission_percent) ;
-         rmProInvoicePanel.down('#invoiceCommissionableAmtFld').setValue(product_rmpro.commissionable_ammount) ;
-
-
-
-         rmProInvoicePanel.down('#invoiceRmProPaymentPrdSlFld').setValue(product_rmpro.payment_period) ;
-
-        rmProInvoicePanel.down('#billingLiscencePrdLbl').setHtml("<b>Subscription License for " + product_rmpro.payment_period + " Month(s) From: "+ product_rmpro.payment_period_start + "   To: "+product_rmpro.payment_period_end +"</b>") ;
-
-
-
-         rmProInvoicePanel.down('#invoicePastDueFld').setValue(product_rmpro.past_due) ;
-         rmProInvoicePanel.down('#invoiceBalanceDueFld').setValue(product_rmpro.balance_due) ;
-
-
-         rmProInvoicePanel.down('#invoicePaidByFld').setValue(product_rmpro.paid_by ) ;
-         rmProInvoicePanel.down('#invoicePaymentDetailFld').setValue(product_rmpro.payment_method_detail) ;
-         rmProInvoicePanel.down('#invoiceCCApprovalFld').setValue(product_rmpro.cc_approval ) ;
-
-         rmProInvoicePanel.down('#invoiceProcessedByFld').setValue(product_rmpro.proccessed_by) ;
-         rmProInvoicePanel.down('#invoiceRMProDateFld').setValue(product_rmpro.date ) ;
-
-         rmProInvoicePanel.down('#invoiceAmmountFld').setValue(product_rmpro.ammount_paying ) ;
-
-        //product_rmpro.monthly_membership printinvoiceDueDateFld
         var totalPayble = parseFloat(product_rmpro.monthly_membership) * (product_rmpro.payment_period ? parseInt(product_rmpro.payment_period) : 1) ;
-
-        rmProInvoicePanel.down('#invoiceTotalPaybleFld').setValue(formatNum(totalPayble)) ;
 
         var salesPersonsStore = Ext.getStore('products.RtSalesPersonStore') ;
 
@@ -2183,42 +2247,58 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         salesPersonsStore.sync();
 
 
-         console.log("********************************");
-         console.log(product_rmpro);
-
-         rmProInvoicePanel.down('#rmProPaymentNoteFld').setValue(product_rmpro.payment_note ) ;
-
-         rmProInvoicePanel.down('#rmProSubscrPaymentStartDateFld').setValue(product_rmpro.payment_period_start ) ;
-
-         rmProInvoicePanel.down('#rmProSubscrPaymentEndDateFld').setValue(product_rmpro.payment_period_end ) ;
-
-         rmProInvoicePanel.down('#rmProSubscrPaymentDueDateFld').setValue(product_rmpro.due_date ) ;
-
-
-         rmProInvoicePanel.down('#InvoiceDueDateNoLbl').setHtml("Due Date:&nbsp;&nbsp;"+ product_rmpro.due_date );
-         rmProInvoicePanel.down('#InvoiceNoLbl').setHtml("Invoice #:&nbsp;&nbsp;"+ accNo + "-" + product_rmpro.invoice_number );
-
         var pDt =  product_rmpro.due_date ; //product_rmpro.invoice_id ;
+
+        rmProInvoicePanel.down('#invoiceCommissionPercentFld').setValue(product_rmpro.commission_percent) ;
+        rmProInvoicePanel.down('#invoiceCommissionableAmtFld').setValue(product_rmpro.commissionable_ammount) ;
+        rmProInvoicePanel.down('#invoiceRmProPaymentPrdSlFld').setValue(product_rmpro.payment_period) ;
+        rmProInvoicePanel.down('#billingLiscencePrdLbl').setHtml("<b>Subscription License for " + product_rmpro.payment_period + " Month(s) From: "+ product_rmpro.payment_period_start + "   To: "+product_rmpro.payment_period_end +"</b>") ;
+        rmProInvoicePanel.down('#invoicePastDueFld').setValue(product_rmpro.past_due) ;
+        rmProInvoicePanel.down('#invoiceBalanceDueFld').setValue(product_rmpro.balance_due) ;
+        rmProInvoicePanel.down('#invoicePaidByFld').setValue(product_rmpro.paid_by ) ;
+        rmProInvoicePanel.down('#invoicePaymentDetailFld').setValue(product_rmpro.payment_method_detail) ;
+        rmProInvoicePanel.down('#invoiceCCApprovalFld').setValue(product_rmpro.cc_approval ) ;
+        rmProInvoicePanel.down('#invoiceProcessedByFld').setValue(product_rmpro.proccessed_by) ;
+        rmProInvoicePanel.down('#invoiceRMProDateFld').setValue(product_rmpro.date ) ;
+        rmProInvoicePanel.down('#invoiceAmmountFld').setValue(product_rmpro.ammount_paying ) ;
+        //product_rmpro.monthly_membership printinvoiceDueDateFld
+        rmProInvoicePanel.down('#invoiceTotalPaybleFld').setValue(formatNum(totalPayble)) ;
+        rmProInvoicePanel.down('#rmProPaymentNoteFld').setValue(product_rmpro.payment_note ) ;
+        rmProInvoicePanel.down('#rmProSubscrPaymentStartDateFld').setValue(product_rmpro.payment_period_start ) ;
+        rmProInvoicePanel.down('#rmProSubscrPaymentEndDateFld').setValue(product_rmpro.payment_period_end ) ;
+        rmProInvoicePanel.down('#rmProSubscrPaymentDueDateFld').setValue(product_rmpro.due_date ) ;
+        rmProInvoicePanel.down('#InvoiceDueDateNoLbl').setHtml("Due Date:&nbsp;&nbsp;"+ product_rmpro.due_date );
+        rmProInvoicePanel.down('#InvoiceNoLbl').setHtml("Invoice #:&nbsp;&nbsp;"+ accNo + "-" + product_rmpro.invoice_number );
+        rmProInvoicePanel.down('#invoiceTopDateNoLbl').setHtml("Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ pDt ) ;
+        rmProInvoicePanel.down('#invoicePayDateFld').setValue(pDt) ;
+        rmProInvoicePanel.down('#InvoicemonthlySubscriptionLbl').setHtml(" $ " + formatNum(product_rmpro.monthly_membership) ) ;
+
+
+
+        console.log("********************************");
+        console.log(product_rmpro);
+
+
+
+
+
         /* if(product_rmpro.pay_date && product_rmpro.pay_date !=""){
             pDt = product_rmpro.pay_date ;
         } */
-         rmProInvoicePanel.down('#invoiceTopDateNoLbl').setHtml("Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ pDt ) ;
-        rmProInvoicePanel.down('#invoicePayDateFld').setValue(pDt) ;
-         rmProInvoicePanel.down('#InvoicemonthlySubscriptionLbl').setHtml(" $ " + formatNum(product_rmpro.monthly_membership) ) ;
 
-         var ddTime = product_rmpro.created_date_stamp  ;
-         var user =  product_rmpro.created_by  ;
-         if(ddTime && user)
-         {
+        var ddTime = product_rmpro.created_date_stamp  ;
+        var user =  product_rmpro.created_by  ;
+        if(ddTime && user)
+        {
             rmProInvoicePanel.down('#rtInvoiceCreatedUserDtlsLbl').setHtml(user + " - " +ddTime ) ;
-         }
+        }
 
-         var lastUpdatedDdTime = product_rmpro.last_created_date_stamp  ;
-         var lastUpdatedUser =  product_rmpro.last_created_by  ;
-         if(lastUpdatedDdTime && lastUpdatedUser)
-         {
+        var lastUpdatedDdTime = product_rmpro.last_created_date_stamp  ;
+        var lastUpdatedUser =  product_rmpro.last_created_by  ;
+        if(lastUpdatedDdTime && lastUpdatedUser)
+        {
             rmProInvoicePanel.down('#rtInvoiceLastUpdatedUserDtlsLbl').setHtml(lastUpdatedUser + " - " +lastUpdatedDdTime ) ;
-         }
+        }
 
         if(!product_rmpro.payments ||  product_rmpro.payments.length == 0){
 

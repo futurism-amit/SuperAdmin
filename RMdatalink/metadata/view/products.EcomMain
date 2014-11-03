@@ -283,7 +283,7 @@
                                         "implHandler": [
                                             "\r",
                                             "\r",
-                                            "\r",
+                                            "return;\r",
                                             "\r",
                                             "////////////////////////////////////////////////////\r",
                                             "\r",
@@ -411,100 +411,65 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "cls": [
-                                            "borderedDiv"
-                                        ],
-                                        "itemId": "productSetupecomListPanel",
+                                        "itemId": "mypanel41",
                                         "layout": "vbox",
-                                        "layout|flex": 3,
-                                        "margin": "0 0 5 0"
+                                        "layout|flex": 3
                                     },
-                                    "designerId": "0cc83835-531a-43fa-a4e7-23f2f8f1dbf8",
+                                    "designerId": "0b31676c-ca80-4dcc-b518-ec9b8fa67de8",
                                     "cn": [
                                         {
-                                            "type": "linkedinstance",
+                                            "type": "Ext.Label",
                                             "reference": {
                                                 "name": "items",
                                                 "type": "array"
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "itemId": "listwithheader",
-                                                "layout|flex": 1,
-                                                "width": null
+                                                "cls": [
+                                                    "pointerCursor",
+                                                    "fieldLbl",
+                                                    "onePixTopBottomMargin"
+                                                ],
+                                                "html": "E-Commerce<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                "itemId": "mylabel143"
                                             },
-                                            "designerId": "2e26e551-f157-4044-8db6-63a001319bc1",
-                                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
+                                            "designerId": "ff5211cf-92f6-4823-bb35-35953441c7df",
                                             "cn": [
                                                 {
-                                                    "type": "delegateeventbinding",
+                                                    "type": "basiceventbinding",
                                                     "reference": {
                                                         "name": "listeners",
                                                         "type": "array"
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "delegate": "#mainList",
-                                                        "designer|targetType": "Ext.dataview.List",
-                                                        "fn": "onRmProListItemTap",
+                                                        "fn": "onMylabel143Initialize",
                                                         "implHandler": [
                                                             "\r",
-                                                            "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
-                                                            "var targetEl = e.target;\r",
+                                                            "component.element.on('tap',function(){\r",
+                                                            "\r",
+                                                            "    var cmp = component.getParent();\r",
+                                                            "    var containerSibling = cmp.down(\"#productSetupecomListPanel\");\r",
+                                                            "    console.log(\"COPONENT CLICKED\");\r",
+                                                            "    console.log(cmp.getHeight());\r",
+                                                            "    if(  containerSibling.getHidden() ){\r",
                                                             "\r",
                                                             "\r",
-                                                            "console.log(\"THIS IS TESTING LOG ONE\");\r",
+                                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/downArrow.png\";\r",
+                                                            "        containerSibling.setHidden(false);\r",
                                                             "\r",
-                                                            "// delegateAttr=\"onCartTap\"\r",
-                                                            "\r",
-                                                            "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
-                                                            "\r",
-                                                            "         var attrVak = targetEl.getAttribute(attrToSearch);\r",
-                                                            "        console.log(\"THIS IS TESTING LOG 2\");\r",
-                                                            "         if(attrVak == \"onCartTap\")\r",
-                                                            "         {\r",
-                                                            "\r",
-                                                            "                   // var timeout = setTimeout(function(){\r",
-                                                            "                        console.log(\"THIS IS TESTING LOG 3\");\r",
-                                                            "                        RMdatalink.app.getController('ecomController').onRmProSelectUnselect();\r",
-                                                            "\r",
-                                                            "                   //      clearTimeout(timeout);\r",
-                                                            "                    //},100);\r",
-                                                            "\r",
-                                                            "\r",
-                                                            "         }\r",
-                                                            "\r",
-                                                            "}else{\r",
-                                                            "    console.log(\"THIS IS TESTING LOG 4\");\r",
-                                                            "    if(dataview.isSelected(record))\r",
-                                                            "    {\r",
-                                                            "        console.log(\"THIS IS TESTING LOG 5\");\r",
-                                                            "        dataview.deselect(record,true) ;\r",
                                                             "    }else{\r",
-                                                            "        console.log(\"THIS IS TESTING LOG 6\");\r",
-                                                            "        dataview.select(record,true) ;\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "        containerSibling.setHidden(true);\r",
+                                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/rightArrow.png\";\r",
                                                             "    }\r",
-                                                            "     var str = dataview.getStore();\r",
-                                                            "    for(var i=0; i < str.getData().all.length ; i++){\r",
-                                                            "        str.getAt(i).set('is_itemtap',false);;\r",
-                                                            "    }\r",
-                                                            "     record.set('is_itemtap',true);\r",
-                                                            "    console.log(\"THIS IS TESTING LOG 7\");\r",
-                                                            "    RMdatalink.app.getController('ecomController').onProductRMProListSelect(dataview, record, eOpts);\r",
-                                                            "}\r",
                                                             "\r",
-                                                            "\r",
-                                                            " var timeout = setTimeout(function(){\r",
-                                                            "\r",
-                                                            "                      RMdatalink.app.getController('ecomController').setDefaultDlDataProduct() ;\r",
-                                                            "\r",
-                                                            "                        clearTimeout(timeout);\r",
-                                                            "                    },100);\r",
-                                                            ""
+                                                            "});"
                                                         ],
-                                                        "name": "itemtap"
+                                                        "name": "initialize"
                                                     },
-                                                    "designerId": "3bcedec1-6047-468d-835f-b5313c412b62"
+                                                    "designerId": "87bef4cb-be92-4bf1-ac89-5c8ee8353571"
                                                 }
                                             ]
                                         },
@@ -517,65 +482,227 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "cls": [
-                                                    "onlyTopBorderDiv"
+                                                    "borderedDiv"
                                                 ],
-                                                "layout": "hbox",
-                                                "style": " background-color: gainsboro;font-weight: bold;"
+                                                "itemId": "productSetupecomListPanel",
+                                                "layout": "vbox",
+                                                "layout|flex": 3,
+                                                "margin": "0 0 5 0"
                                             },
-                                            "designerId": "353c1bd7-868f-4b0a-a839-455bcf2aba67",
+                                            "designerId": "0cc83835-531a-43fa-a4e7-23f2f8f1dbf8",
                                             "cn": [
                                                 {
-                                                    "type": "Ext.form.FieldSet",
+                                                    "type": "linkedinstance",
                                                     "reference": {
                                                         "name": "items",
                                                         "type": "array"
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "layout": "hbox",
-                                                        "margin": 0,
-                                                        "title": null,
-                                                        "width": "74%"
+                                                        "itemId": "listwithheader",
+                                                        "layout|flex": 1,
+                                                        "width": null
                                                     },
-                                                    "designerId": "352dd03b-d10e-4083-9656-f80166930dc9",
+                                                    "designerId": "2e26e551-f157-4044-8db6-63a001319bc1",
+                                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
                                                     "cn": [
                                                         {
-                                                            "type": "Ext.field.Text",
+                                                            "type": "delegateeventbinding",
                                                             "reference": {
-                                                                "name": "items",
+                                                                "name": "listeners",
                                                                 "type": "array"
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "hidden": true,
-                                                                "inputCls": "highlightedColor",
-                                                                "itemId": "ecomBundlePriceTxtFld",
-                                                                "label": "Bundle Price",
-                                                                "labelCls": "highlightedColor",
-                                                                "labelWidth": "120px",
-                                                                "layout|flex": null,
-                                                                "width": "280px"
-                                                            },
-                                                            "designerId": "7be876fe-dde9-4599-a83e-d2fdab874152"
-                                                        },
-                                                        {
-                                                            "type": "Ext.Button",
-                                                            "reference": {
-                                                                "name": "items",
-                                                                "type": "array"
-                                                            },
-                                                            "codeClass": null,
-                                                            "userConfig": {
-                                                                "cls": [
-                                                                    "x-rm-blueBtn"
+                                                                "delegate": "#mainList",
+                                                                "designer|targetType": "Ext.dataview.List",
+                                                                "fn": "onRmProListItemTap",
+                                                                "implHandler": [
+                                                                    "\r",
+                                                                    "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                                                    "var targetEl = e.target;\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "console.log(\"THIS IS TESTING LOG ONE\");\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var productSetupeVipListPanel  = Ext.ComponentQuery.query(\"#productSetupeVipListPanel #mainList\")[0];\r",
+                                                                    "if(productSetupeVipListPanel){\r",
+                                                                    "    var store = productSetupeVipListPanel.getStore();\r",
+                                                                    "    if(store){\r",
+                                                                    "        var data = store.getData();\r",
+                                                                    "        for( var i =0 ; i <data.all.length ; i++){\r",
+                                                                    "\r",
+                                                                    "            var trecord = data.all[i];\r",
+                                                                    "            trecord.set('is_itemtap' , false);\r",
+                                                                    "        }\r",
+                                                                    "\r",
+                                                                    "    }\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "// delegateAttr=\"onCartTap\"\r",
+                                                                    "\r",
+                                                                    "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                                                    "\r",
+                                                                    "         var attrVak = targetEl.getAttribute(attrToSearch);\r",
+                                                                    "        console.log(\"THIS IS TESTING LOG 2\");\r",
+                                                                    "         if(attrVak == \"onCartTap\")\r",
+                                                                    "         {\r",
+                                                                    "\r",
+                                                                    "                   // var timeout = setTimeout(function(){\r",
+                                                                    "                        console.log(\"THIS IS TESTING LOG 3\");\r",
+                                                                    "                        RMdatalink.app.getController('ecomController').onRmProSelectUnselect();\r",
+                                                                    "\r",
+                                                                    "                   //      clearTimeout(timeout);\r",
+                                                                    "                    //},100);\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "         }\r",
+                                                                    "\r",
+                                                                    "}else{\r",
+                                                                    "    console.log(\"THIS IS TESTING LOG 4\");\r",
+                                                                    "    if(dataview.isSelected(record))\r",
+                                                                    "    {\r",
+                                                                    "        console.log(\"THIS IS TESTING LOG 5\");\r",
+                                                                    "        dataview.deselect(record,true) ;\r",
+                                                                    "    }else{\r",
+                                                                    "        console.log(\"THIS IS TESTING LOG 6\");\r",
+                                                                    "        dataview.select(record,true) ;\r",
+                                                                    "    }\r",
+                                                                    "     var str = dataview.getStore();\r",
+                                                                    "    for(var i=0; i < str.getData().all.length ; i++){\r",
+                                                                    "        str.getAt(i).set('is_itemtap',false);;\r",
+                                                                    "    }\r",
+                                                                    "     record.set('is_itemtap',true);\r",
+                                                                    "    console.log(\"THIS IS TESTING LOG 7\");\r",
+                                                                    "    RMdatalink.app.getController('ecomController').onProductRMProListSelect(dataview, record, eOpts);\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    " var timeout = setTimeout(function(){\r",
+                                                                    "\r",
+                                                                    "                      RMdatalink.app.getController('ecomController').setDefaultDlDataProduct() ;\r",
+                                                                    "\r",
+                                                                    "                        clearTimeout(timeout);\r",
+                                                                    "                    },100);\r",
+                                                                    ""
                                                                 ],
-                                                                "height": "28px",
-                                                                "hidden": true,
-                                                                "itemId": "saveecomBundleBtn",
-                                                                "margin": "0 5 0 5",
-                                                                "text": "Save Bundle"
+                                                                "name": "itemtap"
                                                             },
-                                                            "designerId": "7c531e9d-46b4-46b6-b975-0b176c0bd284"
+                                                            "designerId": "3bcedec1-6047-468d-835f-b5313c412b62"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "onlyTopBorderDiv"
+                                                        ],
+                                                        "layout": "hbox",
+                                                        "style": " background-color: gainsboro;font-weight: bold;"
+                                                    },
+                                                    "designerId": "353c1bd7-868f-4b0a-a839-455bcf2aba67",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.form.FieldSet",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout": "hbox",
+                                                                "margin": 0,
+                                                                "title": null,
+                                                                "width": "74%"
+                                                            },
+                                                            "designerId": "352dd03b-d10e-4083-9656-f80166930dc9",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.field.Text",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "hidden": true,
+                                                                        "inputCls": "highlightedColor",
+                                                                        "itemId": "ecomBundlePriceTxtFld",
+                                                                        "label": "Bundle Price",
+                                                                        "labelCls": "highlightedColor",
+                                                                        "labelWidth": "120px",
+                                                                        "layout|flex": null,
+                                                                        "width": "280px"
+                                                                    },
+                                                                    "designerId": "7be876fe-dde9-4599-a83e-d2fdab874152"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Button",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": [
+                                                                            "x-rm-blueBtn"
+                                                                        ],
+                                                                        "height": "28px",
+                                                                        "hidden": true,
+                                                                        "itemId": "saveecomBundleBtn",
+                                                                        "margin": "0 5 0 5",
+                                                                        "text": "Save Bundle"
+                                                                    },
+                                                                    "designerId": "7c531e9d-46b4-46b6-b975-0b176c0bd284"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Label",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "docked": "right",
+                                                                        "html": "Total price for selected items::",
+                                                                        "margin": "5 5 5 10",
+                                                                        "style": "font-size: 0.75em;"
+                                                                    },
+                                                                    "designerId": "82485cd1-fee0-401a-8006-f35e90096819"
+                                                                }
+                                                            ]
                                                         },
                                                         {
                                                             "type": "Ext.Label",
@@ -585,48 +712,595 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "docked": "right",
-                                                                "html": "Total price for selected items::",
-                                                                "margin": "5 5 5 10",
-                                                                "style": "font-size: 0.75em;"
+                                                                "html": null,
+                                                                "itemId": "ecomSumOfStdPriceLbl",
+                                                                "margin": "5 5 5 5",
+                                                                "minWidth": "10%",
+                                                                "style": "text-align: right;font-size: 0.75em;"
                                                             },
-                                                            "designerId": "82485cd1-fee0-401a-8006-f35e90096819"
+                                                            "designerId": "e184f6b1-6f9b-4a65-ae7c-3d713c94acb5"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": null,
+                                                                "itemId": "ecomSumOfPromoPriceLbl",
+                                                                "margin": "5 5 5 5",
+                                                                "minWidth": "10%",
+                                                                "style": "text-align: right;font-size: 0.75em;"
+                                                            },
+                                                            "designerId": "db6e1bc6-5af5-4900-856b-434d9b7ab402"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "type": "Ext.Label",
+                                                    "type": "basiceventbinding",
                                                     "reference": {
-                                                        "name": "items",
+                                                        "name": "listeners",
                                                         "type": "array"
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "html": null,
-                                                        "itemId": "ecomSumOfStdPriceLbl",
-                                                        "margin": "5 5 5 5",
-                                                        "minWidth": "10%",
-                                                        "style": "text-align: right;font-size: 0.75em;"
+                                                        "fn": "onProductSetupecomListPanelInitialize",
+                                                        "implHandler": [
+                                                            "\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "////////////////////////////////////////////////////\r",
+                                                            "\r",
+                                                            "var headers = component.down(\"#headerList\");\r",
+                                                            "headers.setData([{}]);\r",
+                                                            "headers.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;\">',\r",
+                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                                            "               '    </div>',\r",
+                                                            "                '    <div class=\"rightBorderDiv\" style=\"width: 4%;text-align: center;\" data-name=\"module_listed_order\">',\r",
+                                                            "               '        index&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;\" data-name=\"module_sku\">',\r",
+                                                            "               '        SKU&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;text-align: center;\" data-name=\"module_name\">',\r",
+                                                            "               '        Products/ Add-ons&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;text-align: center;\" data-name=\"module_description\">',\r",
+                                                            "               '       Description&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 10%;text-align: center;\" data-name=\"module_standard_price\">',\r",
+                                                            "               '        Std. Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div style=\"width: 12%;text-align: center;\" data-name=\"module_promotional_price\">',\r",
+                                                            "               '        Promo. Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '</div>'\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "headers.refresh();\r",
+                                                            "var list = component.down('#mainList');\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "//list.setStore(Ext.getStore('products.ecomMain'));\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "list.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\" style=\"{[this.getSelectedColor(values)]}\">',\r",
+                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 4%;\"> {module_listed_order}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_skus}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_name}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;\">{module_description}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 10%;text-align: right;padding-right: 1%;\">${[formatNum(values.module_standard_price)]}</div>',\r",
+                                                            "               '    <div style=\"width: 12%;text-align: right;padding-right: 1%;\">${[formatNum(values.module_promotional_price)]}</div>',\r",
+                                                            "               '</div>',\r",
+                                                            "               {\r",
+                                                            "                   getSelectedColor:function(values){\r",
+                                                            "                       if(values.is_itemtap){\r",
+                                                            "                           return \"background-color: #94DCF0;\";\r",
+                                                            "                       }else{\r",
+                                                            "                           return \"background-color: transparent;\" ;\r",
+                                                            "                       }\r",
+                                                            "                   }\r",
+                                                            "               }\r",
+                                                            "\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "\r",
+                                                            "// list.setMode(\"SINGLE\");\r",
+                                                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                                            "// });\r",
+                                                            "\r",
+                                                            "list.setItemHeight(22);\r",
+                                                            "list.setMode('MULTI');\r",
+                                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                                            "\r",
+                                                            "component.addListener('painted' , function(){\r",
+                                                            "//     var dataToPush = [];\r",
+                                                            "//     var ecomMainStore = Ext.getStore('products.ecomMain') ;\r",
+                                                            "//     var data = ecomMainStore.getData();\r",
+                                                            "//     for( var i =0 ; i < data.all.length ; i++ ){\r",
+                                                            "\r",
+                                                            "//         var record = data.all[i];\r",
+                                                            "//         console.log(record.data.product_type);\r",
+                                                            "//         if(record.data.product_type != 1){\r",
+                                                            "\r",
+                                                            "//             dataToPush.push( record.raw );\r",
+                                                            "//         }\r",
+                                                            "//     }\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "//     var store = list.getStore( );\r",
+                                                            "//     if( store){\r",
+                                                            "//         store.setData(dataToPush);\r",
+                                                            "//     }else if (dataToPush.length){\r",
+                                                            "//         list.setData(dataToPush);\r",
+                                                            "//     }\r",
+                                                            "\r",
+                                                            "    getItemsOfOnlyECommerceFromEcomStore(component);\r",
+                                                            "} , this, {\r",
+                                                            "\r",
+                                                            "    single:true\r",
+                                                            "});"
+                                                        ],
+                                                        "name": "initialize"
                                                     },
-                                                    "designerId": "e184f6b1-6f9b-4a65-ae7c-3d713c94acb5"
-                                                },
-                                                {
-                                                    "type": "Ext.Label",
-                                                    "reference": {
-                                                        "name": "items",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "html": null,
-                                                        "itemId": "ecomSumOfPromoPriceLbl",
-                                                        "margin": "5 5 5 5",
-                                                        "minWidth": "10%",
-                                                        "style": "text-align: right;font-size: 0.75em;"
-                                                    },
-                                                    "designerId": "db6e1bc6-5af5-4900-856b-434d9b7ab402"
+                                                    "designerId": "9a1a4fa1-5c6c-4400-86db-d533175d8f09"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "pointerCursor",
+                                                    "fieldLbl",
+                                                    "onePixTopBottomMargin"
+                                                ],
+                                                "html": "VIP<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                "itemId": "mylabel144"
+                                            },
+                                            "designerId": "829b0394-1c25-44dd-b11b-2867d53f6258",
+                                            "cn": [
+                                                {
+                                                    "type": "basiceventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onMylabel143Initialize1",
+                                                        "implHandler": [
+                                                            "\r",
+                                                            "component.element.on('tap',function(){\r",
+                                                            "\r",
+                                                            "    var cmp = component.getParent();\r",
+                                                            "    var containerSibling = cmp.down(\"#productSetupeVipListPanel\");\r",
+                                                            "    console.log(\"COPONENT CLICKED\");\r",
+                                                            "    console.log(cmp.getHeight());\r",
+                                                            "    if(  containerSibling.getHidden() ){\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/downArrow.png\";\r",
+                                                            "        containerSibling.setHidden(false);\r",
+                                                            "\r",
+                                                            "    }else{\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "        containerSibling.setHidden(true);\r",
+                                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/rightArrow.png\";\r",
+                                                            "    }\r",
+                                                            "\r",
+                                                            "});"
+                                                        ],
+                                                        "name": "initialize"
+                                                    },
+                                                    "designerId": "0ec88ab8-cd37-448a-90da-1adc9b223b74"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "borderedDiv"
+                                                ],
+                                                "itemId": "productSetupeVipListPanel",
+                                                "layout": "vbox",
+                                                "layout|flex": 3,
+                                                "margin": "0 0 5 0"
+                                            },
+                                            "designerId": "9de12ebb-6973-47df-89a4-fb7eed0560f4",
+                                            "cn": [
+                                                {
+                                                    "type": "linkedinstance",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "itemId": "listwithheader",
+                                                        "layout|flex": 1,
+                                                        "width": null
+                                                    },
+                                                    "designerId": "9078f690-da00-4c37-8c28-3d9d9a7b38d6",
+                                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
+                                                    "cn": [
+                                                        {
+                                                            "type": "delegateeventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "delegate": "#mainList",
+                                                                "designer|targetType": "Ext.dataview.List",
+                                                                "fn": "onRmProListVIPItemTap",
+                                                                "implHandler": [
+                                                                    "\r",
+                                                                    "var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();\r",
+                                                                    "var targetEl = e.target;\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "console.log(\"THIS IS TESTING LOG ONE\");\r",
+                                                                    "\r",
+                                                                    "// delegateAttr=\"onCartTap\"\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var productSetupecomListPanel  = Ext.ComponentQuery.query(\"#productSetupecomListPanel #mainList\")[0];\r",
+                                                                    "if(productSetupecomListPanel){\r",
+                                                                    "    var store = productSetupecomListPanel.getStore();\r",
+                                                                    "    if(store){\r",
+                                                                    "        var data = store.getData();\r",
+                                                                    "        for( var i =0 ; i <data.all.length ; i++){\r",
+                                                                    "\r",
+                                                                    "            var trecord = data.all[i];\r",
+                                                                    "            trecord.set('is_itemtap' , false);\r",
+                                                                    "        }\r",
+                                                                    "\r",
+                                                                    "    }\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){\r",
+                                                                    "\r",
+                                                                    "    var attrVak = targetEl.getAttribute(attrToSearch);\r",
+                                                                    "    console.log(\"THIS IS TESTING LOG 2\");\r",
+                                                                    "    if(attrVak == \"onCartTap\")\r",
+                                                                    "    {\r",
+                                                                    "\r",
+                                                                    "        // var timeout = setTimeout(function(){\r",
+                                                                    "        console.log(\"THIS IS TESTING LOG 3\");\r",
+                                                                    "        var productSetupeVipListPanel = Ext.ComponentQuery.query(\"#productSetupeVipListPanel\")[0];\r",
+                                                                    "        RMdatalink.app.getController('ecomController').onRmProSelectUnselect(productSetupeVipListPanel);\r",
+                                                                    "\r",
+                                                                    "        //      clearTimeout(timeout);\r",
+                                                                    "        //},100);\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "    }\r",
+                                                                    "\r",
+                                                                    "}else{\r",
+                                                                    "    console.log(\"THIS IS TESTING LOG 4\");\r",
+                                                                    "    if(dataview.isSelected(record))\r",
+                                                                    "    {\r",
+                                                                    "        console.log(\"THIS IS TESTING LOG 5\");\r",
+                                                                    "        dataview.deselect(record,true) ;\r",
+                                                                    "    }else{\r",
+                                                                    "        console.log(\"THIS IS TESTING LOG 6\");\r",
+                                                                    "        dataview.select(record,true) ;\r",
+                                                                    "    }\r",
+                                                                    "    var str = dataview.getStore();\r",
+                                                                    "    for(var i=0; i < str.getData().all.length ; i++){\r",
+                                                                    "        str.getAt(i).set('is_itemtap',false);;\r",
+                                                                    "    }\r",
+                                                                    "    record.set('is_itemtap',true);\r",
+                                                                    "    console.log(\"THIS IS TESTING LOG 7\");\r",
+                                                                    "    RMdatalink.app.getController('ecomController').onProductRMProListSelect(dataview, record, eOpts);\r",
+                                                                    "}\r",
+                                                                    "\r",
+                                                                    "\r",
+                                                                    "var timeout = setTimeout(function(){\r",
+                                                                    "\r",
+                                                                    "    RMdatalink.app.getController('ecomController').setDefaultDlDataProduct() ;\r",
+                                                                    "\r",
+                                                                    "    clearTimeout(timeout);\r",
+                                                                    "},100);\r",
+                                                                    ""
+                                                                ],
+                                                                "name": "itemtap"
+                                                            },
+                                                            "designerId": "5e2f11e0-2695-4ae7-b733-c12634768306"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "onlyTopBorderDiv"
+                                                        ],
+                                                        "layout": "hbox",
+                                                        "style": " background-color: gainsboro;font-weight: bold;"
+                                                    },
+                                                    "designerId": "2acba4b4-37ec-4575-b6c8-f141c8a2a74e",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.form.FieldSet",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout": "hbox",
+                                                                "margin": 0,
+                                                                "title": null,
+                                                                "width": "74%"
+                                                            },
+                                                            "designerId": "2bee4709-8b48-44e3-8f7b-83e4c77a5262",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.field.Text",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "hidden": true,
+                                                                        "inputCls": "highlightedColor",
+                                                                        "itemId": "ecomBundlePriceTxtFld",
+                                                                        "label": "Bundle Price",
+                                                                        "labelCls": "highlightedColor",
+                                                                        "labelWidth": "120px",
+                                                                        "layout|flex": null,
+                                                                        "width": "280px"
+                                                                    },
+                                                                    "designerId": "03e0af90-5e5a-4b1e-8c62-4790eed31d6b"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Button",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": [
+                                                                            "x-rm-blueBtn"
+                                                                        ],
+                                                                        "height": "28px",
+                                                                        "hidden": true,
+                                                                        "itemId": "saveecomBundleBtn",
+                                                                        "margin": "0 5 0 5",
+                                                                        "text": "Save Bundle"
+                                                                    },
+                                                                    "designerId": "1ba0f836-5c99-4633-b647-fc9a4d5a0395"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Label",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "docked": "right",
+                                                                        "html": "Total price for selected items::",
+                                                                        "margin": "5 5 5 10",
+                                                                        "style": "font-size: 0.75em;"
+                                                                    },
+                                                                    "designerId": "a9e7abeb-2b53-4cdd-87d7-f9518414504a"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": null,
+                                                                "itemId": "ecomSumOfStdPriceLbl",
+                                                                "margin": "5 5 5 5",
+                                                                "minWidth": "10%",
+                                                                "style": "text-align: right;font-size: 0.75em;"
+                                                            },
+                                                            "designerId": "6f0a9801-1ef1-4bfd-89a5-a78f0fedd2da"
+                                                        },
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": null,
+                                                                "itemId": "ecomSumOfPromoPriceLbl",
+                                                                "margin": "5 5 5 5",
+                                                                "minWidth": "10%",
+                                                                "style": "text-align: right;font-size: 0.75em;"
+                                                            },
+                                                            "designerId": "f65d00c5-0d95-41e7-8da0-e8f4d16c094b"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "basiceventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onProductSetupeVipListPanelInitialize",
+                                                        "implHandler": [
+                                                            "\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "////////////////////////////////////////////////////\r",
+                                                            "\r",
+                                                            "var headers = component.down(\"#headerList\");\r",
+                                                            "headers.setData([{}]);\r",
+                                                            "headers.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;\">',\r",
+                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 4%;text-align: center;\" data-name=\"module_listed_order\">',\r",
+                                                            "               '        index&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;\" data-name=\"module_sku\">',\r",
+                                                            "               '        SKU&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;text-align: center;\" data-name=\"module_name\">',\r",
+                                                            "               '        Products/ Add-ons&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;text-align: center;\" data-name=\"module_description\">',\r",
+                                                            "               '       Description&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 10%;text-align: center;\" data-name=\"module_standard_price\">',\r",
+                                                            "               '        Std. Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div style=\"width: 12%;text-align: center;\" data-name=\"module_promotional_price\">',\r",
+                                                            "               '        Promo. Price&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '</div>'\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "headers.refresh();\r",
+                                                            "var list = component.down('#mainList');\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "list.setItemTpl(\r",
+                                                            "    Ext.create('Ext.XTemplate',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\" style=\"{[this.getSelectedColor(values)]}\">',\r",
+                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
+                                                            "               '    </div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 4%;\"> {module_listed_order}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_skus}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_name}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;\">{module_description}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 10%;text-align: right;padding-right: 1%;\">${[formatNum(values.module_standard_price)]}</div>',\r",
+                                                            "               '    <div style=\"width: 12%;text-align: right;padding-right: 1%;\">${[formatNum(values.module_promotional_price)]}</div>',\r",
+                                                            "               '</div>',\r",
+                                                            "               {\r",
+                                                            "                   getSelectedColor:function(values){\r",
+                                                            "                       if(values.is_itemtap){\r",
+                                                            "                           return \"background-color: #94DCF0;\";\r",
+                                                            "                       }else{\r",
+                                                            "                           return \"background-color: transparent;\" ;\r",
+                                                            "                       }\r",
+                                                            "                   }\r",
+                                                            "               }\r",
+                                                            "\r",
+                                                            "              )\r",
+                                                            ");\r",
+                                                            "\r",
+                                                            "// list.setMode(\"SINGLE\");\r",
+                                                            "//     list.on(\"select\",function(rmProlist, record, eOpts){\r",
+                                                            "//         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);\r",
+                                                            "// });\r",
+                                                            "\r",
+                                                            "list.setItemHeight(22);\r",
+                                                            "list.setMode('MULTI');\r",
+                                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "//getItemsOfVIPFromEcomStore\r",
+                                                            "component.addListener('painted' , function(){\r",
+                                                            "//     var dataToPush = [];\r",
+                                                            "//     var ecomMainStore = Ext.getStore('products.ecomMain') ;\r",
+                                                            "//     var data = ecomMainStore.getData();\r",
+                                                            "//     for( var i =0 ; i < data.all.length ; i++ ){\r",
+                                                            "\r",
+                                                            "//         var record = data.all[i];\r",
+                                                            "//         console.log(record.data.product_type);\r",
+                                                            "//         if(record.data.product_type == 1){\r",
+                                                            "\r",
+                                                            "//             dataToPush.push( record.raw );\r",
+                                                            "//         }\r",
+                                                            "//     }\r",
+                                                            "\r",
+                                                            "\r",
+                                                            "//     var store = list.getStore( );\r",
+                                                            "//     if( store){\r",
+                                                            "//         store.setData(dataToPush);\r",
+                                                            "//     }else if (dataToPush.length){\r",
+                                                            "//         list.setData(dataToPush);\r",
+                                                            "//     }\r",
+                                                            "    getItemsOfVIPFromEcomStore( component );\r",
+                                                            "\r",
+                                                            "} , this, {\r",
+                                                            "\r",
+                                                            "    single:true\r",
+                                                            "});"
+                                                        ],
+                                                        "name": "initialize"
+                                                    },
+                                                    "designerId": "6f075dd5-0af0-4eb7-95da-dfd5536aca39"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onMypanel41Initialize",
+                                                "implHandler": [
+                                                    "function onRmProListItemTap(  dataview , index , target , record , e , eOpts  ){\r",
+                                                    "    \r",
+                                                    "}"
+                                                ],
+                                                "name": "initialize"
+                                            },
+                                            "designerId": "eff98b5b-f940-4cc7-9e84-942c44cd70fd"
                                         }
                                     ]
                                 },
@@ -791,7 +1465,7 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Bundle Setup (Add-ons)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Bundle Setup E-Commerce (Add-ons)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel5",
                                                         "labelAction": "dropDown",
                                                         "margin": "0 0 2 0",
@@ -1348,7 +2022,7 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "html": "Charge Mode",
+                                                                "html": "Charge Mode:",
                                                                 "style": "font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: 'OpenSans'; font-size: 70% !important; color: #555555 !important; font-weight: bold;",
                                                                 "width": "80px"
                                                             },
@@ -1363,7 +2037,7 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "container|align": "start",
-                                                                "height": "50px",
+                                                                "height": "35px",
                                                                 "itemId": "chargeMeOtcFormPanel",
                                                                 "layout": "hbox",
                                                                 "layout|flex": 1,
@@ -1384,10 +2058,14 @@
                                                                             "removeBorderCheckBox"
                                                                         ],
                                                                         "label": "OTC",
+                                                                        "labelAlign": "right",
                                                                         "labelWidth": "80px",
-                                                                        "layout|flex": 1,
+                                                                        "layout|flex": null,
+                                                                        "margin": "",
                                                                         "name": "charge_mode",
-                                                                        "value": "1"
+                                                                        "style": "margin-left:5px;",
+                                                                        "value": "1",
+                                                                        "width": "100px"
                                                                     },
                                                                     "designerId": "220f09db-8aec-4beb-a7a5-ecedfab8d9ab"
                                                                 },
@@ -1404,10 +2082,12 @@
                                                                             "removeBorderCheckBox"
                                                                         ],
                                                                         "label": "1 Month",
+                                                                        "labelAlign": "right",
                                                                         "labelWidth": "80px",
-                                                                        "layout|flex": 1,
+                                                                        "layout|flex": null,
                                                                         "name": "charge_mode",
-                                                                        "value": "2"
+                                                                        "value": "2",
+                                                                        "width": "100px"
                                                                     },
                                                                     "designerId": "1809d379-fd51-47db-8c4c-ca0a5e3710e4"
                                                                 },
@@ -1455,7 +2135,7 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "html": "Product",
+                                                                "html": "Product:",
                                                                 "style": "font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: 'OpenSans'; font-size: 70% !important; color: #555555 !important; font-weight: bold;",
                                                                 "width": "80px"
                                                             },
@@ -1470,7 +2150,7 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "container|align": "start",
-                                                                "height": "50px",
+                                                                "height": "35px",
                                                                 "itemId": "productTypeFormE_Comm",
                                                                 "layout": "hbox",
                                                                 "layout|flex": 1,
@@ -1491,10 +2171,14 @@
                                                                             "removeBorderCheckBox"
                                                                         ],
                                                                         "label": "VIP",
+                                                                        "labelAlign": "right",
                                                                         "labelWidth": "80px",
-                                                                        "layout|flex": 1,
+                                                                        "layout|flex": null,
+                                                                        "margin": null,
                                                                         "name": "product_type",
-                                                                        "value": "1"
+                                                                        "style": "margin-left:5px;",
+                                                                        "value": "1",
+                                                                        "width": "100px"
                                                                     },
                                                                     "designerId": "00ee6196-62b1-4ab9-b7f8-eb5279452583"
                                                                 },
@@ -1511,10 +2195,12 @@
                                                                             "removeBorderCheckBox"
                                                                         ],
                                                                         "label": "Ecom",
+                                                                        "labelAlign": "right",
                                                                         "labelWidth": "80px",
-                                                                        "layout|flex": 1,
+                                                                        "layout|flex": null,
                                                                         "name": "product_type",
-                                                                        "value": "2"
+                                                                        "value": "2",
+                                                                        "width": "100px"
                                                                     },
                                                                     "designerId": "271a5ed5-0d06-475a-9073-292a34c2407c"
                                                                 }
@@ -3604,7 +4290,7 @@
                                                         ],
                                                         "docked": "top",
                                                         "height": null,
-                                                        "html": "Disable Vendors(VIP) <img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Disable Vendors ( VIP ) <img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel5",
                                                         "labelAction": "dropDown1",
                                                         "margin": "1 0 1 0",
@@ -4548,7 +5234,7 @@
                                                         ],
                                                         "docked": "top",
                                                         "height": null,
-                                                        "html": "Disable Vendors(E-Commerce) <img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Disable Vendors ( E-Commerce ) <img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel5",
                                                         "labelAction": "dropDown1",
                                                         "margin": "1 0 1 0",
@@ -4629,7 +5315,7 @@
                                                                 "docked": "top",
                                                                 "height": null,
                                                                 "itemId": "ecomVendorsRemoveSelect",
-                                                                "label": "Vendors For VIP",
+                                                                "label": "Vendors For E-Commerce",
                                                                 "labelWidth": "180px",
                                                                 "options": null,
                                                                 "placeHolder": "Select Vendor",
@@ -5237,14 +5923,14 @@
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" >{[this.calDaysBySkuImages(values)]}</div>',\r",
                                             "\r",
                                             "                 '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" > $ {[formatNum(values.ecom_std)]} </div>',\r",
-                                            "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" > $ {[formatNum(values.ecom_std_addl)]} </div>',\r",
+                                            "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" > $ {[formatNum(values.ecom_promo)]} </div>',\r",
                                             "\r",
                                             "\r",
                                             "\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',\r",
                                             "\r",
-                                            "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" > $ {[formatNum(values.ecom_promo)]} </div>',\r",
+                                            "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" > $ {[formatNum(values.ecom_std_addl)]} </div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.98%;text-align: center;\" > $ {[formatNum(values.ecom_promo_addl)]} </div>',\r",
                                             "\r",
                                             "\r",

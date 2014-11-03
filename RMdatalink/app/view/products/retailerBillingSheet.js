@@ -48,6 +48,7 @@ Ext.define('RMdatalink.view.products.retailerBillingSheet', {
                     },
                     {
                         xtype: 'label',
+                        cls: 'labelClassForLogo',
                         itemId: 'skusTotalInHeader',
                         style: 'margin-left:10px;'
                     },

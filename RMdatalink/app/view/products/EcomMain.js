@@ -138,7 +138,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                         fn: function(component, eOpts) {
 
 
-
+                                            return;
 
                                             ////////////////////////////////////////////////////
 
@@ -251,71 +251,460 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                     {
                                         xtype: 'panel',
                                         flex: 3,
-                                        cls: 'borderedDiv',
-                                        itemId: 'productSetupecomListPanel',
-                                        margin: '0 0 5 0',
+                                        itemId: 'mypanel41',
                                         layout: 'vbox',
                                         items: [
                                             {
-                                                xtype: 'listwithheader',
-                                                itemId: 'listwithheader',
-                                                flex: 1
+                                                xtype: 'label',
+                                                cls: [
+                                                    'pointerCursor',
+                                                    'fieldLbl',
+                                                    'onePixTopBottomMargin'
+                                                ],
+                                                html: 'E-Commerce<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                itemId: 'mylabel143',
+                                                listeners: [
+                                                    {
+                                                        fn: function(component, eOpts) {
+
+                                                            component.element.on('tap',function(){
+
+                                                                var cmp = component.getParent();
+                                                                var containerSibling = cmp.down("#productSetupecomListPanel");
+                                                                console.log("COPONENT CLICKED");
+                                                                console.log(cmp.getHeight());
+                                                                if(  containerSibling.getHidden() ){
+
+
+                                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/downArrow.png";
+                                                                    containerSibling.setHidden(false);
+
+                                                                }else{
+
+
+                                                                    containerSibling.setHidden(true);
+                                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/rightArrow.png";
+                                                                }
+
+                                                            });
+                                                        },
+                                                        event: 'initialize'
+                                                    }
+                                                ]
                                             },
                                             {
                                                 xtype: 'panel',
-                                                cls: 'onlyTopBorderDiv',
-                                                style: ' background-color: gainsboro;font-weight: bold;',
-                                                layout: 'hbox',
+                                                flex: 3,
+                                                cls: 'borderedDiv',
+                                                itemId: 'productSetupecomListPanel',
+                                                margin: '0 0 5 0',
+                                                layout: 'vbox',
                                                 items: [
                                                     {
-                                                        xtype: 'fieldset',
-                                                        margin: 0,
-                                                        width: '74%',
+                                                        xtype: 'listwithheader',
+                                                        itemId: 'listwithheader',
+                                                        flex: 1
+                                                    },
+                                                    {
+                                                        xtype: 'panel',
+                                                        cls: 'onlyTopBorderDiv',
+                                                        style: ' background-color: gainsboro;font-weight: bold;',
                                                         layout: 'hbox',
                                                         items: [
                                                             {
-                                                                xtype: 'textfield',
-                                                                hidden: true,
-                                                                itemId: 'ecomBundlePriceTxtFld',
-                                                                width: '280px',
-                                                                inputCls: 'highlightedColor',
-                                                                label: 'Bundle Price',
-                                                                labelCls: 'highlightedColor',
-                                                                labelWidth: '120px'
-                                                            },
-                                                            {
-                                                                xtype: 'button',
-                                                                cls: 'x-rm-blueBtn',
-                                                                height: '28px',
-                                                                hidden: true,
-                                                                itemId: 'saveecomBundleBtn',
-                                                                margin: '0 5 0 5',
-                                                                text: 'Save Bundle'
+                                                                xtype: 'fieldset',
+                                                                margin: 0,
+                                                                width: '74%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        hidden: true,
+                                                                        itemId: 'ecomBundlePriceTxtFld',
+                                                                        width: '280px',
+                                                                        inputCls: 'highlightedColor',
+                                                                        label: 'Bundle Price',
+                                                                        labelCls: 'highlightedColor',
+                                                                        labelWidth: '120px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'button',
+                                                                        cls: 'x-rm-blueBtn',
+                                                                        height: '28px',
+                                                                        hidden: true,
+                                                                        itemId: 'saveecomBundleBtn',
+                                                                        margin: '0 5 0 5',
+                                                                        text: 'Save Bundle'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        docked: 'right',
+                                                                        html: 'Total price for selected items::',
+                                                                        margin: '5 5 5 10',
+                                                                        style: 'font-size: 0.75em;'
+                                                                    }
+                                                                ]
                                                             },
                                                             {
                                                                 xtype: 'label',
-                                                                docked: 'right',
-                                                                html: 'Total price for selected items::',
-                                                                margin: '5 5 5 10',
-                                                                style: 'font-size: 0.75em;'
+                                                                itemId: 'ecomSumOfStdPriceLbl',
+                                                                margin: '5 5 5 5',
+                                                                minWidth: '10%',
+                                                                style: 'text-align: right;font-size: 0.75em;'
+                                                            },
+                                                            {
+                                                                xtype: 'label',
+                                                                itemId: 'ecomSumOfPromoPriceLbl',
+                                                                margin: '5 5 5 5',
+                                                                minWidth: '10%',
+                                                                style: 'text-align: right;font-size: 0.75em;'
                                                             }
                                                         ]
-                                                    },
+                                                    }
+                                                ],
+                                                listeners: [
                                                     {
-                                                        xtype: 'label',
-                                                        itemId: 'ecomSumOfStdPriceLbl',
-                                                        margin: '5 5 5 5',
-                                                        minWidth: '10%',
-                                                        style: 'text-align: right;font-size: 0.75em;'
-                                                    },
-                                                    {
-                                                        xtype: 'label',
-                                                        itemId: 'ecomSumOfPromoPriceLbl',
-                                                        margin: '5 5 5 5',
-                                                        minWidth: '10%',
-                                                        style: 'text-align: right;font-size: 0.75em;'
+                                                        fn: function(component, eOpts) {
+
+
+
+
+                                                            ////////////////////////////////////////////////////
+
+                                                            var headers = component.down("#headerList");
+                                                            headers.setData([{}]);
+                                                            headers.setItemTpl(
+                                                            Ext.create('Ext.XTemplate',
+                                                            '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;">',
+                                                            '    <div style="width: 6%;">',
+                                                            '        <div style="width: 20px;" data-name="all"></div>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 4%;text-align: center;" data-name="module_listed_order">',
+                                                            '        index&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 14%;" data-name="module_sku">',
+                                                            '        SKU&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 14%;text-align: center;" data-name="module_name">',
+                                                            '        Products/ Add-ons&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 38%;text-align: center;" data-name="module_description">',
+                                                            '       Description&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="module_standard_price">',
+                                                            '        Std. Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div style="width: 12%;text-align: center;" data-name="module_promotional_price">',
+                                                            '        Promo. Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '</div>'
+                                                            )
+                                                            );
+                                                            headers.refresh();
+                                                            var list = component.down('#mainList');
+
+
+                                                            //list.setStore(Ext.getStore('products.ecomMain'));
+
+
+                                                            list.setItemTpl(
+                                                            Ext.create('Ext.XTemplate',
+                                                            '<div class="x-rm-listtpl-main pointerCursor" style="{[this.getSelectedColor(values)]}">',
+                                                            '    <div style="width: 6%;">',
+                                                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 4%;"> {module_listed_order}</div>',
+                                                            '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_skus}</div>',
+                                                            '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_name}</div>',
+                                                            '    <div class="rightBorderDiv" style="width: 38%;">{module_description}</div>',
+                                                            '    <div class="rightBorderDiv" style="width: 10%;text-align: right;padding-right: 1%;">${[formatNum(values.module_standard_price)]}</div>',
+                                                            '    <div style="width: 12%;text-align: right;padding-right: 1%;">${[formatNum(values.module_promotional_price)]}</div>',
+                                                            '</div>',
+                                                            {
+                                                                getSelectedColor:function(values){
+                                                                    if(values.is_itemtap){
+                                                                        return "background-color: #94DCF0;";
+                                                                    }else{
+                                                                        return "background-color: transparent;" ;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            )
+                                                            );
+
+                                                            // list.setMode("SINGLE");
+                                                            //     list.on("select",function(rmProlist, record, eOpts){
+                                                            //         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);
+                                                            // });
+
+                                                            list.setItemHeight(22);
+                                                            list.setMode('MULTI');
+                                                            list.addCls('x-rm-rdvendorslist');
+
+                                                            component.addListener('painted' , function(){
+                                                                //     var dataToPush = [];
+                                                                //     var ecomMainStore = Ext.getStore('products.ecomMain') ;
+                                                                //     var data = ecomMainStore.getData();
+                                                                //     for( var i =0 ; i < data.all.length ; i++ ){
+
+                                                                //         var record = data.all[i];
+                                                                //         console.log(record.data.product_type);
+                                                                //         if(record.data.product_type != 1){
+
+                                                                //             dataToPush.push( record.raw );
+                                                                //         }
+                                                                //     }
+
+
+                                                                //     var store = list.getStore( );
+                                                                //     if( store){
+                                                                //         store.setData(dataToPush);
+                                                                //     }else if (dataToPush.length){
+                                                                //         list.setData(dataToPush);
+                                                                //     }
+
+                                                                getItemsOfOnlyECommerceFromEcomStore(component);
+                                                            } , this, {
+
+                                                                single:true
+                                                            });
+                                                        },
+                                                        event: 'initialize'
                                                     }
                                                 ]
+                                            },
+                                            {
+                                                xtype: 'label',
+                                                cls: [
+                                                    'pointerCursor',
+                                                    'fieldLbl',
+                                                    'onePixTopBottomMargin'
+                                                ],
+                                                html: 'VIP<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                itemId: 'mylabel144',
+                                                listeners: [
+                                                    {
+                                                        fn: function(component, eOpts) {
+
+                                                            component.element.on('tap',function(){
+
+                                                                var cmp = component.getParent();
+                                                                var containerSibling = cmp.down("#productSetupeVipListPanel");
+                                                                console.log("COPONENT CLICKED");
+                                                                console.log(cmp.getHeight());
+                                                                if(  containerSibling.getHidden() ){
+
+
+                                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/downArrow.png";
+                                                                    containerSibling.setHidden(false);
+
+                                                                }else{
+
+
+                                                                    containerSibling.setHidden(true);
+                                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/rightArrow.png";
+                                                                }
+
+                                                            });
+                                                        },
+                                                        event: 'initialize'
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                flex: 3,
+                                                cls: 'borderedDiv',
+                                                itemId: 'productSetupeVipListPanel',
+                                                margin: '0 0 5 0',
+                                                layout: 'vbox',
+                                                items: [
+                                                    {
+                                                        xtype: 'listwithheader',
+                                                        itemId: 'listwithheader',
+                                                        flex: 1
+                                                    },
+                                                    {
+                                                        xtype: 'panel',
+                                                        cls: 'onlyTopBorderDiv',
+                                                        style: ' background-color: gainsboro;font-weight: bold;',
+                                                        layout: 'hbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                margin: 0,
+                                                                width: '74%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        hidden: true,
+                                                                        itemId: 'ecomBundlePriceTxtFld',
+                                                                        width: '280px',
+                                                                        inputCls: 'highlightedColor',
+                                                                        label: 'Bundle Price',
+                                                                        labelCls: 'highlightedColor',
+                                                                        labelWidth: '120px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'button',
+                                                                        cls: 'x-rm-blueBtn',
+                                                                        height: '28px',
+                                                                        hidden: true,
+                                                                        itemId: 'saveecomBundleBtn',
+                                                                        margin: '0 5 0 5',
+                                                                        text: 'Save Bundle'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        docked: 'right',
+                                                                        html: 'Total price for selected items::',
+                                                                        margin: '5 5 5 10',
+                                                                        style: 'font-size: 0.75em;'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'label',
+                                                                itemId: 'ecomSumOfStdPriceLbl',
+                                                                margin: '5 5 5 5',
+                                                                minWidth: '10%',
+                                                                style: 'text-align: right;font-size: 0.75em;'
+                                                            },
+                                                            {
+                                                                xtype: 'label',
+                                                                itemId: 'ecomSumOfPromoPriceLbl',
+                                                                margin: '5 5 5 5',
+                                                                minWidth: '10%',
+                                                                style: 'text-align: right;font-size: 0.75em;'
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                listeners: [
+                                                    {
+                                                        fn: function(component, eOpts) {
+
+
+
+
+                                                            ////////////////////////////////////////////////////
+
+                                                            var headers = component.down("#headerList");
+                                                            headers.setData([{}]);
+                                                            headers.setItemTpl(
+                                                            Ext.create('Ext.XTemplate',
+                                                            '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;">',
+                                                            '    <div style="width: 6%;">',
+                                                            '        <div style="width: 20px;" data-name="all"></div>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 4%;text-align: center;" data-name="module_listed_order">',
+                                                            '        index&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 14%;" data-name="module_sku">',
+                                                            '        SKU&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 14%;text-align: center;" data-name="module_name">',
+                                                            '        Products/ Add-ons&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 38%;text-align: center;" data-name="module_description">',
+                                                            '       Description&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="module_standard_price">',
+                                                            '        Std. Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '    <div style="width: 12%;text-align: center;" data-name="module_promotional_price">',
+                                                            '        Promo. Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                                            '    </div>',
+                                                            '</div>'
+                                                            )
+                                                            );
+                                                            headers.refresh();
+                                                            var list = component.down('#mainList');
+
+
+
+
+
+                                                            list.setItemTpl(
+                                                            Ext.create('Ext.XTemplate',
+                                                            '<div class="x-rm-listtpl-main pointerCursor" style="{[this.getSelectedColor(values)]}">',
+                                                            '    <div style="width: 6%;">',
+                                                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                                                            '    </div>',
+                                                            '    <div class="rightBorderDiv" style="width: 4%;"> {module_listed_order}</div>',
+                                                            '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_skus}</div>',
+                                                            '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_name}</div>',
+                                                            '    <div class="rightBorderDiv" style="width: 38%;">{module_description}</div>',
+                                                            '    <div class="rightBorderDiv" style="width: 10%;text-align: right;padding-right: 1%;">${[formatNum(values.module_standard_price)]}</div>',
+                                                            '    <div style="width: 12%;text-align: right;padding-right: 1%;">${[formatNum(values.module_promotional_price)]}</div>',
+                                                            '</div>',
+                                                            {
+                                                                getSelectedColor:function(values){
+                                                                    if(values.is_itemtap){
+                                                                        return "background-color: #94DCF0;";
+                                                                    }else{
+                                                                        return "background-color: transparent;" ;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            )
+                                                            );
+
+                                                            // list.setMode("SINGLE");
+                                                            //     list.on("select",function(rmProlist, record, eOpts){
+                                                            //         RMdatalink.app.getController('RMProController').onProductRMProListSelect(rmProlist, record, eOpts);
+                                                            // });
+
+                                                            list.setItemHeight(22);
+                                                            list.setMode('MULTI');
+                                                            list.addCls('x-rm-rdvendorslist');
+
+
+                                                            //getItemsOfVIPFromEcomStore
+                                                            component.addListener('painted' , function(){
+                                                                //     var dataToPush = [];
+                                                                //     var ecomMainStore = Ext.getStore('products.ecomMain') ;
+                                                                //     var data = ecomMainStore.getData();
+                                                                //     for( var i =0 ; i < data.all.length ; i++ ){
+
+                                                                //         var record = data.all[i];
+                                                                //         console.log(record.data.product_type);
+                                                                //         if(record.data.product_type == 1){
+
+                                                                //             dataToPush.push( record.raw );
+                                                                //         }
+                                                                //     }
+
+
+                                                                //     var store = list.getStore( );
+                                                                //     if( store){
+                                                                //         store.setData(dataToPush);
+                                                                //     }else if (dataToPush.length){
+                                                                //         list.setData(dataToPush);
+                                                                //     }
+                                                                getItemsOfVIPFromEcomStore( component );
+
+                                                            } , this, {
+
+                                                                single:true
+                                                            });
+                                                        },
+                                                        event: 'initialize'
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        listeners: [
+                                            {
+                                                fn: function(component, eOpts) {
+                                                    function onRmProListItemTap(  dataview , index , target , record , e , eOpts  ){
+
+                                                    }
+                                                },
+                                                event: 'initialize'
                                             }
                                         ]
                                     },
@@ -415,7 +804,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Bundle Setup (Add-ons)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Bundle Setup E-Commerce (Add-ons)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel5',
                                                         margin: '0 0 2 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -649,14 +1038,14 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         items: [
                                                             {
                                                                 xtype: 'label',
-                                                                html: 'Charge Mode',
+                                                                html: 'Charge Mode:',
                                                                 style: 'font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: \'OpenSans\'; font-size: 70% !important; color: #555555 !important; font-weight: bold;',
                                                                 width: '80px'
                                                             },
                                                             {
                                                                 xtype: 'formpanel',
                                                                 flex: 1,
-                                                                height: '50px',
+                                                                height: '35px',
                                                                 itemId: 'chargeMeOtcFormPanel',
                                                                 width: '100%',
                                                                 scrollable: false,
@@ -667,18 +1056,22 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                 items: [
                                                                     {
                                                                         xtype: 'radiofield',
-                                                                        flex: 1,
                                                                         cls: 'removeBorderCheckBox',
+                                                                        margin: '',
+                                                                        style: 'margin-left:5px;',
+                                                                        width: '100px',
                                                                         label: 'OTC',
+                                                                        labelAlign: 'right',
                                                                         labelWidth: '80px',
                                                                         name: 'charge_mode',
                                                                         value: '1'
                                                                     },
                                                                     {
                                                                         xtype: 'radiofield',
-                                                                        flex: 1,
                                                                         cls: 'removeBorderCheckBox',
+                                                                        width: '100px',
                                                                         label: '1 Month',
+                                                                        labelAlign: 'right',
                                                                         labelWidth: '80px',
                                                                         name: 'charge_mode',
                                                                         value: '2',
@@ -704,14 +1097,14 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         items: [
                                                             {
                                                                 xtype: 'label',
-                                                                html: 'Product',
+                                                                html: 'Product:',
                                                                 style: 'font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: \'OpenSans\'; font-size: 70% !important; color: #555555 !important; font-weight: bold;',
                                                                 width: '80px'
                                                             },
                                                             {
                                                                 xtype: 'formpanel',
                                                                 flex: 1,
-                                                                height: '50px',
+                                                                height: '35px',
                                                                 itemId: 'productTypeFormE_Comm',
                                                                 width: '100%',
                                                                 scrollable: false,
@@ -722,18 +1115,21 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                 items: [
                                                                     {
                                                                         xtype: 'radiofield',
-                                                                        flex: 1,
                                                                         cls: 'removeBorderCheckBox',
+                                                                        style: 'margin-left:5px;',
+                                                                        width: '100px',
                                                                         label: 'VIP',
+                                                                        labelAlign: 'right',
                                                                         labelWidth: '80px',
                                                                         name: 'product_type',
                                                                         value: '1'
                                                                     },
                                                                     {
                                                                         xtype: 'radiofield',
-                                                                        flex: 1,
                                                                         cls: 'removeBorderCheckBox',
+                                                                        width: '100px',
                                                                         label: 'Ecom',
+                                                                        labelAlign: 'right',
                                                                         labelWidth: '80px',
                                                                         name: 'product_type',
                                                                         value: '2',
@@ -1660,7 +2056,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'pointerCursor'
                                                         ],
                                                         docked: 'top',
-                                                        html: 'Disable Vendors(VIP) <img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Disable Vendors ( VIP ) <img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel5',
                                                         margin: '1 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
@@ -2266,7 +2662,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'pointerCursor'
                                                         ],
                                                         docked: 'top',
-                                                        html: 'Disable Vendors(E-Commerce) <img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Disable Vendors ( E-Commerce ) <img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel5',
                                                         margin: '1 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
@@ -2310,7 +2706,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                 itemId: 'ecomVendorsRemoveSelect',
                                                                 style: 'border:none;',
                                                                 width: '100%',
-                                                                label: 'Vendors For VIP',
+                                                                label: 'Vendors For E-Commerce',
                                                                 labelWidth: '180px',
                                                                 placeHolder: 'Select Vendor',
                                                                 autoSelect: false,
@@ -2759,14 +3155,14 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImages(values)]}</div>',
 
                                             '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_std)]} </div>',
-                                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_std_addl)]} </div>',
+                                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_promo)]} </div>',
 
 
 
                                             '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',
                                             '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',
 
-                                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_promo)]} </div>',
+                                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_std_addl)]} </div>',
                                             '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_promo_addl)]} </div>',
 
 
@@ -3006,6 +3402,11 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                 delegate: '#listwithheader #mainList'
             },
             {
+                fn: 'onRmProListVIPItemTap',
+                event: 'itemtap',
+                delegate: '#listwithheader #mainList'
+            },
+            {
                 fn: 'onListItemTap',
                 event: 'itemtap',
                 delegate: '#ecomListItemID #pricingList'
@@ -3048,6 +3449,46 @@ Ext.define('RMdatalink.view.products.EcomMain', {
 
 
         console.log("THIS IS TESTING LOG ONE");
+
+
+
+
+
+
+
+
+
+
+
+        var productSetupeVipListPanel  = Ext.ComponentQuery.query("#productSetupeVipListPanel #mainList")[0];
+        if(productSetupeVipListPanel){
+            var store = productSetupeVipListPanel.getStore();
+            if(store){
+                var data = store.getData();
+                for( var i =0 ; i <data.all.length ; i++){
+
+                    var trecord = data.all[i];
+                    trecord.set('is_itemtap' , false);
+                }
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // delegateAttr="onCartTap"
 
@@ -3094,6 +3535,83 @@ Ext.define('RMdatalink.view.products.EcomMain', {
 
                                 clearTimeout(timeout);
                             },100);
+
+    },
+
+    onRmProListVIPItemTap: function(dataview, index, target, record, e, eOpts) {
+
+        var attrToSearch = RMdatalink.util.globalConfig.getListAttrForDelHandling();
+        var targetEl = e.target;
+
+
+        console.log("THIS IS TESTING LOG ONE");
+
+        // delegateAttr="onCartTap"
+
+
+
+        var productSetupecomListPanel  = Ext.ComponentQuery.query("#productSetupecomListPanel #mainList")[0];
+        if(productSetupecomListPanel){
+            var store = productSetupecomListPanel.getStore();
+            if(store){
+                var data = store.getData();
+                for( var i =0 ; i <data.all.length ; i++){
+
+                    var trecord = data.all[i];
+                    trecord.set('is_itemtap' , false);
+                }
+
+            }
+
+
+        }
+
+
+
+        if( RMdatalink.util.globalConfig.isAttributePresentInTarget( attrToSearch,targetEl )  ){
+
+            var attrVak = targetEl.getAttribute(attrToSearch);
+            console.log("THIS IS TESTING LOG 2");
+            if(attrVak == "onCartTap")
+            {
+
+                // var timeout = setTimeout(function(){
+                console.log("THIS IS TESTING LOG 3");
+                var productSetupeVipListPanel = Ext.ComponentQuery.query("#productSetupeVipListPanel")[0];
+                RMdatalink.app.getController('ecomController').onRmProSelectUnselect(productSetupeVipListPanel);
+
+                //      clearTimeout(timeout);
+                //},100);
+
+
+            }
+
+        }else{
+            console.log("THIS IS TESTING LOG 4");
+            if(dataview.isSelected(record))
+            {
+                console.log("THIS IS TESTING LOG 5");
+                dataview.deselect(record,true) ;
+            }else{
+                console.log("THIS IS TESTING LOG 6");
+                dataview.select(record,true) ;
+            }
+            var str = dataview.getStore();
+            for(var i=0; i < str.getData().all.length ; i++){
+                str.getAt(i).set('is_itemtap',false);;
+            }
+            record.set('is_itemtap',true);
+            console.log("THIS IS TESTING LOG 7");
+            RMdatalink.app.getController('ecomController').onProductRMProListSelect(dataview, record, eOpts);
+        }
+
+
+        var timeout = setTimeout(function(){
+
+            RMdatalink.app.getController('ecomController').setDefaultDlDataProduct() ;
+
+            clearTimeout(timeout);
+        },100);
 
     },
 

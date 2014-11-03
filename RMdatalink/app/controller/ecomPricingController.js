@@ -938,10 +938,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                    var time_taken_images_addl_images = 10 ;
 
 
-                                   if(pricingData && pricingData[0]){
+                                   if(pricingData && pricingData[2]){
 
-                                       time_taken_images = pricingData[0].time_taken_images  ;
-                                       time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                       time_taken_images = pricingData[2].time_taken_images  ;
+                                       time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                    }
@@ -967,10 +967,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                    var time_taken_images_addl_images = 10 ;
 
 
-                                   if(pricingData && pricingData[0]){
+                                   if(pricingData && pricingData[2]){
 
-                                       time_taken_images = pricingData[0].time_taken_images  ;
-                                       time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                       time_taken_images = pricingData[2].time_taken_images  ;
+                                       time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                    }
@@ -996,10 +996,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                    var time_taken_images_addl_images = 10 ;
 
 
-                                   if(pricingData && pricingData[0]){
+                                   if(pricingData && pricingData[2]){
 
-                                       time_taken_images = pricingData[0].time_taken_images  ;
-                                       time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                       time_taken_images = pricingData[2].time_taken_images  ;
+                                       time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                    }
@@ -1025,10 +1025,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                    var time_taken_images_addl_images = 10 ;
 
 
-                                   if(pricingData && pricingData[0]){
+                                   if(pricingData && pricingData[2]){
 
-                                       time_taken_images = pricingData[0].time_taken_images  ;
-                                       time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                       time_taken_images = pricingData[2].time_taken_images  ;
+                                       time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                    }
@@ -1696,7 +1696,9 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
         var component = Ext.ComponentQuery.query('#productsecomPricingTab')[0] ;
         var list = component.down('#pricingList');
              list.setItemTpl(
-                Ext.create('Ext.XTemplate',
+                Ext.create(
+
+                    'Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
                            '    <div style="width: 4%;">',
@@ -1727,7 +1729,41 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
 
 
 
-                           '</div>',
+                           '</div>'
+
+        //                  'Ext.XTemplate',
+        //                    '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
+
+        //                    '    <div style="width: 4%;">',
+        //                    '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+        //                    '    </div>',
+
+        //                    '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
+
+        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_images)]}</div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_additional_images)]}</div>',
+
+        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImages(values)]}</div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImages(values)]}</div>',
+
+        //                  '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_std)]} </div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_promo)]} </div>',
+
+
+
+        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',
+
+        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_std_addl)]} </div>',
+        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_promo_addl)]} </div>',
+
+
+
+        //                    '</div>'
+                    ,
                             {
                                getCalculatedValue: function(sku){
                                    if(sku)
@@ -1748,10 +1784,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                     var time_taken_images_addl_images = 10 ;
 
 
-                                    if(pricingData && pricingData[0]){
+                                    if(pricingData && pricingData[2]){
 
-                                         time_taken_images = pricingData[0].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                         time_taken_images = pricingData[2].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                     }
@@ -1777,10 +1813,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                     var time_taken_images_addl_images = 10 ;
 
 
-                                    if(pricingData && pricingData[0]){
+                                    if(pricingData && pricingData[2]){
 
-                                         time_taken_images = pricingData[0].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                         time_taken_images = pricingData[2].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                     }
@@ -1806,10 +1842,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                     var time_taken_images_addl_images = 10 ;
 
 
-                                    if(pricingData && pricingData[0]){
+                                    if(pricingData && pricingData[2]){
 
-                                         time_taken_images = pricingData[0].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                         time_taken_images = pricingData[2].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                     }
@@ -1835,10 +1871,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                     var time_taken_images_addl_images = 10 ;
 
 
-                                    if(pricingData && pricingData[0]){
+                                    if(pricingData && pricingData[2]){
 
-                                         time_taken_images = pricingData[0].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[0].time_taken_images_addl_images ;
+                                         time_taken_images = pricingData[2].time_taken_images  ;
+                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
                                     }

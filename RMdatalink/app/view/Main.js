@@ -65,6 +65,25 @@ Ext.define('RMdatalink.view.Main', {
                     },
                     {
                         xtype: 'button',
+                        handler: function(button, e) {
+
+                            if(RMdatalink.util.globalConfig.getUpdaterRunningStatus()){
+
+                                console.log("ALREADY RUNNING");
+                            }else{
+                                console.log("WIll RUN NOW");
+                                RMdatalink.util.globalConfig.updateRemoteRetailerInformation();
+                            }
+
+                        },
+                        align: 'right',
+                        cls: 'x-rm-accountsettings',
+                        itemId: 'button_retailerImport',
+                        margin: 0,
+                        text: 'Import Retailer'
+                    },
+                    {
+                        xtype: 'button',
                         align: 'right',
                         cls: 'x-rm-accountsettings',
                         itemId: 'RMTechSupportLog',

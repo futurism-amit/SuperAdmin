@@ -366,7 +366,8 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
             activeStore.remove(record) ;
             this.setResetReatilersForVendors(true , selectedUserRecord.record.data._id , selectedUserRecord.record.data.store_phone ,record ) ;
-            this.setFilterForProspectVendors()  ;
+                var storeToPass = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList").getStore();
+            this.setFilterForProspectVendors('RDStoreSideTabPanel' , storeToPass)  ;
 
 
         }
@@ -577,34 +578,28 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
             impCSV.assignRetailerForVendor(selectedUserRecord.record.data,strPhone , true,strId) ;
 
-
-             var prospectList  = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList");
-
+            var prospectList  = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList");
             var prospectStore = prospectList.getStore() ;
 
             // prospectList.remove(record) ;
 
-
             this.setFilterForProspectRetailers();
+            RMdatalink.app.getController('VendorRetailerRelations').updateVendorOnRetailerAddedOrRemoved() ;
 
-
-             RMdatalink.app.getController('VendorRetailerRelations').updateVendorOnRetailerAddedOrRemoved() ;
-
-
-        }else{
+        }
+        else{
             console.error(202);
 
             //setResetReatilersForVendors: function(isRemove, store_id, store_phone, vendorRecord)
 
             console.error(selectedUserRecord);
-
-
             var activeList  = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDInStoreVendorList')[0].down("#mainList");
-
             var activeStore = activeList.getStore() ;
+            console.error("WOHOOO TEST NEW ") ;
+            console.error(record) ;
 
             var objectToAdd = {
-                Account_No:'',
+                'Account_No':' ',
                 'SKU':	record.data.SKU,
                 'collections':	record.data.collections,
                 'design':	record.data.design,
@@ -616,20 +611,28 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
                 'store_name':	record.data.store_name,
                 'store_phone':	record.data.store_phone,
                 'store_state':	record.data.store_state,
-                'vendor_id':	record.data.vendor_id,
+                'vendor_id':	record.data._id,
                 'vendor_name':	record.data.vendor_name,
                 '_id':	record.data._id
 
             };
 
+
             activeStore.add(objectToAdd);
+
             activeList.selectAll();
 
         //     var objectToAddInRetailersArrayofRecord = {
         //         retailer_id:
         //     }
             this.setResetReatilersForVendors(false , selectedUserRecord.record.data._id , selectedUserRecord.record.data.store_phone ,record ) ;
-            this.setFilterForProspectVendors();
+
+
+                var storeToPass = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList").getStore();
+                this.setFilterForProspectVendors('RDStoreSideTabPanel',storeToPass );
+
+
+          //  this.setFilterForProspectVendors('RDStoreSideTabPanel' , storeToPass)  ;
         }
     },
 

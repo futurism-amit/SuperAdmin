@@ -73,6 +73,56 @@
                         "designer|displayName": null,
                         "docked": null,
                         "icon": null,
+                        "itemId": "button_retailerImport",
+                        "margin": 0,
+                        "text": "Import Retailer"
+                    },
+                    "designerId": "ca1b6b01-f2ad-4451-9a84-42fdb15a87f5",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "\r",
+                                    "if(RMdatalink.util.globalConfig.getUpdaterRunningStatus()){\r",
+                                    "    \r",
+                                    "    console.log(\"ALREADY RUNNING\");\r",
+                                    "}else{\r",
+                                    "    console.log(\"WIll RUN NOW\");\r",
+                                    "    RMdatalink.util.globalConfig.updateRemoteRetailerInformation();    \r",
+                                    "}\r",
+                                    ""
+                                ]
+                            },
+                            "designerId": "3cd97cd3-836a-468a-9a4b-f61b21b70000"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "align": "right",
+                        "cls": [
+                            "x-rm-accountsettings"
+                        ],
+                        "designer|displayName": null,
+                        "docked": null,
+                        "icon": null,
                         "itemId": "RMTechSupportLog",
                         "margin": 0,
                         "text": "Start Tech Support"

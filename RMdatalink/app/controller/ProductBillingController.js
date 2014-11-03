@@ -1278,17 +1278,20 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                 productDlVdrPricingPolicySlctFld.setValue(null);
                 productDlVdrPricingPolicySlctFld.setStore(ecomVdPricingSkuImgsStr) ;
+                productDlVdrPricingPolicySlctFld.reset();
             }
             else
                 if(newValue == "vendors" || newValue == "vendorsAddl")
                 {
                     productDlVdrPricingPolicySlctFld.setValue(null);
                     productDlVdrPricingPolicySlctFld.setStore(ecomPricingVendors) ;
+                    productDlVdrPricingPolicySlctFld.reset();
                 }
                 else
                 {
                     productDlVdrPricingPolicySlctFld.setValue(null);
                     productDlVdrPricingPolicySlctFld.setStore(ecomVdPricingSkuImgsAddlImages) ;
+                    productDlVdrPricingPolicySlctFld.reset();
                 }
         }
         else{
@@ -1320,10 +1323,31 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
         var dIndex = store.findExact('value',newValue) ;
-        var data = store.getData().all[dIndex].data.policy ;
+        var isPresentInItems = false;
+        var data;
+
+        for(var i = 0; i < store.data.items.length ; i++){
+
+            var item = store.data.items[i];
+            if( item.data.value  == newValue)
+            {
+                 console.log(item);
+                 data = item.data ;
+                isPresentInItems = true;
+                //debugger;
+                break;
+            }
+        }
+        if(isPresentInItems ){
+
+        }else
+        {
+             data = store.getData().all[dIndex].data ;
+        }
+
 
         console.error(dIndex) ;
-        var rec = store.getData().all[dIndex].data ;
+        var rec = data ;//store.getData().all[dIndex].data ;
 
 
 
@@ -2259,6 +2283,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         var temp =product_billng.product_rmpro ;
           Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;  ;
 
+        //  debugger;
+
           Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue(temp.due_date) ;
           Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(temp.contract_price) ;
           Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].setValue(temp.contract_sent_date) ;
@@ -2856,6 +2882,10 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
             this.config.productKey = "product_ecom" ;
             productKey = "product_ecom" ;
+            if( this.getIsFromVip() ){
+
+                productKey = "product_vip" ;
+            }
             console.log("STEP TWO ECOMM");
         }else{
 
@@ -2982,7 +3012,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 }
 
                 Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + statement);
-                Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml(' SKU = ' + this.getSKUTotat() );
+               // Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml(' SKU = ' + this.getSKUTotat() );
             }else{
                      Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : Datalink product setup");
             }
@@ -3135,6 +3165,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         var temp =product_billng[productKey] ;
           Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;  ;
 
+          debugger ;
+
           Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue(temp.due_date) ;
           Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(temp.contract_price) ;
           Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].setValue(temp.contract_sent_date) ;
@@ -3286,7 +3318,14 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 data[i].quantity = 1;
                 data[i].test = 1;
                 data[i].total_sku = 0;
-                data[i].module_description +=   "(" + vip_vendor + ")";
+                try{
+
+                    data[i].module_description = data[i].module_description.split("(").shift() +   "(VIP Vendor Partner: " + vip_vendor + " , "   + " Total SKU's :"   + this.getSKUTotat() + " )";
+                    //data[i].module_description +=   "(" + vip_vendor + ")";
+                }catch(e){
+                    data[i].module_description +=   "(" + vip_vendor + ")";
+                }
+
 
 
 
@@ -3464,6 +3503,90 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
         RMdatalink.app.getController('ProductBillingController').removeDLDataOptions() ;
+
+
+        var me =this;
+        var id = setTimeout(
+            function(){
+                 var retailerBillingSheetList  = Ext.ComponentQuery.query("#retailerBillingSheet #allProductsRtBillingSetupPanel #productRmPRoAllModulesPanel #mainList")[0];
+                if(retailerBillingSheetList) {
+
+                }else{
+                    console.log(5);
+                    return;
+                }
+                var store =retailerBillingSheetList.getStore();
+                if(store ){
+
+                    var selectedRow = RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
+                    var record = selectedRow.record;
+                    var product =  record.get('product_billng');
+                    if(  product && me.getIsFromVip() )
+                    {
+                        var product_vip  = product.product_vip;
+                        if(product_vip){
+
+                            var product_modules = product_vip.product_modules;
+                            if(product_modules){
+
+                            }else
+                            {
+                                console.log(1);
+                                return;
+                            }
+                            console.log(6);
+        /*
+        var productList = Ext.ComponentQuery.query('#productRmPRoAllModulesPanel')[0].down('#mainList');
+        productList.setDisableSelection(status) ;
+                            */
+                            var productList = retailerBillingSheetList;
+                            var status = false;
+                            productList.setDisableSelection(status) ;
+                            for(var i = 1 ;i < product_modules.length ; i++){
+
+                                var _id  = product_modules[i]._id;
+                                var recordInStore = store.find("_id" ,_id );
+                                console.log(7);
+
+                                if( recordInStore >= 0){
+                                   var recordforStore  = store.getAt(recordInStore) ;
+                                        console.log(recordforStore);
+                                       retailerBillingSheetList.select(recordforStore , true ,false);
+                                       recordforStore.set('remark_val' , 2);
+                                       if( recordforStore.get('module_name')   == "Additional Vendors"){
+
+                                       }else{
+
+                                         recordforStore.set('quantity', 1 );
+                                       }
+
+                                }
+
+                            }
+                            var status = true;
+                            productList.setDisableSelection(status) ;
+
+
+                        }else{
+                            console.log(2);
+                            return;
+                        }
+
+
+                    }else{
+                        console.log(3);
+
+                    }
+
+                }else{
+                    console.log(4);
+                    return;
+                }
+
+
+
+            } , 600
+        );
     },
 
     initProductDatalinkModuleSelection: function() {
@@ -3486,7 +3609,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                     statement = "E-Commerce product setup";
                 }
              Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : " + statement);
-             Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml('  SKU =' + this.getSKUTotat() );
+            // Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml('  SKU =' + this.getSKUTotat() );
         }else{
             Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : Datalink product setup");
         }
@@ -3711,15 +3834,19 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
     saveProductDatalinkBilling: function(showSubscription) {
         var productKey = this.config.productKey ;
-
+        if( this.getIsFromVip() ){
+            productKey = 'product_vip';
+        }
 
         var that = this ;
         var rtRecord =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow().record ;
 
-        var recToUpdate ={product_billng : rtRecord.get('product_billng') ? rtRecord.get('product_billng') : {} };
+        var recToUpdate ={ product_billng : rtRecord.get('product_billng') ? rtRecord.get('product_billng') : {} };
 
         var rateKey = Ext.ComponentQuery.query('#rmProSelectRateList')[0].getSelection()[0].data.value ;
+
         var monthlyMbrShip = Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].getValue() ;
+
         var masterStore = Ext.getStore('retailersMaster');
 
         var initActData = Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].getValue() ;
@@ -3827,11 +3954,12 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
                     function suc(){
 
-
+                           //recToUpdate.product_billng
+                           //debugger;
                            RMdatalink.app.getController('Main').updateRetailerRecords("product_billng",recToUpdate.product_billng, rtRecord.get('_id')) ;
 
                            rtRecord.set("product_billng",recToUpdate.product_billng);
-                        Ext.Viewport.setMasked(false);
+                            Ext.Viewport.setMasked(false);
                        // that.hideProductBillingSheet();
 
                         if(showSubscription){
@@ -4009,7 +4137,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 prospectList  = Ext.ComponentQuery.query('#RDForECommerce #RDInStoreVendorsTab')[0].down("#mainList");
             }
 
-            if(this.getIsFromVip())
+            if ( this.getIsFromVip())
             {
                 prospectList =  Ext.ComponentQuery.query("#pospectActiveListContainer #RDForVIP #RDInStoreVendorsTab #mainList")[0];
 
@@ -4302,16 +4430,16 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                                         if(this.config.isecomProduct)
                                         {
                                             console.log(11 , "ECOM ADDITIONAL VENDOR POLICY");
-                                            if(vprices.ecom_std_addl){
+                                            if(true || vprices.ecom_std_addl){
 
-                                                stPrice = vprices.ecom_std_addl;
+                                                stPrice = vprices.ecom_std_addl || 0;
                                                 console.log(12);
                                             }
 
-                                            if(vprices.ecom_promo_addl){
+                                            if(true || vprices.ecom_promo_addl){
 
                                                 console.log(13);
-                                                promoPrice = vprices.ecom_promo_addl ;
+                                                promoPrice = vprices.ecom_promo_addl || 0 ;
                                             }
 
                                         }

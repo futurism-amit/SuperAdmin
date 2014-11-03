@@ -16,7 +16,8 @@ Ext.define('RMdatalink.util.globalConfig', {
 		dataInRetailerScreenForSaveOrCancel:{},
 		pageIndexOfLoaderFunction:1,
 		ninArrayForLoaderFunction:[],
-		newRetailerInfoAddedName:[]
+		newRetailerInfoAddedName:[],
+		updaterRunningStatus:false
 		
 	},
 	addValueInNinArray:function(value){
@@ -317,7 +318,44 @@ prc_af_mo_Additional Vendors: 0,
 	
 	
 	},
+	markRetailerAsVisited:function(newRetailerInformation , sCallBack , eCallBack){
+						var objectForUpdate = {
+							is_visited_by_retailer_updater:true
+						 };
+						 
+						 var store = Ext.getStore("interMediateCollectionTable");
+						 if(store){
+							console.log( " interMediateCollectionTable store fouind");
+						 }else
+						 {
+							console.log("STORE NOT FOUND");
+							return;
+						 }
+						 console.log("THIS INFORMATION WILL BE MARKED AS VISITED" , newRetailerInformation);	
+						 RMdatalink.iwa.rdl.doUpdateCollection(store , objectForUpdate , newRetailerInformation._id , function (){
+								console.log("IMTER<EDIATE TABLE UPDATED FOR VISITED" , arguments);
+								console.error(newRetailerInformation);
+								
+								if(sCallBack && typeof(sCallBack) == 'function'){
+									console.log("CALLING SCALLBACK");
+									sCallBack.apply(window , arguments);
+								}
+								
+								
+						 },function(){
+						 
+								console.log("IMTER<EDIATE TABLE UPDATED FAIELD" , arguments);
+								if(eCallBack && typeof(eCallBack) == 'function'){
+									console.log("CALLING ECALLBACK");
+									eCallBack.apply(window , arguments);
+								}
+
+								})	
+	
+	
+	},
 	updateRemoteRetailerInformation:function(){
+		RMdatalink.util.globalConfig.setUpdaterRunningStatus(true);
 		console.log("UPDATE RETAILER FUNCTION CALLED");
 		var pageNo  = RMdatalink.util.globalConfig.getPageIndexOfLoaderFunction();
 		RMdatalink.util.globalConfig.setPageIndexOfLoaderFunction( 1 + pageNo);
@@ -337,7 +375,11 @@ prc_af_mo_Additional Vendors: 0,
 						},
 						{
 							'store':{ $nin: RMdatalink.util.globalConfig.getNinArrayForLoaderFunction()  }
-						}						
+						},
+/*						{
+							'flag_for_development':true
+						}
+*/					
 					]	
 			},fields: {}	},
 			function () {
@@ -356,6 +398,7 @@ prc_af_mo_Additional Vendors: 0,
 			
 			}else{
 				console.log("NO NEW DATA IS AVAILAIBLE IN DUMP");
+				RMdatalink.util.globalConfig.setUpdaterRunningStatus(false);
 				return;
 			}
 			for(var i=0;i<items.length; i++){
@@ -443,7 +486,7 @@ prc_af_mo_Additional Vendors: 0,
 					//  BRING THE LATEST RECORD OF THE NEW RETAILER INFORMATION BY _id :-1 (DESCENDING ORDER OF TIME STAMP).
 					//  UPDATE THE DATA FROM LATEST RECORD
 					//  ALSO MARK THE NEW RETAILER INFORMATION AS VISITED SO THAT IT DOES NOT GET ITERATED NEXT TIME
-					
+				
 					
 					console.log("")
 					RMdatalink.iwa.rdl.queryDB(
@@ -462,14 +505,19 @@ prc_af_mo_Additional Vendors: 0,
 								// UPDATE THE INFORMATION WE RECIEVED IN RETAILER MASETER	
 								var store = Ext.getStore('retailersMaster');
 								var objectForUpdate = objectToSend;
-								console.log("objectForUpdate" , objectToSend);								
+								console.log("objectForUpdate" , objectToSend);
+							    if( newRetailerInformation.is_visited_by_retailer_updater ){
+									console.warn("THIS RETAILER LATEST INFORMATIOn HASE BEEN TRANSFFERED TO THE DB. WE WILL CONVERT OBJECT TO UPDATE TO EMPTY OBJECT");
+									objectForUpdate = {};
+									objectForUpdate.store_name = objectToSend.store_name;
+								} 			
 								RMdatalink.iwa.rdl.doUpdateCollection(store , objectForUpdate , oldRetailerInformation._id , function (){
 										
 										
 										RMdatalink.util.globalConfig.addValueInNinArray(objectForUpdate.store_name);
 										console.log("RETAILER INFORMATION UPDATED" , arguments);
 										
-										
+										RMdatalink.util.globalConfig.autoUpdateRetailerProductSetup(newRetailerInformation   , oldRetailerInformation  );
 										RMdatalink.util.globalConfig.markRetailerAsScanned(newRetailerInformation_fromTable  , function(){
 										
 											
@@ -479,9 +527,19 @@ prc_af_mo_Additional Vendors: 0,
 										}, function(){
 											console.log( " MARKING SCANNING FAILURE" , arguments );
 										
-										} );										
+										} );
+										RMdatalink.util.globalConfig.markRetailerAsVisited(newRetailerInformation  , function(){
 										
+											
+											 console.log( " MARKING THE LATEST RETAILER INFORMATION AS VISISTED SUCCESSFUL IN LATEST RETAILER" , arguments );
+											// RMdatalink.util.globalConfig.updateRemoteRetailerInformation();	
 										
+										}, function(){
+											console.log( " MARKING SCANNING FAILURE" , arguments );
+										
+										} );											
+										
+//	markRetailerAsVisited									
 										
 										
 										
@@ -519,6 +577,129 @@ prc_af_mo_Additional Vendors: 0,
 		
 		
 		}
+	
+	},autoUpdateRetailerProductSetup:function(      retailerInfoFromIntermediateCollection , retailerFromVendorMasterCollection                        ){
+	    
+		return;
+		//ALGO : 1   GET THE LATEST INFORMATION OF RETAILER FROM VENDOR MASTER
+	    // 2 : On SUCCESS CREATE  product_billing_object.
+		if( retailerInfoFromIntermediateCollection.is_registeration_complete  || retailerInfoFromIntermediateCollection.flag_for_development)
+		{
+		}else{
+			return;
+		}
+		
+		var latestInformationOfRetailerFromVendorMaster;
+	    RMdatalink.iwa.rdl.queryDB(
+					{collection: "rdl_masterretailerrecords", pageNo: 1, pageSize: 1, sortBy: {},
+						 query: {
+							_id: retailerFromVendorMasterCollection._id 
+						 },
+						 fields: {}	
+					},function(){
+						
+						// SINCE THE INFORMATION RECEIVED IN INTERMEDIATE TABLE IS ALMOST HALF OF WHAT WE REQUIRE WITH DIFFERENT SIGNATURE
+						// WE HAVE TO CONVERT THE DETAIL INTO OUR SIGNATURE.
+						latestInformationOfRetailerFromVendorMaster = arguments[0].items[0];
+						
+						var product_billng_object = latestInformationOfRetailerFromVendorMaster.product_billng || {};
+						var product_vip_object = {
+							contract_period:12,
+							created_by :  "vip registeration program",  // VIP PROGRAM WILL ALWAYS BE FOR 12 MONTHS
+							last_created_by : "vip registeration program",
+							payment_frequency : 1,   // VIP PROGRAM PAYMENT FRRQUENCY WILL BE ONE
+							payment_status : "paid", // VIP REGISTERATION PRODUCT SETUP WILL TAKE PLACE ONLY WHEN PAYMENT IS RECEIVED.
+							payments:[],
+							payment_period:1,  // PAYMENT PERIOD WILL BE 1. THIS MEANS MONTHLY.
+							retailer_id:latestInformationOfRetailerFromVendorMaster._id,
+							sales_persons:[],
+							vendor_sku_discount:null,
+							vendor_pricing_policy:'',
+							bundle_addons:'',
+							bundle_vendors:'',
+							commission_percent:'',
+							commissionable_ammount:'',
+							invoice_product:'product_vip',
+							invoice_id:'',
+							invoice_number:'',
+							pricing_policy_option:'',
+							products_rate:'',
+							vendors_rate:''
+	
+							
+						};
+							
+							product_vip_object.created_date_stamp =    new Date().toLocaleDateString();
+							product_vip_object.last_created_date_stamp =  product_vip_object.created_date_stamp;
+							product_vip_object.pay_date =  product_vip_object.created_date_stamp 
+							product_vip_object.payment_period_start = product_vip_object.pay_date;         
+							
+							var endDate = new Date( product_vip_object.payment_period_start );
+								endDate.setFullYear( endDate.getFullYear() + 1);
+								
+							
+							product_vip_object.payment_period_end = endDate.toLocaleDateString();
+
+							var date = new Date(product_vip_object.created_date_stamp);
+								 date.setMonth(date.getMonth() + 1);
+							product_vip_object.contract_renewal_date = date.toLocaleDateString();
+							product_vip_object.contract_send_date =  product_vip_object.created_date_stamp;
+							product_vip_object.contract_sent_date = product_vip_object.created_date_stamp;
+							product_vip_object.contract_signed_date = product_vip_object.created_date_stamp;
+							product_vip_object.contract_start_date = product_vip_object.created_date_stamp;
+							
+							product_vip_object.vendor_count_discount  =  product_vip_object.created_date_stamp;
+							product_vip_object.due_date  =  product_vip_object.contract_renewal_date;
+							product_vip_object.initial_activation_date =  product_vip_object.created_date_stamp;	
+							
+							var total = 0;
+							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								total += parseInt( obj. module_price);	
+							}  ) ;
+							product_vip_object.ammount_paying = total;
+							product_vip_object.contract_price = product_vip_object.ammount_paying;
+							product_vip_object.monthly_membership =product_vip_object.ammount_paying;
+							product_vip_object.total_payble= product_vip_object.ammount_paying;
+							var programDetails = []
+							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								var program = findProgramBy_name(  obj.module_name );
+								if( program  )
+								{
+									programDetails .push(program.raw)
+								
+								}
+
+							}  ) ;	
+							product_vip_object.product_modules =  programDetails;				
+							product_vip_object.total_payble = product_vip_object.ammount_paying;
+							
+							product_billng_object. product_vip = product_vip_object;
+							var objectForUpdate = {
+								product_billng_object:product_billng_object
+							};
+							var store = Ext.getStore('retailersMaster');
+							RMdatalink.iwa.rdl.doUpdateCollection(store , objectForUpdate , retailerFromVendorMasterCollection._id , function (){
+								console.log("SUCCESS in INFORAMTAION");
+								console.log(arguments);
+							},function(){})
+							
+							
+							
+							
+							
+							
+
+						
+						
+						
+					
+					}, function(){}
+					)
+		
+						
+	
+	
+	
 	
 	}
 });

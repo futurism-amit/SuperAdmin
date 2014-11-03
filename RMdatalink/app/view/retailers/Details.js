@@ -3609,7 +3609,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         items: [
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
                                                                 layout: 'hbox',
                                                                 items: [
                                                                     {
@@ -3637,7 +3636,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                             },
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
                                                                 layout: 'hbox',
                                                                 items: [
                                                                     {
@@ -3663,7 +3661,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                             },
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
                                                                 layout: 'hbox',
                                                                 items: [
                                                                     {
@@ -3688,7 +3685,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                             },
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
                                                                 layout: 'hbox',
                                                                 items: [
                                                                     {
@@ -3737,7 +3733,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                             'pointerCursor',
                                                             'fieldLbl'
                                                         ],
-                                                        html: 'Template/Domain Name<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Domain Name/Template<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel69',
                                                         listeners: [
                                                             {
@@ -3774,7 +3770,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         items: [
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
                                                                 layout: 'hbox',
                                                                 items: [
                                                                     {
@@ -3926,8 +3921,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         items: [
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
-                                                                margin: '20px 0px  0px 0px',
                                                                 title: '',
                                                                 items: [
                                                                     {
@@ -4083,8 +4076,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         items: [
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
-                                                                margin: '20px 0px 20px 0px',
                                                                 title: '',
                                                                 items: [
                                                                     {
@@ -4299,8 +4290,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         items: [
                                                             {
                                                                 xtype: 'fieldset',
-                                                                cls: 'EcommerceRegFieldSet',
-                                                                margin: '20px 0px 20px 0px',
                                                                 title: '',
                                                                 items: [
                                                                     {
@@ -6269,6 +6258,13 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                     {
                                                                         xtype: 'label',
                                                                         html: '0',
+                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
                                                                         itemId: 'rtDtlVdrCollectionTotalLbl',
                                                                         style: 'font-size:80%;',
                                                                         width: '20%'
@@ -6277,13 +6273,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                         xtype: 'label',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrDesignTotalLbl',
-                                                                        style: 'font-size:80%;',
-                                                                        width: '20%'
-                                                                    },
-                                                                    {
-                                                                        xtype: 'label',
-                                                                        html: '0',
-                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
                                                                         style: 'font-size:80%;',
                                                                         width: '20%'
                                                                     },
@@ -6641,6 +6630,13 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                     {
                                                                         xtype: 'label',
                                                                         html: '0',
+                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
                                                                         itemId: 'rtDtlVdrCollectionTotalLbl',
                                                                         style: 'font-size:80%;',
                                                                         width: '20%'
@@ -6649,13 +6645,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                         xtype: 'label',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrDesignTotalLbl',
-                                                                        style: 'font-size:80%;',
-                                                                        width: '20%'
-                                                                    },
-                                                                    {
-                                                                        xtype: 'label',
-                                                                        html: '0',
-                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
                                                                         style: 'font-size:80%;',
                                                                         width: '20%'
                                                                     },
@@ -7015,6 +7004,13 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                     {
                                                                         xtype: 'label',
                                                                         html: '0',
+                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
                                                                         itemId: 'rtDtlVdrCollectionTotalLbl',
                                                                         style: 'font-size:80%;',
                                                                         width: '20%'
@@ -7023,13 +7019,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                         xtype: 'label',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrDesignTotalLbl',
-                                                                        style: 'font-size:80%;',
-                                                                        width: '20%'
-                                                                    },
-                                                                    {
-                                                                        xtype: 'label',
-                                                                        html: '0',
-                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
                                                                         style: 'font-size:80%;',
                                                                         width: '20%'
                                                                     },

@@ -76,6 +76,7 @@ Ext.define('RMdatalink.model.products.RM_Pro', {
                 name: 'charge_mode'
             },
             {
+                allowNull: false,
                 defaultValue: 2,
                 name: 'product_type'
             }

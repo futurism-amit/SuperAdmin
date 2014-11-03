@@ -90,6 +90,10 @@
                             "        value:\"product_ecom\"\r",
                             "    },\r",
                             "    {\r",
+                            "        text:\"VIP\",\r",
+                            "        value:\"product_vip\"\r",
+                            "    },\r",
+                            "    {\r",
                             "        text:\"Other\",\r",
                             "        value:\"product_other\"\r",
                             "    }\r",
@@ -227,7 +231,7 @@
                     "Ext.ComponentQuery.query('#rtBillingSheetSaveBtn')[0].setHidden(true) ;\r",
                     "RMdatalink.app.getController('InvoiceController').disableEnableInvoice(true) ;\r",
                     "\r",
-                    " \r",
+                    "\r",
                     ""
                 ],
                 "name": "painted"

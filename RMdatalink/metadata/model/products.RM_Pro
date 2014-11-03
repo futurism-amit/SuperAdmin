@@ -227,6 +227,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "allowNull": false,
                 "defaultValue": [
                     "2"
                 ],

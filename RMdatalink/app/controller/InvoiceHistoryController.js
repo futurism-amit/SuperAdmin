@@ -134,7 +134,7 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
             ln = ln - 1 ;
             if(ln >= 0)
             {
-                historyList.select(InvoiceHistoryStore.getAt(0),false,false);
+              //  historyList.select(InvoiceHistoryStore.getAt(0),false,false);
             }
 
         }
@@ -433,6 +433,7 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
             if(invoice._id){
                    delete invoice._id ;
             }
+            debugger;
             that.generateInvoiceForRt(invoice) ;
 
         }else{
@@ -709,65 +710,59 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
 
         this.config.displayGeneratedInvoice = true ;
 
-         var invoiceController = RMdatalink.app.getController('InvoiceController') ;
+        var invoiceController = RMdatalink.app.getController('InvoiceController') ;
         invoiceController.config.product_billing_rec = {} ;
-            invoiceController.config.product_billing_rec[record.data.invoice_product] = record.raw ;
+        invoiceController.config.product_billing_rec[record.data.invoice_product] = record.raw ;
 
         invoiceController.config.isManualChange = false ;
-         var rtRecord = invoiceController.config.selectedRetailer ;
+        var rtRecord = invoiceController.config.selectedRetailer ;
 
         invoiceController.config.product_type = record.data.invoice_product  ;
 
-        if(record.data.invoice_product  == "product_rmpro"){
-
-
-
-                  Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
-
-                  Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
-
-                 initRMpro() ;
-
-
-        }else if(record.data.invoice_product  == "product_datalink"){
-
-
-                Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
-
-                  Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
-
-                 initDataLink() ;
-        }else if(record.data.invoice_product  == "product_ecom"){
-
-
-                Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
-
-                  Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
-
-                 initDataLink() ;
-        }
-
-         invoiceController.config.isManualChange = true ;
-
-        function initRMpro()
+        if(record.data.invoice_product  == "product_rmpro")
         {
 
 
-              invoiceController.resetRmproInvoice() ;
 
-                invoiceController.setRMProBillInVoice() ;
+            Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
 
-                invoiceController.setRMProBillingModules() ;
+            Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
+
+            initRMpro() ;
 
 
+        }else if(record.data.invoice_product  == "product_datalink")
+        {
 
-        invoiceController.setInvoiceRmproDiscount(Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].getValue(),true);
-        invoiceController.handleAmountPaid();
+
+            Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
+
+            Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
+
+            initDataLink() ;
+        }else if( record.data.invoice_product  == "product_ecom" || record.data.invoice_product  == "product_vip" )
+        {
+
+
+            Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
+            Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
+            initDataLink() ;
+        }
+
+        invoiceController.config.isManualChange = true ;
+
+        function initRMpro()
+        {
+            invoiceController.resetRmproInvoice() ;
+            invoiceController.setRMProBillInVoice() ;
+            invoiceController.setRMProBillingModules() ;
+            invoiceController.setInvoiceRmproDiscount(Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].getValue(),true);
+            invoiceController.handleAmountPaid();
 
             if(rtRecord.data.product_billng.product_rmpro.payment_period_start  == record.data.payment_period_end){
-                    Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].setHidden(false);
+                Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].setHidden(false);
             }else{
-                    Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].setHidden(true);
+                Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].setHidden(true);
             }
 
         }
@@ -778,15 +773,21 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
         function initDataLink(){
 
 
-               //invoiceController.resetDatalinkInvoice() ;
-                invoiceController.resetRmproInvoice() ;
+            //invoiceController.resetDatalinkInvoice() ;
+            //invoice_product: "product_ecom"
+            if(  record.get('invoice_product') == "product_vip"  ){
+                invoiceController.setIsVip(  true);
+            }else{
+                invoiceController.setIsVip(  false);
+            }
+            invoiceController.resetRmproInvoice() ;
 
+            invoiceController.setDatalinkBillInVoice() ;
 
-                invoiceController.setDatalinkBillInVoice() ;
+            invoiceController.setDatalinkBillingModules() ;
 
-                invoiceController.setDatalinkBillingModules() ;
-
-              // invoiceController.setInvoiceDatalinkDiscount(Ext.ComponentQuery.query('#invoiceDatalinkPaymentPrdSlFld')[0].getValue(),true);
+            //this.getIsVip(true)
+            // invoiceController.setInvoiceDatalinkDiscount(Ext.ComponentQuery.query('#invoiceDatalinkPaymentPrdSlFld')[0].getValue(),true);
 
 
         }
@@ -794,13 +795,13 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
 
 
 
-            if(Ext.ComponentQuery.query('#rtBillingSheetEditCancelBtn')[0].getText() == "Edit")
-            {
-                    RMdatalink.app.getController('InvoiceController').disableEnableInvoice(true) ;
-            }
-            else{
-                    RMdatalink.app.getController('InvoiceController').disableEnableInvoice(false) ;
-            }
+        if(Ext.ComponentQuery.query('#rtBillingSheetEditCancelBtn')[0].getText() == "Edit")
+        {
+            RMdatalink.app.getController('InvoiceController').disableEnableInvoice(true) ;
+        }
+        else{
+            RMdatalink.app.getController('InvoiceController').disableEnableInvoice(false) ;
+        }
 
 
     },

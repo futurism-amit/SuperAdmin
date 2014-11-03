@@ -182,6 +182,21 @@ Ext.define('RMdatalink.controller.ecomController', {
                 RMdatalink.app.getController('PaginationController').setCurrentActiveStoreId('products.ecomMain') ;
 
                 RMdatalink.app.getController('PaginationController').loadStore(1,RMdatalink.util.DataLoader.getPageSize(),false);
+                var productsStore = Ext.getStore('products.ecomMain');
+                    productsStore.addListener("load" , function(){
+
+
+                    var productSetupeVipListPanel  = Ext.ComponentQuery.query("#productSetupeVipListPanel")[0];
+                    var productSetupecomListPanel  = Ext.ComponentQuery.query("#productSetupecomListPanel")[0];
+
+
+                        getItemsOfOnlyECommerceFromEcomStore(productSetupecomListPanel);
+                        getItemsOfVIPFromEcomStore(productSetupeVipListPanel);
+
+                    } , window , {
+                    single:true
+                    });
+
             }else{
                         updateRMPROREC() ;
                         Ext.ComponentQuery.query('#productecomMainPanel')[0].setMasked(false);
@@ -218,6 +233,8 @@ Ext.define('RMdatalink.controller.ecomController', {
         //charge_mode
         console.log(record);
 
+        //ecomSumOfStdPriceLbl
+        //ecomSumOfPromoPriceLbl
 
             this.config.rmProSelectedRecord = record ;
 
@@ -243,16 +260,24 @@ Ext.define('RMdatalink.controller.ecomController', {
 
         eCommerceListSetupSelecteDRecord = record;
         var chargeMeOtcFormPanel = Ext.ComponentQuery.query("#chargeMeOtcFormPanel")[0];
+
+        // 2 is the defaut value .
+        // 2 Represents Monthly  while 1 represents OTC
         var valuesToSt = {
-                charge_mode:record.data.charge_mode.toString()
+                charge_mode:( record.data.charge_mode || 2 ).toString()
             };
         console.log(valuesToSt);
             chargeMeOtcFormPanel.setValues( valuesToSt );
 
 
         var productTypeFormE_Comm = Ext.ComponentQuery.query("#productTypeFormE_Comm")[0];
+
+
+        // 2 is the defaut value .
+        // 2 Represents E-Commerce  while 1 represents VIP
+
         var valuesToSt = {
-                product_type:record.data.product_type.toString()
+                product_type:(  record.data.product_type   || 2).toString()
             };
             productTypeFormE_Comm.setValues( valuesToSt );
         console.log("WOHOOOOOOOO")
@@ -302,31 +327,38 @@ Ext.define('RMdatalink.controller.ecomController', {
 
     },
 
-    onRmProSelectUnselect: function() {
-         var timeout = setTimeout(function(){
+    onRmProSelectUnselect: function(parent) {
+        //ecomSumOfStdPriceLbl
+        //ecomSumOfPromoPriceLbl
+        //  (  parent  || Ext )
+        var timeout = setTimeout(function(){
+            var listParent = (  parent  || Ext.ComponentQuery ).query('#ecomMainListContainer')[0];
+            var selectedRec =(  parent || listParent ).down('#mainList').getSelection() ;
 
-                                             var selectedRec =  Ext.ComponentQuery.query('#ecomMainListContainer')[0].down('#mainList').getSelection() ;
+            var standardPrice = 0 ;
+            var promotionalPrice = 0;
 
-                                            var standardPrice = 0 ;
-                                            var promotionalPrice = 0;
+            var priceLbl = (  parent  || Ext.ComponentQuery ).query('#ecomSumOfPromoPriceLbl')[0];
+            var stdPriceLbl = (  parent  || Ext.ComponentQuery ).query('#ecomSumOfStdPriceLbl')[0];
 
-                                            Ext.ComponentQuery.query('#ecomSumOfPromoPriceLbl')[0].setHtml("Total Promotional Price : " + promotionalPrice);
-                                            Ext.ComponentQuery.query('#ecomSumOfStdPriceLbl')[0].setHtml("Total Standard Price : " + standardPrice);
+            priceLbl.setHtml("Total Promotional Price : " + promotionalPrice);
+            stdPriceLbl.setHtml("Total Standard Price : " + standardPrice);
 
-                                            for( var i=0 ; i < selectedRec.length ; i++ ){
+            for( var i=0 ; i < selectedRec.length ; i++ ){
 
-                                                standardPrice += parseInt(selectedRec[i].get('module_standard_price')) ;
-                                                promotionalPrice += parseInt(selectedRec[i].get('module_promotional_price')) ;
+                standardPrice += parseInt(selectedRec[i].get('module_standard_price')) ;
+                promotionalPrice += parseInt(selectedRec[i].get('module_promotional_price')) ;
 
-                                            }
+            }
+            var ecomSumOfPromoPriceLbl = (  parent  || Ext.ComponentQuery ).query('#ecomSumOfPromoPriceLbl')[0];
+            var ecomSumOfStdPriceLbl = (  parent  || Ext.ComponentQuery ).query('#ecomSumOfStdPriceLbl')[0];
+            ecomSumOfPromoPriceLbl.setHtml("$" + formatNum(promotionalPrice) );
+            ecomSumOfStdPriceLbl.setHtml("$" + formatNum(standardPrice) );
 
-                                            Ext.ComponentQuery.query('#ecomSumOfPromoPriceLbl')[0].setHtml("$" + formatNum(promotionalPrice) );
-                                            Ext.ComponentQuery.query('#ecomSumOfStdPriceLbl')[0].setHtml("$" + formatNum(standardPrice) );
 
 
-
-                                            clearTimeout(timeout);
-                            },100);
+            clearTimeout(timeout);
+        },100);
 
 
 
@@ -664,7 +696,11 @@ Ext.define('RMdatalink.controller.ecomController', {
     },
 
     setDefaultDlDataProduct: function() {
-        var datalinkStore = Ext.getStore('products.ecomMain') ;
+        //var datalinkStore = Ext.getStore('products.ecomMain') ;
+
+
+        var productList = Ext.ComponentQuery.query('#ecomMainListContainer')[0].down('#mainList');
+        var datalinkStore = productList.getStore('products.ecomMain') ;
 
         var dlDataRIndex = datalinkStore.findExact('module_sku',"DL-DATA") ;
         if( dlDataRIndex == -1 ){
@@ -675,7 +711,7 @@ Ext.define('RMdatalink.controller.ecomController', {
         var dl_id = dlDataRecord.get('_id');
 
 
-        var productList = Ext.ComponentQuery.query('#ecomMainListContainer')[0].down('#mainList');
+        //var productList = Ext.ComponentQuery.query('#ecomMainListContainer')[0].down('#mainList');
         productList.deselect(dlDataRecord,true);
 
          RMdatalink.app.getController('ecomController').onRmProSelectUnselect();

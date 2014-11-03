@@ -73,6 +73,10 @@ Ext.define('RMdatalink.view.billing.DetailSheet', {
                                 value: 'product_ecom'
                             },
                             {
+                                text: 'VIP',
+                                value: 'product_vip'
+                            },
+                            {
                                 text: 'Other',
                                 value: 'product_other'
                             }

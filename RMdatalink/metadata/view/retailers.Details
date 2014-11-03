@@ -8832,9 +8832,6 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
                                                                 "layout": "hbox",
                                                                 "title": null
                                                             },
@@ -8891,9 +8888,6 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
                                                                 "layout": "hbox",
                                                                 "title": null
                                                             },
@@ -8948,9 +8942,6 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
                                                                 "layout": "hbox",
                                                                 "title": null
                                                             },
@@ -9004,9 +8995,6 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
                                                                 "layout": "hbox",
                                                                 "title": null
                                                             },
@@ -9126,7 +9114,7 @@
                                                             "pointerCursor",
                                                             "fieldLbl"
                                                         ],
-                                                        "html": "Template/Domain Name<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Domain Name/Template<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel69"
                                                     },
                                                     "designerId": "cde2a326-a080-4112-a1a4-adb3bf209feb",
@@ -9189,9 +9177,6 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
                                                                 "layout": "hbox",
                                                                 "title": null
                                                             },
@@ -9500,10 +9485,7 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
-                                                                "margin": "20px 0px  0px 0px",
+                                                                "margin": null,
                                                                 "style": null,
                                                                 "title": ""
                                                             },
@@ -9830,10 +9812,7 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
-                                                                "margin": "20px 0px 20px 0px",
+                                                                "margin": null,
                                                                 "title": ""
                                                             },
                                                             "designerId": "4f59d5e9-388f-4675-bdea-0aca3a2443cc",
@@ -10284,10 +10263,7 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "cls": [
-                                                                    "EcommerceRegFieldSet"
-                                                                ],
-                                                                "margin": "20px 0px 20px 0px",
+                                                                "margin": null,
                                                                 "title": ""
                                                             },
                                                             "designerId": "b96db6dc-fe1f-45bc-86fd-33233560c30b",
@@ -14045,6 +14021,22 @@
                                                                     "userConfig": {
                                                                         "docked": null,
                                                                         "html": "0",
+                                                                        "itemId": "rtDtlVdrSKUTotalLbl",
+                                                                        "style": "font-size:80%;",
+                                                                        "width": "20%"
+                                                                    },
+                                                                    "designerId": "be0b675b-9a2a-4e89-aeab-75e7b20ea65b"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Label",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "docked": null,
+                                                                        "html": "0",
                                                                         "itemId": "rtDtlVdrCollectionTotalLbl",
                                                                         "style": "font-size:80%;",
                                                                         "width": "20%"
@@ -14066,22 +14058,6 @@
                                                                         "width": "20%"
                                                                     },
                                                                     "designerId": "91d14b7d-c41f-4f00-8e89-c9bcfbbea736"
-                                                                },
-                                                                {
-                                                                    "type": "Ext.Label",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "docked": null,
-                                                                        "html": "0",
-                                                                        "itemId": "rtDtlVdrSKUTotalLbl",
-                                                                        "style": "font-size:80%;",
-                                                                        "width": "20%"
-                                                                    },
-                                                                    "designerId": "be0b675b-9a2a-4e89-aeab-75e7b20ea65b"
                                                                 },
                                                                 {
                                                                     "type": "Ext.form.FieldSet",
@@ -15098,6 +15074,22 @@
                                                                     "userConfig": {
                                                                         "docked": null,
                                                                         "html": "0",
+                                                                        "itemId": "rtDtlVdrSKUTotalLbl",
+                                                                        "style": "font-size:80%;",
+                                                                        "width": "20%"
+                                                                    },
+                                                                    "designerId": "62f8ce84-791d-4886-8a24-ad43d9458e17"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Label",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "docked": null,
+                                                                        "html": "0",
                                                                         "itemId": "rtDtlVdrCollectionTotalLbl",
                                                                         "style": "font-size:80%;",
                                                                         "width": "20%"
@@ -15119,22 +15111,6 @@
                                                                         "width": "20%"
                                                                     },
                                                                     "designerId": "f1f333d2-61b5-450c-a355-4e5b5b94705a"
-                                                                },
-                                                                {
-                                                                    "type": "Ext.Label",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "docked": null,
-                                                                        "html": "0",
-                                                                        "itemId": "rtDtlVdrSKUTotalLbl",
-                                                                        "style": "font-size:80%;",
-                                                                        "width": "20%"
-                                                                    },
-                                                                    "designerId": "62f8ce84-791d-4886-8a24-ad43d9458e17"
                                                                 },
                                                                 {
                                                                     "type": "Ext.form.FieldSet",
@@ -16157,6 +16133,22 @@
                                                                     "userConfig": {
                                                                         "docked": null,
                                                                         "html": "0",
+                                                                        "itemId": "rtDtlVdrSKUTotalLbl",
+                                                                        "style": "font-size:80%;",
+                                                                        "width": "20%"
+                                                                    },
+                                                                    "designerId": "f4d4dbc8-b282-4a74-8c4b-5c29cbac7ab7"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.Label",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "docked": null,
+                                                                        "html": "0",
                                                                         "itemId": "rtDtlVdrCollectionTotalLbl",
                                                                         "style": "font-size:80%;",
                                                                         "width": "20%"
@@ -16178,22 +16170,6 @@
                                                                         "width": "20%"
                                                                     },
                                                                     "designerId": "10a27bc9-17c9-437f-ad4c-41e61e93863d"
-                                                                },
-                                                                {
-                                                                    "type": "Ext.Label",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "docked": null,
-                                                                        "html": "0",
-                                                                        "itemId": "rtDtlVdrSKUTotalLbl",
-                                                                        "style": "font-size:80%;",
-                                                                        "width": "20%"
-                                                                    },
-                                                                    "designerId": "f4d4dbc8-b282-4a74-8c4b-5c29cbac7ab7"
                                                                 },
                                                                 {
                                                                     "type": "Ext.form.FieldSet",

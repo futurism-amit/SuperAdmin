@@ -1455,7 +1455,14 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                     record.set('remark_val',2);
 
                     if( record.data.module_sku != "DL-DATA"){
-                        record.set('quantity',1 );
+                        //module_name: "Additional Vendors"
+                        if( record.get('module_name')   == "Additional Vendors" ){
+
+                        }else{
+                            record.set('quantity',1 );
+                        }
+
+
                     }
 
                  }
@@ -1467,7 +1474,15 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                    record.set('remark_val',0);
 
                     if( record.data.module_sku != "DL-DATA"){
-                        record.set('quantity', 0 );
+                        if( record.get('module_name')   == "Additional Vendors")
+                        {
+
+
+                        }else{
+                            record.set('quantity', 0 );
+                        }
+
+
                     }
                  }
 

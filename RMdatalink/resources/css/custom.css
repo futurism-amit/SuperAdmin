@@ -85,9 +85,9 @@
     border:1px solid;    
 }
 .textFieldInputECommereRetailer {
-    
+/*     
     margin-top:3px;
-    margin-bottom:3px;
+    margin-bottom:3px; */
 }
 
 
@@ -99,7 +99,7 @@
 .EcommerceRegFieldSet{
     
 	padding-top: 5px;
-	padding-bottom: 5px;        
+/* 	padding-bottom: 5px;         */
     
 }
 .toggleElement{

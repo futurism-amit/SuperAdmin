@@ -498,6 +498,87 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
+                        itemId: 'ecomVdrPricingTimeTknToUploadPanel',
+                        width: '100%',
+                        items: [
+                            {
+                                xtype: 'label',
+                                labelAction: 'dropDown',
+                                cls: [
+                                    'fieldLbl',
+                                    'pointerCursor'
+                                ],
+                                html: 'Value Calculator Setup<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                itemId: 'mylabel6',
+                                margin: '1 0 10 0',
+                                style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
+                            },
+                            {
+                                xtype: 'textfield',
+                                itemId: 'vdrTimeTknSkuImagsFld',
+                                label: 'Time Taken per SKU + Image:',
+                                labelWidth: '52%'
+                            },
+                            {
+                                xtype: 'textfield',
+                                itemId: 'vdrTimeTknSkuImagsAddlImgsFld',
+                                label: 'Time Taken per SKU + Image + Addl Image:',
+                                labelWidth: '52%'
+                            },
+                            {
+                                xtype: 'fieldset',
+                                margin: '4 0 4 0',
+                                padding: '0 2 0 0',
+                                width: '86%',
+                                layout: {
+                                    type: 'hbox',
+                                    align: 'start',
+                                    pack: 'center'
+                                },
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        handler: function(button, e) {
+                                            RMdatalink.app.getController('ecomPricingController').updateTimeTakenFlds();
+                                        },
+                                        action: 'addNew',
+                                        cls: 'x-rm-blueBtn',
+                                        height: '20px',
+                                        margin: '0 0 0 20',
+                                        width: '80px',
+                                        text: 'Update'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        cls: 'newGrayBtn',
+                                        height: '20px',
+                                        hidden: true,
+                                        margin: '0 0 0 20',
+                                        minHeight: '24px',
+                                        width: '80px',
+                                        pressedCls: 'x-rm-card-actionbtn-pressing',
+                                        text: 'Delete'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        cls: [
+                                            'x-rm-blueBtn',
+                                            'x-rm-rdopenbtns',
+                                            'x-rm-smalliconbtns'
+                                        ],
+                                        height: '20px',
+                                        margin: '0 0 0 20',
+                                        width: '80px',
+                                        badgeText: '',
+                                        iconAlign: 'center',
+                                        text: 'Clear'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'fieldset',
                         itemId: 'ecomVdrPricingSKUDiscountSetUpPanel',
                         width: '100%',
                         items: [
@@ -627,87 +708,6 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                                         ],
                                         height: '20px',
                                         itemId: 'clear',
-                                        margin: '0 0 0 20',
-                                        width: '80px',
-                                        badgeText: '',
-                                        iconAlign: 'center',
-                                        text: 'Clear'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        itemId: 'ecomVdrPricingTimeTknToUploadPanel',
-                        width: '100%',
-                        items: [
-                            {
-                                xtype: 'label',
-                                labelAction: 'dropDown',
-                                cls: [
-                                    'fieldLbl',
-                                    'pointerCursor'
-                                ],
-                                html: 'Value Calculator Setup<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
-                                itemId: 'mylabel6',
-                                margin: '1 0 10 0',
-                                style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
-                            },
-                            {
-                                xtype: 'textfield',
-                                itemId: 'vdrTimeTknSkuImagsFld',
-                                label: 'Time Taken per SKU + Image:',
-                                labelWidth: '52%'
-                            },
-                            {
-                                xtype: 'textfield',
-                                itemId: 'vdrTimeTknSkuImagsAddlImgsFld',
-                                label: 'Time Taken per SKU + Image + Addl Image:',
-                                labelWidth: '52%'
-                            },
-                            {
-                                xtype: 'fieldset',
-                                margin: '4 0 4 0',
-                                padding: '0 2 0 0',
-                                width: '86%',
-                                layout: {
-                                    type: 'hbox',
-                                    align: 'start',
-                                    pack: 'center'
-                                },
-                                items: [
-                                    {
-                                        xtype: 'button',
-                                        handler: function(button, e) {
-                                            RMdatalink.app.getController('ecomPricingController').updateTimeTakenFlds();
-                                        },
-                                        action: 'addNew',
-                                        cls: 'x-rm-blueBtn',
-                                        height: '20px',
-                                        margin: '0 0 0 20',
-                                        width: '80px',
-                                        text: 'Update'
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        cls: 'newGrayBtn',
-                                        height: '20px',
-                                        hidden: true,
-                                        margin: '0 0 0 20',
-                                        minHeight: '24px',
-                                        width: '80px',
-                                        pressedCls: 'x-rm-card-actionbtn-pressing',
-                                        text: 'Delete'
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        cls: [
-                                            'x-rm-blueBtn',
-                                            'x-rm-rdopenbtns',
-                                            'x-rm-smalliconbtns'
-                                        ],
-                                        height: '20px',
                                         margin: '0 0 0 20',
                                         width: '80px',
                                         badgeText: '',

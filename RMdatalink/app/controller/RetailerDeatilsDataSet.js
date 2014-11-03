@@ -3630,13 +3630,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
                                    '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '</div>'
                                   );
             tplOfInStoreHeader = Ext.create('Ext.XTemplate',
@@ -3646,13 +3644,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    '    </div>',
                                    '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '</div>'
                                   );
 
@@ -3664,10 +3660,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
                                  '    <div style="width: 24%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
                                  '    <div style="width: 15%;">{collections}</div>',
                                  '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-
                                  '    <div style="width: 15%;">{no_of_images}</div>',
                                  '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                  '</div>'
@@ -3680,10 +3675,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    </div>',
                                      '<div type ="text" style="width:15%;"  >{Account_No}</div>',
                                  '    <div style="width: 15%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
                                  '    <div style="width: 15%;">{collections}</div>',
                                  '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-
                                  '    <div style="width: 15%;">{no_of_images}</div>',
                                  '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                  '</div>'
@@ -3766,7 +3760,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         if(isRetailerDetailsView)
         {
-            OnlineList.setStore('vendors.Master');
+
+           // OnlineList.setStore('vendors.Master');
+             OnlineList.setData(    getArrayFromStore(Ext.getStore('vendors.Master')));
+
+
         }else{
              //OnlineList.setStore('retailersMaster');
             OnlineList.setStore('retailers.prospectRTForVendor');
@@ -3805,13 +3803,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
                                    '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '</div>'
                                   );
             tplOfInStoreHeader = Ext.create('Ext.XTemplate',
@@ -3821,13 +3817,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    '    </div>',
                                    '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '</div>'
                                   );
 
@@ -3839,10 +3833,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
                                  '    <div style="width: 24%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
                                  '    <div style="width: 15%;">{collections}</div>',
                                  '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-
                                  '    <div style="width: 15%;">{no_of_images}</div>',
                                  '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                  '</div>'
@@ -3855,10 +3848,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    </div>',
                                      '<div type ="text" style="width:15%;"  >{Account_No}</div>',
                                  '    <div style="width: 15%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
                                  '    <div style="width: 15%;">{collections}</div>',
                                  '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-
                                  '    <div style="width: 15%;">{no_of_images}</div>',
                                  '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                  '</div>'
@@ -3987,13 +3979,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
                                    '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '</div>'
                                   );
             tplOfInStoreHeader = Ext.create('Ext.XTemplate',
@@ -4003,13 +3993,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                    '    </div>',
                                    '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-
                                    '</div>'
                                   );
 
@@ -4021,10 +4009,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
                                  '    <div style="width: 24%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
                                  '    <div style="width: 15%;">{collections}</div>',
                                  '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-
                                  '    <div style="width: 15%;">{no_of_images}</div>',
                                  '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                  '</div>'
@@ -4037,10 +4024,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    </div>',
                                      '<div type ="text" style="width:15%;"  >{Account_No}</div>',
                                  '    <div style="width: 15%;">{vendor_name}</div>',
+                                 '    <div style="width: 15%;">{SKU}</div>',
                                  '    <div style="width: 15%;">{collections}</div>',
                                  '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-
                                  '    <div style="width: 15%;">{no_of_images}</div>',
                                  '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                  '</div>'
@@ -4174,10 +4160,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                      '    </div>',
                                          '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNo(event)"  vendorId =  {vendor_id}  value={Account_No} />',
                                      '    <div style="width: 15%;">{vendor_name}</div>',
+                                     '    <div style="width: 15%;">{SKU}</div>',
                                      '    <div style="width: 15%;">{collections}</div>',
                                      '    <div style="width: 15%;">{design}</div>',
-                                     '    <div style="width: 15%;">{SKU}</div>',
-
                                      '    <div style="width: 15%;">{no_of_images}</div>',
                                      '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                      '</div>'
@@ -4221,10 +4206,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                          '    </div>',
                                          '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
                                          '    <div style="width: 15%;">{vendor_name}</div>',
+                                         '    <div style="width: 15%;">{SKU}</div>',
                                          '    <div style="width: 15%;">{collections}</div>',
                                          '    <div style="width: 15%;">{design}</div>',
-                                         '    <div style="width: 15%;">{SKU}</div>',
-
                                          '    <div style="width: 15%;">{no_of_images}</div>',
                                          '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                          '</div>'
@@ -4307,10 +4291,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                      '    </div>',
                                          '<input type ="text" class = "inputAccountNo"    style="max-width: 60px;margin-right:2px;"  onkeyup="onKeyDownOfAccountNoECommerce(event)"  vendorId =  {vendor_id}  value={Account_No} />',
                                      '    <div style="width: 15%;">{vendor_name}</div>',
+                                     '    <div style="width: 15%;">{SKU}</div>',
                                      '    <div style="width: 15%;">{collections}</div>',
                                      '    <div style="width: 15%;">{design}</div>',
-                                     '    <div style="width: 15%;">{SKU}</div>',
-
                                      '    <div style="width: 15%;">{no_of_images}</div>',
                                      '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                      '</div>'
@@ -4354,10 +4337,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                          '    </div>',
                                          '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
                                          '    <div style="width: 15%;">{vendor_name}</div>',
+                                         '    <div style="width: 15%;">{SKU}</div>',
                                          '    <div style="width: 15%;">{collections}</div>',
                                          '    <div style="width: 15%;">{design}</div>',
-                                         '    <div style="width: 15%;">{SKU}</div>',
-
                                          '    <div style="width: 15%;">{no_of_images}</div>',
                                          '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                          '</div>'
@@ -4438,10 +4420,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                      '    </div>',
                                          '<input type ="text" class = "inputAccountNo"    style="max-width: 60px;margin-right:2px;"  onkeyup="onKeyDownOfAccountNoVIP(event)"  vendorId =  {_id}  value={Account_No} />',
                                      '    <div style="width: 15%;">{vendor_name}</div>',
+                                     '    <div style="width: 15%;">{SKU}</div>',
                                      '    <div style="width: 15%;">{collections}</div>',
                                      '    <div style="width: 15%;">{design}</div>',
-                                     '    <div style="width: 15%;">{SKU}</div>',
-
                                      '    <div style="width: 15%;">{no_of_images}</div>',
                                      '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                      '</div>'
@@ -4485,10 +4466,9 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                          '    </div>',
                                          '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
                                          '    <div style="width: 15%;">{vendor_name}</div>',
+                                         '    <div style="width: 15%;">{SKU}</div>',
                                          '    <div style="width: 15%;">{collections}</div>',
                                          '    <div style="width: 15%;">{design}</div>',
-                                         '    <div style="width: 15%;">{SKU}</div>',
-
                                          '    <div style="width: 15%;">{no_of_images}</div>',
                                          '    <div style="width: 15%;">{no_of_additional_images}</div>',
                                          '</div>'
@@ -5946,7 +5926,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
 
-        setRetailersList(getVendorsForRetailer()) ;
+        setRetailersList( getVendorsForRetailer() ) ;
 
         var dataToAdd =  getVendoersForRetailersByProduct('retailers_ecommerce');
         if(dataToAdd.length)
@@ -5961,9 +5941,10 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         {
             setRetailersListByProduct (dataOfVip , "RDForVIP");
         }
+        var activeList  = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList");
+        var activeStore = activeList.getStore() ;
 
-
-        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors() ;
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDStoreSideTabPanel' , activeStore) ;
 
 
 
@@ -6052,12 +6033,29 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                         no_of_images:vRecord.data.no_of_images,
                                         no_of_additional_images:vRecord.data.no_of_additional_images,
                                         vendor_id: vRecord.data._id,
+
+        //                                 sku: vRecord.data.sku,
+        //                                 status: vRecord.data.status,
+        //                                 store_city: vRecord.data.store_city,
+        //                                 store_name: vRecord.data.store_name,
+        //                                 store_phone: vRecord.data.store_phone,
+        //                                 store_state: vRecord.data.store_state,
+
                                         Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) ||' '
                                     }
 
                                 );
                             }
+        /*
+        sku: undefined
+        status: undefined
+        store_city: undefined
+        store_name: undefined
+        store_phone: undefined
+        store_state: undefined
 
+
+        */
                         }
                         else
                         {
@@ -6073,6 +6071,15 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                         no_of_images:vRecord.data.no_of_images,
                                         no_of_additional_images:vRecord.data.no_of_additional_images,
                                         vendor_id: vRecord.data._id,
+
+
+        //                                 sku: vRecord.data.sku,
+        //                                 status: vRecord.data.status,
+        //                                 store_city: vRecord.data.store_city,
+        //                                 store_name: vRecord.data.store_name,
+        //                                 store_phone: vRecord.data.store_phone,
+        //                                 store_state: vRecord.data.store_state,
+
                                         Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) || ' '
                                     }
 
