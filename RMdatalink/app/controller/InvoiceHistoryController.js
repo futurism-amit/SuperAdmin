@@ -169,7 +169,8 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
             console.error("**********************************INVOICE") ;
             console.error(invoice) ;
 
-
+            debugger;
+            return;
             RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(invoice,InvoiceHistoryStore,success,error) ;
         }
 
@@ -433,7 +434,7 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
             if(invoice._id){
                    delete invoice._id ;
             }
-            debugger;
+
             that.generateInvoiceForRt(invoice) ;
 
         }else{
@@ -1345,8 +1346,13 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
 
 
 
-             RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_invoice_history",pageNo:1 ,pageSize: -1 ,sortBy:{invoice_number:1/-1},
-                 query:{invoice_number: { $exists: true}},
+             RMdatalink.iwa.rdl.queryDB(
+                 {
+                  collection: dbEnv + "rdl_invoice_history",
+                  pageNo: 1 ,
+                  pageSize: -1 ,
+                  sortBy:{invoice_number:1/-1},
+                 query:{invoice_number: { $exists: true}           },
                  fields:{invoice_number:1},
                  isDeletedRecords:true},success,error);
 

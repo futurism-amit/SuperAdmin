@@ -575,10 +575,12 @@ Ext.define('RMdatalink.controller.InvoiceController', {
             };
              that.resetRmproInvoice() ;
 
-            if(dataToUpdate.product_billng  && dataToUpdate.product_billng.product_rmpro &&
+            if(
+               dataToUpdate.product_billng  && dataToUpdate.product_billng.product_rmpro &&
                dataToUpdate.product_billng.product_rmpro.total_payble &&
                dataToUpdate.product_billng.product_rmpro.payment_period &&
-               dataToUpdate.product_billng.product_rmpro.due_date )
+               dataToUpdate.product_billng.product_rmpro.due_date
+              )
             {
 
                 dataToUpdate.product_billng.product_rmpro.payment_status = "unpaid" ;
@@ -795,7 +797,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         console.log(this.config.selectedRetailer) ;
 
-        debugger;
+        ///debugger;
 
         //var rmProBilling = this.config.selectedRetailer.data.product_billng.product_rmpro ;
 

@@ -376,10 +376,12 @@ prc_af_mo_Additional Vendors: 0,
 						{
 							'store':{ $nin: RMdatalink.util.globalConfig.getNinArrayForLoaderFunction()  }
 						},
-/*						{
+						
+/*					    {
 							'flag_for_development':true
 						}
-*/					
+*/						
+					
 					]	
 			},fields: {}	},
 			function () {
@@ -586,7 +588,7 @@ prc_af_mo_Additional Vendors: 0,
 		if( retailerInfoFromIntermediateCollection.is_registeration_complete  || retailerInfoFromIntermediateCollection.flag_for_development)
 		{
 		}else{
-			return;
+			//return;
 		}
 		
 		var latestInformationOfRetailerFromVendorMaster;
@@ -614,7 +616,7 @@ prc_af_mo_Additional Vendors: 0,
 							retailer_id:latestInformationOfRetailerFromVendorMaster._id,
 							sales_persons:[],
 							vendor_sku_discount:null,
-							vendor_pricing_policy:'',
+							vendor_pricing_policy:"VIP (New)",
 							bundle_addons:'',
 							bundle_vendors:'',
 							commission_percent:'',
@@ -622,14 +624,14 @@ prc_af_mo_Additional Vendors: 0,
 							invoice_product:'product_vip',
 							invoice_id:'',
 							invoice_number:'',
-							pricing_policy_option:'',
-							products_rate:'',
-							vendors_rate:''
+							pricing_policy_option:"vendors",
+							products_rate:'module_standard_price',
+							vendors_rate: "module_standard_price"
 	
 							
 						};
 							
-							product_vip_object.created_date_stamp =    new Date().toLocaleDateString();
+							product_vip_object.created_date_stamp =   retailerInfoFromIntermediateCollection.date || new Date().toLocaleDateString();
 							product_vip_object.last_created_date_stamp =  product_vip_object.created_date_stamp;
 							product_vip_object.pay_date =  product_vip_object.created_date_stamp 
 							product_vip_object.payment_period_start = product_vip_object.pay_date;         
@@ -674,13 +676,19 @@ prc_af_mo_Additional Vendors: 0,
 							product_vip_object.total_payble = product_vip_object.ammount_paying;
 							
 							product_billng_object. product_vip = product_vip_object;
+							
+							var store_products = latestInformationOfRetailerFromVendorMaster.store_products || {};
+								store_products.vip_status =  "ACTIVE";
 							var objectForUpdate = {
-								product_billng_object:product_billng_object
+								product_billng:product_billng_object,
+								store_products:store_products
 							};
 							var store = Ext.getStore('retailersMaster');
+							
 							RMdatalink.iwa.rdl.doUpdateCollection(store , objectForUpdate , retailerFromVendorMasterCollection._id , function (){
 								console.log("SUCCESS in INFORAMTAION");
 								console.log(arguments);
+								RMdatalink.util.globalConfig.autoUpdateRetailerInvoiceSetup(retailerInfoFromIntermediateCollection , latestInformationOfRetailerFromVendorMaster )
 							},function(){})
 							
 							
@@ -701,5 +709,166 @@ prc_af_mo_Additional Vendors: 0,
 	
 	
 	
+	},autoUpdateRetailerInvoiceSetup:function(      retailerInfoFromIntermediateCollection , retailerFromVendorMasterCollection ){
+	
+		RMdatalink.util.globalConfig.getNewInvoiceNo(function(  invoiceNo ){
+							var ammount_paying = 0;
+							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								ammount_paying += parseInt( obj. module_price);	
+							}  ) ;
+							var programDetails = [];
+							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								var program = findProgramBy_name(  obj.module_name );
+								if( program  )
+								{
+									programDetails .push(program.raw)
+								
+								}
+
+							}  ) ;	
+							var startDate = retailerInfoFromIntermediateCollection.date || new Date().toLocaleDateString();
+							var date =  new Date(startDate);
+							date.setMonth( date.getMonth() + 1);
+							var dueDate = date;
+							var endDate = new Date(startDate);
+							endDate.setYear( endDate.getYear() + 1 );
+							
+							
+							var invoiceObject = {
+								ammount_paying:ammount_paying,
+								balance_due: "0.00",
+								commission_percent: "0",
+								commissionable_ammount: "0",
+								created_by :  "vip registeration program", 
+								invoice_product: "product_vip",
+								invoice_status: "active",
+								last_created_by:  "vip registeration program",
+								monthly_membership: ammount_paying,
+								product_modules: programDetails,
+								retailer_id:retailerFromVendorMasterCollection._id,
+								selected_rate:'module_standard_price',
+								total_payble:ammount_paying,
+								payment_status: "paid",
+								proccessed_by:  "vip registeration program",
+								payments:[{
+									ammount_paying: ammount_paying,
+									cc_approval: "36254",
+									commission: "79.90",
+									date:  startDate , 
+									paid_by: "AmExps",
+									pay_date: "09/10/2014",
+									payment_method_detail: "****3654",
+									proccessed_by: "vip registeration program"
+								}
+								
+								],
+								selected_package: "3",
+								invoice_number: invoiceNo,
+								paid_by: "card",
+								cc_approval: "",
+								payment_period: 1,
+								
+								payment_period_start: startDate,								
+								contract_start_date: startDate,
+								initial_activation_date: startDate,
+								last_created_date_stamp: startDate,
+								pay_date: startDate,
+								payment_period_end: dueDate.toLocaleDateString(),
+								created_date_stamp: startDate,								
+								due_date: dueDate.toLocaleDateString(),
+								advance_payment_period: null,
+								contract_period: 12,
+								contract_price: ammount_paying,
+								contract_renewal_date:endDate.toLocaleDateString(),
+								contract_send_date: startDate,
+								contract_sent_date: startDate,
+								contract_signed_date: startDate,
+								payment_method_detail: "",
+								sales_persons:[]
+								
+
+								
+								
+															
+							};
+							debugger;		
+							var InvoiceHistoryStore = Ext.getStore('InvoiceHistoryStore') ;							
+							RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(invoiceObject,InvoiceHistoryStore,function(){
+							
+							},function(){
+							}) ;
+		
+		
+		} , function(){} );
+
+	
+	},
+	getNewInvoiceNo:function( sCallBack , eCallBack	){
+			 RMdatalink.iwa.rdl.queryDB(
+				 {
+				  collection: dbEnv + "rdl_invoice_history",
+				  pageNo: 1 ,
+				  pageSize: -1 ,
+				  sortBy:{invoice_number:1/-1},
+				 query:{invoice_number: { $exists: true}           },
+				 fields:{invoice_number:1},
+				 isDeletedRecords:true},success,error);
+
+			var invoice_number = 9999 ;
+			function success(){
+
+				invoice_number = arguments[0].items[0].invoice_number ;
+
+				var temp = parseInt(invoice_number) ;
+				temp = temp + 1 ;
+
+				sCallBack(temp);
+			}
+
+			function error(){
+				eCallBack(arguments)
+
+			}		
 	}
 });
+
+
+/*
+
+
+
+
+cc_approval: ""
+contract_start_date: "01/01/2014"
+created_date_stamp: "09/10/2014 12:47"
+date: ""due_date: Tue Jul 01 2014 00:00:00 GMT+0530 (India Standard Time)
+initial_activation_date: "09/03/2014"
+invoice_id: "09/10/2014"
+invoice_number: 1010
+last_created_date_stamp: "09/10/2014 13:36"
+paid_by: "cash"
+past_due: ""
+pay_date: "7/1/2014"
+payment_method_detail: ""
+payment_note: ""
+payment_period: 1
+payment_period_end: "08/01/2014"
+payment_period_start: "7/1/2014"
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

@@ -1542,6 +1542,8 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'fieldset',
+                                                cls: 'fieldSetCls',
+                                                height: '26px',
                                                 itemId: 'ecomVendorBundleSetupPanel',
                                                 padding: '0 0 4 0',
                                                 width: '100%',
@@ -1553,7 +1555,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Bundle Setup (Vendors)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Bundle Setup (Vendors)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel5',
                                                         margin: '1 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -1646,7 +1648,10 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'fieldset',
+                                                cls: 'fieldSetCls',
+                                                height: '26px',
                                                 itemId: 'ecomVdrPricingbyVendorsPanel',
+                                                style: ' border-bottom: 1px solid gainsboro;',
                                                 width: '100%',
                                                 items: [
                                                     {
@@ -1656,9 +1661,8 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Pricing Setup (Vendors)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Pricing Setup (Vendors)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel6',
-                                                        margin: '0 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
                                                     },
                                                     {
@@ -1768,6 +1772,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'fieldset',
+                                                cls: 'fieldSetCls',
                                                 width: '100%',
                                                 layout: 'vbox',
                                                 items: [
@@ -1778,7 +1783,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Pricing Setup (SKU + Images)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Pricing Setup (SKU + Images)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel6',
                                                         margin: '0 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
@@ -1812,6 +1817,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         xtype: 'formpanel',
                                                         cls: 'x-rm-rdformpanel',
                                                         height: '30px',
+                                                        hidden: true,
                                                         itemId: 'cmp1',
                                                         scrollable: false,
                                                         items: [
@@ -1831,10 +1837,12 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             {
                                                 xtype: 'listwithheader',
                                                 height: '150px',
+                                                hidden: true,
                                                 itemId: 'ecompricingPolicy1stList'
                                             },
                                             {
                                                 xtype: 'fieldset',
+                                                cls: 'fieldSetCls',
                                                 width: '100%',
                                                 layout: 'vbox',
                                                 items: [
@@ -1845,7 +1853,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Pricing Setup (SKU + Images + Addl Images)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Pricing Setup (SKU + Images + Addl Images)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel6',
                                                         margin: '0 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
@@ -1879,6 +1887,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         xtype: 'formpanel',
                                                         cls: 'x-rm-rdformpanel',
                                                         height: '30px',
+                                                        hidden: true,
                                                         itemId: 'cmp3',
                                                         scrollable: false,
                                                         items: [
@@ -1898,10 +1907,12 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             {
                                                 xtype: 'listwithheader',
                                                 height: '150px',
+                                                hidden: true,
                                                 itemId: 'ecompricingPolicySkuImgsAddImgsListPnl'
                                             },
                                             {
                                                 xtype: 'fieldset',
+                                                cls: 'fieldSetCls',
                                                 width: '100%',
                                                 layout: 'vbox',
                                                 items: [
@@ -1912,7 +1923,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Discount Setup (Vendors)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Discount Setup (Vendors)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel7',
                                                         margin: '0 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
@@ -1948,6 +1959,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         xtype: 'formpanel',
                                                         cls: 'x-rm-rdformpanel',
                                                         height: '30px',
+                                                        hidden: true,
                                                         itemId: 'cmp2',
                                                         scrollable: false,
                                                         items: [
@@ -1967,10 +1979,12 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             {
                                                 xtype: 'listwithheader',
                                                 height: '150px',
+                                                hidden: true,
                                                 itemId: 'ecompricingPolicy2ndList'
                                             },
                                             {
                                                 xtype: 'fieldset',
+                                                cls: 'fieldSetCls',
                                                 width: '100%',
                                                 layout: 'vbox',
                                                 items: [
@@ -1981,10 +1995,8 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Discount Setup (SKU)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Discount Setup (SKU)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel7',
-                                                        margin: '0 0 1 0',
-                                                        style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
                                                         width: '100%',
                                                         listeners: [
                                                             {
@@ -2016,6 +2028,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         xtype: 'formpanel',
                                                         cls: 'x-rm-rdformpanel',
                                                         height: '30px',
+                                                        hidden: true,
                                                         itemId: 'cmp4',
                                                         scrollable: false,
                                                         items: [
@@ -2035,13 +2048,15 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             {
                                                 xtype: 'listwithheader',
                                                 height: '150px',
+                                                hidden: true,
                                                 itemId: 'ecompricingPolicySKUDiscountList'
                                             },
                                             {
                                                 xtype: 'fieldset',
-                                                height: '260px',
+                                                cls: 'fieldSetCls',
+                                                height: '26px',
                                                 itemId: 'ecomVendorBundleSetupPanel1',
-                                                padding: '0 0 4 0',
+                                                style: ' border-bottom: 1px solid gainsboro;',
                                                 width: '100%',
                                                 layout: {
                                                     type: 'vbox',
@@ -2056,7 +2071,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'pointerCursor'
                                                         ],
                                                         docked: 'top',
-                                                        html: 'Disable Vendors ( VIP ) <img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Disable Vendors (VIP) <img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel5',
                                                         margin: '1 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
@@ -2092,6 +2107,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                     {
                                                         xtype: 'container',
                                                         height: '240px',
+                                                        hidden: true,
                                                         itemId: 'container',
                                                         items: [
                                                             {
@@ -2645,7 +2661,8 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'fieldset',
-                                                height: '260px',
+                                                cls: 'fieldSetCls',
+                                                height: '26px',
                                                 itemId: 'ecomVendorDisableVendorFromEcomm',
                                                 padding: '0 0 4 0',
                                                 width: '100%',
@@ -2662,7 +2679,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'pointerCursor'
                                                         ],
                                                         docked: 'top',
-                                                        html: 'Disable Vendors ( E-Commerce ) <img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Disable Vendors (E-Commerce) <img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel5',
                                                         margin: '1 0 1 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;',
@@ -2697,6 +2714,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                     {
                                                         xtype: 'container',
                                                         height: '240px',
+                                                        hidden: true,
                                                         itemId: 'containerForEcom',
                                                         items: [
                                                             {

@@ -3047,10 +3047,14 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
 
+        var monthlyMbrShip;
+        var intActDate;
+        if(product_billng[productKey]){
 
+         monthlyMbrShip = product_billng[productKey].monthly_membership ;
+         intActDate =  product_billng[productKey].initial_activation_date ;
 
-        var monthlyMbrShip = product_billng[productKey].monthly_membership ;
-        var intActDate =  product_billng[productKey].initial_activation_date ;
+        }
 
 
 
@@ -3058,14 +3062,10 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         {
             intActDate = RMdatalink.util.globalMethods.getAmToday();
         }
-        //Ext.ComponentQuery.query('#rmProSelectPackageList')[0].select((selectedPackage-1),false,true) ;
+
 
         var rtVal = 'module_promotional_price';
 
-        //Ext.ComponentQuery.query('#rmProSelectRateList')[0].select(selectedRate,false,false) ;
-
-         // Ext.ComponentQuery.query('#productRmproPackgSlctFldBilling')[0].setValue( selectedPackage );
-        //Ext.ComponentQuery.query('#productRmproRateSlctFldBilling')[0].setValue( rtVal );
 
 
 
@@ -3073,24 +3073,34 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         {
             Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].setValue(intActDate) ;
         }
-        Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(formatNum(monthlyMbrShip)) ;
+        if( monthlyMbrShip ){
 
-        var modules = product_billng[productKey].product_modules ;
+            Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(formatNum(monthlyMbrShip )) ;
+        }
+        var modules;
+        if(product_billng[productKey]){
+
+             modules = product_billng[productKey].product_modules ;
+        }
+
 
         //this.fillModuleLists() ;
 
         //this.selectModulefrmModuleId(modules) ;
-
-        Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].setValue( product_billng[productKey].commissionable_ammount);
-        Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].setValue( product_billng[productKey].commission_percent) ;
-
         var salesPersonsStore = Ext.getStore('products.RtSalesPersonStore') ;
 
         salesPersonsStore.removeAll();
         salesPersonsStore.sync();
 
-        salesPersonsStore.setData(product_billng[productKey].sales_persons);
-        salesPersonsStore.sync();
+        if(product_billng[productKey] ){
+            Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].setValue( product_billng[productKey].commissionable_ammount);
+            Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].setValue( product_billng[productKey].commission_percent) ;
+            salesPersonsStore.setData(product_billng[productKey].sales_persons);
+            salesPersonsStore.sync();
+
+        }
+
+
 
 
 
@@ -3098,13 +3108,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
          var paymentPrd = 1;
 
-        if(product_billng[productKey].payment_frequency){
+        if( product_billng[productKey] &&  product_billng[productKey].payment_frequency){
 
              paymentPrd = parseInt(product_billng[productKey].payment_frequency, 0);
 
-        }else{
+        }else if(product_billng[productKey]){
 
-            paymentPrd = parseInt(product_billng[productKey].payment_period, 0);
+            paymentPrd = parseInt(  product_billng[productKey].payment_period, 0);
         }
 
 
@@ -3133,8 +3143,13 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
 
         var discountList = Ext.ComponentQuery.query('#rmProDiscountsForRtListPanel')[0].down('#mainList');
+        if( product_billng[productKey])
+        {
+            var discountValue =  parseInt(  product_billng[productKey] .advance_payment_period, 0);
+        }else{
+             var discountValue =  0 ; //parseInt(  product_billng[productKey] .advance_payment_period, 0);
+        }
 
-         var discountValue =  parseInt(product_billng[productKey].advance_payment_period, 0);
         var discountStore = discountList.getStore() ;
 
         // if(!contractPeriod){
@@ -3154,7 +3169,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
 
         //}
 
-         Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(product_billng[productKey].contract_start_date ) ;
+         if(product_billng[productKey])
+         Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(  product_billng[productKey].contract_start_date ) ;
 
         /*
          commissionable_ammount:Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].getValue(),
@@ -3162,23 +3178,26 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             sales_persons:getSalesPersons()
         */
 
-        var temp =product_billng[productKey] ;
-          Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;  ;
+        var temp = product_billng[productKey] ;
 
-          debugger ;
 
+        //  debugger ;
+
+          if(temp)  {
+           Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;
           Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue(temp.due_date) ;
           Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(temp.contract_price) ;
           Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].setValue(temp.contract_sent_date) ;
           Ext.ComponentQuery.query('#productRmproContractSignedDateFld')[0].setValue(temp.contract_signed_date) ;
         // Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setValue(temp.contract_renewal_date) ;
           Ext.ComponentQuery.query('#productRmproContractSendNewFld')[0].setValue(temp.contract_send_date) ;
+          Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(temp.payment_frequency) ;
 
-        Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(temp.payment_frequency) ;
+          }
 
         var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
 
-         var contractPeriod =  parseInt(product_billng[productKey].contract_period, 0);
+        var contractPeriod =  product_billng[productKey] ?   parseInt(product_billng[productKey].contract_period, 0) :1;
 
 
 
@@ -3204,6 +3223,7 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
         }
 
 
+        if(temp){
             Ext.ComponentQuery.query('#productDlAddOnsSlctFld')[0].setValue(temp.bundle_addons );
             Ext.ComponentQuery.query('#productDlbdlVendorsSlctFld')[0].setValue(temp.bundle_vendors);
             Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].setValue(temp.pricing_policy_option );
@@ -3213,6 +3233,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
             Ext.ComponentQuery.query('#productDlAddonsPriceSlctFld')[0].setValue(temp.products_rate );
             Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0].setValue(temp.vendor_sku_discount);
             Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0].setValue(temp.vendor_count_discount );
+
+        }
 
 
 

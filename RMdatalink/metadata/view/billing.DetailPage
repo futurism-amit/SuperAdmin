@@ -3287,7 +3287,7 @@
                                             ");\r",
                                             "headers.refresh();\r",
                                             "var list = component.down('#mainList');\r",
-                                            "list.setStore( Ext.getStore('InvoiceHistoryStore'));\r",
+                                            "list.setStore( Ext.getStore('InvoiceHistoryStore') );\r",
                                             "list.setItemTpl(\r",
                                             "    Ext.create('Ext.XTemplate',\r",
                                             "               '<div style = \"height: 20px;padding-top: 0px;\" class=\"x-rm-listtpl-main pointerCursor\">',\r",

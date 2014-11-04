@@ -1854,7 +1854,7 @@ Ext.define('RMdatalink.view.billing.DetailPage', {
                                             );
                                             headers.refresh();
                                             var list = component.down('#mainList');
-                                            list.setStore( Ext.getStore('InvoiceHistoryStore'));
+                                            list.setStore( Ext.getStore('InvoiceHistoryStore') );
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div style = "height: 20px;padding-top: 0px;" class="x-rm-listtpl-main pointerCursor">',

@@ -3146,7 +3146,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "height": null,
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
+                                                "height": "26px",
                                                 "itemId": "ecomVendorBundleSetupPanel",
                                                 "margin": null,
                                                 "padding": "0 0 4 0",
@@ -3168,7 +3171,7 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Bundle Setup (Vendors)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Bundle Setup (Vendors)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel5",
                                                         "labelAction": "dropDown",
                                                         "margin": "1 0 1 0",
@@ -3421,7 +3424,12 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
+                                                "height": "26px",
                                                 "itemId": "ecomVdrPricingbyVendorsPanel",
+                                                "style": " border-bottom: 1px solid gainsboro;",
                                                 "title": null,
                                                 "width": "100%"
                                             },
@@ -3440,10 +3448,10 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Pricing Setup (Vendors)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Pricing Setup (Vendors)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel6",
                                                         "labelAction": "dropDown",
-                                                        "margin": "0 0 1 0",
+                                                        "margin": null,
                                                         "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
                                                         "width": null
                                                     },
@@ -3716,6 +3724,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
                                                 "height": null,
                                                 "layout": "vbox",
                                                 "layout|flex": null,
@@ -3738,7 +3749,7 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Pricing Setup (SKU + Images)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Pricing Setup (SKU + Images)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel6",
                                                         "labelAction": "dropDown1",
                                                         "margin": "0 0 1 0",
@@ -3801,6 +3812,7 @@
                                                         ],
                                                         "docked": null,
                                                         "height": "30px",
+                                                        "hidden": true,
                                                         "itemId": "cmp1",
                                                         "layout": null,
                                                         "layout|flex": null,
@@ -3839,6 +3851,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "height": "150px",
+                                                "hidden": true,
                                                 "itemId": "ecompricingPolicy1stList",
                                                 "layout|flex": null,
                                                 "style": null
@@ -3854,6 +3867,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
                                                 "height": null,
                                                 "layout": "vbox",
                                                 "layout|flex": null,
@@ -3876,7 +3892,7 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Pricing Setup (SKU + Images + Addl Images)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Pricing Setup (SKU + Images + Addl Images)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel6",
                                                         "labelAction": "dropDown1",
                                                         "margin": "0 0 1 0",
@@ -3939,6 +3955,7 @@
                                                         ],
                                                         "docked": null,
                                                         "height": "30px",
+                                                        "hidden": true,
                                                         "itemId": "cmp3",
                                                         "layout": null,
                                                         "layout|flex": null,
@@ -3977,6 +3994,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "height": "150px",
+                                                "hidden": true,
                                                 "itemId": "ecompricingPolicySkuImgsAddImgsListPnl",
                                                 "layout|flex": null,
                                                 "style": null
@@ -3992,8 +4010,12 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
                                                 "layout": "vbox",
                                                 "layout|flex": null,
+                                                "style": null,
                                                 "title": null,
                                                 "width": "100%"
                                             },
@@ -4012,7 +4034,7 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Discount Setup (Vendors)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Discount Setup (Vendors)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel7",
                                                         "labelAction": "dropDown1",
                                                         "margin": "0 0 1 0",
@@ -4076,6 +4098,7 @@
                                                             "x-rm-rdformpanel"
                                                         ],
                                                         "height": "30px",
+                                                        "hidden": true,
                                                         "itemId": "cmp2",
                                                         "layout": null,
                                                         "layout|flex": null,
@@ -4114,6 +4137,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "height": "150px",
+                                                "hidden": true,
                                                 "itemId": "ecompricingPolicy2ndList",
                                                 "layout|flex": null,
                                                 "margin": null
@@ -4129,8 +4153,12 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
                                                 "layout": "vbox",
                                                 "layout|flex": null,
+                                                "style": null,
                                                 "title": null,
                                                 "width": "100%"
                                             },
@@ -4149,11 +4177,11 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Discount Setup (SKU)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Discount Setup (SKU)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel7",
                                                         "labelAction": "dropDown1",
-                                                        "margin": "0 0 1 0",
-                                                        "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                                        "margin": null,
+                                                        "style": null,
                                                         "width": "100%"
                                                     },
                                                     "designerId": "31438cba-7cf4-49bb-b0c5-8b634d0b004c",
@@ -4212,6 +4240,7 @@
                                                             "x-rm-rdformpanel"
                                                         ],
                                                         "height": "30px",
+                                                        "hidden": true,
                                                         "itemId": "cmp4",
                                                         "layout": null,
                                                         "layout|flex": null,
@@ -4250,6 +4279,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "height": "150px",
+                                                "hidden": true,
                                                 "itemId": "ecompricingPolicySKUDiscountList",
                                                 "layout|flex": null,
                                                 "margin": null
@@ -4265,12 +4295,16 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
                                                 "container|align": "end",
-                                                "height": "260px",
+                                                "height": "26px",
                                                 "itemId": "ecomVendorBundleSetupPanel1",
                                                 "layout": "vbox",
                                                 "margin": null,
-                                                "padding": "0 0 4 0",
+                                                "padding": null,
+                                                "style": " border-bottom: 1px solid gainsboro;",
                                                 "title": null,
                                                 "width": "100%"
                                             },
@@ -4290,7 +4324,7 @@
                                                         ],
                                                         "docked": "top",
                                                         "height": null,
-                                                        "html": "Disable Vendors ( VIP ) <img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Disable Vendors (VIP) <img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel5",
                                                         "labelAction": "dropDown1",
                                                         "margin": "1 0 1 0",
@@ -4322,7 +4356,7 @@
                                                                     "var cmp = component.getParent();\r",
                                                                     "    if(cmp.down('#container').getHidden() ){\r",
                                                                     "         cmp.down('#container').setHidden(false);\r",
-                                                                    "         cmp.setHeight('260px');   \r",
+                                                                    "         cmp.setHeight('260px');\r",
                                                                     "\r",
                                                                     "//         cmp.down('#ecompricingPolicy1stList').setHidden(false);\r",
                                                                     "        // component.getParent().setHeight(\"auto\"); //\r",
@@ -4353,6 +4387,7 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "height": "240px",
+                                                        "hidden": true,
                                                         "itemId": "container",
                                                         "layout|flex": null
                                                     },
@@ -5209,8 +5244,11 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "cls": [
+                                                    "fieldSetCls"
+                                                ],
                                                 "container|align": "end",
-                                                "height": "260px",
+                                                "height": "26px",
                                                 "itemId": "ecomVendorDisableVendorFromEcomm",
                                                 "layout": "vbox",
                                                 "margin": null,
@@ -5234,7 +5272,7 @@
                                                         ],
                                                         "docked": "top",
                                                         "height": null,
-                                                        "html": "Disable Vendors ( E-Commerce ) <img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Disable Vendors (E-Commerce) <img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel5",
                                                         "labelAction": "dropDown1",
                                                         "margin": "1 0 1 0",
@@ -5296,6 +5334,7 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "height": "240px",
+                                                        "hidden": true,
                                                         "itemId": "containerForEcom",
                                                         "layout|flex": null
                                                     },
