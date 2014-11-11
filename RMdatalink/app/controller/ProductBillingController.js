@@ -2873,289 +2873,298 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
     },
 
     initDatalinkBilling: function() {
-        var productKey = "product_datalink" ;
 
 
-        console.log("STEP TWO DEBUG");
+        var functionTOExecute = function(){
 
-        if(this.config.isecomProduct){
-
-            this.config.productKey = "product_ecom" ;
-            productKey = "product_ecom" ;
-            if( this.getIsFromVip() ){
-
-                productKey = "product_vip" ;
-            }
-            console.log("STEP TWO ECOMM");
-        }else{
-
-              console.log("STEP  TWO DATALINK DEBUG");
-              this.config.productKey = "product_datalink" ;
-              productKey = "product_datalink" ;
-        }
-
-        ///////////////////////////////////////////
+            var productKey = "product_datalink" ;
 
 
-        var form = Ext.ComponentQuery.query('#allProductsRtBillingSetupPanel')[0] ;
+            console.log("STEP TWO DEBUG");
 
-        var ProductBillingController = RMdatalink.app.getController('ProductBillingController') ;
-
-        if(this.config.isecomProduct){
-
-
-            console.log("STEP THREE DEBUG");
-            form.down('#productDlbdlVendorsSlctFld').setStore('ecomVendors');
-            var ecomOpt = [
-
-                                    {
-                                        text:"SKUs + Images",
-                                        value:"sku_images"
-                                    },
-                                    {
-                                        text:"SKUs + Images + Addl Images",
-                                        value:"sku_images_addlimages"
-                                    },
-                                    {
-                                        text:"Vendors SKUs + Images",
-                                        value:"vendors"
-                                    },
-                                    {
-                                        text:"Vendors SKUs + Images + Addl Images",
-                                        value:"vendorsAddl"
-                                    }
-
-                               ];
-            form.down('#productDlPriceOptionsimgAdlImgSlctFld').setOptions(ecomOpt);
-
-            form.down('#productDlVdrPricingPolicySlctFld').setStore('ecomVdPricingSkuImgs');
-            form.down('#productDlAddOnsSlctFld').setStore('ecomProductBundle');
-            form.down('#productDlDiscountSKUSlctFld').setStore('ecomVdPricingSKUDiscount');
-
-            form.down('#productDlDiscountVdrsSlctFld').setStore('ecomVdPricingVdrDiscount');
-
-
-
-
-        }else if(this.config.isDatalinkProduct){
-
-            form.down('#productDlbdlVendorsSlctFld').setStore('DatalinkVendors');
-            var datalinkOpt = [
-
-                                    {
-                                        text:"SKUs + Images",
-                                        value:"sku_images"
-                                    },
-                                    {
-                                        text:"SKUs + Images + Addl Images",
-                                        value:"sku_images_addlimages"
-                                    },
-                                    {
-                                        text:"Vendors SKUs + Images",
-                                        value:"vendors"
-                                    },
-                                    {
-                                        text:"Vendors SKUs + Images + Addl Images",
-                                        value:"vendorsAddl"
-                                    }
-
-                               ];
-            form.down('#productDlPriceOptionsimgAdlImgSlctFld').setOptions(datalinkOpt);
-
-            form.down('#productDlVdrPricingPolicySlctFld').setStore('DlVdPricingSkuImgs');
-            form.down('#productDlAddOnsSlctFld').setStore('DatalinkProductBundle');
-            form.down('#productDlDiscountSKUSlctFld').setStore('DlVdPricingSKUDiscount');
-
-            form.down('#productDlDiscountVdrsSlctFld').setStore('DlVdPricingVdrDiscount');
-
-
-
-        }
-
-
-
-
-        /////////////////////////////////////////
-
-        var retailerBillingSheet = Ext.ComponentQuery.query('#retailerBillingSheet')[0] ;
-
-        retailerBillingSheet.down('#rtBillingSlctPackLbl').setHidden(true);
-        retailerBillingSheet.down('#rmProSelectPackageList').setHidden(true);
-
-        retailerBillingSheet.down('#rmProModulesForRtList').setHeight(30);
-
-
-        retailerBillingSheet.down('#productDatalinkVdrDiscTtlLbl').setHidden(true);
-        retailerBillingSheet.down('#productDatalinkVdrDiscLst').setHidden(true);
-
-
-        this.resetProductBillingView() ;
-
-
-
-
-
-
-        var rtRecord =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow().record ;
-
-        if(Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0])
-        {
             if(this.config.isecomProduct){
 
-               var statement = "E-Commerce product setup";
-                if( this.getIsFromVip()  )
-                {
-                    statement = "VIP product setup";
-                }
-                else{
-                    statement = "E-Commerce product setup";
-                }
+                this.config.productKey = "product_ecom" ;
+                productKey = "product_ecom" ;
+                if( this.getIsFromVip() ){
 
-                Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + statement);
-               // Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml(' SKU = ' + this.getSKUTotat() );
+                    productKey = "product_vip" ;
+                }
+                console.log("STEP TWO ECOMM");
             }else{
-                     Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : Datalink product setup");
+
+                console.log("STEP  TWO DATALINK DEBUG");
+                this.config.productKey = "product_datalink" ;
+                productKey = "product_datalink" ;
             }
 
-        }
+            ///////////////////////////////////////////
 
 
-        this.config.rtProduct = rtRecord.get('products');
+            var form = Ext.ComponentQuery.query('#allProductsRtBillingSetupPanel')[0] ;
+
+            var ProductBillingController = RMdatalink.app.getController('ProductBillingController') ;
+
+            if( this.config.isecomProduct || this.getIsFromVip() ){
 
 
-        var product_billng = rtRecord.get('product_billng') ;
+                console.log("STEP THREE DEBUG");
+                form.down('#productDlbdlVendorsSlctFld').setStore('ecomVendors');
+                var ecomOpt = [
 
-        console.log(product_billng) ;
-         if(this.config.isecomProduct)
-         {
+                    {
+                        text:"SKUs + Images",
+                        value:"sku_images"
+                    },
+                    {
+                        text:"SKUs + Images + Addl Images",
+                        value:"sku_images_addlimages"
+                    },
+                    {
+                        text:"Vendors SKUs + Images",
+                        value:"vendors"
+                    },
+                    {
+                        text:"Vendors SKUs + Images + Addl Images",
+                        value:"vendorsAddl"
+                    }
 
-            if(!product_billng || ! product_billng.product_ecom){
+                ];
+                form.down('#productDlPriceOptionsimgAdlImgSlctFld').setOptions(ecomOpt);
 
-                return ;
+                form.down('#productDlVdrPricingPolicySlctFld').setStore('ecomVdPricingSkuImgs');
+                form.down('#productDlAddOnsSlctFld').setStore('ecomProductBundle');
+                form.down('#productDlDiscountSKUSlctFld').setStore('ecomVdPricingSKUDiscount');
+
+                form.down('#productDlDiscountVdrsSlctFld').setStore('ecomVdPricingVdrDiscount');
+
+
+
+
+            }else if(this.config.isDatalinkProduct){
+
+                form.down('#productDlbdlVendorsSlctFld').setStore('DatalinkVendors');
+                var datalinkOpt = [
+
+                    {
+                        text:"SKUs + Images",
+                        value:"sku_images"
+                    },
+                    {
+                        text:"SKUs + Images + Addl Images",
+                        value:"sku_images_addlimages"
+                    },
+                    {
+                        text:"Vendors SKUs + Images",
+                        value:"vendors"
+                    },
+                    {
+                        text:"Vendors SKUs + Images + Addl Images",
+                        value:"vendorsAddl"
+                    }
+
+                ];
+                form.down('#productDlPriceOptionsimgAdlImgSlctFld').setOptions(datalinkOpt);
+
+                form.down('#productDlVdrPricingPolicySlctFld').setStore('DlVdPricingSkuImgs');
+                form.down('#productDlAddOnsSlctFld').setStore('DatalinkProductBundle');
+                form.down('#productDlDiscountSKUSlctFld').setStore('DlVdPricingSKUDiscount');
+
+                form.down('#productDlDiscountVdrsSlctFld').setStore('DlVdPricingVdrDiscount');
+
+
+
             }
 
-         }
-         else
-         {
-
-            if(!product_billng || ! product_billng.product_datalink){
-
-                return ;
-         }
-        }
 
 
 
+            /////////////////////////////////////////
 
-        var monthlyMbrShip;
-        var intActDate;
-        if(product_billng[productKey]){
+            var retailerBillingSheet = Ext.ComponentQuery.query('#retailerBillingSheet')[0] ;
 
-         monthlyMbrShip = product_billng[productKey].monthly_membership ;
-         intActDate =  product_billng[productKey].initial_activation_date ;
+            retailerBillingSheet.down('#rtBillingSlctPackLbl').setHidden(true);
+            retailerBillingSheet.down('#rmProSelectPackageList').setHidden(true);
 
-        }
-
+            retailerBillingSheet.down('#rmProModulesForRtList').setHeight(30);
 
 
-        if(! intActDate)
-        {
-            intActDate = RMdatalink.util.globalMethods.getAmToday();
-        }
+            retailerBillingSheet.down('#productDatalinkVdrDiscTtlLbl').setHidden(true);
+            retailerBillingSheet.down('#productDatalinkVdrDiscLst').setHidden(true);
 
 
-        var rtVal = 'module_promotional_price';
+            this.resetProductBillingView() ;
 
 
 
 
-        if(Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0])
-        {
-            Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].setValue(intActDate) ;
-        }
-        if( monthlyMbrShip ){
-
-            Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(formatNum(monthlyMbrShip )) ;
-        }
-        var modules;
-        if(product_billng[productKey]){
-
-             modules = product_billng[productKey].product_modules ;
-        }
 
 
-        //this.fillModuleLists() ;
+            var rtRecord =  RMdatalink.util.globalConfig.getDataToShowInSettingWindow().record ;
 
-        //this.selectModulefrmModuleId(modules) ;
-        var salesPersonsStore = Ext.getStore('products.RtSalesPersonStore') ;
+            if(Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0])
+            {
+                if(this.config.isecomProduct){
 
-        salesPersonsStore.removeAll();
-        salesPersonsStore.sync();
+                    var statement = "E-Commerce product setup";
+                    if( this.getIsFromVip()  )
+                    {
+                        statement = "VIP product setup";
+                    }
+                    else{
+                        statement = "E-Commerce product setup";
+                    }
 
-        if(product_billng[productKey] ){
-            Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].setValue( product_billng[productKey].commissionable_ammount);
-            Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].setValue( product_billng[productKey].commission_percent) ;
-            salesPersonsStore.setData(product_billng[productKey].sales_persons);
+                    Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + statement);
+                    // Ext.ComponentQuery.query('#skusTotalInHeader')[0].setHtml(' SKU = ' + this.getSKUTotat() );
+                }else{
+                    Ext.ComponentQuery.query('#rtBillingHeaderLabel')[0].setHtml(rtRecord.get('store_name') + " : Datalink product setup");
+                }
+
+            }
+
+
+            this.config.rtProduct = rtRecord.get('products');
+
+
+            var product_billng = rtRecord.get('product_billng') ;
+
+            console.log(product_billng) ;
+
+
+            if(this.config.isecomProduct)
+            {
+
+                if(this.getIsFromVip())
+                {
+
+                    if(!product_billng || ! product_billng.product_vip )
+                    {
+                        return ;
+                    }
+                }
+                else if(!product_billng || ! product_billng.product_ecom)
+                {
+
+                    return ;
+                }
+
+            }
+            else
+            {
+
+                if(!product_billng || ! product_billng.product_datalink){
+
+                    return ;
+                }
+            }
+
+
+
+
+
+            var monthlyMbrShip;
+            var intActDate;
+            if(product_billng[productKey]){
+
+                monthlyMbrShip = product_billng[productKey].monthly_membership ;
+                intActDate =  product_billng[productKey].initial_activation_date ;
+
+            }
+
+
+
+            if(! intActDate)
+            {
+                intActDate = RMdatalink.util.globalMethods.getAmToday();
+            }
+
+
+            var rtVal = 'module_promotional_price';
+
+
+
+
+            if(Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0])
+            {
+                Ext.ComponentQuery.query('#rtProductBillIntActDateFld')[0].setValue(intActDate) ;
+            }
+            if( monthlyMbrShip ){
+
+                Ext.ComponentQuery.query('#rtBillMonthlyMemberShipFld')[0].setValue(formatNum(monthlyMbrShip )) ;
+            }
+            var modules;
+            if(product_billng[productKey]){
+
+                modules = product_billng[productKey].product_modules ;
+            }
+
+
+            var salesPersonsStore = Ext.getStore('products.RtSalesPersonStore') ;
+
+            salesPersonsStore.removeAll();
             salesPersonsStore.sync();
 
-        }
+            if(product_billng[productKey] ){
+                Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].setValue( product_billng[productKey].commissionable_ammount);
+                Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].setValue( product_billng[productKey].commission_percent) ;
+                salesPersonsStore.setData(product_billng[productKey].sales_persons);
+                salesPersonsStore.sync();
 
-
-
-
-
-         var paymentPrdList = Ext.ComponentQuery.query('#rmProPaymentFreqList')[0];
-
-         var paymentPrd = 1;
-
-        if( product_billng[productKey] &&  product_billng[productKey].payment_frequency){
-
-             paymentPrd = parseInt(product_billng[productKey].payment_frequency, 0);
-
-        }else if(product_billng[productKey]){
-
-            paymentPrd = parseInt(  product_billng[productKey].payment_period, 0);
-        }
-
-
-        if(!paymentPrd){
-
-            paymentPrdList.select(0);
-        }else{
-
-            var paymentPrdStore = paymentPrdList.getStore() ;
-             var searchValForPayPrd = paymentPrd.toString() ;
-
-            var recIndexForPayPrd = paymentPrdStore.findExact('value',searchValForPayPrd);
-
-            if(recIndexForPayPrd != -1){
-
-                paymentPrdList.select(recIndexForPayPrd) ;
             }
 
 
 
 
 
-        }
+            var paymentPrdList = Ext.ComponentQuery.query('#rmProPaymentFreqList')[0];
+
+            var paymentPrd = 1;
+
+            if( product_billng[productKey] &&  product_billng[productKey].payment_frequency){
+
+                paymentPrd = parseInt(product_billng[productKey].payment_frequency, 0);
+
+            }else if(product_billng[productKey]){
+
+                paymentPrd = parseInt(  product_billng[productKey].payment_period, 0);
+            }
+
+
+            if(!paymentPrd){
+
+                paymentPrdList.select(0);
+            }else{
+
+                var paymentPrdStore = paymentPrdList.getStore() ;
+                var searchValForPayPrd = paymentPrd.toString() ;
+
+                var recIndexForPayPrd = paymentPrdStore.findExact('value',searchValForPayPrd);
+
+                if(recIndexForPayPrd != -1){
+
+                    paymentPrdList.select(recIndexForPayPrd) ;
+                }
 
 
 
 
-        var discountList = Ext.ComponentQuery.query('#rmProDiscountsForRtListPanel')[0].down('#mainList');
-        if( product_billng[productKey])
-        {
-            var discountValue =  parseInt(  product_billng[productKey] .advance_payment_period, 0);
-        }else{
-             var discountValue =  0 ; //parseInt(  product_billng[productKey] .advance_payment_period, 0);
-        }
 
-        var discountStore = discountList.getStore() ;
-
-        // if(!contractPeriod){
+            }
 
 
-        // }else{
+
+
+            var discountList = Ext.ComponentQuery.query('#rmProDiscountsForRtListPanel')[0].down('#mainList');
+            if( product_billng[productKey])
+            {
+                var discountValue =  parseInt(  product_billng[productKey] .advance_payment_period, 0);
+            }else{
+                var discountValue =  0 ; //parseInt(  product_billng[productKey] .advance_payment_period, 0);
+            }
+
+            var discountStore = discountList.getStore() ;
+
 
 
             var searchVal = (discountValue/12).toString() ;
@@ -3167,84 +3176,89 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
                 discountList.select(recIndex) ;
             }
 
-        //}
-
-         if(product_billng[productKey])
-         Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(  product_billng[productKey].contract_start_date ) ;
-
-        /*
-         commissionable_ammount:Ext.ComponentQuery.query('#rtBillingCommissionableAmtFld')[0].getValue(),
-            commission_percent:Ext.ComponentQuery.query('#rtBillingCommissionPercentFld')[0].getValue(),
-            sales_persons:getSalesPersons()
-        */
-
-        var temp = product_billng[productKey] ;
 
 
-        //  debugger ;
-
-          if(temp)  {
-           Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;
-          Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue(temp.due_date) ;
-          Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(temp.contract_price) ;
-          Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].setValue(temp.contract_sent_date) ;
-          Ext.ComponentQuery.query('#productRmproContractSignedDateFld')[0].setValue(temp.contract_signed_date) ;
-        // Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setValue(temp.contract_renewal_date) ;
-          Ext.ComponentQuery.query('#productRmproContractSendNewFld')[0].setValue(temp.contract_send_date) ;
-          Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(temp.payment_frequency) ;
-
-          }
-
-        var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
-
-        var contractPeriod =  product_billng[productKey] ?   parseInt(product_billng[productKey].contract_period, 0) :1;
+            if(product_billng[productKey])
+                Ext.ComponentQuery.query('#productRmProSlctTermStrtDtFld')[0].setValue(  product_billng[productKey].contract_start_date ) ;
 
 
 
-        if(!contractPeriod){
+            var temp = product_billng[productKey] ;
 
-            Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(12) ;
-            contractTermList.select(0);
-        }else{
 
-            Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(contractPeriod) ;
+
+
+            if(temp)  {
+                Ext.ComponentQuery.query('#productRmProSlctTermEndDate')[0].setValue(temp.payment_period_end) ;
+                Ext.ComponentQuery.query('#productRmProSlctTermNxtDueDateFld')[0].setValue(temp.due_date) ;
+                Ext.ComponentQuery.query('#productRmProSlctTermPrice')[0].setValue(temp.contract_price) ;
+                Ext.ComponentQuery.query('#productRmproContractSentDateFld')[0].setValue(temp.contract_sent_date) ;
+                Ext.ComponentQuery.query('#productRmproContractSignedDateFld')[0].setValue(temp.contract_signed_date) ;
+                // Ext.ComponentQuery.query('#productRmproContractRenewalDateFld')[0].setValue(temp.contract_renewal_date) ;
+                Ext.ComponentQuery.query('#productRmproContractSendNewFld')[0].setValue(temp.contract_send_date) ;
+                Ext.ComponentQuery.query('#productRmproSlctTermBillFrqSlctFld')[0].setValue(temp.payment_frequency) ;
+
+            }
+
+            var contractTermList = Ext.ComponentQuery.query('#rmProSlctTermList')[0];
+
+            var contractPeriod =  product_billng[productKey] ?   parseInt(product_billng[productKey].contract_period, 0) :1;
+
+
+
+            if(!contractPeriod){
+
+                Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(12) ;
+                contractTermList.select(0);
+            }else{
+
+                Ext.ComponentQuery.query('#productRmproSlctContractTerms')[0].setValue(contractPeriod) ;
                 var contractStore = contractTermList.getStore() ;
 
-             var searchValForContract = contractPeriod.toString() ;
+                var searchValForContract = contractPeriod.toString() ;
 
-            var recIndexForContract = contractStore.findExact('value',searchValForContract);
+                var recIndexForContract = contractStore.findExact('value',searchValForContract);
 
-            if(recIndexForContract != -1){
+                if(recIndexForContract != -1){
 
-                contractTermList.select(recIndexForContract) ;
+                    contractTermList.select(recIndexForContract) ;
+                }
+
+
             }
 
 
-        }
+            if(temp){
+                Ext.ComponentQuery.query('#productDlAddOnsSlctFld')[0].setValue(temp.bundle_addons );
+                Ext.ComponentQuery.query('#productDlbdlVendorsSlctFld')[0].setValue(temp.bundle_vendors);
+                Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].setValue(temp.pricing_policy_option );
+                Ext.ComponentQuery.query('#productDlPriceSlctFld')[0].setValue(temp.vendors_rate );
+                Ext.ComponentQuery.query('#productDlVdrPricingPolicySlctFld')[0].setValue(temp.vendor_pricing_policy);
 
+                Ext.ComponentQuery.query('#productDlAddonsPriceSlctFld')[0].setValue(temp.products_rate );
+                Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0].setValue(temp.vendor_sku_discount);
+                Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0].setValue(temp.vendor_count_discount );
 
-        if(temp){
-            Ext.ComponentQuery.query('#productDlAddOnsSlctFld')[0].setValue(temp.bundle_addons );
-            Ext.ComponentQuery.query('#productDlbdlVendorsSlctFld')[0].setValue(temp.bundle_vendors);
-            Ext.ComponentQuery.query('#productDlPriceOptionsimgAdlImgSlctFld')[0].setValue(temp.pricing_policy_option );
-            Ext.ComponentQuery.query('#productDlPriceSlctFld')[0].setValue(temp.vendors_rate );
-            Ext.ComponentQuery.query('#productDlVdrPricingPolicySlctFld')[0].setValue(temp.vendor_pricing_policy);
-
-            Ext.ComponentQuery.query('#productDlAddonsPriceSlctFld')[0].setValue(temp.products_rate );
-            Ext.ComponentQuery.query('#productDlDiscountSKUSlctFld')[0].setValue(temp.vendor_sku_discount);
-            Ext.ComponentQuery.query('#productDlDiscountVdrsSlctFld')[0].setValue(temp.vendor_count_discount );
-
-        }
+            }
 
 
 
 
-         var timeout = setTimeout(function(){
+            var timeout = setTimeout(function(){
 
-                               RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
 
-                                clearTimeout(timeout);
-                            },1000);
+                RMdatalink.app.getController('ProductBillingController').setDlDataPrice() ;
+
+                clearTimeout(timeout);
+            },1000);
+
+
+        };
+
+
+        functionTOExecute.call(this);
+
+
 
     },
 
@@ -5130,6 +5144,8 @@ Ext.define('RMdatalink.controller.ProductBillingController', {
     setDlDataPrice: function() {
 
         console.warn("DEBUG STEP ONE");
+
+
 
         var allMoulesStore = Ext.getStore('products.AllBillingModulesStore');
 

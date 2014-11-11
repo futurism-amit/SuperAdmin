@@ -374,21 +374,10 @@ Ext.define('RMdatalink.controller.PaginationController', {
 
 
                 RMdatalink.app.getController('VendorStatsController').loadVendorStats() ;
-
-           /*   var tempArray = new Array();
-                tempArray = getArrayDataFromStore(Ext.getStore('vendors.Master'));
-
-                var tempVendorStore = Ext.getStore('vendorTempRecordStore') ;
-
-                tempVendorStore.removeAll();
-                tempVendorStore.sync();
-
-                tempVendorStore.setData(tempArray);
-                tempVendorStore.sync();
-        */
-
-
                 RMdatalink.app.getController('SearchDropDownController').loadDropDownStore();
+                RMdatalink.app.getController('DashBoardController').loadVIPStoreInDashBoard();
+
+
                 break;
 
             case 'PermisstionsStore':
@@ -617,7 +606,8 @@ Ext.define('RMdatalink.controller.PaginationController', {
             }
 
            var tStatus = store_status ;
-                 if(store_status=="PROSPECTS"){
+                 if(store_status=="PROSPECTS")
+                 {
                      tStatus = "PROSPECT" ;
                  }else if(store_status == "HOT_PROSPECTS"){
                        tStatus = "HOT_PROSPECT" ;
@@ -631,7 +621,9 @@ Ext.define('RMdatalink.controller.PaginationController', {
                          {"store_products.ecatalog_status" : tStatus},
                          {"store_products.ecommerce_status" :tStatus},
                          {"store_products.irugs_status" : tStatus},
-                         {"store_products.rmpro_status" : tStatus}
+                         {"store_products.rmpro_status" : tStatus},
+                         {"store_products.vip_status" : tStatus}
+
                       ]} ;
                  }else
                  {
@@ -641,7 +633,8 @@ Ext.define('RMdatalink.controller.PaginationController', {
                          {"store_products.ecatalog_status" : tStatus},
                          {"store_products.ecommerce_status" :tStatus},
                          {"store_products.irugs_status" : tStatus},
-                         {"store_products.rmpro_status" : tStatus}
+                         {"store_products.rmpro_status" : tStatus},
+                         {"store_products.rmpro_vip" : tStatus}
                          ]} ;
                  }
 
@@ -657,12 +650,9 @@ Ext.define('RMdatalink.controller.PaginationController', {
                      pStatus
 
                 ]} ;
-        /*
-                        {
-                             "store_status":store_status
-                        }
-        */
 
+
+                 debugger;
                  RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_masterretailerrecords",pageNo:page_no ,pageSize: 50 ,sortBy:{"store_name":1},
                  query:tquery,
                 fields:{}},success,error);

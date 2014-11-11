@@ -1609,6 +1609,50 @@
                 "name": "prevent_be_ecommerceVendor"
             },
             "designerId": "a3895aa4-3a77-44fa-9791-c36e7f38a933"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "retailers_authorized"
+            },
+            "designerId": "0536e57c-b005-4a8a-96d2-2bda9996735c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "totalVIPActiveVendor",
+                "type": "int"
+            },
+            "designerId": "b2c7f31c-f9de-4ecc-a3dc-d0634bf7c6a1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "totalVIPProspectRetailer",
+                "type": "int"
+            },
+            "designerId": "35545148-de08-4738-bd3f-d8fe028255d8"
         }
     ]
 }

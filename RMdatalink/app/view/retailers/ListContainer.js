@@ -106,11 +106,22 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                                 cls: 'x-rm-checkbox',
                                 height: '30px',
                                 itemId: 'rtSearchiRugzStatusChk',
-                                width: '132px',
+                                width: '92px',
                                 label: 'iRugz',
                                 labelAlign: 'right',
-                                labelWidth: '100px',
+                                labelWidth: '60px',
                                 name: 'iRugzStatus'
+                            },
+                            {
+                                xtype: 'checkboxfield',
+                                cls: 'x-rm-checkbox',
+                                height: '30px',
+                                itemId: 'rtSearchVIPStatusChk',
+                                width: '92px',
+                                label: 'VIP',
+                                labelAlign: 'right',
+                                labelWidth: '60px',
+                                name: 'vipStatus'
                             }
                         ]
                     },
@@ -132,6 +143,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'selectfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 itemId: 'rtSearchAllProdStatusSelectFld',
                                 name: 'allProd',
                                 options: [
@@ -181,6 +194,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'selectfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 itemId: 'rtSearchCmpTypeSlctFld',
                                 name: 'companyType',
                                 options: [
@@ -217,6 +232,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'AccNo'
                             }
                         ]
@@ -237,15 +254,22 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                                 name: 'ExpiredChk'
                             },
                             {
-                                xtype: 'selectfield',
-                                width: '48px',
-                                name: 'Expired'
-                            },
-                            {
-                                xtype: 'selectfield',
-                                margin: '0 0 0 4px',
-                                width: '88px',
-                                name: 'ExpiredUnit'
+                                xtype: 'container',
+                                flex: 1,
+                                layout: 'hbox',
+                                items: [
+                                    {
+                                        xtype: 'selectfield',
+                                        width: '48px',
+                                        name: 'Expired'
+                                    },
+                                    {
+                                        xtype: 'selectfield',
+                                        margin: '0 0 0 4px',
+                                        width: '88px',
+                                        name: 'ExpiredUnit'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -267,6 +291,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             {
                                 xtype: 'textfield',
                                 action: 'inputByDatePicker',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'createdAfter'
                             }
                         ]
@@ -288,6 +314,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'createdBy'
                             }
                         ]
@@ -309,6 +337,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'StoreName'
                             }
                         ]
@@ -330,6 +360,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'contactName'
                             }
                         ]
@@ -351,6 +383,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'City'
                             }
                         ]
@@ -372,6 +406,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'State'
                             }
                         ]
@@ -393,6 +429,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'Phone'
                             }
                         ]
@@ -414,6 +452,8 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'StoreEmail'
                             }
                         ]
@@ -435,7 +475,72 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                             },
                             {
                                 xtype: 'textfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
                                 name: 'StoreWebsite'
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'fieldset',
+                        width: '100%',
+                        layout: 'hbox',
+                        items: [
+                            {
+                                xtype: 'checkboxfield',
+                                cls: 'x-rm-checkbox',
+                                height: '30px',
+                                width: '132px',
+                                label: 'Vendor Partner',
+                                labelAlign: 'right',
+                                labelWidth: '100px',
+                                name: 'VendorPartnerChk'
+                            },
+                            {
+                                xtype: 'selectfield',
+                                flex: 1,
+                                cls: 'retailerSearchCriteriaInputFields',
+                                itemId: 'myselectfield28',
+                                name: 'VendorPartner',
+                                autoSelect: false,
+                                displayField: 'vendor_name',
+                                valueField: 'vendor_name',
+                                listeners: [
+                                    {
+                                        fn: function(component, eOpts) {
+                                            component.addListener("painted" , function(){
+
+
+
+                                                var keyOfRetailer  = 'promo_code_info';
+                                                var flagofRetailer = 'is_promo_code_active';
+                                                var store = Ext.getStore('vendors.Master');
+                                                var data = store.getData();
+
+                                                var optionArray = [];
+
+                                                data.all.forEach(function(obj){
+
+                                                    var values = obj.data;
+                                                    if( values.is_promo_code_active   && values[keyOfRetailer] ){
+
+                                                        optionArray.push(obj.raw);
+
+                                                    }
+                                                });
+
+                                                component.setOptions(optionArray);
+
+
+
+                                            } , this  , {
+
+                                                single:true
+                                            });
+                                        },
+                                        event: 'initialize'
+                                    }
+                                ]
                             }
                         ]
                     },

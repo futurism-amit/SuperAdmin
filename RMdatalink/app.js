@@ -251,7 +251,8 @@ Ext.application({
         'DlVendorPricingSetUp',
         'ecomVendorPricingSetUp',
         'pricing.ListContainer',
-        'MyPanel31'
+        'MyPanel31',
+        'container_dashboard'
     ],
     controllers: [
         'Main',
@@ -286,7 +287,8 @@ Ext.application({
         'LicenseController',
         'DlPricingController',
         'ecomController',
-        'ecomPricingController'
+        'ecomPricingController',
+        'DashBoardController'
     ],
     name: 'RMdatalink',
 
@@ -295,9 +297,10 @@ Ext.application({
 
                 window.dbEnv = getParameterByName('dev') ?  "dev_" :"" ;
                 document.body.style.backgroundColor = "white" ;
-
+                document.title = "SuperAdmin";
                 window.lAicon = "resources/images/larr.png" ;
                 window.rAicon = "resources/images/rarr.png";
+
 
         //window.dbEnv = "" ;
 
@@ -454,6 +457,8 @@ Ext.application({
         window.vendorIdAccountValue = window.vendorIdAccountValue || {};
         window.onKeyDownOfAccountNo = function(e){
 
+
+                    console.log("DATALINK");
                     var event = e;
                     var element = e.target;
                     var vendorid = element.getAttribute("vendorid");
@@ -466,6 +471,7 @@ Ext.application({
         window.vendorIdAccountValueEComm = window.vendorIdAccountValueEComm || {};
         window.onKeyDownOfAccountNoECommerce = function(e){
 
+                    console.log("E-COMMERECE");
                     var event = e;
                     var element = e.target;
                     var vendorid = element.getAttribute("vendorid");
@@ -479,14 +485,31 @@ Ext.application({
 
         window.onKeyDownOfAccountNoVIP = function(e){
 
+                    console.log("VIP");
                     var event = e;
                     var element = e.target;
-                    var vendorid = element.getAttribute("_id");
+                    var vendorid = element.getAttribute("vendorid");
                     window.vendorIdAccountValueVIP = window.vendorIdAccountValueVIP || {};
 
                     vendorIdAccountValueVIP[vendorid] = element.value;
 
         };
+
+        window.vendorIdAccountValueAuthorized = window.vendorIdAccountValueAuthorized || {};
+
+        window.onKeyDownOfAccountNoAuthorizedVendors = function(e){
+
+                    console.log("VIP");
+                    var event = e;
+                    var element = e.target;
+                    var vendorid = element.getAttribute("vendorid");
+                    window.vendorIdAccountValueAuthorized = window.vendorIdAccountValueAuthorized || {};
+
+                    vendorIdAccountValueAuthorized[vendorid] = element.value;
+
+        };
+
+        //vendorIdAccountValueAuthorized
 
 
         window.clearAccountValues = window.clearAccountValues || function(){
@@ -494,10 +517,16 @@ Ext.application({
             vendorIdAccountValueEComm = {};
             vendorIdAccountValue = {};
             vendorIdAccountValueVIP = {};
+            vendorIdAccountValueAuthorized = {};
         };
 
         window.getArrayFromStore =  window.getArrayFromStore || function (store){
 
+            if(store){
+
+            }else{
+                return [];
+            }
             try{
                 var data = new Array();
                 data = store.getData().items;
@@ -694,6 +723,8 @@ Ext.application({
 
         };
 
+
+
         window.updateVendorIdAccountValueVIP = window.updateVendorIdAccountValueVIP || function(){
             var component = Ext.ComponentQuery.query('#RDForVIP')[0];
             var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
@@ -708,6 +739,7 @@ Ext.application({
             }
 
         };
+
         window.getAccountNoAndNameOfVIPVendors = window.getAccountNoAndNameOfVIPVendors || function (){
             var component = Ext.ComponentQuery.query('#RDForVIP')[0];
             var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
@@ -761,6 +793,20 @@ Ext.application({
                 list.setData(dataToPush);
             }
 
+            (function(){
+                var list = component.down('#mainList');
+                var store = list.getStore();
+
+                if(store){
+
+                    store.sort('module_listed_order');
+                }
+
+
+
+
+            })();
+
 
 
         };
@@ -786,8 +832,51 @@ Ext.application({
                 list.setData(dataToPush);
             }
 
+            (function(){
+                var list = component.down('#mainList');
+                var store = list.getStore();
+
+                if(store){
+
+                    store.sort('module_listed_order');
+                }
 
 
+
+
+            })();
+
+
+
+        };
+
+        window.getColorStringForVendor = window.getColorStringForVendor || function(data){
+
+
+
+        var keyOfRetailer  = 'promo_code_info';
+        var flagofRetailer = 'is_promo_code_active';
+
+            var color = "rgb(0, 0, 0)";
+            try{
+                var vendor = findVendorBy_name(data.vendor_name);
+                var values = vendor.data;
+                if( values.prevent_be_vip || values.prevent_be_ecommerceVendor  ){
+                    color = "rgb(192,0,0)";
+                }else if( values.is_promo_code_active   && values[keyOfRetailer] )
+                {
+                     color = "rgb(0,176,240)";
+                }else
+                {
+                     color = "rgb(0, 0, 0)";
+                }
+            }catch(e){
+
+                //prevent_be_vip
+                color = "rgb(0, 0, 0)";
+
+            }
+            return "color:" + color + ";" + " font-weight: bold;  ";
         };
         Ext.create('RMdatalink.view.LoginScreen', {fullscreen: true});
     }

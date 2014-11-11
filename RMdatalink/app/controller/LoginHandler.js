@@ -756,7 +756,7 @@ Ext.define('RMdatalink.controller.LoginHandler', {
 
             var msgBody = 'Dear '+username + ' Please click below link to change your password ' + linck;
 
-            RMdatalink.iwa.rdl.sendEmail(to , "amitc@futurismtechnologies.com" ,"Password Change",
+            RMdatalink.iwa.rdl.sendEmail(to , "support@rmdatalink.com" ,"Password Change",
                                          msgBody ,sucessCallBack , errorCallBack) ;
 
             function sucessCallBack(){

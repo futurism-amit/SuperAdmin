@@ -64,6 +64,8 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
         var retailer_id = retailer.get("_id");
 
         this.searchInvoicesForRt("",1,50,retailer_id);
+
+
     },
 
     searchInvoicesForRt: function(searchText, page_no, pageSize, retailer_id) {
@@ -91,6 +93,8 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
 
 
         function success(){
+
+            //debugger;
               Ext.Viewport.setMasked(false) ;
 
            console.log(arguments[0].items) ;
@@ -170,7 +174,7 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
             console.error(invoice) ;
 
             debugger;
-            return;
+
             RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(invoice,InvoiceHistoryStore,success,error) ;
         }
 
@@ -286,6 +290,8 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
                 dataToupdate = that.getRmPRoInvoice() ;
             }else if(invoiceRec.data.invoice_product == "product_ecom"){
                  dataToupdate = that.getecomInvoice() ;
+            } if(invoiceRec.data.invoice_product == "product_vip"){
+                 dataToupdate = that.getvipInvoice() ;
             }
 
             if(!dataToupdate){
@@ -1079,6 +1085,106 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
         };
 
         var product_ecom = dataToUpdate.product_billng.product_ecom ;
+
+
+        product_ecom.commission_percent = rmProInvoicePanel.down('#invoiceCommissionPercentFld').getValue() ;
+        product_ecom.commissionable_ammount = rmProInvoicePanel.down('#invoiceCommissionableAmtFld').getValue() ;
+
+        product_ecom.sales_persons = getSalesPersons() ;
+
+        product_ecom.total_payble = rmProInvoicePanel.down('#invoiceTotalPaybleFld').getValue() ;
+        product_ecom.payment_period = rmProInvoicePanel.down('#invoiceRmProPaymentPrdSlFld').getValue() ;
+
+
+        product_ecom.past_due = rmProInvoicePanel.down('#invoicePastDueFld').getValue() ;
+        product_ecom.balance_due = rmProInvoicePanel.down('#invoiceBalanceDueFld').getValue() ;
+
+        product_ecom.pay_date = rmProInvoicePanel.down('#invoicePayDateFld').getValue() ;
+        product_ecom.paid_by = rmProInvoicePanel.down('#invoicePaidByFld').getValue() ;
+        product_ecom.payment_method_detail = rmProInvoicePanel.down('#invoicePaymentDetailFld').getValue() ;
+        product_ecom.cc_approval = rmProInvoicePanel.down('#invoiceCCApprovalFld').getValue() ;
+
+        product_ecom.proccessed_by = rmProInvoicePanel.down('#invoiceProcessedByFld').getValue() ;
+        product_ecom.date = rmProInvoicePanel.down('#invoiceRMProDateFld').getValue() ;
+
+        product_ecom.ammount_paying = rmProInvoicePanel.down('#invoiceAmmountFld').getValue() ;
+
+
+        product_ecom.payment_period_start = rmProInvoicePanel.down('#rmProSubscrPaymentStartDateFld').getValue() ;
+
+        product_ecom.payment_period_end  =  rmProInvoicePanel.down('#rmProSubscrPaymentEndDateFld').getValue() ;
+
+        product_ecom.due_date  = rmProInvoicePanel.down('#rmProSubscrPaymentDueDateFld').getValue() ;
+
+        product_ecom.payment_note = rmProInvoicePanel.down('#rmProPaymentNoteFld').getValue() ;
+
+
+        product_ecom.payments= getArrayDataFromStore(Ext.getStore('InvoicePaymentsStore'));
+
+
+            var date = new Date() ;
+            var ddTime =  Ext.Date.format(date, "m/d/Y H:i");
+            var user = RMdatalink.app.getController('LoginHandler').getUserDetails().userName  ;
+
+            product_ecom.last_created_date_stamp = ddTime ;
+            product_ecom.last_created_by = user ;
+
+        var printInvoicePaidStampImg = Ext.ComponentQuery.query('#printInvoicePaidStampImg')[0] ;
+
+        if(printInvoicePaidStampImg.getHidden()){
+
+            product_ecom.payment_status = "unpaid" ;
+        }else{
+
+            product_ecom.payment_status = "paid" ;
+        }
+
+
+        console.error(product_ecom) ;
+
+
+        return product_ecom ;
+
+
+
+
+            function getSalesPersons(){
+                return getArrayDataFromStore(Ext.getStore('products.RtSalesPersonStore'));
+            }
+
+
+
+            function getArrayDataFromStore(store){
+
+                var data = new Array();
+                data = store.getData().items;
+
+                var dataToReturn = new Array();
+
+                for(var i=0; i < data.length ; i++){
+
+                    dataToReturn.push(data[i].data);
+                }
+
+                return dataToReturn ;
+
+            }
+    },
+
+    getvipInvoice: function() {
+
+        var that = this ;
+
+        var invoiceController = RMdatalink.app.getController('InvoiceController') ;
+
+
+        var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
+        var dataToUpdate = {
+
+            product_billng : invoiceController.config.product_billing_rec   //rtRecord.data.product_billng
+        };
+
+        var product_ecom = dataToUpdate.product_billng.product_vip ;
 
 
         product_ecom.commission_percent = rmProInvoicePanel.down('#invoiceCommissionPercentFld').getValue() ;

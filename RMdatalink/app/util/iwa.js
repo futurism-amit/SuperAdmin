@@ -107,23 +107,33 @@ Ext.define('RMdatalink.util.iwa', {
 				pr.from = from ? from : 'support@rmdatalink.com';   // email address the email will be sent from
 				pr.data = { dt: new Date() };  // json object containing the data
 				pr.subject = subject ; //'re: testing email @ {dt}';  // email's subject
-				pr.body = body ; // 'email was sent @ {dt}'; // email's body
+				pr.body = body ? body.toString() :  'email was sent @ {dt}'; // email's body
 
 				RMdatalink.iwa.sct.evalremote('send_rmd_email.js', pr, function(res)
 				{
-					if (!res.error)
-					{
-					   console.log('email has been sent');
-					   if(sucessCallBack){
-						sucessCallBack(res);
-					   }
-					}else{
 					
-					   if(errorCallBack){
-						errorCallBack(res);
-					   }
+					try{
+					  console.log(arguments);
+						if (!res.error)
+						{
+						   console.log('email has been sent');
+						   if(sucessCallBack){
+							sucessCallBack(res);
+						   }
+						}else{
+						
+						   if(errorCallBack){
+							errorCallBack(res);
+						   }
+						
+						}					
+					}catch(e){
+						   if(errorCallBack){
+							errorCallBack(res ,e);
+						   }
 					
 					}
+
 				});
 			
 		},

@@ -10,5 +10,40 @@
         "model": "products.BillingDiscount",
         "storeId": "products.BillingDiscount"
     },
-    "designerId": "40083085-20ba-4e93-a3b0-ebb6d14fb14b"
+    "designerId": "40083085-20ba-4e93-a3b0-ebb6d14fb14b",
+    "cn": [
+        {
+            "type": "Ext.util.Filter",
+            "reference": {
+                "name": "filters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "b99238a7-fb98-41dc-8ae0-f10abd4f311d",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "item"
+                        ],
+                        "fn": "filterFn",
+                        "implHandler": [
+                            "if(item.data.discount_value && item.data.discount_value != 0){\r",
+                            "    return true;\r",
+                            "}else{\r",
+                            "    return false;\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "96af2191-7356-4897-9566-b30c04eed6cc"
+                }
+            ]
+        }
+    ]
 }

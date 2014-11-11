@@ -929,7 +929,7 @@
                     "\r",
                     "    var msgBody = 'Dear '+username + ' Please click below link to change your password ' + linck;\r",
                     "\r",
-                    "    RMdatalink.iwa.rdl.sendEmail(to , \"amitc@futurismtechnologies.com\" ,\"Password Change\",\r",
+                    "    RMdatalink.iwa.rdl.sendEmail(to , \"support@rmdatalink.com\" ,\"Password Change\",\r",
                     "                                 msgBody ,sucessCallBack , errorCallBack) ;\r",
                     "\r",
                     "    function sucessCallBack(){\r",

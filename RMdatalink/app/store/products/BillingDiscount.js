@@ -17,11 +17,21 @@ Ext.define('RMdatalink.store.products.BillingDiscount', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'RMdatalink.model.products.BillingDiscount'
+        'RMdatalink.model.products.BillingDiscount',
+        'Ext.util.Filter'
     ],
 
     config: {
         model: 'RMdatalink.model.products.BillingDiscount',
-        storeId: 'products.BillingDiscount'
+        storeId: 'products.BillingDiscount',
+        filters: {
+            filterFn: function(item) {
+                if(item.data.discount_value && item.data.discount_value != 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
     }
 });

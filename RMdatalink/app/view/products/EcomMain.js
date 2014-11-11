@@ -665,27 +665,10 @@ Ext.define('RMdatalink.view.products.EcomMain', {
 
                                                             //getItemsOfVIPFromEcomStore
                                                             component.addListener('painted' , function(){
-                                                                //     var dataToPush = [];
-                                                                //     var ecomMainStore = Ext.getStore('products.ecomMain') ;
-                                                                //     var data = ecomMainStore.getData();
-                                                                //     for( var i =0 ; i < data.all.length ; i++ ){
-
-                                                                //         var record = data.all[i];
-                                                                //         console.log(record.data.product_type);
-                                                                //         if(record.data.product_type == 1){
-
-                                                                //             dataToPush.push( record.raw );
-                                                                //         }
-                                                                //     }
-
-
-                                                                //     var store = list.getStore( );
-                                                                //     if( store){
-                                                                //         store.setData(dataToPush);
-                                                                //     }else if (dataToPush.length){
-                                                                //         list.setData(dataToPush);
-                                                                //     }
                                                                 getItemsOfVIPFromEcomStore( component );
+                                                                var list = component.down('#mainList');
+
+
 
                                                             } , this, {
 
@@ -1432,6 +1415,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                 items: [
                                     {
                                         xtype: 'pricinglistcontainer',
+                                        cls: 'ecommercePricingListCls',
                                         itemId: 'ecomListItemID',
                                         flex: 1
                                     },
@@ -1836,7 +1820,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'listwithheader',
-                                                height: '150px',
+                                                height: '350px',
                                                 hidden: true,
                                                 itemId: 'ecompricingPolicy1stList'
                                             },
@@ -1906,7 +1890,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'listwithheader',
-                                                height: '150px',
+                                                height: '350px',
                                                 hidden: true,
                                                 itemId: 'ecompricingPolicySkuImgsAddImgsListPnl'
                                             },
@@ -1978,7 +1962,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'listwithheader',
-                                                height: '150px',
+                                                height: '350px',
                                                 hidden: true,
                                                 itemId: 'ecompricingPolicy2ndList'
                                             },
@@ -2047,7 +2031,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             },
                                             {
                                                 xtype: 'listwithheader',
-                                                height: '150px',
+                                                height: '350px',
                                                 hidden: true,
                                                 itemId: 'ecompricingPolicySKUDiscountList'
                                             },
@@ -2493,7 +2477,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                         width: '100%',
                                                                         itemCls: 'disableVednorListItemCls',
                                                                         itemTpl: [
-                                                                            '<div>{vendor_name}</div>'
+                                                                            '<div style = "color:rgb(192,0,0); font-weight: bold;" >{vendor_name}</div>'
                                                                         ],
                                                                         itemHeight: 25,
                                                                         listeners: [
@@ -2976,7 +2960,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                         width: '100%',
                                                                         itemCls: 'disableVednorListItemCls',
                                                                         itemTpl: [
-                                                                            '<div>{vendor_name}</div>'
+                                                                            '<div style = "color:rgb(192,0,0); font-weight: bold;" > {vendor_name}</div>'
                                                                         ],
                                                                         itemHeight: 25,
                                                                         listeners: [
@@ -3161,7 +3145,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                                             '    </div>',
 
-                                            '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
+                                            '    <div class="rightBorderDiv boldText " style="width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
                                             '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                                             '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                                             '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -3187,6 +3171,10 @@ Ext.define('RMdatalink.view.products.EcomMain', {
 
                                             '</div>',
                                             {
+                                                getColorForVendor:function(  values){
+                                                    return getColorStringForVendor(values);
+
+                                                },
                                                 getCalculatedValue: function(sku){
                                                     if(sku)
                                                     {

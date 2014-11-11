@@ -1251,27 +1251,10 @@
                                                             "\r",
                                                             "//getItemsOfVIPFromEcomStore\r",
                                                             "component.addListener('painted' , function(){\r",
-                                                            "//     var dataToPush = [];\r",
-                                                            "//     var ecomMainStore = Ext.getStore('products.ecomMain') ;\r",
-                                                            "//     var data = ecomMainStore.getData();\r",
-                                                            "//     for( var i =0 ; i < data.all.length ; i++ ){\r",
-                                                            "\r",
-                                                            "//         var record = data.all[i];\r",
-                                                            "//         console.log(record.data.product_type);\r",
-                                                            "//         if(record.data.product_type == 1){\r",
-                                                            "\r",
-                                                            "//             dataToPush.push( record.raw );\r",
-                                                            "//         }\r",
-                                                            "//     }\r",
-                                                            "\r",
-                                                            "\r",
-                                                            "//     var store = list.getStore( );\r",
-                                                            "//     if( store){\r",
-                                                            "//         store.setData(dataToPush);\r",
-                                                            "//     }else if (dataToPush.length){\r",
-                                                            "//         list.setData(dataToPush);\r",
-                                                            "//     }\r",
                                                             "    getItemsOfVIPFromEcomStore( component );\r",
+                                                            "    var list = component.down('#mainList');\r",
+                                                            " \r",
+                                                            "    \r",
                                                             "\r",
                                                             "} , this, {\r",
                                                             "\r",
@@ -2791,6 +2774,9 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "cls": [
+                                            "ecommercePricingListCls"
+                                        ],
                                         "itemId": "ecomListItemID",
                                         "layout|flex": 1
                                     },
@@ -3850,7 +3836,7 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "height": "150px",
+                                                "height": "350px",
                                                 "hidden": true,
                                                 "itemId": "ecompricingPolicy1stList",
                                                 "layout|flex": null,
@@ -3993,7 +3979,7 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "height": "150px",
+                                                "height": "350px",
                                                 "hidden": true,
                                                 "itemId": "ecompricingPolicySkuImgsAddImgsListPnl",
                                                 "layout|flex": null,
@@ -4136,7 +4122,7 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "height": "150px",
+                                                "height": "350px",
                                                 "hidden": true,
                                                 "itemId": "ecompricingPolicy2ndList",
                                                 "layout|flex": null,
@@ -4278,7 +4264,7 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "height": "150px",
+                                                "height": "350px",
                                                 "hidden": true,
                                                 "itemId": "ecompricingPolicySKUDiscountList",
                                                 "layout|flex": null,
@@ -5009,7 +4995,7 @@
                                                                             "userConfig": {
                                                                                 "designer|displayName": "itemTpl",
                                                                                 "implHandler": [
-                                                                                    "<div>{vendor_name}</div>"
+                                                                                    "<div style = \"color:rgb(192,0,0); font-weight: bold;\" >{vendor_name}</div>"
                                                                                 ]
                                                                             },
                                                                             "designerId": "dda7ae25-f6c7-4b5f-ac6e-790b64228b29"
@@ -5743,7 +5729,7 @@
                                                                             "userConfig": {
                                                                                 "designer|displayName": "itemTpl",
                                                                                 "implHandler": [
-                                                                                    "<div>{vendor_name}</div>"
+                                                                                    "<div style = \"color:rgb(192,0,0); font-weight: bold;\" > {vendor_name}</div>"
                                                                                 ]
                                                                             },
                                                                             "designerId": "8f447912-102f-49ad-b9fb-1edbc9c57996"
@@ -5950,7 +5936,7 @@
                                             "                   '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
                                             "                   '    </div>',\r",
                                             "\r",
-                                            "                   '    <div class=\"rightBorderDiv boldText\" style=\"width: 8%;padding-left:10px;\" >{vendor_name}</div>',\r",
+                                            "                   '    <div class=\"rightBorderDiv boldText \" style=\"width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} \" >{vendor_name}</div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.4%;text-align: center;\" >{[formatNormalNum(values.SKU)]}</div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.4%;text-align: center;\" >{[formatNormalNum(values.collections)]}</div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.4%;text-align: center;\" >{[formatNormalNum(values.design)]}</div>',\r",
@@ -5975,9 +5961,13 @@
                                             "\r",
                                             "\r",
                                             "                   '</div>',\r",
-                                            "                    {\r",
+                                            "                   {\r",
+                                            "                       getColorForVendor:function(  values){\r",
+                                            "                           return getColorStringForVendor(values);\r",
+                                            "\r",
+                                            "                       },\r",
                                             "                       getCalculatedValue: function(sku){\r",
-                                            "                                                      if(sku)\r",
+                                            "                           if(sku)\r",
                                             "                           {\r",
                                             "                               var  result = (sku * 5)/60 ;\r",
                                             "                               result =    Math.round(result * 100) / 100 ;\r",

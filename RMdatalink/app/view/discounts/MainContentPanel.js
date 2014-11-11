@@ -29,6 +29,7 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
         'Ext.Spacer',
         'Ext.field.Select',
         'Ext.field.Number',
+        'Ext.field.Radio',
         'Ext.field.TextArea',
         'Ext.SegmentedButton'
     ],
@@ -711,42 +712,49 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                             '<div class="x-rm-listtpl-main">',
                                             '    <div class="pointerCursor boldText" style="width: 15%;">{vendor_name}</div>',
                                             '    <div class="pointerCursor boldText" style="width: 10%;">{promo_code_info.promo_code}</div>',
-                                            '    <div class="pointerCursor boldText" style="width: 10%;">ACTIVE</div>',
+                                            '    <div class="pointerCursor boldText" style="width: 10%;">{[this.getStatus(values)]}</div>',
                                             '    <div class="pointerCursor" style="width: 6%;">{promo_code_info.vip_price}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{promo_code_info.start_date}</div>',
                                             '    <div class="pointerCursor" style="width: 12%;">{promo_code_info.end_date}</div>',
-                                            '    <div class="pointerCursor" style="width: 10%;">{promo_code_info.limit_value}</div>',
+                                            '    <div class="pointerCursor" style="width: 10%;">{[this.getUsedString(values)]}</div>',
                                             '    <div class="pointerCursor" style="width: 25%;">{promo_code_info.comment}</div>',
-                                            '</div>'
+                                            '</div>',
+                                            {
+                                                getStatus: function(value){
+                                                    try{
+                                                        if(value.promo_code_info.status_promo_code && value.promo_code_info.status_promo_code == 'inactive' ){
+
+                                                            return "INACTIVE"      ;
+                                                        }
+                                                        return "ACTIVE";
+
+
+                                                    }catch(e){
+
+                                                        return "ACTIVE";
+                                                    }
+                                                },
+                                                getUsedString:function(value){
+                                                    try{
+
+                                                        var usedAmount = "0";
+                                                        var divisorSign = "/";
+                                                        var limitValue = value.promo_code_info.limit_value;
+                                                        return usedAmount  + divisorSign + limitValue;
+                                                    }catch(e){
+                                                        return "0/100";
+                                                    }
+
+                                                }
+
+                                            }
                                             )
                                             );
 
                                             list.setMode("SINGLE");
 
 
-                                            /*
 
-
-                                            var updatingData = {
-
-                                            promo_code:promoCode,
-                                            vip_price:vipFormPrice,
-                                            start_date:startValue,
-                                            end_date:EndValue,
-                                            limit_value:LimitValue,
-                                            comment:commentValue
-                                            };
-                                            */
-
-                                            //list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));
-
-                                            //component.down('mypanel2').setHidden(true);
-
-                                            //getArrayFromStore
-
-                                            //list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));
-
-                                            //var store = list.getStore();
 
                                         },
                                         event: 'initialize'
@@ -1245,6 +1253,41 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                                 labelWidth: '120px'
                                             },
                                             {
+                                                xtype: 'fieldset',
+                                                cls: 'activeInactivePromoCodeCls',
+                                                itemId: 'vipPromoActiveStatus',
+                                                minHeight: '20px',
+                                                layout: 'hbox',
+                                                items: [
+                                                    {
+                                                        xtype: 'label',
+                                                        cls: 'labelClassForLogo',
+                                                        html: 'Status',
+                                                        style: 'padding-top:3px;',
+                                                        width: '120px'
+                                                    },
+                                                    {
+                                                        xtype: 'radiofield',
+                                                        style: 'margin-left:10px',
+                                                        width: '90px',
+                                                        label: 'Active',
+                                                        labelWidth: '80px',
+                                                        name: 'activeStatus',
+                                                        value: 'active',
+                                                        checked: true
+                                                    },
+                                                    {
+                                                        xtype: 'radiofield',
+                                                        style: 'margin-left:10px',
+                                                        width: '90px',
+                                                        label: 'InActive',
+                                                        labelWidth: '80px',
+                                                        name: 'activeStatus',
+                                                        value: 'inactive'
+                                                    }
+                                                ]
+                                            },
+                                            {
                                                 xtype: 'textfield',
                                                 action: 'inputByDatePicker',
                                                 cls: 'clsFOrVipTab',
@@ -1301,16 +1344,17 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                                             var vipFormComment = Ext.ComponentQuery.query("#vipFormComment")[0];
                                                             var vendorMaster  = Ext.getStore("vendors.Master");
 
-
-
+                                                            var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
+                                                            var valuesoForm = CreateVippVendorFrom.getValues();
 
 
                                                             var promoCode  = VipFormPromoCode.getValue();
                                                             var vipFormPrice  = vipFormPrice.getValue();
                                                             var startValue = vipFormStartDate.getValue();
-                                                            var EndValue = vipFormStartDate.getValue();
+                                                            var EndValue = vipFormEndDate.getValue();
                                                             var LimitValue = vipFormLimit.getValue();
                                                             var commentValue = vipFormComment.getValue();
+                                                            var activeStatusOfPromoCode = valuesoForm.activeStatus;
 
 
                                                             var vendorId = VipFormVendorId.getValue();
@@ -1361,7 +1405,8 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                                                 start_date:startValue,
                                                                 end_date:EndValue,
                                                                 limit_value:LimitValue,
-                                                                comment:commentValue
+                                                                comment:commentValue,
+                                                                status_promo_code:activeStatusOfPromoCode
                                                             };
                                                             var rtlrs = updatingData;
                                                             var me = Ext.ComponentQuery.query("#discountsMainContentPanel")[0];
@@ -1396,6 +1441,8 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                                             function updateSuccess(){
 
                                                                 record.set(keyOfRetailer, rtlrs);
+                                                                var discounts = Ext.ComponentQuery.query("#discountsMainContentPanel")[0];
+                                                                discounts.vipListDataHandler();
                                                                 Ext.Viewport.setMasked(false);
                                                                 console.log("vendor updated successfully");
                                                             }
@@ -1527,6 +1574,9 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
 
                                                                 record.set(keyOfRetailer, rtlrs);
                                                                 Ext.Viewport.setMasked(false);
+                                                                var discounts = Ext.ComponentQuery.query("#discountsMainContentPanel")[0];
+                                                                discounts.vipListDataHandler();
+
                                                                 console.log("vendor updated successfully");
                                                             }
 
@@ -1850,8 +1900,14 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
             }
 
         }
+        var store = list.getStore();
+        if(store){
+            store.removeAll();
+            store.setData(dataToPush);
+        }else{
+            list.setData(dataToPush);
+        }
 
-        list.setData(dataToPush);
 
     },
 

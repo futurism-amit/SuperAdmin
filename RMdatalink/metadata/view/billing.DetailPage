@@ -2328,7 +2328,7 @@
                                                             "                              '<option value=\"None\" {[this.getSelected(values,\"None\")]}></option>',\r",
                                                             "                              '<option value=\"Cash\" {[this.getSelected(values,\"Cash\")]}>Cash</option>',\r",
                                                             "                              '<option value=\"Check\" {[this.getSelected(values,\"Check\")]}>Check</option>',\r",
-                                                            "                              '<option value=\"AmExps\" {[this.getSelected(values,\"AmExps\")]} >AmExps</option>',\r",
+                                                            "                              '<option value=\"amex\" {[this.getSelected(values,\"amex\")]} >amex</option>',\r",
                                                             "                              '<option value=\"Visa\" {[this.getSelected(values,\"Visa\")]} >Visa</option>',\r",
                                                             "                              '<option value=\"Master\" {[this.getSelected(values,\"Master\")]} >Master</option>',\r",
                                                             "                              '<option value=\"Discover\" {[this.getSelected(values,\"Discover\")]} >Discover</option>',\r",

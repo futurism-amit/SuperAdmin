@@ -63,15 +63,15 @@ Ext.define('RMdatalink.util.globalConfig', {
 		  if(string.indexOf(subStr ) >= 0){
 			 console.log("VENDORD");
 			 var splitedString = string.split(subStr);
-			 console.log(splitedString);
+			 
 			 var result = splitedString.pop();
-			 console.log("result" , result); 
+			 
 			 var accStr = "_account";
 			 if(result.indexOf( accStr) >= 0){
 					  
 				 console.log("account present");
 				 var ultimateResultArray = result.split(accStr);
-				 console.log(ultimateResultArray );
+				 
 				 var vendorToReturn = ultimateResultArray [0]; 
 				 return  vendorToReturn;
 			 }else{
@@ -79,7 +79,7 @@ Ext.define('RMdatalink.util.globalConfig', {
 			 }
 
 		  }else{
-			console.log("NO A VENDOR");
+			//console.log("NO A VENDOR");
 			return false;
 		  }
 
@@ -100,7 +100,8 @@ Ext.define('RMdatalink.util.globalConfig', {
 			if(   isStringAVendor ){
 			        var objToPush = {
 					   vendor_name:isStringAVendor,
-					   account_no:object[isStringAVendor + '_account']
+					   account_no:object[isStringAVendor + '_account'],
+					   price:valueofKey
 					   //vendor_name
 					   //Safavieh_account
 					}
@@ -119,16 +120,16 @@ Ext.define('RMdatalink.util.globalConfig', {
 		  if(string.indexOf(subStr ) >= 0){
 			 console.log("VENDORD");
 			 var splitedString = string.split(subStr);
-			 console.log(splitedString);
+
 			 var result = splitedString.pop();
-			 console.log("result" , result); 
+
 			 var accStr = "mo_";
 			 var otStr = "ot_"
 			 if(result.indexOf( accStr) >= 0){
 					  
-				 console.log("account present");
+
 				 var ultimateResultArray = result.split(accStr);
-				 console.log(ultimateResultArray );
+
 				 var vendorToReturn = ultimateResultArray.pop();
 				 if(vendorToReturn){
 						return  vendorToReturn;
@@ -139,9 +140,9 @@ Ext.define('RMdatalink.util.globalConfig', {
 			 }else
 			 if (result.indexOf( otStr) >= 0){
 			 
-				 console.log("account present");
+
 				 var ultimateResultArray = result.split(otStr);
-				 console.log(ultimateResultArray );
+
 				 var vendorToReturn = ultimateResultArray.pop();
 				 if(vendorToReturn){
 						return  vendorToReturn;
@@ -154,7 +155,7 @@ Ext.define('RMdatalink.util.globalConfig', {
 				return false;
 			 }
 		  }else{
-			console.log("NO A VENDOR");
+			//console.log("NO A VENDOR");
 			return false;
 		  }		
 	},
@@ -370,17 +371,17 @@ prc_af_mo_Additional Vendors: 0,
 						{
 							'store':{ $ne: ""}
 						},
-						{
+					/*	{
 							'is_scanned_by_retailer_updater':{ $ne: true}
-						},
+						},*/
 						{
 							'store':{ $nin: RMdatalink.util.globalConfig.getNinArrayForLoaderFunction()  }
 						},
 						
-/*					    {
+						{
 							'flag_for_development':true
 						}
-*/						
+						
 					
 					]	
 			},fields: {}	},
@@ -582,13 +583,17 @@ prc_af_mo_Additional Vendors: 0,
 	
 	},autoUpdateRetailerProductSetup:function(      retailerInfoFromIntermediateCollection , retailerFromVendorMasterCollection                        ){
 	    
-		return;
+		
 		//ALGO : 1   GET THE LATEST INFORMATION OF RETAILER FROM VENDOR MASTER
 	    // 2 : On SUCCESS CREATE  product_billing_object.
-		if( retailerInfoFromIntermediateCollection.is_registeration_complete  || retailerInfoFromIntermediateCollection.flag_for_development)
+		// THIS IS THE HANDSHAKE RECIEVED IN INTERMEDIATE TABLE WHICH APPORVES THAT INITIAL PAYMENT FOR E-COMMERCE IS RECIEVED.
+		//debugger;
+		if( retailerInfoFromIntermediateCollection.ccOk  && retailerInfoFromIntermediateCollection.cctransaction && retailerInfoFromIntermediateCollection.cctransaction.payment
+			&& retailerInfoFromIntermediateCollection.cctransaction.payment && retailerInfoFromIntermediateCollection.cctransaction.payment.state ==  "approved"
+		)
 		{
 		}else{
-			//return;
+		//	return;
 		}
 		
 		var latestInformationOfRetailerFromVendorMaster;
@@ -626,12 +631,20 @@ prc_af_mo_Additional Vendors: 0,
 							invoice_number:'',
 							pricing_policy_option:"vendors",
 							products_rate:'module_standard_price',
-							vendors_rate: "module_standard_price"
+							vendors_rate: "module_standard_price",
+						    vendor_pricing_policy: "VIP (New)"
 	
 							
 						};
+						var zulluDateTimeStamp;
+							try{
+							zulluDateTimeStamp  =  new Date(retailerInfoFromIntermediateCollection.cctransaction.payment.create_time).toLocaleDateString();
+							}catch(e){
+								console.log( "ZULLU TIME STAMP ABSENT") ;
+							}
 							
-							product_vip_object.created_date_stamp =   retailerInfoFromIntermediateCollection.date || new Date().toLocaleDateString();
+							
+							product_vip_object.created_date_stamp =   zulluDateTimeStamp || new Date().toLocaleDateString();
 							product_vip_object.last_created_date_stamp =  product_vip_object.created_date_stamp;
 							product_vip_object.pay_date =  product_vip_object.created_date_stamp 
 							product_vip_object.payment_period_start = product_vip_object.pay_date;         
@@ -658,20 +671,84 @@ prc_af_mo_Additional Vendors: 0,
 							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
 								total += parseInt( obj. module_price);	
 							}  ) ;
+							RMdatalink.util.globalConfig.getArrayOfVendorAndTheirAccountNo(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								if(obj.price){
+									total += parseInt( obj. price);	
+								}
+							
+							});
+							// 
+							
+							var vipPrice = 
+							(function(){
+								try{
+								 var ecomMainStore = Ext.getStore('products.ecomMain') ;
+								 var record = ecomMainStore.findRecord("module_name", "Vendor Internet Program");
+								 return parseInt( record.get("module_standard_price"));
+								}
+								catch(e){
+									return 0;
+								}
+							
+							})();
+							total += vipPrice;  // THIS IS THE CHARGE OF VIP PROGRAM. THIS WILL BE CHARGED MONTHLY
+							var monthlyMemberShip = total;   
+							
+							
+							
 							product_vip_object.ammount_paying = total;
 							product_vip_object.contract_price = product_vip_object.ammount_paying;
-							product_vip_object.monthly_membership =product_vip_object.ammount_paying;
+							product_vip_object.monthly_membership = monthlyMemberShip;
 							product_vip_object.total_payble= product_vip_object.ammount_paying;
-							var programDetails = []
+							var programDetails = [];
 							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
 								var program = findProgramBy_name(  obj.module_name );
 								if( program  )
 								{
-									programDetails .push(program.raw)
-								
+									var dataToPush = program.raw;
+									dataToPush.quantity = 1;
+									dataToPush.per_month = dataToPush.module_standard_price || "0";
+									dataToPush.promotional_total = dataToPush.per_month;
+									dataToPush.standard_total = dataToPush.per_month;
+									dataToPush.trial =  "";
+									programDetails .push(dataToPush)
+									
 								}
 
 							}  ) ;	
+							
+							(function(){
+							    try{
+								var ecomMainStore = Ext.getStore('products.ecomMain') ;
+							    var dataToPush = ecomMainStore.findRecord("module_name", "Additional Vendors").data;
+								var total =0;
+								var totalVendor = 0;
+								RMdatalink.util.globalConfig.getArrayOfVendorAndTheirAccountNo(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								if(obj.price){
+									total += parseInt( obj. price);	
+								}
+							
+								});
+								dataToPush.module_standard_price = total;
+								dataToPush.module_promotional_price = total;
+								dataToPush.module_price = total;
+								dataToPush.quantity = totalVendor;
+								programDetails.push(dataToPush);
+								
+								var ecomMainStore = Ext.getStore('products.ecomMain') ;
+								 var record = ecomMainStore.findRecord("module_name", "Vendor Internet Program");
+								 var dataToPush = record.raw;
+									dataToPush.quantity = 1;
+								 programDetails.push(dataToPush);
+								return dataToPush;
+								}catch(e){
+								  console.log("ERRO THROWN");
+									return false;
+								}
+							
+							})();
+							
+							
 							product_vip_object.product_modules =  programDetails;				
 							product_vip_object.total_payble = product_vip_object.ammount_paying;
 							
@@ -684,6 +761,8 @@ prc_af_mo_Additional Vendors: 0,
 								store_products:store_products
 							};
 							var store = Ext.getStore('retailersMaster');
+							console.log(retailerInfoFromIntermediateCollection);
+							
 							
 							RMdatalink.iwa.rdl.doUpdateCollection(store , objectForUpdate , retailerFromVendorMasterCollection._id , function (){
 								console.log("SUCCESS in INFORAMTAION");
@@ -710,29 +789,122 @@ prc_af_mo_Additional Vendors: 0,
 	
 	
 	},autoUpdateRetailerInvoiceSetup:function(      retailerInfoFromIntermediateCollection , retailerFromVendorMasterCollection ){
-	
+		//debugger;
+		if( retailerInfoFromIntermediateCollection.ccOk  && retailerInfoFromIntermediateCollection.cctransaction && retailerInfoFromIntermediateCollection.cctransaction.payment
+			&& retailerInfoFromIntermediateCollection.cctransaction.payment && retailerInfoFromIntermediateCollection.cctransaction.payment.state ==  "approved"
+		)
+		{
+		}else{
+			//return;
+		}	
+		//debugger;
 		RMdatalink.util.globalConfig.getNewInvoiceNo(function(  invoiceNo ){
 							var ammount_paying = 0;
 							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
 								ammount_paying += parseInt( obj. module_price);	
 							}  ) ;
+							RMdatalink.util.globalConfig.getArrayOfVendorAndTheirAccountNo(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								if(obj.price){
+									ammount_paying += parseInt( obj. price);	
+								}
+							
+							});
+							var vipPrice = 
+							(function(){
+								try{
+								 var ecomMainStore = Ext.getStore('products.ecomMain') ;
+								 var record = ecomMainStore.findRecord("module_name", "Vendor Internet Program");
+								 return parseInt( record.get("module_standard_price"));
+								}
+								catch(e){
+									return 0;
+								}
+							
+							})();
+							ammount_paying += vipPrice;  // THIS IS THE CHARGE OF VIP PROGRAM. THIS WILL BE CHARGED MONTHLY
+							var monthlyMemberShip = ammount_paying;   							
 							var programDetails = [];
+							
 							RMdatalink.util.globalConfig.getArrayOfVIPProgramAndTheirPrices(retailerInfoFromIntermediateCollection).forEach(function(obj){
 								var program = findProgramBy_name(  obj.module_name );
 								if( program  )
 								{
-									programDetails .push(program.raw)
+								var dataToPush = program.raw;
+									dataToPush.quantity = 1;
+									dataToPush.per_month = dataToPush.module_standard_price || "0";
+									dataToPush.promotional_total = dataToPush.per_month;
+									dataToPush.standard_total = dataToPush.per_month;
+									dataToPush.trial =  "";
+									
+									programDetails .push(dataToPush)
 								
 								}
 
-							}  ) ;	
-							var startDate = retailerInfoFromIntermediateCollection.date || new Date().toLocaleDateString();
+							}  ) ;
+							
+							
+							// THIS ANONYMOUS FUCNCTION WILL ADD DETAILS REGARDING ADDITIONAL VENDORS AND VIP INTERNET PROGRAM
+							(function(){
+							    try{
+								var ecomMainStore = Ext.getStore('products.ecomMain') ;
+							    var dataToPush = ecomMainStore.findRecord("module_name", "Additional Vendors").data;
+								var total =0;
+								var totalVendor = 0;
+								RMdatalink.util.globalConfig.getArrayOfVendorAndTheirAccountNo(retailerInfoFromIntermediateCollection).forEach(function(obj){
+								if(obj.price){
+									total += parseInt( obj. price);	
+								}
+							
+								});
+								dataToPush.module_standard_price = total;
+								dataToPush.module_promotional_price = total;
+								dataToPush.module_price = total;
+								dataToPush.quantity = totalVendor;
+								dataToPush.per_month = dataToPush.module_standard_price || "0";
+								dataToPush.promotional_total = dataToPush.per_month;
+								dataToPush.standard_total = dataToPush.per_month;
+								programDetails.push(dataToPush);
+								
+								
+								
+								
+								var ecomMainStore = Ext.getStore('products.ecomMain') ;
+								 var record = ecomMainStore.findRecord("module_name", "Vendor Internet Program");
+								 var dataToPush = record.raw;
+									
+									dataToPush.quantity = 1;
+									dataToPush.per_month = dataToPush.module_standard_price || "0";
+									dataToPush.promotional_total = dataToPush.per_month;
+									dataToPush.standard_total = dataToPush.per_month;																	
+									programDetails.push(dataToPush);
+									
+								return dataToPush;
+								}catch(e){
+								  console.log("ERRO THROWN");
+									return false;
+								}
+							
+							})();							
+						var zulluDateTimeStamp;
+							try{
+							zulluDateTimeStamp  =  new Date(retailerInfoFromIntermediateCollection.cctransaction.payment.create_time).toLocaleDateString();
+							}catch(e){
+								console.log( "ZULLU TIME STAMP ABSENT") ;
+							}						
+							
+							var startDate = zulluDateTimeStamp || new Date().toLocaleDateString();
 							var date =  new Date(startDate);
 							date.setMonth( date.getMonth() + 1);
 							var dueDate = date;
 							var endDate = new Date(startDate);
 							endDate.setYear( endDate.getYear() + 1 );
 							
+							//debugger;
+							var transactionInfo = retailerInfoFromIntermediateCollection.cctransaction.payment;
+							var creditCardInfo = transactionInfo .payer.funding_instruments[0].credit_card;
+							var paid_by = creditCardInfo.type;
+							var payment_method_detail = creditCardInfo.number;
+							//type
 							
 							var invoiceObject = {
 								ammount_paying:ammount_paying,
@@ -743,7 +915,7 @@ prc_af_mo_Additional Vendors: 0,
 								invoice_product: "product_vip",
 								invoice_status: "active",
 								last_created_by:  "vip registeration program",
-								monthly_membership: ammount_paying,
+								monthly_membership: monthlyMemberShip,
 								product_modules: programDetails,
 								retailer_id:retailerFromVendorMasterCollection._id,
 								selected_rate:'module_standard_price',
@@ -753,18 +925,18 @@ prc_af_mo_Additional Vendors: 0,
 								payments:[{
 									ammount_paying: ammount_paying,
 									cc_approval: "36254",
-									commission: "79.90",
+									commission: 0,
 									date:  startDate , 
-									paid_by: "AmExps",
-									pay_date: "09/10/2014",
-									payment_method_detail: "****3654",
+									paid_by: paid_by,
+									pay_date: startDate,
+									payment_method_detail: payment_method_detail,
 									proccessed_by: "vip registeration program"
 								}
 								
 								],
 								selected_package: "3",
 								invoice_number: invoiceNo,
-								paid_by: "card",
+								paid_by: "credit_card",
 								cc_approval: "",
 								payment_period: 1,
 								
@@ -791,7 +963,7 @@ prc_af_mo_Additional Vendors: 0,
 								
 															
 							};
-							debugger;		
+								
 							var InvoiceHistoryStore = Ext.getStore('InvoiceHistoryStore') ;							
 							RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(invoiceObject,InvoiceHistoryStore,function(){
 							

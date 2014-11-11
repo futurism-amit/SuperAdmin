@@ -1535,9 +1535,13 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         var due_date = rmProInvoicePanel.down('#rmProSubscrPaymentDueDateFld').getValue() ;
 
 
+        try{
+            Ext.ComponentQuery.query('#billingRMProDtlsLbl')[0].setHtml("Due Date :"+ due_date +" invoice_no: "+product_rmpro.invoice_number+" <b>Total Payble : "+totalPayble + "$</b>" );
+        }catch(e){
+
+        }
 
 
-        Ext.ComponentQuery.query('#billingRMProDtlsLbl')[0].setHtml("Due Date :"+ due_date +" invoice_no: "+product_rmpro.invoice_number+" <b>Total Payble : "+totalPayble + "$</b>" );
 
 
 
@@ -1820,6 +1824,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         }else{
             //check for datalink and break execution
+
              that.saveDatalinkInvoice(isGenerateInvoice,product_name) ;
              return ;
         }
@@ -1906,6 +1911,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
                            that.config.isSalesCommissionForRmPro = false ;
                            that.updateSalesPersonCommission("product_rmpro") ;
                         }
+                      debugger;
                       that.saveDatalinkInvoice(isGenerateInvoice,product_name) ;
 
                         //  Ext.Viewport.setMasked(false);
@@ -1961,7 +1967,8 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         }else{
 
                         Ext.Viewport.setMasked(false);
-                           if(isGenerateInvoice){
+                           if(isGenerateInvoice)
+                           {
                                 generateInvoice() ;
                            }
                         else{

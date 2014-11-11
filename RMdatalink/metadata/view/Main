@@ -267,13 +267,25 @@
                             "userConfig": {
                                 "centered": null,
                                 "designer|displayName": "card-dashboard",
-                                "html": "dashboard",
+                                "html": null,
                                 "itemId": "card-dashboard"
                             },
                             "configAlternates": {
                                 "index": "number"
                             },
-                            "designerId": "c8d249eb-8d9d-472b-854b-db4b09300331"
+                            "designerId": "c8d249eb-8d9d-472b-854b-db4b09300331",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "168a354f-ee61-4b79-a7c4-14744fc668ef",
+                                    "masterInstanceId": "4875b1ab-1fd4-454b-89c8-9a50e61ebc0c"
+                                }
+                            ]
                         },
                         {
                             "type": "Ext.Container",

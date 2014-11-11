@@ -43,7 +43,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                 items: [
                     {
                         xtype: 'panel',
-                        flex: 3,
+                        flex: 5,
                         itemId: 'rmProModulesForRtListPanel',
                         padding: '0 0 0 0',
                         layout: 'vbox',
@@ -380,9 +380,9 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                     {
                                         xtype: 'listwithheader',
                                         cls: 'borderedDiv',
+                                        height: '100%',
                                         itemId: 'rmProDiscountsForRtList',
                                         margin: '34 0 0 0',
-                                        maxHeight: '132px',
                                         flex: 1
                                     },
                                     {
@@ -609,8 +609,9 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                 action: 'setScrollBarVisible',
                 flex: 0.8,
                 cls: ' x-rm-rdformpanel borderedDiv',
-                height: '592px',
+                height: '',
                 itemId: 'productRmproSideFldsPanel',
+                minHeight: '592px',
                 style: 'margin-left: 2px;',
                 layout: 'vbox',
                 scrollable: true,

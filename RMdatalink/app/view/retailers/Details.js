@@ -3612,7 +3612,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                 layout: 'hbox',
                                                                 items: [
                                                                     {
-                                                                        xtype: 'textfield',
+                                                                        xtype: 'selectfield',
                                                                         flex: 1,
                                                                         cls: 'textFieldInputECommereRetailer',
                                                                         itemId: 'eVipVendor',
@@ -3620,7 +3620,11 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                         labelCls: 'marginClsForLabels',
                                                                         labelWidth: '130px',
                                                                         name: 'vip_vendor',
-                                                                        autoComplete: false
+                                                                        autoComplete: false,
+                                                                        displayField: 'vendor_name',
+                                                                        store: 'vendors.Master',
+                                                                        usePicker: 'auto',
+                                                                        valueField: 'vendor_name'
                                                                     },
                                                                     {
                                                                         xtype: 'textfield',
@@ -4826,51 +4830,30 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                                 labelWidth: '130px',
                                                                                 autoSelect: false,
                                                                                 displayField: 'module_name',
-                                                                                store: 'products.ecomMain',
                                                                                 valueField: '_id',
                                                                                 listeners: [
                                                                                     {
-                                                                                        fn: function(element, eOpts) {
-                                                                                            console.log("PAINTERD");
-                                                                                            return;
-
-                                                                                            //products.ecomMain
-
-                                                                                            var component  = Ext.ComponentQuery.query("#discountVipTab")[0];
-                                                                                            var list = component.down('#discountList');
-                                                                                            var store = list.getStore();
-                                                                                            if(store){
-
-                                                                                            }else{
-                                                                                                return;
-                                                                                            }
-                                                                                            var data = getArrayFromStore(store);
-
-                                                                                            var dataToPush = [];
-
-                                                                                            var keyOfRetailer = 'promo_code_info';
-                                                                                            var flagofRetailer = 'is_promo_code_active';
-
-                                                                                            for(var i=0;i<data.length;i++){
-
-                                                                                                if(  data[i][keyOfRetailer]  &&  data[i][flagofRetailer] ){
-
-                                                                                                    dataToPush.push(data[i]);
-
-                                                                                                }
-
-                                                                                            }
-
-                                                                                            console.log(dataToPush);
-                                                                                            var vipVendorSelectFieldInEcomm = Ext.ComponentQuery.query("#vipVendorSelectFieldInEcomm")[0];
-                                                                                            vipVendorSelectFieldInEcomm.setOptions(dataToPush);
-
-                                                                                            //list.setData(dataToPush);
-                                                                                        },
-                                                                                        event: 'painted'
-                                                                                    },
-                                                                                    {
                                                                                         fn: function(component, eOpts) {
+                                                                                            component.addListener("painted",function(){
+
+                                                                                                var store = Ext.getStore("products.ecomMain");
+                                                                                                var dataForOption = [];
+
+                                                                                                var data = store.getData();
+
+                                                                                                data.all.forEach(function(obj){
+
+
+                                                                                                    if( obj.raw.product_type == 1 ){
+                                                                                                        dataForOption.push( obj.raw );
+                                                                                                    }
+                                                                                                });
+                                                                                                component.setOptions(dataForOption);
+
+
+                                                                                            },this,{
+                                                                                                single:true
+                                                                                            });
                                                                                             return;
                                                                                             component.addListener("painted" , function(){
 
@@ -5757,6 +5740,55 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                 ]
                                             },
                                             {
+                                                xtype: 'panel',
+                                                items: [
+                                                    {
+                                                        xtype: 'filefield',
+                                                        itemId: 'myfilefield14',
+                                                        label: 'upload file',
+                                                        listeners: [
+                                                            {
+                                                                fn: function(component, eOpts) {
+
+
+
+                                                                    window.tester = component;
+                                                                    component.addListener("change" , function(  item , newValue , oldValue){
+
+                                                                        //newValue;
+                                                                        if(newValue){
+
+                                                                        }else{
+                                                                            return;
+                                                                        }
+                                                                        var reader = new FileReader();
+                                                                        var fl = component.element.query('input')[0].files[0];
+                                                                        reader.onload = (function(aFile)
+                                                                        {
+                                                                            return function(evt)
+                                                                            {
+                                                                                var pr = {};
+                                                                                pr.dataurl = evt.target.result;  // dataurl goes here
+                                                                                pr.name = fl.name;
+                                                                                console.log(pr);
+                                                                                RMdatalink.iwa.sct.evalremote('upload_file.js', pr, function(res)
+
+                                                                                {
+                                                                                    console.log(arguments);
+                                                                                    console.log(res);   // you will get filename here in the property "nm".
+                                                                                });
+                                                                            };
+                                                                        })(fl);
+                                                                        reader.readAsDataURL(fl);
+                                                                    });
+                                                                },
+                                                                event: 'initialize'
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
                                                 xtype: 'spacer',
                                                 height: '30px',
                                                 style: 'margin-top:20px;'
@@ -5854,28 +5886,50 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                         layout: 'hbox',
                                         items: [
                                             {
-                                                xtype: 'list',
-                                                scrollable: 'false',
+                                                xtype: 'container',
                                                 flex: 3,
-                                                cls: [
-                                                    'x-rm-list',
-                                                    ' x-rm-rdstorelists'
-                                                ],
-                                                itemId: 'RDStoreProductsList',
-                                                margin: '4% 2% 4% 2%',
-                                                itemTpl: [
-                                                    '<div class="x-rm-listtpl-main pointerCursor"style="margin-bottom: 0px;height:20px !important">',
-                                                    '    <div style="width:20%">',
-                                                    '        <div style="width: 15px; height: 15px; background-image:url({ProductImage})"></div></div>',
-                                                    '    <div style="width:65%">{ProductName}</div>',
-                                                    '    <div style="color:red;font-size: medium;">{product_expiry}</div>',
-                                                    '    ',
-                                                    '     <div class= "productSetup">Product Setup</div>',
-                                                    '    ',
-                                                    '</div>',
-                                                    ''
-                                                ],
-                                                itemHeight: 20
+                                                layout: 'vbox',
+                                                items: [
+                                                    {
+                                                        xtype: 'list',
+                                                        scrollable: 'false',
+                                                        flex: 3,
+                                                        cls: [
+                                                            'x-rm-list',
+                                                            ' x-rm-rdstorelists'
+                                                        ],
+                                                        itemId: 'RDStoreProductsList',
+                                                        margin: '6% 0% 4% 0%',
+                                                        itemTpl: [
+                                                            '<div class="x-rm-listtpl-main pointerCursor"style="margin-bottom: 0px;height:20px !important">',
+                                                            '    <div style="width:20%">',
+                                                            '        <div style="width: 15px; height: 15px; background-image:url({ProductImage})"></div></div>',
+                                                            '    <div style="width:65%">{ProductName}</div>',
+                                                            '    <div style="color:red;font-size: medium;">{product_expiry}</div>',
+                                                            '    ',
+                                                            '     <div class= "productSetup">Product Setup</div>',
+                                                            '    ',
+                                                            '</div>',
+                                                            ''
+                                                        ],
+                                                        itemHeight: 20
+                                                    },
+                                                    {
+                                                        xtype: 'button',
+                                                        handler: function(button, e) {
+                                                            var pospectActiveListContainer = Ext.ComponentQuery.query("#pospectActiveListContainer")[0];
+                                                            pospectActiveListContainer.setActiveItem(3);
+                                                        },
+                                                        cls: 'x-rm-blueBtn',
+                                                        docked: 'bottom',
+                                                        height: '20px',
+                                                        itemId: 'rtDetlViewAuthorizedVendors',
+                                                        margin: '1px 0 1px 0',
+                                                        maxWidth: '100%',
+                                                        style: ' font-size: 70% !important;',
+                                                        text: 'Authorized Vendors'
+                                                    }
+                                                ]
                                             },
                                             {
                                                 xtype: 'panel',
@@ -5927,13 +5981,15 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                 flex: 2,
                                                 cls: 'x-rm-rdformpanel',
                                                 itemId: 'rtDtlProductStatusForm',
-                                                margin: '4% 2% 1% 2%',
+                                                margin: '4% 2% 0% 2%',
                                                 items: [
                                                     {
                                                         xtype: 'selectfield',
                                                         action: 'productStatusChange',
+                                                        height: '21px',
                                                         itemId: 'rtDatalinkStatusSelFld',
-                                                        margin: '1px 0 1px 0',
+                                                        maxHeight: '21px',
+                                                        minHeight: '21px',
                                                         autoSelect: false,
                                                         options: [
                                                             {
@@ -5962,7 +6018,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         xtype: 'selectfield',
                                                         action: 'productStatusChange',
                                                         itemId: 'rtEcatalogStatusSelFld',
-                                                        margin: '1px 0 1px 0',
                                                         autoSelect: false,
                                                         options: [
                                                             {
@@ -5991,7 +6046,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         xtype: 'selectfield',
                                                         action: 'productStatusChange',
                                                         itemId: 'rtECommerceStatusSelFld',
-                                                        margin: '1px 0 1px 0',
                                                         autoSelect: false,
                                                         options: [
                                                             {
@@ -6020,7 +6074,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         xtype: 'selectfield',
                                                         action: 'productStatusChange',
                                                         itemId: 'rtRM_proStatusSelFld',
-                                                        margin: '1px 0 1px 0',
                                                         autoSelect: false,
                                                         options: [
                                                             {
@@ -6049,7 +6102,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         xtype: 'selectfield',
                                                         action: 'productStatusChange',
                                                         itemId: 'rtirugzStatusSelFld',
-                                                        margin: '1px 0 1px 0',
                                                         autoSelect: false,
                                                         options: [
                                                             {
@@ -6078,7 +6130,6 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                         xtype: 'selectfield',
                                                         action: 'productStatusChange',
                                                         itemId: 'rtVipStatusSelFld',
-                                                        margin: '1px 0 1px 0',
                                                         autoSelect: false,
                                                         options: [
                                                             {
@@ -6106,9 +6157,12 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                     {
                                                         xtype: 'button',
                                                         cls: 'x-rm-blueBtn',
+                                                        docked: 'bottom',
+                                                        height: '20px',
                                                         itemId: 'rtDetlViewSubscriptionsBtn',
                                                         margin: '1px 0 1px 0',
                                                         maxWidth: '175px',
+                                                        style: ' font-size: 70% !important;',
                                                         text: 'View Subscriptions'
                                                     }
                                                 ]
@@ -6150,13 +6204,17 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                         ]
                                     },
                                     {
-                                        xtype: 'container',
+                                        xtype: 'tabpanel',
                                         flex: 1,
                                         itemId: 'pospectActiveListContainer',
-                                        layout: 'card',
+                                        layout: {
+                                            type: 'card',
+                                            animation: false
+                                        },
                                         items: [
                                             {
                                                 xtype: 'tabpanel',
+                                                title: 'DataLink',
                                                 cls: [
                                                     'x-rm-tabpanel',
                                                     'x-rm-tabpanelWidth33'
@@ -6177,6 +6235,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                     'noBorderFldSet'
                                                                 ],
                                                                 height: '30px',
+                                                                hidden: true,
                                                                 itemId: 'vendorsActiveRetailersSearchFldSet',
                                                                 layout: 'hbox',
                                                                 listeners: [
@@ -6234,10 +6293,12 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                             },
                                                             {
                                                                 xtype: 'searchView',
+                                                                hidden: true,
                                                                 itemId: 'vendorsCommonSearchViewForRetailer'
                                                             },
                                                             {
                                                                 xtype: 'listwithheader',
+                                                                hidden: false,
                                                                 itemId: 'RDInStoreVendorList',
                                                                 flex: 2
                                                             },
@@ -6253,28 +6314,29 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                         html: 'Total Count : 0',
                                                                         itemId: 'inStoreVendorsRetailersCLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '42%'
+                                                                        width: '48%'
                                                                     },
                                                                     {
                                                                         xtype: 'label',
+                                                                        cls: 'boldText',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrSKUTotalLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '20%'
+                                                                        width: '12%'
                                                                     },
                                                                     {
                                                                         xtype: 'label',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrCollectionTotalLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '20%'
+                                                                        width: '10%'
                                                                     },
                                                                     {
                                                                         xtype: 'label',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrDesignTotalLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '20%'
+                                                                        width: '10%'
                                                                     },
                                                                     {
                                                                         xtype: 'fieldset',
@@ -6330,6 +6392,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                     'x-rm-rdformpanel',
                                                                     'noBorderFldSet'
                                                                 ],
+                                                                hidden: true,
                                                                 itemId: 'retailersProspectSearchFieldSet',
                                                                 style: 'border: none;',
                                                                 width: '98%',
@@ -6527,6 +6590,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                             },
                                             {
                                                 xtype: 'tabpanel',
+                                                title: 'E-Commerce',
                                                 cls: [
                                                     'x-rm-tabpanel',
                                                     'x-rm-tabpanelWidth33'
@@ -6606,6 +6670,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                             },
                                                             {
                                                                 xtype: 'searchView',
+                                                                hidden: true,
                                                                 itemId: 'vendorsCommonSearchViewForRetailer'
                                                             },
                                                             {
@@ -6625,28 +6690,29 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                         html: 'Total Count : 0',
                                                                         itemId: 'inStoreVendorsRetailersCLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '42%'
+                                                                        width: '48%'
                                                                     },
                                                                     {
                                                                         xtype: 'label',
+                                                                        cls: 'boldText',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrSKUTotalLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '20%'
+                                                                        width: '12%'
                                                                     },
                                                                     {
                                                                         xtype: 'label',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrCollectionTotalLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '20%'
+                                                                        width: '10%'
                                                                     },
                                                                     {
                                                                         xtype: 'label',
                                                                         html: '0',
                                                                         itemId: 'rtDtlVdrDesignTotalLbl',
                                                                         style: 'font-size:80%;',
-                                                                        width: '20%'
+                                                                        width: '10%'
                                                                     },
                                                                     {
                                                                         xtype: 'fieldset',
@@ -6703,6 +6769,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                     'x-rm-rdformpanel',
                                                                     'noBorderFldSet'
                                                                 ],
+                                                                hidden: true,
                                                                 itemId: 'retailersProspectSearchFieldSet',
                                                                 margin: 0,
                                                                 style: 'border: none;',
@@ -6901,6 +6968,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                             },
                                             {
                                                 xtype: 'tabpanel',
+                                                title: 'VIP',
                                                 cls: [
                                                     'x-rm-tabpanel',
                                                     'x-rm-tabpanelWidth33'
@@ -6980,6 +7048,763 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                             },
                                                             {
                                                                 xtype: 'searchView',
+                                                                hidden: true,
+                                                                itemId: 'vendorsCommonSearchViewForRetailer'
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDInStoreVendorList',
+                                                                flex: 2
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                itemId: 'rtlrVdrAssociationTotalFldSet',
+                                                                margin: 0,
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count : 0',
+                                                                        itemId: 'inStoreVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '48%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        cls: 'boldText',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '12%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrCollectionTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '10%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrDesignTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '10%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        height: '25px',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersPagignationControlPanel',
+                                                                        margin: '0 5px 0 5px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'left',
+                                                                                itemId: 'retailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'right',
+                                                                                itemId: 'retailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'label',
+                                                                                html: '1',
+                                                                                itemId: 'retailerAtVendorPNoLbl',
+                                                                                minWidth: '20px',
+                                                                                style: 'text-align: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'PROSPECTS',
+                                                        itemId: 'RDOnlineVendorsTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'start'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                hidden: true,
+                                                                itemId: 'retailersProspectSearchFieldSet',
+                                                                margin: 0,
+                                                                style: 'border: none;',
+                                                                width: '98%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'searchfield',
+                                                                        action: 'searchRetailers',
+                                                                        flex: 1,
+                                                                        cls: 'x-field-techLogsearch',
+                                                                        itemId: 'rtVdrsSearchFld',
+                                                                        style: 'border: none;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'button',
+                                                                        action: 'searchRetailersBtn',
+                                                                        cls: 'x-rm-blueBtn',
+                                                                        height: '25px',
+                                                                        itemId: 'retailersVendorsSerchBtn',
+                                                                        width: '90px',
+                                                                        text: 'Search'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDOnlineVendorList',
+                                                                width: '100%',
+                                                                flex: 1
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                margin: 0,
+                                                                width: '99%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count :',
+                                                                        itemId: 'onlineVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersProspectsPagignationControlPanel',
+                                                                        margin: '0 5px 0 0px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'Additional Info',
+                                                        itemId: 'retailerAdditionalInfoTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'center'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'formpanel',
+                                                                action: 'setScrollBarVisible',
+                                                                flex: 2,
+                                                                cls: 'x-rm-rdformpanel',
+                                                                itemId: 'rtAdditionalInfoForm',
+                                                                width: '100%',
+                                                                scrollable: true,
+                                                                layout: {
+                                                                    type: 'vbox',
+                                                                    align: 'start'
+                                                                },
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreInventoryTool',
+                                                                        margin: '10px 0 0 0',
+                                                                        label: 'Inventory Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAccountingTool',
+                                                                        label: 'Accounting Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAltBusiness',
+                                                                        label: 'Alt Business',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreYrsInBusiness',
+                                                                        label: 'Years in business',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 3
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreEmployees',
+                                                                        label: 'Employees',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 5
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAdvertising',
+                                                                        label: 'Advertising',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreMoBudget',
+                                                                        label: 'Ad Budget',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 7
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercProg',
+                                                                        label: '% Program',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercKind',
+                                                                        label: '% One of a Kind',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'rtAdditionalInfoChallenges',
+                                                                        label: 'Challenges',
+                                                                        labelWidth: '110px'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    if(Ext.getCmp("addNewField"))
+                                                                    {
+                                                                        Ext.getCmp("addNewField").destroy();
+                                                                    }
+
+
+                                                                    RMdatalink.app.getController('RetailerDeatilsDataSet').config.isAdditionalInfoMoreFldsTap = true ;
+
+
+
+                                                                    var popup = Ext.widget('addNewField');
+
+                                                                    popup.showBy(button);
+                                                                },
+                                                                cls: 'x-rm-blueBtn',
+                                                                itemId: 'rtDtlStrAddInfoAddBtn',
+                                                                text: 'Add New Fields'
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                tabBar: {
+                                                    docked: 'top'
+                                                }
+                                            },
+                                            {
+                                                xtype: 'tabpanel',
+                                                title: 'Authorized Vendors',
+                                                cls: [
+                                                    'x-rm-tabpanel',
+                                                    'x-rm-tabpanelWidth33'
+                                                ],
+                                                itemId: 'RDForAuthorisedVendors',
+                                                ui: 'light',
+                                                items: [
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'ACTIVE',
+                                                        itemId: 'RDInStoreVendorsTab',
+                                                        layout: 'vbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                height: '30px',
+                                                                hidden: true,
+                                                                itemId: 'vendorsActiveRetailersSearchFldSet',
+                                                                layout: 'hbox',
+                                                                listeners: [
+                                                                    {
+                                                                        fn: function(component, eOpts) {
+
+
+
+                                                                        },
+                                                                        event: 'initialize'
+                                                                    }
+                                                                ],
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        flex: 2,
+                                                                        cls: 'x-rm-rdformpanel',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersActiveSearchFieldSet',
+                                                                        margin: 0,
+                                                                        style: 'border: none;',
+                                                                        width: '98%',
+                                                                        layout: 'hbox',
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'searchfield',
+                                                                                action: 'searchActiveRetailers',
+                                                                                flex: 1,
+                                                                                cls: 'x-field-techLogsearch',
+                                                                                itemId: 'rtVdrsSearchFld',
+                                                                                style: 'border: none;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                action: 'searchActiveRetailersBtn',
+                                                                                cls: 'x-rm-blueBtn',
+                                                                                height: '25px',
+                                                                                itemId: 'retailersVendorsSerchBtn',
+                                                                                width: '90px',
+                                                                                text: 'Search'
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        xtype: 'filefield',
+                                                                        action: 'importRetailers',
+                                                                        cls: 'x-rm-selectFileFldImportXL',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'csvImportFileField',
+                                                                        width: '60px',
+                                                                        clearIcon: true,
+                                                                        accept: '\.csv'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'searchView',
+                                                                hidden: true,
+                                                                itemId: 'vendorsCommonSearchViewForRetailer'
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDInStoreVendorList',
+                                                                flex: 2
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                itemId: 'rtlrVdrAssociationTotalFldSet',
+                                                                margin: 0,
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count : 0',
+                                                                        itemId: 'inStoreVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '48%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        cls: 'boldText',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '12%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrCollectionTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '10%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrDesignTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '10%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        height: '25px',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersPagignationControlPanel',
+                                                                        margin: '0 5px 0 5px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'left',
+                                                                                itemId: 'retailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'right',
+                                                                                itemId: 'retailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'label',
+                                                                                html: '1',
+                                                                                itemId: 'retailerAtVendorPNoLbl',
+                                                                                minWidth: '20px',
+                                                                                style: 'text-align: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'PROSPECTS',
+                                                        itemId: 'RDOnlineVendorsTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'start'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                hidden: true,
+                                                                itemId: 'retailersProspectSearchFieldSet',
+                                                                margin: 0,
+                                                                style: 'border: none;',
+                                                                width: '98%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'searchfield',
+                                                                        action: 'searchRetailers',
+                                                                        flex: 1,
+                                                                        cls: 'x-field-techLogsearch',
+                                                                        itemId: 'rtVdrsSearchFld',
+                                                                        style: 'border: none;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'button',
+                                                                        action: 'searchRetailersBtn',
+                                                                        cls: 'x-rm-blueBtn',
+                                                                        height: '25px',
+                                                                        itemId: 'retailersVendorsSerchBtn',
+                                                                        width: '90px',
+                                                                        text: 'Search'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDOnlineVendorList',
+                                                                width: '100%',
+                                                                flex: 1
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                margin: 0,
+                                                                width: '99%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count :',
+                                                                        itemId: 'onlineVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersProspectsPagignationControlPanel',
+                                                                        margin: '0 5px 0 0px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'Additional Info',
+                                                        itemId: 'retailerAdditionalInfoTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'center'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'formpanel',
+                                                                action: 'setScrollBarVisible',
+                                                                flex: 2,
+                                                                cls: 'x-rm-rdformpanel',
+                                                                itemId: 'rtAdditionalInfoForm',
+                                                                width: '100%',
+                                                                scrollable: true,
+                                                                layout: {
+                                                                    type: 'vbox',
+                                                                    align: 'start'
+                                                                },
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreInventoryTool',
+                                                                        margin: '10px 0 0 0',
+                                                                        label: 'Inventory Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAccountingTool',
+                                                                        label: 'Accounting Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAltBusiness',
+                                                                        label: 'Alt Business',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreYrsInBusiness',
+                                                                        label: 'Years in business',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 3
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreEmployees',
+                                                                        label: 'Employees',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 5
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAdvertising',
+                                                                        label: 'Advertising',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreMoBudget',
+                                                                        label: 'Ad Budget',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 7
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercProg',
+                                                                        label: '% Program',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercKind',
+                                                                        label: '% One of a Kind',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'rtAdditionalInfoChallenges',
+                                                                        label: 'Challenges',
+                                                                        labelWidth: '110px'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    if(Ext.getCmp("addNewField"))
+                                                                    {
+                                                                        Ext.getCmp("addNewField").destroy();
+                                                                    }
+
+
+                                                                    RMdatalink.app.getController('RetailerDeatilsDataSet').config.isAdditionalInfoMoreFldsTap = true ;
+
+
+
+                                                                    var popup = Ext.widget('addNewField');
+
+                                                                    popup.showBy(button);
+                                                                },
+                                                                cls: 'x-rm-blueBtn',
+                                                                itemId: 'rtDtlStrAddInfoAddBtn',
+                                                                text: 'Add New Fields'
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                tabBar: {
+                                                    docked: 'top'
+                                                }
+                                            },
+                                            {
+                                                xtype: 'tabpanel',
+                                                title: 'E-Catalog',
+                                                cls: [
+                                                    'x-rm-tabpanel',
+                                                    'x-rm-tabpanelWidth33'
+                                                ],
+                                                itemId: 'RDForEcatalog',
+                                                ui: 'light',
+                                                items: [
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'ACTIVE',
+                                                        itemId: 'RDInStoreVendorsTab',
+                                                        layout: 'vbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                height: '30px',
+                                                                hidden: true,
+                                                                itemId: 'vendorsActiveRetailersSearchFldSet',
+                                                                layout: 'hbox',
+                                                                listeners: [
+                                                                    {
+                                                                        fn: function(component, eOpts) {
+
+
+
+                                                                        },
+                                                                        event: 'initialize'
+                                                                    }
+                                                                ],
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        flex: 2,
+                                                                        cls: 'x-rm-rdformpanel',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersActiveSearchFieldSet',
+                                                                        margin: 0,
+                                                                        style: 'border: none;',
+                                                                        width: '98%',
+                                                                        layout: 'hbox',
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'searchfield',
+                                                                                action: 'searchActiveRetailers',
+                                                                                flex: 1,
+                                                                                cls: 'x-field-techLogsearch',
+                                                                                itemId: 'rtVdrsSearchFld',
+                                                                                style: 'border: none;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                action: 'searchActiveRetailersBtn',
+                                                                                cls: 'x-rm-blueBtn',
+                                                                                height: '25px',
+                                                                                itemId: 'retailersVendorsSerchBtn',
+                                                                                width: '90px',
+                                                                                text: 'Search'
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        xtype: 'filefield',
+                                                                        action: 'importRetailers',
+                                                                        cls: 'x-rm-selectFileFldImportXL',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'csvImportFileField',
+                                                                        width: '60px',
+                                                                        clearIcon: true,
+                                                                        accept: '\.csv'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'searchView',
+                                                                hidden: true,
                                                                 itemId: 'vendorsCommonSearchViewForRetailer'
                                                             },
                                                             {
@@ -7077,6 +7902,761 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                                     'x-rm-rdformpanel',
                                                                     'noBorderFldSet'
                                                                 ],
+                                                                hidden: true,
+                                                                itemId: 'retailersProspectSearchFieldSet',
+                                                                margin: 0,
+                                                                style: 'border: none;',
+                                                                width: '98%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'searchfield',
+                                                                        action: 'searchRetailers',
+                                                                        flex: 1,
+                                                                        cls: 'x-field-techLogsearch',
+                                                                        itemId: 'rtVdrsSearchFld',
+                                                                        style: 'border: none;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'button',
+                                                                        action: 'searchRetailersBtn',
+                                                                        cls: 'x-rm-blueBtn',
+                                                                        height: '25px',
+                                                                        itemId: 'retailersVendorsSerchBtn',
+                                                                        width: '90px',
+                                                                        text: 'Search'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDOnlineVendorList',
+                                                                width: '100%',
+                                                                flex: 1
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                margin: 0,
+                                                                width: '99%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count :',
+                                                                        itemId: 'onlineVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersProspectsPagignationControlPanel',
+                                                                        margin: '0 5px 0 0px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'Additional Info',
+                                                        itemId: 'retailerAdditionalInfoTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'center'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'formpanel',
+                                                                action: 'setScrollBarVisible',
+                                                                flex: 2,
+                                                                cls: 'x-rm-rdformpanel',
+                                                                itemId: 'rtAdditionalInfoForm',
+                                                                width: '100%',
+                                                                scrollable: true,
+                                                                layout: {
+                                                                    type: 'vbox',
+                                                                    align: 'start'
+                                                                },
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreInventoryTool',
+                                                                        margin: '10px 0 0 0',
+                                                                        label: 'Inventory Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAccountingTool',
+                                                                        label: 'Accounting Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAltBusiness',
+                                                                        label: 'Alt Business',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreYrsInBusiness',
+                                                                        label: 'Years in business',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 3
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreEmployees',
+                                                                        label: 'Employees',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 5
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAdvertising',
+                                                                        label: 'Advertising',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreMoBudget',
+                                                                        label: 'Ad Budget',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 7
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercProg',
+                                                                        label: '% Program',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercKind',
+                                                                        label: '% One of a Kind',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'rtAdditionalInfoChallenges',
+                                                                        label: 'Challenges',
+                                                                        labelWidth: '110px'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    if(Ext.getCmp("addNewField"))
+                                                                    {
+                                                                        Ext.getCmp("addNewField").destroy();
+                                                                    }
+
+
+                                                                    RMdatalink.app.getController('RetailerDeatilsDataSet').config.isAdditionalInfoMoreFldsTap = true ;
+
+
+
+                                                                    var popup = Ext.widget('addNewField');
+
+                                                                    popup.showBy(button);
+                                                                },
+                                                                cls: 'x-rm-blueBtn',
+                                                                itemId: 'rtDtlStrAddInfoAddBtn',
+                                                                text: 'Add New Fields'
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                tabBar: {
+                                                    docked: 'top'
+                                                }
+                                            },
+                                            {
+                                                xtype: 'tabpanel',
+                                                title: 'IRugz',
+                                                cls: [
+                                                    'x-rm-tabpanel',
+                                                    'x-rm-tabpanelWidth33'
+                                                ],
+                                                itemId: 'RDForIRugz',
+                                                ui: 'light',
+                                                items: [
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'ACTIVE',
+                                                        itemId: 'RDInStoreVendorsTab',
+                                                        layout: 'vbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                height: '30px',
+                                                                hidden: true,
+                                                                itemId: 'vendorsActiveRetailersSearchFldSet',
+                                                                layout: 'hbox',
+                                                                listeners: [
+                                                                    {
+                                                                        fn: function(component, eOpts) {
+
+
+
+                                                                        },
+                                                                        event: 'initialize'
+                                                                    }
+                                                                ],
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        flex: 2,
+                                                                        cls: 'x-rm-rdformpanel',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersActiveSearchFieldSet',
+                                                                        margin: 0,
+                                                                        style: 'border: none;',
+                                                                        width: '98%',
+                                                                        layout: 'hbox',
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'searchfield',
+                                                                                action: 'searchActiveRetailers',
+                                                                                flex: 1,
+                                                                                cls: 'x-field-techLogsearch',
+                                                                                itemId: 'rtVdrsSearchFld',
+                                                                                style: 'border: none;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                action: 'searchActiveRetailersBtn',
+                                                                                cls: 'x-rm-blueBtn',
+                                                                                height: '25px',
+                                                                                itemId: 'retailersVendorsSerchBtn',
+                                                                                width: '90px',
+                                                                                text: 'Search'
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        xtype: 'filefield',
+                                                                        action: 'importRetailers',
+                                                                        cls: 'x-rm-selectFileFldImportXL',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'csvImportFileField',
+                                                                        width: '60px',
+                                                                        clearIcon: true,
+                                                                        accept: '\.csv'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'searchView',
+                                                                hidden: true,
+                                                                itemId: 'vendorsCommonSearchViewForRetailer'
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDInStoreVendorList',
+                                                                flex: 2
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                itemId: 'rtlrVdrAssociationTotalFldSet',
+                                                                margin: 0,
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count : 0',
+                                                                        itemId: 'inStoreVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '42%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrCollectionTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrDesignTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        height: '25px',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersPagignationControlPanel',
+                                                                        margin: '0 5px 0 5px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'left',
+                                                                                itemId: 'retailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'right',
+                                                                                itemId: 'retailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'label',
+                                                                                html: '1',
+                                                                                itemId: 'retailerAtVendorPNoLbl',
+                                                                                minWidth: '20px',
+                                                                                style: 'text-align: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'PROSPECTS',
+                                                        itemId: 'RDOnlineVendorsTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'start'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                hidden: true,
+                                                                itemId: 'retailersProspectSearchFieldSet',
+                                                                margin: 0,
+                                                                style: 'border: none;',
+                                                                width: '98%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'searchfield',
+                                                                        action: 'searchRetailers',
+                                                                        flex: 1,
+                                                                        cls: 'x-field-techLogsearch',
+                                                                        itemId: 'rtVdrsSearchFld',
+                                                                        style: 'border: none;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'button',
+                                                                        action: 'searchRetailersBtn',
+                                                                        cls: 'x-rm-blueBtn',
+                                                                        height: '25px',
+                                                                        itemId: 'retailersVendorsSerchBtn',
+                                                                        width: '90px',
+                                                                        text: 'Search'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDOnlineVendorList',
+                                                                width: '100%',
+                                                                flex: 1
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                margin: 0,
+                                                                width: '99%',
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count :',
+                                                                        itemId: 'onlineVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersProspectsPagignationControlPanel',
+                                                                        margin: '0 5px 0 0px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                itemId: 'prospectsretailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'Additional Info',
+                                                        itemId: 'retailerAdditionalInfoTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'center'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'formpanel',
+                                                                action: 'setScrollBarVisible',
+                                                                flex: 2,
+                                                                cls: 'x-rm-rdformpanel',
+                                                                itemId: 'rtAdditionalInfoForm',
+                                                                width: '100%',
+                                                                scrollable: true,
+                                                                layout: {
+                                                                    type: 'vbox',
+                                                                    align: 'start'
+                                                                },
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreInventoryTool',
+                                                                        margin: '10px 0 0 0',
+                                                                        label: 'Inventory Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAccountingTool',
+                                                                        label: 'Accounting Tool',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAltBusiness',
+                                                                        label: 'Alt Business',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreYrsInBusiness',
+                                                                        label: 'Years in business',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 3
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStoreEmployees',
+                                                                        label: 'Employees',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 5
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreAdvertising',
+                                                                        label: 'Advertising',
+                                                                        labelWidth: '110px'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'RDStoreMoBudget',
+                                                                        label: 'Ad Budget',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 7
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercProg',
+                                                                        label: '% Program',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        actionChange: 'textChange',
+                                                                        itemId: 'RDStorePercKind',
+                                                                        label: '% One of a Kind',
+                                                                        labelWidth: '110px',
+                                                                        maxLength: 2
+                                                                    },
+                                                                    {
+                                                                        xtype: 'textfield',
+                                                                        itemId: 'rtAdditionalInfoChallenges',
+                                                                        label: 'Challenges',
+                                                                        labelWidth: '110px'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'button',
+                                                                handler: function(button, e) {
+                                                                    if(Ext.getCmp("addNewField"))
+                                                                    {
+                                                                        Ext.getCmp("addNewField").destroy();
+                                                                    }
+
+
+                                                                    RMdatalink.app.getController('RetailerDeatilsDataSet').config.isAdditionalInfoMoreFldsTap = true ;
+
+
+
+                                                                    var popup = Ext.widget('addNewField');
+
+                                                                    popup.showBy(button);
+                                                                },
+                                                                cls: 'x-rm-blueBtn',
+                                                                itemId: 'rtDtlStrAddInfoAddBtn',
+                                                                text: 'Add New Fields'
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                tabBar: {
+                                                    docked: 'top'
+                                                }
+                                            },
+                                            {
+                                                xtype: 'tabpanel',
+                                                title: 'RMPro',
+                                                cls: [
+                                                    'x-rm-tabpanel',
+                                                    'x-rm-tabpanelWidth33'
+                                                ],
+                                                itemId: 'RDForRMPro',
+                                                ui: 'light',
+                                                items: [
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'ACTIVE',
+                                                        itemId: 'RDInStoreVendorsTab',
+                                                        layout: 'vbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                height: '30px',
+                                                                hidden: true,
+                                                                itemId: 'vendorsActiveRetailersSearchFldSet',
+                                                                layout: 'hbox',
+                                                                listeners: [
+                                                                    {
+                                                                        fn: function(component, eOpts) {
+
+
+
+                                                                        },
+                                                                        event: 'initialize'
+                                                                    }
+                                                                ],
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        flex: 2,
+                                                                        cls: 'x-rm-rdformpanel',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersActiveSearchFieldSet',
+                                                                        margin: 0,
+                                                                        style: 'border: none;',
+                                                                        width: '98%',
+                                                                        layout: 'hbox',
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'searchfield',
+                                                                                action: 'searchActiveRetailers',
+                                                                                flex: 1,
+                                                                                cls: 'x-field-techLogsearch',
+                                                                                itemId: 'rtVdrsSearchFld',
+                                                                                style: 'border: none;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                action: 'searchActiveRetailersBtn',
+                                                                                cls: 'x-rm-blueBtn',
+                                                                                height: '25px',
+                                                                                itemId: 'retailersVendorsSerchBtn',
+                                                                                width: '90px',
+                                                                                text: 'Search'
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        xtype: 'filefield',
+                                                                        action: 'importRetailers',
+                                                                        cls: 'x-rm-selectFileFldImportXL',
+                                                                        docked: 'right',
+                                                                        hidden: true,
+                                                                        itemId: 'csvImportFileField',
+                                                                        width: '60px',
+                                                                        clearIcon: true,
+                                                                        accept: '\.csv'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                xtype: 'searchView',
+                                                                hidden: true,
+                                                                itemId: 'vendorsCommonSearchViewForRetailer'
+                                                            },
+                                                            {
+                                                                xtype: 'listwithheader',
+                                                                itemId: 'RDInStoreVendorList',
+                                                                flex: 2
+                                                            },
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: 'noBorderFldSet',
+                                                                itemId: 'rtlrVdrAssociationTotalFldSet',
+                                                                margin: 0,
+                                                                layout: 'hbox',
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: 'Total Count : 0',
+                                                                        itemId: 'inStoreVendorsRetailersCLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '42%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrSKUTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrCollectionTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'label',
+                                                                        html: '0',
+                                                                        itemId: 'rtDtlVdrDesignTotalLbl',
+                                                                        style: 'font-size:80%;',
+                                                                        width: '20%'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'fieldset',
+                                                                        baseCls: 'noCls',
+                                                                        docked: 'right',
+                                                                        height: '25px',
+                                                                        hidden: true,
+                                                                        itemId: 'retailersPagignationControlPanel',
+                                                                        margin: '0 5px 0 5px',
+                                                                        padding: 0,
+                                                                        layout: {
+                                                                            type: 'hbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'left',
+                                                                                itemId: 'retailersOfVendorsPageLeftBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_left.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                docked: 'right',
+                                                                                itemId: 'retailersOfVendorsPageRightBtn',
+                                                                                style: 'background-image: url(resources/images/CardHeaderPanel/arrow_right.png);background-repeat: no-repeat;background-position: center;'
+                                                                            },
+                                                                            {
+                                                                                xtype: 'label',
+                                                                                html: '1',
+                                                                                itemId: 'retailerAtVendorPNoLbl',
+                                                                                minWidth: '20px',
+                                                                                style: 'text-align: center;'
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'container',
+                                                        title: 'PROSPECTS',
+                                                        itemId: 'RDOnlineVendorsTab',
+                                                        layout: {
+                                                            type: 'vbox',
+                                                            align: 'start'
+                                                        },
+                                                        items: [
+                                                            {
+                                                                xtype: 'fieldset',
+                                                                cls: [
+                                                                    'x-rm-rdformpanel',
+                                                                    'noBorderFldSet'
+                                                                ],
+                                                                hidden: true,
                                                                 itemId: 'retailersProspectSearchFieldSet',
                                                                 margin: 0,
                                                                 style: 'border: none;',
@@ -7273,7 +8853,16 @@ Ext.define('RMdatalink.view.retailers.Details', {
                                                     docked: 'top'
                                                 }
                                             }
-                                        ]
+                                        ],
+                                        tabBar: {
+                                            cls: 'retailerDetailsProgramTabBar',
+                                            docked: 'top',
+                                            height: '20px',
+                                            hidden: false,
+                                            maxHeight: '25px',
+                                            style: 'background-color: gainsboro;',
+                                            ui: 'light'
+                                        }
                                     }
                                 ]
                             },
@@ -9069,6 +10658,46 @@ Ext.define('RMdatalink.view.retailers.Details', {
             },
             {
                 fn: 'onRDOnlineStoreVendorListItemTap',
+                event: 'itemtap',
+                delegate: '#RDOnlineVendorList #mainList'
+            },
+            {
+                fn: 'onRDInStoreVendorListItemTapEcomm',
+                event: 'itemtap',
+                delegate: '#RDInStoreVendorList #mainList'
+            },
+            {
+                fn: 'onRDOnlineStoreVendorListItemTapEcomm',
+                event: 'itemtap',
+                delegate: '#RDOnlineVendorList #mainList'
+            },
+            {
+                fn: 'onRDInStoreVendorListItemTapEcomm',
+                event: 'itemtap',
+                delegate: '#RDInStoreVendorList #mainList'
+            },
+            {
+                fn: 'onRDOnlineStoreVendorListItemTapEcomm',
+                event: 'itemtap',
+                delegate: '#RDOnlineVendorList #mainList'
+            },
+            {
+                fn: 'onRDInStoreVendorListItemTapEcomm',
+                event: 'itemtap',
+                delegate: '#RDInStoreVendorList #mainList'
+            },
+            {
+                fn: 'onRDOnlineStoreVendorListItemTapEcomm',
+                event: 'itemtap',
+                delegate: '#RDOnlineVendorList #mainList'
+            },
+            {
+                fn: 'onRDInStoreVendorListItemTapEcomm',
+                event: 'itemtap',
+                delegate: '#RDInStoreVendorList #mainList'
+            },
+            {
+                fn: 'onRDOnlineStoreVendorListItemTapEcomm',
                 event: 'itemtap',
                 delegate: '#RDOnlineVendorList #mainList'
             },
@@ -10906,6 +12535,494 @@ Ext.define('RMdatalink.view.retailers.Details', {
         // }
     },
 
+    onRDInStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        console.log(dataview.config.isUserEditionPermitted );
+        //alert("ECOMMERCED REMOVED");
+        //return;
+        try{
+            // dataview.config.isUserEditionPermitted  THIS PROERTY IS SET WHEN USER TAPS ON EDIT BUTTON ,
+            //and resets WHEN USER TAPS ON CANCEL BUTTON
+            if(dataview.config.isUserEditionPermitted || true){
+
+            }else{
+                return;
+            }
+        }catch(e)
+        {
+
+        }
+        if(e.target.nodeName == "INPUT"){
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return false;
+        }
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {
+
+                record.set('type',"ACTIVE");
+
+            }
+
+            else
+            {
+
+                record.set('type',"PROSPECT");
+        //onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceUnSelect(record) ;
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        //     RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+        // }
+
+    },
+
+    onRDOnlineStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        //LISTNER HAVE BEEN ADDDED TO CUSTOM FUNCTION CREATED VIZ ADD EVEVNTLISTNER
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        //alert("ECOMMERCED ADD");
+        //return;
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        // if(e.target.className == "fireListSelect")
+        // {
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {//onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceSelect(record,target) ;
+
+             //   record.set('status',true);
+            }
+            else
+            {
+
+                // dataview.select(record) ;
+               // record.set('status',false);
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        // RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+
+        // }
+    },
+
+    onRDInStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        console.log(dataview.config.isUserEditionPermitted );
+        //alert("ECOMMERCED REMOVED");
+        //return;
+        try{
+            // dataview.config.isUserEditionPermitted  THIS PROERTY IS SET WHEN USER TAPS ON EDIT BUTTON ,
+            //and resets WHEN USER TAPS ON CANCEL BUTTON
+            if(dataview.config.isUserEditionPermitted || true){
+
+            }else{
+                return;
+            }
+        }catch(e)
+        {
+
+        }
+        if(e.target.nodeName == "INPUT"){
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return false;
+        }
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {
+
+                record.set('type',"ACTIVE");
+
+            }
+
+            else
+            {
+
+                record.set('type',"PROSPECT");
+        //onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceUnSelect(record) ;
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        //     RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+        // }
+
+    },
+
+    onRDOnlineStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        //LISTNER HAVE BEEN ADDDED TO CUSTOM FUNCTION CREATED VIZ ADD EVEVNTLISTNER
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        //alert("ECOMMERCED ADD");
+        //return;
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        // if(e.target.className == "fireListSelect")
+        // {
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {//onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceSelect(record,target) ;
+
+             //   record.set('status',true);
+            }
+            else
+            {
+
+                // dataview.select(record) ;
+               // record.set('status',false);
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        // RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+
+        // }
+    },
+
+    onRDInStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        console.log(dataview.config.isUserEditionPermitted );
+        //alert("ECOMMERCED REMOVED");
+        //return;
+        try{
+            // dataview.config.isUserEditionPermitted  THIS PROERTY IS SET WHEN USER TAPS ON EDIT BUTTON ,
+            //and resets WHEN USER TAPS ON CANCEL BUTTON
+            if(dataview.config.isUserEditionPermitted || true){
+
+            }else{
+                return;
+            }
+        }catch(e)
+        {
+
+        }
+        if(e.target.nodeName == "INPUT"){
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return false;
+        }
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {
+
+                record.set('type',"ACTIVE");
+
+            }
+
+            else
+            {
+
+                record.set('type',"PROSPECT");
+        //onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceUnSelect(record) ;
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        //     RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+        // }
+
+    },
+
+    onRDOnlineStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        //LISTNER HAVE BEEN ADDDED TO CUSTOM FUNCTION CREATED VIZ ADD EVEVNTLISTNER
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        //alert("ECOMMERCED ADD");
+        //return;
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        // if(e.target.className == "fireListSelect")
+        // {
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {//onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceSelect(record,target) ;
+
+             //   record.set('status',true);
+            }
+            else
+            {
+
+                // dataview.select(record) ;
+               // record.set('status',false);
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        // RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+
+        // }
+    },
+
+    onRDInStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        console.log(dataview.config.isUserEditionPermitted );
+        //alert("ECOMMERCED REMOVED");
+        //return;
+        try{
+            // dataview.config.isUserEditionPermitted  THIS PROERTY IS SET WHEN USER TAPS ON EDIT BUTTON ,
+            //and resets WHEN USER TAPS ON CANCEL BUTTON
+            if(dataview.config.isUserEditionPermitted || true){
+
+            }else{
+                return;
+            }
+        }catch(e)
+        {
+
+        }
+        if(e.target.nodeName == "INPUT"){
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return false;
+        }
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {
+
+                record.set('type',"ACTIVE");
+
+            }
+
+            else
+            {
+
+                record.set('type',"PROSPECT");
+        //onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceUnSelect(record) ;
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        //     RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+        // }
+
+    },
+
+    onRDOnlineStoreVendorListItemTapEcomm: function(dataview, index, target, record, e, eOpts) {
+        return;
+        //LISTNER HAVE BEEN ADDDED TO CUSTOM FUNCTION CREATED VIZ ADD EVEVNTLISTNER
+        DOMTokenList.prototype.indexOf = DOMTokenList.prototype.indexOf || function(value){
+
+            var valueToReturn = -1;
+            for(var i=0;i<this.length;i++){
+                if(this[i] == value){
+                    return i;
+                }
+            }
+            return valueToReturn ;
+
+        };
+        //alert("ECOMMERCED ADD");
+        //return;
+        if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+            console.log("BUCKET CLICKED");
+        }else{
+
+            console.log("CLICK ON BUCKET TO REMOVE");
+            return;
+        }
+
+        // if(e.target.className == "fireListSelect")
+        // {
+
+        var timeout = setTimeout(function(){
+
+            if(dataview.isSelected(record))
+            {//onRetailerEcommerceSelect
+                RMdatalink.app.getController('VendorRetailerRelations').onRetailerEcommerceSelect(record,target) ;
+
+             //   record.set('status',true);
+            }
+            else
+            {
+
+                // dataview.select(record) ;
+               // record.set('status',false);
+            }
+            clearTimeout(timeout);
+        },100);
+
+
+        // }else{
+
+        // RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+
+        // }
+    },
+
     onRDNotesAddBtnTap11: function(button, e, eOpts) {
         var containerPanel = Ext.ComponentQuery.query('#locationAddNewContainerItemID')[0];
         //console.log(containerPanel.getInnerItems().length);
@@ -11200,9 +13317,10 @@ Ext.define('RMdatalink.view.retailers.Details', {
     onContainerInitialize: function(component, eOpts) {
         component.down('#detailsSaveBtn').element.on("tap",function(){
 
+             RMdatalink.app.getController('VendorRetailerRelations').saveAccountNoOfRetailerData();
 
              RMdatalink.app.getController('RetailerDeatilsDataSet').saveRetailersDetailedView();
-             RMdatalink.app.getController('VendorRetailerRelations').saveAccountNoOfRetailerData();
+
             return;
         });
 
@@ -11245,7 +13363,15 @@ Ext.define('RMdatalink.view.retailers.Details', {
         var prospectListVIP  = Ext.ComponentQuery.query('#RDForVIP #RDOnlineVendorsTab')[0].down("#mainList");
         var activeListVIP =  Ext.ComponentQuery.query('#RDForVIP #RDInStoreVendorList')[0].down("#mainList");
 
+        var prospectListAuthorizedVendrs  = Ext.ComponentQuery.query('#RDForAuthorisedVendors #RDOnlineVendorsTab')[0].down("#mainList");
+        var activeListAuthorizedVendrs =  Ext.ComponentQuery.query('#RDForAuthorisedVendors #RDInStoreVendorList')[0].down("#mainList");
 
+        //prospectListSelectedCls
+
+        prospectListDatalink.setSelectedCls('prospectListSelectedCls');
+        prospectListEcommerce.setSelectedCls('prospectListSelectedCls');
+        prospectListVIP.setSelectedCls('prospectListSelectedCls');
+        prospectListAuthorizedVendrs.setSelectedCls('prospectListSelectedCls');
 
 
         prospectListDatalink.addListener('itemtap' , onRDOnlineStoreVendorListItemTap,this);
@@ -11257,6 +13383,9 @@ Ext.define('RMdatalink.view.retailers.Details', {
         prospectListVIP.addListener('itemtap' ,onRDOnlineStoreVendorListItemTapVIP,this);
         activeListVIP.addListener('itemtap' ,  onRDInStoreVendorListItemTapVIP,this);
 
+
+        prospectListAuthorizedVendrs.addListener('itemtap' ,onRDOnlineStoreVendorListItemTapAuthorizedVendrs,this);
+        activeListAuthorizedVendrs.addListener('itemtap' ,  onRDInStoreVendorListItemTapAuthorizedVendrs,this);
 
 
 
@@ -11497,7 +13626,7 @@ Ext.define('RMdatalink.view.retailers.Details', {
             // }
         }
 
-
+          //  E- COMMERCE
         function onRDInStoreVendorListItemTapEcomm(dataview,index,target,record,e,eOpts){
 
             try{
@@ -11593,6 +13722,106 @@ Ext.define('RMdatalink.view.retailers.Details', {
             // }
 
         }
+
+
+
+        //AUTHORIZED VENDORS
+        function onRDInStoreVendorListItemTapAuthorizedVendrs(dataview,index,target,record,e,eOpts){
+
+            try{
+                // dataview.config.isUserEditionPermitted  THIS PROERTY IS SET WHEN USER TAPS ON EDIT BUTTON ,
+                //and resets WHEN USER TAPS ON CANCEL BUTTON
+                if(dataview.config.isUserEditionPermitted || true){
+
+                }else{
+                    return;
+                }
+            }catch(e)
+            {
+
+            }
+            if(e.target.nodeName == "INPUT"){
+
+                console.log("CLICK ON BUCKET TO REMOVE");
+                return false;
+            }
+            if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+                console.log("BUCKET CLICKED");
+            }else{
+
+                console.log("CLICK ON BUCKET TO REMOVE");
+                return;
+            }
+
+            var timeout = setTimeout(function(){
+
+                if(dataview.isSelected(record))
+                {
+
+                    record.set('type',"ACTIVE");
+
+                }
+
+                else
+                {
+
+                    record.set('type',"PROSPECT");
+                    //onRetailerEcommerceSelect
+                    RMdatalink.app.getController('VendorRetailerRelations').onRetailerAuthorizedVendrsUnselect(record) ;
+                }
+                clearTimeout(timeout);
+            },100);
+
+
+            // }else{
+
+            //     RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+            // }
+
+
+        }
+
+        function onRDOnlineStoreVendorListItemTapAuthorizedVendrs(dataview,index,target,record,e,eOpts){
+
+            if(e.target.classList.indexOf('fireListSelect')  >=0){
+
+                console.log("BUCKET CLICKED");
+            }else{
+
+                console.log("CLICK ON BUCKET TO REMOVE");
+                return;
+            }
+
+            // if(e.target.className == "fireListSelect")
+            // {
+
+            var timeout = setTimeout(function(){
+
+                if(dataview.isSelected(record))
+                {//onRetailerEcommerceSelect
+                    RMdatalink.app.getController('VendorRetailerRelations').onRetailerAuthorizedVendrsSelect(record,target) ;
+
+                    //   record.set('status',true);
+                }
+                else
+                {
+
+                    // dataview.select(record) ;
+                    // record.set('status',false);
+                }
+                clearTimeout(timeout);
+            },100);
+
+
+            // }else{
+
+            // RMdatalink.app.getController('VendorRetailerRelations').goToVendor_RetailerDetail(record,index);
+
+            // }
+
+        }
+
     }
 
 });

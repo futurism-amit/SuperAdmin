@@ -1288,7 +1288,7 @@ Ext.define('RMdatalink.view.billing.DetailPage', {
                                                             '<option value="None" {[this.getSelected(values,"None")]}></option>',
                                                             '<option value="Cash" {[this.getSelected(values,"Cash")]}>Cash</option>',
                                                             '<option value="Check" {[this.getSelected(values,"Check")]}>Check</option>',
-                                                            '<option value="AmExps" {[this.getSelected(values,"AmExps")]} >AmExps</option>',
+                                                            '<option value="amex" {[this.getSelected(values,"amex")]} >amex</option>',
                                                             '<option value="Visa" {[this.getSelected(values,"Visa")]} >Visa</option>',
                                                             '<option value="Master" {[this.getSelected(values,"Master")]} >Master</option>',
                                                             '<option value="Discover" {[this.getSelected(values,"Discover")]} >Discover</option>',

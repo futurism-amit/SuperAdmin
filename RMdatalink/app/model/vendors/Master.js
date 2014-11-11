@@ -493,6 +493,19 @@ Ext.define('RMdatalink.model.vendors.Master', {
             },
             {
                 name: 'prevent_be_ecommerceVendor'
+            },
+            {
+                name: 'retailers_authorized'
+            },
+            {
+                defaultValue: 0,
+                name: 'totalVIPActiveVendor',
+                type: 'int'
+            },
+            {
+                defaultValue: 0,
+                name: 'totalVIPProspectRetailer',
+                type: 'int'
             }
         ],
         validations: [

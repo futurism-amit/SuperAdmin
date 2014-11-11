@@ -866,42 +866,49 @@
                                             "               '<div class=\"x-rm-listtpl-main\">',\r",
                                             "               '    <div class=\"pointerCursor boldText\" style=\"width: 15%;\">{vendor_name}</div>',\r",
                                             "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{promo_code_info.promo_code}</div>',\r",
-                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">ACTIVE</div>',\r",
+                                            "               '    <div class=\"pointerCursor boldText\" style=\"width: 10%;\">{[this.getStatus(values)]}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 6%;\">{promo_code_info.vip_price}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{promo_code_info.start_date}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 12%;\">{promo_code_info.end_date}</div>',\r",
-                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{promo_code_info.limit_value}</div>',\r",
+                                            "               '    <div class=\"pointerCursor\" style=\"width: 10%;\">{[this.getUsedString(values)]}</div>',\r",
                                             "               '    <div class=\"pointerCursor\" style=\"width: 25%;\">{promo_code_info.comment}</div>',\r",
-                                            "               '</div>'\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "                       getStatus: function(value){\r",
+                                            "                           try{\r",
+                                            "                               if(value.promo_code_info.status_promo_code && value.promo_code_info.status_promo_code == 'inactive' ){\r",
+                                            "\r",
+                                            "                                     return \"INACTIVE\"      ;\r",
+                                            "                               }\r",
+                                            "                               return \"ACTIVE\";\r",
+                                            "\r",
+                                            "\r",
+                                            "                           }catch(e){\r",
+                                            "\r",
+                                            "                               return \"ACTIVE\";\r",
+                                            "                           }\r",
+                                            "                       },\r",
+                                            "                   getUsedString:function(value){\r",
+                                            "                       try{\r",
+                                            "\r",
+                                            "                           var usedAmount = \"0\";\r",
+                                            "                           var divisorSign = \"/\";\r",
+                                            "                           var limitValue = value.promo_code_info.limit_value;\r",
+                                            "                           return usedAmount  + divisorSign + limitValue;\r",
+                                            "                       }catch(e){\r",
+                                            "                               return \"0/100\";\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "\r",
+                                            "               }\r",
                                             "              )\r",
                                             ");\r",
                                             "\r",
                                             "list.setMode(\"SINGLE\");\r",
                                             "\r",
                                             "\r",
-                                            "/*\r",
                                             "\r",
-                                            "\r",
-                                            "var updatingData = {\r",
-                                            "\r",
-                                            "    promo_code:promoCode,\r",
-                                            "    vip_price:vipFormPrice,\r",
-                                            "    start_date:startValue,\r",
-                                            "    end_date:EndValue,\r",
-                                            "    limit_value:LimitValue,\r",
-                                            "    comment:commentValue\r",
-                                            "};\r",
-                                            "*/\r",
-                                            "\r",
-                                            "//list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));\r",
-                                            "\r",
-                                            "//component.down('mypanel2').setHidden(true);\r",
-                                            "\r",
-                                            "//getArrayFromStore\r",
-                                            "\r",
-                                            "//list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));\r",
-                                            "\r",
-                                            "//var store = list.getStore();\r",
                                             ""
                                         ],
                                         "name": "initialize"
@@ -1892,6 +1899,81 @@
                                             ]
                                         },
                                         {
+                                            "type": "Ext.form.FieldSet",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "activeInactivePromoCodeCls"
+                                                ],
+                                                "itemId": "vipPromoActiveStatus",
+                                                "layout": "hbox",
+                                                "minHeight": "20px"
+                                            },
+                                            "designerId": "5250f03a-d189-4b58-843c-0946f7d4c4ff",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Label",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "cls": [
+                                                            "labelClassForLogo"
+                                                        ],
+                                                        "html": "Status",
+                                                        "style": "padding-top:3px;",
+                                                        "width": "120px"
+                                                    },
+                                                    "designerId": "91be9a1f-3e1f-49f0-a33d-650ac8525f22"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Radio",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "checked": true,
+                                                        "designer|displayName": "active",
+                                                        "label": "Active",
+                                                        "labelWidth": "80px",
+                                                        "layout|flex": null,
+                                                        "name": "activeStatus",
+                                                        "style": "margin-left:10px",
+                                                        "value": "active",
+                                                        "width": "90px"
+                                                    },
+                                                    "designerId": "26995067-43e0-4b46-952b-ff1262c54c6b"
+                                                },
+                                                {
+                                                    "type": "Ext.field.Radio",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|displayName": "inacitve",
+                                                        "label": "InActive",
+                                                        "labelWidth": "80px",
+                                                        "layout|flex": null,
+                                                        "name": "activeStatus",
+                                                        "style": "margin-left:10px",
+                                                        "value": "inactive",
+                                                        "width": "90px"
+                                                    },
+                                                    "designerId": "ea951ff3-1872-4026-8155-ed1a5e88e4d8"
+                                                }
+                                            ]
+                                        },
+                                        {
                                             "type": "Ext.field.Text",
                                             "reference": {
                                                 "name": "items",
@@ -2033,16 +2115,17 @@
                                                                     "var vipFormComment = Ext.ComponentQuery.query(\"#vipFormComment\")[0];\r",
                                                                     "var vendorMaster  = Ext.getStore(\"vendors.Master\");\r",
                                                                     "\r",
-                                                                    "\r",
-                                                                    "\r",
+                                                                    "var CreateVippVendorFrom = Ext.ComponentQuery.query(\"#CreateVippVendorFrom\")[0];\r",
+                                                                    "var valuesoForm = CreateVippVendorFrom.getValues();\r",
                                                                     "\r",
                                                                     "\r",
                                                                     "var promoCode  = VipFormPromoCode.getValue();\r",
                                                                     "var vipFormPrice  = vipFormPrice.getValue();\r",
                                                                     "var startValue = vipFormStartDate.getValue();\r",
-                                                                    "var EndValue = vipFormStartDate.getValue();\r",
+                                                                    "var EndValue = vipFormEndDate.getValue();\r",
                                                                     "var LimitValue = vipFormLimit.getValue();\r",
                                                                     "var commentValue = vipFormComment.getValue();\r",
+                                                                    "var activeStatusOfPromoCode = valuesoForm.activeStatus;\r",
                                                                     "\r",
                                                                     "\r",
                                                                     "var vendorId = VipFormVendorId.getValue();\r",
@@ -2093,7 +2176,8 @@
                                                                     "    start_date:startValue,\r",
                                                                     "    end_date:EndValue,\r",
                                                                     "    limit_value:LimitValue,\r",
-                                                                    "    comment:commentValue\r",
+                                                                    "    comment:commentValue,\r",
+                                                                    "    status_promo_code:activeStatusOfPromoCode\r",
                                                                     "};\r",
                                                                     "var rtlrs = updatingData;\r",
                                                                     "var me = Ext.ComponentQuery.query(\"#discountsMainContentPanel\")[0];\r",
@@ -2128,6 +2212,8 @@
                                                                     "function updateSuccess(){\r",
                                                                     "\r",
                                                                     "    record.set(keyOfRetailer, rtlrs);\r",
+                                                                    "    var discounts = Ext.ComponentQuery.query(\"#discountsMainContentPanel\")[0];\r",
+                                                                    "    discounts.vipListDataHandler();\r",
                                                                     "     Ext.Viewport.setMasked(false);\r",
                                                                     "    console.log(\"vendor updated successfully\");\r",
                                                                     "}\r",
@@ -2290,6 +2376,9 @@
                                                                     "\r",
                                                                     "    record.set(keyOfRetailer, rtlrs);\r",
                                                                     "     Ext.Viewport.setMasked(false);\r",
+                                                                    "    var discounts = Ext.ComponentQuery.query(\"#discountsMainContentPanel\")[0];\r",
+                                                                    "    discounts.vipListDataHandler();    \r",
+                                                                    "    \r",
                                                                     "    console.log(\"vendor updated successfully\");\r",
                                                                     "}\r",
                                                                     "\r",
@@ -2658,8 +2747,14 @@
                     "    }\r",
                     "\r",
                     "}\r",
+                    "var store = list.getStore();\r",
+                    "if(store){\r",
+                    "    store.removeAll();\r",
+                    "    store.setData(dataToPush);\r",
+                    "}else{\r",
+                    "    list.setData(dataToPush);\r",
+                    "}\r",
                     "\r",
-                    "list.setData(dataToPush);\r",
                     ""
                 ]
             },

@@ -810,7 +810,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
             Ext.ComponentQuery.query('#RDAccountDetails')[0].setHidden(false);
-            Ext.ComponentQuery.query('#vendorsCommonSearchViewForRetailer')[0].setHidden(false);
+           // Ext.ComponentQuery.query('#vendorsCommonSearchViewForRetailer')[0].setHidden(false);
 
             Ext.ComponentQuery.query('#vendorsActiveRetailersSearchFldSet')[0].setHidden(true);
             Ext.ComponentQuery.query('#retailersProspectSearchFieldSet')[0].setHidden(true);
@@ -900,7 +900,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
             Ext.ComponentQuery.query('#vendorsCommonSearchViewForRetailer')[0].setHidden(true);
 
-            Ext.ComponentQuery.query('#vendorsActiveRetailersSearchFldSet')[0].setHidden(false);
+           // Ext.ComponentQuery.query('#vendorsActiveRetailersSearchFldSet')[0].setHidden(false);
 
             Ext.ComponentQuery.query('#retailersProspectSearchFieldSet')[0].setHidden(false);
 
@@ -1112,6 +1112,12 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                 rdTabPanel.getTabBar().getAt(3).setHidden(true);
                 rdTabPanel.getTabBar().getAt(4).setHidden(true);
+                rdTabPanel.getTabBar().getAt(7).setHidden(false);
+
+                var pospectActiveListContainer = Ext.ComponentQuery.query("#pospectActiveListContainer")[0];
+                var tabBar = pospectActiveListContainer.getTabBar();
+                    tabBar.setHidden( false );
+
               //  RDBlueBookTab.setActiveItem(0);
             }
             else
@@ -1138,6 +1144,12 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                 rdTabPanel.getTabBar().getAt(4).setHidden(true);
                 rdTabPanel.getTabBar().getAt(3).setHidden(false);
+                rdTabPanel.getTabBar().getAt(7).setHidden(true);
+
+                var pospectActiveListContainer = Ext.ComponentQuery.query("#pospectActiveListContainer")[0];
+                var tabBar = pospectActiveListContainer.getTabBar();
+                    tabBar.setHidden( true );
+
                 RDUsersTab.setActiveItem(0);
 
             }
@@ -2099,6 +2111,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 {"ProductImage":"resources//images//RMNavigationPanel//RM_PLC.png","ProductName":"RMPro","ProductStatus":userData.store_products_rm_plc ,"product_expiry" :"" },
                 {"ProductImage":"resources//images//RMNavigationPanel//iRugz.png","ProductName":"iRugz","ProductStatus":userData.store_products_irugs ,"product_expiry" :"" },
                 {"ProductImage":"resources//images//RMNavigationPanel//vip.png","ProductName":"VIP","ProductStatus":userData.store_products_vip ,"product_expiry" :"" }
+
             ];
            console.error("GLOBAL FILL 6");
             RMdatalink.util.globalMethods.fillListData('#RDStoreProductsList',data);
@@ -3346,7 +3359,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                        var  value = retailerEcommerceForm.getValues();
                        var vipVendorListInEComm = Ext.ComponentQuery.query("#vipVendorListInEComm")[0];
-                       if(vipVendorListInEComm && vipVendorListInEComm.getStore())   {
+                       if( true || (  vipVendorListInEComm && vipVendorListInEComm.getStore() )  )   {
 
 
 
@@ -3371,12 +3384,15 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                     }
                     console.log(TEST);
+                    //debugger;
                     RMdatalink.iwa.rdl.doUpdateCollection(masterStore, TEST , recordInMasterStore.get('_id'), suc, err);
-
+                    RMdatalink.app.getController('RetailerDeatilsDataSet').setTemplateOfListByEditingMode(false);
 
                     function suc(){
 
                          Ext.Viewport.setMasked(false);
+
+
                         onUpdateSuccess();
 
 
@@ -3480,6 +3496,10 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
                     Ext.Msg.alert('Success.', 'Record Updated Successfuly.', Ext.emptyFn);
+                        var dataOfVip = getVipVendors();
+                        if(dataOfVip.length){
+                                    setRetailersListByProduct (dataOfVip , "RDForVIP");
+                        }
 
 
         }
@@ -3600,7 +3620,70 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         }
 
+        function getVipVendors(){
 
+            var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+            var ecommerceInfo = selectedUserRecord.record.data.e_commerce_info;
+
+            var arrayOfVendors = [];
+            if( ecommerceInfo ){
+
+            }else{
+                return arrayOfVendors;
+            }
+
+            var ecomVendor = ecommerceInfo.additional_vendors;
+            var vendorPartner = ecommerceInfo.vip_vendor;
+
+            //Account_No
+            if(vendorPartner){
+                var vRecord = findVendorBy_name(vendorPartner);
+                var dataToPush =   vRecord.raw;
+                dataToPush.Account_No = ecommerceInfo.account_no;
+                arrayOfVendors.push(   dataToPush );
+            }
+            for(var i=0; ecomVendor && i <ecomVendor.length ; i++){
+
+                var vendor_name = ecomVendor[i].vendor_name;
+
+
+                var vendorRecord = findVendorBy_name(vendor_name);
+                if(vendorRecord){
+                }else{
+                    continue;
+                }
+                var dataToPush =   vendorRecord.raw;
+                dataToPush.Account_No = ecomVendor[i].account_no;
+                arrayOfVendors.push( dataToPush);
+            }
+
+            return arrayOfVendors;
+
+        }
+        function setRetailersListByProduct(data ,productTabId){
+
+            var prospectList  = Ext.ComponentQuery.query('#' +productTabId)[0].down("#mainList");
+            var prospectStore = prospectList.getStore() ;
+            if(prospectStore){
+                prospectStore.removeAll();
+                prospectStore.sync();
+                prospectStore.setData(data) ;
+                prospectStore.sync();
+
+
+
+            }else{
+                prospectList.setData(data) ;
+            }
+            prospectList.selectAll() ;
+            Ext.ComponentQuery.query('#' + productTabId + ' ' + '#inStoreVendorsRetailersCLbl')[0].setHtml("Total Vendors : "+ data.length ) ;
+
+
+
+
+
+
+        }
     },
 
     setTplOnlineInSideContainerList: function(isRetailerDetailsView) {
@@ -3623,32 +3706,35 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         var tplOfInlist;
 
         if(isRetailerDetailsView)
-        {  /* <input type="text" name="fname"> */
+        {
             headerTpl = Ext.create('Ext.XTemplate',
                                    '<div class="x-rm-listtpl-main">',
                                    '    <div style="width: 8%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '</div>'
                                   );
+
+
             tplOfInStoreHeader = Ext.create('Ext.XTemplate',
                                    '<div class="x-rm-listtpl-main">',
                                    '    <div style="width: 8%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '</div>'
                                   );
 
@@ -3659,13 +3745,22 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    <div style="width: 8%;">',
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
-                                 '    <div style="width: 24%;">{vendor_name}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-                                 '    <div style="width: 15%;">{collections}</div>',
-                                 '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{no_of_images}</div>',
-                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                 '</div>'
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
                                 );
 
             tplOfInlist = Ext.create('Ext.XTemplate',
@@ -3673,18 +3768,26 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    <div style="width: 8%;">',
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
-                                     '<div type ="text" style="width:15%;"  >{Account_No}</div>',
-                                 '    <div style="width: 15%;">{vendor_name}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-                                 '    <div style="width: 15%;">{collections}</div>',
-                                 '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{no_of_images}</div>',
-                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                 '</div>'
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
                                 );
 
 
-        // /
+
         }
         else
         {
@@ -3796,32 +3899,35 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         //RDForECommerce
         if(isRetailerDetailsView)
-        {  /* <input type="text" name="fname"> */
+        {
             headerTpl = Ext.create('Ext.XTemplate',
                                    '<div class="x-rm-listtpl-main">',
                                    '    <div style="width: 8%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '</div>'
                                   );
+
+
             tplOfInStoreHeader = Ext.create('Ext.XTemplate',
                                    '<div class="x-rm-listtpl-main">',
                                    '    <div style="width: 8%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '</div>'
                                   );
 
@@ -3832,13 +3938,22 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    <div style="width: 8%;">',
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
-                                 '    <div style="width: 24%;">{vendor_name}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-                                 '    <div style="width: 15%;">{collections}</div>',
-                                 '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{no_of_images}</div>',
-                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                 '</div>'
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
                                 );
 
             tplOfInlist = Ext.create('Ext.XTemplate',
@@ -3846,18 +3961,26 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    <div style="width: 8%;">',
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
-                                     '<div type ="text" style="width:15%;"  >{Account_No}</div>',
-                                 '    <div style="width: 15%;">{vendor_name}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-                                 '    <div style="width: 15%;">{collections}</div>',
-                                 '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{no_of_images}</div>',
-                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                 '</div>'
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
                                 );
 
 
-        // /
+
         }
         else
         {
@@ -3972,32 +4095,35 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         //RDForECommerce
         if(isRetailerDetailsView)
-        {  /* <input type="text" name="fname"> */
+        {
             headerTpl = Ext.create('Ext.XTemplate',
                                    '<div class="x-rm-listtpl-main">',
                                    '    <div style="width: 8%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 24%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '</div>'
                                   );
+
+
             tplOfInStoreHeader = Ext.create('Ext.XTemplate',
                                    '<div class="x-rm-listtpl-main">',
                                    '    <div style="width: 8%;">',
                                    '        <div style="width: 20px;" data-name="all"></div>',
                                    '    </div>',
-                                   '    <div style="width: 15%;" data-name="vendor_name">Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
-                                   '    <div style="width: 15%;" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
                                    '</div>'
                                   );
 
@@ -4008,13 +4134,23 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    <div style="width: 8%;">',
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
-                                 '    <div style="width: 24%;">{vendor_name}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-                                 '    <div style="width: 15%;">{collections}</div>',
-                                 '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{no_of_images}</div>',
-                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                 '</div>'
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+                                         //xindex
+                                         //{vendor_name}
+                                     }
+                                 }
                                 );
 
             tplOfInlist = Ext.create('Ext.XTemplate',
@@ -4022,18 +4158,831 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                  '    <div style="width: 8%;">',
                                  '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                  '    </div>',
-                                     '<div type ="text" style="width:15%;"  >{Account_No}</div>',
-                                 '    <div style="width: 15%;">{vendor_name}</div>',
-                                 '    <div style="width: 15%;">{SKU}</div>',
-                                 '    <div style="width: 15%;">{collections}</div>',
-                                 '    <div style="width: 15%;">{design}</div>',
-                                 '    <div style="width: 15%;">{no_of_images}</div>',
-                                 '    <div style="width: 15%;">{no_of_additional_images}</div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{[this.getVendorName(values ,xindex)]}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     },
+                                     getVendorName:function( values , xindex){
+                                         var vendorName = values.vendor_name;
+                                         try{
+                                             var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+                                             var record = selectedUserRecord.record;
+
+                                             if(record.data.e_commerce_info.vip_vendor == vendorName){
+
+                                                 return "** " + vendorName + " **";
+
+                                             }else{
+                                                 return vendorName;
+                                             }
+
+                                         }catch(e){
+                                             return vendorName;
+                                         }
+
+
+                                     }
+                                 }
+                                );
+
+
+
+        }
+        else
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
                                  '</div>'
                                 );
 
 
-        // /
+        // /vendors.Master
+
+        }
+
+
+        InStoreHeaders.setItemTpl(tplOfInStoreHeader);
+        OnlineHeaders.setItemTpl(headerTpl);
+        InStoreHeaders.refresh();
+        OnlineHeaders.refresh();
+
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var OnlineList = component.down("#RDOnlineVendorsTab").down('#mainList');
+
+        InStoreList.setItemHeight(22);
+        OnlineList.setItemHeight(22);
+        InStoreList.setMode('MULTI');
+        OnlineList.setMode('MULTI');
+        InStoreList.addCls('x-rm-rdvendorslist');
+        OnlineList.addCls('x-rm-rdvendorslist');
+
+        //InStoreList.setStore('retailersStoreVendors');//
+
+        console.error("STORE CONNECTED TO LIST E COMMERCE LIST");
+
+        if(isRetailerDetailsView)
+        {
+        //    OnlineList.setStore('vendors.Master');
+             OnlineList.setData(    getArrayFromStore(Ext.getStore('vendors.Master')));
+        }else{
+             //OnlineList.setStore('retailersMaster');
+        //    OnlineList.setStore('retailers.prospectRTForVendor');
+        //    OnlineList.setData(    getArrayFromStore(Ex.getStore('vendors.Master')));
+
+        }
+
+
+
+        //OnlineList.setStore('retailersOnlineStoreVendors');
+        InStoreList.config.isUserEditionPermitted = false;
+        InStoreList.setItemTpl(tplOfInlist);
+
+        var inStoreListStore = InStoreList.getStore();
+        OnlineList.setItemTpl(listTpl);
+        InStoreList.refresh();
+        OnlineList.refresh();
+        if(inStoreListStore){
+            inStoreListStore.removeAll();
+        }
+        this.setTplOnlineAuthorizedList(isRetailerDetailsView);
+
+
+    },
+
+    setTplOnlineAuthorizedList: function(isRetailerDetailsView) {
+        var component = Ext.ComponentQuery.query('#RDForAuthorisedVendors')[0];
+        var InStoreHeaders = component.down("#RDInStoreVendorsTab").down("#headerList");
+        var OnlineHeaders = component.down("#RDOnlineVendorsTab").down("#headerList");
+        InStoreHeaders.setData([{}]);
+        OnlineHeaders.setData([{}]);
+        var headerTpl , listTpl ;
+        var tplOfInStoreHeader;
+        var tplOfInlist;
+
+
+        //RDForECommerce
+        if(isRetailerDetailsView)
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+
+
+        }
+        else
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+
+
+        // /vendors.Master
+
+        }
+
+
+        InStoreHeaders.setItemTpl(tplOfInStoreHeader);
+        OnlineHeaders.setItemTpl(headerTpl);
+        InStoreHeaders.refresh();
+        OnlineHeaders.refresh();
+
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var OnlineList = component.down("#RDOnlineVendorsTab").down('#mainList');
+
+        InStoreList.setItemHeight(22);
+        OnlineList.setItemHeight(22);
+        InStoreList.setMode('MULTI');
+        OnlineList.setMode('MULTI');
+        InStoreList.addCls('x-rm-rdvendorslist');
+        OnlineList.addCls('x-rm-rdvendorslist');
+
+        //InStoreList.setStore('retailersStoreVendors');//
+
+        console.error("STORE CONNECTED TO LIST E COMMERCE LIST");
+
+        if(isRetailerDetailsView)
+        {
+        //    OnlineList.setStore('vendors.Master');
+             OnlineList.setData(    getArrayFromStore(Ext.getStore('vendors.Master')));
+        }else{
+             //OnlineList.setStore('retailersMaster');
+        //    OnlineList.setStore('retailers.prospectRTForVendor');
+        //    OnlineList.setData(    getArrayFromStore(Ex.getStore('vendors.Master')));
+
+        }
+
+
+
+        //OnlineList.setStore('retailersOnlineStoreVendors');
+        InStoreList.config.isUserEditionPermitted = false;
+        InStoreList.setItemTpl(tplOfInlist);
+
+        var inStoreListStore = InStoreList.getStore();
+        OnlineList.setItemTpl(listTpl);
+        InStoreList.refresh();
+        OnlineList.refresh();
+        if(inStoreListStore){
+            inStoreListStore.removeAll();
+        }
+
+        this.setTplOnlineECatalogList(isRetailerDetailsView);
+    },
+
+    setTplOnlineECatalogList: function(isRetailerDetailsView) {
+        var component = Ext.ComponentQuery.query('#RDForEcatalog')[0];
+        var InStoreHeaders = component.down("#RDInStoreVendorsTab").down("#headerList");
+        var OnlineHeaders = component.down("#RDOnlineVendorsTab").down("#headerList");
+        InStoreHeaders.setData([{}]);
+        OnlineHeaders.setData([{}]);
+        var headerTpl , listTpl ;
+        var tplOfInStoreHeader;
+        var tplOfInlist;
+
+
+        //RDForECommerce
+        if(isRetailerDetailsView)
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+
+
+        }
+        else
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+
+
+        // /vendors.Master
+
+        }
+
+
+        InStoreHeaders.setItemTpl(tplOfInStoreHeader);
+        OnlineHeaders.setItemTpl(headerTpl);
+        InStoreHeaders.refresh();
+        OnlineHeaders.refresh();
+
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var OnlineList = component.down("#RDOnlineVendorsTab").down('#mainList');
+
+        InStoreList.setItemHeight(22);
+        OnlineList.setItemHeight(22);
+        InStoreList.setMode('MULTI');
+        OnlineList.setMode('MULTI');
+        InStoreList.addCls('x-rm-rdvendorslist');
+        OnlineList.addCls('x-rm-rdvendorslist');
+
+        //InStoreList.setStore('retailersStoreVendors');//
+
+        console.error("STORE CONNECTED TO LIST E COMMERCE LIST");
+
+        if(isRetailerDetailsView)
+        {
+        //    OnlineList.setStore('vendors.Master');
+             OnlineList.setData(    getArrayFromStore(Ext.getStore('vendors.Master')));
+        }else{
+             //OnlineList.setStore('retailersMaster');
+        //    OnlineList.setStore('retailers.prospectRTForVendor');
+        //    OnlineList.setData(    getArrayFromStore(Ex.getStore('vendors.Master')));
+
+        }
+
+
+
+        //OnlineList.setStore('retailersOnlineStoreVendors');
+        InStoreList.config.isUserEditionPermitted = false;
+        InStoreList.setItemTpl(tplOfInlist);
+
+        var inStoreListStore = InStoreList.getStore();
+        OnlineList.setItemTpl(listTpl);
+        InStoreList.refresh();
+        OnlineList.refresh();
+        if(inStoreListStore){
+            inStoreListStore.removeAll();
+        }
+
+        this.setTplOnlineIrugzList(isRetailerDetailsView);
+    },
+
+    setTplOnlineIrugzList: function(isRetailerDetailsView) {
+        var component = Ext.ComponentQuery.query('#RDForIRugz')[0];
+        var InStoreHeaders = component.down("#RDInStoreVendorsTab").down("#headerList");
+        var OnlineHeaders = component.down("#RDOnlineVendorsTab").down("#headerList");
+        InStoreHeaders.setData([{}]);
+        OnlineHeaders.setData([{}]);
+        var headerTpl , listTpl ;
+        var tplOfInStoreHeader;
+        var tplOfInlist;
+
+
+        //RDForECommerce
+        if(isRetailerDetailsView)
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+
+
+        }
+        else
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 12%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="width: 35%;" data-name="store_name">Name</div>',
+                                   '    <div style="width: 30%;" data-name="store_city">City</div>',
+                                   '    <div style="width: 15%;" data-name="store_state">State</div>',
+
+                                   '</div>'
+                                  );
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 12%;">',
+                                 '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                 '    </div>',
+                                 '    <div style="width: 35%;">{store_name}</div>',
+                                 '    <div style="width: 30%;">{store_city}</div>',
+                                  '    <div style="width: 15%;">{store_state}</div>',
+                                 '</div>'
+                                );
+
+
+        // /vendors.Master
+
+        }
+
+
+        InStoreHeaders.setItemTpl(tplOfInStoreHeader);
+        OnlineHeaders.setItemTpl(headerTpl);
+        InStoreHeaders.refresh();
+        OnlineHeaders.refresh();
+
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var OnlineList = component.down("#RDOnlineVendorsTab").down('#mainList');
+
+        InStoreList.setItemHeight(22);
+        OnlineList.setItemHeight(22);
+        InStoreList.setMode('MULTI');
+        OnlineList.setMode('MULTI');
+        InStoreList.addCls('x-rm-rdvendorslist');
+        OnlineList.addCls('x-rm-rdvendorslist');
+
+        //InStoreList.setStore('retailersStoreVendors');//
+
+        console.error("STORE CONNECTED TO LIST E COMMERCE LIST");
+
+        if(isRetailerDetailsView)
+        {
+        //    OnlineList.setStore('vendors.Master');
+             OnlineList.setData(    getArrayFromStore(Ext.getStore('vendors.Master')));
+        }else{
+             //OnlineList.setStore('retailersMaster');
+        //    OnlineList.setStore('retailers.prospectRTForVendor');
+        //    OnlineList.setData(    getArrayFromStore(Ex.getStore('vendors.Master')));
+
+        }
+
+
+
+        //OnlineList.setStore('retailersOnlineStoreVendors');
+        InStoreList.config.isUserEditionPermitted = false;
+        InStoreList.setItemTpl(tplOfInlist);
+
+        var inStoreListStore = InStoreList.getStore();
+        OnlineList.setItemTpl(listTpl);
+        InStoreList.refresh();
+        OnlineList.refresh();
+        if(inStoreListStore){
+            inStoreListStore.removeAll();
+        }
+
+        this.setTplOnlineRMproList(isRetailerDetailsView);
+    },
+
+    setTplOnlineRMproList: function(isRetailerDetailsView) {
+        var component = Ext.ComponentQuery.query('#RDForRMPro')[0];
+        var InStoreHeaders = component.down("#RDInStoreVendorsTab").down("#headerList");
+        var OnlineHeaders = component.down("#RDOnlineVendorsTab").down("#headerList");
+        InStoreHeaders.setData([{}]);
+        OnlineHeaders.setData([{}]);
+        var headerTpl , listTpl ;
+        var tplOfInStoreHeader;
+        var tplOfInlist;
+
+
+        //RDForECommerce
+        if(isRetailerDetailsView)
+        {
+            headerTpl = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+            tplOfInStoreHeader = Ext.create('Ext.XTemplate',
+                                   '<div class="x-rm-listtpl-main">',
+                                   '    <div style="width: 8%;">',
+                                   '        <div style="width: 20px;" data-name="all"></div>',
+                                   '    </div>',
+                                   '    <div style="" class = "retailerDetailAccountNo" data-name="vendor_name" >Acct. No<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailVendorName" data-name="vendor_name">Name<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailSKU" data-name="SKU">SKUs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailCollection" data-name="collections">Collections<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailDesign" data-name="design">Designs<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailImg" data-name="no_of_images">Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '    <div style="" class = "retailerDetailAddlImg" data-name="no_of_additional_images">Addl Images<img src="resources/images/button_icons/downArrow.png"/></div>',
+                                   '</div>'
+                                  );
+
+
+
+            listTpl = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+            tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+
+
         }
         else
         {
@@ -4151,21 +5100,27 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
 
-
-
                 tplOfInlist = Ext.create('Ext.XTemplate',
                                      '<div class="x-rm-listtpl-main pointerCursor">',
                                      '    <div style="width: 8%;">',
                                      '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                      '    </div>',
                                          '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNo(event)"  vendorId =  {vendor_id}  value={Account_No} />',
-                                     '    <div style="width: 15%;">{vendor_name}</div>',
-                                     '    <div style="width: 15%;">{SKU}</div>',
-                                     '    <div style="width: 15%;">{collections}</div>',
-                                     '    <div style="width: 15%;">{design}</div>',
-                                     '    <div style="width: 15%;">{no_of_images}</div>',
-                                     '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                     '</div>'
+                                     '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                     '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                     '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                     '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                     '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                     '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                     '</div>',
+                                     {
+
+                                         getColorForVendor:function(  values){
+
+                                             return getColorStringForVendor(values);
+
+                                         }
+                                     }
                                     );
 
 
@@ -4200,19 +5155,27 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
                 tplOfInlist = Ext.create('Ext.XTemplate',
-                                         '<div class="x-rm-listtpl-main pointerCursor">',
-                                         '    <div style="width: 8%;">',
-                                         '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
-                                         '    </div>',
-                                         '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
-                                         '    <div style="width: 15%;">{vendor_name}</div>',
-                                         '    <div style="width: 15%;">{SKU}</div>',
-                                         '    <div style="width: 15%;">{collections}</div>',
-                                         '    <div style="width: 15%;">{design}</div>',
-                                         '    <div style="width: 15%;">{no_of_images}</div>',
-                                         '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                         '</div>'
-                                        );
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
 
 
             }
@@ -4282,21 +5245,27 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
 
-
-
                 tplOfInlist = Ext.create('Ext.XTemplate',
                                      '<div class="x-rm-listtpl-main pointerCursor">',
                                      '    <div style="width: 8%;">',
                                      '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                      '    </div>',
-                                         '<input type ="text" class = "inputAccountNo"    style="max-width: 60px;margin-right:2px;"  onkeyup="onKeyDownOfAccountNoECommerce(event)"  vendorId =  {vendor_id}  value={Account_No} />',
-                                     '    <div style="width: 15%;">{vendor_name}</div>',
-                                     '    <div style="width: 15%;">{SKU}</div>',
-                                     '    <div style="width: 15%;">{collections}</div>',
-                                     '    <div style="width: 15%;">{design}</div>',
-                                     '    <div style="width: 15%;">{no_of_images}</div>',
-                                     '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                     '</div>'
+                                         '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNoECommerce(event)"  vendorId =  {vendor_id}  value={Account_No} />',
+                                     '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                     '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                     '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                     '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                     '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                     '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                     '</div>',
+                                     {
+
+                                         getColorForVendor:function(  values){
+
+                                             return getColorStringForVendor(values);
+
+                                         }
+                                     }
                                     );
 
 
@@ -4331,19 +5300,27 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
                 tplOfInlist = Ext.create('Ext.XTemplate',
-                                         '<div class="x-rm-listtpl-main pointerCursor">',
-                                         '    <div style="width: 8%;">',
-                                         '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
-                                         '    </div>',
-                                         '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
-                                         '    <div style="width: 15%;">{vendor_name}</div>',
-                                         '    <div style="width: 15%;">{SKU}</div>',
-                                         '    <div style="width: 15%;">{collections}</div>',
-                                         '    <div style="width: 15%;">{design}</div>',
-                                         '    <div style="width: 15%;">{no_of_images}</div>',
-                                         '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                         '</div>'
-                                        );
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
 
 
             }
@@ -4411,21 +5388,47 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
 
-
-
                 tplOfInlist = Ext.create('Ext.XTemplate',
                                      '<div class="x-rm-listtpl-main pointerCursor">',
                                      '    <div style="width: 8%;">',
                                      '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                      '    </div>',
-                                         '<input type ="text" class = "inputAccountNo"    style="max-width: 60px;margin-right:2px;"  onkeyup="onKeyDownOfAccountNoVIP(event)"  vendorId =  {_id}  value={Account_No} />',
-                                     '    <div style="width: 15%;">{vendor_name}</div>',
-                                     '    <div style="width: 15%;">{SKU}</div>',
-                                     '    <div style="width: 15%;">{collections}</div>',
-                                     '    <div style="width: 15%;">{design}</div>',
-                                     '    <div style="width: 15%;">{no_of_images}</div>',
-                                     '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                     '</div>'
+                                         '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNoVIP(event)"  vendorId =  {vendor_id}  value={Account_No} />',
+                                     '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{[this.getVendorName(values , xindex)]}</div>',
+                                     '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                     '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                     '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                     '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                     '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                     '</div>',
+                                     {
+
+                                         getColorForVendor:function(  values){
+
+                                             return getColorStringForVendor(values);
+
+                                         },
+                                     getVendorName:function( values , xindex){
+                                         var vendorName = values.vendor_name;
+                                         try{
+                                             var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+                                             var record = selectedUserRecord.record;
+
+                                             if(record.data.e_commerce_info.vip_vendor == vendorName){
+
+                                                 return "** " + vendorName + " **";
+
+                                             }else{
+                                                 return vendorName;
+                                             }
+
+                                         }catch(e){
+                                             return vendorName;
+                                         }
+
+
+                                     }
+                                     }
                                     );
 
 
@@ -4460,19 +5463,47 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
 
                 tplOfInlist = Ext.create('Ext.XTemplate',
-                                         '<div class="x-rm-listtpl-main pointerCursor">',
-                                         '    <div style="width: 8%;">',
-                                         '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
-                                         '    </div>',
-                                         '<div type ="text"  style="width:15%;"  >{Account_No}</div>',
-                                         '    <div style="width: 15%;">{vendor_name}</div>',
-                                         '    <div style="width: 15%;">{SKU}</div>',
-                                         '    <div style="width: 15%;">{collections}</div>',
-                                         '    <div style="width: 15%;">{design}</div>',
-                                         '    <div style="width: 15%;">{no_of_images}</div>',
-                                         '    <div style="width: 15%;">{no_of_additional_images}</div>',
-                                         '</div>'
-                                        );
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{[this.getVendorName(values , xindex)]}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     },
+                                     getVendorName:function( values , xindex){
+                                         var vendorName = values.vendor_name;
+                                         try{
+                                             var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+                                             var record = selectedUserRecord.record;
+
+                                             if(record.data.e_commerce_info.vip_vendor == vendorName){
+
+                                                 return "** " + vendorName + " **";
+
+                                             }else{
+                                                 return vendorName;
+                                             }
+
+                                         }catch(e){
+                                             return vendorName;
+                                         }
+
+
+                                     }
+                                 }
+                                );
 
 
             }
@@ -4524,6 +5555,150 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                 var vendor_id = rec.data._id;
                 var Account_No = rec.data.Account_No;
                     vendorIdAccountValueVIP[vendor_id] = Account_No;
+            }
+        }
+
+        this.setTemplateOfAuthorizedListEditingMode(isEditing);
+    },
+
+    setTemplateOfAuthorizedListEditingMode: function(isEditing) {
+
+        var component = Ext.ComponentQuery.query('#RDForAuthorisedVendors')[0];
+        var tplOfInlist;
+        var InStoreList = component.down("#RDInStoreVendorsTab").down('#mainList');
+        var isRetailerDetailsView = RMdatalink.app.getController('UINav').isRetailerDetailsView;
+        if(isEditing){
+            if(isRetailerDetailsView)
+            {
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 8%;">',
+                                     '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                     '    </div>',
+                                         '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNoAuthorizedVendors(event)"  vendorId =  {vendor_id}  value={Account_No} />',
+                                     '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                     '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                     '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                     '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                     '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                     '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                     '</div>',
+                                     {
+
+                                         getColorForVendor:function(  values){
+
+                                             return getColorStringForVendor(values);
+
+                                         }
+                                     }
+                                    );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                     '<div class="x-rm-listtpl-main pointerCursor">',
+                                     '    <div style="width: 12%;">',
+                                     '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                     '    </div>',
+                                     '    <div style="width: 35%;">{store_name}</div>',
+                                     '    <div style="width: 30%;">{store_city}</div>',
+                                      '    <div style="width: 15%;">{store_state}</div>',
+                                     '</div>'
+                                    );
+
+
+
+
+            }
+
+        }else{
+
+
+            if(isRetailerDetailsView)
+            {
+
+
+
+
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                 '<div class="x-rm-listtpl-main pointerCursor">',
+                                 '    <div style="width: 8%;">',
+                                 '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
+                                 '    </div>',
+                                     '<div style="" class = "retailerDetailAccountNo" type ="text"  >{Account_No}</div>',
+                                 '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{vendor_name}</div>',
+                                 '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
+                                 '    <div style="" class = "retailerDetailCollection">{collections}</div>',
+                                 '    <div style="" class = "retailerDetailDesign">{design}</div>',
+                                 '    <div style="" class = "retailerDetailImg" >{no_of_images}</div>',
+                                 '    <div style="" class = "retailerDetailAddlImg">{no_of_additional_images}</div>',
+                                 '</div>',
+                                 {
+
+                                     getColorForVendor:function(  values){
+
+                                         return getColorStringForVendor(values);
+
+                                     }
+                                 }
+                                );
+
+
+            }
+            else
+            {
+
+                tplOfInlist = Ext.create('Ext.XTemplate',
+                                         '<div class="x-rm-listtpl-main pointerCursor">',
+                                         '    <div style="width: 12%;">',
+                                         '        <div style="width: 20px; height:20px;"class="fireListSelect"></div>',
+                                         '    </div>',
+                                         '    <div style="width: 35%;">{store_name}</div>',
+                                         '    <div style="width: 30%;">{store_city}</div>',
+                                         '    <div style="width: 15%;">{store_state}</div>',
+                                         '</div>'
+                                        );
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+            InStoreList.config.isUserEditionPermitted = isEditing;
+            InStoreList.setItemTpl(tplOfInlist);
+            InStoreList.refresh();
+
+
+
+        var store =  InStoreList.getStore();
+        if(isEditing && store)
+        {
+
+            var data = store.getData();
+            for(var i=0;i<data.all.length ; i++){
+
+                var rec = data.all[i];
+                var vendor_id = rec.data._id;
+                var Account_No = rec.data.Account_No;
+                    vendorIdAccountValueAuthorized[vendor_id] = Account_No;
             }
         }
 
@@ -5928,24 +7103,44 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         setRetailersList( getVendorsForRetailer() ) ;
 
+
+        // ADDING DATA TO E-COMMERCE LIST
         var dataToAdd =  getVendoersForRetailersByProduct('retailers_ecommerce');
         if(dataToAdd.length)
         {
             setRetailersListByProduct( dataToAdd, 'RDForECommerce') ;
         }
 
+        //ADDING DATA FOR AUTHORIZED LIST
 
+        var dataToAddForAuthorized =  getVendoersForRetailersByProduct('retailers_authorized');
+        if(dataToAddForAuthorized.length)
+        {
+            setRetailersListByProduct( dataToAddForAuthorized, 'RDForAuthorisedVendors') ;
+        }
+
+        //ADDING DATA TO VIP LIST
         var dataOfVip = getVipVendors();
 
         if(dataOfVip.length )
         {
             setRetailersListByProduct (dataOfVip , "RDForVIP");
         }
+
+
+
         var activeList  = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList");
         var activeStore = activeList.getStore() ;
 
-        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDStoreSideTabPanel' , activeStore) ;
 
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDStoreSideTabPanel'  , Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList").getStore() ) ;
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDForECommerce'       , Ext.ComponentQuery.query('#RDForECommerce #RDOnlineVendorsTab')[0].down("#mainList").getStore() ) ;
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDForVIP'             , Ext.ComponentQuery.query('#RDForVIP #RDOnlineVendorsTab')[0].down("#mainList").getStore() ) ;
+
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDForAuthorisedVendors'            , Ext.ComponentQuery.query('#RDForAuthorisedVendors #RDOnlineVendorsTab')[0].down("#mainList").getStore() ) ;
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDForEcatalog'            , Ext.ComponentQuery.query('#RDForEcatalog #RDOnlineVendorsTab')[0].down("#mainList").getStore() ) ;
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDForIRugz'            , Ext.ComponentQuery.query('#RDForIRugz #RDOnlineVendorsTab')[0].down("#mainList").getStore() ) ;
+        RMdatalink.app.getController('VendorRetailerRelations').setFilterForProspectVendors( 'RDForRMPro'            , Ext.ComponentQuery.query('#RDForRMPro #RDOnlineVendorsTab')[0].down("#mainList").getStore() ) ;
 
 
 
@@ -5953,7 +7148,16 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         //RDForECommerce
         console.warn(getVendoersForRetailersByProduct('retailers_ecommerce'));
 
-        this.loadVdrInfoTotals() ;
+
+
+        this.loadVdrInfoTotals('RDStoreSideTabPanel') ;
+        this.loadVdrInfoTotals('RDForECommerce') ;
+        this.loadVdrInfoTotals('RDForVIP') ;
+
+        this.loadVdrInfoTotals('RDForAuthorisedVendors') ;
+        this.loadVdrInfoTotals('RDForEcatalog') ;
+        this.loadVdrInfoTotals('RDForIRugz') ;
+        this.loadVdrInfoTotals('RDForRMPro') ;
 
 
 
@@ -6033,29 +7237,12 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                         no_of_images:vRecord.data.no_of_images,
                                         no_of_additional_images:vRecord.data.no_of_additional_images,
                                         vendor_id: vRecord.data._id,
-
-        //                                 sku: vRecord.data.sku,
-        //                                 status: vRecord.data.status,
-        //                                 store_city: vRecord.data.store_city,
-        //                                 store_name: vRecord.data.store_name,
-        //                                 store_phone: vRecord.data.store_phone,
-        //                                 store_state: vRecord.data.store_state,
-
                                         Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) ||' '
                                     }
 
                                 );
                             }
-        /*
-        sku: undefined
-        status: undefined
-        store_city: undefined
-        store_name: undefined
-        store_phone: undefined
-        store_state: undefined
 
-
-        */
                         }
                         else
                         {
@@ -6071,15 +7258,6 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                         no_of_images:vRecord.data.no_of_images,
                                         no_of_additional_images:vRecord.data.no_of_additional_images,
                                         vendor_id: vRecord.data._id,
-
-
-        //                                 sku: vRecord.data.sku,
-        //                                 status: vRecord.data.status,
-        //                                 store_city: vRecord.data.store_city,
-        //                                 store_name: vRecord.data.store_name,
-        //                                 store_phone: vRecord.data.store_phone,
-        //                                 store_state: vRecord.data.store_state,
-
                                         Account_No:assocRtlrs[k].Account_No || getAccountNoForRetailerAndVendor(vRecord) || ' '
                                     }
 
@@ -6611,6 +7789,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
     loadVdrInfoTotals: function(parentTab) {
             parentTab = parentTab || 'RDStoreSideTabPanel';
 
+
         var prospectList  = Ext.ComponentQuery.query('#' + parentTab +' ' + '#RDInStoreVendorsTab')[0].down("#mainList");
         var vdrStore = prospectList.getStore() ;
         var parentPanel = Ext.ComponentQuery.query('#' + parentTab +' ' + ' #rtlrVdrAssociationTotalFldSet')[0] ;
@@ -6624,8 +7803,12 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
         var vendors ;
         try{
+           if(vdrStore) {
+               vendors = vdrStore.getData().all ;
+           }else{
+               vendors = [];
+           }
 
-           vendors = vdrStore.getData().all ;
 
         }catch(e){
 
@@ -7029,6 +8212,11 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         // index set is
         /*
         *
+        * 6 - RMro
+        * 5 - Irugz
+        * 4 - E-Catalog
+        * 3 - Authorised Vendors
+        * 2 - VIP
         * 1 - E-commerce
         * 0 - Datalink
         *  Other can be added if neccessary.But Do Not Disturb this index
@@ -7040,8 +8228,8 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
         *
         *
         */
-
-        if(record.data.ProductName == "E-Commerce"){
+        //ECatalog
+        if( record.data.ProductName == "E-Commerce" ){
 
 
             console.log("USER WANT TO SEE E-COMMERCE LIST");
@@ -7053,7 +8241,26 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
             console.log("USER WANTS TO SEE VIP LIST");
              pospectActiveListContainer.setActiveItem(2);
-        }else{
+
+        }else if(record.data.ProductName ==  "ECatalog"){
+
+
+            console.log("USER WANTS TO SEE ECatalog LIST");
+             pospectActiveListContainer.setActiveItem(4);
+
+        }else if(record.data.ProductName ==  "iRugz"){
+
+
+            console.log("USER WANTS TO SEE iRugz LIST");
+             pospectActiveListContainer.setActiveItem(5);
+
+        }else if(record.data.ProductName ==  "RMPro"){
+
+
+            console.log("USER WANTS TO SEE RMPro  LIST");
+             pospectActiveListContainer.setActiveItem(6);
+
+        }else {
 
         //        var pospectActiveListContainer = Ext.ComponentQuery.query("#pospectActiveListContainer")[0];
                 pospectActiveListContainer.setActiveItem(0);

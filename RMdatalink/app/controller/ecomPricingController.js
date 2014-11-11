@@ -888,7 +888,7 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                            '    </div>',
 
-                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px; {[ this.getColorForVendor(values) ]}   " >{vendor_name}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -930,7 +930,11 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                    return 0 ;
 
                                },
+                             getColorForVendor:function(  values){
 
+                                 return getColorStringForVendor(values);
+
+                             },
                                calHrsBySkuImages: function(values){
 
                                    var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
@@ -1159,7 +1163,7 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                            '    </div>',
 
-                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;  {[ this.getColorForVendor(values) ]} " >{vendor_name}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -1196,6 +1200,11 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                    return 0 ;
 
                                },
+                                 getColorForVendor:function(  values){
+
+                                     return getColorStringForVendor(values);
+
+                                 },
 
                                calHrsBySkuImages: function(values){
 
@@ -1369,7 +1378,7 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                            '    </div>',
 
-                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -1406,6 +1415,11 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                                    return 0 ;
 
                                },
+                                 getColorForVendor:function(  values){
+
+                                     return getColorStringForVendor(values);
+
+                                 },
 
                                calHrsBySkuImages: function(values){
 
@@ -1691,211 +1705,184 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
     },
 
     setDefaultTpl: function() {
-         Ext.ComponentQuery.query('#ecompolicySelectVendors')[0].reset() ;
+        Ext.ComponentQuery.query('#ecompolicySelectVendors')[0].reset() ;
 
         var component = Ext.ComponentQuery.query('#productsecomPricingTab')[0] ;
         var list = component.down('#pricingList');
-             list.setItemTpl(
-                Ext.create(
+        list.setItemTpl(
+            Ext.create(
 
-                    'Ext.XTemplate',
-                           '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
+                'Ext.XTemplate',
+                '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-                           '    <div style="width: 4%;">',
-                           '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
-                           '    </div>',
+                '    <div style="width: 4%;">',
+                '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
+                '    </div>',
 
-                           '    <div class="rightBorderDiv" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
-                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
-                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
-                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
 
-                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_images)]}</div>',
-                           '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_additional_images)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_images)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_additional_images)]}</div>',
 
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImages(values)]}</div>',
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImages(values)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImages(values)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImages(values)]}</div>',
 
-                         '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price)]} </div>',
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price)]} </div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price)]} </div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price)]} </div>',
 
 
 
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',
 
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price_addlimg)]} </div>',
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price_addlimg)]} </div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price_addlimg)]} </div>',
+                '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price_addlimg)]} </div>',
 
 
 
-                           '</div>'
+                '</div>'
 
-        //                  'Ext.XTemplate',
-        //                    '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-        //                    '    <div style="width: 4%;">',
-        //                    '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
-        //                    '    </div>',
+                ,
+                {
+                    getCalculatedValue: function(sku){
+                        if(sku)
+                        {
+                            var  result = (sku * 5)/60 ;
+                            result =    Math.round(result * 100) / 100 ;
+                            return result ;
+                        }
 
-        //                    '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
+                        return 0 ;
 
-        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_images)]}</div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.no_of_additional_images)]}</div>',
+                    },getColorForVendor:function(  values){
 
-        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImages(values)]}</div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImages(values)]}</div>',
+                        return getColorStringForVendor(values);
 
-        //                  '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_std)]} </div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_promo)]} </div>',
+                    },
 
+                    calHrsBySkuImages: function(values){
 
+                        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                        var time_taken_images = 5 ;
+                        var time_taken_images_addl_images = 10 ;
 
-        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',
 
-        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_std_addl)]} </div>',
-        //                    '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.ecom_promo_addl)]} </div>',
+                        if(pricingData && pricingData[2]){
 
+                            time_taken_images = pricingData[2].time_taken_images  ;
+                            time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
-        //                    '</div>'
-                    ,
-                            {
-                               getCalculatedValue: function(sku){
-                                   if(sku)
-                                   {
-                                       var  result = (sku * 5)/60 ;
-                                       result =    Math.round(result * 100) / 100 ;
-                                       return result ;
-                                   }
+                        }
 
-                                       return 0 ;
 
-                               },
+                        if(values.SKU && values.no_of_images)
+                        {
+                            var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                            var  result = (sku * time_taken_images)/60 ;
+                            result =    Math.round(result * 100) / 100 ;
+                            return result ;
+                        }
 
-                                 calHrsBySkuImages: function(values){
+                        return 0 ;
 
-                                   var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
-                                    var time_taken_images = 5 ;
-                                    var time_taken_images_addl_images = 10 ;
+                    },
 
 
-                                    if(pricingData && pricingData[2]){
+                    calDaysBySkuImages: function(values){
 
-                                         time_taken_images = pricingData[2].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
+                        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                        var time_taken_images = 5 ;
+                        var time_taken_images_addl_images = 10 ;
 
 
-                                    }
+                        if(pricingData && pricingData[2]){
 
+                            time_taken_images = pricingData[2].time_taken_images  ;
+                            time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
-                                   if(values.SKU && values.no_of_images)
-                                   {
-                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
-                                       var  result = (sku * time_taken_images)/60 ;
-                                       result =    Math.round(result * 100) / 100 ;
-                                       return result ;
-                                   }
 
-                                       return 0 ;
+                        }
 
-                               },
 
+                        if(values.SKU && values.no_of_images)
+                        {
+                            var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
+                            var  result = (sku * time_taken_images)/60 ;
+                            result = result / 8 ;
+                            result =    Math.round(result * 100) / 100 ;
+                            return result ;
+                        }
 
-                                 calDaysBySkuImages: function(values){
+                        return 0 ;
 
-                                   var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
-                                    var time_taken_images = 5 ;
-                                    var time_taken_images_addl_images = 10 ;
+                    },
 
+                    calHrsBySkuImagesAddlImages: function(values){
 
-                                    if(pricingData && pricingData[2]){
+                        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                        var time_taken_images = 5 ;
+                        var time_taken_images_addl_images = 10 ;
 
-                                         time_taken_images = pricingData[2].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
+                        if(pricingData && pricingData[2]){
 
-                                    }
+                            time_taken_images = pricingData[2].time_taken_images  ;
+                            time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
 
-                                   if(values.SKU && values.no_of_images)
-                                   {
-                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) ;
-                                       var  result = (sku * time_taken_images)/60 ;
-                                       result = result / 8 ;
-                                       result =    Math.round(result * 100) / 100 ;
-                                       return result ;
-                                   }
+                        }
 
-                                       return 0 ;
 
-                               },
+                        if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                        {
+                            var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                            var  result = (sku * time_taken_images_addl_images)/60 ;
+                            result =    Math.round(result * 100) / 100 ;
+                            return result ;
+                        }
 
-                                 calHrsBySkuImagesAddlImages: function(values){
+                        return 0 ;
 
-                                    var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
-                                    var time_taken_images = 5 ;
-                                    var time_taken_images_addl_images = 10 ;
+                    },
 
+                    calDaysBySkuImagesAddlImages: function(values){
 
-                                    if(pricingData && pricingData[2]){
 
-                                         time_taken_images = pricingData[2].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
+                        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+                        var time_taken_images = 5 ;
+                        var time_taken_images_addl_images = 10 ;
 
 
-                                    }
+                        if(pricingData && pricingData[2]){
 
+                            time_taken_images = pricingData[2].time_taken_images  ;
+                            time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
 
-                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
-                                   {
-                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
-                                       var  result = (sku * time_taken_images_addl_images)/60 ;
-                                       result =    Math.round(result * 100) / 100 ;
-                                       return result ;
-                                   }
 
-                                       return 0 ;
+                        }
 
-                               },
+                        if(values.SKU && values.no_of_images && values.no_of_additional_images )
+                        {
+                            var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
+                            var  result = (sku * time_taken_images_addl_images)/60 ;
+                            result = result / 8 ;
+                            result =    Math.round(result * 100) / 100 ;
+                            return result ;
+                        }
 
-                                  calDaysBySkuImagesAddlImages: function(values){
+                        return 0 ;
 
+                    }
 
-                                     var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
-                                    var time_taken_images = 5 ;
-                                    var time_taken_images_addl_images = 10 ;
+                }
 
-
-                                    if(pricingData && pricingData[2]){
-
-                                         time_taken_images = pricingData[2].time_taken_images  ;
-                                         time_taken_images_addl_images = pricingData[2].time_taken_images_addl_images ;
-
-
-                                    }
-
-                                   if(values.SKU && values.no_of_images && values.no_of_additional_images )
-                                   {
-                                       var sku = parseInt(values.SKU) + parseInt(values.no_of_images) +parseInt(values.no_of_additional_images) ;
-                                       var  result = (sku * time_taken_images_addl_images)/60 ;
-                                        result = result / 8 ;
-                                       result =    Math.round(result * 100) / 100 ;
-                                       return result ;
-                                   }
-
-                                       return 0 ;
-
-                               }
-
-                           }
-
-                          )
-            );
+            )
+        );
     },
 
     onupdateVdr: function(inputFld, record_key) {

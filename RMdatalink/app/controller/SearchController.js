@@ -402,6 +402,11 @@ Ext.define('RMdatalink.controller.SearchController', {
                       q["store_products.ecatalog_status"] =values.allProd  ;// { $regex: values.allProd  , $options: 'i' } ;
                     temp.$or.push(q);
                  }
+                 if(values.vipStatus){
+                     q = {} ;
+                      q["store_products.vip_status"] =values.allProd  ;// { $regex: values.allProd  , $options: 'i' } ;
+                    temp.$or.push(q);
+                 }
 
 
 
@@ -451,6 +456,13 @@ Ext.define('RMdatalink.controller.SearchController', {
                       temp.$or.push(q);
                      // query.$and.push(q);
                  }
+                 if(values.vipStatus){
+                     q = {} ;
+                      q["store_products.vip_status"] = { $regex: "" , $options: 'i' } ;
+
+                      temp.$or.push(q);
+
+                 }
 
                     if(temp.$or.length > 0 ){
                       //   temp.$or.push(q);
@@ -473,6 +485,19 @@ Ext.define('RMdatalink.controller.SearchController', {
                 );
             }
 
+            if(values.VendorPartnerChk &&  values.VendorPartner){
+
+
+
+                 query.$and.push(
+                    {
+                        'e_commerce_info.vip_vendor': values.VendorPartner
+                    }
+
+                );
+            }
+
+        //VendorPartnerChk
 
             return query ;
         }

@@ -179,12 +179,34 @@
                                 "itemId": "rtSearchiRugzStatusChk",
                                 "label": "iRugz",
                                 "labelAlign": "right",
-                                "labelWidth": "100px",
+                                "labelWidth": "60px",
                                 "name": "iRugzStatus",
                                 "style": null,
-                                "width": "132px"
+                                "width": "92px"
                             },
                             "designerId": "8a16bfdf-0467-4f74-8220-913425a8f59b"
+                        },
+                        {
+                            "type": "Ext.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-checkbox"
+                                ],
+                                "height": "30px",
+                                "itemId": "rtSearchVIPStatusChk",
+                                "label": "VIP",
+                                "labelAlign": "right",
+                                "labelWidth": "60px",
+                                "name": "vipStatus",
+                                "style": null,
+                                "width": "92px"
+                            },
+                            "designerId": "c30d68ff-2af6-4e13-a5e2-0f71fb36bf8e"
                         }
                     ]
                 },
@@ -231,8 +253,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "itemId": "rtSearchAllProdStatusSelectFld",
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "allProd",
                                 "options": [
                                     "[\r",
@@ -319,8 +345,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "itemId": "rtSearchCmpTypeSlctFld",
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "companyType",
                                 "options": [
                                     "[\r",
@@ -391,7 +421,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "AccNo"
                             },
                             "designerId": "1fc1f06f-0030-4823-bcb7-d2cdf96b6d69"
@@ -433,33 +467,48 @@
                             "designerId": "3968a36a-7269-425c-ac5f-30c1322cefa1"
                         },
                         {
-                            "type": "Ext.field.Select",
+                            "type": "Ext.Container",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "label": null,
-                                "name": "Expired",
-                                "width": "48px"
+                                "layout": "hbox",
+                                "layout|flex": 1
                             },
-                            "designerId": "14694e68-4047-4593-8539-1e42b3b12dfa"
-                        },
-                        {
-                            "type": "Ext.field.Select",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "label": null,
-                                "margin": "0 0 0 4px",
-                                "name": "ExpiredUnit",
-                                "width": "88px"
-                            },
-                            "designerId": "3032cfb2-d643-41fc-a238-ee7bea1667d9"
+                            "designerId": "fb794c08-f3d6-42d5-953d-6958289e10ca",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Select",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "label": null,
+                                        "name": "Expired",
+                                        "width": "48px"
+                                    },
+                                    "designerId": "14694e68-4047-4593-8539-1e42b3b12dfa"
+                                },
+                                {
+                                    "type": "Ext.field.Select",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "label": null,
+                                        "margin": "0 0 0 4px",
+                                        "name": "ExpiredUnit",
+                                        "width": "88px"
+                                    },
+                                    "designerId": "3032cfb2-d643-41fc-a238-ee7bea1667d9"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -506,7 +555,11 @@
                             "codeClass": null,
                             "userConfig": {
                                 "action": "inputByDatePicker",
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "createdAfter"
                             },
                             "designerId": "1a26ff21-fdc7-4eed-af95-d7730f11877c",
@@ -562,7 +615,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "createdBy"
                             },
                             "designerId": "61927cfd-a0e4-4c40-b392-54cfebff7960"
@@ -611,7 +668,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "StoreName"
                             },
                             "designerId": "6ea4f925-8e76-4a08-a8c8-14bdc5af7e1a"
@@ -660,7 +721,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "contactName"
                             },
                             "designerId": "af206c4a-4c28-4395-a73f-851f738ca704"
@@ -709,7 +774,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "City"
                             },
                             "designerId": "443a1a66-c0fd-4a5e-b13f-d9a375ae82b9"
@@ -758,7 +827,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "State"
                             },
                             "designerId": "fff8b2eb-0c0e-4ea4-b558-d1676c6b1b22"
@@ -807,7 +880,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "Phone"
                             },
                             "designerId": "ebb7db41-0df7-482c-b032-7e2ef75258f9"
@@ -856,7 +933,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "StoreEmail"
                             },
                             "designerId": "4245e904-b636-4a37-a8b3-bc72a7ecfde1"
@@ -905,10 +986,118 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
                                 "label": null,
+                                "layout|flex": 1,
                                 "name": "StoreWebsite"
                             },
                             "designerId": "34a15439-2049-4c22-a2c4-a9497267bdcd"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "hbox",
+                        "width": "100%"
+                    },
+                    "designerId": "d15b7643-6a21-4fe1-a75c-7e9812dfed32",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "x-rm-checkbox"
+                                ],
+                                "height": "30px",
+                                "label": "Vendor Partner",
+                                "labelAlign": "right",
+                                "labelWidth": "100px",
+                                "name": "VendorPartnerChk",
+                                "style": null,
+                                "width": "132px"
+                            },
+                            "designerId": "3b77efad-90ff-4549-ab08-a5f6bc2cc104"
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "cls": [
+                                    "retailerSearchCriteriaInputFields"
+                                ],
+                                "displayField": "vendor_name",
+                                "itemId": "myselectfield28",
+                                "label": null,
+                                "layout|flex": 1,
+                                "name": "VendorPartner",
+                                "store": null,
+                                "valueField": "vendor_name"
+                            },
+                            "designerId": "c997a3d6-b513-4aa6-b653-e4fe5093cf29",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMyselectfield28Initialize",
+                                        "implHandler": [
+                                            "component.addListener(\"painted\" , function(){\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "var keyOfRetailer  = 'promo_code_info';\r",
+                                            "var flagofRetailer = 'is_promo_code_active';\r",
+                                            "var store = Ext.getStore('vendors.Master');\r",
+                                            "var data = store.getData();\r",
+                                            "\r",
+                                            "var optionArray = [];\r",
+                                            "\r",
+                                            "    data.all.forEach(function(obj){\r",
+                                            "\r",
+                                            "        var values = obj.data;\r",
+                                            "        if( values.is_promo_code_active   && values[keyOfRetailer] ){\r",
+                                            "\r",
+                                            "            optionArray.push(obj.raw);\r",
+                                            "\r",
+                                            "        }\r",
+                                            "    });\r",
+                                            "\r",
+                                            "component.setOptions(optionArray);\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "} , this  , {\r",
+                                            "\r",
+                                            "    single:true\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "1494a04f-0e87-4066-a7df-edeb043cf30d"
+                                }
+                            ]
                         }
                     ]
                 },

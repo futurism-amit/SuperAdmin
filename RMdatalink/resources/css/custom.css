@@ -8,6 +8,59 @@
     
     
 }
+.vipdashboardCls{
+    
+    padding:0px !important;
+    
+    
+}
+.prospectListSelectedCls{
+    
+}
+
+.retailerSearchCriteriaInputFields{
+    padding-right: 6px;
+}
+.ecommercePricingListCls .rightBorderDiv{
+    color:black;
+}
+.retailerDetailAccountNo{
+    width:15% !important;
+}
+.retailerDetailVendorName{
+    width:25% !important;
+}
+.retailerDetailSKU{
+    width:12% !important;
+}
+.retailerDetailCollection{
+   width:10% !important;
+}
+.retailerDetailDesign{
+    width:10% !important;
+}
+.retailerDetailAddlImg{
+    width:10% !important;
+}
+.retailerDetailImg{
+    width:10% !important;
+}
+
+
+.activeInactivePromoCodeCls .x-field-input{
+    border: none !important ;
+}
+.retailerDetailsProgramTabBar .x-tab{
+    display: none !important ;
+}
+
+.retailerDetailsProgramTabBar .x-tab.x-tab-active{
+    display: -webkit-box !important;
+    background-color: transparent !important;
+    background-image: none;       
+        padding-top: 3px;
+color: rgb(85, 85, 85);
+}
 
 .labelClassForLogo{
     color: #aaa;

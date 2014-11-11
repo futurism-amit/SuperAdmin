@@ -183,13 +183,14 @@ Ext.define('RMdatalink.view.discounts.ListContainer', {
                     var end_date= vip_program_info.end_date;
                     var limit_value = vip_program_info.limit_value;
                     var comment = vip_program_info.comment;
+                    var status = vip_program_info.status_promo_code || 'active' ;
                 }else{
 
                     console.log("NO vip_program_info FOUDN");
                     return;
 
                 }
-                addValuesInVipForm(promo_code , record.data._id  , vip_price ,start_date ,end_date , limit_value , comment);
+                addValuesInVipForm(promo_code , record.data._id  , vip_price ,start_date ,end_date , limit_value , comment , status);
             }
         }else{
 
@@ -201,7 +202,7 @@ Ext.define('RMdatalink.view.discounts.ListContainer', {
 
 
 
-        function addValuesInVipForm(promoCode , vendor_id , price , startDate , endDate  , limit , comment){
+        function addValuesInVipForm(promoCode , vendor_id , price , startDate , endDate  , limit , comment , status){
 
             console.log("CLICKED");
             var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
@@ -224,7 +225,6 @@ Ext.define('RMdatalink.view.discounts.ListContainer', {
             var vipFormComment = Ext.ComponentQuery.query("#vipFormComment")[0];
             var vendorMaster  = Ext.getStore("vendors.Master");
 
-
             VipFormPromoCode.setValue(promoCode);
             VipFormVendorId.setValue(vendor_id);
             vipFormPrice.setValue(price);
@@ -232,6 +232,14 @@ Ext.define('RMdatalink.view.discounts.ListContainer', {
             vipFormEndDate.setValue(endDate);
             vipFormComment.setValue(comment);
             vipFormLimit.setValue(limit);
+
+            var CreateVippVendorFrom = Ext.ComponentQuery.query("#CreateVippVendorFrom")[0];
+            var values  = CreateVippVendorFrom.getValues();
+            values.activeStatus = status ;
+
+            CreateVippVendorFrom.setValues(values);
+
+
 
             var addVipPromoCodeAddButtton = Ext.ComponentQuery.query("#addVipPromoCodeAddButtton")[0];
                 addVipPromoCodeAddButtton.setText("Update");

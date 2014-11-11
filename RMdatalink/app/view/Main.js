@@ -19,6 +19,7 @@ Ext.define('RMdatalink.view.Main', {
 
     requires: [
         'RMdatalink.view.RMNavigationPanel',
+        'RMdatalink.view.container_dashboard',
         'RMdatalink.view.retailers.MainContentPanel',
         'RMdatalink.view.billing.MainContentPanel',
         'RMdatalink.view.vendors.MainContentPanel',
@@ -148,8 +149,12 @@ Ext.define('RMdatalink.view.Main', {
                         items: [
                             {
                                 xtype: 'container',
-                                html: 'dashboard',
-                                itemId: 'card-dashboard'
+                                itemId: 'card-dashboard',
+                                items: [
+                                    {
+                                        xtype: 'container_dashboard1'
+                                    }
+                                ]
                             },
                             {
                                 xtype: 'container',
