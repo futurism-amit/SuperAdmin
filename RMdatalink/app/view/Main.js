@@ -25,6 +25,7 @@ Ext.define('RMdatalink.view.Main', {
         'RMdatalink.view.vendors.MainContentPanel',
         'RMdatalink.view.inhouse.MainContentPanel',
         'RMdatalink.view.products.DatalinkMain',
+        'RMdatalink.view.product.Ecatalog',
         'RMdatalink.view.products.EcomMain',
         'RMdatalink.view.products.RM_PROMain',
         'RMdatalink.view.pricing.MainContentPanel',
@@ -218,7 +219,13 @@ Ext.define('RMdatalink.view.Main', {
                             {
                                 xtype: 'container',
                                 html: 'ecatalog',
-                                itemId: 'card-ecatalog'
+                                itemId: 'card-ecatalog',
+                                layout: 'fit',
+                                items: [
+                                    {
+                                        xtype: 'productecatalog'
+                                    }
+                                ]
                             },
                             {
                                 xtype: 'container',

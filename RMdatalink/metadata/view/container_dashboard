@@ -18,280 +18,34 @@
     "designerId": "4875b1ab-1fd4-454b-89c8-9a50e61ebc0c",
     "cn": [
         {
-            "type": "Ext.Panel",
+            "type": "Ext.Container",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "itemId": "vipDashBoard",
-                "layout|flex": null,
-                "style": "border:2px solid black; padding:2px;margin:2px;",
-                "width": "400px"
+                "layout": "hbox"
             },
-            "designerId": "2b852dc2-2d15-4d35-8ba7-1069247b5ad4",
+            "designerId": "1dee20f5-a835-4b21-b250-bb499a7c5217",
             "cn": [
                 {
-                    "type": "Ext.Label",
+                    "type": "Ext.Panel",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "cls": [
-                            "pointerCursor",
-                            "fieldLbl"
-                        ],
-                        "html": "VIP<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
-                        "itemId": "mylabel388",
-                        "style": null
+                        "itemId": "vipDashBoard",
+                        "layout|flex": null,
+                        "style": "border:2px solid black; padding:2px;margin:2px;",
+                        "width": "300px"
                     },
-                    "designerId": "6bb8eb0f-fcf6-4a72-9c3e-b5e434cbb867",
+                    "designerId": "2b852dc2-2d15-4d35-8ba7-1069247b5ad4",
                     "cn": [
                         {
-                            "type": "basiceventbinding",
-                            "reference": {
-                                "name": "listeners",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fn": "onMylabel388Initialize",
-                                "implHandler": [
-                                    "component.element.on('tap',function(){\r",
-                                    "\r",
-                                    "    var cmp = component.getParent();\r",
-                                    "    var containerSibling = cmp.down(\"#shrinker\");\r",
-                                    "    console.log(\"COPONENT CLICKED\");\r",
-                                    "    console.log(cmp.getHeight());\r",
-                                    "    if(  containerSibling.getHidden() ){\r",
-                                    "\r",
-                                    "\r",
-                                    "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/downArrow.png\";\r",
-                                    "        containerSibling.setHidden(false);\r",
-                                    "\r",
-                                    "    }else{\r",
-                                    "\r",
-                                    "\r",
-                                    "        containerSibling.setHidden(true);\r",
-                                    "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/rightArrow.png\";\r",
-                                    "    }\r",
-                                    "\r",
-                                    "});"
-                                ],
-                                "name": "initialize"
-                            },
-                            "designerId": "26ac7bd8-a1ba-4ea0-9c96-df59b4ce981f"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.Container",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "border": null,
-                        "cls": [
-                            "vipShrinker"
-                        ],
-                        "hidden": false,
-                        "itemId": "shrinker",
-                        "style": "border-top:2px solid black; padding:2px 0px;margin:2px 0px;"
-                    },
-                    "designerId": "a356e58a-48a9-41a6-b479-ebde6b85c829",
-                    "cn": [
-                        {
-                            "type": "linkedinstance",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "border": null,
-                                "height": "200px",
-                                "itemId": "vipListWithHeader",
-                                "style": null
-                            },
-                            "designerId": "42b7bdaf-5cfb-4355-8213-0ae52d60b421",
-                            "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
-                            "cn": [
-                                {
-                                    "type": "delegateeventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "delegate": "#mainList",
-                                        "designer|targetType": "Ext.dataview.List",
-                                        "fn": "onListItemTap",
-                                        "implHandler": [
-                                            "console.log(record);"
-                                        ],
-                                        "name": "itemtap"
-                                    },
-                                    "designerId": "32e0f456-2cc3-4836-8b3f-3f16fde1bd37"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "basiceventbinding",
-                            "reference": {
-                                "name": "listeners",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fn": "onShrinkerInitialize",
-                                "implHandler": [
-                                    "var headers = component.down(\"#headerList\");\r",
-                                    "headers.setData([{is_selected:false}]);\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "headers.setItemTpl(\r",
-                                    "    Ext.create('Ext.XTemplate',\r",
-                                    "               '<div class=\"x-rm-listtpl-main\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;padding:0 0px 0 0px !important;height:64px;\">',\r",
-                                    "\r",
-                                    "               '    <div class=\"\" style=\"width: 50%;text-align: left;\" data-name=\"vendor_name\" >',\r",
-                                    "               '        Vendor&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
-                                    "               '    </div>',\r",
-                                    "               '    <div class=\"\" style=\"width: 25%;text-align: center;\" data-name=\"totalVIPActiveVendor\">',\r",
-                                    "               '        Active&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
-                                    "               '    </div>',\r",
-                                    "               '    <div class=\"\" style=\"width: 25%;text-align: center;\" data-name=\"totalVIPProspectRetailer\">',\r",
-                                    "               '        Hot Prospect&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
-                                    "               '    </div>',\r",
-                                    "               '</div>',\r",
-                                    "               {\r",
-                                    "                   getCartImage:function(values){\r",
-                                    "                       if(values.is_selected){\r",
-                                    "                           return \"background-image: url('resources/images/retailerDetail/cart_selected.png') !important;\";\r",
-                                    "                       }\r",
-                                    "\r",
-                                    "                       return \"background-image: url('resources/images/retailerDetail/cart_unselected.png') !important;\" ;\r",
-                                    "                   },\r",
-                                    "                   setCartValue:function(value){\r",
-                                    "                       if(values.is_selected){\r",
-                                    "                           values.is_selected = false;\r",
-                                    "                       }else{\r",
-                                    "                           values.is_selected = true;\r",
-                                    "                       }\r",
-                                    "                       headers.refresh();\r",
-                                    "                       // return this.getCartImage(value);\r",
-                                    "\r",
-                                    "                   }\r",
-                                    "               }\r",
-                                    "              ));\r",
-                                    "\r",
-                                    "headers.setHeight(22);\r",
-                                    "headers.setMode('MULTI');\r",
-                                    "headers.addCls('x-rm-rdvendorslist');\r",
-                                    "headers.setItemCls('vipdashboardCls');\r",
-                                    "headers.refresh();\r",
-                                    "\r",
-                                    "var list = component.down('#mainList');\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "list.setItemTpl(\r",
-                                    "    Ext.create('Ext.XTemplate',\r",
-                                    "               '<div class=\"x-rm-listtpl-main\" style=\"width: 100%;padding:0 0px 0 0px !important;\">',\r",
-                                    "               '    <div class=\" boldText \" style=\"width: 50%;padding-left:10px; text-align:left; {[this.getColorForVendor(values)]} \" >{vendor_name}</div>',\r",
-                                    "               '    <div class=\" boldText \" style=\"width: 25%;padding-left:10px; text-align:center; \" >{[this.getActiveRetailer(values)]}</div>',\r",
-                                    "               '    <div class=\" boldText \" style=\"width: 25%;padding-left:10px; text-align:center; \" >{[this.getProspectRetailer(values)]}</div>',\r",
-                                    "\r",
-                                    "               '</div>',\r",
-                                    "               {\r",
-                                    "                   getColorForVendor:function(  values){\r",
-                                    "                       return getColorStringForVendor(values);\r",
-                                    "\r",
-                                    "                   },\r",
-                                    "                   getActiveRetailer:function(  values){\r",
-                                    "                       try{\r",
-                                    "\r",
-                                    "                           if(values.totalVIPActiveVendor){\r",
-                                    "                               return values.totalVIPActiveVendor;\r",
-                                    "\r",
-                                    "                           }else{\r",
-                                    "\r",
-                                    "                               return \" \";\r",
-                                    "                           }\r",
-                                    "\r",
-                                    "                       }catch(e){\r",
-                                    "                           return \" \";\r",
-                                    "                       }\r",
-                                    "\r",
-                                    "                   },\r",
-                                    "                   getProspectRetailer:function(  values){\r",
-                                    "                       try{\r",
-                                    "\r",
-                                    "                           if(values.totalVIPProspectRetailer){\r",
-                                    "                               return values.totalVIPProspectRetailer;\r",
-                                    "\r",
-                                    "                           }else{\r",
-                                    "\r",
-                                    "                               return \"\";\r",
-                                    "                           }\r",
-                                    "\r",
-                                    "                       }catch(e){\r",
-                                    "                           return \"\";\r",
-                                    "                       }\r",
-                                    "\r",
-                                    "\r",
-                                    "                   }\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "               }\r",
-                                    "\r",
-                                    "              )\r",
-                                    ");\r",
-                                    "\r",
-                                    "list.setItemHeight(22);\r",
-                                    "list.setMode('MULTI');\r",
-                                    "list.addCls('x-rm-rdvendorslist');\r",
-                                    "\r",
-                                    "\r",
-                                    "// list.addListener('itemtap',function(){\r",
-                                    "\r",
-                                    "\r",
-                                    "//     console.log(\"LIST CLICKED\");\r",
-                                    "// },this);\r",
-                                    "\r",
-                                    "// headers.addListener('itemtap',function(){\r",
-                                    "\r",
-                                    "\r",
-                                    "//     console.log(\"HEADERS CLICKED\");\r",
-                                    "// },this);\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "var totalsList = component.down('#vipTotalsList');\r",
-                                    "totalsList.addCls('x-rm-rdvendorslist');\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    ""
-                                ],
-                                "name": "initialize"
-                            },
-                            "designerId": "a0bb85f0-e62e-47dd-b414-fb4515b5c720"
-                        },
-                        {
-                            "type": "Ext.dataview.List",
+                            "type": "Ext.Label",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
@@ -299,47 +53,1072 @@
                             "codeClass": null,
                             "userConfig": {
                                 "cls": [
-                                    "x-rm-list",
-                                    "x-rm-list-header"
+                                    "pointerCursor",
+                                    "fieldLbl"
                                 ],
-                                "data": [
-                                    "[\r",
-                                    "    {\t\r",
-                                    "        active_total:0,\r",
-                                    "        prospect_total:0\r",
-                                    "    }\r",
-                                    "]\r",
-                                    "\r",
-                                    ""
-                                ],
-                                "height": "30px",
-                                "itemHeight": 30,
-                                "itemId": "vipTotalsList",
+                                "html": "VIP<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel388",
                                 "style": null
                             },
-                            "designerId": "dff491f5-afe8-4524-8380-fd5bee3f7ba8",
+                            "designerId": "6bb8eb0f-fcf6-4a72-9c3e-b5e434cbb867",
                             "cn": [
                                 {
-                                    "type": "Ext.XTemplate",
+                                    "type": "basiceventbinding",
                                     "reference": {
-                                        "name": "itemTpl",
-                                        "type": "object"
+                                        "name": "listeners",
+                                        "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "designer|displayName": "itemTpl",
+                                        "fn": "onMylabel388Initialize",
                                         "implHandler": [
-                                            "<div class=\"x-rm-listtpl-main boldText\" style=\"width: 100%;\">\r",
-                                            "    <div style=\"width: 50%;\">Total</div>\r",
-                                            "    <div class=\"\" style=\"width: 25%; text-align:center; \">{active_total}</div>\r",
-                                            "    <div class=\"\" style=\"width: 25%; text-align:center; \">{prospect_total}</div>\r",
+                                            "component.element.on('tap',function(){\r",
                                             "\r",
-                                            "</div>"
-                                        ]
+                                            "    var cmp = component.getParent();\r",
+                                            "    var containerSibling = cmp.down(\"#shrinker\");\r",
+                                            "    console.log(\"COPONENT CLICKED\");\r",
+                                            "    console.log(cmp.getHeight());\r",
+                                            "    if(  containerSibling.getHidden() ){\r",
+                                            "\r",
+                                            "\r",
+                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/downArrow.png\";\r",
+                                            "        containerSibling.setHidden(false);\r",
+                                            "\r",
+                                            "    }else{\r",
+                                            "\r",
+                                            "\r",
+                                            "        containerSibling.setHidden(true);\r",
+                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/rightArrow.png\";\r",
+                                            "    }\r",
+                                            "\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
                                     },
-                                    "designerId": "41f6eadd-c756-43eb-91bd-02b66881a1d9"
+                                    "designerId": "26ac7bd8-a1ba-4ea0-9c96-df59b4ce981f"
                                 }
                             ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": null,
+                                "cls": [
+                                    "vipShrinker"
+                                ],
+                                "hidden": false,
+                                "itemId": "shrinker",
+                                "style": "border-top:2px solid black; padding:2px 0px;margin:2px 0px;"
+                            },
+                            "designerId": "a356e58a-48a9-41a6-b479-ebde6b85c829",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "border": null,
+                                        "height": "200px",
+                                        "itemId": "vipListWithHeader",
+                                        "style": null
+                                    },
+                                    "designerId": "42b7bdaf-5cfb-4355-8213-0ae52d60b421",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
+                                    "cn": [
+                                        {
+                                            "type": "delegateeventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "delegate": "#mainList",
+                                                "designer|targetType": "Ext.dataview.List",
+                                                "fn": "onListItemTap",
+                                                "implHandler": [
+                                                    "console.log(record);\r",
+                                                    "console.log(e);\r",
+                                                    "\r",
+                                                    "try{\r",
+                                                    "    var targetEl = e.target;\r",
+                                                    "    var attr = targetEl.getAttribute(\"clk_attr\");\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "    //handleSearchInputResult\r",
+                                                    "    //DashBoardController\r",
+                                                    "    console.log(attr);\r",
+                                                    "\r",
+                                                    "    //    ProspectTotal  means user wants to see prospect list\r",
+                                                    "    //    activeTotal   means user wants to see active list\r",
+                                                    "\r",
+                                                    "    switch(attr){\r",
+                                                    "\r",
+                                                    "        case    'ProspectTotal':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputResult(\"HOT_PROSPECT\" , record.data.vendor_name);\r",
+                                                    "            console.log(\"SHOW EM PROSPECT LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'activeTotal':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputResult(\"ACTIVE\" , record.data.vendor_name);\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "        default:break;\r",
+                                                    "    }\r",
+                                                    "\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "catch(e){\r",
+                                                    "    console.log(\"ERROR THROWN\" , e);\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    ""
+                                                ],
+                                                "name": "itemtap"
+                                            },
+                                            "designerId": "32e0f456-2cc3-4836-8b3f-3f16fde1bd37"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onShrinkerInitialize",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setData([{is_selected:false}]);\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main fontDefination\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;padding:0 0px 0 0px !important;height:64px;\">',\r",
+                                            "\r",
+                                            "               '    <div class=\"\" style=\"width: 50%;text-align: left;padding-left: 16px;\" data-name=\"vendor_name\" >',\r",
+                                            "               '        Vendor&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"\" style=\"width: 21%;text-align: center;\" data-name=\"totalVIPActiveVendor\">',\r",
+                                            "               '        Active&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"\" style=\"width: 29%;text-align: center;\" data-name=\"totalVIPProspectRetailer\">',\r",
+                                            "               '        Hot Prospect&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "                   getCartImage:function(values){\r",
+                                            "                       if(values.is_selected){\r",
+                                            "                           return \"background-image: url('resources/images/retailerDetail/cart_selected.png') !important;\";\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       return \"background-image: url('resources/images/retailerDetail/cart_unselected.png') !important;\" ;\r",
+                                            "                   },\r",
+                                            "                   setCartValue:function(value){\r",
+                                            "                       if(values.is_selected){\r",
+                                            "                           values.is_selected = false;\r",
+                                            "                       }else{\r",
+                                            "                           values.is_selected = true;\r",
+                                            "                       }\r",
+                                            "                       headers.refresh();\r",
+                                            "                       // return this.getCartImage(value);\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "               }\r",
+                                            "              ));\r",
+                                            "\r",
+                                            "headers.setHeight(22);\r",
+                                            "headers.setMode('MULTI');\r",
+                                            "headers.addCls('x-rm-rdvendorslist');\r",
+                                            "headers.setItemCls('vipdashboardCls');\r",
+                                            "headers.refresh();\r",
+                                            "\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main fontDefination\" style=\"width: 100%;padding:0 0px 0 0px !important;\">',\r",
+                                            "               '    <div class=\" boldText \" style=\"width: 50%;padding-left:10px; text-align:left; {[this.getColorForVendor(values)]} \" >{vendor_name}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"activeTotal\"  style=\"width: 21%;padding-left:10px;cursor: pointer; text-align:center; \" >{[this.getActiveRetailer(values)]}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"ProspectTotal\" style=\"width: 29%;padding-left:10px;cursor: pointer; text-align:center; \" >{[this.getProspectRetailer(values)]}</div>',\r",
+                                            "\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "                   getColorForVendor:function(  values){\r",
+                                            "                       return getColorStringForVendor(values);\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                   getActiveRetailer:function(  values){\r",
+                                            "                       try{\r",
+                                            "\r",
+                                            "                           if(values.totalVIPActiveVendor){\r",
+                                            "                               return values.totalVIPActiveVendor;\r",
+                                            "\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               return \" \";\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }catch(e){\r",
+                                            "                           return \" \";\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                   getProspectRetailer:function(  values){\r",
+                                            "                       try{\r",
+                                            "\r",
+                                            "                           if(values.totalVIPProspectRetailer){\r",
+                                            "                               return values.totalVIPProspectRetailer;\r",
+                                            "\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               return \"\";\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }catch(e){\r",
+                                            "                           return \"\";\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "               }\r",
+                                            "\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setItemHeight(22);\r",
+                                            "list.setMode('MULTI');\r",
+                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                            "list.setDisableSelection(true);\r",
+                                            "\r",
+                                            "// list.addListener('itemtap',function(){\r",
+                                            "\r",
+                                            "\r",
+                                            "//     console.log(\"LIST CLICKED\");\r",
+                                            "// },this);\r",
+                                            "\r",
+                                            "// headers.addListener('itemtap',function(){\r",
+                                            "\r",
+                                            "\r",
+                                            "//     console.log(\"HEADERS CLICKED\");\r",
+                                            "// },this);\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "var totalsList = component.down('#vipTotalsList');\r",
+                                            "totalsList.addCls('x-rm-rdvendorslist');\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "a0bb85f0-e62e-47dd-b414-fb4515b5c720"
+                                },
+                                {
+                                    "type": "Ext.dataview.List",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-list",
+                                            "x-rm-list-header"
+                                        ],
+                                        "data": [
+                                            "[\r",
+                                            "    {\t\r",
+                                            "        active_total:0,\r",
+                                            "        prospect_total:0\r",
+                                            "    }\r",
+                                            "]\r",
+                                            "\r",
+                                            ""
+                                        ],
+                                        "height": "30px",
+                                        "itemHeight": 30,
+                                        "itemId": "vipTotalsList",
+                                        "style": null
+                                    },
+                                    "designerId": "dff491f5-afe8-4524-8380-fd5bee3f7ba8",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.XTemplate",
+                                            "reference": {
+                                                "name": "itemTpl",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "itemTpl",
+                                                "implHandler": [
+                                                    "<div class=\"x-rm-listtpl-main boldText fontDefination\" style=\"width: 100%;\">\r",
+                                                    "    <div style=\"width: 50%;\" clk_attr = \"allVIP\" >Total:{[this.getTotal(values)]} </div>\r",
+                                                    "    <div class=\"\" clk_attr = \"activeTotal\" style=\"width: 21%; padding-left:10px;text-align:center;cursor: pointer; \">{active_total}</div>\r",
+                                                    "    <div class=\"\" clk_attr = \"ProspectTotal\" style=\"width: 29%; padding-left:10px; text-align:center;cursor: pointer; \">{prospect_total}</div>\r",
+                                                    "\r",
+                                                    "</div>"
+                                                ]
+                                            },
+                                            "designerId": "41f6eadd-c756-43eb-91bd-02b66881a1d9",
+                                            "cn": [
+                                                {
+                                                    "type": "templatefunction",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|params": [
+                                                            "values"
+                                                        ],
+                                                        "fn": "getTotal",
+                                                        "implHandler": [
+                                                            "\r",
+                                                            "return (values.active_total || 0)  + (values.prospect_total || 0);"
+                                                        ]
+                                                    },
+                                                    "designerId": "758a731a-b3ef-4541-8e20-a4bd2d6c488d"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onVipTotalsListItemTap",
+                                                "implHandler": [
+                                                    "console.log(record);\r",
+                                                    "console.log(e);\r",
+                                                    "\r",
+                                                    "try{\r",
+                                                    "    var targetEl = e.target;\r",
+                                                    "    var attr = targetEl.getAttribute(\"clk_attr\");\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "    console.log(attr);\r",
+                                                    "\r",
+                                                    "    //    ProspectTotal  means user wants to see prospect list\r",
+                                                    "    //    activeTotal   means user wants to see active list\r",
+                                                    "\r",
+                                                    "    switch(attr){\r",
+                                                    "\r",
+                                                    "        case    'ProspectTotal':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputResult(\"HOT_PROSPECT\" );\r",
+                                                    "            console.log(\"SHOW EM PROSPECT LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'activeTotal':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputResult(\"ACTIVE\");\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'allVIP':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputResult();\r",
+                                                    "            console.log(\"SHOW EM ALL LIST\");\r",
+                                                    "            break;\r",
+                                                    "            \r",
+                                                    "        default:break;\r",
+                                                    "    }\r",
+                                                    "\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "catch(e){\r",
+                                                    "    console.log(\"ERROR THROWN\" , e);\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    ""
+                                                ],
+                                                "name": "itemtap"
+                                            },
+                                            "designerId": "b26fba36-8faf-4b5f-a823-d38917ce4194"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "productsummaryDashboard",
+                        "layout|flex": null,
+                        "style": "border:2px solid black; padding:2px;margin:2px;",
+                        "width": "400px"
+                    },
+                    "designerId": "5dbf0f27-4ce3-4c51-9e0f-34568f549936",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "pointerCursor",
+                                    "fieldLbl"
+                                ],
+                                "html": "Products Summary<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel389",
+                                "style": null
+                            },
+                            "designerId": "3cfd8dfe-ed9e-4caa-a7d7-35569b113fec",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onMylabel388Initialize1",
+                                        "implHandler": [
+                                            "component.element.on('tap',function(){\r",
+                                            "\r",
+                                            "    var cmp = component.getParent();\r",
+                                            "    var containerSibling = cmp.down(\"#shrinker\");\r",
+                                            "    console.log(\"COPONENT CLICKED\");\r",
+                                            "    console.log(cmp.getHeight());\r",
+                                            "    if(  containerSibling.getHidden() ){\r",
+                                            "\r",
+                                            "\r",
+                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/downArrow.png\";\r",
+                                            "        containerSibling.setHidden(false);\r",
+                                            "\r",
+                                            "    }else{\r",
+                                            "\r",
+                                            "\r",
+                                            "        containerSibling.setHidden(true);\r",
+                                            "        component.getEl().query('img')[0].src = \"resources/images/labelHeader/rightArrow.png\";\r",
+                                            "    }\r",
+                                            "\r",
+                                            "});"
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "517b413a-d6b9-4b8a-8682-edd0aaba5dc5"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": null,
+                                "cls": [
+                                    "vipShrinker"
+                                ],
+                                "hidden": false,
+                                "itemId": "shrinker",
+                                "style": "border-top:2px solid black; padding:2px 0px;margin:2px 0px;"
+                            },
+                            "designerId": "3b76c834-8a73-410f-81f4-d64c27d3b12d",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "border": null,
+                                        "height": "200px",
+                                        "itemId": "vipListWithHeader",
+                                        "style": null
+                                    },
+                                    "designerId": "bfb5b590-7d65-42ab-9783-576263eea9f9",
+                                    "masterInstanceId": "6597e0da-7fe3-4049-9449-cb37b0c44375",
+                                    "cn": [
+                                        {
+                                            "type": "delegateeventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "delegate": "#mainList",
+                                                "designer|targetType": "Ext.dataview.List",
+                                                "fn": "summaryListItemTap",
+                                                "implHandler": [
+                                                    "console.log(record);\r",
+                                                    "console.log(e);\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "try{\r",
+                                                    "    var targetEl = e.target;\r",
+                                                    "    var attr = targetEl.getAttribute(\"clk_attr\");\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "    console.log(attr);\r",
+                                                    "\r",
+                                                    "    //    rmpro_summary  means user wants to see rmpro list\r",
+                                                    "    //    dlink_summary   means user wants to see dlink list\r",
+                                                    "    //    ecom_summary   means user wants to see ecom list\r",
+                                                    "    //    vip_summary   means user wants to see vip list\r",
+                                                    "    //    ecat_summary   means user wants to see ecat list\r",
+                                                    "    //    irugz_summary   means user wants to see irugz list\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "   // debugger;  Undefined\r",
+                                                    "    switch( record.data.product_status ){\r",
+                                                    "\r",
+                                                    "        case    'Inactive':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputFromProductSummary(attr ,\"INACTIVE\" , record);\r",
+                                                    "            console.log(\"SHOW EM PROSPECT LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'Active':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputFromProductSummary(attr , \"ACTIVE\" , record);\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'Prospect':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputFromProductSummary(attr,\"PROSPECT\" , record);\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'Hot Prospect':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputFromProductSummary(attr,\"HOT_PROSPECT\" , record);\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'Pending':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputFromProductSummary(attr,\"PENDING\" , record);\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'Undefined':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputFromProductSummary(attr,\"UNDEFINED\" , record);\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "        default:break;\r",
+                                                    "    }\r",
+                                                    "\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "catch(e){\r",
+                                                    "    console.log(\"ERROR THROWN\" , e);\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    ""
+                                                ],
+                                                "name": "itemtap"
+                                            },
+                                            "designerId": "7ded52c4-63e7-4905-b36d-147a43c949a5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onShrinkerInitialize1",
+                                        "implHandler": [
+                                            "var headers = component.down(\"#headerList\");\r",
+                                            "headers.setData([{is_selected:false}]);\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "headers.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main fontDefination\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;padding:0 0px 0 0px !important;height:64px;\">',\r",
+                                            "\r",
+                                            "               '    <div class=\"\" style=\"width: 28%;text-align: left;padding-left:16px;\" data-name=\"product_status\" >',\r",
+                                            "               '        Status&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "\r",
+                                            "               '    <div class=\"\" style=\"width: 12%;text-align: center;\" data-name=\"count_rmpro\">',\r",
+                                            "               '        RMPro&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"\" style=\"width: 12%;text-align: center;\" data-name=\"count_dlink\">',\r",
+                                            "               '        D-Link&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"\" style=\"width: 12%;text-align: center;\" data-name=\"count_ecom\">',\r",
+                                            "               '        E-Com&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"\" style=\"width: 12%;text-align: center;\" data-name=\"count_vip\">',\r",
+                                            "               '        VIP&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"\" style=\"width: 12%;text-align: center;\" data-name=\"count_ecat\">',\r",
+                                            "               '        E-Cat&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '    <div class=\"\" style=\"width: 12%;text-align: center;\" data-name=\"count_irugz\">',\r",
+                                            "               '       iRugz&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
+                                            "               '    </div>',\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "                   getCartImage:function(values){\r",
+                                            "                       if(values.is_selected){\r",
+                                            "                           return \"background-image: url('resources/images/retailerDetail/cart_selected.png') !important;\";\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                       return \"background-image: url('resources/images/retailerDetail/cart_unselected.png') !important;\" ;\r",
+                                            "                   },\r",
+                                            "                   setCartValue:function(value){\r",
+                                            "                       if(values.is_selected){\r",
+                                            "                           values.is_selected = false;\r",
+                                            "                       }else{\r",
+                                            "                           values.is_selected = true;\r",
+                                            "                       }\r",
+                                            "                       headers.refresh();\r",
+                                            "                       // return this.getCartImage(value);\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "               }\r",
+                                            "              ));\r",
+                                            "\r",
+                                            "headers.setHeight(22);\r",
+                                            "headers.setMode('MULTI');\r",
+                                            "headers.addCls('x-rm-rdvendorslist');\r",
+                                            "headers.setItemCls('vipdashboardCls');\r",
+                                            "headers.refresh();\r",
+                                            "\r",
+                                            "var list = component.down('#mainList');\r",
+                                            "\r",
+                                            "\r",
+                                            "//{product_status    , count_rmpro,   count_dlink,  count_ecom,  count_vip, count_ecat,count_irugz }\r",
+                                            "\r",
+                                            "list.setItemTpl(\r",
+                                            "    Ext.create('Ext.XTemplate',\r",
+                                            "               '<div class=\"x-rm-listtpl-main fontDefination\" style=\"width: 100%;padding:0 0px 0 0px !important;\">',\r",
+                                            "               '    <div class=\" boldText \" style=\"width: 28%;padding-left:10px; text-align:left; {[this.getColorForVendor(values)]} \" >{product_status}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"rmpro_summary\"  style=\"width: 12%;padding-left:10px;cursor: pointer; text-align:center; \" >{count_rmpro}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"dlink_summary\"  style=\"width: 12%;padding-left:10px;cursor: pointer; text-align:center; \" >{count_dlink}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"ecom_summary\"  style=\"width: 12%;padding-left:10px;cursor: pointer; text-align:center; \" >{count_ecom}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"vip_summary\"  style=\"width: 12%;padding-left:10px;cursor: pointer; text-align:center; \" >{count_vip}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"ecat_summary\"  style=\"width: 12%;padding-left:10px;cursor: pointer; text-align:center; \" >{count_ecat}</div>',\r",
+                                            "               '    <div class=\" boldText \" clk_attr = \"irugz_summary\"  style=\"width: 12%;padding-left:10px;cursor: pointer; text-align:center; \" >{count_irugz}</div>',\r",
+                                            "\r",
+                                            "               '</div>',\r",
+                                            "               {\r",
+                                            "                   getColorForVendor:function(  values){\r",
+                                            "                       return getColorStringForVendor(values);\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                   getActiveRetailer:function(  values){\r",
+                                            "                       try{\r",
+                                            "\r",
+                                            "                           if(values.totalVIPActiveVendor){\r",
+                                            "                               return values.totalVIPActiveVendor;\r",
+                                            "\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               return \" \";\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }catch(e){\r",
+                                            "                           return \" \";\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "                   },\r",
+                                            "                   getProspectRetailer:function(  values){\r",
+                                            "                       try{\r",
+                                            "\r",
+                                            "                           if(values.totalVIPProspectRetailer){\r",
+                                            "                               return values.totalVIPProspectRetailer;\r",
+                                            "\r",
+                                            "                           }else{\r",
+                                            "\r",
+                                            "                               return \"\";\r",
+                                            "                           }\r",
+                                            "\r",
+                                            "                       }catch(e){\r",
+                                            "                           return \"\";\r",
+                                            "                       }\r",
+                                            "\r",
+                                            "\r",
+                                            "                   }\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "               }\r",
+                                            "\r",
+                                            "              )\r",
+                                            ");\r",
+                                            "\r",
+                                            "list.setItemHeight(22);\r",
+                                            "list.setMode('MULTI');\r",
+                                            "list.addCls('x-rm-rdvendorslist');\r",
+                                            "list.setDisableSelection(true);\r",
+                                            "\r",
+                                            "list.setData([\r",
+                                            "    {product_status:'Active',\r",
+                                            "     count_rmpro:0,\r",
+                                            "     count_dlink:0,\r",
+                                            "     count_ecom:0,\r",
+                                            "     count_vip:0,\r",
+                                            "     count_ecat:0,\r",
+                                            "     count_irugz:0\r",
+                                            "    },\r",
+                                            "    {product_status:'Inactive',\r",
+                                            "     count_rmpro:0,\r",
+                                            "     count_dlink:0,\r",
+                                            "     count_ecom:0,\r",
+                                            "     count_vip:0,\r",
+                                            "     count_ecat:0,\r",
+                                            "     count_irugz:0\r",
+                                            "    },\r",
+                                            "    {product_status:'Prospect',\r",
+                                            "     count_rmpro:0,\r",
+                                            "     count_dlink:0,\r",
+                                            "     count_ecom:0,\r",
+                                            "     count_vip:0,\r",
+                                            "     count_ecat:0,\r",
+                                            "     count_irugz:0\r",
+                                            "    },\r",
+                                            "    {product_status:'Hot Prospect',\r",
+                                            "     count_rmpro:0,\r",
+                                            "     count_dlink:0,\r",
+                                            "     count_ecom:0,\r",
+                                            "     count_vip:0,\r",
+                                            "     count_ecat:0,\r",
+                                            "     count_irugz:0\r",
+                                            "    },\r",
+                                            "    {product_status:'Pending',\r",
+                                            "     count_rmpro:0,\r",
+                                            "     count_dlink:0,\r",
+                                            "     count_ecom:0,\r",
+                                            "     count_vip:0,\r",
+                                            "     count_ecat:0,\r",
+                                            "     count_irugz:0\r",
+                                            "    },\r",
+                                            "    {product_status:'Undefined',\r",
+                                            "     count_rmpro:0,\r",
+                                            "     count_dlink:0,\r",
+                                            "     count_ecom:0,\r",
+                                            "     count_vip:0,\r",
+                                            "     count_ecat:0,\r",
+                                            "     count_irugz:0\r",
+                                            "    }\r",
+                                            "\r",
+                                            "\r",
+                                            "]);\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "var totalsList = component.down('#productSummaryList');\r",
+                                            "totalsList.addCls('x-rm-rdvendorslist');\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            "\r",
+                                            ""
+                                        ],
+                                        "name": "initialize"
+                                    },
+                                    "designerId": "7f02ab97-de4e-4bda-8503-c9c6a9d9fac4"
+                                },
+                                {
+                                    "type": "Ext.dataview.List",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "x-rm-list",
+                                            "x-rm-list-header"
+                                        ],
+                                        "data": [
+                                            "[\r",
+                                            "    {\r",
+                                            "        \"tcount_rmpro\":0,\r",
+                                            "        \"tcount_dlink\":0,\r",
+                                            "        \"tcount_ecom\":0,\r",
+                                            "        \"tcount_vip\":0,\r",
+                                            "        \"tcount_ecat\":0,\r",
+                                            "        \"tcount_irguz\":0        \r",
+                                            "    }\r",
+                                            "\r",
+                                            "]\r",
+                                            "\r",
+                                            ""
+                                        ],
+                                        "height": "30px",
+                                        "itemHeight": 30,
+                                        "itemId": "productSummaryList",
+                                        "style": null
+                                    },
+                                    "designerId": "1228ce81-1d6e-4141-afb5-f660bc3194d8",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.XTemplate",
+                                            "reference": {
+                                                "name": "itemTpl",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|displayName": "itemTpl",
+                                                "implHandler": [
+                                                    "<div class=\"x-rm-listtpl-main boldText fontDefination\" style=\"width: 100%;\">\r",
+                                                    "    <div style=\"width: 28%;\">Total</div>\r",
+                                                    "    <div class=\"\" clk_attr = \"activeTotal\" style=\"width: 12%; text-align:center;cursor: pointer; \">{tcount_rmpro}</div>\r",
+                                                    "    <div class=\"\" clk_attr = \"activeTotal\" style=\"width: 12%; text-align:center;cursor: pointer; \">{tcount_dlink}</div>\r",
+                                                    "    <div class=\"\" clk_attr = \"activeTotal\" style=\"width: 12%; text-align:center;cursor: pointer; \">{tcount_ecom}</div>\r",
+                                                    "    <div class=\"\" clk_attr = \"activeTotal\" style=\"width: 12%; text-align:center;cursor: pointer; \">{tcount_vip}</div>\r",
+                                                    "    <div class=\"\" clk_attr = \"activeTotal\" style=\"width: 12%; text-align:center;cursor: pointer; \">{tcount_ecat}</div>\r",
+                                                    "    <div class=\"\" clk_attr = \"activeTotal\" style=\"width: 12%; text-align:center;cursor: pointer; \">{tcount_irguz}</div>\r",
+                                                    "\r",
+                                                    "</div>"
+                                                ]
+                                            },
+                                            "designerId": "1e7805a0-4d22-40f6-8b1d-e50d2284976a"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onProductSummaryDashBoardItemTap",
+                                                "implHandler": [
+                                                    "console.log(record);\r",
+                                                    "console.log(e);\r",
+                                                    "return;\r",
+                                                    "\r",
+                                                    "try{\r",
+                                                    "    var targetEl = e.target;\r",
+                                                    "    var attr = targetEl.getAttribute(\"clk_attr\");\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "    console.log(attr);\r",
+                                                    "\r",
+                                                    "    //    ProspectTotal  means user wants to see prospect list\r",
+                                                    "    //    activeTotal   means user wants to see active list\r",
+                                                    "\r",
+                                                    "    switch(attr){\r",
+                                                    "\r",
+                                                    "        case    'ProspectTotal':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputResult(\"HOT_PROSPECT\" );\r",
+                                                    "            console.log(\"SHOW EM PROSPECT LIST\");\r",
+                                                    "            break;\r",
+                                                    "        case    'activeTotal':\r",
+                                                    "            RMdatalink.app.getController(\"DashBoardController\").handleSearchInputResult(\"ACTIVE\");\r",
+                                                    "            console.log(\"SHOW EM ACTIVE LIST\");\r",
+                                                    "            break;\r",
+                                                    "        default:break;\r",
+                                                    "    }\r",
+                                                    "\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "catch(e){\r",
+                                                    "    console.log(\"ERROR THROWN\" , e);\r",
+                                                    "}\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    ""
+                                                ],
+                                                "name": "itemtap"
+                                            },
+                                            "designerId": "613b2525-4c0e-4dbd-939b-837229921aed"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onContainer_dashboardInitialize",
+                "implHandler": [
+                    ""
+                ],
+                "name": "initialize"
+            },
+            "designerId": "aeb456d5-c4fd-49f6-9eea-8b6b0d118422"
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout": "hbox"
+            },
+            "designerId": "08c81e36-8b48-42c5-9608-1c753b34204d",
+            "cn": [
+                {
+                    "type": "Ext.field.File",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "multipleFileInput",
+                        "label": "Field",
+                        "multiple": true
+                    },
+                    "designerId": "d2e32245-e200-4765-9382-d1a4374d9ae1"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "x-rm-blueBtn"
+                        ],
+                        "height": "30px",
+                        "text": "SendMail"
+                    },
+                    "designerId": "6d5ea07c-1cfc-402f-b4d3-4006f30d5fce",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "\r",
+                                    "FileList.prototype.forEach = FileList.prototype.forEach || function( callBack ){\r",
+                                    "    \r",
+                                    "    for( var i =0 ; i < this.length ; i++){\r",
+                                    "        callBack(  this[i] );\r",
+                                    "    }\r",
+                                    "};\r",
+                                    "\r",
+                                    "// ANONYMOUS FUNCTION SELF EXECUTING\r",
+                                    "(  function(){\r",
+                                    "    \r",
+                                    "    var dataUrl = [];\r",
+                                    "    var multipleFileInput  = Ext.ComponentQuery.query(\"#multipleFileInput\")[0];\r",
+                                    "    var fileList = multipleFileInput.getFiles();\r",
+                                    "    fileList.forEach( function( obj){\r",
+                                    "        \r",
+                                    "        var fileReader = new FileReader();\r",
+                                    "        fileReader.onload = function(evt){\r",
+                                    "            console.log(evt);\r",
+                                    "            dataUrl.push({\r",
+                                    "                dataurl:evt.target.result,\r",
+                                    "                name:obj.name\r",
+                                    "            });\r",
+                                    "            if(dataUrl.length == fileList.length){\r",
+                                    "                \r",
+                                    "                // ALL FILES HAVE BEEN LOADED.\r",
+                                    "                var pr ={};\r",
+                                    "                \r",
+                                    "                \r",
+                                    "                \r",
+                                    "                pr.to = 'anandb@futurismtechnologies.com';    // email address to send email to\r",
+                                    "                pr.from = 'support@superAdmin.com';   // email address the email will be sent from\r",
+                                    "                pr.data = { dt: new Date() };  // json object containing the data\r",
+                                    "                pr.subject = 're: testing email @ {dt}';  // email's subject\r",
+                                    "                pr.body = 'email was sent @ {dt}'; // email's body\r",
+                                    "                pr.files = dataUrl;\r",
+                                    "                RMdatalink.iwa.sct.evalremote('upload_file.js', pr, function(res)\r",
+                                    "                                              \r",
+                                    "                                              {\r",
+                                    "                                                  \r",
+                                    "                                                  console.log(arguments);\r",
+                                    "                                                  console.log(res);   // you will get filename here in the property \"nm\".\r",
+                                    "                                              });                \r",
+                                    "                \r",
+                                    "                \r",
+                                    "                \r",
+                                    "                \r",
+                                    "                \r",
+                                    "                \r",
+                                    "                console.log(\"ALL FILES ARE LOADED\");\r",
+                                    "                \r",
+                                    "                //files\r",
+                                    "            }\r",
+                                    "        };\r",
+                                    "        fileReader .readAsDataURL(obj);\r",
+                                    "        \r",
+                                    "    });    \r",
+                                    "    \r",
+                                    "    \r",
+                                    "})();\r",
+                                    "\r",
+                                    ""
+                                ]
+                            },
+                            "designerId": "28c37da4-2237-4de3-8d62-cb0c38f6d278"
                         }
                     ]
                 }

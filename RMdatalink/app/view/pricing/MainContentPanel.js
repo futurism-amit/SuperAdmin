@@ -294,6 +294,7 @@ Ext.define('RMdatalink.view.pricing.MainContentPanel', {
                                     },
                                     {
                                         xtype: 'fieldset',
+                                        height: '150px',
                                         itemId: 'datalinkVendorBundleSetupPanel',
                                         padding: '0 0 4 0',
                                         width: '100%',
@@ -398,6 +399,7 @@ Ext.define('RMdatalink.view.pricing.MainContentPanel', {
                                     },
                                     {
                                         xtype: 'fieldset',
+                                        height: '100px',
                                         itemId: 'DlVdrPricingbyVendorsPanel',
                                         width: '100%',
                                         items: [

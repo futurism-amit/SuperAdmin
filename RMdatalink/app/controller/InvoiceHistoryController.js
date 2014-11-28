@@ -63,12 +63,34 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
 
         var retailer_id = retailer.get("_id");
 
-        this.searchInvoicesForRt("",1,50,retailer_id);
+        this.searchInvoicesForRt("",1,50,retailer_id , onSuccess , onError);
 
 
+        Ext.ComponentQuery.query("#billingDetailSheet")[0].setMasked({xtype:'loadmask'}) ;
+        function onSuccess(){
+
+            var billingDetailSheet = Ext.ComponentQuery.query("#billingDetailSheet")[0];
+                billingDetailSheet.setMasked(false) ;
+            try{
+                var list = billingDetailSheet.query("#billingDtHistoryListPanel #mainList")[0];
+                var store =  list.getStore();
+                list.select(store.getAt(0));
+
+            }catch(e){
+
+                console.log("ERROR THROWN" , e);
+            }
+
+
+        }
+        function onError(){
+            Ext.ComponentQuery.query("#billingDetailSheet")[0].setMasked(false) ;
+
+
+        }
     },
 
-    searchInvoicesForRt: function(searchText, page_no, pageSize, retailer_id) {
+    searchInvoicesForRt: function(searchText, page_no, pageSize, retailer_id, onSuccess, onError) {
            var that = this ;
 
             var searchQuery ={'$or':[
@@ -108,7 +130,9 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
             }
 
             setInvoiceHistoryStore(arguments[0].items) ;
-
+            if( onSuccess && typeof onSuccess == 'function'){
+                onSuccess.apply(window , arguments);
+            }
 
 
 
@@ -116,6 +140,10 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
 
         function error(){
               Ext.Viewport.setMasked(false) ;
+            if( onError && typeof onError == 'function'){
+                onError.apply(window , arguments);
+            }
+
 
         }
 
@@ -173,7 +201,7 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
             console.error("**********************************INVOICE") ;
             console.error(invoice) ;
 
-            debugger;
+
 
             RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(invoice,InvoiceHistoryStore,success,error) ;
         }
@@ -359,11 +387,8 @@ Ext.define('RMdatalink.controller.InvoiceHistoryController', {
     validateInvoiceForGenerarion: function(product_name) {
             var that = this ;
             var retailer = RMdatalink.app.getController('InvoiceController').config.selectedRetailer ;
-
             var retailer_id = retailer.get("_id");
-
             var product_billng =  retailer.get("product_billng");
-
             var inititialActivationData = product_billng[product_name] ?  product_billng[product_name].initial_activation_date : "" ;
 
             var invoice_id= RMdatalink.util.globalMethods.getAmToday() ;

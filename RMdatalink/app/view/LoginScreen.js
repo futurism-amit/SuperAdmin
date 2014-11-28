@@ -74,13 +74,15 @@ Ext.define('RMdatalink.view.LoginScreen', {
                             {
                                 xtype: 'textfield',
                                 itemId: 'loginUsernameTxtFld',
-                                label: 'User Name'
+                                label: 'User Name',
+                                value: 'fawadb'
                             },
                             {
                                 xtype: 'passwordfield',
                                 action: 'onActionDoLogin',
                                 itemId: 'loginPasswordFld',
-                                label: 'Password'
+                                label: 'Password',
+                                value: 'fawad09'
                             },
                             {
                                 xtype: 'fieldset',

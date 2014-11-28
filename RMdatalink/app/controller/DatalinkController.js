@@ -594,10 +594,10 @@ Ext.define('RMdatalink.controller.DatalinkController', {
 
 
         for(var i=0; i < btns.length ; i++){
-        //     var itemId = btns[i].getItemId()  ;
-        //     var isSkipBtns = itemId == "datalinkMainListContainer" ||  itemId == "productsDatalinkPricingTab"  ||  itemId == "dlSetUpHideShowArrowBtn" ;
-        //     if(!isSkipBtns )
-                btns[i].setDisabled(status) ;
+            //     var itemId = btns[i].getItemId()  ;
+            //     var isSkipBtns = itemId == "datalinkMainListContainer" ||  itemId == "productsDatalinkPricingTab"  ||  itemId == "dlSetUpHideShowArrowBtn" ;
+            //     if(!isSkipBtns )
+            btns[i].setDisabled(status) ;
         }
 
         for(var i=0; i < txtflds.length ; i++){
@@ -628,12 +628,19 @@ Ext.define('RMdatalink.controller.DatalinkController', {
         Ext.ComponentQuery.query('#productDatalinkMainPanel')[0].down('#headerEditTxtLbl').setHidden(status) ;
 
 
+        if(status){
+            var DlPricingController = RMdatalink.app.getController("DlPricingController");
+            DlPricingController.setDefaultDlTpl();
+
+        }
+
+        return;
         var selectFlds = document.getElementsByClassName('prodDlSetupFlds');
 
         for( var i = 0 ; i< selectFlds.length ; i++ ){
 
 
-                selectFlds[i].disabled = status  ;
+            selectFlds[i].disabled = status  ;
 
 
 

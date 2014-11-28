@@ -164,7 +164,7 @@ Ext.define('RMdatalink.controller.PaginationController', {
 
             case 'vendors.Master':
 
-                dataLoader.loadVendorMasterStore(scope, pageNo, pageSize,enableCaching ,successCallBack,failuerCallBack);
+                dataLoader.loadVendorMasterStore(scope, pageNo, 100 ||pageSize,enableCaching ,successCallBack,failuerCallBack);
                 wasVendorMasterLoaded = true;
                 break;
             case 'TechSupportLogsStore':
@@ -652,7 +652,7 @@ Ext.define('RMdatalink.controller.PaginationController', {
                 ]} ;
 
 
-                 debugger;
+
                  RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_masterretailerrecords",pageNo:page_no ,pageSize: 50 ,sortBy:{"store_name":1},
                  query:tquery,
                 fields:{}},success,error);

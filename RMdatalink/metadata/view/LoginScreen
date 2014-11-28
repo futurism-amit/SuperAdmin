@@ -97,7 +97,10 @@
                             "codeClass": null,
                             "userConfig": {
                                 "itemId": "loginUsernameTxtFld",
-                                "label": "User Name"
+                                "label": "User Name",
+                                "value": [
+                                    "fawadb"
+                                ]
                             },
                             "configAlternates": {
                                 "isCurrency": "boolean"
@@ -115,7 +118,10 @@
                                 "action": "onActionDoLogin",
                                 "itemId": "loginPasswordFld",
                                 "label": "Password",
-                                "labelWidth": null
+                                "labelWidth": null,
+                                "value": [
+                                    "fawad09"
+                                ]
                             },
                             "designerId": "6c8d6755-dfcb-4bd4-842e-267b57e50367",
                             "customConfigs": [

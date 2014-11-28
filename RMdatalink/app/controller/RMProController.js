@@ -444,13 +444,15 @@ Ext.define('RMdatalink.controller.RMProController', {
          RMdatalink.app.getController('RMProController').onRmProSelectUnselect();
     },
 
-    updateRmproDiscount: function(inputFld, record_key) {
+    updateRmproDiscount: function(inputFld, record_key, store_name) {
+
+        console.log("RMPR");
         console.log(inputFld.attributes['data-id'].value) ;
 
         var _id = inputFld.attributes['data-id'].value ;
         var value = inputFld.value ;
 
-        var rmProBillingStore = Ext.getStore('products.RMProDiscountStore') ;
+        var rmProBillingStore = Ext.getStore(store_name ||'products.RMProDiscountStore') ;
         var recIndex = rmProBillingStore.findExact('id',_id) ;
 
         if(recIndex == -1){

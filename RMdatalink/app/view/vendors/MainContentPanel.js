@@ -67,42 +67,46 @@ Ext.define('RMdatalink.view.vendors.MainContentPanel', {
                                             headers.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main" style="width: 99.5%;border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;">',
-                                            '    <div style="width: 8%;"> Logo&nbsp;',
+                                            '    <div style="width: 4%;"> Logo&nbsp;',
                                             '        <div style="width: 25px;" data-name="all"></div>',
                                             '    </div>',
-                                            '    <div style="width: 10%;" data-name="vendor_name">',
+                                            '    <div style="width: 14%;" class= "boldText" data-name="vendor_name">',
                                             '        Name&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style="width: 8%;" data-name="collections">',
-                                            '        Collections&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                                            '    </div>',
-                                            '    <div style="width: 8%;" data-name="design">',
-                                            '        Designs&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                                            '    </div>',
-                                            '    <div style="width: 8%;" data-name="SKU">',
+
+                                            '    <div style="width: 8%;text-align:center;" class= "boldText"  data-name="SKU">',
                                             '    SKUs&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
 
 
-                                            '    <div style="width: 8%;text-align: center;" data-name="no_of_images">',
+                                            '    <div style="width: 8%;text-align:center;" class= "boldText"  data-name="collections">',
+                                            '        Collections&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div style="width: 8%;text-align:center;" class= "boldText"  data-name="design">',
+                                            '        Designs&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+
+
+
+                                            '    <div style="width: 8%;text-align: center;" class= "boldText"  data-name="no_of_images">',
                                             '      Images&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
 
-                                            '    <div style="width: 8%;text-align: center;" data-name="no_of_additional_images">',
+                                            '    <div style="width: 8%;text-align: center;"  class= "boldText" data-name="no_of_additional_images">',
                                             '     Addl. images&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
 
-                                            '    <div style="width: 8%;" data-name="vendor_monthly_subscription">',
+                                            '    <div style="width: 8%;text-align:center;" class= "boldText"  data-name="vendor_monthly_subscription">',
                                             '    Price/Month&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
 
-                                            '    <div style="width: 12%;" data-name="manager_firstname">',
+                                            '    <div style="width: 12%;text-align:center;" class= "boldText"  data-name="manager_firstname">',
                                             '         Act Manager name&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style="width: 10%;" data-name="manager_phone">',
+                                            '    <div style="width: 10%;text-align:center;" class= "boldText"  data-name="manager_phone">',
                                             '         Phone&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style="width: 10%;" data-name="manager_email">',
+                                            '    <div style="width: 10%;text-align:center;" class= "boldText"  data-name="manager_email">',
                                             '         Email&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
 
@@ -114,24 +118,25 @@ Ext.define('RMdatalink.view.vendors.MainContentPanel', {
 
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
-                                            '<div class="x-rm-listtpl-main pointerCursor">',
-                                            '    <div style="width: 8%;overflow:visible;">',
+                                            '<div class="x-rm-listtpl-main pointerCursor" >',
+                                            '    <div style="width: 4%;overflow:visible;">',
                                             '        <div style="width: 25px; height:25px; background-image:url({vendor_logo})"></div>',
                                             '    </div>',
-                                            '    <div style="width: 10%;" class= "boldText" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{vendor_name}</div>',
-                                            '    <div style="width: 8%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.collections)]}</div>',
-                                            '    <div style="width: 8%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}" >{[formatNormalNum(values.design)]}</div>',
-                                            '    <div style="width: 8%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.SKU)]}</div>',
+                                            '    <div style="width: 14%;" class= "boldText" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{vendor_name}</div>',
+                                            '    <div style="width: 8%;text-align:center;"  class= "boldText" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.SKU)]}</div>',
 
-                                            '    <div style="width: 8%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.no_of_images)]}</div>',
-                                            '    <div style="width: 8%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.no_of_additional_images)]}</div>',
+                                            '    <div style="width: 8%;text-align:center;" class= "boldText"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.collections)]}</div>',
+                                            '    <div style="width: 8%;text-align:center;" class= "boldText"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}" >{[formatNormalNum(values.design)]}</div>',
+
+                                            '    <div style="width: 8%;text-align:center;" class= "boldText"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.no_of_images)]}</div>',
+                                            '    <div style="width: 8%;text-align:center;"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNormalNum(values.no_of_additional_images)]}</div>',
 
 
-                                            '    <div style="width: 8%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNum(values.product_price.datalink.standard_price)]}</div>',
+                                            '    <div style="width: 8%;text-align:center;"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}"  >{[formatNum(values.product_price.datalink.standard_price)]}</div>',
 
-                                            '    <div style="width: 12%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap()]}" > {[this.getAccMgrName(values)]}</div>',
-                                            '    <div style="width: 10%;height: 32px;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap()]}" >  {[this.getAccMgrPhone(values)]}</div>',
-                                            '    <div style="width: 10%;">  {[this.getAccMgrEmail(values)]}</div>',
+                                            '    <div style="width: 12%;text-align:center;"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap()]}" > {[this.getAccMgrName(values)]}</div>',
+                                            '    <div style="width: 10%;height: 32px;text-align:center;"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap()]}" >  {[this.getAccMgrPhone(values)]}</div>',
+                                            '    <div style="width: 10%;text-align:center;" >  {[this.getAccMgrEmail(values)]}</div>',
                                             '</div>',
                                             {
 

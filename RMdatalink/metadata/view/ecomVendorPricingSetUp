@@ -41,6 +41,7 @@
                 "cls": [
                     "x-rm-rdformpanel"
                 ],
+                "itemId": "ecommVdrPricingTimeTknToUploadPanel",
                 "layout": "vbox",
                 "layout|flex": 1,
                 "margin": null,
@@ -63,6 +64,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "height": 26,
                         "itemId": "ecomVdrPricingSku_imgsSetUpPanel",
                         "title": null,
                         "width": "100%"
@@ -82,7 +84,7 @@
                                     "pointerCursor"
                                 ],
                                 "height": null,
-                                "html": "Pricing Setup (SKU + Images)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "html": "Pricing Setup (SKU + Images)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                 "itemId": "mylabel6",
                                 "labelAction": "dropDown",
                                 "margin": "1 0 10 0",
@@ -447,6 +449,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "height": 26,
                         "itemId": "ecomVdrPricingSku_imgs_addlImgsSetUpPanel",
                         "title": null,
                         "width": "100%"
@@ -466,7 +469,7 @@
                                     "pointerCursor"
                                 ],
                                 "height": null,
-                                "html": "Pricing Setup (SKU + Images + Addl Images)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "html": "Pricing Setup (SKU + Images + Addl Images)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                 "itemId": "mylabel6",
                                 "labelAction": "dropDown",
                                 "margin": "1 0 10 0",
@@ -831,6 +834,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "height": 26,
                         "itemId": "ecomVdrPricingVdrDiscountSetUpPanel",
                         "title": null,
                         "width": "100%"
@@ -850,7 +854,7 @@
                                     "pointerCursor"
                                 ],
                                 "height": null,
-                                "html": "Discount Policy Setup (Vendors)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "html": "Discount Policy Setup (Vendors)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                 "itemId": "mylabel6",
                                 "labelAction": "dropDown",
                                 "margin": "1 0 10 0",
@@ -1184,198 +1188,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "ecomVdrPricingTimeTknToUploadPanel",
-                        "title": null,
-                        "width": "100%"
-                    },
-                    "designerId": "53b65eae-314d-4f51-bc20-7a83404e6f75",
-                    "cn": [
-                        {
-                            "type": "Ext.Label",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "cls": [
-                                    "fieldLbl",
-                                    "pointerCursor"
-                                ],
-                                "height": null,
-                                "html": "Value Calculator Setup<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
-                                "itemId": "mylabel6",
-                                "labelAction": "dropDown",
-                                "margin": "1 0 10 0",
-                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
-                                "width": null
-                            },
-                            "designerId": "fc46f2fe-f6fe-41e7-bb77-c0095379d150",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "labelAction",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "vdrTimeTknSkuImagsFld",
-                                "label": "Time Taken per SKU + Image:",
-                                "labelWidth": "52%"
-                            },
-                            "designerId": "f727ca21-d6ad-487f-9dc3-6fb83e312959"
-                        },
-                        {
-                            "type": "Ext.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "vdrTimeTknSkuImagsAddlImgsFld",
-                                "label": "Time Taken per SKU + Image + Addl Image:",
-                                "labelWidth": "52%"
-                            },
-                            "designerId": "f5b20ff8-3505-44ae-8171-d6d37d08d567"
-                        },
-                        {
-                            "type": "Ext.form.FieldSet",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "container|align": "start",
-                                "container|pack": "center",
-                                "height": null,
-                                "layout": "hbox",
-                                "margin": "4 0 4 0",
-                                "padding": "0 2 0 0",
-                                "title": null,
-                                "width": "86%"
-                            },
-                            "designerId": "d8f4dcd9-6268-40b0-9029-253cae2a77b4",
-                            "cn": [
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "action": "addNew",
-                                        "cls": [
-                                            "x-rm-blueBtn"
-                                        ],
-                                        "docked": null,
-                                        "height": "20px",
-                                        "itemId": null,
-                                        "margin": "0 0 0 20",
-                                        "text": "Update",
-                                        "width": "80px"
-                                    },
-                                    "designerId": "95956938-a50b-49fc-b392-f1168b4b16a2",
-                                    "customConfigs": [
-                                        {
-                                            "group": "(Custom Properties)",
-                                            "name": "action",
-                                            "type": "string"
-                                        }
-                                    ],
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|params": [
-                                                    "button",
-                                                    "e"
-                                                ],
-                                                "fn": "handler",
-                                                "implHandler": [
-                                                    "RMdatalink.app.getController('ecomPricingController').updateTimeTakenFlds();"
-                                                ]
-                                            },
-                                            "designerId": "dce4650b-f6a9-429d-80b3-3da097161774"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "cls": [
-                                            "newGrayBtn"
-                                        ],
-                                        "height": "20px",
-                                        "hidden": true,
-                                        "itemId": null,
-                                        "margin": "0 0 0 20",
-                                        "minHeight": "24px",
-                                        "pressedCls": "x-rm-card-actionbtn-pressing",
-                                        "style": null,
-                                        "text": "Delete",
-                                        "width": "80px"
-                                    },
-                                    "designerId": "cda7909b-d47a-4b7e-b756-d60a9e0e43ed"
-                                },
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "badgeText": "",
-                                        "cls": [
-                                            "x-rm-blueBtn",
-                                            "x-rm-rdopenbtns",
-                                            "x-rm-smalliconbtns"
-                                        ],
-                                        "docked": null,
-                                        "height": "20px",
-                                        "hidden": null,
-                                        "icon": null,
-                                        "iconAlign": "center",
-                                        "itemId": null,
-                                        "margin": "0 0 0 20",
-                                        "text": "Clear",
-                                        "width": "80px"
-                                    },
-                                    "designerId": "ee82599d-e639-49d4-be0c-32ab9c52b042"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.form.FieldSet",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
+                        "height": 26,
                         "itemId": "ecomVdrPricingSKUDiscountSetUpPanel",
                         "title": null,
                         "width": "100%"
@@ -1395,7 +1208,7 @@
                                     "pointerCursor"
                                 ],
                                 "height": null,
-                                "html": "Discount Policy Setup (SKU)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                "html": "Discount Policy Setup (SKU)<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
                                 "itemId": "mylabel6",
                                 "labelAction": "dropDown",
                                 "margin": "1 0 10 0",
@@ -1720,6 +1533,199 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 26,
+                        "itemId": "ecomVdrPricingTimeTknToUploadPanel",
+                        "title": null,
+                        "width": "100%"
+                    },
+                    "designerId": "53b65eae-314d-4f51-bc20-7a83404e6f75",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "fieldLbl",
+                                    "pointerCursor"
+                                ],
+                                "height": null,
+                                "html": "Value Calculator Setup<img src=\"resources/images/labelHeader/rightArrow.png\" style=\"float: right;\"/>",
+                                "itemId": "mylabel6",
+                                "labelAction": "dropDown",
+                                "margin": "1 0 10 0",
+                                "style": "background-color: gainsboro;font-weight:bold;font-size:0.8em;",
+                                "width": null
+                            },
+                            "designerId": "fc46f2fe-f6fe-41e7-bb77-c0095379d150",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "labelAction",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "vdrTimeTknSkuImagsFld",
+                                "label": "Time Taken per SKU + Image:",
+                                "labelWidth": "52%"
+                            },
+                            "designerId": "f727ca21-d6ad-487f-9dc3-6fb83e312959"
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "vdrTimeTknSkuImagsAddlImgsFld",
+                                "label": "Time Taken per SKU + Image + Addl Image:",
+                                "labelWidth": "52%"
+                            },
+                            "designerId": "f5b20ff8-3505-44ae-8171-d6d37d08d567"
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "start",
+                                "container|pack": "center",
+                                "height": null,
+                                "layout": "hbox",
+                                "margin": "4 0 4 0",
+                                "padding": "0 2 0 0",
+                                "title": null,
+                                "width": "86%"
+                            },
+                            "designerId": "d8f4dcd9-6268-40b0-9029-253cae2a77b4",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "action": "addNew",
+                                        "cls": [
+                                            "x-rm-blueBtn"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "itemId": null,
+                                        "margin": "0 0 0 20",
+                                        "text": "Update",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "95956938-a50b-49fc-b392-f1168b4b16a2",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "action",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "RMdatalink.app.getController('ecomPricingController').updateTimeTakenFlds();"
+                                                ]
+                                            },
+                                            "designerId": "dce4650b-f6a9-429d-80b3-3da097161774"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": [
+                                            "newGrayBtn"
+                                        ],
+                                        "height": "20px",
+                                        "hidden": true,
+                                        "itemId": null,
+                                        "margin": "0 0 0 20",
+                                        "minHeight": "24px",
+                                        "pressedCls": "x-rm-card-actionbtn-pressing",
+                                        "style": null,
+                                        "text": "Delete",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "cda7909b-d47a-4b7e-b756-d60a9e0e43ed"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "badgeText": "",
+                                        "cls": [
+                                            "x-rm-blueBtn",
+                                            "x-rm-rdopenbtns",
+                                            "x-rm-smalliconbtns"
+                                        ],
+                                        "docked": null,
+                                        "height": "20px",
+                                        "hidden": null,
+                                        "icon": null,
+                                        "iconAlign": "center",
+                                        "itemId": null,
+                                        "margin": "0 0 0 20",
+                                        "text": "Clear",
+                                        "width": "80px"
+                                    },
+                                    "designerId": "ee82599d-e639-49d4-be0c-32ab9c52b042"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -1734,7 +1740,7 @@
                 "fn": "onDlVendorPricingSetUpPainted",
                 "implHandler": [
                     "\r",
-                    "return ;\r",
+                    "\r",
                     "var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;\r",
                     "\r",
                     "    if(!pricingData[2]){\r",
@@ -1744,51 +1750,54 @@
                     "\r",
                     "\r",
                     "\r",
-                    "    var form = Ext.ComponentQuery.query('#dlVdrPricingTimeTknToUploadPanel')[0] ;\r",
+                    "    var form = Ext.ComponentQuery.query('#ecommVdrPricingTimeTknToUploadPanel')[0] ;\r",
                     "\r",
                     "\r",
-                    "    form.down('#vdrTimeTknSkuImagsFld').setValue(pricingData[0].time_taken_images) ;\r",
-                    "    form.down('#vdrTimeTknSkuImagsAddlImgsFld').setValue(pricingData[0].time_taken_images_addl_images) ;\r",
+                    "    form.down('#vdrTimeTknSkuImagsFld').setValue(pricingData[2].time_taken_images) ;\r",
+                    "    form.down('#vdrTimeTknSkuImagsAddlImgsFld').setValue(pricingData[2].time_taken_images_addl_images) ;\r",
                     "\r",
                     "\r",
                     "\r",
                     "\r",
                     "\r",
-                    "form = Ext.ComponentQuery.query('#DlVendorPricingSetUp')[0] ;\r",
-                    "var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;\r",
                     "\r",
                     "\r",
-                    "if(!pricingData[0].state_values){\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "if(!pricingData[2].state_values ){\r",
                     "    return ;\r",
                     "}\r",
                     "var selectfield ;\r",
                     "\r",
                     "\r",
                     "\r",
-                    "if(pricingData[0].state_values.vendor_pricing_sku_images )\r",
+                    "if(pricingData[2].state_values.vendor_pricing_sku_images )\r",
                     "{\r",
-                    "    selectfield = form.down('#policySelectSI') ;\r",
-                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_images ) ;\r",
+                    "    selectfield = form.down('#ecompolicySelectSI') ;\r",
+                    "    selectfield.setValue( pricingData[2].state_values.vendor_pricing_sku_images ) ;\r",
                     "}\r",
                     "\r",
                     "\r",
-                    "if(pricingData[0].state_values.vendor_pricing_sku_images_addl_images )\r",
+                    "if( pricingData[2].state_values.vendor_pricing_sku_images_addl_images )\r",
                     "{\r",
-                    "   selectfield = form.down('#policySelectAI') ;\r",
-                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_images_addl_images ) ;\r",
+                    "   selectfield = form.down('#ecompolicySelectAI') ;\r",
+                    "    selectfield.setValue( pricingData[2].state_values.vendor_pricing_sku_images_addl_images ) ;\r",
                     "}\r",
                     "\r",
-                    "if(pricingData[0].state_values.vendor_pricing_vdr_discount )\r",
+                    "if(pricingData[2].state_values.vendor_pricing_vdr_discount )\r",
                     "{\r",
-                    "     selectfield = form.down('#discountPolicySlct') ;\r",
-                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_vdr_discount ) ;\r",
+                    "     selectfield = form.down('#ecomdiscountPolicySlct') ;\r",
+                    "    selectfield.setValue( pricingData[2].state_values.vendor_pricing_vdr_discount ) ;\r",
                     "}\r",
                     "\r",
                     "\r",
-                    "if(pricingData[0].state_values.vendor_pricing_sku_discount )\r",
+                    "if(pricingData[2].state_values.vendor_pricing_sku_discount )\r",
                     "{\r",
-                    "     selectfield = form.down('#SKUdiscountPolicySlct') ;\r",
-                    "    selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_discount ) ;\r",
+                    "     selectfield = form.down('#ecomSKUdiscountPolicySlct') ;\r",
+                    "    selectfield.setValue( pricingData[2].state_values.vendor_pricing_sku_discount ) ;\r",
                     "}"
                 ],
                 "name": "painted"

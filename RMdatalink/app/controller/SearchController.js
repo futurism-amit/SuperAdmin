@@ -222,6 +222,7 @@ Ext.define('RMdatalink.controller.SearchController', {
                 var queryToExecute = getSearchQuery() ;
                         console.log(queryToExecute) ;
 
+
                         startSearch(queryToExecute) ;
         }
         else{
@@ -363,20 +364,28 @@ Ext.define('RMdatalink.controller.SearchController', {
 
                  var temp = { $or:[] };
                  var q = {} ;
-             if(values.allProdChk){
+             if(values.allProdChk &&  values.allProd &&  values.allProd !='ANY'){
 
 
+                var valueofCheck  =  values.allProd;
+
+                 if(values.allProd  == 'UNDEFINED'){
+
+                     valueofCheck = null;
+
+
+                 }
 
 
                  if(values.dlstatus){
-                      q['store_products.datalink_status'] =  values.allProd  ;// { $regex: values.allProd  , $options: 'i' } ;
+                      q['store_products.datalink_status'] =  valueofCheck  ;// { $regex: values.allProd  , $options: 'i' } ;
                      temp.$or.push(q);
                  }
 
 
                  if(values.rmprostatus){
                      q = {} ;
-                      q["store_products.rmpro_status"] = values.allProd  ;//{ $regex: values.allProd  , $options: 'i' } ;
+                      q["store_products.rmpro_status"] = valueofCheck  ;//{ $regex: values.allProd  , $options: 'i' } ;
                      temp.$or.push(q);
                  }
 
@@ -384,7 +393,7 @@ Ext.define('RMdatalink.controller.SearchController', {
 
                  if(values.iRugzStatus){
                      q = {} ;
-                      q[ "store_products.irugs_status"] = values.allProd  ;//{ $regex: values.allProd  , $options: 'i' } ;
+                      q[ "store_products.irugs_status"] = valueofCheck  ;//{ $regex: values.allProd  , $options: 'i' } ;
                      temp.$or.push(q);
                  }
 
@@ -392,19 +401,19 @@ Ext.define('RMdatalink.controller.SearchController', {
 
                  if(values.eComstatus){
                      q = {} ;
-                      q["store_products.ecommerce_status"] = values.allProd  ;//{ $regex: values.allProd  , $options: 'i' } ;
+                      q["store_products.ecommerce_status"] = valueofCheck  ;//{ $regex: values.allProd  , $options: 'i' } ;
                      temp.$or.push(q);
                  }
 
 
                  if(values.eCatStatus){
                      q = {} ;
-                      q["store_products.ecatalog_status"] =values.allProd  ;// { $regex: values.allProd  , $options: 'i' } ;
+                      q["store_products.ecatalog_status"] =valueofCheck  ;// { $regex: values.allProd  , $options: 'i' } ;
                     temp.$or.push(q);
                  }
                  if(values.vipStatus){
                      q = {} ;
-                      q["store_products.vip_status"] =values.allProd  ;// { $regex: values.allProd  , $options: 'i' } ;
+                      q["store_products.vip_status"] =valueofCheck ;// { $regex: values.allProd  , $options: 'i' } ;
                     temp.$or.push(q);
                  }
 
@@ -415,6 +424,11 @@ Ext.define('RMdatalink.controller.SearchController', {
 
 
                 temp =  { $or:[] } ;
+               if(values.allProdChk && values.allProd  == 'UNDEFINED'){
+
+
+               }else
+               {
                 if(values.dlstatus){
                     q = {} ;
                       q['store_products.datalink_status'] =  { $regex: ""  , $options: 'i' } ;
@@ -464,10 +478,13 @@ Ext.define('RMdatalink.controller.SearchController', {
 
                  }
 
-                    if(temp.$or.length > 0 ){
-                      //   temp.$or.push(q);
-                      query.$and.push(temp );
-                    }
+
+               }
+
+            if(temp.$or.length > 0 ){
+                //   temp.$or.push(q);
+                query.$and.push(temp );
+            }
 
 
 
@@ -521,6 +538,7 @@ Ext.define('RMdatalink.controller.SearchController', {
 
                  var searchQuery =  qry ;
 
+
             RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_masterretailerrecords",pageNo:1,pageSize: 50 ,sortBy:{"store_name":1},
                                         query:searchQuery,fields:{}},success,error);
 
@@ -542,6 +560,7 @@ Ext.define('RMdatalink.controller.SearchController', {
                  that.config.doNotSave = false ;
              }
                 rtMainPanel.down('#mainLoadingImg').setHidden(true) ;
+
 
                 setRetailersList(arguments[0].items) ;
                   setTotalCount(arguments[0].count,arguments[0].items) ;
@@ -572,10 +591,17 @@ Ext.define('RMdatalink.controller.SearchController', {
 
               var prospectStore = Ext.getStore('retailersMaster') ; // prospectList.getStore() ;
 
+            var arayToPush = [];
+            data.forEach(function(obj){
+
+                delete obj.id;
+                arayToPush.push(obj);
+
+            });
             prospectStore.removeAll();
             prospectStore.sync();
 
-            prospectStore.setData(data) ;
+            prospectStore.setData(arayToPush) ;
 
             prospectStore.sync();
 

@@ -68,6 +68,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
 
                                     RMdatalink.app.getController('ecomPricingController').SAVEDatalinkSetup();
                                     RMdatalink.app.getController('ecomPricingController').resetPricingListTemplate();
+                                    RMdatalink.app.getController('ecomPricingController').resetDiscountListTemplate();
                                 },
                                 action: 'addNew',
                                 cls: 'x-rm-blueBtn',
@@ -85,6 +86,8 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                     RMdatalink.app.getController('ecomController').enableDisableDlFlds(false);
 
                                     RMdatalink.app.getController('ecomPricingController').setPricingListTemplate();
+
+                                    RMdatalink.app.getController('ecomPricingController').setDiscountTemplate();
                                 },
                                 action: 'addNew',
                                 cls: 'x-rm-blueBtn',
@@ -101,6 +104,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                     RMdatalink.app.getController('ecomController').enableDisableDlFlds(true);
 
                                     RMdatalink.app.getController('ecomPricingController').resetPricingListTemplate();
+                                    RMdatalink.app.getController('ecomPricingController').resetDiscountListTemplate();
                                 },
                                 cls: 'x-rm-card-actionbtn',
                                 height: '24px',
@@ -338,6 +342,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                     },
                                                                     {
                                                                         xtype: 'label',
+                                                                        cls: 'fontDefination',
                                                                         docked: 'right',
                                                                         html: 'Total price for selected items::',
                                                                         margin: '5 5 5 10',
@@ -375,11 +380,11 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             headers.setData([{}]);
                                                             headers.setItemTpl(
                                                             Ext.create('Ext.XTemplate',
-                                                            '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;">',
-                                                            '    <div style="width: 6%;">',
+                                                            '<div class="x-rm-listtpl-main fontDefination" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;">',
+                                                            '    <div style="width: 4%;">',
                                                             '        <div style="width: 20px;" data-name="all"></div>',
                                                             '    </div>',
-                                                            '    <div class="rightBorderDiv" style="width: 4%;text-align: center;" data-name="module_listed_order">',
+                                                            '    <div class="rightBorderDiv" style="width: 6%;text-align: center;" data-name="module_listed_order">',
                                                             '        index&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                                             '    </div>',
                                                             '    <div class="rightBorderDiv" style="width: 14%;" data-name="module_sku">',
@@ -409,11 +414,11 @@ Ext.define('RMdatalink.view.products.EcomMain', {
 
                                                             list.setItemTpl(
                                                             Ext.create('Ext.XTemplate',
-                                                            '<div class="x-rm-listtpl-main pointerCursor" style="{[this.getSelectedColor(values)]}">',
-                                                            '    <div style="width: 6%;">',
+                                                            '<div class="x-rm-listtpl-main pointerCursor fontDefination" style="{[this.getSelectedColor(values)]}">',
+                                                            '    <div style="width: 4%;">',
                                                             '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                                                             '    </div>',
-                                                            '    <div class="rightBorderDiv" style="width: 4%;"> {module_listed_order}</div>',
+                                                            '    <div class="rightBorderDiv" style="width: 6%;"> {module_listed_order}</div>',
                                                             '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_skus}</div>',
                                                             '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_name}</div>',
                                                             '    <div class="rightBorderDiv" style="width: 38%;">{module_description}</div>',
@@ -558,6 +563,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                     },
                                                                     {
                                                                         xtype: 'label',
+                                                                        cls: 'fontDefination',
                                                                         docked: 'right',
                                                                         html: 'Total price for selected items::',
                                                                         margin: '5 5 5 10',
@@ -595,11 +601,11 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             headers.setData([{}]);
                                                             headers.setItemTpl(
                                                             Ext.create('Ext.XTemplate',
-                                                            '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;">',
-                                                            '    <div style="width: 6%;">',
+                                                            '<div class="x-rm-listtpl-main fontDefination" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;">',
+                                                            '    <div style="width: 4%;">',
                                                             '        <div style="width: 20px;" data-name="all"></div>',
                                                             '    </div>',
-                                                            '    <div class="rightBorderDiv" style="width: 4%;text-align: center;" data-name="module_listed_order">',
+                                                            '    <div class="rightBorderDiv" style="width: 6%;text-align: center;" data-name="module_listed_order">',
                                                             '        index&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                                             '    </div>',
                                                             '    <div class="rightBorderDiv" style="width: 14%;" data-name="module_sku">',
@@ -629,11 +635,11 @@ Ext.define('RMdatalink.view.products.EcomMain', {
 
                                                             list.setItemTpl(
                                                             Ext.create('Ext.XTemplate',
-                                                            '<div class="x-rm-listtpl-main pointerCursor" style="{[this.getSelectedColor(values)]}">',
-                                                            '    <div style="width: 6%;">',
+                                                            '<div class="x-rm-listtpl-main pointerCursor fontDefination" style="{[this.getSelectedColor(values)]}">',
+                                                            '    <div style="width: 4%;">',
                                                             '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                                                             '    </div>',
-                                                            '    <div class="rightBorderDiv" style="width: 4%;"> {module_listed_order}</div>',
+                                                            '    <div class="rightBorderDiv" style="width: 6%;"> {module_listed_order}</div>',
                                                             '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_skus}</div>',
                                                             '    <div class="rightBorderDiv boldText" style="width: 14%;">{module_name}</div>',
                                                             '    <div class="rightBorderDiv" style="width: 38%;">{module_description}</div>',
@@ -787,7 +793,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             'fieldLbl',
                                                             'pointerCursor'
                                                         ],
-                                                        html: 'Bundle Setup E-Commerce (Add-ons)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                                        html: 'Bundle Setup (Add-ons)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
                                                         itemId: 'mylabel5',
                                                         margin: '0 0 2 0',
                                                         style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -1021,8 +1027,8 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         items: [
                                                             {
                                                                 xtype: 'label',
-                                                                html: 'Charge Mode:',
-                                                                style: 'font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: \'OpenSans\'; font-size: 70% !important; color: #555555 !important; font-weight: bold;',
+                                                                html: 'Charges:',
+                                                                style: 'font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: \'OpenSans\'; font-size: 70% !important; color: #555555 !important; font-weight: bold;margin-left:2px; ',
                                                                 width: '80px'
                                                             },
                                                             {
@@ -1053,7 +1059,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                                         xtype: 'radiofield',
                                                                         cls: 'removeBorderCheckBox',
                                                                         width: '100px',
-                                                                        label: '1 Month',
+                                                                        label: 'Monthly',
                                                                         labelAlign: 'right',
                                                                         labelWidth: '80px',
                                                                         name: 'charge_mode',
@@ -1081,7 +1087,7 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             {
                                                                 xtype: 'label',
                                                                 html: 'Product:',
-                                                                style: 'font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: \'OpenSans\'; font-size: 70% !important; color: #555555 !important; font-weight: bold;',
+                                                                style: 'font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: \'OpenSans\'; font-size: 70% !important; color: #555555 !important; font-weight: bold;margin-left:2px;',
                                                                 width: '80px'
                                                             },
                                                             {
@@ -1230,7 +1236,71 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                         margin: '0 0 0 0'
                                                     },
                                                     {
+                                                        xtype: 'panel',
+                                                        layout: 'hbox',
+                                                        items: [
+                                                            {
+                                                                xtype: 'label',
+                                                                html: 'Display In VIP:',
+                                                                style: 'font-weight: 700; font-size: 11px; height: 24px; padding: 6px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: \'OpenSans\'; font-size: 70% !important; color: #555555 !important; font-weight: bold;',
+                                                                width: '80px'
+                                                            },
+                                                            {
+                                                                xtype: 'formpanel',
+                                                                flex: 1,
+                                                                height: '35px',
+                                                                itemId: 'displayInVIPPanel',
+                                                                width: '100%',
+                                                                scrollable: false,
+                                                                layout: {
+                                                                    type: 'hbox',
+                                                                    align: 'start'
+                                                                },
+                                                                items: [
+                                                                    {
+                                                                        xtype: 'radiofield',
+                                                                        cls: 'removeBorderCheckBox',
+                                                                        margin: '',
+                                                                        style: 'margin-left:5px;',
+                                                                        width: '100px',
+                                                                        label: 'Yes',
+                                                                        labelAlign: 'right',
+                                                                        labelWidth: '80px',
+                                                                        name: 'displayvalue',
+                                                                        value: '1'
+                                                                    },
+                                                                    {
+                                                                        xtype: 'radiofield',
+                                                                        cls: 'removeBorderCheckBox',
+                                                                        width: '100px',
+                                                                        label: 'No',
+                                                                        labelAlign: 'right',
+                                                                        labelWidth: '80px',
+                                                                        name: 'displayvalue',
+                                                                        value: '2',
+                                                                        checked: true
+                                                                    }
+                                                                ],
+                                                                listeners: [
+                                                                    {
+                                                                        fn: function(component, eOpts) {
+                                                                            component.addListener("painted" , function(){
+
+                                                                                var values = component.getValues() || {};
+
+                                                                                values.displayvalue = RMdatalink.app.getController('BillingDetailsController').config.pricingData[2].displayVIPAdvancePaymentBenfit;
+                                                                                component.setValues(values);
+                                                                            } , this);
+                                                                        },
+                                                                        event: 'initialize'
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
                                                         xtype: 'fieldset',
+                                                        hidden: true,
                                                         margin: '10 2px 10 80',
                                                         padding: '0 2 0 0',
                                                         layout: {
@@ -1301,17 +1371,17 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                                             headers.setHidden(true);
 
                                                             var list = component.down('#mainList');
-                                                            list.setStore(Ext.getStore('products.ecomDiscountStore'));
+                                                            list.setStore( Ext.getStore('products.ecomDiscountStore') );
                                                             list.setItemTpl(
                                                             Ext.create('Ext.XTemplate',
                                                             '<div class="x-rm-listtpl-main pointerCursor">',
 
-                                                            '    <div style="width: 74%;padding-left: 15%;">{discount_name}</div>',
+                                                            '    <div style="width: 74%;padding-left: 15%;" >{discount_name}</div>',
                                                             '    <div style="width: 5%;">%</div>',
 
                                                             '<div style="width: 15%;text-align: center;">',
-                                                            '    <input type="text" style="width: 92% !important;margin-left: 2%;height: 16px;padding-left: 2px;" class="x-rm-rdinlinecmt prodDlSetupFlds" data-id="{id}" value="{discount_value}" maxlength="24"',
-                                                            '        onchange="RMdatalink.app.getController(\'RMProController\').updateRmproDiscount(this,\'discount_value\');"/>',
+                                                            '<div style="" class="x-rm-rdinlinecmt prodDlSetupFlds" data-id="{id}" >',
+                                                            ' {discount_value}</div>',
                                                             '</div>',
 
 
@@ -3042,10 +3112,10 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             headers.setItemTpl(
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;padding:0 0px 0 0px !important;height:64px;">',
-                                            '    <div style="width: 4%;padding-top: 44px;">',
+                                            '    <div style="width: 2.5%;padding-top: 44px;">',
                                             '        <div style="width: 19px; height:19px;{[this.getCartImage(values)]}" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" l1 = "2123"  ></div>',
                                             '    </div>',
-                                            '    <div class="rightBorderDiv" style="width: 8%;text-align: center;padding-top: 44px;" data-name="vendor_name">',
+                                            '    <div class="rightBorderDiv" style="width: 9.5%;text-align: center;padding-top: 44px;" data-name="vendor_name">',
                                             '        Vendor&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
 
@@ -3141,11 +3211,11 @@ Ext.define('RMdatalink.view.products.EcomMain', {
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-                                            '    <div style="width: 4%;">',
+                                            '    <div style="width: 2.5%;">',
                                             '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                                             '    </div>',
 
-                                            '    <div class="rightBorderDiv boldText " style="width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
+                                            '    <div class="rightBorderDiv boldText " style="width: 9.5%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
                                             '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                                             '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                                             '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',

@@ -42,11 +42,13 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                 action: 'setScrollBarVisible',
                 flex: 1,
                 cls: 'x-rm-rdformpanel',
+                itemId: 'ecommVdrPricingTimeTknToUploadPanel',
                 layout: 'vbox',
                 scrollable: true,
                 items: [
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'ecomVdrPricingSku_imgsSetUpPanel',
                         width: '100%',
                         items: [
@@ -57,7 +59,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Pricing Setup (SKU + Images)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Pricing Setup (SKU + Images)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -202,6 +204,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'ecomVdrPricingSku_imgs_addlImgsSetUpPanel',
                         width: '100%',
                         items: [
@@ -212,7 +215,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Pricing Setup (SKU + Images + Addl Images)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Pricing Setup (SKU + Images + Addl Images)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -357,6 +360,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'ecomVdrPricingVdrDiscountSetUpPanel',
                         width: '100%',
                         items: [
@@ -367,7 +371,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Discount Policy Setup (Vendors)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Discount Policy Setup (Vendors)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -498,87 +502,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
-                        itemId: 'ecomVdrPricingTimeTknToUploadPanel',
-                        width: '100%',
-                        items: [
-                            {
-                                xtype: 'label',
-                                labelAction: 'dropDown',
-                                cls: [
-                                    'fieldLbl',
-                                    'pointerCursor'
-                                ],
-                                html: 'Value Calculator Setup<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
-                                itemId: 'mylabel6',
-                                margin: '1 0 10 0',
-                                style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
-                            },
-                            {
-                                xtype: 'textfield',
-                                itemId: 'vdrTimeTknSkuImagsFld',
-                                label: 'Time Taken per SKU + Image:',
-                                labelWidth: '52%'
-                            },
-                            {
-                                xtype: 'textfield',
-                                itemId: 'vdrTimeTknSkuImagsAddlImgsFld',
-                                label: 'Time Taken per SKU + Image + Addl Image:',
-                                labelWidth: '52%'
-                            },
-                            {
-                                xtype: 'fieldset',
-                                margin: '4 0 4 0',
-                                padding: '0 2 0 0',
-                                width: '86%',
-                                layout: {
-                                    type: 'hbox',
-                                    align: 'start',
-                                    pack: 'center'
-                                },
-                                items: [
-                                    {
-                                        xtype: 'button',
-                                        handler: function(button, e) {
-                                            RMdatalink.app.getController('ecomPricingController').updateTimeTakenFlds();
-                                        },
-                                        action: 'addNew',
-                                        cls: 'x-rm-blueBtn',
-                                        height: '20px',
-                                        margin: '0 0 0 20',
-                                        width: '80px',
-                                        text: 'Update'
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        cls: 'newGrayBtn',
-                                        height: '20px',
-                                        hidden: true,
-                                        margin: '0 0 0 20',
-                                        minHeight: '24px',
-                                        width: '80px',
-                                        pressedCls: 'x-rm-card-actionbtn-pressing',
-                                        text: 'Delete'
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        cls: [
-                                            'x-rm-blueBtn',
-                                            'x-rm-rdopenbtns',
-                                            'x-rm-smalliconbtns'
-                                        ],
-                                        height: '20px',
-                                        margin: '0 0 0 20',
-                                        width: '80px',
-                                        badgeText: '',
-                                        iconAlign: 'center',
-                                        text: 'Clear'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
+                        height: 26,
                         itemId: 'ecomVdrPricingSKUDiscountSetUpPanel',
                         width: '100%',
                         items: [
@@ -589,7 +513,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Discount Policy Setup (SKU)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Discount Policy Setup (SKU)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -717,6 +641,88 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
                                 ]
                             }
                         ]
+                    },
+                    {
+                        xtype: 'fieldset',
+                        height: 26,
+                        itemId: 'ecomVdrPricingTimeTknToUploadPanel',
+                        width: '100%',
+                        items: [
+                            {
+                                xtype: 'label',
+                                labelAction: 'dropDown',
+                                cls: [
+                                    'fieldLbl',
+                                    'pointerCursor'
+                                ],
+                                html: 'Value Calculator Setup<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
+                                itemId: 'mylabel6',
+                                margin: '1 0 10 0',
+                                style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
+                            },
+                            {
+                                xtype: 'textfield',
+                                itemId: 'vdrTimeTknSkuImagsFld',
+                                label: 'Time Taken per SKU + Image:',
+                                labelWidth: '52%'
+                            },
+                            {
+                                xtype: 'textfield',
+                                itemId: 'vdrTimeTknSkuImagsAddlImgsFld',
+                                label: 'Time Taken per SKU + Image + Addl Image:',
+                                labelWidth: '52%'
+                            },
+                            {
+                                xtype: 'fieldset',
+                                margin: '4 0 4 0',
+                                padding: '0 2 0 0',
+                                width: '86%',
+                                layout: {
+                                    type: 'hbox',
+                                    align: 'start',
+                                    pack: 'center'
+                                },
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        handler: function(button, e) {
+                                            RMdatalink.app.getController('ecomPricingController').updateTimeTakenFlds();
+                                        },
+                                        action: 'addNew',
+                                        cls: 'x-rm-blueBtn',
+                                        height: '20px',
+                                        margin: '0 0 0 20',
+                                        width: '80px',
+                                        text: 'Update'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        cls: 'newGrayBtn',
+                                        height: '20px',
+                                        hidden: true,
+                                        margin: '0 0 0 20',
+                                        minHeight: '24px',
+                                        width: '80px',
+                                        pressedCls: 'x-rm-card-actionbtn-pressing',
+                                        text: 'Delete'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        cls: [
+                                            'x-rm-blueBtn',
+                                            'x-rm-rdopenbtns',
+                                            'x-rm-smalliconbtns'
+                                        ],
+                                        height: '20px',
+                                        margin: '0 0 0 20',
+                                        width: '80px',
+                                        badgeText: '',
+                                        iconAlign: 'center',
+                                        text: 'Clear'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -731,7 +737,7 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
 
     onDlVendorPricingSetUpPainted: function(element, eOpts) {
 
-        return ;
+
         var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
 
             if(!pricingData[2]){
@@ -741,51 +747,54 @@ Ext.define('RMdatalink.view.ecomVendorPricingSetUp', {
 
 
 
-            var form = Ext.ComponentQuery.query('#dlVdrPricingTimeTknToUploadPanel')[0] ;
+            var form = Ext.ComponentQuery.query('#ecommVdrPricingTimeTknToUploadPanel')[0] ;
 
 
-            form.down('#vdrTimeTknSkuImagsFld').setValue(pricingData[0].time_taken_images) ;
-            form.down('#vdrTimeTknSkuImagsAddlImgsFld').setValue(pricingData[0].time_taken_images_addl_images) ;
+            form.down('#vdrTimeTknSkuImagsFld').setValue(pricingData[2].time_taken_images) ;
+            form.down('#vdrTimeTknSkuImagsAddlImgsFld').setValue(pricingData[2].time_taken_images_addl_images) ;
 
 
 
 
 
-        form = Ext.ComponentQuery.query('#DlVendorPricingSetUp')[0] ;
-        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
 
 
-        if(!pricingData[0].state_values){
+
+
+
+
+
+        if(!pricingData[2].state_values ){
             return ;
         }
         var selectfield ;
 
 
 
-        if(pricingData[0].state_values.vendor_pricing_sku_images )
+        if(pricingData[2].state_values.vendor_pricing_sku_images )
         {
-            selectfield = form.down('#policySelectSI') ;
-            selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_images ) ;
+            selectfield = form.down('#ecompolicySelectSI') ;
+            selectfield.setValue( pricingData[2].state_values.vendor_pricing_sku_images ) ;
         }
 
 
-        if(pricingData[0].state_values.vendor_pricing_sku_images_addl_images )
+        if( pricingData[2].state_values.vendor_pricing_sku_images_addl_images )
         {
-           selectfield = form.down('#policySelectAI') ;
-            selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_images_addl_images ) ;
+           selectfield = form.down('#ecompolicySelectAI') ;
+            selectfield.setValue( pricingData[2].state_values.vendor_pricing_sku_images_addl_images ) ;
         }
 
-        if(pricingData[0].state_values.vendor_pricing_vdr_discount )
+        if(pricingData[2].state_values.vendor_pricing_vdr_discount )
         {
-             selectfield = form.down('#discountPolicySlct') ;
-            selectfield.setValue( pricingData[0].state_values.vendor_pricing_vdr_discount ) ;
+             selectfield = form.down('#ecomdiscountPolicySlct') ;
+            selectfield.setValue( pricingData[2].state_values.vendor_pricing_vdr_discount ) ;
         }
 
 
-        if(pricingData[0].state_values.vendor_pricing_sku_discount )
+        if(pricingData[2].state_values.vendor_pricing_sku_discount )
         {
-             selectfield = form.down('#SKUdiscountPolicySlct') ;
-            selectfield.setValue( pricingData[0].state_values.vendor_pricing_sku_discount ) ;
+             selectfield = form.down('#ecomSKUdiscountPolicySlct') ;
+            selectfield.setValue( pricingData[2].state_values.vendor_pricing_sku_discount ) ;
         }
     }
 

@@ -791,10 +791,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
             headers.setItemTpl(
                 Ext.create('Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;padding:0 0px 0 0px !important;height:64px;">',
-                           '    <div style="width: 4%;padding-top: 44px;">',
+                           '    <div style="width: 2.5%;padding-top: 44px;">',
                            '        <div style="width: 19px; height:19px;{[this.getCartImage(values)]}" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" l1 = "2123"  ></div>',
                            '    </div>',
-                           '    <div class="rightBorderDiv" style="width: 8%;text-align: center;padding-top: 44px;" data-name="vendor_name">',
+                           '    <div class="rightBorderDiv" style="width: 9.5%;text-align: center;padding-top: 44px;" data-name="vendor_name">',
                            '        Vendor&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                            '    </div>',
 
@@ -884,11 +884,11 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                 Ext.create('Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-                           '    <div style="width: 4%;">',
+                           '    <div style="width: 2.5%;">',
                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                            '    </div>',
 
-                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px; {[ this.getColorForVendor(values) ]}   " >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv boldText" style="width: 9.5%;padding-left:10px; {[ this.getColorForVendor(values) ]}   " >{vendor_name}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -1094,11 +1094,13 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
             var vid = data.policy[i].vendor_id ;
 
             var rec = getVrec(vid);
+            if(rec){
+                rec.set("ecom_std",data.policy[i].ecom_std);
+                rec.set("ecom_promo",data.policy[i].ecom_promo);
+                rec.set("ecom_std_addl",data.policy[i].ecom_std_addl);
+                rec.set("ecom_promo_addl",data.policy[i].ecom_promo_addl);
 
-            rec.set("ecom_std",data.policy[i].ecom_std);
-            rec.set("ecom_promo",data.policy[i].ecom_promo);
-            rec.set("ecom_std_addl",data.policy[i].ecom_std_addl);
-            rec.set("ecom_promo_addl",data.policy[i].ecom_promo_addl);
+            }
         }
 
         function getVrec(vid1){
@@ -1159,11 +1161,11 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                 Ext.create('Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-                           '    <div style="width: 4%;">',
+                           '    <div style="width: 2.5%;">',
                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                            '    </div>',
 
-                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;  {[ this.getColorForVendor(values) ]} " >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv boldText" style="width: 9.5%;padding-left:10px;  {[ this.getColorForVendor(values) ]} " >{vendor_name}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -1374,11 +1376,11 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                 Ext.create('Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-                           '    <div style="width: 4%;">',
+                           '    <div style="width: 2.5%;">',
                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                            '    </div>',
 
-                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv boldText" style="width: 9.5%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -1715,11 +1717,11 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
                 'Ext.XTemplate',
                 '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-                '    <div style="width: 4%;">',
+                '    <div style="width: 2.5%;">',
                 '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                 '    </div>',
 
-                '    <div class="rightBorderDiv" style="width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
+                '    <div class="rightBorderDiv" style="width: 9.5%;padding-left:10px; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
                 '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                 '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                 '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -3406,12 +3408,79 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
     },
 
     updateProductBundle: function() {
+        function areSelectionFromMultipleList(){
+
+            var ecomMainListContainer = Ext.ComponentQuery.query('#ecomMainListContainer')[0];
+            var productSetupecomListPanel = ecomMainListContainer.query('#productSetupecomListPanel')[0];
+            var productSetupeVipListPanel = ecomMainListContainer.query('#productSetupeVipListPanel')[0];
+
+
+            return getSelectionFromChildList(productSetupecomListPanel).length && getSelectionFromChildList(productSetupeVipListPanel).length ;
+
+
+        }
+        function getSelectionFromChildList(parent){
+
+            var dlList = parent.down('#mainList') ;
+            var selection = dlList.getSelection() ;
+            var tArray = [] ;
+            for( var i =0 ; i < selection.length; i++ ){
+
+                tArray.push({
+
+                    product_id:selection[i].data._id
+
+                });
+
+            }
+
+            return tArray;
+        }
+
+        function getPolicyArray(parent){
+
+            var dlList = parent.down('#mainList') ;
+
+            var selection = dlList.getSelection() ;
+            var tArray = [] ;
+
+            for( var i =0 ; i < selection.length; i++ ){
+
+                tArray.push({
+
+                    product_id:selection[i].data._id
+
+                });
+
+            }
+
+            return tArray;
+
+
+        }
+
+
+
+
+        if( areSelectionFromMultipleList() ){
+
+            Ext.Msg.alert("Error","Products cannot be selected from two programs simultaneously");
+            return ;
+
+
+        }
+
+
+
 
         if(! this.validateDlProductBundle()){
 
             Ext.Msg.alert("Error","All fields are mandatory.");
             return ;
         }
+
+
+
 
 
         var dataToUpdate = {
@@ -3442,12 +3511,51 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
             options = [] ;
         }
 
+        var ecomMainListContainer = Ext.ComponentQuery.query('#ecomMainListContainer')[0];
+        var productSetupecomListPanel = ecomMainListContainer.query('#productSetupecomListPanel')[0];
+        var productSetupeVipListPanel = ecomMainListContainer.query('#productSetupeVipListPanel')[0];
+
+
+        var ecomPlociy = getPolicyArray(productSetupecomListPanel);
+        var vipPlociy = getPolicyArray(productSetupeVipListPanel);
+
+
+        var policyToSend = ecomPlociy.length ? ecomPlociy : vipPlociy;
+
+
+
+        var isAddtionalVendorSelected = false;
+        policyToSend.forEach(function(obj){
+            try{
+                var ecomMainStore = Ext.getStore('products.ecomMain') ;
+                var _id = obj.product_id;
+                var record = ecomMainStore.findRecord("_id",_id);
+                if( record.get("module_name") == 'Additional Vendors')
+                {
+                    isAddtionalVendorSelected = true;
+                }
+
+            }catch(e){
+
+                console.log("ERROR THROWN" , e);
+                return;
+            }
+
+        });
+
+        if( isAddtionalVendorSelected ){
+
+            Ext.Msg.alert("Error","Additional Vendors Cannot Be Selected for Bundle Setup");
+            return ;
+
+
+        }
 
         var tempRec = {
 
                 text :policyText,
                 value: policyText,
-                products:getPolicyArray(),
+                products:policyToSend,
                 price:price
 
             };
@@ -3455,7 +3563,6 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
 
         if(isAddNew){
             options.push(tempRec);
-
             fieldStore.add(tempRec);
         }else{
 
@@ -3482,11 +3589,13 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
         dataToUpdate.datalink_bundle = options ;
 
         var _id = RMdatalink.app.getController('BillingDetailsController').config.pricingData[2]._id ;
-
         this.updatePricingStore(_id,'datalink_bundle',dataToUpdate.datalink_bundle );
 
-         RMdatalink.iwa.rdl.doUpdateCollection(store, dataToUpdate , _id, success, error);
+        console.log("1");
+        console.log(tempRec);
 
+
+        RMdatalink.iwa.rdl.doUpdateCollection(store, dataToUpdate , _id, success, error);
         if(isAddNew){
 
             this.clearProductBundle();
@@ -3494,9 +3603,6 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
 
         function success(){
             Ext.Viewport.setMasked(false);
-
-
-
         }
 
         function error(){
@@ -3505,27 +3611,10 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
         }
 
 
-        function getPolicyArray(){
-
-            var dlList = Ext.ComponentQuery.query('#ecomMainListContainer')[0].down('#mainList') ;
-
-            var selection = dlList.getSelection() ;
-            var tArray = [] ;
-
-            for( var i =0 ; i < selection.length; i++ ){
-
-                tArray.push({
-
-                    product_id:selection[i].data._id
-
-                });
-
-            }
-
-            return tArray;
 
 
-        }
+
+
     },
 
     deleteProductBundle: function() {
@@ -3598,27 +3687,79 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
     },
 
     selectDlProducts: function(selection) {
+        var me = this;
 
-        if(!selection){
-            return ;
-        }
-
-
-        var dlList = Ext.ComponentQuery.query('#ecomMainListContainer')[0].down('#mainList') ;
-        var store = dlList.getStore() ;
-
-        dlList.deselectAll() ;
-
-        for(var i=0 ; i < selection.length ; i ++){
-
-            var rIndex = store.findExact('_id',selection[i].product_id) ;
-
-            if(rIndex !== -1){
-                dlList.select(store.getAt(rIndex),true,true);
+        function fnToExecute(){
+            if(!selection){
+                return ;
             }
+
+
+            var ecomMainListContainer = Ext.ComponentQuery.query('#ecomMainListContainer')[0];
+            var productSetupecomListPanel = ecomMainListContainer.query('#productSetupecomListPanel')[0];
+            var productSetupeVipListPanel = ecomMainListContainer.query('#productSetupeVipListPanel')[0];
+
+            //productSetupecomListPanel
+
+            console.log(selection);
+            function select(parent){
+
+                try{
+                    var dlList = parent.down('#mainList') ;
+
+
+                    var store = dlList.getStore() ;
+
+                    dlList.deselectAll() ;
+
+                    for(var i=0 ; i < selection.length ; i ++){
+
+                        var rIndex = store.findExact('_id',selection[i].product_id) ;
+
+                        if(rIndex !== -1){
+                            dlList.select(store.getAt(rIndex),true,true);
+                        }
+                    }
+
+                }catch(e){
+
+                    console.log("ERROR THROWN" , e);
+                }
+
+            }
+            select(productSetupecomListPanel);
+            select(productSetupeVipListPanel);
+
+            RMdatalink.app.getController('ecomController').onRmProSelectUnselect(productSetupecomListPanel);
+            RMdatalink.app.getController('ecomController').onRmProSelectUnselect(productSetupeVipListPanel);
+
+
         }
 
-         RMdatalink.app.getController('ecomController').onRmProSelectUnselect();
+
+
+        setTimeout(function(){
+
+
+            fnToExecute.call(me);
+
+        },800);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     },
 
     validateDlVendorBundle: function() {
@@ -4059,7 +4200,7 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
         }
 
 
-        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ;
+        var pricingData = RMdatalink.app.getController('BillingDetailsController').config.pricingData ,
         dataToUpdate = {} ;
         dataToUpdate.state_values = {} ;
 
@@ -4126,6 +4267,16 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
         dataToUpdate.state_values.vendor_pricing_sku_discount = slVal ;
 
         ///////////////////////////////////////////////////////
+
+
+        try{
+            var displayInVIPPanelValues = Ext.ComponentQuery.query("#displayInVIPPanel")[0].getValues();
+            dataToUpdate.displayVIPAdvancePaymentBenfit = displayInVIPPanelValues.displayvalue;
+
+        }catch(e){
+
+        }
+
         var pricingStore = Ext.getStore('pricing.MainStore') ;
         var _id = RMdatalink.app.getController('BillingDetailsController').config.pricingData[2]._id ;
 
@@ -4136,6 +4287,7 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
         this.updatePricingStore(_id,'datalink_vendor_bundle',dataToUpdate.datalink_vendor_bundle );
         this.updatePricingStore(_id,'datalink_bundle',dataToUpdate.datalink_bundle );
         this.updatePricingStore(_id,'state_values',dataToUpdate.state_values );
+        this.updatePricingStore(_id,'displayVIPAdvancePaymentBenfit',dataToUpdate.displayVIPAdvancePaymentBenfit );
 
         dataToUpdate.vendor_pricing_vendors_sel_policy = vendor_pricing_vendors_sel_policy;
 
@@ -4340,6 +4492,55 @@ Ext.define('RMdatalink.controller.ecomPricingController', {
     },
 
     setDefaultTplOnPricingList: function() {
+
+    },
+
+    resetDiscountListTemplate: function() {
+
+        var component = Ext.ComponentQuery.query("#ecomDiscountListPanel")[0];
+        var list = component.down('#mainList');
+
+        list.setItemTpl(
+            Ext.create('Ext.XTemplate',
+                       '<div class="x-rm-listtpl-main pointerCursor">',
+                       '    <div style="width: 74%;padding-left: 15%;" >{discount_name}</div>',
+                       '    <div style="width: 5%;">%</div>',
+
+                       '<div style="width: 15%;text-align: center;">',
+                       '<div style="width: 92% !important;margin-left: 2%;height: 16px;padding-left: 2px;" class="x-rm-rdinlinecmt prodDlSetupFlds" data-id="{id}"    >',
+                       ' {discount_value}</div>',
+                       '</div>',
+
+
+                       '</div>'
+                      )
+        );
+
+    },
+
+    setDiscountTemplate: function() {
+
+        var component = Ext.ComponentQuery.query("#ecomDiscountListPanel")[0];
+        var list = component.down('#mainList');
+
+
+        list.setItemTpl(
+            Ext.create('Ext.XTemplate',
+                       '<div class="x-rm-listtpl-main pointerCursor">',
+
+                       '    <div style="width: 74%;padding-left: 15%;" >{discount_name}</div>',
+                       '    <div style="width: 5%;">%</div>',
+
+                       '<div style="width: 15%;text-align: center;">',
+                       '    <input type="text" style="width: 92% !important;margin-left: 2%;height: 16px;padding-left: 2px;" class="x-rm-rdinlinecmt prodDlSetupFlds" data-id="{id}" value="{discount_value}" maxlength="24"',
+                       '        onchange="RMdatalink.app.getController(\'RMProController\').updateRmproDiscount(this,\'discount_value\',\'products.ecomDiscountStore\');"/>',
+                       '</div>',
+
+
+                       '</div>'
+                      )
+        );
+
 
     }
 

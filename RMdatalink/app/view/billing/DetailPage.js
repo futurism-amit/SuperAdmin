@@ -220,6 +220,7 @@ Ext.define('RMdatalink.view.billing.DetailPage', {
                                                         label: '<b> License For: </b>',
                                                         labelCls: 'boldInputFld',
                                                         labelWidth: '110px',
+                                                        value: 12,
                                                         autoSelect: false,
                                                         options: [
                                                             {

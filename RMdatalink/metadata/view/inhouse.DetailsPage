@@ -437,6 +437,11 @@
                                                                                     "userConfig": {
                                                                                         "fn": "onRDManagerStoreEditBtnTap11",
                                                                                         "implHandler": [
+                                                                                            "console.log(\"SEND PASSWORD TO THE USER \");\r",
+                                                                                            "\r",
+                                                                                            "var controller = RMdatalink.app.getController('inhouse.DetailScreenController');\r",
+                                                                                            "\r",
+                                                                                            "controller.sendPasswordToUser();\r",
                                                                                             ""
                                                                                         ],
                                                                                         "name": "tap"
@@ -932,12 +937,12 @@
                                                             "\r",
                                                             "fileSelect.onchange = function() {\r",
                                                             "\r",
-                                                            "    \r",
                                                             "\r",
-                                                            "      Ext.Msg.alert('Alert.', 'Currently image uploading is not available.', Ext.emptyFn);\r",
-                                                            "    return ;\r",
                                                             "\r",
-                                                            "    \r",
+                                                            "//       Ext.Msg.alert('Alert.', 'Currently image uploading is not available.', Ext.emptyFn);\r",
+                                                            "//     return ;\r",
+                                                            "\r",
+                                                            "\r",
                                                             "    var file = this.files[0];\r",
                                                             "    var imageType = /image.*/;\r",
                                                             "    if (!file.type.match(imageType)) {\r",

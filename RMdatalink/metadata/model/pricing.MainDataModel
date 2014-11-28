@@ -249,6 +249,22 @@
                 "name": "vendor_pricing_vendors_sel_policy"
             },
             "designerId": "4a5c5ff4-9274-46c8-a008-565df9bebdba"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "\"2\""
+                ],
+                "name": "displayVIPAdvancePaymentBenfit",
+                "type": "string"
+            },
+            "designerId": "ffdf1caa-7d57-4243-8c70-f0c2f0de243c"
         }
     ]
 }

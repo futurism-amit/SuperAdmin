@@ -411,8 +411,8 @@ Ext.define('RMdatalink.view.inhouse.DetailsPage', {
 
 
 
-                                                                Ext.Msg.alert('Alert.', 'Currently image uploading is not available.', Ext.emptyFn);
-                                                                return ;
+                                                                //       Ext.Msg.alert('Alert.', 'Currently image uploading is not available.', Ext.emptyFn);
+                                                                //     return ;
 
 
                                                                 var file = this.files[0];
@@ -2061,6 +2061,11 @@ Ext.define('RMdatalink.view.inhouse.DetailsPage', {
     },
 
     onRDManagerStoreEditBtnTap11: function(button, e, eOpts) {
+        console.log("SEND PASSWORD TO THE USER ");
+
+        var controller = RMdatalink.app.getController('inhouse.DetailScreenController');
+
+        controller.sendPasswordToUser();
 
     },
 

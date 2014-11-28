@@ -76,7 +76,10 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
 
 
                                             var headers = component.down("#headerList");
-                                            headers.setData([{}]);
+                                            headers.setData([{
+                                                "Description":'Description'
+
+                                            }]);
 
                                             headers.setItemTpl(
                                             Ext.create('Ext.XTemplate',
@@ -91,7 +94,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                             '        Product/ Add Ons&nbsp;',
                                             '    </div>',
                                             '    <div class="rightBorderDiv" style="width: 46%;text-align: center;" data-name="module_description">',
-                                            '       Description&nbsp;',
+                                            '     {[this.getDescriptionString(values)]}  &nbsp;',
                                             '    </div>',
                                             '    <div class="rightBorderDiv" style="width: 10%;text-align: center;" data-name="trial">',
                                             '        Status&nbsp;',
@@ -100,12 +103,28 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                             '        Qty&nbsp;',
                                             '    </div>',
                                             '    <div class="rightBorderDiv" style="width: 8%;text-align: center;" data-name="module_standard_price">',
-                                            '        Std. Price&nbsp;',
+                                            '        Price&nbsp;',
                                             '    </div>',
                                             '    <div style="width: 10%;text-align: center;" data-name="per_month">',
                                             '         Per Month&nbsp;',
                                             '    </div>',
-                                            '</div>'
+                                            '</div>',{
+
+                                                getDescriptionString:function(values){
+
+                                                    try{
+
+                                                        return values.Description;
+
+                                                    }catch(e){
+
+                                                        console.log("ERROR THROWN" , e);
+                                                        return 'Description';
+
+                                                    }
+
+                                                }
+                                            }
                                             )
                                             );
 
@@ -115,13 +134,13 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                             list.setStore(Ext.getStore('products.AllBillingModulesStore'));
                                             list.setItemTpl(
                                             Ext.create('Ext.XTemplate',
-                                            '<div style="height:20px" class="x-rm-listtpl-main pointerCursor">',
+                                            '<div style="height:auto;" class="x-rm-listtpl-main pointerCursor">',
                                             '    <div style="width: 4%;">',
                                             '        <div style="width: 18px; height:16px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                                             '    </div>',
                                             '    <div class="rightBorderDiv" style="margin-right: 0px;width: 2%;">{module_listed_order}</div>',
                                             '    <div class="rightBorderDiv" style="width: 14%;font-weight: bold;">{module_name}</div>',
-                                            '    <div class="rightBorderDiv" style="width: 46%;">{module_description}</div>',
+                                            '    <div class="rightBorderDiv" style="width: 46%;white-space: normal;">{module_description}</div>',
                                             '   <div class="rightBorderDiv" style="width: 10%;">',
 
                                             '<select class="rmProStatusFlds" data-id="{_id}" onchange="RMdatalink.app.getController(\'ProductBillingController\').updateRmproAllModuleList(this,\'remark_val\');" style="height: 16px;width: 96%; margin-left:2%; color:{[this.getColor(values,"3")]};">',
@@ -365,7 +384,8 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                 flex: 3,
                                 cls: ' x-rm-rdformpanel',
                                 height: '100%',
-                                hidden: false,
+                                hidden: true,
+                                itemId: 'advancePaymentFormPanel',
                                 margin: '0 1 0 0',
                                 layout: 'vbox',
                                 items: [
@@ -425,7 +445,8 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                             {
                                 xtype: 'formpanel',
                                 cls: 'x-rm-rdformpanel borderedDiv',
-                                height: 142,
+                                docked: 'right',
+                                height: '100%',
                                 margin: '0 1 0 20',
                                 padding: '0 0 0 0',
                                 width: 300,
@@ -571,6 +592,35 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                         }
                                         //
                                     });
+
+
+
+                                    //
+
+
+                                    component.addListener("painted" , function(){
+
+
+                                        console.log("advancePaymentFormPanel hiding on painted");
+                                        var advancePaymentFormPanel = component.down("#advancePaymentFormPanel");
+                                        var ProductBillingController = RMdatalink.app.getController("ProductBillingController");
+
+                                        if(advancePaymentFormPanel){
+
+                                            if(ProductBillingController.getIsFromVip() && RMdatalink.app.getController('BillingDetailsController').config.pricingData[2].displayVIPAdvancePaymentBenfit == 2){
+                                                advancePaymentFormPanel.setHidden(true);
+                                            }else{
+                                                advancePaymentFormPanel.setHidden(false);
+                                            }
+
+                                        }
+
+                                    },this);
+
+                                    /*
+
+                                    //advancePaymentFormPanel
+                                    */
                                 },
                                 event: 'initialize'
                             }
@@ -713,6 +763,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         width: '100%',
                         items: [
                             {
@@ -722,7 +773,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Vendor Data<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Vendor Data<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'lbl1',
                                 margin: '0 0 1 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -783,6 +834,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         width: '100%',
                         items: [
                             {
@@ -792,7 +844,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Add Ons<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Add Ons<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'lbl2',
                                 margin: '0 0 1 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -827,6 +879,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         width: '100%',
                         items: [
                             {
@@ -836,7 +889,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Discounts<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Discounts<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'lbl3',
                                 margin: '0 0 1 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -869,7 +922,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                 xtype: 'label',
                                 cls: 'fieldLbl',
                                 height: '24px',
-                                html: 'Subscription<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Subscription<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'productRmproSlctTermLbl',
                                 margin: '0 0 1 0',
                                 style: 'font-weight: bold;',
@@ -916,6 +969,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                             },
                             {
                                 xtype: 'selectfield',
+                                hidden: true,
                                 itemId: 'productRmproSlctTermBillFrqSlctFld',
                                 width: '96%',
                                 label: 'Billing Frequency:',
@@ -959,6 +1013,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                             {
                                 xtype: 'textfield',
                                 action: 'inputByDatePicker',
+                                hidden: true,
                                 itemId: 'productRmProSlctTermNxtDueDateFld',
                                 margin: '-1 0 0 0',
                                 width: '96%',
@@ -968,6 +1023,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                             {
                                 xtype: 'textfield',
                                 isCurrency: true,
+                                hidden: true,
                                 html: '<div style= "margin:-20px 0 0 -12px;font-size:0.9em;">$</div>',
                                 itemId: 'productRmProSlctTermPrice',
                                 width: '96%',
@@ -978,6 +1034,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: '26px',
                         width: '100%',
                         items: [
                             {
@@ -985,7 +1042,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                 labelAction: 'dropDown',
                                 cls: 'fieldLbl',
                                 height: '24px',
-                                html: 'Contract<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Contract<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'productRmproPaymentFreqLbl',
                                 margin: '0 0 1 0',
                                 style: 'font-weight: bold;',
@@ -1062,6 +1119,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         width: '100%',
                         items: [
                             {
@@ -1069,7 +1127,7 @@ Ext.define('RMdatalink.view.products.RM_PRO_ForRetailer', {
                                 labelAction: 'dropDown',
                                 cls: 'fieldLbl',
                                 height: '24px',
-                                html: 'Commission<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Commission<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'productDatalinkVdrDiscTtlLbl1',
                                 margin: '0 0 1 0',
                                 style: 'font-weight: bold;',

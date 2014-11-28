@@ -648,9 +648,39 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
         }
         else{
+
+            //isVendorAuthorized
+
+            if(  isVendorAuthorized( record.data._id  ) ){
+
+            }else{
+                var me = this;
+                Ext.Msg.confirm('Warning', 'The Selected Vendor Is Not Authorised Vendor.Do You Want To Continue ?', function(btn){
+                    if(btn === 'yes'){
+
+                         fnToExecute.call(me);
+
+                    }
+                    else{
+
+                    }
+                });
+                return;
+            }
+
+
+
+
+            fnToExecute.call(this);
+        }
+
+        function fnToExecute(){
+
             console.error(202);
 
             //setResetReatilersForVendors: function(isRemove, store_id, store_phone, vendorRecord)
+
+
 
             console.error(selectedUserRecord);
             var activeList  = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDInStoreVendorList')[0].down("#mainList");
@@ -682,18 +712,21 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
             activeList.selectAll();
 
-        //     var objectToAddInRetailersArrayofRecord = {
-        //         retailer_id:
-        //     }
+            //     var objectToAddInRetailersArrayofRecord = {
+            //         retailer_id:
+            //     }
             this.setResetReatilersForVendors(false , selectedUserRecord.record.data._id , selectedUserRecord.record.data.store_phone ,record ) ;
 
 
-                var storeToPass = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList").getStore();
-                this.setFilterForProspectVendors('RDStoreSideTabPanel',storeToPass );
+            var storeToPass = Ext.ComponentQuery.query('#RDStoreSideTabPanel #RDOnlineVendorsTab')[0].down("#mainList").getStore();
+            this.setFilterForProspectVendors('RDStoreSideTabPanel',storeToPass );
 
 
-          //  this.setFilterForProspectVendors('RDStoreSideTabPanel' , storeToPass)  ;
+            //  this.setFilterForProspectVendors('RDStoreSideTabPanel' , storeToPass)  ;
         }
+
+
+        //isVendorAuthorized
     },
 
     onRetailerEcommerceSelect: function(record, target) {
@@ -731,6 +764,35 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
 
         }else{
+
+
+            var me = this;
+            if(  isVendorAuthorized( record.data.vendor_id || record.data._id ) ){
+
+            }else{
+                var me = this;
+                Ext.Msg.confirm('Warning', 'The Selected Vendor Is Not Authorised Vendor.Do You Want To Continue ?', function(btn){
+                    if(btn === 'yes'){
+
+                         addVendorToList.call(me);
+
+                    }
+                    else{
+
+                    }
+                });
+                return;
+            }
+            addVendorToList.call(this);
+        }
+
+
+
+
+
+
+        function addVendorToList(){
+
             console.error(202);
 
 
@@ -798,13 +860,7 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
 
 
-        //     var objectToAddInRetailersArrayofRecord = {
-        //         retailer_id:
-        //     }
-
-        //
         }
-
     },
 
     onRetailerAuthorizedVendrsSelect: function(record, target) {
@@ -867,9 +923,10 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
                 'store_name':	record.data.store_name,
                 'store_phone':	record.data.store_phone,
                 'store_state':	record.data.store_state,
-                'vendor_id':	record.data.vendor_id,
+                'vendor_id':	record.data.vendor_id || record.data._id,
                 'vendor_name':	record.data.vendor_name,
-                '_id':	record.data._id
+                '_id':	record.data._id || record.data.vendor_id
+
 
             };
             var keyOfFilter = 'prevent_be_ecommerceVendor';
@@ -953,6 +1010,40 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
 
         }else{
+
+            var me = this;
+            if(  isVendorAuthorized( record.data.vendor_id || record.data._id ) ){
+
+            }else{
+                var me = this;
+                Ext.Msg.confirm('Warning', 'The Selected Vendor Is Not Authorised Vendor.Do You Want To Continue ?', function(btn){
+                    if(btn === 'yes'){
+
+                         addVendorToList.call(me);
+
+                    }
+                    else{
+
+                    }
+                });
+                return;
+            }
+
+
+
+            addVendorToList.call(this);
+
+        }
+
+
+
+
+
+        function addVendorToList(){
+
+
+
+
             console.error(202);
 
 
@@ -1021,12 +1112,10 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
 
 
 
-        //     var objectToAddInRetailersArrayofRecord = {
-        //         retailer_id:
-        //     }
 
-        //
+
         }
+
 
 
 
@@ -1959,6 +2048,200 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
         }
     },
 
+    updateAccNoofAuthorizedRetailersVender: function(store_id, store_phone, vendor_id, vendor_name, acc_No) {
+
+        var isRemove = false;
+
+        var vendorMaster = Ext.getStore('vendors.Master');
+
+
+        var record;
+        if(vendor_id)
+        {
+            record = findVendorBy_id(vendor_id) ;
+        }
+        else if(vendor_name){
+
+            record = findVendorBy_name(vendor_name) ;
+        }else{
+            return;
+        }
+
+
+
+
+        if(!record){
+
+            return ;
+        }
+
+        var rtlrs = [] ;
+
+        if(record.data.retailers_ecommerce )
+        {
+            rtlrs = record.data.retailers_ecommerce ;
+        }
+
+
+
+        if(isRemove && false){
+
+            removeRetailerFromVendorDt() ;
+
+        }
+        else{
+
+            addRetailerToVendorDt();
+        }
+
+        updateVendor() ;
+
+        function removeRetailerFromVendorDt(){
+            for(var i=0; i< rtlrs.length ; i++ ){
+
+                if(rtlrs[i].retailer_id ){
+
+                    if(store_id == rtlrs[i].retailer_id ){
+
+                        rtlrs.splice(i, 1);
+                        break ;
+                    }
+                }else{
+
+                    if(store_phone == rtlrs[i].retailer_phone ){
+
+
+                        rtlrs.splice(i, 1);
+                         break ;
+                    }
+
+
+                }
+            }
+
+
+        }
+
+
+
+        function addRetailerToVendorDt(){
+
+            var isRecAlreadyPresent = false ;
+
+            for(var i=0; i< rtlrs.length ; i++ ){
+
+                if(rtlrs[i].retailer_id ){
+
+                    if(store_id == rtlrs[i].retailer_id ){
+
+                        console.log("ACCOUNT NO ADDED");
+
+                        rtlrs[i].Account_No = acc_No;
+
+                        isRecAlreadyPresent =true ;
+
+                        break ;
+                    }
+                }else{
+
+                    if(store_phone == rtlrs[i].retailer_phone ){
+
+
+                         isRecAlreadyPresent =true ;
+                         break ;
+                    }
+
+
+                }
+            }
+
+
+            if(! isRecAlreadyPresent){
+
+                rtlrs.push(
+                    {
+
+                          retailer_phone : store_phone,
+                          type: "ACTIVE",
+                          retailer_id:store_id,
+                          Account_No:''
+
+
+                   }
+                );
+            }
+
+
+        }
+
+
+
+        function updateVendor(){
+
+
+            var dataToupdate = {
+
+                retailers_authorized:rtlrs
+            };
+            console.error(dataToupdate);
+            RMdatalink.iwa.rdl.doUpdateCollection(vendorMaster, dataToupdate , record.get('_id'), updateSuccess, updateError );
+
+
+        }
+
+
+
+        function updateSuccess(){
+
+            record.set("retailers", rtlrs);
+             Ext.Viewport.setMasked(false);
+            console.log("vendor updated successfully");
+        }
+
+
+
+        function updateError(){
+
+             Ext.Viewport.setMasked(false);
+            console.log("error in updating vendor");
+
+        }
+
+        function findVendorBy_id(v_id){
+
+             var vendors = vendorMaster.data.all ;
+            var venRec = null ;
+            for(var j=0;j<vendors.length ; j++){
+
+                if(v_id == vendors[j].data._id){
+
+                    venRec = vendors[j] ;
+                    break;
+                }
+            }
+
+            return venRec;
+
+        }
+
+        function findVendorBy_name(v_name){
+
+            var vendors = vendorMaster.data.all ;
+            var venRec = null ;
+            for(var j=0;j<vendors.length ; j++){
+
+                if(v_name == vendors[j].data.vendor_name){
+
+                    venRec = vendors[j] ;
+                    break;
+                }
+            }
+
+            return venRec;
+
+        }
+    },
+
     saveAccountNoOfRetailerData: function() {
         console.error("SHOULD SAVE INFORMATION");
 
@@ -1966,6 +2249,7 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
          var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
 
         this.saveAccountNoOfEcomRetailerData();
+        this.saveAccountNoOfAuthorisedVendors();
 
         if(!isRetailerDetailsView && false)
         {
@@ -2105,6 +2389,68 @@ Ext.define('RMdatalink.controller.VendorRetailerRelations', {
         // //     }
 
         //     this.setFilterForProspectVendors() ;
+        }
+    },
+
+    saveAccountNoOfAuthorisedVendors: function() {
+        console.error("SHOULD SAVE INFORMATION");
+
+         var isRetailerDetailsView = RMdatalink.app.getController('UINav').isRetailerDetailsView;
+         var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+
+
+
+        if(!isRetailerDetailsView && false)
+        {
+
+
+        //     var strPhone = record.data.store_phone ;
+        //     var strId = record.data._id ;
+        //     var impCSV = RMdatalink.app.getController('ImportCSV') ;
+        //     this.config.selectedRetailerProspect = record.data ;
+        //     impCSV.assignRetailerForVendor(selectedUserRecord.record.data,strPhone , true,strId) ;
+        //      var prospectList  = Ext.ComponentQuery.query('#RDOnlineVendorsTab')[0].down("#mainList");
+        //     var prospectStore = prospectList.getStore() ;
+        //     // prospectList.remove(record) ;
+        //     this.setFilterForProspectRetailers();
+        //      RMdatalink.app.getController('VendorRetailerRelations').updateVendorOnRetailerAddedOrRemoved() ;
+
+
+        }else{
+            console.error(202);
+
+
+
+            var activeList  = Ext.ComponentQuery.query('#RDForAuthorisedVendors #RDInStoreVendorsTab')[0].down("#mainList");
+            var activeStore = activeList.getStore() ;
+            var selectedUserRecord = RMdatalink.util.globalConfig.getDataToShowInSettingWindow() ;
+
+            if(activeStore){
+
+            var arrayOfData = activeStore.data.items;
+
+
+                for(var i=0; i <arrayOfData.length ; i++){
+
+
+                    var vendorId = arrayOfData[i].data.vendor_id;
+                    var vendor_name = arrayOfData[i].data.vendor_name;
+                    var retailerId = selectedUserRecord.record.data._id;
+                    var retailerPhone = selectedUserRecord.record.data.store_phone;
+                    var accountNo = vendorIdAccountValueAuthorized[vendorId];
+
+
+                    console.error(retailerId  , retailerPhone , vendorId  , vendor_name  , accountNo);
+                    activeStore.getAt(i).set( 'Account_No' , accountNo );
+
+                    this.updateAccNoofAuthorizedRetailersVender(retailerId  , retailerPhone , vendorId  , vendor_name  , accountNo);
+                }
+
+            }
+
+
+
+
         }
     },
 

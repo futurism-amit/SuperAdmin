@@ -621,6 +621,8 @@ Ext.define('RMdatalink.controller.UINav', {
 
     showInInhouse: function() {
 
+
+
         var index = parseInt(arguments[0]);
 
         var mainContentPanel = Ext.ComponentQuery.query('#RMContentPanel')[0];

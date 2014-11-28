@@ -25,7 +25,9 @@ Ext.define('RMdatalink.view.container_dashboard', {
         'Ext.Panel',
         'Ext.Label',
         'Ext.dataview.List',
-        'Ext.XTemplate'
+        'Ext.XTemplate',
+        'Ext.field.File',
+        'Ext.Button'
     ],
 
     config: {
@@ -34,225 +36,609 @@ Ext.define('RMdatalink.view.container_dashboard', {
         layout: 'vbox',
         items: [
             {
-                xtype: 'panel',
-                itemId: 'vipDashBoard',
-                style: 'border:2px solid black; padding:2px;margin:2px;',
-                width: '400px',
+                xtype: 'container',
+                layout: 'hbox',
                 items: [
                     {
-                        xtype: 'label',
-                        cls: [
-                            'pointerCursor',
-                            'fieldLbl'
-                        ],
-                        html: 'VIP<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
-                        itemId: 'mylabel388',
-                        listeners: [
+                        xtype: 'panel',
+                        itemId: 'vipDashBoard',
+                        style: 'border:2px solid black; padding:2px;margin:2px;',
+                        width: '300px',
+                        items: [
                             {
-                                fn: function(component, eOpts) {
-                                    component.element.on('tap',function(){
+                                xtype: 'label',
+                                cls: [
+                                    'pointerCursor',
+                                    'fieldLbl'
+                                ],
+                                html: 'VIP<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                itemId: 'mylabel388',
+                                listeners: [
+                                    {
+                                        fn: function(component, eOpts) {
+                                            component.element.on('tap',function(){
 
-                                        var cmp = component.getParent();
-                                        var containerSibling = cmp.down("#shrinker");
-                                        console.log("COPONENT CLICKED");
-                                        console.log(cmp.getHeight());
-                                        if(  containerSibling.getHidden() ){
+                                                var cmp = component.getParent();
+                                                var containerSibling = cmp.down("#shrinker");
+                                                console.log("COPONENT CLICKED");
+                                                console.log(cmp.getHeight());
+                                                if(  containerSibling.getHidden() ){
 
 
-                                            component.getEl().query('img')[0].src = "resources/images/labelHeader/downArrow.png";
-                                            containerSibling.setHidden(false);
+                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/downArrow.png";
+                                                    containerSibling.setHidden(false);
 
-                                        }else{
+                                                }else{
 
 
-                                            containerSibling.setHidden(true);
-                                            component.getEl().query('img')[0].src = "resources/images/labelHeader/rightArrow.png";
-                                        }
+                                                    containerSibling.setHidden(true);
+                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/rightArrow.png";
+                                                }
 
-                                    });
-                                },
-                                event: 'initialize'
+                                            });
+                                        },
+                                        event: 'initialize'
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'container',
+                                cls: 'vipShrinker',
+                                hidden: false,
+                                itemId: 'shrinker',
+                                style: 'border-top:2px solid black; padding:2px 0px;margin:2px 0px;',
+                                items: [
+                                    {
+                                        xtype: 'listwithheader',
+                                        height: '200px',
+                                        itemId: 'vipListWithHeader'
+                                    },
+                                    {
+                                        xtype: 'list',
+                                        cls: [
+                                            'x-rm-list',
+                                            'x-rm-list-header'
+                                        ],
+                                        data: [
+                                            {
+                                                active_total: 0,
+                                                prospect_total: 0
+                                            }
+                                        ],
+                                        height: '30px',
+                                        itemId: 'vipTotalsList',
+                                        itemTpl: Ext.create('Ext.XTemplate', 
+                                            '<div class="x-rm-listtpl-main boldText fontDefination" style="width: 100%;">',
+                                            '    <div style="width: 50%;" clk_attr = "allVIP" >Total:{[this.getTotal(values)]} </div>',
+                                            '    <div class="" clk_attr = "activeTotal" style="width: 21%; padding-left:10px;text-align:center;cursor: pointer; ">{active_total}</div>',
+                                            '    <div class="" clk_attr = "ProspectTotal" style="width: 29%; padding-left:10px; text-align:center;cursor: pointer; ">{prospect_total}</div>',
+                                            '',
+                                            '</div>',
+                                            {
+                                                getTotal: function(values) {
+
+                                                    return (values.active_total || 0)  + (values.prospect_total || 0);
+                                                }
+                                            }
+                                        ),
+                                        itemHeight: 30
+                                    }
+                                ],
+                                listeners: [
+                                    {
+                                        fn: function(component, eOpts) {
+                                            var headers = component.down("#headerList");
+                                            headers.setData([{is_selected:false}]);
+
+
+
+                                            headers.setItemTpl(
+                                            Ext.create('Ext.XTemplate',
+                                            '<div class="x-rm-listtpl-main fontDefination" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;padding:0 0px 0 0px !important;height:64px;">',
+
+                                            '    <div class="" style="width: 50%;text-align: left;padding-left: 16px;" data-name="vendor_name" >',
+                                            '        Vendor&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="" style="width: 21%;text-align: center;" data-name="totalVIPActiveVendor">',
+                                            '        Active&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="" style="width: 29%;text-align: center;" data-name="totalVIPProspectRetailer">',
+                                            '        Hot Prospect&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '</div>',
+                                            {
+                                                getCartImage:function(values){
+                                                    if(values.is_selected){
+                                                        return "background-image: url('resources/images/retailerDetail/cart_selected.png') !important;";
+                                                    }
+
+                                                    return "background-image: url('resources/images/retailerDetail/cart_unselected.png') !important;" ;
+                                                },
+                                                setCartValue:function(value){
+                                                    if(values.is_selected){
+                                                        values.is_selected = false;
+                                                    }else{
+                                                        values.is_selected = true;
+                                                    }
+                                                    headers.refresh();
+                                                    // return this.getCartImage(value);
+
+                                                }
+                                            }
+                                            ));
+
+                                            headers.setHeight(22);
+                                            headers.setMode('MULTI');
+                                            headers.addCls('x-rm-rdvendorslist');
+                                            headers.setItemCls('vipdashboardCls');
+                                            headers.refresh();
+
+                                            var list = component.down('#mainList');
+
+
+
+                                            list.setItemTpl(
+                                            Ext.create('Ext.XTemplate',
+                                            '<div class="x-rm-listtpl-main fontDefination" style="width: 100%;padding:0 0px 0 0px !important;">',
+                                            '    <div class=" boldText " style="width: 50%;padding-left:10px; text-align:left; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
+                                            '    <div class=" boldText " clk_attr = "activeTotal"  style="width: 21%;padding-left:10px;cursor: pointer; text-align:center; " >{[this.getActiveRetailer(values)]}</div>',
+                                            '    <div class=" boldText " clk_attr = "ProspectTotal" style="width: 29%;padding-left:10px;cursor: pointer; text-align:center; " >{[this.getProspectRetailer(values)]}</div>',
+
+                                            '</div>',
+                                            {
+                                                getColorForVendor:function(  values){
+                                                    return getColorStringForVendor(values);
+
+                                                },
+                                                getActiveRetailer:function(  values){
+                                                    try{
+
+                                                        if(values.totalVIPActiveVendor){
+                                                            return values.totalVIPActiveVendor;
+
+                                                        }else{
+
+                                                            return " ";
+                                                        }
+
+                                                    }catch(e){
+                                                        return " ";
+                                                    }
+
+                                                },
+                                                getProspectRetailer:function(  values){
+                                                    try{
+
+                                                        if(values.totalVIPProspectRetailer){
+                                                            return values.totalVIPProspectRetailer;
+
+                                                        }else{
+
+                                                            return "";
+                                                        }
+
+                                                    }catch(e){
+                                                        return "";
+                                                    }
+
+
+                                                }
+
+
+
+
+                                            }
+
+                                            )
+                                            );
+
+                                            list.setItemHeight(22);
+                                            list.setMode('MULTI');
+                                            list.addCls('x-rm-rdvendorslist');
+                                            list.setDisableSelection(true);
+
+                                            // list.addListener('itemtap',function(){
+
+
+                                            //     console.log("LIST CLICKED");
+                                            // },this);
+
+                                            // headers.addListener('itemtap',function(){
+
+
+                                            //     console.log("HEADERS CLICKED");
+                                            // },this);
+
+
+
+
+
+
+                                            var totalsList = component.down('#vipTotalsList');
+                                            totalsList.addCls('x-rm-rdvendorslist');
+
+
+
+
+
+                                        },
+                                        event: 'initialize'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        xtype: 'container',
-                        cls: 'vipShrinker',
-                        hidden: false,
-                        itemId: 'shrinker',
-                        style: 'border-top:2px solid black; padding:2px 0px;margin:2px 0px;',
+                        xtype: 'panel',
+                        itemId: 'productsummaryDashboard',
+                        style: 'border:2px solid black; padding:2px;margin:2px;',
+                        width: '400px',
                         items: [
                             {
-                                xtype: 'listwithheader',
-                                height: '200px',
-                                itemId: 'vipListWithHeader'
+                                xtype: 'label',
+                                cls: [
+                                    'pointerCursor',
+                                    'fieldLbl'
+                                ],
+                                html: 'Products Summary<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                itemId: 'mylabel389',
+                                listeners: [
+                                    {
+                                        fn: function(component, eOpts) {
+                                            component.element.on('tap',function(){
+
+                                                var cmp = component.getParent();
+                                                var containerSibling = cmp.down("#shrinker");
+                                                console.log("COPONENT CLICKED");
+                                                console.log(cmp.getHeight());
+                                                if(  containerSibling.getHidden() ){
+
+
+                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/downArrow.png";
+                                                    containerSibling.setHidden(false);
+
+                                                }else{
+
+
+                                                    containerSibling.setHidden(true);
+                                                    component.getEl().query('img')[0].src = "resources/images/labelHeader/rightArrow.png";
+                                                }
+
+                                            });
+                                        },
+                                        event: 'initialize'
+                                    }
+                                ]
                             },
                             {
-                                xtype: 'list',
-                                cls: [
-                                    'x-rm-list',
-                                    'x-rm-list-header'
-                                ],
-                                data: [
+                                xtype: 'container',
+                                cls: 'vipShrinker',
+                                hidden: false,
+                                itemId: 'shrinker',
+                                style: 'border-top:2px solid black; padding:2px 0px;margin:2px 0px;',
+                                items: [
                                     {
-                                        active_total: 0,
-                                        prospect_total: 0
+                                        xtype: 'listwithheader',
+                                        height: '200px',
+                                        itemId: 'vipListWithHeader'
+                                    },
+                                    {
+                                        xtype: 'list',
+                                        cls: [
+                                            'x-rm-list',
+                                            'x-rm-list-header'
+                                        ],
+                                        data: [
+                                            {
+                                                tcount_rmpro: 0,
+                                                tcount_dlink: 0,
+                                                tcount_ecom: 0,
+                                                tcount_vip: 0,
+                                                tcount_ecat: 0,
+                                                tcount_irguz: 0
+                                            }
+                                        ],
+                                        height: '30px',
+                                        itemId: 'productSummaryList',
+                                        itemTpl: [
+                                            '<div class="x-rm-listtpl-main boldText fontDefination" style="width: 100%;">',
+                                            '    <div style="width: 28%;">Total</div>',
+                                            '    <div class="" clk_attr = "activeTotal" style="width: 12%; text-align:center;cursor: pointer; ">{tcount_rmpro}</div>',
+                                            '    <div class="" clk_attr = "activeTotal" style="width: 12%; text-align:center;cursor: pointer; ">{tcount_dlink}</div>',
+                                            '    <div class="" clk_attr = "activeTotal" style="width: 12%; text-align:center;cursor: pointer; ">{tcount_ecom}</div>',
+                                            '    <div class="" clk_attr = "activeTotal" style="width: 12%; text-align:center;cursor: pointer; ">{tcount_vip}</div>',
+                                            '    <div class="" clk_attr = "activeTotal" style="width: 12%; text-align:center;cursor: pointer; ">{tcount_ecat}</div>',
+                                            '    <div class="" clk_attr = "activeTotal" style="width: 12%; text-align:center;cursor: pointer; ">{tcount_irguz}</div>',
+                                            '',
+                                            '</div>'
+                                        ],
+                                        itemHeight: 30
                                     }
                                 ],
-                                height: '30px',
-                                itemId: 'vipTotalsList',
-                                itemTpl: [
-                                    '<div class="x-rm-listtpl-main boldText" style="width: 100%;">',
-                                    '    <div style="width: 50%;">Total</div>',
-                                    '    <div class="" style="width: 25%; text-align:center; ">{active_total}</div>',
-                                    '    <div class="" style="width: 25%; text-align:center; ">{prospect_total}</div>',
-                                    '',
-                                    '</div>'
-                                ],
-                                itemHeight: 30
-                            }
-                        ],
-                        listeners: [
-                            {
-                                fn: function(component, eOpts) {
-                                    var headers = component.down("#headerList");
-                                    headers.setData([{is_selected:false}]);
-
-
-
-                                    headers.setItemTpl(
-                                    Ext.create('Ext.XTemplate',
-                                    '<div class="x-rm-listtpl-main" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;padding:0 0px 0 0px !important;height:64px;">',
-
-                                    '    <div class="" style="width: 50%;text-align: left;" data-name="vendor_name" >',
-                                    '        Vendor&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                                    '    </div>',
-                                    '    <div class="" style="width: 25%;text-align: center;" data-name="totalVIPActiveVendor">',
-                                    '        Active&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                                    '    </div>',
-                                    '    <div class="" style="width: 25%;text-align: center;" data-name="totalVIPProspectRetailer">',
-                                    '        Hot Prospect&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
-                                    '    </div>',
-                                    '</div>',
+                                listeners: [
                                     {
-                                        getCartImage:function(values){
-                                            if(values.is_selected){
-                                                return "background-image: url('resources/images/retailerDetail/cart_selected.png') !important;";
-                                            }
+                                        fn: function(component, eOpts) {
+                                            var headers = component.down("#headerList");
+                                            headers.setData([{is_selected:false}]);
 
-                                            return "background-image: url('resources/images/retailerDetail/cart_unselected.png') !important;" ;
-                                        },
-                                        setCartValue:function(value){
-                                            if(values.is_selected){
-                                                values.is_selected = false;
-                                            }else{
-                                                values.is_selected = true;
+
+
+                                            headers.setItemTpl(
+                                            Ext.create('Ext.XTemplate',
+                                            '<div class="x-rm-listtpl-main fontDefination" style="border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;padding:0 0px 0 0px !important;height:64px;">',
+
+                                            '    <div class="" style="width: 28%;text-align: left;padding-left:16px;" data-name="product_status" >',
+                                            '        Status&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+
+                                            '    <div class="" style="width: 12%;text-align: center;" data-name="count_rmpro">',
+                                            '        RMPro&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="" style="width: 12%;text-align: center;" data-name="count_dlink">',
+                                            '        D-Link&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="" style="width: 12%;text-align: center;" data-name="count_ecom">',
+                                            '        E-Com&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="" style="width: 12%;text-align: center;" data-name="count_vip">',
+                                            '        VIP&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="" style="width: 12%;text-align: center;" data-name="count_ecat">',
+                                            '        E-Cat&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '    <div class="" style="width: 12%;text-align: center;" data-name="count_irugz">',
+                                            '       iRugz&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    </div>',
+                                            '</div>',
+                                            {
+                                                getCartImage:function(values){
+                                                    if(values.is_selected){
+                                                        return "background-image: url('resources/images/retailerDetail/cart_selected.png') !important;";
+                                                    }
+
+                                                    return "background-image: url('resources/images/retailerDetail/cart_unselected.png') !important;" ;
+                                                },
+                                                setCartValue:function(value){
+                                                    if(values.is_selected){
+                                                        values.is_selected = false;
+                                                    }else{
+                                                        values.is_selected = true;
+                                                    }
+                                                    headers.refresh();
+                                                    // return this.getCartImage(value);
+
+                                                }
                                             }
+                                            ));
+
+                                            headers.setHeight(22);
+                                            headers.setMode('MULTI');
+                                            headers.addCls('x-rm-rdvendorslist');
+                                            headers.setItemCls('vipdashboardCls');
                                             headers.refresh();
-                                            // return this.getCartImage(value);
 
-                                        }
-                                    }
-                                    ));
-
-                                    headers.setHeight(22);
-                                    headers.setMode('MULTI');
-                                    headers.addCls('x-rm-rdvendorslist');
-                                    headers.setItemCls('vipdashboardCls');
-                                    headers.refresh();
-
-                                    var list = component.down('#mainList');
+                                            var list = component.down('#mainList');
 
 
+                                            //{product_status    , count_rmpro,   count_dlink,  count_ecom,  count_vip, count_ecat,count_irugz }
 
-                                    list.setItemTpl(
-                                    Ext.create('Ext.XTemplate',
-                                    '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
-                                    '    <div class=" boldText " style="width: 50%;padding-left:10px; text-align:left; {[this.getColorForVendor(values)]} " >{vendor_name}</div>',
-                                    '    <div class=" boldText " style="width: 25%;padding-left:10px; text-align:center; " >{[this.getActiveRetailer(values)]}</div>',
-                                    '    <div class=" boldText " style="width: 25%;padding-left:10px; text-align:center; " >{[this.getProspectRetailer(values)]}</div>',
+                                            list.setItemTpl(
+                                            Ext.create('Ext.XTemplate',
+                                            '<div class="x-rm-listtpl-main fontDefination" style="width: 100%;padding:0 0px 0 0px !important;">',
+                                            '    <div class=" boldText " style="width: 28%;padding-left:10px; text-align:left; {[this.getColorForVendor(values)]} " >{product_status}</div>',
+                                            '    <div class=" boldText " clk_attr = "rmpro_summary"  style="width: 12%;padding-left:10px;cursor: pointer; text-align:center; " >{count_rmpro}</div>',
+                                            '    <div class=" boldText " clk_attr = "dlink_summary"  style="width: 12%;padding-left:10px;cursor: pointer; text-align:center; " >{count_dlink}</div>',
+                                            '    <div class=" boldText " clk_attr = "ecom_summary"  style="width: 12%;padding-left:10px;cursor: pointer; text-align:center; " >{count_ecom}</div>',
+                                            '    <div class=" boldText " clk_attr = "vip_summary"  style="width: 12%;padding-left:10px;cursor: pointer; text-align:center; " >{count_vip}</div>',
+                                            '    <div class=" boldText " clk_attr = "ecat_summary"  style="width: 12%;padding-left:10px;cursor: pointer; text-align:center; " >{count_ecat}</div>',
+                                            '    <div class=" boldText " clk_attr = "irugz_summary"  style="width: 12%;padding-left:10px;cursor: pointer; text-align:center; " >{count_irugz}</div>',
 
-                                    '</div>',
-                                    {
-                                        getColorForVendor:function(  values){
-                                            return getColorStringForVendor(values);
+                                            '</div>',
+                                            {
+                                                getColorForVendor:function(  values){
+                                                    return getColorStringForVendor(values);
 
-                                        },
-                                        getActiveRetailer:function(  values){
-                                            try{
+                                                },
+                                                getActiveRetailer:function(  values){
+                                                    try{
 
-                                                if(values.totalVIPActiveVendor){
-                                                    return values.totalVIPActiveVendor;
+                                                        if(values.totalVIPActiveVendor){
+                                                            return values.totalVIPActiveVendor;
 
-                                                }else{
+                                                        }else{
 
-                                                    return " ";
+                                                            return " ";
+                                                        }
+
+                                                    }catch(e){
+                                                        return " ";
+                                                    }
+
+                                                },
+                                                getProspectRetailer:function(  values){
+                                                    try{
+
+                                                        if(values.totalVIPProspectRetailer){
+                                                            return values.totalVIPProspectRetailer;
+
+                                                        }else{
+
+                                                            return "";
+                                                        }
+
+                                                    }catch(e){
+                                                        return "";
+                                                    }
+
+
                                                 }
 
-                                            }catch(e){
-                                                return " ";
+
+
+
                                             }
+
+                                            )
+                                            );
+
+                                            list.setItemHeight(22);
+                                            list.setMode('MULTI');
+                                            list.addCls('x-rm-rdvendorslist');
+                                            list.setDisableSelection(true);
+
+                                            list.setData([
+                                            {product_status:'Active',
+                                                count_rmpro:0,
+                                                count_dlink:0,
+                                                count_ecom:0,
+                                                count_vip:0,
+                                                count_ecat:0,
+                                                count_irugz:0
+                                            },
+                                            {product_status:'Inactive',
+                                                count_rmpro:0,
+                                                count_dlink:0,
+                                                count_ecom:0,
+                                                count_vip:0,
+                                                count_ecat:0,
+                                                count_irugz:0
+                                            },
+                                            {product_status:'Prospect',
+                                                count_rmpro:0,
+                                                count_dlink:0,
+                                                count_ecom:0,
+                                                count_vip:0,
+                                                count_ecat:0,
+                                                count_irugz:0
+                                            },
+                                            {product_status:'Hot Prospect',
+                                                count_rmpro:0,
+                                                count_dlink:0,
+                                                count_ecom:0,
+                                                count_vip:0,
+                                                count_ecat:0,
+                                                count_irugz:0
+                                            },
+                                            {product_status:'Pending',
+                                                count_rmpro:0,
+                                                count_dlink:0,
+                                                count_ecom:0,
+                                                count_vip:0,
+                                                count_ecat:0,
+                                                count_irugz:0
+                                            },
+                                            {product_status:'Undefined',
+                                                count_rmpro:0,
+                                                count_dlink:0,
+                                                count_ecom:0,
+                                                count_vip:0,
+                                                count_ecat:0,
+                                                count_irugz:0
+                                            }
+
+
+                                            ]);
+
+
+
+
+
+
+                                            var totalsList = component.down('#productSummaryList');
+                                            totalsList.addCls('x-rm-rdvendorslist');
+
+
+
+
 
                                         },
-                                        getProspectRetailer:function(  values){
-                                            try{
-
-                                                if(values.totalVIPProspectRetailer){
-                                                    return values.totalVIPProspectRetailer;
-
-                                                }else{
-
-                                                    return "";
-                                                }
-
-                                            }catch(e){
-                                                return "";
-                                            }
-
-
-                                        }
-
-
-
-
+                                        event: 'initialize'
                                     }
-
-                                    )
-                                    );
-
-                                    list.setItemHeight(22);
-                                    list.setMode('MULTI');
-                                    list.addCls('x-rm-rdvendorslist');
-
-
-                                    // list.addListener('itemtap',function(){
-
-
-                                    //     console.log("LIST CLICKED");
-                                    // },this);
-
-                                    // headers.addListener('itemtap',function(){
-
-
-                                    //     console.log("HEADERS CLICKED");
-                                    // },this);
-
-
-
-
-
-
-                                    var totalsList = component.down('#vipTotalsList');
-                                    totalsList.addCls('x-rm-rdvendorslist');
-
-
-
-
-
-                                },
-                                event: 'initialize'
+                                ]
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                xtype: 'panel',
+                layout: 'hbox',
+                items: [
+                    {
+                        xtype: 'filefield',
+                        itemId: 'multipleFileInput',
+                        label: 'Field',
+                        multiple: true
+                    },
+                    {
+                        xtype: 'button',
+                        handler: function(button, e) {
+
+                            FileList.prototype.forEach = FileList.prototype.forEach || function( callBack ){
+
+                                for( var i =0 ; i < this.length ; i++){
+                                    callBack(  this[i] );
+                                }
+                            };
+
+                            // ANONYMOUS FUNCTION SELF EXECUTING
+                            (  function(){
+
+                                var dataUrl = [];
+                                var multipleFileInput  = Ext.ComponentQuery.query("#multipleFileInput")[0];
+                                var fileList = multipleFileInput.getFiles();
+                                fileList.forEach( function( obj){
+
+                                    var fileReader = new FileReader();
+                                    fileReader.onload = function(evt){
+                                        console.log(evt);
+                                        dataUrl.push({
+                                            dataurl:evt.target.result,
+                                            name:obj.name
+                                        });
+                                        if(dataUrl.length == fileList.length){
+
+                                            // ALL FILES HAVE BEEN LOADED.
+                                            var pr ={};
+
+
+
+                                            pr.to = 'anandb@futurismtechnologies.com';    // email address to send email to
+                                            pr.from = 'support@superAdmin.com';   // email address the email will be sent from
+                                            pr.data = { dt: new Date() };  // json object containing the data
+                                            pr.subject = 're: testing email @ {dt}';  // email's subject
+                                            pr.body = 'email was sent @ {dt}'; // email's body
+                                            pr.files = dataUrl;
+                                            RMdatalink.iwa.sct.evalremote('upload_file.js', pr, function(res)
+
+                                            {
+
+                                                console.log(arguments);
+                                                console.log(res);   // you will get filename here in the property "nm".
+                                            });
+
+
+
+
+
+
+                                            console.log("ALL FILES ARE LOADED");
+
+                                            //files
+                                        }
+                                    };
+                                    fileReader .readAsDataURL(obj);
+
+                                });
+
+
+                            })();
+
+
+                        },
+                        cls: 'x-rm-blueBtn',
+                        height: '30px',
+                        text: 'SendMail'
                     }
                 ]
             }
@@ -262,12 +648,221 @@ Ext.define('RMdatalink.view.container_dashboard', {
                 fn: 'onListItemTap',
                 event: 'itemtap',
                 delegate: '#vipListWithHeader #mainList'
+            },
+            {
+                fn: 'onVipTotalsListItemTap',
+                event: 'itemtap',
+                delegate: '#vipTotalsList'
+            },
+            {
+                fn: 'summaryListItemTap',
+                event: 'itemtap',
+                delegate: '#vipListWithHeader #mainList'
+            },
+            {
+                fn: 'onProductSummaryDashBoardItemTap',
+                event: 'itemtap',
+                delegate: '#productSummaryList'
+            },
+            {
+                fn: 'onContainer_dashboardInitialize',
+                event: 'initialize'
             }
         ]
     },
 
     onListItemTap: function(dataview, index, target, record, e, eOpts) {
         console.log(record);
+        console.log(e);
+
+        try{
+            var targetEl = e.target;
+            var attr = targetEl.getAttribute("clk_attr");
+
+
+            //handleSearchInputResult
+            //DashBoardController
+            console.log(attr);
+
+            //    ProspectTotal  means user wants to see prospect list
+            //    activeTotal   means user wants to see active list
+
+            switch(attr){
+
+                case    'ProspectTotal':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputResult("HOT_PROSPECT" , record.data.vendor_name);
+                    console.log("SHOW EM PROSPECT LIST");
+                    break;
+                case    'activeTotal':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputResult("ACTIVE" , record.data.vendor_name);
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+                default:break;
+            }
+
+        }
+
+        catch(e){
+            console.log("ERROR THROWN" , e);
+        }
+
+
+
+
+
+    },
+
+    onVipTotalsListItemTap: function(dataview, index, target, record, e, eOpts) {
+        console.log(record);
+        console.log(e);
+
+        try{
+            var targetEl = e.target;
+            var attr = targetEl.getAttribute("clk_attr");
+
+
+            console.log(attr);
+
+            //    ProspectTotal  means user wants to see prospect list
+            //    activeTotal   means user wants to see active list
+
+            switch(attr){
+
+                case    'ProspectTotal':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputResult("HOT_PROSPECT" );
+                    console.log("SHOW EM PROSPECT LIST");
+                    break;
+                case    'activeTotal':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputResult("ACTIVE");
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+                case    'allVIP':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputResult();
+                    console.log("SHOW EM ALL LIST");
+                    break;
+
+                default:break;
+            }
+
+        }
+
+        catch(e){
+            console.log("ERROR THROWN" , e);
+        }
+
+
+
+
+
+    },
+
+    summaryListItemTap: function(dataview, index, target, record, e, eOpts) {
+        console.log(record);
+        console.log(e);
+
+
+
+        try{
+            var targetEl = e.target;
+            var attr = targetEl.getAttribute("clk_attr");
+
+
+            console.log(attr);
+
+            //    rmpro_summary  means user wants to see rmpro list
+            //    dlink_summary   means user wants to see dlink list
+            //    ecom_summary   means user wants to see ecom list
+            //    vip_summary   means user wants to see vip list
+            //    ecat_summary   means user wants to see ecat list
+            //    irugz_summary   means user wants to see irugz list
+
+
+           // debugger;  Undefined
+            switch( record.data.product_status ){
+
+                case    'Inactive':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputFromProductSummary(attr ,"INACTIVE" , record);
+                    console.log("SHOW EM PROSPECT LIST");
+                    break;
+                case    'Active':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputFromProductSummary(attr , "ACTIVE" , record);
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+                case    'Prospect':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputFromProductSummary(attr,"PROSPECT" , record);
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+                case    'Hot Prospect':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputFromProductSummary(attr,"HOT_PROSPECT" , record);
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+                case    'Pending':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputFromProductSummary(attr,"PENDING" , record);
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+                case    'Undefined':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputFromProductSummary(attr,"UNDEFINED" , record);
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+
+
+                default:break;
+            }
+
+        }
+
+        catch(e){
+            console.log("ERROR THROWN" , e);
+        }
+
+
+
+
+
+    },
+
+    onProductSummaryDashBoardItemTap: function(dataview, index, target, record, e, eOpts) {
+        console.log(record);
+        console.log(e);
+        return;
+
+        try{
+            var targetEl = e.target;
+            var attr = targetEl.getAttribute("clk_attr");
+
+
+            console.log(attr);
+
+            //    ProspectTotal  means user wants to see prospect list
+            //    activeTotal   means user wants to see active list
+
+            switch(attr){
+
+                case    'ProspectTotal':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputResult("HOT_PROSPECT" );
+                    console.log("SHOW EM PROSPECT LIST");
+                    break;
+                case    'activeTotal':
+                    RMdatalink.app.getController("DashBoardController").handleSearchInputResult("ACTIVE");
+                    console.log("SHOW EM ACTIVE LIST");
+                    break;
+                default:break;
+            }
+
+        }
+
+        catch(e){
+            console.log("ERROR THROWN" , e);
+        }
+
+
+
+
+
+    },
+
+    onContainer_dashboardInitialize: function(component, eOpts) {
+
     }
 
 });

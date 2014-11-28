@@ -268,7 +268,8 @@
             "ecomVendorPricingSetUp",
             "pricing.ListContainer",
             "MyPanel31",
-            "container_dashboard"
+            "container_dashboard",
+            "product.Ecatalog"
         ]
     },
     "configAlternates": {
@@ -310,7 +311,7 @@
                     "                RMdatalink.iwa.rdl.collections[\"products.RMProStore\"]=dbEnv + \"rdl_product_rm_pro\" ;\r",
                     "                RMdatalink.iwa.rdl.collections[\"TechSupportLogsStore\"]= dbEnv + \"rdl_tech_support_logs\" ;\r",
                     "                RMdatalink.iwa.rdl.collections[\"PermisstionsStore\"]=  dbEnv + \"rdl_vendordetailrecords\" ;\r",
-                    "RMdatalink.iwa.rdl.collections[\"notificationsNew\"]= dbEnv + \"rdl_new_notifications\" ;\r",
+                    "                RMdatalink.iwa.rdl.collections[\"notificationsNew\"]= dbEnv + \"rdl_new_notifications\" ;\r",
                     "                RMdatalink.iwa.rdl.collections[\"billingMasterStore\"]=   dbEnv + \"rdl_billingdetailrecords\" ;\r",
                     "                RMdatalink.iwa.rdl.collections[\"pricing.MainStore\"]=  dbEnv + \"rdl_productdetailrecords\" ;\r",
                     "                RMdatalink.iwa.rdl.collections[\"vendorDetailsRecodsStore\"]=   dbEnv + \"rdl_vendordetailrecords\" ;\r",
@@ -870,6 +871,25 @@
                     "\r",
                     "    }\r",
                     "    return \"color:\" + color + \";\" + \" font-weight: bold;  \";\r",
+                    "};\r",
+                    "\r",
+                    "window.isVendorAuthorized = window.isVendorAuthorized || function(vendor_id){\r",
+                    "//vendor_id\r",
+                    "    try{\r",
+                    "\r",
+                    "        var activeList  = Ext.ComponentQuery.query('#RDForAuthorisedVendors #RDInStoreVendorList')[0].down(\"#mainList\");\r",
+                    "        var activeStore = activeList.getStore() ;\r",
+                    "        var vendor = activeStore.findRecord('vendor_id' , vendor_id);\r",
+                    "        return vendor;\r",
+                    "\r",
+                    "    }catch(e){\r",
+                    "\r",
+                    "        console.log(\"ERROR THROWN\" , e);\r",
+                    "        return false;\r",
+                    "    }\r",
+                    "\r",
+                    "\r",
+                    "\r",
                     "};"
                 ]
             },

@@ -252,7 +252,8 @@ Ext.application({
         'ecomVendorPricingSetUp',
         'pricing.ListContainer',
         'MyPanel31',
-        'container_dashboard'
+        'container_dashboard',
+        'product.Ecatalog'
     ],
     controllers: [
         'Main',
@@ -317,7 +318,7 @@ Ext.application({
                         RMdatalink.iwa.rdl.collections["products.RMProStore"]=dbEnv + "rdl_product_rm_pro" ;
                         RMdatalink.iwa.rdl.collections["TechSupportLogsStore"]= dbEnv + "rdl_tech_support_logs" ;
                         RMdatalink.iwa.rdl.collections["PermisstionsStore"]=  dbEnv + "rdl_vendordetailrecords" ;
-        RMdatalink.iwa.rdl.collections["notificationsNew"]= dbEnv + "rdl_new_notifications" ;
+                        RMdatalink.iwa.rdl.collections["notificationsNew"]= dbEnv + "rdl_new_notifications" ;
                         RMdatalink.iwa.rdl.collections["billingMasterStore"]=   dbEnv + "rdl_billingdetailrecords" ;
                         RMdatalink.iwa.rdl.collections["pricing.MainStore"]=  dbEnv + "rdl_productdetailrecords" ;
                         RMdatalink.iwa.rdl.collections["vendorDetailsRecodsStore"]=   dbEnv + "rdl_vendordetailrecords" ;
@@ -877,6 +878,25 @@ Ext.application({
 
             }
             return "color:" + color + ";" + " font-weight: bold;  ";
+        };
+
+        window.isVendorAuthorized = window.isVendorAuthorized || function(vendor_id){
+        //vendor_id
+            try{
+
+                var activeList  = Ext.ComponentQuery.query('#RDForAuthorisedVendors #RDInStoreVendorList')[0].down("#mainList");
+                var activeStore = activeList.getStore() ;
+                var vendor = activeStore.findRecord('vendor_id' , vendor_id);
+                return vendor;
+
+            }catch(e){
+
+                console.log("ERROR THROWN" , e);
+                return false;
+            }
+
+
+
         };
         Ext.create('RMdatalink.view.LoginScreen', {fullscreen: true});
     }

@@ -663,16 +663,7 @@ Ext.define('RMdatalink.controller.DlPricingController', {
          Ext.ComponentQuery.query('#pricingPolicySkuIncrementSelectFld')[0].reset() ;
          Ext.ComponentQuery.query('#pricingPolicySkuAddlImgsIncrementSelectFld')[0].reset() ;
 
-        /*
-        ecompolicySelectVendors
 
-        ecomVendorBundleSelectFld
-        ecompricingPolicySkuIncrementSelectFld
-        ecompricingPolicySkuAddlImgsIncrementSelectFld
-        ecomDiscountPolicyVendorsIncrementSelectFld
-        ecomDiscountPolicySKUIncrementSelectFld
-
-        */
     },
 
     updateVendorPricing: function() {
@@ -814,14 +805,15 @@ Ext.define('RMdatalink.controller.DlPricingController', {
         var component = Ext.ComponentQuery.query('#dataLinkListItemID')[0] ;
         var list = component.down('#pricingList');
              list.setItemTpl(
-                Ext.create('Ext.XTemplate',
+                Ext.create(
+        'Ext.XTemplate',
                            '<div class="x-rm-listtpl-main" style="width: 100%;padding:0 0px 0 0px !important;">',
 
-                           '    <div style="width: 4%;">',
+                           '    <div style="width: 2.5%;">',
                            '        <div style="width: 19px; height:19px;"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} ="onCartTap" ></div>',
                            '    </div>',
 
-                           '    <div class="rightBorderDiv boldText" style="width: 8%;padding-left:10px;" >{vendor_name}</div>',
+                           '    <div class="rightBorderDiv boldText" style="width: 9.5%;padding-left:10px;" >{vendor_name}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.SKU)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.collections)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.4%;text-align: center;" >{[formatNormalNum(values.design)]}</div>',
@@ -832,21 +824,21 @@ Ext.define('RMdatalink.controller.DlPricingController', {
                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImages(values)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImages(values)]}</div>',
 
-                         '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price)]} </div>',
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price)]} </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[this.getStandardPrice(values)]}  </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[this.getPromotionalPrice(values)]} </div>',
 
 
 
                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calHrsBySkuImagesAddlImages(values)]}</div>',
                            '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" >{[this.calDaysBySkuImagesAddlImages(values)]}</div>',
 
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.standard_price_addlimg)]} </div>',
-                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[formatNum(values.product_price.datalink.promotional_price_addlimg)]} </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[this.getAddlnStandardPrice(values)]} </div>',
+                           '    <div class="rightBorderDiv" style="width: 6.98%;text-align: center;" > $ {[this.getAddlnPromotionalPrice(values)]} </div>',
 
 
 
-                           '</div>',
-                            {
+
+                           '</div>',                    {
                                getCalculatedValue: function(sku){
                                    if(sku)
                                    {
@@ -857,7 +849,53 @@ Ext.define('RMdatalink.controller.DlPricingController', {
 
                                        return 0 ;
 
-                               },
+                               },                        getStandardPrice:function(values){
+                                    try{
+
+                                        return  formatNum(values.product_price.datalink.standard_price);
+
+                                    }catch(e){
+                                        return "0";
+
+                                    }
+
+                                },
+                                getPromotionalPrice:function(values){
+                                    try{
+
+                                        return  formatNum(values.product_price.datalink.promotional_price);
+
+                                    }catch(e){
+                                        return "0";
+
+                                    }
+
+                                },
+                                getAddlnStandardPrice:function(values){
+
+                                    //{[formatNum(values.product_price.datalink.standard_price_addlimg)]}
+                                    try{
+
+                                        return  formatNum(values.product_price.datalink.standard_price_addlimg);
+
+                                    }catch(e){
+                                        return "0";
+
+                                    }
+
+                                },
+                                getAddlnPromotionalPrice:function(values){
+                                    try{
+                                        //{[formatNum(values.product_price.datalink.promotional_price_addlimg)]}
+                                        return  formatNum(values.product_price.datalink.promotional_price_addlimg);
+
+                                    }catch(e){
+                                        return "0";
+
+                                    }
+
+                                },
+
 
                                  calHrsBySkuImages: function(values){
 

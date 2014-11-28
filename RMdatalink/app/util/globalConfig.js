@@ -229,8 +229,27 @@ prc_af_mo_Additional Vendors: 0,
 					objectToSend.store_products_vip = true;
 					objectToSend.store_products = objectToSend.store_products || {};
 					objectToSend.store_products.vip_status  = "HOT_PROSPECT";
-					//store_products_vip
-					
+					objectToSend.store_email = newRetailerInformation.mail || newRetailerInformation.email;
+					objectToSend.store_performance = "GOOD";
+					objectToSend.store_website = "";
+					objectToSend.store_location =  "1";
+					objectToSend.locations = [{
+						address: (newRetailerInformation.store_address  || " ") + " "  + (newRetailerInformation. store_address2 || " "),
+						city: newRetailerInformation.store_city,
+						fax: "",
+						index: 0,
+						location_name: newRetailerInformation.store,
+						phone: newRetailerInformation.store_phone,
+						phone_ext: "",
+						state: newRetailerInformation.store_state,
+						store_sq_ft: "",
+						store_type: "Retail",
+						suit: "",
+						zip: newRetailerInformation.store_zip
+						
+
+					}];
+
 					eCommInfo.vip_vendor = newRetailerInformation.partner;
 					eCommInfo.account_no = newRetailerInformation.partner_account;
 					eCommInfo.store_name = newRetailerInformation.store;
@@ -371,16 +390,19 @@ prc_af_mo_Additional Vendors: 0,
 						{
 							'store':{ $ne: ""}
 						},
-					/*	{
+						{
 							'is_scanned_by_retailer_updater':{ $ne: true}
-						},*/
+						},
 						{
 							'store':{ $nin: RMdatalink.util.globalConfig.getNinArrayForLoaderFunction()  }
-						},
-						
+						}
+						/*,
+						{
+							"store" : "Anand Rugs"	
+						}
 						{
 							'flag_for_development':true
-						}
+						}*/
 						
 					
 					]	
@@ -413,6 +435,7 @@ prc_af_mo_Additional Vendors: 0,
 		function addOrUpdateInformationInRetailerMaster(information){
 		
 			var store_name = information.store;
+			console.warn("STORE NAME WOHOOOOooooooooooo" ,store_name );
 			if(store_name){
 				RMdatalink.iwa.rdl.queryDB(
 					{collection: "rdl_masterretailerrecords", pageNo: 1, pageSize: 1, sortBy: {},
@@ -593,7 +616,7 @@ prc_af_mo_Additional Vendors: 0,
 		)
 		{
 		}else{
-		//	return;
+			//return;
 		}
 		
 		var latestInformationOfRetailerFromVendorMaster;
@@ -646,8 +669,16 @@ prc_af_mo_Additional Vendors: 0,
 							
 							product_vip_object.created_date_stamp =   zulluDateTimeStamp || new Date().toLocaleDateString();
 							product_vip_object.last_created_date_stamp =  product_vip_object.created_date_stamp;
-							product_vip_object.pay_date =  product_vip_object.created_date_stamp 
-							product_vip_object.payment_period_start = product_vip_object.pay_date;         
+							product_vip_object.pay_date =  product_vip_object.created_date_stamp; 
+							product_vip_object.payment_period_start = product_vip_object.pay_date;    
+
+
+							var sendDate = new Date(product_vip_object.created_date_stamp);
+							sendDate.setYear( sendDate.getFullYear() + 1 );
+							sendDate.setMonth( sendDate.getMonth() - 1 );
+							debugger;
+							//product_vip_object.payment_period_start = product_vip_object.pay_date; 
+							
 							
 							var endDate = new Date( product_vip_object.payment_period_start );
 								endDate.setFullYear( endDate.getFullYear() + 1);
@@ -657,8 +688,10 @@ prc_af_mo_Additional Vendors: 0,
 
 							var date = new Date(product_vip_object.created_date_stamp);
 								 date.setMonth(date.getMonth() + 1);
+							 
+								 
 							product_vip_object.contract_renewal_date = date.toLocaleDateString();
-							product_vip_object.contract_send_date =  product_vip_object.created_date_stamp;
+							product_vip_object.contract_send_date =  sendDate.toLocaleDateString() || product_vip_object.created_date_stamp;
 							product_vip_object.contract_sent_date = product_vip_object.created_date_stamp;
 							product_vip_object.contract_signed_date = product_vip_object.created_date_stamp;
 							product_vip_object.contract_start_date = product_vip_object.created_date_stamp;
@@ -726,19 +759,29 @@ prc_af_mo_Additional Vendors: 0,
 								RMdatalink.util.globalConfig.getArrayOfVendorAndTheirAccountNo(retailerInfoFromIntermediateCollection).forEach(function(obj){
 								if(obj.price){
 									total += parseInt( obj. price);	
+									totalVendor++;
 								}
 							
 								});
 								dataToPush.module_standard_price = total;
 								dataToPush.module_promotional_price = total;
 								dataToPush.module_price = total;
+								dataToPush.per_month = total;
+								dataToPush.promotional_total = total;
+								dataToPush.standard_total = total;
 								dataToPush.quantity = totalVendor;
 								programDetails.push(dataToPush);
 								
 								var ecomMainStore = Ext.getStore('products.ecomMain') ;
-								 var record = ecomMainStore.findRecord("module_name", "Vendor Internet Program");
-								 var dataToPush = record.raw;
+								var record = ecomMainStore.findRecord("module_name", "Vendor Internet Program");
+								var dataToPush = record.raw;
 									dataToPush.quantity = 1;
+									dataToPush.per_month = dataToPush.module_standard_price;
+									dataToPush.promotional_total = dataToPush.module_standard_price;
+									dataToPush.standard_total = dataToPush.module_standard_price;
+									/*
+									
+									*/
 								 programDetails.push(dataToPush);
 								return dataToPush;
 								}catch(e){
@@ -853,6 +896,7 @@ prc_af_mo_Additional Vendors: 0,
 								RMdatalink.util.globalConfig.getArrayOfVendorAndTheirAccountNo(retailerInfoFromIntermediateCollection).forEach(function(obj){
 								if(obj.price){
 									total += parseInt( obj. price);	
+									totalVendor++;
 								}
 							
 								});
@@ -875,7 +919,9 @@ prc_af_mo_Additional Vendors: 0,
 									dataToPush.quantity = 1;
 									dataToPush.per_month = dataToPush.module_standard_price || "0";
 									dataToPush.promotional_total = dataToPush.per_month;
-									dataToPush.standard_total = dataToPush.per_month;																	
+									dataToPush.standard_total = dataToPush.per_month;
+
+									
 									programDetails.push(dataToPush);
 									
 								return dataToPush;
@@ -885,7 +931,7 @@ prc_af_mo_Additional Vendors: 0,
 								}
 							
 							})();							
-						var zulluDateTimeStamp;
+							var zulluDateTimeStamp;
 							try{
 							zulluDateTimeStamp  =  new Date(retailerInfoFromIntermediateCollection.cctransaction.payment.create_time).toLocaleDateString();
 							}catch(e){
@@ -898,6 +944,9 @@ prc_af_mo_Additional Vendors: 0,
 							var dueDate = date;
 							var endDate = new Date(startDate);
 							endDate.setYear( endDate.getYear() + 1 );
+							var sendDate = new Date(startDate);
+							sendDate.setYear( sendDate.getFullYear() + 1 );
+							sendDate.setMonth( sendDate.getMonth() - 1 );
 							
 							//debugger;
 							var transactionInfo = retailerInfoFromIntermediateCollection.cctransaction.payment;
@@ -931,9 +980,7 @@ prc_af_mo_Additional Vendors: 0,
 									pay_date: startDate,
 									payment_method_detail: payment_method_detail,
 									proccessed_by: "vip registeration program"
-								}
-								
-								],
+								}],
 								selected_package: "3",
 								invoice_number: invoiceNo,
 								paid_by: "credit_card",
@@ -952,7 +999,7 @@ prc_af_mo_Additional Vendors: 0,
 								contract_period: 12,
 								contract_price: ammount_paying,
 								contract_renewal_date:endDate.toLocaleDateString(),
-								contract_send_date: startDate,
+								contract_send_date: sendDate.toLocaleDateString(),
 								contract_sent_date: startDate,
 								contract_signed_date: startDate,
 								payment_method_detail: "",
@@ -1001,6 +1048,159 @@ prc_af_mo_Additional Vendors: 0,
 				eCallBack(arguments)
 
 			}		
+	},
+	createNewVendor:function( vendor_name , callback , eCallBack){
+		
+		/*
+		 ALGO 
+		  1 > Check Whether Vendor Exist
+		  2 > If Already Present  Return
+		  3 > If Not Then Create
+		
+		*/
+		if(vendor_name){
+		
+		}else{
+			return;
+		}
+		RMdatalink.iwa.rdl.queryDB(
+					{collection: "rdl_vendor_masters", pageNo: 1, pageSize: 100, sortBy: {},query: {
+					
+					 '$and':[ 
+								{
+									'vendor_name':vendor_name
+								}
+								
+							
+							]	
+					},fields: {vendor_name:1}	},function(){
+					  console.log(1 ,arguments);
+					  var response = arguments[0];
+					  if(response.items.length){
+						console.log("vendor Already Present");
+						if(eCallBack && typeof eCallBack == "function"){
+							eCallBack.apply(window , arguments);
+						}
+					  }else{
+							console.log("CREATE NEW VENDOR");
+							
+							var newObjectOfVendor = {
+								SKU: "",
+								account_details: "",
+								attachments: [],
+								blue_note: "",
+								collections: "",
+								company_contacts:[],
+								created_by: "Vendor Auto Creation",
+								crms: [],
+								design: "",
+								dos_and_donts:[],
+								follow_ups: [],								
+								last_export: "",
+								last_login: "",
+								manager_address: "",
+								manager_address_suite: "",
+								manager_blue_note: "",
+								manager_city: "",
+								manager_direct_number: "",
+								manager_direct_number_ext: "",
+								manager_dos_and_donts: [],
+								manager_email: "",
+								manager_facebook: "",
+								manager_firstname: "",
+								manager_follow_ups: [],
+								manager_lastname: "",
+								manager_linkedin: "",
+								manager_phone: "",
+								manager_phone_ext: "",
+								manager_photo_url: "resources//images//logos//default_User.jpg",
+								manager_position: "",
+								manager_rd_alt_email: "",
+								manager_rd_alt_phone: "",
+								manager_rd_aniversary: "",
+								manager_rd_car_of_choice: "",
+								manager_rd_childs: [],
+								manager_rd_dob: "",
+								manager_rd_hobbies: "",
+								manager_rd_partner: [],
+								manager_rd_relatives: "",
+								manager_rd_sig_other: "",
+								manager_rd_website: "",
+								manager_rd_years_at_co: "",
+								manager_recent_activity: null,
+								manager_state: "",
+								manager_twitter: "",
+								manager_zip: "",
+								no_of_additional_images: "",
+								no_of_rugs_images: "",
+								notes: [],
+								order_no: "1002",
+								photos: [],
+								reps_bluebook_teamusers: [],
+								reseller: "",
+								user_since: new Date().toGMTString(),
+								vendor_address_line1: "",
+								vendor_address_suite: "",
+								vendor_challenges: "",
+								vendor_city: "",
+								vendor_created_in_past: new Date().toGMTString(),
+								vendor_email: "",
+								vendor_facebook: "",
+								vendor_fax: "",
+								vendor_inactive_reason: "",
+								vendor_linkedin: "",
+								vendor_location: "",
+								vendor_logo: "resources//images//logos//default_User.jpg",
+								vendor_modified_in_past: "",
+								vendor_name: vendor_name,
+								vendor_note: "",
+								vendor_owner_firstname: "",
+								vendor_owner_lastname: "",
+								vendor_pending_approval: "",
+								vendor_performance: "GOOD",
+								vendor_phone: "",
+								vendor_phone_ext: "",
+								vendor_resources: "",
+								vendor_size_sq_ft: "",
+								vendor_state: "",
+								vendor_status: "ACTIVE",
+								vendor_twitter: "",
+								vendor_type: "",
+								vendor_website: "",
+								vendor_zip: ""
+							
+							}
+						console.log(newObjectOfVendor);
+						var masterStore =  Ext.getStore('vendors.Master');
+						RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(newObjectOfVendor,masterStore,function(){
+							console.log("CREATED CREATED  " + vendor_name );
+
+								if(callback && typeof callback == "function"){
+									callback.apply(window , arguments);
+								}
+						},function(){
+							console.log("VENDOR CREATION FAILED  " + vendor_name );
+								if(eCallBack && typeof eCallBack == "function"){
+									eCallBack.apply(window , arguments);
+								}							
+						
+						}) ;
+
+	
+						
+						
+						
+					  }
+					},function(){
+						console.log(2 ,arguments);
+						if(eCallBack && typeof eCallBack == "function"){
+							eCallBack.apply(window , arguments);
+						}
+					
+					} );		
+		
+		
+	
 	}
 });
 

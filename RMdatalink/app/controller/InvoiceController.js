@@ -189,6 +189,24 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
     onrtDetlViewSubscriptionsBtnTap: function(button, e, eOpts) {
 
+        var RDStoreProductsList= Ext.ComponentQuery.query("#RDStoreProductsList")[0];
+        var selection = RDStoreProductsList.getSelection();
+        var selectedItem ;
+
+        try{
+            if( selection.length){
+
+                selectedItem = selection[0].data.ProductName;
+            }
+
+
+        }
+        catch(e){
+            console.log("ERROR THROWN" , e);
+        }
+
+
+
          RMdatalink.app.getController('RetailerDeatilsDataSet').saveRTProductSetup();
 
                 var selectedUserRecord = RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
@@ -199,7 +217,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
                     }
         getSubscriptionSheet().show() ;
 
-        this.initInvoice( selectedUserRecord.record) ;
+        this.initInvoice( selectedUserRecord.record , selectedItem) ;
 
 
         var rtDtlsLbl = Ext.ComponentQuery.query('#billingSheetRtDtlsLbl')[0];
@@ -331,10 +349,11 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
 
-        rmProInvoicePanel.down('#invoiceDiscountAppliedFld').setValue(discountValue);
+        rmProInvoicePanel.down('#invoiceDiscountAppliedFld').setValue(discountValue || 0);
 
 
         var subTotal = parseFloat(rmProInvoicePanel.down('#invoiceRmproSubtotal').getValue()) ;
+
 
 
         var totalPayble = parseFloat(rmProInvoicePanel.down('#invoiceTotalPaybleFld').getValue())  ;
@@ -350,7 +369,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         totalPayble = totalPayble.toFixed(2) ;
 
         rmProInvoicePanel.down('#invoiceTotalPaybleFld').setValue(totalPayble);
-        rmProInvoicePanel.down('#invoiceTotalSavingFld').setValue(totalSaving);
+        rmProInvoicePanel.down('#invoiceTotalSavingFld').setValue(totalSaving || 0);
 
         //rmProInvoicePanel.down('#invoiceAmmountFld').setValue(totalPayble);
 
@@ -486,7 +505,20 @@ Ext.define('RMdatalink.controller.InvoiceController', {
     onCreateNewInvoiceButtonTap: function(button, e, eOpts) {
 
         var invoiceType = Ext.ComponentQuery.query('#subscriptionScreenInvoiceTypeSlFld')[0].getValue() ;
+        var retailer = RMdatalink.app.getController('InvoiceController').config.selectedRetailer ;
+        var product_name = invoiceType;
+        var product_billng =  retailer.get("product_billng");
+        var product_info = product_billng[product_name];
 
+        // PRODUCT SETUP IS ABSENT FOR PARTICULAR SELECTED PRODUCT FOR THIS RETAILER
+        // SHOW ALERT AND THEN RETURN
+        if(product_info){
+
+        }else{
+
+            Ext.Msg.alert("Alert" , "Please Do Product Setup for the selected product");
+
+        }
 
                   RMdatalink.app.getController('InvoiceController').config.isSalesCommissionForRmPro = true ;
 
@@ -554,243 +586,455 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         }
     },
 
-    initInvoice: function(record) {
-        var that = this ;
-        this.setIsVip(false);
-        function msgHandler(){
-
-            RMdatalink.app.getController('ProductBillingController').config.needToEdit = true ;
-            var productSetpBtn = Ext.ComponentQuery.query('#invoiceRMPROProductSetupBtn')[0];
-            productSetpBtn.fireEvent('tap',productSetpBtn);
-
-        }
-        function initRMpro()
-        {
-
-
-
-            var dataToUpdate = {
-
-                product_billng : record.data.product_billng
-            };
-             that.resetRmproInvoice() ;
-
-            if(
-               dataToUpdate.product_billng  && dataToUpdate.product_billng.product_rmpro &&
-               dataToUpdate.product_billng.product_rmpro.total_payble &&
-               dataToUpdate.product_billng.product_rmpro.payment_period &&
-               dataToUpdate.product_billng.product_rmpro.due_date
-              )
+    initInvoice: function(record, productName) {
+        var executeWithoutProductName = function(){
+            var that = this ;
+            this.setIsVip(false);
+            function msgHandler()
             {
 
-                dataToUpdate.product_billng.product_rmpro.payment_status = "unpaid" ;
-                dataToUpdate.product_billng.product_rmpro.invoice_status = "active" ;
-                currentInvoices.push(dataToUpdate.product_billng.product_rmpro);
+                RMdatalink.app.getController('ProductBillingController').config.needToEdit = true ;
+                var productSetpBtn = Ext.ComponentQuery.query('#invoiceRMPROProductSetupBtn')[0];
+                productSetpBtn.fireEvent('tap',productSetpBtn);
 
-                rmProndex = currentInvoices.length -1 ;
+            }
+            function initRMpro()
+            {
 
-         /*    that.setRMProBillInVoice() ;
+
+
+                var dataToUpdate = {
+
+                    product_billng : record.data.product_billng
+                };
+                that.resetRmproInvoice() ;
+
+                if(
+                    dataToUpdate.product_billng  && dataToUpdate.product_billng.product_rmpro &&
+                    dataToUpdate.product_billng.product_rmpro.total_payble &&
+                    dataToUpdate.product_billng.product_rmpro.payment_period &&
+                    dataToUpdate.product_billng.product_rmpro.due_date
+                )
+                {
+
+                    dataToUpdate.product_billng.product_rmpro.payment_status = "unpaid" ;
+                    dataToUpdate.product_billng.product_rmpro.invoice_status = "active" ;
+                    currentInvoices.push(dataToUpdate.product_billng.product_rmpro);
+
+                    rmProndex = currentInvoices.length -1 ;
+
+
+
+                } else{
+
+                    if(msg){
+                        msg += ",RMPro " ;
+                    }else{
+                        msg = "RMPro " ;
+                    }
+
+
+                }
+
+
+            }
+
+
+            function initVIP()
+            {
+
+
+
+                var dataToUpdate = {
+
+                    product_billng : record.data.product_billng
+                };
+
+                var key = 'product_vip';
+                that.resetRmproInvoice() ;
+
+                if(dataToUpdate.product_billng  && dataToUpdate.product_billng[key] &&
+                   dataToUpdate.product_billng[key].total_payble &&
+                   dataToUpdate.product_billng[key].payment_period &&
+                   dataToUpdate.product_billng[key].due_date )
+                {
+
+                    dataToUpdate.product_billng[key].payment_status = "unpaid" ;
+                    dataToUpdate.product_billng[key].invoice_status = "active" ;
+                    currentInvoices.push(dataToUpdate.product_billng[key]);
+
+                    rmProndex = currentInvoices.length -1 ;
+
+                    that.setDatalinkBillingModules() ;
+
+
+                } else{
+
+                    if(msg){
+                        msg += ",VIP " ;
+                    }else{
+                        msg = "VIP " ;
+                    }
+
+
+                }
+                that.config.product_type = 'product_vip';
+
+            }
+
+
+
+            function initDataLink()
+            {
+
+
+                var dataToUpdate = {
+
+                    product_billng : record.data.product_billng
+                };
+                that.resetDatalinkInvoice() ;
+                if(dataToUpdate.product_billng  && dataToUpdate.product_billng.product_datalink ){
+                    dataToUpdate.product_billng.product_datalink.payment_status = "unpaid" ;
+                    dataToUpdate.product_billng.product_datalink.invoice_status = "active" ;
+
+                    currentInvoices.push(dataToUpdate.product_billng.product_datalink);
+                    that.setDatalinkBillInVoice() ;
+                    //setDatalinkBillInVoice
+                    that.setDatalinkBillingModules() ;
+                    that.setInvoiceDatalinkDiscount(Ext.ComponentQuery.query('#invoiceDatalinkPaymentPrdSlFld')[0].getValue());
+
+                }
+                else{
+
+                    if(msg){
+                        msg += ",Datalink " ;
+                    }else{
+                        msg = "Datalink " ;
+                    }
+
+
+                }
+
+
+            }
+
+
+
+            RMdatalink.app.getController('InvoiceHistoryController').config.displayGeneratedInvoice = false ;
+            this.config.product_billing_rec  = null;
+            this.config.selectedRetailer = record ;
+            this.config.product_billing_rec =  record.data.product_billng ;
+            var store_products = record.get('store_products') ;
+            var msg = null ;
+
+            that.config.isManualChange = false ;
+            var currentInvoices = [] ;
+            var rmProndex = 0 ;
+
+            if(store_products.datalink_status && store_products.datalink_status == "ACTIVE"){
+
+                //  this.loadVendorBillingData() ;
+
+                //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(false);
+
+                //  initDataLink() ;
+
+
+            }else{
+
+                //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
+            }
+
+
+            if( ( store_products.rmpro_status && store_products.rmpro_status == "ACTIVE"  ) ||
+                ( store_products.vip_status && store_products.vip_status == "ACTIVE"  )
+              )
+            {
+                if(  true &&    ( store_products.vip_status && store_products.vip_status == "ACTIVE"  ) )
+                {
+                    this.setIsVip(true);
+                    initVIP();
+                }else
+                {
+                    initRMpro() ;
+                }
+
+            }
+            else
+            {
+                that.resetRmproInvoice() ;
+                function allProductSetup(){
+
+                    var rtBillingSheetCancelBtn = Ext.ComponentQuery.query('#rtBillingSheetCancelBtn')[0];
+                    rtBillingSheetCancelBtn.fireEvent('tap',rtBillingSheetCancelBtn);
+
+                }
+
+                Ext.Msg.alert("Alert", " Please do product setup first. ",allProductSetup);
+            }
+
+
+            if(msg){
+
+
+                Ext.Msg.alert("Alert", " Please do product setup for "+ msg,msgHandler);
+
+            }
+
+            that.config.isManualChange = true ;
+
+
+
+
+
+            RMdatalink.app.getController('InvoiceHistoryController').initInvoiceHistory() ;
+
+
+
+            var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
+            rmProInvoicePanel.down('#InvoiceToNameLbl').setHtml(record.data.store_name );
+
+            var currentInvoiceStr = Ext.getStore('CurrentInvoiceStore') ;
+            currentInvoiceStr.removeAll() ;
+            currentInvoiceStr.sync() ;
+
+            currentInvoiceStr.setData(currentInvoices);
+            currentInvoiceStr.sync() ;
+
+            that.config.currentInvoice = [];// currentInvoices ;
+
+            // var currentInvoiceLst = Ext.ComponentQuery.query('#invoiceCurrentSubscriptionsListPanel')[0].down('#mainList');
+
+
+            //currentInvoiceLst.select(rmProndex,false,false) ;
+        };
+
+        // IF PRODUCT NAME IS NOT DEFINED THAN CALL INIT INOVICE AS IT IS.
+
+
+        var executeWithProcutName = function(){
+            var that = this ;
+            this.setIsVip(false);
+            function msgHandler(){
+
+                RMdatalink.app.getController('ProductBillingController').config.needToEdit = true ;
+                var productSetpBtn = Ext.ComponentQuery.query('#invoiceRMPROProductSetupBtn')[0];
+                productSetpBtn.fireEvent('tap',productSetpBtn);
+
+            }
+            function initRMpro()
+            {
+
+
+
+                var dataToUpdate = {
+
+                    product_billng : record.data.product_billng
+                };
+                that.resetRmproInvoice() ;
+
+                if(
+                    dataToUpdate.product_billng  && dataToUpdate.product_billng.product_rmpro &&
+                    dataToUpdate.product_billng.product_rmpro.total_payble &&
+                    dataToUpdate.product_billng.product_rmpro.payment_period &&
+                    dataToUpdate.product_billng.product_rmpro.due_date
+                )
+                {
+
+                    dataToUpdate.product_billng.product_rmpro.payment_status = "unpaid" ;
+                    dataToUpdate.product_billng.product_rmpro.invoice_status = "active" ;
+                    currentInvoices.push(dataToUpdate.product_billng.product_rmpro);
+
+                    rmProndex = currentInvoices.length -1 ;
+
+                    /*    that.setRMProBillInVoice() ;
 
                 that.setRMProBillingModules() ;
 
                 that.setInvoiceRmproDiscount(Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].getValue());
         */
 
-            } else{
+                } else{
 
-                if(msg){
-                    msg += ",RMPro " ;
-                }else{
-                    msg = "RMPro " ;
+                    if(msg){
+                        msg += ",RMPro " ;
+                    }else{
+                        msg = "RMPro " ;
+                    }
+
+
                 }
 
 
             }
 
 
-        }
-
-
-        function initVIP()
-        {
-
-
-
-            var dataToUpdate = {
-
-                product_billng : record.data.product_billng
-            };
-
-            var key = 'product_vip';
-             that.resetRmproInvoice() ;
-
-            if(dataToUpdate.product_billng  && dataToUpdate.product_billng[key] &&
-               dataToUpdate.product_billng[key].total_payble &&
-               dataToUpdate.product_billng[key].payment_period &&
-               dataToUpdate.product_billng[key].due_date )
+            function initVIP()
             {
 
-                dataToUpdate.product_billng[key].payment_status = "unpaid" ;
-                dataToUpdate.product_billng[key].invoice_status = "active" ;
-                currentInvoices.push(dataToUpdate.product_billng[key]);
-
-                rmProndex = currentInvoices.length -1 ;
-                  that.setDatalinkBillingModules() ;
 
 
-            } else{
+                var dataToUpdate = {
 
-                if(msg){
-                    msg += ",VIP " ;
-                }else{
-                    msg = "VIP " ;
+                    product_billng : record.data.product_billng
+                };
+
+                var key = 'product_vip';
+                that.resetRmproInvoice() ;
+
+                if(dataToUpdate.product_billng  && dataToUpdate.product_billng[key] &&
+                   dataToUpdate.product_billng[key].total_payble &&
+                   dataToUpdate.product_billng[key].payment_period &&
+                   dataToUpdate.product_billng[key].due_date )
+                {
+
+                    dataToUpdate.product_billng[key].payment_status = "unpaid" ;
+                    dataToUpdate.product_billng[key].invoice_status = "active" ;
+                    currentInvoices.push(dataToUpdate.product_billng[key]);
+
+                    rmProndex = currentInvoices.length -1 ;
+
+                    that.setDatalinkBillingModules() ;
+
+
+                } else{
+
+                    if(msg){
+                        msg += ",VIP " ;
+                    }else{
+                        msg = "VIP " ;
+                    }
+
+
+                }
+                that.config.product_type = 'product_vip';
+
+            }
+
+
+
+
+            ///////////////////////init datalink
+
+
+            function initDataLink(){
+
+
+                var dataToUpdate = {
+
+                    product_billng : record.data.product_billng
+                };
+                that.resetDatalinkInvoice() ;
+                if(dataToUpdate.product_billng  && dataToUpdate.product_billng.product_datalink ){
+                    dataToUpdate.product_billng.product_datalink.payment_status = "unpaid" ;
+                    dataToUpdate.product_billng.product_datalink.invoice_status = "active" ;
+
+                    currentInvoices.push(dataToUpdate.product_billng.product_datalink);
+                    that.setDatalinkBillInVoice() ;
+                    //setDatalinkBillInVoice
+                    that.setDatalinkBillingModules() ;
+                    that.setInvoiceDatalinkDiscount(Ext.ComponentQuery.query('#invoiceDatalinkPaymentPrdSlFld')[0].getValue());
+
+                }
+                else{
+
+                    if(msg){
+                        msg += ",Datalink " ;
+                    }else{
+                        msg = "Datalink " ;
+                    }
+
+
                 }
 
 
             }
-            that.config.product_type = 'product_vip';
-
-        }
 
 
 
+            RMdatalink.app.getController('InvoiceHistoryController').config.displayGeneratedInvoice = false ;
 
-        ///////////////////////init datalink
+            this.config.product_billing_rec  = null;
 
+            this.config.selectedRetailer = record ;
 
-        function initDataLink(){
+            this.config.product_billing_rec =  record.data.product_billng ;
 
+            var store_products = record.get('store_products') ;
+            var msg = null ;
 
-            var dataToUpdate = {
+            that.config.isManualChange = false ;
+            var currentInvoices = [] ;
+            var rmProndex = 0 ;
 
-                product_billng : record.data.product_billng
-            };
-             that.resetDatalinkInvoice() ;
-            if(dataToUpdate.product_billng  && dataToUpdate.product_billng.product_datalink ){
-                 dataToUpdate.product_billng.product_datalink.payment_status = "unpaid" ;
-                dataToUpdate.product_billng.product_datalink.invoice_status = "active" ;
-
-                currentInvoices.push(dataToUpdate.product_billng.product_datalink);
-                that.setDatalinkBillInVoice() ;
-
-                that.setDatalinkBillingModules() ;
-                that.setInvoiceDatalinkDiscount(Ext.ComponentQuery.query('#invoiceDatalinkPaymentPrdSlFld')[0].getValue());
-
-            }
-            else{
-
-                if(msg){
-                    msg += ",Datalink " ;
-                }else{
-                    msg = "Datalink " ;
-                }
-
-
-            }
-
-
-        }
-
-
-
-        RMdatalink.app.getController('InvoiceHistoryController').config.displayGeneratedInvoice = false ;
-
-        this.config.product_billing_rec  = null;
-
-        this.config.selectedRetailer = record ;
-
-        this.config.product_billing_rec =  record.data.product_billng ;
-
-        var store_products = record.get('store_products') ;
-        var msg = null ;
-
-        that.config.isManualChange = false ;
-        var currentInvoices = [] ;
-        var rmProndex = 0 ;
-
-        if(store_products.datalink_status && store_products.datalink_status == "ACTIVE"){
-
-          //  this.loadVendorBillingData() ;
-
-        //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(false);
-
-          //  initDataLink() ;
-
-
-        }else{
-
-         //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(true);
-        }
-
-
-        if( ( store_products.rmpro_status && store_products.rmpro_status == "ACTIVE"  ) ||
-            ( store_products.vip_status && store_products.vip_status == "ACTIVE"  )
-          )
-        {
-
-
-          //  Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
-
-
-            if(  true &&    ( store_products.vip_status && store_products.vip_status == "ACTIVE"  ) )
+            if(store_products.datalink_status && store_products.datalink_status == "ACTIVE" && productName =="Datalink")
             {
+
+                //  this.loadVendorBillingData() ;
+
+                //    Ext.ComponentQuery.query('#productDatalinkInvoicePanel')[0].setHidden(false);
+
+                //  initDataLink() ;
+
+
+            }else   if( ( store_products.rmpro_status && store_products.rmpro_status == "ACTIVE"  && productName =="RMPro") ||
+                       ( store_products.vip_status && store_products.vip_status == "ACTIVE" && productName =="VIP" )
+                      )
+            {
+
+
+                //  Ext.ComponentQuery.query('#productRmproInvoicePanel')[0].setHidden(false);
+
+
+                if(  true &&    ( store_products.vip_status && store_products.vip_status == "ACTIVE"  ) )
+                {
                     this.setIsVip(true);
                     initVIP();
-            }else{
+                }else
+                {
                     initRMpro() ;
+                }
+
+
+
+
+            }else{
+                return false;
             }
 
-
-
-
-        }
-        else
-        {
-             that.resetRmproInvoice() ;
-             function allProductSetup(){
-
-                var rtBillingSheetCancelBtn = Ext.ComponentQuery.query('#rtBillingSheetCancelBtn')[0];
-                rtBillingSheetCancelBtn.fireEvent('tap',rtBillingSheetCancelBtn);
-
-            }
-
-             Ext.Msg.alert("Alert", " Please do product setup first. ",allProductSetup);
-        }
-
-
-        if(msg){
-
-
-            Ext.Msg.alert("Alert", " Please do product setup for "+ msg,msgHandler);
-
-        }
-
-          that.config.isManualChange = true ;
-
-
-
-
-
-        RMdatalink.app.getController('InvoiceHistoryController').initInvoiceHistory() ;
-
-
-
-        var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
+            that.config.isManualChange = true ;
+            RMdatalink.app.getController('InvoiceHistoryController').initInvoiceHistory() ;
+            var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
             rmProInvoicePanel.down('#InvoiceToNameLbl').setHtml(record.data.store_name );
+            var currentInvoiceStr = Ext.getStore('CurrentInvoiceStore') ;
+            currentInvoiceStr.removeAll() ;
+            currentInvoiceStr.sync() ;
+            currentInvoiceStr.setData(currentInvoices);
+            currentInvoiceStr.sync() ;
+            that.config.currentInvoice = [];// currentInvoices ;
+            return true;
 
-        var currentInvoiceStr = Ext.getStore('CurrentInvoiceStore') ;
-         currentInvoiceStr.removeAll() ;
-         currentInvoiceStr.sync() ;
-
-         currentInvoiceStr.setData(currentInvoices);
-         currentInvoiceStr.sync() ;
-
-         that.config.currentInvoice = [];// currentInvoices ;
-
-        var currentInvoiceLst = Ext.ComponentQuery.query('#invoiceCurrentSubscriptionsListPanel')[0].down('#mainList');
+            // var currentInvoiceLst = Ext.ComponentQuery.query('#invoiceCurrentSubscriptionsListPanel')[0].down('#mainList');
 
 
-         //currentInvoiceLst.select(rmProndex,false,false) ;
+            //currentInvoiceLst.select(rmProndex,false,false) ;
+
+        };
+        if( productName &&  false){
+
+            var wasExecuted = executeWithProcutName.call(this);
+            if(wasExecuted){
+
+            }else{
+                executeWithoutProductName.call(this);
+            }
+            debugger;
+        }else{
+            executeWithoutProductName.call(this);
+        }
+
+
+
     },
 
     setRMProBillingModules: function() {
@@ -973,7 +1217,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         //var rmProBilling = this.config.selectedRetailer.data.product_billng.product_datalink ;
         var rmProBilling;
-                if( this.getIsVip(true))
+                if( this.getIsVip())
                 {
 
                     var rec =  RMdatalink.util.globalConfig.getDataInRetailerScreenForSaveOrCancel();
@@ -1392,7 +1636,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
 
-        rmProInvoicePanel.down('#invoiceDiscountAppliedFld').setValue(discountValue);
+        rmProInvoicePanel.down('#invoiceDiscountAppliedFld').setValue(discountValue || 0);
 
         var subTotal = rmProInvoicePanel.down('#invoiceRmproSubtotal').getValue() ;
         subTotal = subTotal.replace(",","");
@@ -1421,7 +1665,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         totalPayble = totalPayble.toFixed(2) ;
 
         rmProInvoicePanel.down('#invoiceTotalPaybleFld').setValue(formatNum(totalPayble));
-        rmProInvoicePanel.down('#invoiceTotalSavingFld').setValue( formatNum(totalSaving));
+        rmProInvoicePanel.down('#invoiceTotalSavingFld').setValue( formatNum(totalSaving || 0));
 
         //rmProInvoicePanel.down('#invoiceAmmountFld').setValue(totalPayble);
 
@@ -1470,7 +1714,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         var product_key = this.config.product_type ;
 
-         duration = Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].getValue() ;
+         duration = Ext.ComponentQuery.query('#invoiceRmProPaymentPrdSlFld')[0].getValue() || 12;
 
 
 
@@ -1507,17 +1751,20 @@ Ext.define('RMdatalink.controller.InvoiceController', {
 
         var rmProInvoicePanel = Ext.ComponentQuery.query('#productRmproInvoicePanel')[0] ;
 
-        rmProInvoicePanel.down('#invoiceDiscountAppliedFld').setValue(discountValue);
+        rmProInvoicePanel.down('#invoiceDiscountAppliedFld').setValue(discountValue || 0);
+
+        var subTotal = parseFloat(rmProInvoicePanel.down('#invoiceRmproSubtotal').getValue()  || 0) ;
 
 
-        var subTotal = parseFloat(rmProInvoicePanel.down('#invoiceRmproSubtotal').getValue()) ;
+        var totalPayble = parseFloat(  rmProInvoicePanel.down('#invoiceTotalPaybleFld').getValue()    ||
+                                      (subTotal  )
+
+                                    )  ;
 
 
-        var totalPayble = parseFloat(rmProInvoicePanel.down('#invoiceTotalPaybleFld').getValue())  ;
 
-
-
-        var totalSaving = (subTotal*  parseFloat(duration)  ) - totalPayble ;
+        //var totalSaving = (subTotal*  parseFloat(duration)  ) - totalPayble ;
+        var totalSaving = (subTotal   ) - totalPayble ;
 
         totalSaving += parseFloat(rmProInvoicePanel.down('#invoiceRmproSaving').getValue()) ;
 
@@ -1526,7 +1773,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         totalPayble = totalPayble.toFixed(2) ;
 
         rmProInvoicePanel.down('#invoiceTotalPaybleFld').setValue(totalPayble);
-        rmProInvoicePanel.down('#invoiceTotalSavingFld').setValue(totalSaving);
+        rmProInvoicePanel.down('#invoiceTotalSavingFld').setValue(totalSaving || 0);
 
         //rmProInvoicePanel.down('#invoiceAmmountFld').setValue(totalPayble);
 
@@ -2280,6 +2527,7 @@ Ext.define('RMdatalink.controller.InvoiceController', {
         rmProInvoicePanel.down('#InvoiceNoLbl').setHtml("Invoice #:&nbsp;&nbsp;"+ accNo + "-" + product_rmpro.invoice_number );
         rmProInvoicePanel.down('#invoiceTopDateNoLbl').setHtml("Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ pDt ) ;
         rmProInvoicePanel.down('#invoicePayDateFld').setValue(pDt) ;
+
         rmProInvoicePanel.down('#InvoicemonthlySubscriptionLbl').setHtml(" $ " + formatNum(product_rmpro.monthly_membership) ) ;
 
 

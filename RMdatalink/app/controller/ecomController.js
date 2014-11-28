@@ -648,6 +648,13 @@ Ext.define('RMdatalink.controller.ecomController', {
 
 
 
+        var radioFields = form1.query("radiofield").concat(form2.query('button')) ;
+        radioFields.forEach(function(obj){
+            obj.setDisabled(status) ;
+
+        });
+
+
         for(var i=0; i < btns.length ; i++){
         //     var itemId = btns[i].getItemId()  ;
         //     var isSkipBtns = itemId == "datalinkMainListContainer" ||  itemId == "productsDatalinkPricingTab"  ||  itemId == "dlSetUpHideShowArrowBtn" ;

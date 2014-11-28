@@ -564,6 +564,8 @@
                 "fn": "showInInhouse",
                 "implHandler": [
                     "\r",
+                    "\r",
+                    "\r",
                     "var index = parseInt(arguments[0]);\r",
                     "\r",
                     "var mainContentPanel = Ext.ComponentQuery.query('#RMContentPanel')[0];\r",

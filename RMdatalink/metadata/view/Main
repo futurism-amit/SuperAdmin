@@ -462,9 +462,22 @@
                             "userConfig": {
                                 "designer|displayName": "card-ecatalog",
                                 "html": "ecatalog",
-                                "itemId": "card-ecatalog"
+                                "itemId": "card-ecatalog",
+                                "layout": "fit"
                             },
-                            "designerId": "4d91def3-56f0-45af-8c4b-139045ea861b"
+                            "designerId": "4d91def3-56f0-45af-8c4b-139045ea861b",
+                            "cn": [
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "f44aaef5-d708-4e1e-9ea3-955f22b1efb4",
+                                    "masterInstanceId": "ac0b97a8-aec1-476c-80e3-b46b1ed4d338"
+                                }
+                            ]
                         },
                         {
                             "type": "Ext.Container",

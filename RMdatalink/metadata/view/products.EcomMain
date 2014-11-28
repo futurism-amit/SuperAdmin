@@ -114,7 +114,8 @@
                                             "\r",
                                             "\r",
                                             "RMdatalink.app.getController('ecomPricingController').SAVEDatalinkSetup();\r",
-                                            "RMdatalink.app.getController('ecomPricingController').resetPricingListTemplate();"
+                                            "RMdatalink.app.getController('ecomPricingController').resetPricingListTemplate();\r",
+                                            "RMdatalink.app.getController('ecomPricingController').resetDiscountListTemplate();"
                                         ]
                                     },
                                     "designerId": "9ae5bf7f-f8c4-45dd-9d8f-6e8a14768df7"
@@ -166,7 +167,9 @@
                                             "\r",
                                             "RMdatalink.app.getController('ecomController').enableDisableDlFlds(false);\r",
                                             "\r",
-                                            "RMdatalink.app.getController('ecomPricingController').setPricingListTemplate();"
+                                            "RMdatalink.app.getController('ecomPricingController').setPricingListTemplate();\r",
+                                            "\r",
+                                            "RMdatalink.app.getController('ecomPricingController').setDiscountTemplate();"
                                         ]
                                     },
                                     "designerId": "1635975e-75ae-4c33-ae0d-18b12e1b9478"
@@ -211,7 +214,8 @@
                                             "\r",
                                             "RMdatalink.app.getController('ecomController').enableDisableDlFlds(true);\r",
                                             "\r",
-                                            "RMdatalink.app.getController('ecomPricingController').resetPricingListTemplate();"
+                                            "RMdatalink.app.getController('ecomPricingController').resetPricingListTemplate();\r",
+                                            "RMdatalink.app.getController('ecomPricingController').resetDiscountListTemplate();"
                                         ]
                                     },
                                     "designerId": "662d1f3f-5bd1-42a0-8fa5-d9db5ddb74be"
@@ -695,6 +699,9 @@
                                                                     },
                                                                     "codeClass": null,
                                                                     "userConfig": {
+                                                                        "cls": [
+                                                                            "fontDefination"
+                                                                        ],
                                                                         "docked": "right",
                                                                         "html": "Total price for selected items::",
                                                                         "margin": "5 5 5 10",
@@ -758,11 +765,11 @@
                                                             "headers.setData([{}]);\r",
                                                             "headers.setItemTpl(\r",
                                                             "    Ext.create('Ext.XTemplate',\r",
-                                                            "               '<div class=\"x-rm-listtpl-main\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;\">',\r",
-                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main fontDefination\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;\">',\r",
+                                                            "               '    <div style=\"width: 4%;\">',\r",
                                                             "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
                                                             "               '    </div>',\r",
-                                                            "                '    <div class=\"rightBorderDiv\" style=\"width: 4%;text-align: center;\" data-name=\"module_listed_order\">',\r",
+                                                            "                '    <div class=\"rightBorderDiv\" style=\"width: 6%;text-align: center;\" data-name=\"module_listed_order\">',\r",
                                                             "               '        index&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                                             "               '    </div>',\r",
                                                             "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;\" data-name=\"module_sku\">',\r",
@@ -792,11 +799,11 @@
                                                             "\r",
                                                             "list.setItemTpl(\r",
                                                             "    Ext.create('Ext.XTemplate',\r",
-                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\" style=\"{[this.getSelectedColor(values)]}\">',\r",
-                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor fontDefination\" style=\"{[this.getSelectedColor(values)]}\">',\r",
+                                                            "               '    <div style=\"width: 4%;\">',\r",
                                                             "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
                                                             "               '    </div>',\r",
-                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 4%;\"> {module_listed_order}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 6%;\"> {module_listed_order}</div>',\r",
                                                             "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_skus}</div>',\r",
                                                             "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_name}</div>',\r",
                                                             "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;\">{module_description}</div>',\r",
@@ -1118,6 +1125,9 @@
                                                                     },
                                                                     "codeClass": null,
                                                                     "userConfig": {
+                                                                        "cls": [
+                                                                            "fontDefination"
+                                                                        ],
                                                                         "docked": "right",
                                                                         "html": "Total price for selected items::",
                                                                         "margin": "5 5 5 10",
@@ -1181,11 +1191,11 @@
                                                             "headers.setData([{}]);\r",
                                                             "headers.setItemTpl(\r",
                                                             "    Ext.create('Ext.XTemplate',\r",
-                                                            "               '<div class=\"x-rm-listtpl-main\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;\">',\r",
-                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main fontDefination\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;\">',\r",
+                                                            "               '    <div style=\"width: 4%;\">',\r",
                                                             "               '        <div style=\"width: 20px;\" data-name=\"all\"></div>',\r",
                                                             "               '    </div>',\r",
-                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 4%;text-align: center;\" data-name=\"module_listed_order\">',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 6%;text-align: center;\" data-name=\"module_listed_order\">',\r",
                                                             "               '        index&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                                             "               '    </div>',\r",
                                                             "               '    <div class=\"rightBorderDiv\" style=\"width: 14%;\" data-name=\"module_sku\">',\r",
@@ -1215,11 +1225,11 @@
                                                             "\r",
                                                             "list.setItemTpl(\r",
                                                             "    Ext.create('Ext.XTemplate',\r",
-                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor\" style=\"{[this.getSelectedColor(values)]}\">',\r",
-                                                            "               '    <div style=\"width: 6%;\">',\r",
+                                                            "               '<div class=\"x-rm-listtpl-main pointerCursor fontDefination\" style=\"{[this.getSelectedColor(values)]}\">',\r",
+                                                            "               '    <div style=\"width: 4%;\">',\r",
                                                             "               '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
                                                             "               '    </div>',\r",
-                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 4%;\"> {module_listed_order}</div>',\r",
+                                                            "               '    <div class=\"rightBorderDiv\" style=\"width: 6%;\"> {module_listed_order}</div>',\r",
                                                             "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_skus}</div>',\r",
                                                             "               '    <div class=\"rightBorderDiv boldText\" style=\"width: 14%;\">{module_name}</div>',\r",
                                                             "               '    <div class=\"rightBorderDiv\" style=\"width: 38%;\">{module_description}</div>',\r",
@@ -1253,8 +1263,8 @@
                                                             "component.addListener('painted' , function(){\r",
                                                             "    getItemsOfVIPFromEcomStore( component );\r",
                                                             "    var list = component.down('#mainList');\r",
-                                                            " \r",
-                                                            "    \r",
+                                                            "\r",
+                                                            "\r",
                                                             "\r",
                                                             "} , this, {\r",
                                                             "\r",
@@ -1448,7 +1458,7 @@
                                                             "pointerCursor"
                                                         ],
                                                         "height": null,
-                                                        "html": "Bundle Setup E-Commerce (Add-ons)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
+                                                        "html": "Bundle Setup (Add-ons)<img src=\"resources/images/labelHeader/downArrow.png\" style=\"float: right;\"/>",
                                                         "itemId": "mylabel5",
                                                         "labelAction": "dropDown",
                                                         "margin": "0 0 2 0",
@@ -2005,8 +2015,8 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "html": "Charge Mode:",
-                                                                "style": "font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: 'OpenSans'; font-size: 70% !important; color: #555555 !important; font-weight: bold;",
+                                                                "html": "Charges:",
+                                                                "style": "font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: 'OpenSans'; font-size: 70% !important; color: #555555 !important; font-weight: bold;margin-left:2px; ",
                                                                 "width": "80px"
                                                             },
                                                             "designerId": "0b393760-1e15-4739-bc17-3d65166155b6"
@@ -2064,7 +2074,7 @@
                                                                         "cls": [
                                                                             "removeBorderCheckBox"
                                                                         ],
-                                                                        "label": "1 Month",
+                                                                        "label": "Monthly",
                                                                         "labelAlign": "right",
                                                                         "labelWidth": "80px",
                                                                         "layout|flex": null,
@@ -2119,7 +2129,7 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "html": "Product:",
-                                                                "style": "font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: 'OpenSans'; font-size: 70% !important; color: #555555 !important; font-weight: bold;",
+                                                                "style": "font-weight: 700; font-size: 11px; height: 24px; padding: 4px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: 'OpenSans'; font-size: 70% !important; color: #555555 !important; font-weight: bold;margin-left:2px;",
                                                                 "width": "80px"
                                                             },
                                                             "designerId": "de9c457f-90b1-4b3a-ac3f-471e937dde71"
@@ -2450,17 +2460,17 @@
                                                             "headers.setHidden(true);\r",
                                                             "\r",
                                                             "var list = component.down('#mainList');\r",
-                                                            "list.setStore(Ext.getStore('products.ecomDiscountStore'));\r",
+                                                            "list.setStore( Ext.getStore('products.ecomDiscountStore') );\r",
                                                             "list.setItemTpl(\r",
                                                             "    Ext.create('Ext.XTemplate',\r",
                                                             "               '<div class=\"x-rm-listtpl-main pointerCursor\">',\r",
                                                             "\r",
-                                                            "               '    <div style=\"width: 74%;padding-left: 15%;\">{discount_name}</div>',\r",
+                                                            "               '    <div style=\"width: 74%;padding-left: 15%;\" >{discount_name}</div>',\r",
                                                             "               '    <div style=\"width: 5%;\">%</div>',\r",
                                                             "\r",
                                                             "               '<div style=\"width: 15%;text-align: center;\">',\r",
-                                                            "               '    <input type=\"text\" style=\"width: 92% !important;margin-left: 2%;height: 16px;padding-left: 2px;\" class=\"x-rm-rdinlinecmt prodDlSetupFlds\" data-id=\"{id}\" value=\"{discount_value}\" maxlength=\"24\"',\r",
-                                                            "               '        onchange=\"RMdatalink.app.getController(\\'RMProController\\').updateRmproDiscount(this,\\'discount_value\\');\"/>',\r",
+                                                            "               '<div style=\"\" class=\"x-rm-rdinlinecmt prodDlSetupFlds\" data-id=\"{id}\" >',\r",
+                                                            "               ' {discount_value}</div>',\r",
                                                             "               '</div>',\r",
                                                             "\r",
                                                             "\r",
@@ -2479,6 +2489,121 @@
                                                     "designerId": "b6f17d96-7798-481d-82cb-ae2b2b6ca39e"
                                                 },
                                                 {
+                                                    "type": "Ext.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout": "hbox"
+                                                    },
+                                                    "designerId": "f5faa698-ed32-44ce-93ef-ac23c2bdd6ea",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.Label",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "html": "Display In VIP:",
+                                                                "style": "font-weight: 700; font-size: 11px; height: 24px; padding: 6px 0px 0px 8px; width: 80px !important; text-overflow: ellipsis; font-family: 'OpenSans'; font-size: 70% !important; color: #555555 !important; font-weight: bold;",
+                                                                "width": "80px"
+                                                            },
+                                                            "designerId": "a8ba6553-5617-44f3-a79d-0cdb13c40b06"
+                                                        },
+                                                        {
+                                                            "type": "Ext.form.Panel",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "container|align": "start",
+                                                                "height": "35px",
+                                                                "itemId": "displayInVIPPanel",
+                                                                "layout": "hbox",
+                                                                "layout|flex": 1,
+                                                                "scrollable": false,
+                                                                "width": "100%"
+                                                            },
+                                                            "designerId": "3df7d4f8-94ff-4d47-83ec-1b119097748f",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.field.Radio",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": [
+                                                                            "removeBorderCheckBox"
+                                                                        ],
+                                                                        "label": "Yes",
+                                                                        "labelAlign": "right",
+                                                                        "labelWidth": "80px",
+                                                                        "layout|flex": null,
+                                                                        "margin": "",
+                                                                        "name": "displayvalue",
+                                                                        "style": "margin-left:5px;",
+                                                                        "value": "1",
+                                                                        "width": "100px"
+                                                                    },
+                                                                    "designerId": "d26283b3-4408-4ef4-8fd0-4dd556164181"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.field.Radio",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "checked": true,
+                                                                        "cls": [
+                                                                            "removeBorderCheckBox"
+                                                                        ],
+                                                                        "label": "No",
+                                                                        "labelAlign": "right",
+                                                                        "labelWidth": "80px",
+                                                                        "layout|flex": null,
+                                                                        "name": "displayvalue",
+                                                                        "value": "2",
+                                                                        "width": "100px"
+                                                                    },
+                                                                    "designerId": "ca9d3f43-bd23-4a7e-b468-06046c3f0234"
+                                                                },
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onDisplayInVIPPanelInitialize",
+                                                                        "implHandler": [
+                                                                            "component.addListener(\"painted\" , function(){\r",
+                                                                            "    \r",
+                                                                            "    var values = component.getValues() || {};\r",
+                                                                            "    \r",
+                                                                            "    values.displayvalue = RMdatalink.app.getController('BillingDetailsController').config.pricingData[2].displayVIPAdvancePaymentBenfit;\r",
+                                                                            "    component.setValues(values);\r",
+                                                                            "} , this);"
+                                                                        ],
+                                                                        "name": "initialize"
+                                                                    },
+                                                                    "designerId": "2101945f-5fa6-46ae-a778-1984c41c487e"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
                                                     "type": "Ext.form.FieldSet",
                                                     "reference": {
                                                         "name": "items",
@@ -2488,6 +2613,7 @@
                                                     "userConfig": {
                                                         "container|align": "start",
                                                         "height": null,
+                                                        "hidden": true,
                                                         "layout": "hbox",
                                                         "margin": "10 2px 10 80",
                                                         "padding": "0 2 0 0",
@@ -5833,10 +5959,10 @@
                                             "    headers.setItemTpl(\r",
                                             "        Ext.create('Ext.XTemplate',\r",
                                             "                   '<div class=\"x-rm-listtpl-main\" style=\"border-bottom: 1px solid #9b9b9b; background-color: gainsboro;font-weight: bold;color: #555;font-size: 1.0em;padding:0 0px 0 0px !important;height:64px;\">',\r",
-                                            "                   '    <div style=\"width: 4%;padding-top: 44px;\">',\r",
+                                            "                   '    <div style=\"width: 2.5%;padding-top: 44px;\">',\r",
                                             "                   '        <div style=\"width: 19px; height:19px;{[this.getCartImage(values)]}\" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" l1 = \"2123\"  ></div>',\r",
                                             "                   '    </div>',\r",
-                                            "                   '    <div class=\"rightBorderDiv\" style=\"width: 8%;text-align: center;padding-top: 44px;\" data-name=\"vendor_name\">',\r",
+                                            "                   '    <div class=\"rightBorderDiv\" style=\"width: 9.5%;text-align: center;padding-top: 44px;\" data-name=\"vendor_name\">',\r",
                                             "                   '        Vendor&nbsp;<img src=\"resources/images/button_icons/downArrow.png\"/>',\r",
                                             "                   '    </div>',\r",
                                             "\r",
@@ -5932,11 +6058,11 @@
                                             "        Ext.create('Ext.XTemplate',\r",
                                             "                   '<div class=\"x-rm-listtpl-main\" style=\"width: 100%;padding:0 0px 0 0px !important;\">',\r",
                                             "\r",
-                                            "                   '    <div style=\"width: 4%;\">',\r",
+                                            "                   '    <div style=\"width: 2.5%;\">',\r",
                                             "                   '        <div style=\"width: 19px; height:19px;\"    {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} =\"onCartTap\" ></div>',\r",
                                             "                   '    </div>',\r",
                                             "\r",
-                                            "                   '    <div class=\"rightBorderDiv boldText \" style=\"width: 8%;padding-left:10px; {[this.getColorForVendor(values)]} \" >{vendor_name}</div>',\r",
+                                            "                   '    <div class=\"rightBorderDiv boldText \" style=\"width: 9.5%;padding-left:10px; {[this.getColorForVendor(values)]} \" >{vendor_name}</div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.4%;text-align: center;\" >{[formatNormalNum(values.SKU)]}</div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.4%;text-align: center;\" >{[formatNormalNum(values.collections)]}</div>',\r",
                                             "                   '    <div class=\"rightBorderDiv\" style=\"width: 6.4%;text-align: center;\" >{[formatNormalNum(values.design)]}</div>',\r",

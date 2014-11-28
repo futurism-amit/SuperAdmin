@@ -94,6 +94,98 @@ Ext.define('RMdatalink.view.InvoicePage', {
                     {
                         xtype: 'button',
                         handler: function(button, e) {
+                            console.log("test");
+                            function sucessCallBack(){
+                                console.log(arguments , 1);
+                            }
+
+                            function errorCallBack(){
+                                console.log(arguments , 2);
+                            }
+                            RMdatalink.iwa.rdl.sendEmail('anandb@futurismtechnologies.com' , "support@rmdatalink.com" ,"Mail Invoice Page",
+                            Ext.DomQuery.selectNode('#invoiceToPrint') ,sucessCallBack , errorCallBack) ;
+
+
+                            return;
+
+                            /*
+
+                            var url = window.location.origin + window.location.pathname +"?";
+
+                            if( dbEnv == "dev_"){
+
+                            url += "dev=true&" ;
+                            }
+
+
+                            url += "temppwd="+ password + "&" ;
+
+                            url += "user="+ username + "#regeneratepwd" ;
+
+                            var linck = '<a href='+url+'>'+url+'</a>' ;
+
+
+                            var msgBody = 'Dear '+username + ' Please click below link to change your password ' + linck;
+
+                            RMdatalink.iwa.rdl.sendEmail(to , "support@rmdatalink.com" ,"Password Change",
+                            msgBody ,sucessCallBack , errorCallBack) ;
+
+                            function sucessCallBack(){
+
+                            }
+
+                            function errorCallBack(){
+
+                            }
+
+                            */
+                            var _this =this ;
+
+
+
+                            var invoice = window.open("invoice.html", "invoice", "width = 595, height= 842 ");
+                            invoice.focus();
+
+                            Ext.Function.defer(addInvoiceToHtmlPage, 1000, _this);
+
+                            Ext.ComponentQuery.query('#InvoicePage')[0].hide();
+
+
+
+
+                            function addInvoiceToHtmlPage(){
+
+                                invoice.window.document.body.appendChild( Ext.DomQuery.selectNode('#invoiceToPrint'));
+
+                                var divs = invoice.window.document.getElementsByClassName("x-scroll-container x-size-monitored x-paint-monitored") ;
+                                for(var i=0; i < divs.length ; i++){
+                                    divs[i].style.overflow = "hidden";
+                                }
+                                Ext.Function.defer(printInvoicePdf, 100, _this);
+
+                            }
+
+
+
+
+
+                            function printInvoicePdf(){
+
+                                invoice.print();
+                            }
+
+                            //Ext.ComponentQuery.query('#InvoicePage')[0].destroy() ;
+
+                        },
+                        cls: 'x-rm-blueBtn',
+                        docked: 'right',
+                        margin: '0 0 0 10',
+                        width: '100px',
+                        text: 'E-Mail'
+                    },
+                    {
+                        xtype: 'button',
+                        handler: function(button, e) {
 
 
 

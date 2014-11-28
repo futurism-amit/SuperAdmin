@@ -669,16 +669,19 @@
             "userConfig": {
                 "designer|params": [
                     "inputFld",
-                    "record_key"
+                    "record_key",
+                    "store_name"
                 ],
                 "fn": "updateRmproDiscount",
                 "implHandler": [
+                    "\r",
+                    "console.log(\"RMPR\");\r",
                     "console.log(inputFld.attributes['data-id'].value) ;\r",
                     "\r",
                     "var _id = inputFld.attributes['data-id'].value ;\r",
                     "var value = inputFld.value ;\r",
                     "\r",
-                    "var rmProBillingStore = Ext.getStore('products.RMProDiscountStore') ;\r",
+                    "var rmProBillingStore = Ext.getStore(store_name ||'products.RMProDiscountStore') ;\r",
                     "var recIndex = rmProBillingStore.findExact('id',_id) ;\r",
                     "\r",
                     "if(recIndex == -1){\r",

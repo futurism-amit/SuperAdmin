@@ -708,6 +708,7 @@ Ext.define('RMdatalink.controller.inhouse.DetailScreenController', {
         //list.deselect(record,false);
         this.isNewRecordBtnTapped = false ;
         this.selectedInhouseUser = record ;
+
         Ext.ComponentQuery.query('#inhouseMainContentPanel')[0].fireEvent('inhouseAddNewTap',  Ext.ComponentQuery.query('#inhouseMainContentPanel')[0]);
         this.setDataForInHouseDetailedScreen();
 
@@ -721,6 +722,122 @@ Ext.define('RMdatalink.controller.inhouse.DetailScreenController', {
             Ext.DomQuery.select('input[name=division-checkbox]')[0].checked =false;
         }
 
+
+    },
+
+    sendPasswordToUser: function() {
+        // console.log(record);
+        // //list.deselect(record,false);
+        // this.isNewRecordBtnTapped = false ;
+        // this.selectedInhouseUser = record ;
+
+        // Ext.ComponentQuery.query('#inhouseMainContentPanel')[0].fireEvent('inhouseAddNewTap',  Ext.ComponentQuery.query('#inhouseMainContentPanel')[0]);
+        // this.setDataForInHouseDetailedScreen();
+
+
+
+
+        // if(Ext.ComponentQuery.query('#inhouseTabPanel')[0].getActiveItem().getItemId() == 'inHouseUsersTab'){
+        //     Ext.DomQuery.select('input[name=division-checkbox]')[0].checked = true ;
+        // }
+        // else{
+        //     Ext.DomQuery.select('input[name=division-checkbox]')[0].checked =false;
+        // }
+
+
+        console.log('SEND PASSWORD');
+
+        var that = this ;
+        var newPwd = "" ;
+        var username = "" ;
+        var emailText = this.selectedInhouseUser.data.email;
+        getInhouseUser( this.selectedInhouseUser.data.email ) ;
+
+        function generatePassword(length)
+        {
+
+            if(!length){
+                length = 6 ;
+            }
+            var str = "" ;
+
+            for(var i =0 ; i < length ; i++ ){
+
+                str +=  String.fromCharCode(getRandomInt(65,90)) ;
+            }
+
+            return str ;
+
+        }
+
+
+        function getRandomInt(min, max)
+        {
+
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+
+        }
+
+
+
+
+        function getInhouseUser(emailText)
+        {
+
+
+
+
+            function suc(){
+
+                if(arguments[0].items.length ==0 ){
+                    err() ;
+                }else{
+                    username = arguments[0].items[0].username ;
+
+
+                    updatePassword(arguments[0].items[0]._id);
+
+                }
+
+            }
+
+            function err(){
+
+
+
+            }
+            RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_inhouserecords",pageNo:1,pageSize:50,sortBy:{},query:{"email":emailText},fields:{username:1}},suc,err);
+        }
+
+        function updatePassword(_id){
+            var store = Ext.getStore('inhouseMasterStore') ;
+            var newPwd = generatePassword() ;
+
+            var dataToUpdate = {
+
+                temp_password : newPwd,
+                is_password_reset : true
+            };
+             RMdatalink.iwa.rdl.doUpdateCollection(store, dataToUpdate , _id , suc, err);
+
+            function suc(){
+                sendEmail() ;
+                Ext.Viewport.setMasked(false);
+
+            }
+
+            function err(){
+
+                Ext.Viewport.setMasked(false);
+            }
+
+        }
+
+        function sendEmail(){
+            var LoginHandler = RMdatalink.app.getController('LoginHandler');
+                LoginHandler.sendEmail(newPwd,emailText,username) ;
+
+        }
 
     },
 

@@ -2171,25 +2171,25 @@ Ext.define('RMdatalink.view.retailers.MainContentPanel', {
                                             '    <div style=" width: 6%;" data-name="">',
                                             '        Created On&nbsp;',
                                             '    </div>',
-                                            '    <div style="width: 5%;" data-name="store_products_datalink">',
+                                            '    <div style="width: 4%;" data-name="store_products_datalink">',
                                             '        Data&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style=" width: 5%;" data-name="store_products_ecatalog">',
+                                            '    <div style=" width: 4%;" data-name="store_products_ecatalog">',
                                             '        eCat&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style=" width: 5%;" data-name="store_products_smart_cart">',
+                                            '    <div style=" width: 4%;" data-name="store_products_smart_cart">',
                                             '        eCom&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style=" width: 6%;" data-name="store_products_rm_plc">',
+                                            '    <div style=" width: 4%;" data-name="store_products_rm_plc">',
                                             '        RMPro&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style=" width: 6%;" data-name="store_products_rm_plc">',
+                                            '    <div style=" width: 4%;" data-name="store_products_rm_plc">',
                                             '        VIP&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style=" width: 6%;" data-name="store_products_rm_plc">',
+                                            '    <div style=" width: 5%;" data-name="store_products_rm_plc">',
                                             '        iRugs&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
-                                            '    <div style=" width: 6%;" data-name="store_monthly_subscription">',
+                                            '    <div style=" width: 8%;" data-name="store_monthly_subscription">',
                                             '        Monthly&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
 
@@ -2203,7 +2203,7 @@ Ext.define('RMdatalink.view.retailers.MainContentPanel', {
                                             Ext.create('Ext.XTemplate',
                                             '<div class="x-rm-listtpl-main">',
                                             '    <div class="pointerCursor  " style="width: 4%;overflow:visible;">',
-                                            '        <div style="width: 25px; height:25px; background-image:url({manager_photo_url})"></div>',
+                                            '        <div style="width: 25px; height:25px; {[this.getBackgroundURL(values)]}  "></div>',
                                             '    </div>',
                                             '    <div class="pointerCursor boldText" style="width: 12%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getStore_nameDelegateClassForTap()]}" >{store_name}</div>',
                                             '    <div class="pointerCursor" style="width: 10%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "{[RMdatalink.util.globalConfig.getManager_LastNameDelegateClassForTap()]}" > {[this.getAccMgrName(values)]}</div>',
@@ -2215,25 +2215,25 @@ Ext.define('RMdatalink.view.retailers.MainContentPanel', {
                                             '    <div style="width: 6%;" {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "goToMapWithState">{[this.getState(values)]}</div>',
                                             '    <div style="width: 8%;"  {[RMdatalink.util.globalConfig.getListAttrForDelHandling()]} = "goToMapWithZip">{[this.getZip(values)]}</div>',
                                             '    <div style="width: 6%;">{[RMdatalink.util.globalMethods.getAMDateFrom_id(values._id)]}</div>',
-                                            '    <div style="width: 5%;" class="checkRound">',
+                                            '    <div style="width: 4%;" class="checkRound">',
                                             '        <div style="width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products,\'datalink_status\')]}"></div>',
                                             '    </div>',
-                                            '    <div style="width: 5%;" class="checkRound">',
+                                            '    <div style="width: 4%;" class="checkRound">',
                                             '        <div style="width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products,\'ecatalog_status\')]}"></div>',
                                             '    </div>',
-                                            '    <div style="width: 5%;" class="checkRound">',
+                                            '    <div style="width: 4%;" class="checkRound">',
                                             '        <div style=" width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products,\'ecommerce_status\')]}"></div>',
                                             '    </div>',
-                                            '    <div style="width: 6%;" class="checkRound">',
+                                            '    <div style="width: 4%;" class="checkRound">',
                                             '        <div style="width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products,\'rmpro_status\')]}"></div>',
                                             '    </div>',
-                                            '    <div style="width: 6%;" class="checkRound">',
+                                            '    <div style="width: 4%;" class="checkRound">',
                                             '        <div style="width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products , \'vip_status\')]}"></div>',
                                             '    </div>',
-                                            '    <div style="width: 6%;" class="checkRound">',
+                                            '    <div style="width: 5%;" class="checkRound">',
                                             '        <div style="width: 9px; height:9px; background-color:{[this.getCheckBoxRound(values.store_products , \'irugs_status\')]}"></div>',
                                             '    </div>',
-                                            '    <div style="width: 6%;">${[this.setOwedMonthlyField(values)]}</div>',
+                                            '    <div style="width: 8%;">${[this.setOwedMonthlyField(values)]}</div>',
 
                                             '</div>',
                                             {
@@ -2258,6 +2258,16 @@ Ext.define('RMdatalink.view.retailers.MainContentPanel', {
 
                                                     }
                                                     return "" ;
+                                                },
+                                                getBackgroundURL:function(values){
+                                                    //background-image:url({manager_photo_url})
+
+                                                    if(values.store_logo ){}else{return;}
+                                                    var stringToReturn;
+                                                    stringToReturn  = "background-image:url(";
+                                                    stringToReturn += values.store_logo;
+                                                    stringToReturn  += ")";
+                                                    return stringToReturn;
                                                 },
 
                                                 getAccMgrPhone: function(value){
@@ -2401,8 +2411,7 @@ Ext.define('RMdatalink.view.retailers.MainContentPanel', {
                                             );
                                             list.onStoreClear();
                                             //list.refresh();
-
-
+                                            list.setMode("SINGLE");
                                             var totalsList = component.down('#retailerTotalsList');
                                             var store = list.getStore();
                                             /*totalsList.setData([{}]);

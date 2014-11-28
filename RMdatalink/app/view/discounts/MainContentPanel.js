@@ -681,25 +681,25 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                             '        Vendors&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
                                             '    </div>',
                                             '    <div style="width: 10%;" data-name="code">',
-                                            '        Code&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '        Code&nbsp;',
                                             '    </div>',
                                             '    <div style="width: 10%;" data-name="status">',
-                                            '        Status&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '        Status&nbsp;',
                                             '    </div>',
                                             '    <div style="width: 6%;" data-name="price">',
-                                            '        Price&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '        Price&nbsp;',
                                             '    </div>',
                                             '    <div style="width: 12%;" data-name="startDate">',
-                                            '    Start&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    Start&nbsp;',
                                             '    </div>',
                                             '    <div style="width: 12%;" data-name="endDate">',
-                                            '    End&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '    End&nbsp;',
                                             '    </div>',
                                             '    <div style="width: 10%;" data-name="used">',
-                                            '        Used&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '        Used&nbsp;',
                                             '    </div>',
                                             '    <div style="width: 20%;" data-name="comment">',
-                                            '     Comment&nbsp;<img src="resources/images/button_icons/downArrow.png"/>',
+                                            '     Comment&nbsp;',
                                             '    </div>',
                                             '</div>'
                                             )
@@ -737,11 +737,13 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                                 getUsedString:function(value){
                                                     try{
 
-                                                        var usedAmount = "0";
+                                                        var usedAmount = value.promo_code_info.usedAmout || "0";
                                                         var divisorSign = "/";
                                                         var limitValue = value.promo_code_info.limit_value;
                                                         return usedAmount  + divisorSign + limitValue;
                                                     }catch(e){
+
+                                                        console.log("ERROR THROW" , e);
                                                         return "0/100";
                                                     }
 
@@ -775,7 +777,120 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
 
                                             // list.setData(getArrayFromStore(Ext.getStore('vendors.Master')));
                                             //Ext.getStore("vendors.Master");
+
+                                            (function(){
+
+                                                var component  = Ext.ComponentQuery.query("#discountVipTab")[0];
+                                                var list = component.down('#discountList');
+
+                                                var store = list.getStore();
+                                                if(store){
+
+                                                    var data = store.getData();
+                                                    for( var i=0; i <data.all.length; i++ ){
+
+                                                        var record = data.getAt(i);
+                                                        getAndSetUsedRetailer(record);
+                                                    }
+
+                                                }else{
+
+                                                    return;
+                                                }
+
+                                            })();
+
+
+                                            function getAndSetUsedRetailer(rec){
+
+                                                console.log(rec);
+                                                function getSearchQuery(values){
+
+                                                    var query = {} ;
+                                                    query.$and = [] ;
+                                                    var temp = { $or:[] };
+                                                    var q = {} ;
+
+
+
+                                                    if(  values.VendorPartner){
+
+
+
+                                                        query.$and.push(
+                                                        {
+                                                            'e_commerce_info.vip_vendor': values.VendorPartner
+                                                        }
+
+                                                        );
+                                                        query.$and.push(
+                                                        {
+                                                            'store_products.vip_status': "ACTIVE"
+                                                        }
+
+                                                        );
+                                                    }
+
+
+
+                                                    return query ;
+                                                }
+                                                function startSearch(qry){
+                                                    var searchQuery =  qry ;
+                                                    debugger;
+                                                    RMdatalink.iwa.rdl.queryDB({collection: dbEnv + "rdl_masterretailerrecords",pageNo:1,pageSize: 50 ,sortBy:{"store_name":1},
+                                                    query:searchQuery,fields:{ '_id':1}},success,error);
+
+
+
+                                                }
+                                                function success(){
+
+                                                    console.log("1" , arguments);
+
+                                                    var promo_code_info = rec.get('promo_code_info') || {};
+                                                    promo_code_info.usedAmout = arguments[0].count;
+                                                    record.set('promo_code_info' , promo_code_info );
+
+
+
+                                                }
+
+                                                function error(){
+
+                                                    console.log("2" , arguments);
+
+                                                }
+                                                var  record = rec;
+                                                var vendor_name = record.data.vendor_name;
+                                                var queryToExecute = getSearchQuery({
+
+                                                    VendorPartner:vendor_name
+                                                });
+
+
+                                                startSearch(queryToExecute) ;
+
+
+                                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         },
+                                        single: true,
                                         event: 'painted'
                                     }
                                 ],
@@ -1271,6 +1386,7 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                                         style: 'margin-left:10px',
                                                         width: '90px',
                                                         label: 'Active',
+                                                        labelAlign: 'right',
                                                         labelWidth: '80px',
                                                         name: 'activeStatus',
                                                         value: 'active',
@@ -1281,6 +1397,7 @@ Ext.define('RMdatalink.view.discounts.MainContentPanel', {
                                                         style: 'margin-left:10px',
                                                         width: '90px',
                                                         label: 'InActive',
+                                                        labelAlign: 'right',
                                                         labelWidth: '80px',
                                                         name: 'activeStatus',
                                                         value: 'inactive'

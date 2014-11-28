@@ -724,7 +724,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "height": null,
+                                        "height": "150px",
                                         "itemId": "datalinkVendorBundleSetupPanel",
                                         "margin": null,
                                         "padding": "0 0 4 0",
@@ -999,6 +999,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "height": "100px",
                                         "itemId": "DlVdrPricingbyVendorsPanel",
                                         "title": null,
                                         "width": "100%"

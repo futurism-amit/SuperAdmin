@@ -50,12 +50,14 @@
 
 .x-rm-navigation-panel .x-button-label {
     text-align:left;
-    color:#555555 !important;
+    color:black !important;
     font-family: 'OpenSans'; 
     font-size:75%;
-    font-weight:500 !important;
+    
+    font-weight:bold !important;
     line-height:2em;
     overflow:hidden;
+    
 }
 
 .x-rm-navigation-panel .x-button-pressing,

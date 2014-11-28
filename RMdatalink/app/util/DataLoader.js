@@ -101,8 +101,8 @@ Ext.define('RMdatalink.util.DataLoader', {
 
         RMdatalink.iwa.rdl.loadStorePaged(scope, pageNo, pageSize, storeName, rootProperty, coll, function()
         {
-            console.log(arguments);
-            successCallBack();
+            console.log(arguments , storeName);
+            successCallBack.apply(window , arguments);
         });
        
     },
@@ -414,7 +414,7 @@ Ext.define('RMdatalink.util.DataLoader', {
                     this.cacheCurrentDataForStore('vendors.Master');
                     var data = this.checkAndReturnPagePresentInCache('vendors.Master',pageNo);
                     if(data){
-
+			
                         this.loadStoreFromGivenData('vendors.Master',data);
                         successCallBack();
                         return ;
@@ -423,7 +423,10 @@ Ext.define('RMdatalink.util.DataLoader', {
                 }
    //  RMdatalink.util.DataHandler.loadVendorMasterStore(scope,successCallBack,failuerCallBack); 
 
-      this.loadStoreFromDBPaged(scope, pageNo, 100,  'vendors.Master', 'masterVendorRecords', dbEnv +'rdl_vendor_masters',successCallBack,failuerCallBack);
+      this.loadStoreFromDBPaged(scope, pageNo, 100,  'vendors.Master', 'masterVendorRecords', dbEnv +'rdl_vendor_masters',function(){
+	  
+	  successCallBack();
+	  },failuerCallBack);
  },               
             
             

@@ -3384,9 +3384,12 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
 
                     }
                     console.log(TEST);
-                    //debugger;
+
                     RMdatalink.iwa.rdl.doUpdateCollection(masterStore, TEST , recordInMasterStore.get('_id'), suc, err);
-                    RMdatalink.app.getController('RetailerDeatilsDataSet').setTemplateOfListByEditingMode(false);
+                    if( isRetailerDetailsView ){
+                        RMdatalink.app.getController('RetailerDeatilsDataSet').setTemplateOfListByEditingMode(false);
+                    }
+
 
                     function suc(){
 
@@ -3427,6 +3430,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                         Ext.Viewport.setMasked(false);
                         Ext.Msg.alert('Failuer.', 'Failed to add new Record.', Ext.emptyFn);
                     }
+
 
                     RMdatalink.util.DataLoader.sendNewRecordForRetailerToServer(TEST,masterStore,successCallBack,errorCallBack) ;
                 }
@@ -5393,7 +5397,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
                                      '    <div style="width: 8%;">',
                                      '        <div style="width: 19px; height:19px;" class="fireListSelect"></div>',
                                      '    </div>',
-                                         '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNoVIP(event)"  vendorId =  {vendor_id}  value={Account_No} />',
+                                         '<input type ="text" class = "inputAccountNo"  style="max-width: 60px;margin-right:2px;" onkeyup="onKeyDownOfAccountNoVIP(event)"  vendorId =  {_id}  value={Account_No} />',
                                      '    <div style="{[this.getColorForVendor(values)]}" class = "retailerDetailVendorName">{[this.getVendorName(values , xindex)]}</div>',
                                      '    <div style="" class = "retailerDetailSKU boldText" >{SKU}</div>',
                                      '    <div style="" class = "retailerDetailCollection">{collections}</div>',
@@ -5696,7 +5700,7 @@ Ext.define('RMdatalink.controller.RetailerDeatilsDataSet', {
             for(var i=0;i<data.all.length ; i++){
 
                 var rec = data.all[i];
-                var vendor_id = rec.data._id;
+                var vendor_id = rec.data.vendor_id;
                 var Account_No = rec.data.Account_No;
                     vendorIdAccountValueAuthorized[vendor_id] = Account_No;
             }

@@ -168,922 +168,925 @@ Ext.define('RMdatalink.view.retailers.ListContainer', {
                                         text: 'PENDING',
                                         value: 'PENDING'
                                     },
-                                    {
-                                        text: 'ANY',
-                                        value: 'ANY'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                itemId: 'rtSearchCmpTypeChk',
-                                width: '132px',
-                                label: 'Company Type',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'companyTypeChk'
-                            },
-                            {
-                                xtype: 'selectfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                itemId: 'rtSearchCmpTypeSlctFld',
-                                name: 'companyType',
-                                options: [
-                                    {
-                                        text: '',
-                                        value: null
-                                    },
-                                    {
-                                        text: 'Retail',
-                                        value: 'RETAIL'
-                                    },
-                                    {
-                                        text: 'Wholesale',
-                                        value: 'WHOLESALE'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Account No.',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'AccNoChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'AccNo'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Expired',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'ExpiredChk'
-                            },
-                            {
-                                xtype: 'container',
-                                flex: 1,
-                                layout: 'hbox',
-                                items: [
-                                    {
-                                        xtype: 'selectfield',
-                                        width: '48px',
-                                        name: 'Expired'
-                                    },
-                                    {
-                                        xtype: 'selectfield',
-                                        margin: '0 0 0 4px',
-                                        width: '88px',
-                                        name: 'ExpiredUnit'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Created after',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'createdAfterChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                action: 'inputByDatePicker',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'createdAfter'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Created by',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'createdByChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'createdBy'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Store Name',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'StoreNameChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'StoreName'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Contact Name',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'contactNameChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'contactName'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'City',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'CityChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'City'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'State',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'StateChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'State'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Phone',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'PhoneChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'Phone'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Store eMail',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'StoreEmailChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'StoreEmail'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Website',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'StoreWebsiteChk'
-                            },
-                            {
-                                xtype: 'textfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                name: 'StoreWebsite'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'fieldset',
-                        width: '100%',
-                        layout: 'hbox',
-                        items: [
-                            {
-                                xtype: 'checkboxfield',
-                                cls: 'x-rm-checkbox',
-                                height: '30px',
-                                width: '132px',
-                                label: 'Vendor Partner',
-                                labelAlign: 'right',
-                                labelWidth: '100px',
-                                name: 'VendorPartnerChk'
-                            },
-                            {
-                                xtype: 'selectfield',
-                                flex: 1,
-                                cls: 'retailerSearchCriteriaInputFields',
-                                itemId: 'myselectfield28',
-                                name: 'VendorPartner',
-                                autoSelect: false,
-                                displayField: 'vendor_name',
-                                valueField: 'vendor_name',
-                                listeners: [
-                                    {
-                                        fn: function(component, eOpts) {
-                                            component.addListener("painted" , function(){
-
-
-
-                                                var keyOfRetailer  = 'promo_code_info';
-                                                var flagofRetailer = 'is_promo_code_active';
-                                                var store = Ext.getStore('vendors.Master');
-                                                var data = store.getData();
-
-                                                var optionArray = [];
-
-                                                data.all.forEach(function(obj){
-
-                                                    var values = obj.data;
-                                                    if( values.is_promo_code_active   && values[keyOfRetailer] ){
-
-                                                        optionArray.push(obj.raw);
-
-                                                    }
-                                                });
-
-                                                component.setOptions(optionArray);
-
-
-
-                                            } , this  , {
-
-                                                single:true
-                                            });
-                                        },
-                                        event: 'initialize'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'selectfield',
-                        action: 'productStatusChange',
-                        hidden: true,
-                        itemId: 'rtFilterDatalinkStatusSelFld',
-                        label: 'Datalink',
-                        autoSelect: false,
-                        options: [
-                            {
-                                text: 'ACTIVE',
-                                value: 'ACTIVE'
-                            },
-                            {
-                                text: 'INACTIVE',
-                                value: 'INACTIVE'
-                            },
-                            {
-                                text: 'PROSPECT',
-                                value: 'PROSPECT'
-                            },
-                            {
-                                text: 'HOT PROSPECT',
-                                value: 'HOT_PROSPECT'
-                            },
-                            {
-                                text: 'PENDING',
-                                value: 'PENDING'
-                            },
-                            {
-                                text: 'Skip This',
-                                value: 'SKIP'
-                            }
-                        ]/*ACTIVEINACTIVEPROSPECTPENDING*/
-                    },
-                    {
-                        xtype: 'selectfield',
-                        action: 'productStatusChange',
-                        hidden: true,
-                        itemId: 'rtFilterEcatalogStatusSelFld',
-                        label: 'e-Catalog',
-                        autoSelect: false,
-                        options: [
-                            {
-                                text: 'ACTIVE',
-                                value: 'ACTIVE'
-                            },
-                            {
-                                text: 'INACTIVE',
-                                value: 'INACTIVE'
-                            },
-                            {
-                                text: 'PROSPECT',
-                                value: 'PROSPECT'
-                            },
-                            {
-                                text: 'HOT PROSPECT',
-                                value: 'HOT_PROSPECT'
-                            },
-                            {
-                                text: 'PENDING',
-                                value: 'PENDING'
-                            },
-                            {
-                                text: 'Skip This',
-                                value: 'SKIP'
-                            }
-                        ]/*ACTIVEINACTIVEPROSPECTPENDING*/
-                    },
-                    {
-                        xtype: 'selectfield',
-                        action: 'productStatusChange',
-                        hidden: true,
-                        itemId: 'rtFilterECommerceStatusSelFld',
-                        label: 'e-Commerce',
-                        autoSelect: false,
-                        options: [
-                            {
-                                text: 'ACTIVE',
-                                value: 'ACTIVE'
-                            },
-                            {
-                                text: 'INACTIVE',
-                                value: 'INACTIVE'
-                            },
-                            {
-                                text: 'PROSPECT',
-                                value: 'PROSPECT'
-                            },
-                            {
-                                text: 'HOT PROSPECT',
-                                value: 'HOT_PROSPECT'
-                            },
-                            {
-                                text: 'PENDING',
-                                value: 'PENDING'
-                            },
-                            {
-                                text: 'Skip This',
-                                value: 'SKIP'
-                            }
-                        ]/*ACTIVEINACTIVEPROSPECTPENDING*/
-                    },
-                    {
-                        xtype: 'selectfield',
-                        action: 'productStatusChange',
-                        hidden: true,
-                        itemId: 'rtFilterRM_proStatusSelFld',
-                        label: 'RM PRO',
-                        autoSelect: false,
-                        options: [
-                            {
-                                text: 'ACTIVE',
-                                value: 'ACTIVE'
-                            },
-                            {
-                                text: 'INACTIVE',
-                                value: 'INACTIVE'
-                            },
-                            {
-                                text: 'PROSPECT',
-                                value: 'PROSPECT'
-                            },
-                            {
-                                text: 'HOT PROSPECT',
-                                value: 'HOT_PROSPECT'
-                            },
-                            {
-                                text: 'PENDING',
-                                value: 'PENDING'
-                            },
-                            {
-                                text: 'Skip This',
-                                value: 'SKIP'
-                            }
-                        ]/*ACTIVEINACTIVEPROSPECTPENDING*/
-                    },
-                    {
-                        xtype: 'selectfield',
-                        action: 'productStatusChange',
-                        hidden: true,
-                        itemId: 'rtFilterirugzStatusSelFld',
-                        label: 'i-Rugs',
-                        autoSelect: false,
-                        options: [
-                            {
-                                text: 'ACTIVE',
-                                value: 'ACTIVE'
-                            },
-                            {
-                                text: 'INACTIVE',
-                                value: 'INACTIVE'
-                            },
-                            {
-                                text: 'PROSPECT',
-                                value: 'PROSPECT'
-                            },
-                            {
-                                text: 'HOT PROSPECT',
-                                value: 'HOT_PROSPECT'
-                            },
-                            {
-                                text: 'PENDING',
-                                value: 'PENDING'
-                            },
-                            {
-                                text: 'Skip This',
-                                value: 'SKIP'
-                            }
-                        ]/*ACTIVEINACTIVEPROSPECTPENDING*/
-                    },
-                    {
-                        xtype: 'button',
-                        cls: 'x-rm-blueBtn',
-                        itemId: 'customSearchApplyBtn',
-                        margin: '2px 2px 0px 2px',
-                        text: 'Apply And Search'
-                    }
-                ]
-            },
-            {
-                xtype: 'fieldset',
-                margin: '18% 0 0 0',
-                padding: '18% 0 0 0',
-                style: 'border: 0px red;',
-                layout: 'vbox',
-                items: [
-                    {
-                        xtype: 'label',
-                        cls: 'vertical-text',
-                        html: '<div class="vertical-text">Filter</div>',
-                        style: 'margin-left: 20px; margin-right: 0px; width: 2px;font-size: 0.8em;'
-                    },
-                    {
-                        xtype: 'button',
-                        handler: function(button, e) {
-                            var form = button.getParent().getParent().down('#retailerCustomFilterList');
-                            var stateToSave = 0;
-                            var LoginHandler = RMdatalink.app.getController('LoginHandler') ;
-                            var _id = LoginHandler.config.userDetails._id ;
-                            var inhouseMasterStore = Ext.getStore('inhouseMasterStore');
-                            var orignialSate = LoginHandler.config.userDetails.expand_button_state;
-
-
-                            form.setHidden(! form.getHidden() ) ;
-
-                            if(form.getHidden()){
-
-                                button.setIconCls("arrow_right");
-                                stateToSave = 0;
-                            }else{
-
-                                button.setIconCls("arrow_left");
-                                stateToSave = 1;
-                                //arrow_down
-                            }
-
-
-
-
-
-
-                            if(orignialSate == stateToSave){
-                                // return;
-                            }
-                            var dataToUpdate = {
-                                expand_button_state:stateToSave
-                            };
-
-                            LoginHandler.config.userDetails.expand_button_state = stateToSave;
-                            RMdatalink.iwa.rdl.doUpdateCollection(inhouseMasterStore, dataToUpdate , _id, success, error);
-
-                            function success(){
-
-                            }
-
-                            function error(){
-
-
-                            }
+                                    /*    {text: 'ALL',
+                                    value: 'ANY'
+                                },
+                                */    {
+                                    text: 'UNDEFINED',
+                                    value: 'UNDEFINED'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            itemId: 'rtSearchCmpTypeChk',
+                            width: '132px',
+                            label: 'Company Type',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'companyTypeChk'
                         },
-                        border: '0 0 0 0',
-                        centered: false,
-                        cls: 'borderedDiv',
-                        height: 100,
-                        itemId: 'hideExpandButton',
-                        margin: '18% 0 0 0',
-                        padding: '0px 0px 0px 0px',
-                        style: 'background:transparent;border-radius: 20px;border-width: 1px !important;',
-                        width: 24,
-                        iconAlign: 'center',
-                        iconCls: 'arrow_left',
-                        listeners: [
-                            {
-                                fn: function(component, eOpts) {
+                        {
+                            xtype: 'selectfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            itemId: 'rtSearchCmpTypeSlctFld',
+                            name: 'companyType',
+                            options: [
+                                {
+                                    text: '',
+                                    value: null
+                                },
+                                {
+                                    text: 'Retail',
+                                    value: 'RETAIL'
+                                },
+                                {
+                                    text: 'Wholesale',
+                                    value: 'WHOLESALE'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Account No.',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'AccNoChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'AccNo'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Expired',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'ExpiredChk'
+                        },
+                        {
+                            xtype: 'container',
+                            flex: 1,
+                            layout: 'hbox',
+                            items: [
+                                {
+                                    xtype: 'selectfield',
+                                    width: '48px',
+                                    name: 'Expired'
+                                },
+                                {
+                                    xtype: 'selectfield',
+                                    margin: '0 0 0 4px',
+                                    width: '88px',
+                                    name: 'ExpiredUnit'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Created after',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'createdAfterChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            action: 'inputByDatePicker',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'createdAfter'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Created by',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'createdByChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'createdBy'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Store Name',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'StoreNameChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'StoreName'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Contact Name',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'contactNameChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'contactName'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'City',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'CityChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'City'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'State',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'StateChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'State'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Phone',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'PhoneChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'Phone'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Store eMail',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'StoreEmailChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'StoreEmail'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Website',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'StoreWebsiteChk'
+                        },
+                        {
+                            xtype: 'textfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            name: 'StoreWebsite'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    width: '100%',
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            cls: 'x-rm-checkbox',
+                            height: '30px',
+                            width: '132px',
+                            label: 'Vendor Partner',
+                            labelAlign: 'right',
+                            labelWidth: '100px',
+                            name: 'VendorPartnerChk'
+                        },
+                        {
+                            xtype: 'selectfield',
+                            flex: 1,
+                            cls: 'retailerSearchCriteriaInputFields',
+                            itemId: 'vipVendorsSearchSelectField',
+                            name: 'VendorPartner',
+                            autoSelect: false,
+                            displayField: 'vendor_name',
+                            valueField: 'vendor_name',
+                            listeners: [
+                                {
+                                    fn: function(component, eOpts) {
+                                        component.addListener("painted" , function(){
 
 
-                                    component.addListener({
 
-                                        painted:Toexecute,
-                                        single:true
-                                    });
-                                    function Toexecute(){
+                                            var keyOfRetailer  = 'promo_code_info';
+                                            var flagofRetailer = 'is_promo_code_active';
+                                            var store = Ext.getStore('vendors.Master');
+                                            var data = store.getData();
 
-                                        if( true ||!isSkipCustomFilter)
-                                        {
+                                            var optionArray = [];
 
-                                            var LoginHandler = RMdatalink.app.getController('LoginHandler') ;
-                                            var _id = LoginHandler.config.userDetails._id ;
-                                            var inhouseMasterStore = Ext.getStore('inhouseMasterStore');
+                                            data.all.forEach(function(obj){
 
-                                            var orignialSate = LoginHandler.config.userDetails.expand_button_state;
+                                                var values = obj.data;
+                                                if( values.is_promo_code_active   && values[keyOfRetailer] ){
 
-                                            if(orignialSate == 0){
+                                                    optionArray.push(obj.raw);
 
+                                                }
+                                            });
 
-
-                                                var btn = component;
-
-                                                var handler = btn.getHandler();
-                                                handler.call(btn , btn );
-
-                                            }else{
-
-                                                return;
-                                            }
+                                            component.setOptions(optionArray);
 
 
+
+                                        } , this  , {
+
+                                            single:true
+                                        });
+                                    },
+                                    event: 'initialize'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'selectfield',
+                    action: 'productStatusChange',
+                    hidden: true,
+                    itemId: 'rtFilterDatalinkStatusSelFld',
+                    label: 'Datalink',
+                    autoSelect: false,
+                    options: [
+                        {
+                            text: 'ACTIVE',
+                            value: 'ACTIVE'
+                        },
+                        {
+                            text: 'INACTIVE',
+                            value: 'INACTIVE'
+                        },
+                        {
+                            text: 'PROSPECT',
+                            value: 'PROSPECT'
+                        },
+                        {
+                            text: 'HOT PROSPECT',
+                            value: 'HOT_PROSPECT'
+                        },
+                        {
+                            text: 'PENDING',
+                            value: 'PENDING'
+                        },
+                        {
+                            text: 'Skip This',
+                            value: 'SKIP'
+                        }
+                    ]/*ACTIVEINACTIVEPROSPECTPENDING*/
+                },
+                {
+                    xtype: 'selectfield',
+                    action: 'productStatusChange',
+                    hidden: true,
+                    itemId: 'rtFilterEcatalogStatusSelFld',
+                    label: 'e-Catalog',
+                    autoSelect: false,
+                    options: [
+                        {
+                            text: 'ACTIVE',
+                            value: 'ACTIVE'
+                        },
+                        {
+                            text: 'INACTIVE',
+                            value: 'INACTIVE'
+                        },
+                        {
+                            text: 'PROSPECT',
+                            value: 'PROSPECT'
+                        },
+                        {
+                            text: 'HOT PROSPECT',
+                            value: 'HOT_PROSPECT'
+                        },
+                        {
+                            text: 'PENDING',
+                            value: 'PENDING'
+                        },
+                        {
+                            text: 'Skip This',
+                            value: 'SKIP'
+                        }
+                    ]/*ACTIVEINACTIVEPROSPECTPENDING*/
+                },
+                {
+                    xtype: 'selectfield',
+                    action: 'productStatusChange',
+                    hidden: true,
+                    itemId: 'rtFilterECommerceStatusSelFld',
+                    label: 'e-Commerce',
+                    autoSelect: false,
+                    options: [
+                        {
+                            text: 'ACTIVE',
+                            value: 'ACTIVE'
+                        },
+                        {
+                            text: 'INACTIVE',
+                            value: 'INACTIVE'
+                        },
+                        {
+                            text: 'PROSPECT',
+                            value: 'PROSPECT'
+                        },
+                        {
+                            text: 'HOT PROSPECT',
+                            value: 'HOT_PROSPECT'
+                        },
+                        {
+                            text: 'PENDING',
+                            value: 'PENDING'
+                        },
+                        {
+                            text: 'Skip This',
+                            value: 'SKIP'
+                        }
+                    ]/*ACTIVEINACTIVEPROSPECTPENDING*/
+                },
+                {
+                    xtype: 'selectfield',
+                    action: 'productStatusChange',
+                    hidden: true,
+                    itemId: 'rtFilterRM_proStatusSelFld',
+                    label: 'RM PRO',
+                    autoSelect: false,
+                    options: [
+                        {
+                            text: 'ACTIVE',
+                            value: 'ACTIVE'
+                        },
+                        {
+                            text: 'INACTIVE',
+                            value: 'INACTIVE'
+                        },
+                        {
+                            text: 'PROSPECT',
+                            value: 'PROSPECT'
+                        },
+                        {
+                            text: 'HOT PROSPECT',
+                            value: 'HOT_PROSPECT'
+                        },
+                        {
+                            text: 'PENDING',
+                            value: 'PENDING'
+                        },
+                        {
+                            text: 'Skip This',
+                            value: 'SKIP'
+                        }
+                    ]/*ACTIVEINACTIVEPROSPECTPENDING*/
+                },
+                {
+                    xtype: 'selectfield',
+                    action: 'productStatusChange',
+                    hidden: true,
+                    itemId: 'rtFilterirugzStatusSelFld',
+                    label: 'i-Rugs',
+                    autoSelect: false,
+                    options: [
+                        {
+                            text: 'ACTIVE',
+                            value: 'ACTIVE'
+                        },
+                        {
+                            text: 'INACTIVE',
+                            value: 'INACTIVE'
+                        },
+                        {
+                            text: 'PROSPECT',
+                            value: 'PROSPECT'
+                        },
+                        {
+                            text: 'HOT PROSPECT',
+                            value: 'HOT_PROSPECT'
+                        },
+                        {
+                            text: 'PENDING',
+                            value: 'PENDING'
+                        },
+                        {
+                            text: 'Skip This',
+                            value: 'SKIP'
+                        }
+                    ]/*ACTIVEINACTIVEPROSPECTPENDING*/
+                },
+                {
+                    xtype: 'button',
+                    cls: 'x-rm-blueBtn',
+                    itemId: 'customSearchApplyBtn',
+                    margin: '2px 2px 0px 2px',
+                    text: 'Apply And Search'
+                }
+            ]
+        },
+        {
+            xtype: 'fieldset',
+            margin: '18% 0 0 0',
+            padding: '18% 0 0 0',
+            style: 'border: 0px red;',
+            layout: 'vbox',
+            items: [
+                {
+                    xtype: 'label',
+                    cls: 'vertical-text',
+                    html: '<div class="vertical-text">Filter</div>',
+                    style: 'margin-left: 20px; margin-right: 0px; width: 2px;font-size: 0.8em;'
+                },
+                {
+                    xtype: 'button',
+                    handler: function(button, e) {
+                        var form = button.getParent().getParent().down('#retailerCustomFilterList');
+                        var stateToSave = 0;
+                        var LoginHandler = RMdatalink.app.getController('LoginHandler') ;
+                        var _id = LoginHandler.config.userDetails._id ;
+                        var inhouseMasterStore = Ext.getStore('inhouseMasterStore');
+                        var orignialSate = LoginHandler.config.userDetails.expand_button_state;
+
+
+                        form.setHidden(! form.getHidden() ) ;
+
+                        if(form.getHidden()){
+
+                            button.setIconCls("arrow_right");
+                            stateToSave = 0;
+                        }else{
+
+                            button.setIconCls("arrow_left");
+                            stateToSave = 1;
+                            //arrow_down
+                        }
+
+
+
+
+
+
+                        if(orignialSate == stateToSave){
+                            // return;
+                        }
+                        var dataToUpdate = {
+                            expand_button_state:stateToSave
+                        };
+
+                        LoginHandler.config.userDetails.expand_button_state = stateToSave;
+                        RMdatalink.iwa.rdl.doUpdateCollection(inhouseMasterStore, dataToUpdate , _id, success, error);
+
+                        function success(){
+
+                        }
+
+                        function error(){
+
+
+                        }
+                    },
+                    border: '0 0 0 0',
+                    centered: false,
+                    cls: 'borderedDiv',
+                    height: 100,
+                    itemId: 'hideExpandButton',
+                    margin: '18% 0 0 0',
+                    padding: '0px 0px 0px 0px',
+                    style: 'background:transparent;border-radius: 20px;border-width: 1px !important;',
+                    width: 24,
+                    iconAlign: 'center',
+                    iconCls: 'arrow_left',
+                    listeners: [
+                        {
+                            fn: function(component, eOpts) {
+
+
+                                component.addListener({
+
+                                    painted:Toexecute,
+                                    single:true
+                                });
+                                function Toexecute(){
+
+                                    if( true ||!isSkipCustomFilter)
+                                    {
+
+                                        var LoginHandler = RMdatalink.app.getController('LoginHandler') ;
+                                        var _id = LoginHandler.config.userDetails._id ;
+                                        var inhouseMasterStore = Ext.getStore('inhouseMasterStore');
+
+                                        var orignialSate = LoginHandler.config.userDetails.expand_button_state;
+
+                                        if(orignialSate == 0){
+
+
+
+                                            var btn = component;
+
+                                            var handler = btn.getHandler();
+                                            handler.call(btn , btn );
+
+                                        }else{
+
+                                            return;
                                         }
 
 
                                     }
 
-                                },
-                                event: 'initialize'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                xtype: 'panel',
-                flex: 1,
-                cls: 'borderedDiv',
-                layout: 'vbox',
-                items: [
-                    {
-                        xtype: 'panel',
-                        height: '32px',
-                        style: 'margin-top:-4px;',
-                        layout: 'fit',
-                        scrollable: false,
-                        items: [
-                            {
-                                xtype: 'fieldset',
-                                cls: [
-                                    'x-rm-rdformpanel',
-                                    'noBorderFldSet'
-                                ],
-                                height: '32px',
-                                itemId: 'retailersMainSearchFldSet',
-                                style: 'border: none;',
-                                width: '98%',
-                                layout: 'hbox',
-                                items: [
-                                    {
-                                        xtype: 'selectfield',
-                                        picker: {
-                                            action: 'setScrollBarVisible'
+
+                                }
+
+                            },
+                            event: 'initialize'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            xtype: 'panel',
+            flex: 1,
+            cls: 'borderedDiv',
+            layout: 'vbox',
+            items: [
+                {
+                    xtype: 'panel',
+                    height: '32px',
+                    style: 'margin-top:-4px;',
+                    layout: 'fit',
+                    scrollable: false,
+                    items: [
+                        {
+                            xtype: 'fieldset',
+                            cls: [
+                                'x-rm-rdformpanel',
+                                'noBorderFldSet'
+                            ],
+                            height: '32px',
+                            itemId: 'retailersMainSearchFldSet',
+                            style: 'border: none;',
+                            width: '98%',
+                            layout: 'hbox',
+                            items: [
+                                {
+                                    xtype: 'selectfield',
+                                    picker: {
+                                        action: 'setScrollBarVisible'
+                                    },
+                                    border: '0 0 0 0',
+                                    itemId: 'retailersCustomSearchSeletFld',
+                                    options: [
+                                        {
+                                            text: 'All',
+                                            value: 'ALL'
                                         },
-                                        border: '0 0 0 0',
-                                        itemId: 'retailersCustomSearchSeletFld',
-                                        options: [
-                                            {
-                                                text: 'All',
-                                                value: 'ALL'
-                                            },
-                                            {
-                                                text: 'Store Name',
-                                                value: 'store_name'
-                                            },
-                                            {
-                                                text: 'Store State',
-                                                value: 'store_state'
-                                            },
-                                            {
-                                                text: 'Product Datalink',
-                                                value: 'store_products.datalink_status'
-                                            },
-                                            {
-                                                text: 'Product ECatalog',
-                                                value: 'store_products.ecatalog_status'
-                                            },
-                                            {
-                                                text: 'Product ECommerce',
-                                                value: 'store_products.ecommerce_status'
-                                            },
-                                            {
-                                                text: 'Product iRugz',
-                                                value: 'store_products.irugs_status'
-                                            },
-                                            {
-                                                text: 'Product RMPRO',
-                                                value: 'store_products.rmpro_status'
-                                            },
-                                            {
-                                                text: 'No Of Locations',
-                                                value: 'store_location'
-                                            },
-                                            {
-                                                text: 'Store E-mail',
-                                                value: 'store_email'
-                                            },
-                                            {
-                                                text: 'Store City',
-                                                value: 'store_city'
-                                            },
-                                            {
-                                                text: 'Manager First Name',
-                                                value: 'manager_firstname'
-                                            },
-                                            {
-                                                text: 'Manager Last Name',
-                                                value: 'manager_lastname'
-                                            },
-                                            {
-                                                text: 'Created By',
-                                                value: 'created_by'
-                                            },
-                                            {
-                                                text: 'Account created after',
-                                                value: 'user_since'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        xtype: 'searchfield',
-                                        action: 'searchRetailers',
-                                        cls: 'x-field-techLogsearch',
-                                        itemId: 'rtVdrsSearchFld',
-                                        style: 'border: none;',
-                                        width: '40%'
-                                    },
-                                    {
-                                        xtype: 'searchfield',
-                                        cls: 'x-field-techLogsearch',
-                                        hidden: true,
-                                        itemId: 'rtVdrsDateSearchFld',
-                                        style: 'border: none;',
-                                        width: '40%'
-                                    },
-                                    {
-                                        xtype: 'selectfield',
-                                        action: 'productStatusChange',
-                                        border: '0 0 0 0',
-                                        hidden: true,
-                                        itemId: 'retailersProductStatusSearchSlctFld',
-                                        width: '40%',
-                                        autoSelect: false,
-                                        options: [
-                                            {
-                                                text: 'ACTIVE',
-                                                value: 'ACTIVE'
-                                            },
-                                            {
-                                                text: 'INACTIVE',
-                                                value: 'INACTIVE'
-                                            },
-                                            {
-                                                text: 'PROSPECT',
-                                                value: 'PROSPECT'
-                                            },
-                                            {
-                                                text: 'HOT PROSPECT',
-                                                value: 'HOT_PROSPECT'
-                                            },
-                                            {
-                                                text: 'PENDING',
-                                                value: 'PENDING'
-                                            },
-                                            {
-                                                text: 'ANY',
-                                                value: 'ANY'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        action: 'searchRetailersBtn',
-                                        cls: 'x-rm-blueBtn',
-                                        height: '22px',
-                                        itemId: 'retailersVendorsSerchBtn',
-                                        margin: '0 0 0 4',
-                                        maxHeight: '22px',
-                                        minHeight: '22px',
-                                        padding: '0 0 0 0',
-                                        width: '90px',
-                                        text: 'Search'
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        cls: 'x-rm-blueBtn',
-                                        height: '22px',
-                                        hidden: true,
-                                        itemId: 'retailersCustomFilterBtn',
-                                        margin: '0 5px 0 5px',
-                                        maxHeight: '22px',
-                                        minHeight: '22px',
-                                        width: '100px',
-                                        text: 'FILTER'
-                                    }
-                                ]
-                            },
-                            {
-                                xtype: 'searchView',
-                                hidden: true,
-                                itemId: 'retailerSeachViewItemID'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'panel',
-                        flex: 15,
-                        layout: 'hbox',
-                        scrollable: false,
-                        items: [
-                            {
-                                xtype: 'panel',
-                                flex: 9,
-                                layout: 'vbox',
-                                scrollable: false,
-                                items: [
-                                    {
-                                        xtype: 'dataview',
-                                        actionSorting: 'sortingStore',
-                                        flex: 1,
-                                        cls: 'x-rm-list-header',
-                                        itemId: 'retailerListHeader',
-                                        margin: '0 0 0 0',
-                                        scrollable: false,
-                                        itemTpl: [
-                                            '<div>Data View Item {string}</div>'
-                                        ]
-                                    },
-                                    {
-                                        xtype: 'list',
-                                        action: 'setScrollBarVisible',
-                                        flex: 15,
-                                        cls: 'x-rm-list',
-                                        itemId: 'retailerList',
-                                        mode: 'MULTI',
-                                        itemTpl: [
-                                            '<div>List Item {string}</div>'
-                                        ],
-                                        itemHeight: 28
-                                    }
-                                ]
-                            },
-                            {
-                                xtype: 'panel',
-                                flex: 0
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'panel',
-                        flex: 1,
-                        layout: 'fit',
-                        items: [
-                            {
-                                xtype: 'dataview',
-                                cls: 'x-rm-list-totals',
-                                itemId: 'retailerTotalsList',
-                                width: '100%',
-                                scrollable: false
-                            }
-                        ]
-                    }
-                ]
-            }
-        ],
+                                        {
+                                            text: 'Store Name',
+                                            value: 'store_name'
+                                        },
+                                        {
+                                            text: 'Store State',
+                                            value: 'store_state'
+                                        },
+                                        {
+                                            text: 'Product Datalink',
+                                            value: 'store_products.datalink_status'
+                                        },
+                                        {
+                                            text: 'Product ECatalog',
+                                            value: 'store_products.ecatalog_status'
+                                        },
+                                        {
+                                            text: 'Product ECommerce',
+                                            value: 'store_products.ecommerce_status'
+                                        },
+                                        {
+                                            text: 'Product iRugz',
+                                            value: 'store_products.irugs_status'
+                                        },
+                                        {
+                                            text: 'Product RMPRO',
+                                            value: 'store_products.rmpro_status'
+                                        },
+                                        {
+                                            text: 'No Of Locations',
+                                            value: 'store_location'
+                                        },
+                                        {
+                                            text: 'Store E-mail',
+                                            value: 'store_email'
+                                        },
+                                        {
+                                            text: 'Store City',
+                                            value: 'store_city'
+                                        },
+                                        {
+                                            text: 'Manager First Name',
+                                            value: 'manager_firstname'
+                                        },
+                                        {
+                                            text: 'Manager Last Name',
+                                            value: 'manager_lastname'
+                                        },
+                                        {
+                                            text: 'Created By',
+                                            value: 'created_by'
+                                        },
+                                        {
+                                            text: 'Account created after',
+                                            value: 'user_since'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'searchfield',
+                                    action: 'searchRetailers',
+                                    cls: 'x-field-techLogsearch',
+                                    itemId: 'rtVdrsSearchFld',
+                                    style: 'border: none;',
+                                    width: '40%'
+                                },
+                                {
+                                    xtype: 'searchfield',
+                                    cls: 'x-field-techLogsearch',
+                                    hidden: true,
+                                    itemId: 'rtVdrsDateSearchFld',
+                                    style: 'border: none;',
+                                    width: '40%'
+                                },
+                                {
+                                    xtype: 'selectfield',
+                                    action: 'productStatusChange',
+                                    border: '0 0 0 0',
+                                    hidden: true,
+                                    itemId: 'retailersProductStatusSearchSlctFld',
+                                    width: '40%',
+                                    autoSelect: false,
+                                    options: [
+                                        {
+                                            text: 'ACTIVE',
+                                            value: 'ACTIVE'
+                                        },
+                                        {
+                                            text: 'INACTIVE',
+                                            value: 'INACTIVE'
+                                        },
+                                        {
+                                            text: 'PROSPECT',
+                                            value: 'PROSPECT'
+                                        },
+                                        {
+                                            text: 'HOT PROSPECT',
+                                            value: 'HOT_PROSPECT'
+                                        },
+                                        {
+                                            text: 'PENDING',
+                                            value: 'PENDING'
+                                        },
+                                        {
+                                            text: 'ANY',
+                                            value: 'ANY'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'button',
+                                    action: 'searchRetailersBtn',
+                                    cls: 'x-rm-blueBtn',
+                                    height: '22px',
+                                    itemId: 'retailersVendorsSerchBtn',
+                                    margin: '0 0 0 4',
+                                    maxHeight: '22px',
+                                    minHeight: '22px',
+                                    padding: '0 0 0 0',
+                                    width: '90px',
+                                    text: 'Search'
+                                },
+                                {
+                                    xtype: 'button',
+                                    cls: 'x-rm-blueBtn',
+                                    height: '22px',
+                                    hidden: true,
+                                    itemId: 'retailersCustomFilterBtn',
+                                    margin: '0 5px 0 5px',
+                                    maxHeight: '22px',
+                                    minHeight: '22px',
+                                    width: '100px',
+                                    text: 'FILTER'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'searchView',
+                            hidden: true,
+                            itemId: 'retailerSeachViewItemID'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'panel',
+                    flex: 15,
+                    layout: 'hbox',
+                    scrollable: false,
+                    items: [
+                        {
+                            xtype: 'panel',
+                            flex: 9,
+                            layout: 'vbox',
+                            scrollable: false,
+                            items: [
+                                {
+                                    xtype: 'dataview',
+                                    actionSorting: 'sortingStore',
+                                    flex: 1,
+                                    cls: 'x-rm-list-header',
+                                    itemId: 'retailerListHeader',
+                                    margin: '0 0 0 0',
+                                    scrollable: false,
+                                    itemTpl: [
+                                        '<div>Data View Item {string}</div>'
+                                    ]
+                                },
+                                {
+                                    xtype: 'list',
+                                    action: 'setScrollBarVisible',
+                                    flex: 15,
+                                    cls: 'x-rm-list',
+                                    itemId: 'retailerList',
+                                    mode: 'MULTI',
+                                    itemTpl: [
+                                        '<div>List Item {string}</div>'
+                                    ],
+                                    itemHeight: 28
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'panel',
+                            flex: 0
+                        }
+                    ]
+                },
+                {
+                    xtype: 'panel',
+                    flex: 1,
+                    layout: 'fit',
+                    items: [
+                        {
+                            xtype: 'dataview',
+                            cls: 'x-rm-list-totals',
+                            itemId: 'retailerTotalsList',
+                            width: '100%',
+                            scrollable: false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
         listeners: [
             {
                 fn: 'onRetailerListRefresh',

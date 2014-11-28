@@ -21,79 +21,114 @@ Ext.define('RMdatalink.controller.VendorStatsController', {
     },
 
     loadVendorStats: function() {
-            var _this =this ;
-            var vendorMasterStr = Ext.getStore('vendors.Master')  ;
+        var _this =this ;
+        var vendorMasterStr = Ext.getStore('vendors.Master')  ;
 
 
-            for(var i=0; i < vendorMasterStr.getData().all.length ; i++){
+        for(var i=0; i < vendorMasterStr.getData().all.length ; i++){
 
-                 var record =   vendorMasterStr.getAt(i);
+            var record =   vendorMasterStr.getAt(i);
 
 
-                                    if(record){
+            if(record){
 
-                                        //console.error(record) ;
-                                          record.set('collections',"") ;
-                                          record.set('SKU',"") ;
-                                          record.set('design',"") ;
+                //console.error(record) ;
+                record.set('collections',"") ;
+                record.set('SKU',"") ;
+                record.set('design',"") ;
 
-                                            record.dirty= true;
+                record.dirty= true;
 
-                                    }
             }
+        }
 
-            RMdatalink.iwa.rdl.getVendorStats('', function(res)
-                        {
-                             Ext.Viewport.setMasked(false);
-                            console.log('result:');
-                            console.log(res);
+        RMdatalink.iwa.rdl.getVendorStats('', function(res)
+                                          {
+                                              Ext.Viewport.setMasked(false);
+                                              console.log('result:');
+                                              console.log(res);
 
-                              _this.config.vendorStats = res ;
-
-
-                               var vendorData = vendorMasterStr.getData().all ;
-
-                                for(var i =0 ; i< res.length ; i++){
-
-                                  var recordIndex =   vendorMasterStr.findExact("vendor_name",res[i].vendor);
-
-                                  var record =   vendorMasterStr.getAt(recordIndex);
+                                              _this.config.vendorStats = res ;
 
 
-                                    if(record){
+                                              var vendorData = vendorMasterStr.getData().all ;
 
-                                        //console.error(record) ;
-                                          record.set('collections',res[i].collections) ;
-                                          record.set('SKU',res[i].skus) ;
-                                          record.set('design',res[i].designs) ;
+                                              for(var i =0 ; i< res.length ; i++){
 
-                                            record.dirty= true;
+                                                  var recordIndex =   vendorMasterStr.findExact("vendor_name",res[i].vendor);
 
-                                    }
-                                    }
+                                                  var record =   vendorMasterStr.getAt(recordIndex);
 
-                            vendorMasterStr.sync() ;
 
-                            var tempArray = new Array();
-                            tempArray = getArrayDataFromStore(Ext.getStore('vendors.Master'));
-
-                            var tempVendorStore = Ext.getStore('vendorTempRecordStore') ;
-
-                            tempVendorStore.removeAll();
-                            tempVendorStore.sync();
-
-                            tempVendorStore.setData(tempArray);
-                            tempVendorStore.sync();
+                                                  if(record){
 
 
 
 
-                        },
-                        function(err)
-                        {
-                            console.log('error:');
-                            console.log(err);
-                        });
+                                                      /**/
+
+                                                      var objToSet = {
+
+                                                          'collections':res[i].collections,
+                                                          'SKU':res[i].skus,
+                                                          'design':res[i].designs,
+                                                          'no_of_images':res[i].images || 0,
+                                                          'no_of_additional_images':(function(){
+
+                                                              try{
+
+                                                                  return  parseInt( res[i].add_images_closeup || 0 ) +
+                                                                      parseInt( res[i].add_images_corner || 0 )   +
+                                                                      parseInt( res[i].add_images_detail || 0 ) +
+                                                                      parseInt( res[i].add_images_room || 0 );
+
+
+                                                              }catch(e){
+                                                                  console.log("ERROR THROWN" , e);
+                                                                  return 0;
+                                                              }
+
+
+                                                          })()
+                                                      };
+
+                                                      record.set(objToSet) ;
+                                                      record.dirty= true;
+
+                                                  }else{
+
+                                                      // CREATE NEW VENDORS IF NOT PRESENT.
+                                                      // THIS NEW VENDORS INFORMATION WILL BE SHOWN ON PAGE REFRESH.
+
+                                                      RMdatalink.util.globalConfig.createNewVendor( res[i].vendor );
+
+                                                  }
+                                              }
+
+                                              vendorMasterStr.sync() ;
+
+                                              var tempArray = new Array();
+                                              tempArray = getArrayDataFromStore(Ext.getStore('vendors.Master'));
+
+                                              var tempVendorStore = Ext.getStore('vendorTempRecordStore') ;
+
+                                              tempVendorStore.removeAll();
+                                              tempVendorStore.sync();
+
+                                              tempVendorStore.setData(tempArray);
+                                              tempVendorStore.sync();
+
+
+
+
+
+
+                                          },
+                                          function(err)
+                                          {
+                                              console.log('error:');
+                                              console.log(err);
+                                          });
 
 
 
@@ -114,7 +149,7 @@ Ext.define('RMdatalink.controller.VendorStatsController', {
             }
 
             return dataToReturn ;
-         }
+        }
 
 
 

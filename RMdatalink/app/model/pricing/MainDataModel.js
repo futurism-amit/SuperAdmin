@@ -81,6 +81,11 @@ Ext.define('RMdatalink.model.pricing.MainDataModel', {
             },
             {
                 name: 'vendor_pricing_vendors_sel_policy'
+            },
+            {
+                defaultValue: '2',
+                name: 'displayVIPAdvancePaymentBenfit',
+                type: 'string'
             }
         ]
     }

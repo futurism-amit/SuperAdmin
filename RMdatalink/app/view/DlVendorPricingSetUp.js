@@ -47,6 +47,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                 items: [
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'dlVdrPricingSku_imgsSetUpPanel',
                         width: '100%',
                         items: [
@@ -57,7 +58,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Pricing Setup (SKU + Images)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Pricing Setup (SKU + Images)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -202,6 +203,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'dlVdrPricingSku_imgs_addlImgsSetUpPanel',
                         width: '100%',
                         items: [
@@ -212,7 +214,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Pricing Setup (SKU + Images + Addl Images)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Pricing Setup (SKU + Images + Addl Images)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -357,6 +359,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'dlVdrPricingVdrDiscountSetUpPanel',
                         width: '100%',
                         items: [
@@ -367,7 +370,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Discount Policy Setup (Vendors)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Discount Policy Setup (Vendors)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -498,6 +501,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'dlVdrPricingSKUDiscountSetUpPanel',
                         width: '100%',
                         items: [
@@ -508,7 +512,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Discount Policy Setup (SKU)<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Discount Policy Setup (SKU)<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
@@ -639,6 +643,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                     },
                     {
                         xtype: 'fieldset',
+                        height: 26,
                         itemId: 'dlVdrPricingTimeTknToUploadPanel',
                         width: '100%',
                         items: [
@@ -649,7 +654,7 @@ Ext.define('RMdatalink.view.DlVendorPricingSetUp', {
                                     'fieldLbl',
                                     'pointerCursor'
                                 ],
-                                html: 'Value Calculator Setup<img src="resources/images/labelHeader/downArrow.png" style="float: right;"/>',
+                                html: 'Value Calculator Setup<img src="resources/images/labelHeader/rightArrow.png" style="float: right;"/>',
                                 itemId: 'mylabel6',
                                 margin: '1 0 10 0',
                                 style: 'background-color: gainsboro;font-weight:bold;font-size:0.8em;'
